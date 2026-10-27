@@ -1,6 +1,87 @@
 ---
 title: Karaoke check
-draft: true
+description: List the karaoke lines whose syllables don't add up, run outside the line, have no length, or read differently in the audio editor, and go to each one.
 ---
 
-This guide is not written yet.
+**Subtitles › Check karaoke** opens the **Karaoke check** window, which lists the karaoke problems of the current file, one row per problem. Choose a row to select its line, fix the line in the Line editor, the Grid or the Audio panel, then click **Re-check**.
+
+The window only reports. It never changes the file, so it adds nothing to the undo history.
+
+## Opening the window
+
+Choose **Subtitles › Check karaoke**, after **Check spelling**. It needs an open subtitle file. The command, **Check karaoke**, has no key at first; <kbd>Shift</kbd>+click the menu item to give it one, or see [Hotkeys](/en/docs/customize/hotkeys).
+
+Each time you choose it, the file is checked again. If the window is already open, it comes to the front with a fresh list.
+
+You can keep editing while the window is open. It can be resized, and it opens where you left it, at the same size. The **Help** button on its title bar, or <kbd>F1</kbd>, opens this page.
+
+## The list
+
+Each row has three columns:
+
+- **Line**: the line's number in the Grid.
+- **Check**: which check it fails.
+- **Detail**: what is wrong.
+
+The rows are in line order. When the file has no problems, the window says *No karaoke problems found*.
+
+At most 1000 problems are listed. Past that, a line under the list says how many more there are, such as *1234 more problems not listed; fix these and check again*.
+
+## The checks
+
+| Check | Detail | Means |
+| --- | --- | --- |
+| **Unclosed syllable** | A karaoke tag has no duration, or its override block is never closed | A tag such as `{\k}` has no number, or the `{` before it has no `}` |
+| **Not read by the audio editor** | No karaoke tag's duration starts with a digit, as in \k50, so the audio editor splits the line anew | Every tag is written like `\k+50`, `\k(50)` or `\k.5`. The video plays them, but the Audio panel's Karaoke mode doesn't see karaoke in the line and splits it from scratch |
+| **Other syllables in the audio editor** | The audio editor splits at every \k tag and reads its number its own way, so a tag such as \keep, \kfo50 or \k(50) gives it syllables unlike playback's | The Audio panel would show syllables of other lengths, or another number of them, than the video plays |
+| **Syllables don't match the line** | The syllables last 0.70 s; the line lasts 1.00 s | The syllables add up to more or less than the line's duration |
+| **Zero-length syllable** | Syllable 2 | A syllable has no length, such as `{\k0}` |
+| **Syllable outside the line** | Syllables 1, 2 | A syllable starts before the line, ends after it, or runs backwards, such as `{\k-20}` |
+
+A line can fail several checks, one row each. The syllables are numbered from 1, and up to 20 are listed, then "…". Times are in seconds, with three decimals when they aren't whole centiseconds, such as *1.001*.
+
+Some lines and what they give, each on a line of one second:
+
+| Text | Rows |
+| --- | --- |
+| `{\k50}fi{\k50}ne` | None |
+| `{\k100}un{\k0closed` | **Unclosed syllable** |
+| `{\k50}too {\k20}short` | **Syllables don't match the line**: *The syllables last 0.70 s; the line lasts 1.00 s* |
+| `{\k0}zero {\k100}length` | **Zero-length syllable**: *Syllable 1* |
+| `{\k-10}out{\k110}side` | **Syllable outside the line**: *Syllables 1, 2* |
+| `{\k100}are{\k30} so` | **Syllables don't match the line**, and **Syllable outside the line**: *Syllable 2* |
+
+### How syllables are counted
+
+The checks read the syllables as the video plays them:
+
+- `\k`, `\K`, `\kf` and `\ko` each start a syllable, which runs to the next one. `\kt` isn't a syllable.
+- Several tags in one block are each a syllable: `{\k50\k50}a{\kf50}b` is three syllables, 1.50 s.
+- A value may have a sign, `\k+12`, or sit in brackets, `\k(50)`. Fractions are dropped, so `\k50.5` counts as 50 cs.
+- Other tags that start with k, such as `\keep`, aren't karaoke, and neither is `\k` outside braces.
+- After a `{` that is never closed, the rest of the text is plain text.
+- The line's duration is its end minus its start, in whole milliseconds. A syllable that ends exactly at the line's end is inside it.
+
+The Audio panel's Karaoke mode reads tags its own way. It sees karaoke only in a line with a tag whose number follows the name at once, such as `\k50` or `\kf50`. It then splits at every `\k` or `\K` and reads the number up to the next `\` or `}`, so `\keep` and `\k(50)` become syllables of no length. The two audio-editor checks find the lines where the Audio panel and the video disagree.
+
+### Which lines are checked
+
+- Lines with a `\k`, `\K`, `\kf` or `\ko` tag. Lines without one give no rows.
+- Comments are checked as well. So is a karaoke line that the templater has turned into a comment with the Effect `karaoke`.
+- Lines whose Effect starts with `template`, `code` or `mixin` are skipped: they are templates, not karaoke.
+- In Translation mode, a line is checked on its translation, the text that plays.
+- The active line is checked as it stands in the Line editor, even before you apply your changes.
+
+Lines that the [Kanji timer](/en/docs/karaoke/kanji-timer) writes with **Multi-highlight (#)** pass: each `#` syllable is one more syllable with its own time.
+
+## Going to a line
+
+Click a row, or move through the rows with <kbd>↑</kbd> and <kbd>↓</kbd>, and its line is selected, alone and active, as a click in the Grid would select it. <kbd>Enter</kbd> selects the current row's line again.
+
+When a row's line can't be shown, the window checks again instead. That happens when another file's tab is now current, when the line has been deleted, or when the Line editor holds a change it can't apply.
+
+## Checking again
+
+The list doesn't follow your edits. A line you fix keeps its row, and a new problem doesn't show, until you click **Re-check** or choose **Subtitles › Check karaoke** again. Switching tabs doesn't check either.
+
+**Close**, or <kbd>Esc</kbd>, closes the window.
