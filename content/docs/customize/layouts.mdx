@@ -1,6 +1,115 @@
 ---
-title: Layouts and presets
-draft: true
+title: Layouts
+description: Arrange the panels, switch between the built-in layouts, and save your own.
 ---
 
-This guide is not written yet.
+import layoutsLight from './images/layouts-light.webp';
+import layoutsDark from './images/layouts-dark.webp';
+import layoutsStillLight from './images/layouts-still-light.webp';
+import layoutsStillDark from './images/layouts-still-dark.webp';
+import menuLight from './images/layout-menu-light.webp';
+import menuDark from './images/layout-menu-dark.webp';
+import manageLight from './images/manage-layouts-light.webp';
+import manageDark from './images/manage-layouts-dark.webp';
+
+The window is made of panels: Video, Audio, the Line editor, the Grid and others. You can move them, stack them as tabs, float them in windows of their own, or close them. A layout is one arrangement of them.
+
+Each tab has its own layout, so a file you translate and a file you time can be set up differently side by side. Moving panels never changes your subtitles and adds no undo step.
+
+## The built-in layouts
+
+<MotionImage
+  light={layoutsLight}
+  dark={layoutsDark}
+  lightStill={layoutsStillLight}
+  darkStill={layoutsStillDark}
+  width={1000}
+  height={600}
+  alt="The same window switching between the Editing, Timing, Translation and Typesetting layouts"
+/>
+
+<small>Subtitles: Jibrill.</small>
+
+- **Editing**, the default: Video and Audio side by side, the Line editor under the Audio, and the Grid along the bottom.
+- **Timing:** Editing without the Video.
+- **Translation:** Editing without the Audio. Choosing it asks whether to turn on Translation mode for the file.
+- **Typesetting:** a large Video with the Styles panel beside it, and the Line editor beside a short Grid below.
+
+Choosing a layout keeps the window's size and changes only the current tab.
+
+## Choosing a layout
+
+The layout button in the title bar, after the menus, shows the tab's layout. Click it, or use **View › Layout**:
+
+<figure>
+  <ThemedImage
+    light={menuLight}
+    dark={menuDark}
+    alt="The layout menu open under the title bar button: Editing, Timing, Translation and Typesetting, two saved layouts named Subtitles only and Review with video, then Save layout as, Reset this layout and Manage layouts"
+    width={640}
+    height={285}
+    className="rounded-lg border"
+  />
+  <figcaption>The layout menu, with two saved layouts.</figcaption>
+</figure>
+
+- The four built-in layouts, then your saved layouts.
+- **Save layout as…** saves the tab's arrangement under a name.
+- **Reset this layout** puts the tab back the way its layout had it, undoing the moves you made since.
+- **Manage layouts…** renames and deletes saved layouts.
+
+From the keyboard, press <kbd>Alt</kbd> or <kbd>F10</kbd> to reach the menus, then the arrow keys to reach the button.
+
+## Saving your own
+
+Arrange the panels as you like, then choose **Save layout as…** and type a name of up to 64 characters. Saving under a name already used replaces that layout; the window warns you and its button reads **Replace**. The built-in layouts' names can't be used.
+
+A saved layout is a snapshot: moving panels afterwards doesn't change it until you save it again. It can be used from any tab.
+
+<figure>
+  <ThemedImage
+    light={manageLight}
+    dark={manageDark}
+    alt="The Manage layouts window listing Subtitles only and Review with video, with rename and delete buttons on the selected row"
+    width={380}
+    height={302}
+    className="rounded-lg border"
+  />
+  <figcaption>Manage layouts.</figcaption>
+</figure>
+
+In **Manage layouts**, the pencil, <kbd>F2</kbd> or a double-click renames a layout; <kbd>Enter</kbd> keeps the new name and <kbd>Esc</kbd> puts the old one back. The bin or <kbd>Delete</kbd> deletes it, after asking. Tabs using a deleted layout keep their arrangement.
+
+## Moving panels
+
+- **Drag a panel's header** to move it. A highlight shows where it will land: over another panel's header or middle, it becomes a tab there; near a side, it splits that panel; along the window's edge, it takes the whole edge. Let go anywhere else and it floats.
+- **Double-click the header** to float the panel, or dock a floating one back.
+- **Drag the line between two panels** to resize them.
+
+Each panel's **⋯** button, or a right-click on its header, opens its menu:
+
+- the panel's own options, if it has any
+- **Move panel…**
+- **Move tab left** and **Move tab right**, for a panel among tabs
+- **Undock**, or **Dock** for a floating panel
+- **Close**
+
+Closing a panel only hides it. **View › Panels** shows it again, and can also hide, float or dock any panel.
+
+### From the keyboard
+
+**View › Move panel…** opens a window for the panel you are in. Choose where it goes (**Tab with**, **Left of**, **Above**, **Right of**, **Below** or **Float**), next to which panel, and press **Move**. **Resize** sets its width and height in pixels. The window stays open, so you can move several panels in turn.
+
+<kbd>F6</kbd> and <kbd>Shift</kbd>+<kbd>F6</kbd> move to the next or previous panel.
+
+## Layouts in your files
+
+When you save an ASS file, HikariSub writes the tab's layout into it, in a `[Hikari]` section that other programs ignore. Opening the file again, here or on another computer, brings the panels back the way you left them. A change of layout alone doesn't mark the file as changed; the next save writes it.
+
+To keep layouts out of your files, turn off **File › Settings › Subtitle properties › Save the panel layout in subtitle files**. SRT and the other simple formats keep their layout only in the session.
+
+A new tab starts with a copy of the current tab's layout, or with Translation for a file in Translation mode.
+
+## If a layout can't be restored
+
+HikariSub saves the window's layout as you work. If it can't be restored at start, for example after an update, a bar shows the Editing layout instead and keeps the old file. **View › Restore the previous layout** goes back to the layout saved before the last one.

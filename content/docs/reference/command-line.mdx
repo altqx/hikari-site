@@ -1,6 +1,72 @@
 ---
 title: Command line
-draft: true
+description: Opening files from a terminal or a script, the --version and --export-docs switches, and what happens when HikariSub is already running.
 ---
 
-This guide is not written yet.
+HikariSub's command line is a list of files to open, and two switches.
+
+| Package | Command |
+| --- | --- |
+| Windows | `HikariSub.exe` |
+| deb, rpm, AUR, tar.gz | `hikarisub` |
+| AppImage | the `.AppImage` file itself |
+
+```sh
+hikarisub episode.ass episode.mkv
+```
+
+## Switches
+
+| Switch | Does |
+| --- | --- |
+| `--version` | Prints the version and the package kind, such as `0.1.0 (deb)`, and exits. No window opens |
+| `--export-docs <folder>` | Writes the commands, settings and guide links as JSON into the folder, and exits |
+
+There is no `--help`. Anything else on the command line is a file to open, so a mistyped switch is taken for a file name.
+
+`--version` prints one of these package kinds: `nsis-user` or `nsis-machine` for the Windows installer, `appimage`, `deb`, `rpm`, `arch`, or `portable-windows` and `portable-linux` for the zip and tar.gz. On Windows, `HikariSub.exe` is a windowed program, so redirect the output to see it: `HikariSub.exe --version > version.txt`.
+
+`--export-docs` (or `--export-docs=<folder>`) writes `commands.json`, `settings.json`, `guide-links.json` and `meta.json`, which this site's [Hotkeys](/en/docs/reference/hotkeys) and [Settings](/en/docs/reference/settings) references are made from. It uses a fresh profile of its own in English, so your settings don't change the result, and it needs no display. Each release attaches the same files as `hikarisub-docs-<version>.zip`.
+
+Some switches starting with `--hikari-` are for the updater. Don't use them yourself.
+
+## Files
+
+What a file opens as depends on its extension:
+
+| Extension | Opens as |
+| --- | --- |
+| `.ass` `.ssa` `.srt` `.sub` `.txt` | Subtitles |
+| `.lrc` `.ttml` | Lyrics, as a new ASS file |
+| `.lua` `.moon` | An Automation script, loaded |
+| `.pass` `.stats` `.log`, or a name ending `_keyframes.txt` | Keyframes, when it is the only file |
+| `.exe` `.zip` `.rar` `.7z` | Nothing: refused |
+| anything else | A video, whose audio opens with it |
+
+Relative paths are taken from the current folder.
+
+- **One subtitles file** opens in the first tab. If a video or audio file goes with it, HikariSub offers to open it.
+- **One video** opens in a tab of its own. With **File › Settings › Video › Open video from the context menu in full screen** on, it plays full screen at once.
+- **Several files** are sorted by name, then the first subtitles file and the first video share a tab, the second of each share the next, and so on. Files left over get tabs of their own.
+
+Starting with files skips the last session. If there is one to restore, a bar under the tabs offers it.
+
+## When HikariSub is already running
+
+Only one HikariSub runs at a time for each user and desktop session. Starting it again hands its files to the running window and exits:
+
+- The files open in new tabs. A tab with work in it is never replaced.
+- Files from several starts in quick succession, as when a file manager opens several files, open together.
+- They wait while a dialog is open, then open.
+
+Starting it without files brings the running window to the front.
+
+On Windows, a HikariSub run as administrator is separate from one that isn't, and they don't hand files to each other.
+
+## Exit codes
+
+| Code | When |
+| --- | --- |
+| 0 | A normal quit, `--version`, a successful `--export-docs`, or files handed to the running HikariSub |
+| 1 | `--export-docs` couldn't write the files. The reason is printed |
+| 2 | `--export-docs` was given no folder, or the window couldn't be created |

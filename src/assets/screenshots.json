@@ -130,6 +130,81 @@
       "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8)",
       "surface": "The video with the Preview · Line 5 · not applied badge",
       "credit": ""
+    },
+    "content/docs/customize/images/themes.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/themes.webp",
+      "surface": "The window in the four themes, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-light.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp (animated)",
+      "surface": "The window cycling through the four layout presets, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-still-light.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, first frame",
+      "surface": "Editing layout, ray MV (reduced-motion still)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layout-menu-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-light.png, top-left 640x285",
+      "surface": "Layout menu open under the title-bar switcher, two saved layouts",
+      "credit": ""
+    },
+    "content/docs/customize/images/manage-layouts-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-manage-layouts-light.png",
+      "surface": "Manage layouts window",
+      "credit": ""
+    },
+    "content/docs/customize/images/settings-hotkeys-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-light.png",
+      "surface": "Settings › Hotkeys page",
+      "credit": ""
+    },
+    "content/docs/customize/images/hotkey-capture-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_popup_kit_tests kitScreenshots under vx11, popup-hotkey-capture-light.png, crop of the popover, 314x256",
+      "surface": "Keys for \"Save\" capture with a conflict question",
+      "credit": ""
+    },
+    "content/docs/customize/images/settings-general-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11, pf1-general-light.png",
+      "surface": "Settings window, General page",
+      "credit": ""
+    },
+    "content/docs/customize/images/layouts-dark.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp (animated)",
+      "surface": "The window cycling through the four layout presets, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-still-dark.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, first frame",
+      "surface": "Editing layout, ray MV (reduced-motion still)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layout-menu-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-dark.png, top-left 640x285",
+      "surface": "Layout menu open under the title-bar switcher, two saved layouts",
+      "credit": ""
+    },
+    "content/docs/customize/images/manage-layouts-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-manage-layouts-dark.png",
+      "surface": "Manage layouts window",
+      "credit": ""
+    },
+    "content/docs/customize/images/settings-hotkeys-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-dark.png",
+      "surface": "Settings › Hotkeys page",
+      "credit": ""
+    },
+    "content/docs/customize/images/hotkey-capture-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_popup_kit_tests kitScreenshots under vx11, popup-hotkey-capture-dark.png, crop of the popover, 314x256",
+      "surface": "Keys for \"Save\" capture with a conflict question",
+      "credit": ""
+    },
+    "content/docs/customize/images/settings-general-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11, pf1-general-dark.png",
+      "surface": "Settings window, General page",
+      "credit": ""
     }
   }
 }
