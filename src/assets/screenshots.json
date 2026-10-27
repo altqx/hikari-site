@@ -2,142 +2,122 @@
   "_doc": "Where each app image comes from (decisions.md, Media). Captures under vx11 from the coordinator's qt build tree; the example subtitles are credited \"Subtitles: Jibrill\".",
   "images": {
     "src/assets/home/hero-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
       "surface": "Editing layout, ray MV at 1:15.75",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/hero-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
       "surface": "Editing layout, ray MV at 1:15.75",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/karaoke-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
       "surface": "crop of hero-light: the Audio panel's karaoke syllables",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/karaoke-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
       "surface": "crop of hero-dark: the Audio panel's karaoke syllables",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/typesetting-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
       "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/typesetting-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
       "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/window-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-light.webp",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-light.webp (surface unchanged at qt d24047335)",
       "surface": "Editing layout, ray MV (the README hero)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/window-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-dark.webp",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-dark.webp (surface unchanged at qt d24047335)",
       "surface": "Editing layout, ray MV (the README hero)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/typesetting-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, frame 4 of 4",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, frame 4 of 4 (surface unchanged at qt d24047335)",
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/typesetting-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, frame 4 of 4",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, frame 4 of 4 (surface unchanged at qt d24047335)",
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/typesetting/images/perspective-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
       "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/typesetting/images/perspective-drag-light-av1.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/typesetting/images/perspective-drag-light-h264.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/typesetting/images/perspective-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
       "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
-    "content/docs/typesetting/images/perspective-drag-dark-av1.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/typesetting/images/perspective-drag-dark-h264.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/karaoke/images/kanji-timer-light.webp": {
-      "source": "origin/evidence/w6-ka8 d9d9d5fdcbd6b9ef88cced2fc55327a9529dcf5c ka8-354/ka8-multi-light.png (KanjiTimerDialog.qml unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ka8 d9d9d5fdcbd6b9ef88cced2fc55327a9529dcf5c ka8-354/ka8-multi-light.png (KanjiTimerDialog.qml unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Kanji timer window, Multi-highlight (#) on, test song kanji-shots.ass",
       "credit": ""
     },
     "content/docs/karaoke/images/kanji-timer-dark.webp": {
-      "source": "origin/evidence/w6-ka8 d9d9d5fdcbd6b9ef88cced2fc55327a9529dcf5c ka8-354/ka8-multi-dark.png (KanjiTimerDialog.qml unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ka8 d9d9d5fdcbd6b9ef88cced2fc55327a9529dcf5c ka8-354/ka8-multi-dark.png (KanjiTimerDialog.qml unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Kanji timer window, Multi-highlight (#) on, test song kanji-shots.ass",
       "credit": ""
     },
     "content/docs/karaoke/images/template-editor-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor, template line 3 previewed on line 5",
       "credit": ""
     },
     "content/docs/karaoke/images/template-editor-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor, template line 3 previewed on line 5",
       "credit": ""
     },
     "content/docs/karaoke/images/template-problem-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor with a problem in template line 3",
       "credit": ""
     },
     "content/docs/karaoke/images/template-problem-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor with a problem in template line 3",
       "credit": ""
     },
     "content/docs/karaoke/images/template-trust-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor asking to trust the file",
       "credit": ""
     },
     "content/docs/karaoke/images/template-trust-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor asking to trust the file",
       "credit": ""
     },
     "content/docs/karaoke/images/template-variables-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots be57994d6 ke2-284/linux/template-variables-light.png, crop of the $ list, 796x360 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots be57994d6 ke2-284/linux/template-variables-light.png, crop of the $ list, 796x360 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor $ variable list with values",
       "credit": ""
     },
     "content/docs/karaoke/images/template-variables-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots be57994d6 ke2-284/linux/template-variables-dark.png, crop of the $ list, 796x360 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots be57994d6 ke2-284/linux/template-variables-dark.png, crop of the $ list, 796x360 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "Template editor $ variable list with values",
       "credit": ""
     },
     "content/docs/karaoke/images/template-video-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "The video with the Preview · Line 5 · not applied badge",
       "credit": ""
     },
     "content/docs/karaoke/images/template-video-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8)",
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
       "surface": "The video with the Preview · Line 5 · not applied badge",
       "credit": ""
     },
@@ -162,437 +142,417 @@
       "credit": ""
     },
     "content/docs/customize/images/themes.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/themes.webp",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/themes.webp (surface unchanged at qt d24047335)",
       "surface": "The window in the four themes, ray MV",
       "credit": "Subtitles: Jibrill"
     },
-    "content/docs/customize/images/layouts-light-av1.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
-      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, light)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/customize/images/layouts-light-h264.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
-      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, light)",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/customize/images/layouts-still-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, first frame",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, first frame (surface unchanged at qt d24047335)",
       "surface": "Editing layout, ray MV (poster of the layouts clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-light.png, top-left 640x285",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-light.png, top-left 640x285 (surface unchanged at qt d24047335)",
       "surface": "Layout menu open under the title-bar switcher, two saved layouts",
       "credit": ""
     },
     "content/docs/customize/images/manage-layouts-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-manage-layouts-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-manage-layouts-light.png (surface unchanged at qt d24047335)",
       "surface": "Manage layouts window",
       "credit": ""
     },
     "content/docs/customize/images/settings-hotkeys-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-light.png (surface unchanged at qt d24047335)",
       "surface": "Settings › Hotkeys page",
       "credit": ""
     },
     "content/docs/customize/images/hotkey-capture-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_popup_kit_tests kitScreenshots under vx11, popup-hotkey-capture-light.png, crop of the popover, 314x256",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_popup_kit_tests kitScreenshots under vx11, popup-hotkey-capture-light.png, crop of the popover, 314x256 (surface unchanged at qt d24047335)",
       "surface": "Keys for \"Save\" capture with a conflict question",
       "credit": ""
     },
     "content/docs/customize/images/settings-general-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11, pf1-general-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11, pf1-general-light.png (surface unchanged at qt d24047335)",
       "surface": "Settings window, General page",
       "credit": ""
     },
-    "content/docs/customize/images/layouts-dark-av1.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
-      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/customize/images/layouts-dark-h264.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
-      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/customize/images/layouts-still-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, first frame",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, first frame (surface unchanged at qt d24047335)",
       "surface": "Editing layout, ray MV (poster of the layouts clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-dark.png, top-left 640x285",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-dark.png, top-left 640x285 (surface unchanged at qt d24047335)",
       "surface": "Layout menu open under the title-bar switcher, two saved layouts",
       "credit": ""
     },
     "content/docs/customize/images/manage-layouts-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-manage-layouts-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-manage-layouts-dark.png (surface unchanged at qt d24047335)",
       "surface": "Manage layouts window",
       "credit": ""
     },
     "content/docs/customize/images/settings-hotkeys-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-dark.png (surface unchanged at qt d24047335)",
       "surface": "Settings › Hotkeys page",
       "credit": ""
     },
     "content/docs/customize/images/hotkey-capture-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_popup_kit_tests kitScreenshots under vx11, popup-hotkey-capture-dark.png, crop of the popover, 314x256",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_popup_kit_tests kitScreenshots under vx11, popup-hotkey-capture-dark.png, crop of the popover, 314x256 (surface unchanged at qt d24047335)",
       "surface": "Keys for \"Save\" capture with a conflict question",
       "credit": ""
     },
     "content/docs/customize/images/settings-general-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11, pf1-general-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11, pf1-general-dark.png (surface unchanged at qt d24047335)",
       "surface": "Settings window, General page",
       "credit": ""
     },
     "content/docs/basics/images/fullscreen-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/fullscreen-light.webp",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/fullscreen-light.webp (surface unchanged at qt d24047335)",
       "surface": "Full-screen playback with the player bar, ray MV",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/basics/images/audio-panel-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-default-light.png, crop of the panel, 640x212",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-default-light.png, crop of the panel, 640x212 (surface unchanged at qt d24047335)",
       "surface": "Audio panel in Line mode, default row, test audio",
       "credit": ""
     },
     "content/docs/basics/images/audio-commit-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-light.png, top 640x300",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-light.png, top 640x300 (surface unchanged at qt d24047335)",
       "surface": "Audio panel with the Commit options menu open",
       "credit": ""
     },
     "content/docs/basics/images/shift-times-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-light.png (surface unchanged at qt d24047335)",
       "surface": "Shift times panel, floating, Shift mode",
       "credit": ""
     },
     "content/docs/basics/images/post-processor-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-light.png (surface unchanged at qt d24047335)",
       "surface": "Shift times panel, floating, Post processor mode",
       "credit": ""
     },
     "content/docs/basics/images/convert-srt-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-light.png (surface unchanged at qt d24047335)",
       "surface": "Convert to SRT window with What changes",
       "credit": ""
     },
     "content/docs/basics/images/file-properties-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-properties-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-properties-light.png (surface unchanged at qt d24047335)",
       "surface": "ASS file properties window",
       "credit": ""
     },
     "content/docs/basics/images/resample-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-resample-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-resample-light.png (surface unchanged at qt d24047335)",
       "surface": "Resample subtitles window, 1280x720 to 1440x1080",
       "credit": ""
     },
     "content/docs/basics/images/grid-light.webp": {
-      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356",
+      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356 (surface unchanged at qt d24047335)",
       "surface": "Grid in the Editing layout, ray MV, line 34 active",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/basics/images/fullscreen-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/fullscreen-dark.webp",
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/fullscreen-dark.webp (surface unchanged at qt d24047335)",
       "surface": "Full-screen playback with the player bar, ray MV",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/basics/images/audio-panel-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-default-dark.png, crop of the panel, 640x212",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-default-dark.png, crop of the panel, 640x212 (surface unchanged at qt d24047335)",
       "surface": "Audio panel in Line mode, default row, test audio",
       "credit": ""
     },
     "content/docs/basics/images/audio-commit-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-dark.png, top 640x300",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-dark.png, top 640x300 (surface unchanged at qt d24047335)",
       "surface": "Audio panel with the Commit options menu open",
       "credit": ""
     },
     "content/docs/basics/images/shift-times-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-dark.png (surface unchanged at qt d24047335)",
       "surface": "Shift times panel, floating, Shift mode",
       "credit": ""
     },
     "content/docs/basics/images/post-processor-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-dark.png (surface unchanged at qt d24047335)",
       "surface": "Shift times panel, floating, Post processor mode",
       "credit": ""
     },
     "content/docs/basics/images/convert-srt-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-dark.png (surface unchanged at qt d24047335)",
       "surface": "Convert to SRT window with What changes",
       "credit": ""
     },
     "content/docs/basics/images/file-properties-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-properties-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-properties-dark.png (surface unchanged at qt d24047335)",
       "surface": "ASS file properties window",
       "credit": ""
     },
     "content/docs/basics/images/resample-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-resample-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-resample-dark.png (surface unchanged at qt d24047335)",
       "surface": "Resample subtitles window, 1280x720 to 1440x1080",
       "credit": ""
     },
     "content/docs/basics/images/grid-dark.webp": {
-      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356",
+      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356 (surface unchanged at qt d24047335)",
       "surface": "Grid in the Editing layout, ray MV, line 34 active",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/basics/images/line-editor-light.webp": {
-      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246",
+      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246 (surface unchanged at qt d24047335)",
       "surface": "Line editor on a karaoke comment line, ray MV",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/basics/images/styles-panel-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-light.png, top 327x272",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-light.png, top 327x272 (surface unchanged at qt d24047335)",
       "surface": "Styles panel with four test styles",
       "credit": ""
     },
     "content/docs/basics/images/style-manager-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-light.png (surface unchanged at qt d24047335)",
       "surface": "Style manager editing a file style",
       "credit": ""
     },
     "content/docs/basics/images/line-editor-dark.webp": {
-      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246",
+      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246 (surface unchanged at qt d24047335)",
       "surface": "Line editor on a karaoke comment line, ray MV",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/basics/images/styles-panel-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-dark.png, top 327x272",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-dark.png, top 327x272 (surface unchanged at qt d24047335)",
       "surface": "Styles panel with four test styles",
       "credit": ""
     },
     "content/docs/basics/images/style-manager-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-dark.png (surface unchanged at qt d24047335)",
       "surface": "Style manager editing a file style",
       "credit": ""
     },
     "content/docs/translation/images/translation-mode-light.webp": {
-      "source": "origin/qt 4131b3084 docs/readme/translation-light.webp (README art, after LE1)",
+      "source": "origin/qt 4131b3084 docs/readme/translation-light.webp (README art, after LE1) (surface unchanged at qt d24047335)",
       "surface": "Translation mode: the Video panel, the Original text panel with a karaoke line, and the Line editor with the translation",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/translation/images/tags-from-original-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_translation_preset_tests tagsFromOriginalScreenshots under vx11, tags-suggested-light.png, crop 640x418+640+60",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_translation_preset_tests tagsFromOriginalScreenshots under vx11, tags-suggested-light.png, crop 640x418+640+60 (surface unchanged at qt d24047335)",
       "surface": "Original text panel and Line editor with two runs, one suggested",
       "credit": ""
     },
     "content/docs/translation/images/reference-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 src/app/hikarisub under vx11 with a throwaway profile, two test files, Ctrl+Q; full-screen grab, crop 1280x292+0+480",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 src/app/hikarisub under vx11 with a throwaway profile, two test files, Ctrl+Q; full-screen grab, crop 1280x292+0+480 (surface unchanged at qt d24047335)",
       "surface": "Grid and the Reference panel, Match 1 of 2",
       "credit": ""
     },
     "content/docs/translation/images/translation-matching-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-translation-matching-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-translation-matching-light.png (surface unchanged at qt d24047335)",
       "surface": "Translation matching options window",
       "credit": ""
     },
     "content/docs/translation/images/translation-mode-dark.webp": {
-      "source": "origin/qt 4131b3084 docs/readme/translation-dark.webp (README art, after LE1)",
+      "source": "origin/qt 4131b3084 docs/readme/translation-dark.webp (README art, after LE1) (surface unchanged at qt d24047335)",
       "surface": "Translation mode: the Video panel, the Original text panel with a karaoke line, and the Line editor with the translation",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/translation/images/tags-from-original-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_translation_preset_tests tagsFromOriginalScreenshots under vx11, tags-suggested-dark.png, crop 640x418+640+60",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_translation_preset_tests tagsFromOriginalScreenshots under vx11, tags-suggested-dark.png, crop 640x418+640+60 (surface unchanged at qt d24047335)",
       "surface": "Original text panel and Line editor with two runs, one suggested",
       "credit": ""
     },
     "content/docs/translation/images/reference-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 src/app/hikarisub under vx11 with a throwaway profile, two test files, Ctrl+Q; full-screen grab, crop 1280x292+0+480",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 src/app/hikarisub under vx11 with a throwaway profile, two test files, Ctrl+Q; full-screen grab, crop 1280x292+0+480 (surface unchanged at qt d24047335)",
       "surface": "Grid and the Reference panel, Match 1 of 2",
       "credit": ""
     },
     "content/docs/translation/images/translation-matching-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-translation-matching-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-translation-matching-dark.png (surface unchanged at qt d24047335)",
       "surface": "Translation matching options window",
       "credit": ""
     },
     "content/docs/typesetting/images/perspective-plane-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-light.png (surface unchanged at qt d24047335)",
       "surface": "Video panel with Perspective, the surrounding plane and the grid, on a test frame",
       "credit": ""
     },
     "content/docs/typesetting/images/shapes-editor-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualDrawingScreenshots under vx11, shapes-edition-dialog-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualDrawingScreenshots under vx11, shapes-edition-dialog-light.png (surface unchanged at qt d24047335)",
       "surface": "Edit shapes window",
       "credit": ""
     },
     "content/docs/typesetting/images/tags-editor-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualShifterAndTagsScreenshots under vx11, tags-edition-dialog-advanced-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualShifterAndTagsScreenshots under vx11, tags-edition-dialog-advanced-light.png (surface unchanged at qt d24047335)",
       "surface": "Edit tags window with Advanced open",
       "credit": ""
     },
     "content/docs/typesetting/images/font-picker-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-picker-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-picker-light.png (surface unchanged at qt d24047335)",
       "surface": "Font selection window on a test catalog",
       "credit": ""
     },
     "content/docs/typesetting/images/font-catalogs-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-catalogs-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-catalogs-light.png (surface unchanged at qt d24047335)",
       "surface": "Manage font catalogs window with two test catalogs",
       "credit": ""
     },
     "content/docs/typesetting/images/font-collector-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-font-collector-check-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-font-collector-check-light.png (surface unchanged at qt d24047335)",
       "surface": "Font collector after Check fonts",
       "credit": ""
     },
     "content/docs/typesetting/images/perspective-plane-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-dark.png (surface unchanged at qt d24047335)",
       "surface": "Video panel with Perspective, the surrounding plane and the grid, on a test frame",
       "credit": ""
     },
     "content/docs/typesetting/images/shapes-editor-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualDrawingScreenshots under vx11, shapes-edition-dialog-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualDrawingScreenshots under vx11, shapes-edition-dialog-dark.png (surface unchanged at qt d24047335)",
       "surface": "Edit shapes window",
       "credit": ""
     },
     "content/docs/typesetting/images/tags-editor-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualShifterAndTagsScreenshots under vx11, tags-edition-dialog-advanced-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualShifterAndTagsScreenshots under vx11, tags-edition-dialog-advanced-dark.png (surface unchanged at qt d24047335)",
       "surface": "Edit tags window with Advanced open",
       "credit": ""
     },
     "content/docs/typesetting/images/font-picker-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-picker-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-picker-dark.png (surface unchanged at qt d24047335)",
       "surface": "Font selection window on a test catalog",
       "credit": ""
     },
     "content/docs/typesetting/images/font-catalogs-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-catalogs-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-catalogs-dark.png (surface unchanged at qt d24047335)",
       "surface": "Manage font catalogs window with two test catalogs",
       "credit": ""
     },
     "content/docs/typesetting/images/font-collector-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-font-collector-check-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-font-collector-check-dark.png (surface unchanged at qt d24047335)",
       "surface": "Font collector after Check fonts",
       "credit": ""
     },
     "content/docs/checking/images/spellchecker-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-light.png, crop 1280x400+0+372",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-light.png, crop 1280x400+0+372 (surface unchanged at qt d24047335)",
       "surface": "Grid and the Spellchecker panel on a misspelled word",
       "credit": ""
     },
     "content/docs/checking/images/spellchecker-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-dark.png, crop 1280x400+0+371",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-dark.png, crop 1280x400+0+371 (surface unchanged at qt d24047335)",
       "surface": "Grid and the Spellchecker panel on a misspelled word",
       "credit": ""
     },
     "content/docs/checking/images/added-words-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-added-words-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-added-words-light.png (surface unchanged at qt d24047335)",
       "surface": "Words added to dictionary window with one word",
       "credit": ""
     },
     "content/docs/checking/images/added-words-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-added-words-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-added-words-dark.png (surface unchanged at qt d24047335)",
       "surface": "Words added to dictionary window with one word",
       "credit": ""
     },
     "content/docs/checking/images/fix-minor-errors-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-light.png, crop 420x712+860+60",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-light.png, crop 420x712+860+60 (surface unchanged at qt d24047335)",
       "surface": "Fix minor errors panel with the default rules and the Rule section",
       "credit": ""
     },
     "content/docs/checking/images/fix-minor-errors-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-dark.png, crop 420x712+860+60",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-dark.png, crop 420x712+860+60 (surface unchanged at qt d24047335)",
       "surface": "Fix minor errors panel with the default rules and the Rule section",
       "credit": ""
     },
     "content/docs/karaoke/images/karaoke-mode-light.webp": {
-      "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-light.webp (last changed in 4131b3084)",
+      "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-light.webp (last changed in 4131b3084; surface unchanged at qt d24047335)",
       "surface": "Audio panel in Karaoke mode over the spectrum, ray MV romaji line, with its \\k tags in the Line editor",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/karaoke/images/karaoke-mode-dark.webp": {
-      "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-dark.webp (last changed in 4131b3084)",
+      "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-dark.webp (last changed in 4131b3084; surface unchanged at qt d24047335)",
       "surface": "Audio panel in Karaoke mode over the spectrum, ray MV romaji line, with its \\k tags in the Line editor",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/karaoke/images/tap-tapping-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-light.png, crop 640x210+0+0",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-light.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
       "surface": "Audio panel tapping: tap bar, syllables and tap lane",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-tapping-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-dark.png, crop 640x210+0+0",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-dark.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
       "surface": "Audio panel tapping: tap bar, syllables and tap lane",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-needs-split-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-light.png, crop 640x210+0+0",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-light.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
       "surface": "Audio panel tap bar, a one-syllable line waiting for Auto split",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-needs-split-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-dark.png, crop 640x210+0+0",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-dark.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
       "surface": "Audio panel tap bar, a one-syllable line waiting for Auto split",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-menu-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-menu-light.png, crop 340x235+300+170",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-menu-light.png, crop 340x235+300+170 (surface unchanged at qt d24047335)",
       "surface": "The Tap menu with Snap to vocal onsets, speed 50%",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-menu-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-menu-dark.png, crop 340x235+300+170",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-menu-dark.png, crop 340x235+300+170 (surface unchanged at qt d24047335)",
       "surface": "The Tap menu with Snap to vocal onsets, speed 50%",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-calibration-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-calibration-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-calibration-light.png (surface unchanged at qt d24047335)",
       "surface": "Calibrate tap latency window, nine beeps in",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-calibration-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-calibration-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-calibration-dark.png (surface unchanged at qt d24047335)",
       "surface": "Calibrate tap latency window, nine beeps in",
       "credit": ""
     },
     "content/docs/karaoke/images/render-cost-light.webp": {
-      "source": "origin/evidence/w6-ke1 46ebb7379 ke1-render-cost-overlay.png (taken at 288645f50; overlay unchanged at qt 6cee588a8 except its offset under the Template editor badge), crop 600x80+37+38; one theme-neutral crop used for light and dark",
+      "source": "origin/evidence/w6-ke1 46ebb7379 ke1-render-cost-overlay.png (taken at 288645f50; overlay unchanged at qt 6cee588a8 except its offset under the Template editor badge), crop 600x80+37+38; one theme-neutral crop used for light and dark (surface unchanged at qt d24047335)",
       "surface": "Render-cost overlay over the test video",
       "credit": ""
     },
     "content/docs/karaoke/images/render-cost-dark.webp": {
-      "source": "origin/evidence/w6-ke1 46ebb7379 ke1-render-cost-overlay.png (taken at 288645f50; overlay unchanged at qt 6cee588a8 except its offset under the Template editor badge), crop 600x80+37+38; one theme-neutral crop used for light and dark",
+      "source": "origin/evidence/w6-ke1 46ebb7379 ke1-render-cost-overlay.png (taken at 288645f50; overlay unchanged at qt 6cee588a8 except its offset under the Template editor badge), crop 600x80+37+38; one theme-neutral crop used for light and dark (surface unchanged at qt d24047335)",
       "surface": "Render-cost overlay over the test video",
       "credit": ""
     },
     "content/docs/automation/images/automation-panel-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-light.png, crop 460x655+0+0",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-light.png, crop 460x655+0+0 (surface unchanged at qt d24047335)",
       "surface": "Automation panel, Scripts view, recording a macro shortcut",
       "credit": ""
     },
     "content/docs/automation/images/automation-panel-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-dark.png, crop 460x655+0+0",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-dark.png, crop 460x655+0+0 (surface unchanged at qt d24047335)",
       "surface": "Automation panel, Scripts view, recording a macro shortcut",
       "credit": ""
     },
     "content/docs/automation/images/automation-runs-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-runs-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-runs-light.png (surface unchanged at qt d24047335)",
       "surface": "Automation panel, Runs view with a cancelled run's log",
       "credit": ""
     },
     "content/docs/automation/images/automation-runs-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-runs-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-runs-dark.png (surface unchanged at qt d24047335)",
       "surface": "Automation panel, Runs view with a cancelled run's log",
       "credit": ""
     },
     "content/docs/automation/images/automation-card-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-card-light.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-card-light.png (surface unchanged at qt d24047335)",
       "surface": "Automation progress card, macro running with its log",
       "credit": ""
     },
     "content/docs/automation/images/automation-card-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-card-dark.png",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-card-dark.png (surface unchanged at qt d24047335)",
       "surface": "Automation progress card, macro running with its log",
       "credit": ""
     },
     "content/docs/automation/images/script-dialog-menu-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-light.png, crop 506x297+8+8",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-light.png, crop 506x297+8+8 (surface unchanged at qt d24047335)",
       "surface": "Script dialog with the Answers and presets menu open on Presets",
       "credit": ""
     },
     "content/docs/automation/images/script-dialog-menu-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-dark.png, crop 506x297+8+8",
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-dark.png, crop 506x297+8+8 (surface unchanged at qt d24047335)",
       "surface": "Script dialog with the Answers and presets menu open on Presets",
       "credit": ""
     },
@@ -625,6 +585,46 @@
       "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (copied out with a deb package-kind.txt beside it, so ?user is a throwaway folder; network blocked by a dead proxy) under vx11 at 1280x800, dark theme, Automation > DependencyControl/Update Script on a new file, dialog resized to 360x340, Modules list open, crop 360x340+460+250",
       "surface": "DependencyControl Toolbox, Update Script dialog with the Modules list open",
       "credit": ""
+    },
+    "content/docs/typesetting/images/perspective-drag-light-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-light-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-dark-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-dark-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-light-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-light-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-dark-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-dark-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
     }
   }
 }
