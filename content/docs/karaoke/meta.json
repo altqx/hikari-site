@@ -1,0 +1,15 @@
+{
+  "title": "Karaoke",
+  "defaultOpen": true,
+  "pages": [
+    "split-and-join",
+    "tap-to-time",
+    "kanji-timer",
+    "furigana",
+    "onset-snap",
+    "karaoke-check",
+    "templater",
+    "template-editor",
+    "presets"
+  ]
+}

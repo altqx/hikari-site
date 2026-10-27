@@ -1,0 +1,95 @@
+name: Preview
+
+# Uploads the static build CI made for a PR as a preview version of the Worker, at
+# pr-<number>-hikari-site.<subdomain>.workers.dev. This workflow runs from main, and
+# runs no code from the PR: the PR's build arrives as plain files (the preview-site
+# artifact), and wrangler and its config come from main.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+concurrency:
+  group: preview-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write
+    env:
+      PR: ${{ github.event.workflow_run.pull_requests[0].number }}
+      HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Check for Cloudflare secrets
+        id: secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID || secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$PR" ]; then
+            echo "::notice::No pull request for this run; nothing to preview."
+          elif [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Cloudflare secrets are not set yet; skipping the preview deploy."
+          fi
+      - uses: actions/checkout@v5
+        if: steps.secrets.outputs.present
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: oven-sh/setup-bun@v2
+        if: steps.secrets.outputs.present
+        with:
+          bun-version: 1.4.4
+      - if: steps.secrets.outputs.present
+        run: bun install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        if: steps.secrets.outputs.present
+        with:
+          name: preview-site
+          path: .output/public
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Upload preview version
+        id: upload
+        if: steps.secrets.outputs.present
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID || secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_OUTPUT_FILE_PATH: ${{ runner.temp }}/wrangler-output.json
+        run: |
+          bunx wrangler versions upload \
+            --preview-alias "pr-$PR" \
+            --message "PR #$PR at ${HEAD_SHA::7}"
+          url=$(jq -r 'select(.type == "version-upload") | .preview_alias_url // .preview_url // empty' "$WRANGLER_OUTPUT_FILE_PATH" | tail -n 1)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Comment the preview URL
+        if: steps.upload.outputs.url
+        env:
+          GH_TOKEN: ${{ github.token }}
+          URL: ${{ steps.upload.outputs.url }}
+        run: |
+          marker="<!-- hikari-site-preview -->"
+          body="$marker
+          Preview (with drafts): $URL
+
+          Built from $HEAD_SHA."
+          id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+            --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body | contains(\"$marker\")))][0].id // empty")
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -f body="$body"
+          else
+            gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" -f body="$body"
+          fi

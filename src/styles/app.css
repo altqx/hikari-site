@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+/* HikariSub's accent green, from the app. */
+@theme {
+  --color-fd-primary: #145c4c;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-ring: #145c4c;
+}
+
+.dark {
+  --color-fd-primary: #9cdbc9;
+  --color-fd-primary-foreground: #0b2620;
+  --color-fd-ring: #9cdbc9;
+}

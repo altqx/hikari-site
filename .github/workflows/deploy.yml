@@ -1,0 +1,37 @@
+name: Deploy
+
+# main deploys to production only when the repo variable PRODUCTION_DEPLOY is 'true'
+# (off until the design gate, #2, is approved). PR previews: preview.yml.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  production:
+    if: github.ref == 'refs/heads/main' && vars.PRODUCTION_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://hikarisub.altqx.com
+    steps:
+      - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        env:
+          VITE_CF_BEACON_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN }}
+      - run: bunx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID || secrets.CLOUDFLARE_ACCOUNT_ID }}
