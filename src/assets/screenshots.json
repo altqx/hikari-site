@@ -326,6 +326,46 @@
       "surface": "Style manager editing a file style",
       "credit": ""
     },
+    "content/docs/translation/images/translation-mode-light.webp": {
+      "source": "origin/qt 4131b3084 docs/readme/translation-light.webp (README art, after LE1)",
+      "surface": "Translation mode: the Video panel, the Original text panel with a karaoke line, and the Line editor with the translation",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/translation/images/tags-from-original-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_translation_preset_tests tagsFromOriginalScreenshots under vx11, tags-suggested-light.png, crop 640x418+640+60",
+      "surface": "Original text panel and Line editor with two runs, one suggested",
+      "credit": ""
+    },
+    "content/docs/translation/images/reference-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 src/app/hikarisub under vx11 with a throwaway profile, two test files, Ctrl+Q; full-screen grab, crop 1280x292+0+480",
+      "surface": "Grid and the Reference panel, Match 1 of 2",
+      "credit": ""
+    },
+    "content/docs/translation/images/translation-matching-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-translation-matching-light.png",
+      "surface": "Translation matching options window",
+      "credit": ""
+    },
+    "content/docs/translation/images/translation-mode-dark.webp": {
+      "source": "origin/qt 4131b3084 docs/readme/translation-dark.webp (README art, after LE1)",
+      "surface": "Translation mode: the Video panel, the Original text panel with a karaoke line, and the Line editor with the translation",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/translation/images/tags-from-original-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_translation_preset_tests tagsFromOriginalScreenshots under vx11, tags-suggested-dark.png, crop 640x418+640+60",
+      "surface": "Original text panel and Line editor with two runs, one suggested",
+      "credit": ""
+    },
+    "content/docs/translation/images/reference-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 src/app/hikarisub under vx11 with a throwaway profile, two test files, Ctrl+Q; full-screen grab, crop 1280x292+0+480",
+      "surface": "Grid and the Reference panel, Match 1 of 2",
+      "credit": ""
+    },
+    "content/docs/translation/images/translation-matching-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-translation-matching-dark.png",
+      "surface": "Translation matching options window",
+      "credit": ""
+    },
     "content/docs/checking/images/spellchecker-light.webp": {
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-light.png, crop 1280x400+0+372",
       "surface": "Grid and the Spellchecker panel on a misspelled word",
