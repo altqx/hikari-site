@@ -5,6 +5,8 @@ description: The list of every line in the file, where you select, insert, join,
 
 import gridLight from './images/grid-light.webp';
 import gridDark from './images/grid-dark.webp';
+import foldedLight from './images/grid-folded-light.webp';
+import foldedDark from './images/grid-folded-dark.webp';
 
 The Grid lists every line of the file, one row each, in file order. The line you click becomes the active line, which the [Line editor](/en/docs/basics/line-editor), the video and the audio follow.
 
@@ -108,6 +110,18 @@ Hidden lines are still in the file; the Grid just leaves them out, and most comm
 The [karaoke templater](/en/docs/karaoke/templater) writes its lines with the Effect `fx`, and Kara Effector writes `Effector [fx]`. A song can leave hundreds of them in the Grid. To fold them away, turn on **Fold generated lines** in the menu of the **⋯** button on the Grid panel's header, which a right-click on the header also opens. Each run of generated lines in a row then shows as a single row. The [Karaoke layout](/en/docs/customize/layouts#karaoke-mode-and-folding) turns folding on for you. HikariSub remembers the option.
 
 A folded row sits between dashed rules. It shows the line numbers it covers, such as 6–10, the earliest start and latest end, the styles and effects of its lines, and how many lines it holds, such as **5 generated lines**.
+
+<figure>
+  <ThemedImage
+    light={foldedLight}
+    dark={foldedDark}
+    alt="The Grid with Fold generated lines on: row 6–10 is one folded row with the effect fx, a right arrow and 5 generated lines in bold, and further down rows 12 and 13, a run left unfolded, with a down arrow on row 12"
+    width={680}
+    height={208}
+    className="rounded-lg border"
+  />
+  <figcaption>A folded run, active, and an unfolded run below it.</figcaption>
+</figure>
 
 - The arrow at the start of its Text unfolds the run, and the arrow on the run's first row folds it again.
 - <kbd>Right</kbd> unfolds the run while its row is the active one, and <kbd>Left</kbd> on the run's first row folds it. On these rows the keys fold instead of stepping the video a frame; elsewhere they work as usual.

@@ -12,6 +12,8 @@ import layoutsStillDark from './images/layouts-still-dark.webp';
 import menuLight from './images/layout-menu-light.webp';
 import menuDark from './images/layout-menu-dark.webp';
 import manageLight from './images/manage-layouts-light.webp';
+import karaokeLight from './images/karaoke-layout-light.webp';
+import karaokeDark from './images/karaoke-layout-dark.webp';
 import manageDark from './images/manage-layouts-dark.webp';
 
 The window is made of panels: Video, Audio, the Line editor, the Grid and others. You can move them, stack them as tabs, float them in windows of their own, or close them. A layout is one arrangement of them.
@@ -25,7 +27,7 @@ Each tab has its own layout, so a file you translate and a file you time can be 
   dark={{ av1: layoutsDarkAv1, h264: layoutsDarkH264, poster: layoutsStillDark }}
   width={1000}
   height={600}
-  label="The same window switching from the title-bar layout button between the Editing, Timing, Translation and Typesetting layouts; choosing Translation asks to turn on Translation mode"
+  label="The same window switching from the title-bar layout button between the Editing, Timing, Translation, Typesetting and Karaoke layouts; choosing Translation asks to turn on Translation mode, answered Not now"
 />
 
 <small>Subtitles: Jibrill.</small>
@@ -36,11 +38,21 @@ Each tab has its own layout, so a file you translate and a file you time can be 
 - **Typesetting:** a large Video with the Styles panel beside it, and the Line editor beside a short Grid below.
 - **Karaoke:** the Video with the [Template editor](/en/docs/karaoke/template-editor) beside it, the Line editor as the tab behind it. The Audio panel spans the window's whole width under them, so a line's syllables get the whole waveform, and a short Grid sits at the bottom. Choosing it turns on Karaoke mode and folds the generated lines in the Grid.
 
-The clip above shows the first four.
-
 Choosing a layout keeps the window's size and changes only the current tab.
 
 ### Karaoke mode and folding
+
+<figure>
+  <ThemedImage
+    light={karaokeLight}
+    dark={karaokeDark}
+    alt="The Karaoke layout: the video at the top left, the Template editor on its right with the Line editor as the tab behind it, the Audio panel in Karaoke mode across the whole width with the active line's syllables Sono, to, ki, da, ke and so on, and a short Grid at the bottom with line 34 active"
+    width={1000}
+    height={600}
+    className="rounded-lg border"
+  />
+  <figcaption>The Karaoke layout. Subtitles: Jibrill.</figcaption>
+</figure>
 
 Choosing the Karaoke layout asks nothing and changes nothing in the file. It turns on the Audio panel's [Karaoke mode](/en/docs/karaoke/split-and-join#turning-karaoke-mode-on) and the Grid's [Fold generated lines](/en/docs/basics/grid#folding-generated-lines). A saved layout made from Karaoke does the same.
 
@@ -59,9 +71,9 @@ The layout button in the title bar, after the menus, shows the tab's layout. Cli
   <ThemedImage
     light={menuLight}
     dark={menuDark}
-    alt="The layout menu open under the title bar button: Editing, Timing, Translation and Typesetting, two saved layouts named Subtitles only and Review with video, then Save layout as, Reset this layout and Manage layouts"
+    alt="The layout menu open under the title bar button: Editing, Timing, Translation, Typesetting and Karaoke, two saved layouts named Subtitles only and Review with video, then Save layout as, Reset this layout and Manage layouts"
     width={640}
-    height={285}
+    height={312}
     className="rounded-lg border"
   />
   <figcaption>The layout menu, with two saved layouts.</figcaption>
