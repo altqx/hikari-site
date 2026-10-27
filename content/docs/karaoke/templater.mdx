@@ -1,6 +1,236 @@
 ---
 title: Templater
-draft: true
+description: Turn karaoke lines into effects with template and code lines, run from the Automation menu, and see what each template costs.
 ---
 
-This guide is not written yet.
+import renderCostLight from './images/render-cost-light.webp';
+import renderCostDark from './images/render-cost-dark.webp';
+
+The karaoke templater makes effects from karaoke lines. You write **templates**: comment lines whose Effect starts with `template`, holding override tags, variables such as `$start` and Lua expressions. When you apply them, the templater makes new lines from every karaoke line, one per syllable or one per line, with the tags filled in for each.
+
+HikariSub ships Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, and its output is the same as Aegisub 3.2.2's, byte for byte. Existing templates work unchanged. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
+
+To write templates with a live preview, use the [Template editor](/en/docs/karaoke/template-editor). This page covers the template language and running the templater.
+
+## Running it
+
+The templater adds two macros to the **Automation** menu:
+
+- **Apply karaoke template** applies the templates to every karaoke line.
+- **Apply karaoke template to selected lines** applies them to the selected karaoke lines only: see [below](#applying-to-selected-lines).
+
+The Template editor's **Apply** runs the same two. **Automation › Rerun last macro** and **Repeat last run** run the templater again. The macros have no keys at first: <kbd>Shift</kbd>+click one in the menu to give it one.
+
+The file needs at least one template line; code lines alone don't count. Without one, the run stops with *Its validation did not let it run; nothing was changed.*
+
+If the file has no script resolution, the templater needs one to measure the text, so HikariSub asks for it first in the **Script resolution** window. **Set** writes it as its own undo step; **Cancel** stops the run. To take it from the video without asking, turn on **Set a missing script resolution from the video without asking** in **File › Settings › Video**.
+
+Each run is one undo step, so **Edit › Undo** takes all the generated lines back at once.
+
+## Which lines are which
+
+| Kind | Is |
+| --- | --- |
+| Template line | A comment whose Effect starts with the word `template` |
+| Code line | A comment whose Effect starts with the word `code` |
+| Karaoke line | A line that isn't a comment and has no Effect, or any line whose Effect contains `karaoke` or `Karaoke` |
+| Generated line | A line, not a comment, whose Effect is exactly `fx` |
+
+A template applies to the karaoke lines with its own style, or to every style with `all`. A karaoke line with no `\k` tags is all syllable 0, described below.
+
+A whole run:
+
+1. Deletes every generated line. A comment with the Effect `fx` stays.
+2. Applies the templates, and adds the new lines at the end of the file with the Effect `fx`. Each has the template's layer, and the karaoke line's style and times, unless the template changes them.
+3. Turns each karaoke line it used into a comment with the Effect `karaoke`. A comment with `karaoke` is still a karaoke line, so you can run it again.
+
+A run also adds a furigana style for every style that has none: *Default* gets *Default-furigana*, at half the font size, outline and shadow, placed before the first style.
+
+## The Effect
+
+The Effect of a template line is `template` followed by a class and modifiers, in any order, such as `template syl noblank`.
+
+| Word | Template runs |
+| --- | --- |
+| `syl` | Once per syllable. This is the default when no class is given |
+| `line` | Once per karaoke line. The template's text goes before each syllable, and the pieces make one line. With no text, the line's own text is used |
+| `pre-line` | Once per karaoke line, at the start of a line template's line, before the syllables |
+| `char` | Once per character, each with its own position |
+| `furi` | Once per furigana part |
+
+| Modifier | Does |
+| --- | --- |
+| `all` | Applies to every style, not only the template's |
+| `noblank` | Skips blank syllables: no length, or only spaces |
+| `keeptags` | Keeps the syllable's own override tags in the text |
+| `notext` | Leaves out the syllable's text: tags, or a drawing, only |
+| `loop N` or `repeat N` | Runs N times; `j` counts from 1 to N |
+| `multi` | Runs once for each highlight of a `#` syllable |
+| `fx name` | Runs only for syllables marked `{\-name}` |
+| `fxgroup name` | Runs only while `fxgroup.name` isn't `false` |
+
+`template line name` and `template pre-line name` on several lines join into one template, in file order. The name can't be one of the words above.
+
+A code line's Effect is `code` followed by when it runs:
+
+| Word | Runs |
+| --- | --- |
+| `once` | Once, before the first karaoke line. This is the default |
+| `line` | Once per karaoke line of its style, among the line templates |
+| `syl` | Once per syllable, among the syllable templates |
+| `furi` | Once per furigana part |
+
+`all`, `noblank` and `loop N` work on code lines too.
+
+A run goes like this: the `once` code first. Then, for each karaoke line in file order, its line templates and line code in file order, then each syllable through every syllable template, then each furigana part.
+
+## Karaoke lines
+
+The templater reads the syllables from `\k`, `\kf`, `\ko` and `\K` tags. **Syllable 0** is the text before the first tag, usually empty and of no length. A `syl` template makes a line for it too, unless it has `noblank`.
+
+- **`#` syllables.** A syllable whose text is `#` or `＃` is another highlight of the syllable before it. The two count as one syllable with both times, and a `multi` template runs for each highlight. The [Kanji timer](/en/docs/karaoke/kanji-timer#multi-highlight-) writes this form.
+- **Furigana.** `漢字|かんじ` in a syllable gives the syllable the furigana かんじ, set in the furigana style by `furi` templates. The bar can be `|` or `｜`. After the bar, `!` starts a new furigana group, and `<` one that may spill over the left edge. `#|ら` carries furigana on over a `#` syllable.
+- **Inline effects.** `{\-name}` in a syllable's tags marks it, and every later syllable of the line, with *name*, until the next `\-`. `fx name` templates run on those syllables only.
+
+## Variables
+
+`$name` is replaced with a value of the line or syllable. Names are letters and underscores, in any case. Variables are replaced before expressions run, so `!$start+200!` works; a text variable inside an expression needs quotes: `!"$style"!`.
+
+| Variables | Value |
+| --- | --- |
+| `$lstart` `$lend` `$ldur` `$lmid` | The line's start, end, duration and middle, in ms |
+| `$sstart` `$send` `$sdur` `$smid` | The syllable's start, end, duration and middle, in ms from the line's start |
+| `$skdur` | The syllable's duration in centiseconds |
+| `$start` `$end` `$dur` `$kdur` `$mid` | The syllable's values in a syllable; the line's otherwise |
+| `$si` `$syln` `$li` | The syllable's number (0 for the text before the first tag), the line's number of syllables, and the line's index in the file |
+| `$lleft` `$lcenter` `$lright` `$lwidth` | The line's horizontal box, in pixels |
+| `$ltop` `$lmiddle` `$lbottom` `$lheight` | The line's vertical box |
+| `$lx` `$ly` | The line's position for `\pos`, by its alignment |
+| `$sleft` `$scenter` `$sright` `$swidth`, `$stop` `$smiddle` `$sbottom` `$sheight` | The syllable's box, on the screen |
+| `$sx` `$sy` | The syllable's position for `\pos` |
+| `$left` `$center` `$right` `$width` `$top` `$middle` `$bottom` `$height` `$x` `$y` `$i` | The syllable's values in a syllable; the line's otherwise |
+| `$layer` `$style` `$actor` | The karaoke line's layer, style and actor |
+| `$margin_l` `$margin_r` `$margin_t` `$margin_b` `$margin_v` | The line's margins, or the style's where the line's are 0 |
+
+In a `template line`, `$start`, `$end`, `$kdur` and the other short names are the line's values only in the `pre-line` text. The line template's own text runs once per syllable, so there they are each syllable's. That is how this template grows each syllable in turn:
+
+```
+template line   {\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}
+karaoke         {\k32}ha{\k28}ru …
+fx              {\r\t(0,160,\fscy120)\t(160,320,\fscy100)}ha{\r\t(320,460,\fscy120)\t(460,600,\fscy100)}ru …
+```
+
+An unknown variable is a problem, and `$name` stays in the text.
+
+## Expressions and code
+
+`!…!` holds a Lua expression, and its value goes in its place: `{\pos(!$x+10!,$y)}`. An expression can't contain `!`. If it gives `nil` or `false`, the `!…!` stays as it was, which is why the functions below return an empty text.
+
+A code line is Lua run in the same place as the expressions, so a function or value it defines can be used by the templates after it:
+
+```
+code once      function setlayer(n) line.layer = n; return "" end
+template syl   !setlayer(2)!{\an5\pos($x,$y)}
+```
+
+Templates and code can use:
+
+| Name | Is |
+| --- | --- |
+| `line` | The line being made. In code, the karaoke line |
+| `orgline` | The karaoke line |
+| `syl` | The syllable: the furigana part in `furi`, the character in `char`, the highlight in `multi` |
+| `basesyl` | The syllable a furigana part belongs to |
+| `meta` | The script's properties, with `res_x` and `res_y` |
+| `j`, `maxj` | The loop's count and its number of runs |
+| `fxgroup` | The switches for `fxgroup` templates, for example `fxgroup.funky = line.actor == "funky"` in a `code line` |
+| `string`, `math`, `_G` | Lua's libraries, and every global |
+
+| Function | Does |
+| --- | --- |
+| `retime(mode, a, b)` | Sets the new line's start and end: see below |
+| `relayer(n)` | Sets the new line's layer |
+| `restyle(name)` | Sets the new line's style |
+| `maxloop(n)` | Changes the number of loops while running |
+| `loopctl(j, maxj)` | Sets the loop's count and number of runs |
+| `remember(name, value)` | Keeps a value, and returns it. `remember_line`, `remember_syl` and `remember_basesyl` keep it for the current line, syllable or base syllable only |
+| `remember_if(name, value, condition)` | Keeps the value only when the condition holds |
+| `recall(name, default)` or `recall.name` | Gives a kept value, or the default |
+
+`retime` counts in milliseconds; *a* is added to the start and *b* to the end:
+
+| Mode | Start | End |
+| --- | --- | --- |
+| `syl` | Syllable start + a | Syllable end + b |
+| `presyl` | Syllable start + a | Syllable start + b |
+| `postsyl` | Syllable end + a | Syllable end + b |
+| `line` | Line start + a | Line end + b |
+| `preline` | Line start + a | Line start + b |
+| `postline` | Line end + a | Line end + b |
+| `start2syl` | Line start + a | Syllable start + b |
+| `syl2end` | Syllable end + a | Line end + b |
+| `sylpct` | Syllable start + a% of the syllable | Syllable start + b% of the syllable |
+| `set` or `abs` | a | b |
+
+An unknown mode leaves the line's own times.
+
+## Problems
+
+A template with a problem doesn't stop the run. The problem is logged, the run carries on, and a failed `!expression!` is left in the generated line. Each message names the template or code line by its number in the Grid, as it stands after the run:
+
+```
+Unknown variable name: nosuchvar
+In karaoke template: {\pos($x,$nosuchvar)}
+Template Line: 5
+```
+
+After a run with problems, the template and code lines that had them are selected, the first one active. The run's card stays in the corner of the window, titled *Apply karaoke template named problems*, with its log open. The messages are also in **File › Log**.
+
+Typical problems are an expression with a Lua error, an unknown variable, an unknown modifier such as `template syl wobble`, a `loop` count that isn't a number, `fx` with no name, and two classes in one Effect, such as `template line syl`.
+
+The messages show at the default **Lua trace level**, 3, in **File › Settings › Automation**. A lower level hides some of them.
+
+## Applying to selected lines
+
+**Apply karaoke template to selected lines** makes the generated lines of the selected karaoke lines again and leaves the others' as they are. You can also select generated lines; their karaoke lines are used.
+
+It runs the templates over every karaoke line up to the last selected one, so that counters and remembered values are what a whole run gives them, but keeps only the selected lines' output. Their old generated lines are replaced where the first of them stood. A line that had none gets its new lines at the end. Problems in the other lines aren't reported.
+
+HikariSub knows which karaoke line each generated line came from while the file is open, but doesn't save it. In a file just opened, it matches the `fx` lines against what the templates give the other karaoke lines now. If they don't match, because the templates or the lines changed, or the templates use random values, nothing changes and HikariSub asks you to apply the template to the whole file once. After that, selected lines can be applied on their own.
+
+## How long it took
+
+After a run, the status bar shows a summary for 10 seconds:
+
+*Karaoke template: 30 line(s) generated from 2 karaoke line(s) in 1.50 s. 1 template problem(s): see the log.*
+
+The Log has the same summary, then the time spent measuring the karaoke lines, then each template and code line, slowest first:
+
+```
+Measuring the karaoke lines: 250 ms
+Template line 3 (template line, Romaji): 1.25 s, 6 line(s) generated
+Code line 1 (code once, Default): 0.4 ms
+```
+
+A run on selected lines counts only their work.
+
+## Render cost
+
+Effects can make playback slow. **Video › Show / hide render cost** shows, at the top left of the picture, how long the frame's subtitles took to draw. With the libass renderer it also shows how many lines and bitmaps were drawn and how big they were, and how many of the lines use blur or a vector clip. The command needs a video open. It is also in the video's right-click menu, and it has no key at first.
+
+<figure>
+  <ThemedImage
+    light={renderCostLight}
+    dark={renderCostDark}
+    alt="The top of the video with two lines of white text: Subtitles drawn in 6.1 ms, and 2 event(s), 30 bitmap(s), 0.09 Mpx, beside a karaoke line"
+    width={600}
+    height={80}
+    className="rounded-lg border"
+  />
+</figure>
+
+When nothing is drawn, it says *No subtitles on this frame*. Counting the lines and bitmaps takes a little time of its own, which isn't included in the time shown.
+
+## Not in HikariSub
+
+HikariSub has no export filters, so the templater's *Karaoke template* export filter isn't there. Apply templates with the macros or the Template editor.
