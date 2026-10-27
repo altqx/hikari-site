@@ -1,6 +1,80 @@
 ---
 title: FAQ
-draft: true
+description: Short answers about releases, systems, privacy, legacy, scripts, languages and HikariSub's known limits.
 ---
 
-This guide is not written yet.
+## Releases and installing
+
+### Is HikariSub 0.1 released?
+
+Not yet. The first release will be 0.1.0-beta.1. This site gives no date for it.
+
+### Which systems does it run on?
+
+Windows 10 version 1809 or later and Windows 11, 64-bit, and 64-bit (x86_64) Linux with glibc 2.34 or later. There is no ARM build. See [Install](/en/docs/get-started/install#what-you-need).
+
+### Why does Windows warn me about the setup?
+
+The packages are not code-signed, so Windows says the publisher is unknown. Each release lists the SHA-256 checksum of every package in `SHA256SUMS`, to check your download against.
+
+### Which version do I have?
+
+**Help › About** shows it with the package kind, and **Copy version** copies it. From a terminal, run `hikarisub --version` (see [Command line](/en/docs/reference/command-line#switches)).
+
+## Privacy
+
+### Does HikariSub connect to the internet?
+
+Only to check for updates: when you choose **Help › Check for updates**, or at most once a day when it starts if you turn on **File › Settings › Updates › Check for updates automatically**, which is off by default. The check asks GitHub (`api.github.com`) for the list of releases, so GitHub sees your IP address. **What's new** reads the same list and never loads the images or links in the release notes. See [Updates](/en/docs/get-started/install#updates).
+
+## Legacy and files
+
+### Can I keep my settings from HikariSub 0.0.x?
+
+Yes. **File › Import legacy settings…** brings them over, and never changes the legacy files. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).
+
+### Where are my settings, autosaves and scripts?
+
+In your user folders, for every package. [Troubleshooting](/en/docs/help/troubleshooting#where-things-are) lists them for Windows and Linux.
+
+### Is there a log file?
+
+No. The Log is kept in memory and is gone when HikariSub quits. Copy its entries with **Copy** before you quit if you need them. See [The Log panel](/en/docs/help/troubleshooting#the-log-panel).
+
+### Does HikariSub save crash reports?
+
+No. It writes no crash reports or crash dumps. After a crash, it offers your last session and autosaves at the next start: see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
+
+## Automation
+
+### Do my Aegisub scripts work?
+
+HikariSub runs Automation 4 scripts on LuaJIT, in Lua or MoonScript. DependencyControl and Aegisub-Motion come with it. See [Writing scripts](/en/docs/automation/writing-scripts).
+
+### Can scripts add export filters?
+
+No. HikariSub has no Export command, and a script's `register_filter` does nothing.
+
+### Why aren't my macros in submenus?
+
+The Automation menu lists every macro in one flat list. A `/` in a macro's name doesn't make a submenu.
+
+### Can two macros run at the same time?
+
+No. One macro runs at a time.
+
+## Languages
+
+### Which languages is the interface in?
+
+English, with partial translations into Polish, Korean, Thai and Tamil.
+
+### Which languages can it check the spelling of?
+
+The Windows packages bring English (US), Polish and Thai dictionaries. For other languages, add the language's `.dic` and `.aff` files to the `Dictionary` folder in your [settings folder](/en/docs/customize/settings#where-settings-are-kept).
+
+## Known limits
+
+### Why don't some Automation settings change anything?
+
+In this version, **Load scripts**, **Compatibility with older HikariSub scripts** and **Lua trace level** in **File › Settings › Automation** are shown but have no effect.

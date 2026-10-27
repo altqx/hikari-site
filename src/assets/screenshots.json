@@ -366,6 +366,66 @@
       "surface": "Translation matching options window",
       "credit": ""
     },
+    "content/docs/typesetting/images/perspective-plane-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-light.png",
+      "surface": "Video panel with Perspective, the surrounding plane and the grid, on a test frame",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/shapes-editor-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualDrawingScreenshots under vx11, shapes-edition-dialog-light.png",
+      "surface": "Edit shapes window",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/tags-editor-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualShifterAndTagsScreenshots under vx11, tags-edition-dialog-advanced-light.png",
+      "surface": "Edit tags window with Advanced open",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/font-picker-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-picker-light.png",
+      "surface": "Font selection window on a test catalog",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/font-catalogs-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-catalogs-light.png",
+      "surface": "Manage font catalogs window with two test catalogs",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/font-collector-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-font-collector-check-light.png",
+      "surface": "Font collector after Check fonts",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/perspective-plane-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-dark.png",
+      "surface": "Video panel with Perspective, the surrounding plane and the grid, on a test frame",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/shapes-editor-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualDrawingScreenshots under vx11, shapes-edition-dialog-dark.png",
+      "surface": "Edit shapes window",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/tags-editor-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualShifterAndTagsScreenshots under vx11, tags-edition-dialog-advanced-dark.png",
+      "surface": "Edit tags window with Advanced open",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/font-picker-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-picker-dark.png",
+      "surface": "Font selection window on a test catalog",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/font-catalogs-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests fontPopupsScreenshots under vx11, font-catalogs-dark.png",
+      "surface": "Manage font catalogs window with two test catalogs",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/font-collector-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-font-collector-check-dark.png",
+      "surface": "Font collector after Check fonts",
+      "credit": ""
+    },
     "content/docs/automation/images/automation-panel-light.webp": {
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-light.png, crop 460x655+0+0",
       "surface": "Automation panel, Scripts view, recording a macro shortcut",
