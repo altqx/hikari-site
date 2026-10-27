@@ -455,6 +455,66 @@
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-dark.png, crop 420x712+860+60",
       "surface": "Fix minor errors panel with the default rules and the Rule section",
       "credit": ""
+    },
+    "content/docs/karaoke/images/karaoke-mode-light.webp": {
+      "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-light.webp (last changed in 4131b3084)",
+      "surface": "Audio panel in Karaoke mode over the spectrum, ray MV romaji line, with its \\k tags in the Line editor",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/karaoke/images/karaoke-mode-dark.webp": {
+      "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-dark.webp (last changed in 4131b3084)",
+      "surface": "Audio panel in Karaoke mode over the spectrum, ray MV romaji line, with its \\k tags in the Line editor",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/karaoke/images/tap-tapping-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-light.png, crop 640x210+0+0",
+      "surface": "Audio panel tapping: tap bar, syllables and tap lane",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-tapping-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-dark.png, crop 640x210+0+0",
+      "surface": "Audio panel tapping: tap bar, syllables and tap lane",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-needs-split-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-light.png, crop 640x210+0+0",
+      "surface": "Audio panel tap bar, a one-syllable line waiting for Auto split",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-needs-split-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-dark.png, crop 640x210+0+0",
+      "surface": "Audio panel tap bar, a one-syllable line waiting for Auto split",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-menu-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-menu-light.png, crop 340x235+300+170",
+      "surface": "The Tap menu with Snap to vocal onsets, speed 50%",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-menu-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-menu-dark.png, crop 340x235+300+170",
+      "surface": "The Tap menu with Snap to vocal onsets, speed 50%",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-calibration-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-calibration-light.png",
+      "surface": "Calibrate tap latency window, nine beeps in",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/tap-calibration-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-calibration-dark.png",
+      "surface": "Calibrate tap latency window, nine beeps in",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/render-cost-light.webp": {
+      "source": "origin/evidence/w6-ke1 46ebb7379 ke1-render-cost-overlay.png (taken at 288645f50; overlay unchanged at qt 6cee588a8 except its offset under the Template editor badge), crop 600x80+37+38; one theme-neutral crop used for light and dark",
+      "surface": "Render-cost overlay over the test video",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/render-cost-dark.webp": {
+      "source": "origin/evidence/w6-ke1 46ebb7379 ke1-render-cost-overlay.png (taken at 288645f50; overlay unchanged at qt 6cee588a8 except its offset under the Template editor badge), crop 600x80+37+38; one theme-neutral crop used for light and dark",
+      "surface": "Render-cost overlay over the test video",
+      "credit": ""
     }
   }
 }
