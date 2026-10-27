@@ -655,6 +655,16 @@
       "source": "recaptured at qt 73844a4d43a607c3035949770c857e7ceb0f2be3: coord2 hikari_ui_karaoke_preset_tests karaokeScreenshots under vx11 (test fixture song.ass), karaoke-grid-dark.png, crop 680x208+0+0",
       "surface": "Grid with Fold generated lines on: a folded run 6–10 and an unfolded run 12–13",
       "credit": ""
+    },
+    "content/docs/karaoke/images/furigana-kanji-timer-light.webp": {
+      "source": "origin/evidence/w6-ka4 5d9017071adcb66120342fbca8088e1a09ed5ee3 ka4/ka4-furigana-light.png (taken at c83b7e0bd; KanjiTimerDialog.qml changes up to qt 98396e53a are focus order only)",
+      "surface": "Kanji timer window, Furigana on, test song kanji-shots.ass",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/furigana-kanji-timer-dark.webp": {
+      "source": "origin/evidence/w6-ka4 5d9017071adcb66120342fbca8088e1a09ed5ee3 ka4/ka4-furigana-dark.png (taken at c83b7e0bd; KanjiTimerDialog.qml changes up to qt 98396e53a are focus order only)",
+      "surface": "Kanji timer window, Furigana on, test song kanji-shots.ass",
+      "credit": ""
     }
   }
 }

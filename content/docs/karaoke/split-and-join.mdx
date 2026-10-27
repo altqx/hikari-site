@@ -119,6 +119,8 @@ After    {\kf50}kara{\K50}o        (ka and ra joined)
 
 The last syllable can't be joined to anything after it.
 
+Karaoke mode doesn't treat [furigana](/en/docs/karaoke/furigana) apart: a syllable's `|` and reading are letters like the others. Joining `君|きみ` and `の` gives `君|きみの`, which the templater reads as 君 with the reading きみの.
+
 A `#` syllable, the extra highlight that the [Kanji timer](/en/docs/karaoke/kanji-timer#multi-highlight-) writes, stays a `#` syllable only when both halves were `#`. Otherwise the `#` is dropped: `撃` + `#` gives `撃`, `#` + `腐` gives `腐`, and `#` + `#` gives `#`. A `#` among other text, such as `#b`, is joined as text. In Karaoke mode a `#` syllable is labelled `#`.
 
 ## Keys
