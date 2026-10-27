@@ -575,6 +575,26 @@
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-dark.png, crop 506x297+8+8",
       "surface": "Script dialog with the Answers and presets menu open on Presets",
       "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-look-light.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-3-look-light.png",
+      "surface": "Getting started window, step 3 of 8 (Look)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-look-dark.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-3-look-dark.png",
+      "surface": "Getting started window, step 3 of 8 (Look)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-media-light.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-5-media-light.png",
+      "surface": "Getting started window, step 5 of 8 (Video and audio)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-media-dark.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-5-media-dark.png",
+      "surface": "Getting started window, step 5 of 8 (Video and audio)",
+      "credit": ""
     }
   }
 }
