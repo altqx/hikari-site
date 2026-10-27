@@ -1,4 +1,16 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { expect, test } from '@playwright/test';
+
+// A guide still marked draft: true, as /en/docs/<path>, or none once every guide is written.
+function aDraftPage() {
+  const root = 'content/docs';
+  for (const file of readdirSync(root, { recursive: true, encoding: 'utf8' }).sort()) {
+    if (!file.endsWith('.mdx')) continue;
+    const front = readFileSync(join(root, file), 'utf8').split(/^---$/m)[1] ?? '';
+    if (/^draft:\s*true\s*$/m.test(front)) return `/en/docs/${file.replace(/\.mdx$/, '')}`;
+  }
+}
 
 test('the root redirects to the English homepage', async ({ page }) => {
   await page.goto('/');
@@ -21,7 +33,9 @@ test('a guide renders with its page actions', async ({ page }) => {
 });
 
 test('draft pages are left out of the production build', async ({ page }) => {
-  const response = await page.goto('/en/docs/basics/grid');
+  const draft = aDraftPage();
+  test.skip(!draft, 'every guide is published');
+  const response = await page.goto(draft as string);
   expect(response?.status()).toBe(404);
 });
 

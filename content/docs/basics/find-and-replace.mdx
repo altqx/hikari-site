@@ -1,6 +1,91 @@
 ---
 title: Find and replace
-draft: true
+description: Find text in your lines, replace it one match at a time or all at once, and search whole folders of subtitle files.
 ---
 
-This guide is not written yet.
+The **Search** panel finds and replaces text in your subtitles. It stays open along the bottom of the window while you work, with the search options on the left and the results on the right.
+
+## Opening the panel
+
+- **Edit › Find** (<kbd>Ctrl</kbd>+<kbd>F</kbd>) opens it on the **Find** tab.
+- **Edit › Find and replace** (<kbd>Ctrl</kbd>+<kbd>H</kbd>) opens it on the **Replace** tab.
+
+Either one puts the cursor in **Search text**. Text you selected in the Line editor becomes the search text. Pressing the same key again closes the panel and goes back to the Line editor.
+
+**Edit › Find next** (<kbd>F3</kbd>) repeats the last search, even with the panel closed.
+
+## Finding
+
+Type the text and press <kbd>Enter</kbd>, or click **Find**. The next match's line becomes the active line, and the match is selected in the Line editor, ready to edit. Press <kbd>Enter</kbd> or <kbd>F3</kbd> again for the one after it.
+
+When the search reaches the last line, it asks whether to **Search from the start**. If nothing matches anywhere, a notice says so.
+
+Comment lines are skipped unless **Include comments** is on, and lines hidden by the Grid's filter are always skipped.
+
+## Options
+
+| Option | Does |
+| --- | --- |
+| **Match case** | Tells capitals from small letters |
+| **Regular expressions** | Reads the search text as a pattern, below |
+| **Skip tags** | Finds only text outside `{…}` blocks |
+| **Skip text** | Finds only text inside `{…}` blocks, such as tags |
+| **Beginning of text** | The match must start the field |
+| **End of text** | The match must end the field |
+
+**In field** chooses what to search: the **Text**, or the **Styles**, **Actor** or **Effect** field. In Translation mode, Text covers both the original and the translation.
+
+**Lines** chooses where:
+
+- **All lines** from the first.
+- **Selected lines** only.
+- **From selected:** from the first selected line to the end.
+
+The **Styles** field beside it limits the search to lines of the styles you list, separated by commas. **Choose styles** lists them with their line counts to tick.
+
+## Replacing
+
+On the **Replace** tab, type the new text in **Replace with**.
+
+- **Replace next** (<kbd>Enter</kbd> in Replace with) replaces the selected match and finds the next one. Each click is one undo step. If the text has changed since it was found, it searches again rather than overwrite something else.
+- **Replace all** replaces every match in the chosen lines as one undo step, then says how many it replaced. With **Selected lines** and a style list, a line must be both selected and of a listed style.
+- **Replace in all open subtitles** does the same in every open tab, one undo step per tab.
+
+## Listing every match
+
+On the Find tab, **Find all in current subtitles** and **Find in all open subtitles** list the matches on the right, under each tab's name, as **Line N:** with the match marked. Double-click a row to go to that line.
+
+Every row starts ticked. Untick the ones to leave alone, or use **Check all** and **Uncheck all**, then type the new text under the list and click **Replace**. Lines you edited since the search are skipped and noted in the Log. Click a header to fold its rows.
+
+## Searching files
+
+The **In files** tab searches subtitle files on disk, open or not:
+
+- **Catalog** is the folder. The folder button picks it.
+- **Filters** chooses the files, such as `*.ass; *.srt`. Left empty, it searches ASS, SRT, SUB, TXT and MPL2 files.
+- **Search in subfolders** and **Search in hidden folders** go deeper.
+
+**Find in subtitles** lists the matches under each file's path. Double-click one to open the file at that line.
+
+**Replace in subtitles** changes the files on disk. It asks first, because **Undo cannot bring them back**. Before it changes a file, it puts a copy in a `ReplaceBackup` folder beside your settings. Only files with a match are written, and they are saved as UTF-8.
+
+## Regular expressions
+
+With **Regular expressions** on, the search text is a pattern. `.` is any character, `\d` a digit, `(…)` a group, `|` either side, and so on.
+
+In **Replace with**, `\1` to `\9` insert a group, and `&` the whole match. Write `\&` for a plain `&`.
+
+For example, to turn `Mr.` and `Mrs.` into `Mr` and `Mrs`, search for `(Mrs?)\.` and replace with `\1`.
+
+A pattern with a mistake is not searched: a notice gives the error.
+
+## Keys
+
+| Key | Does |
+| --- | --- |
+| <kbd>Ctrl</kbd>+<kbd>F</kbd> | Find |
+| <kbd>Ctrl</kbd>+<kbd>H</kbd> | Find and replace |
+| <kbd>F3</kbd> | Find next |
+| <kbd>Enter</kbd> | Find, in Search text. Replace next, in Replace with |
+
+**Edit › Select lines** selects lines by their text in a window of its own, without replacing anything.

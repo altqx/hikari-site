@@ -1,6 +1,160 @@
 ---
 title: Files and formats
-draft: true
+description: Open and save subtitle files, convert between formats, set a file's properties and resolution, and get your work back after a crash.
 ---
 
-This guide is not written yet.
+import convertLight from './images/convert-srt-light.webp';
+import convertDark from './images/convert-srt-dark.webp';
+import propertiesLight from './images/file-properties-light.webp';
+import propertiesDark from './images/file-properties-dark.webp';
+import resampleLight from './images/resample-light.webp';
+import resampleDark from './images/resample-dark.webp';
+
+HikariSub works on ASS subtitles, and opens and saves the common simpler formats too. Each file opens in a tab of its own.
+
+## Opening
+
+**File › Open…** (<kbd>Ctrl</kbd>+<kbd>O</kbd>) opens a subtitle file. The picker opens in the folder you last used and lists:
+
+- **Subtitles:** ASS, SSA, SRT, SUB, TXT and MPL files.
+- **Word-timed lyrics:** LRC and TTML files, which open as a new ASS file named after them.
+- **Videos with embedded subtitles:** an MKV file's subtitle track opens as subtitles. **Load subtitles from an MKV/OGM file**, in the Grid's right-click menu, does the same.
+
+HikariSub reads what the file holds rather than trusting its name. A `.txt` or `.sub` file can be MicroDVD (`{1}{25}text`, timed in frames), MPL2 (`[10][25]text`), TMPlayer (`0:00:01:text`, start times only) or plain text without times. A file that turns out to be ASS or SRT opens as that.
+
+**File › Recently opened subtitles** lists the last 20 files. <kbd>Ctrl</kbd>+click one to show it in its folder instead. The Home page lists them too.
+
+If the file can't be opened, nothing changes: the tab keeps what it had, and the Log says why.
+
+<Callout type="warn">
+  Subtitles must be UTF-8. Convert a UTF-16 or legacy-charset file to UTF-8 in a text editor before you open it.
+</Callout>
+
+When the subtitles name a video, audio or keyframes file, a bar offers to load them. If the video's size differs from the subtitles' resolution, HikariSub asks whether to [resample](#resolution) them.
+
+## Saving
+
+| Command | Key |
+| --- | --- |
+| **File › Save** | <kbd>Ctrl</kbd>+<kbd>S</kbd> |
+| **File › Save as…** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> |
+| **File › Save all** | |
+
+A file is saved in the format it is in: an SRT file stays SRT. Save asks for a name when the file is new, when you have converted it to another format, and when **Save subtitles using the video name** is on and the names differ. The right extension is added if the name lacks it.
+
+Only what you changed is rewritten. Everything else, including sections and lines other programs added, is saved exactly as it was. The file is written beside the old one first and then put in its place, so a failed save never leaves half a file.
+
+If the file changed on disk since you opened it, Save stops and a bar offers to **Reload** it, **Compare** the two, or **Keep mine**. A read-only file offers **Save as…** instead.
+
+**Edit › Undo to last save** goes back to the saved version, and **Edit › History** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>) to any step before or after it.
+
+ASS files also keep the tab's arrangement of panels in a `[Hikari]` section that other programs ignore. Opening the file again brings the panels back the way you left them. To leave it out, turn off **File › Settings › Subtitle properties › Save the panel layout in subtitle files**.
+
+## Converting
+
+**Subtitles › Conversion** turns the file into another format:
+
+| Command | Key |
+| --- | --- |
+| Convert to ASS | <kbd>F9</kbd> |
+| Convert to SRT | <kbd>F8</kbd> |
+| Convert to MDVD | |
+| Convert to MPL2 | <kbd>F11</kbd> |
+| Convert to TMP | <kbd>Ctrl</kbd>+<kbd>F12</kbd> |
+
+A window shows the options that apply to the new format, and **What changes** lists what will be lost as you change them, before anything happens.
+
+<figure>
+  <ThemedImage
+    light={convertLight}
+    dark={convertDark}
+    alt="The Convert to SRT window: the End times options on the left, and What changes on the right, listing that the script properties and styles are removed, a comment line removed and formatting tags converted in one line"
+    width={742}
+    height={342}
+    className="rounded-lg border"
+  />
+  <figcaption>Converting to SRT.</figcaption>
+</figure>
+
+- **Style** (to ASS): the style every line gets, from a catalog, and tags to put at the start of every line.
+- **Resolution** (to ASS): the new file's resolution.
+- **Frame rate** (to MicroDVD), which counts frames rather than time. **From video** takes the open video's.
+- **End times:** **New end times** gives each line a length from its number of characters, at least one second, up to where the next starts.
+
+**Convert** does it in one undo step. The next Save asks for a new name, so the original file is kept. **File › Settings › Conversion** sets the options' defaults. Conversion isn't offered in Translation mode.
+
+## The file's properties
+
+**Subtitles › ASS file properties** edits what an ASS file says about itself:
+
+<figure>
+  <ThemedImage
+    light={propertiesLight}
+    dark={propertiesDark}
+    alt="The ASS file properties window: Credits with Title, Author, Translator, Proofreading, Timer and Editing; Resolution with the Subtitles and Layout sizes and the YCbCr matrix; Rendering with Wrap style, Colliding lines and Scale border and shadow"
+    width={490}
+    height={614}
+    className="rounded-lg border"
+  />
+  <figcaption>ASS file properties.</figcaption>
+</figure>
+
+- **Credits:** the title, and who wrote, translated, checked, timed and edited it.
+- **Resolution:** the size the lines are written for, and the layout size. **From video** takes the open video's. **YCbCr matrix** tells players which colours the video uses, so that subtitle colours match it.
+- **Rendering:** how long lines wrap, which way colliding lines stack, and whether borders and shadows scale with the video.
+
+**Save** writes only what you changed, as one undo step.
+
+## Resolution
+
+A subtitle file's positions, sizes and margins are written for its resolution. **Subtitles › Resample subtitles** scales all of them to another one, for example when the subtitles were made for a 1280 × 720 video and the release is 1920 × 1080.
+
+<figure>
+  <ThemedImage
+    light={resampleLight}
+    dark={resampleDark}
+    alt="The Resample subtitles window: Subtitles 1280 by 720, Target 1440 by 1080, a note that they are scaled by 1.125 across and 1.5 down, and the Aspect ratio choice Keep it or Stretch"
+    width={552}
+    height={299}
+    className="rounded-lg border"
+  />
+  <figcaption>Resampling to another aspect ratio.</figcaption>
+</figure>
+
+Set **Target**, or take it **From video**. When the aspect ratio changes, choose to **Keep it**, or **Stretch** the lines to the new shape. **Resample** scales the styles' sizes, outlines, shadows and margins, the lines' margins, and position, clip, border, shadow and size tags and drawings, in one undo step.
+
+When you open a video of another size, the same choice comes up: **Resample**, **Change resolution only**, which sets the new size without scaling anything, or **Keep as is**.
+
+## Tabs
+
+Each open file has its own tab in the row under the menu bar, with its own video, audio and undo history.
+
+| Key | Does |
+| --- | --- |
+| <kbd>Ctrl</kbd>+<kbd>T</kbd> | New tab |
+| <kbd>Ctrl</kbd>+<kbd>W</kbd> | Close the tab |
+| <kbd>Ctrl</kbd>+<kbd>PgDn</kbd> <kbd>Ctrl</kbd>+<kbd>PgUp</kbd> | Next or previous tab |
+
+Drag a tab to move it, and middle-click it to close it. Right-click it to save, close all tabs, or open the folder of its subtitles, video, audio or keyframes. A dot marks a tab with unsaved changes. Closing the last tab shows the Home page.
+
+A file opens in the current tab when the tab is empty and unchanged. **File › Settings › General › Tabs › Always open subtitles in a new tab** gives every file a tab of its own. Files opened from your file manager, or while HikariSub is already running, always get a new tab.
+
+**File › Remove subtitles from the editor** empties the tab, after asking about unsaved changes.
+
+## Autosave and recovery
+
+HikariSub keeps copies of changed files as you work, 20 seconds after a change. If it closes without warning, the Home page says so the next time and offers them.
+
+**File › Open auto save** lists the copies by file and time. **Open copy** opens one as a new, unsaved file, named "(recovered)": your original file is not touched. **Delete older than…** clears old ones.
+
+**File › Settings › General › Saving › Autosave files kept** sets how many copies of each file are kept, 3 at first; 0 turns autosave off. Copies older than 30 days are deleted, and so are a file's copies once you save and close it.
+
+## Sessions
+
+A session is the set of open tabs, with their videos, audio and positions. **File › Last session** can:
+
+- **Load last session**, the tabs open when you last quit.
+- **Load session from file** or **Save session to file**, as a `.kls` file.
+- Ask whether to load the last session when HikariSub starts, or load it without asking.
+
+If a file the session names has moved, a bar offers to **Retry**, **Relink…** it, or **Remove** it.

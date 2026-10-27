@@ -1,6 +1,75 @@
 ---
 title: Settings
-draft: true
+description: How the Settings window works, when changes apply, resetting, and where your settings are kept.
 ---
 
-This guide is not written yet.
+import generalLight from './images/settings-general-light.webp';
+import generalDark from './images/settings-general-dark.webp';
+
+**File › Settings** opens the Settings window. It reopens on the page you used last. The [Settings reference](/en/docs/reference/settings) lists every setting with its default; this page is about the window itself.
+
+<figure>
+  <ThemedImage
+    light={generalLight}
+    dark={generalDark}
+    alt="The Settings window on its General page: the list of eleven pages on the left, the Language, Tabs, Saving and Notices sections on the right, and Reset page, OK, Cancel and Apply at the bottom"
+    width={796}
+    height={620}
+    className="rounded-lg border"
+  />
+  <figcaption>The General page.</figcaption>
+</figure>
+
+## Pages
+
+| Page | Holds |
+| --- | --- |
+| **General** | The interface language, tabs, autosave, notices and folders |
+| **Appearance** | The [theme](/en/docs/customize/themes), accent, program font and title bar |
+| **Line editor** | Spelling, how the text shows, editing, Translation mode and the tag buttons |
+| **Subtitle grid** | The active line, columns, counting and new lines |
+| **Video** | Playback, subtitles on the video, decoding and the script resolution |
+| **Audio** | The output device, playback, snapping, karaoke and the cache |
+| **Conversion** | The defaults for converting to other formats |
+| **Subtitle properties** | Default credits, and saving the panel layout in files |
+| **Automation** | Script loading and the answers scripts' dialogs keep |
+| **Hotkeys** | Every command's keys: see [Hotkeys](/en/docs/customize/hotkeys) |
+| **Updates** | Checking for and installing updates |
+
+Some rows show only where they apply: the video player and the audio API only on Windows, for example.
+
+Some panels open their page directly: **Audio settings…** in the Audio panel's speaker menu, **Spelling settings…** in the Spellchecker when it finds no dictionary, and **Shortcuts in Settings…** in the Automation panel's menu.
+
+There is no search across all settings; the Hotkeys page has its own.
+
+## When changes apply
+
+Nothing is saved until you press **OK**, which saves and closes, or **Apply**, which saves and stays open. **Cancel**, <kbd>Esc</kbd> or closing the window drops every change, resets included. Only the settings you changed are written.
+
+Changes take effect at once, without restarting, the interface language too. The theme and colours even show while you choose them. Where a setting waits for something, its note says so, such as "Applies when the video opens again."
+
+## Resetting
+
+- **Reset page** puts the page you are on back to its defaults.
+- Its arrow offers **Reset all settings…**, which does every page after asking. It leaves your hotkeys and the appearance alone: reset them on their own pages.
+
+Both wait for **OK** or **Apply** like any other change, so **Cancel** undoes them.
+
+## Keyboard
+
+<kbd>Tab</kbd> moves between the page list and the page, and <kbd>Up</kbd> and <kbd>Down</kbd> in the list change page. <kbd>Enter</kbd> presses **OK**, or the button you are on. <kbd>F1</kbd>, or the **?** in the title bar, opens this page.
+
+## Where settings are kept
+
+HikariSub keeps one set of settings for each user on the computer, in a file named `hikari.ini`, with your hotkeys. It has no profiles to switch between.
+
+| System | Folder |
+| --- | --- |
+| Windows | `%LOCALAPPDATA%\HikariSub\HikariSub\` |
+| Linux | `~/.config/HikariSub/HikariSub/` |
+
+Every package uses the same folder, the portable ones too, so removing or updating HikariSub never deletes your settings. The saved layouts, the last session and your dictionary sit beside the file. Edit it only while HikariSub is closed: a running HikariSub writes its own values over it.
+
+## Settings from older versions
+
+HikariSub 0.0.x settings are brought in from **File › Import legacy settings…**, not from this window. Your old settings files are never changed. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).
