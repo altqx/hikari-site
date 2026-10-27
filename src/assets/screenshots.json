@@ -576,6 +576,26 @@
       "surface": "Script dialog with the Answers and presets menu open on Presets",
       "credit": ""
     },
+    "content/docs/get-started/images/getting-started-look-light.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-3-look-light.png",
+      "surface": "Getting started window, step 3 of 8 (Look)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-look-dark.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-3-look-dark.png",
+      "surface": "Getting started window, step 3 of 8 (Look)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-media-light.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-5-media-light.png",
+      "surface": "Getting started window, step 5 of 8 (Video and audio)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-media-dark.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-5-media-dark.png",
+      "surface": "Getting started window, step 5 of 8 (Video and audio)",
+      "credit": ""
+    },
     "content/docs/automation/images/dependencycontrol-update-light.webp": {
       "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (copied out with a deb package-kind.txt beside it, so ?user is a throwaway folder; network blocked by a dead proxy) under vx11 at 1280x800, light theme, Automation > DependencyControl/Update Script on a new file, dialog resized to 360x340, Modules list open, crop 360x340+460+250",
       "surface": "DependencyControl Toolbox, Update Script dialog with the Modules list open",
