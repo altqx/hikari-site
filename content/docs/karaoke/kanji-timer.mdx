@@ -25,12 +25,12 @@ The first time, HikariSub guesses the styles. The **Romaji** style is the one wi
     height={521}
     className="rounded-lg border"
   />
-  <figcaption>Four groups of the third pair are linked, and 聞, the fifth of eight, is the current group. Multi-highlight (#) is on.</figcaption>
+  <figcaption>Four groups of the third pair are linked, and 聞, the fifth of eight, is the current group. Multi-highlight (#) is on, and Furigana is off.</figcaption>
 </figure>
 
 The window has three parts:
 
-- **The top row:** the two styles, **Suggest groupings** and **Multi-highlight (#)**.
+- **The top row:** the two styles, **Suggest groupings**, **Multi-highlight (#)** and **Furigana**.
 - **The pair list** on the left: every romaji line with the kanji line it pairs with, and where each pair stands.
 - **The current pair** on the right: the romaji line's times, the syllables over the kanji, and the **Result**, the kanji line as it would be written, with its total time.
 
@@ -126,6 +126,10 @@ In the Audio panel's karaoke mode, the `#` syllables show as `#`. A middle-click
 
 A `#` among other text, such as `#b`, is not a `#` syllable and is joined as text.
 
+## Furigana
+
+With **Furigana** on, the timer also writes each group's reading after its kanji, such as `{\k40}君|きみ`. It suggests the readings from the romaji and a dictionary, and you can change each one in the **Reading** field. See [Furigana](/en/docs/karaoke/furigana#in-the-kanji-timer).
+
 ## Undo
 
-In the window, each change to the groups is one step: growing or shrinking a group, linking, unlinking, accepting and skipping. <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes it and takes you back to its pair. Opening another pair is not a step. **Apply** clears the window's history, because the changes are then in the subtitles' own history.
+In the window, each change to the groups is one step: growing or shrinking a group, linking, unlinking, accepting and skipping, and setting a reading or using the suggestion. <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes it and takes you back to its pair. Opening another pair is not a step. **Apply** clears the window's history, because the changes are then in the subtitles' own history.

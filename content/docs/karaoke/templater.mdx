@@ -91,7 +91,7 @@ A run goes like this: the `once` code first. Then, for each karaoke line in file
 The templater reads the syllables from `\k`, `\kf`, `\ko` and `\K` tags. **Syllable 0** is the text before the first tag, usually empty and of no length. A `syl` template makes a line for it too, unless it has `noblank`.
 
 - **`#` syllables.** A syllable whose text is `#` or `＃` is another highlight of the syllable before it. The two count as one syllable with both times, and a `multi` template runs for each highlight. The [Kanji timer](/en/docs/karaoke/kanji-timer#multi-highlight-) writes this form.
-- **Furigana.** `漢字|かんじ` in a syllable gives the syllable the furigana かんじ, set in the furigana style by `furi` templates. The bar can be `|` or `｜`. After the bar, `!` starts a new furigana group, and `<` one that may spill over the left edge. `#|ら` carries furigana on over a `#` syllable.
+- **Furigana.** `漢字|かんじ` in a syllable gives the syllable the furigana かんじ, set in the furigana style by `furi` templates. The bar can be `|` or `｜`. After the bar, `!` starts a new furigana group, and `<` one that may spill over the left edge. `#|ら` carries furigana on over a `#` syllable. See [Furigana](/en/docs/karaoke/furigana).
 - **Inline effects.** `{\-name}` in a syllable's tags marks it, and every later syllable of the line, with *name*, until the next `\-`. `fx name` templates run on those syllables only.
 
 ## Variables
