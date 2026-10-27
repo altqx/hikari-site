@@ -30,6 +30,15 @@ jobs:
           VITE_SHOW_DRAFTS: "1"
       - name: Link check (with drafts)
         run: bun run check-links
+      # Deployed by preview.yml, which runs from main with the Cloudflare secrets.
+      - name: Keep the preview build
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-site
+          path: .output/public
+          include-hidden-files: true
+          retention-days: 7
 
       - name: Build for production
         run: bun run build
