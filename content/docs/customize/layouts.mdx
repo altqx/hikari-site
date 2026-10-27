@@ -3,8 +3,10 @@ title: Layouts
 description: Arrange the panels, switch between the built-in layouts, and save your own.
 ---
 
-import layoutsLight from './images/layouts-light.webp';
-import layoutsDark from './images/layouts-dark.webp';
+import layoutsLightAv1 from './images/layouts-light-av1.mp4';
+import layoutsLightH264 from './images/layouts-light-h264.mp4';
+import layoutsDarkAv1 from './images/layouts-dark-av1.mp4';
+import layoutsDarkH264 from './images/layouts-dark-h264.mp4';
 import layoutsStillLight from './images/layouts-still-light.webp';
 import layoutsStillDark from './images/layouts-still-dark.webp';
 import menuLight from './images/layout-menu-light.webp';
@@ -18,14 +20,12 @@ Each tab has its own layout, so a file you translate and a file you time can be 
 
 ## The built-in layouts
 
-<MotionImage
-  light={layoutsLight}
-  dark={layoutsDark}
-  lightStill={layoutsStillLight}
-  darkStill={layoutsStillDark}
+<ThemedClip
+  light={{ av1: layoutsLightAv1, h264: layoutsLightH264, poster: layoutsStillLight }}
+  dark={{ av1: layoutsDarkAv1, h264: layoutsDarkH264, poster: layoutsStillDark }}
   width={1000}
   height={600}
-  alt="The same window switching between the Editing, Timing, Translation and Typesetting layouts"
+  label="The same window switching from the title-bar layout button between the Editing, Timing, Translation and Typesetting layouts; choosing Translation asks to turn on Translation mode"
 />
 
 <small>Subtitles: Jibrill.</small>
