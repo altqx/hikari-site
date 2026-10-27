@@ -99,18 +99,8 @@
             "type": "bool"
         },
         {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "shiftTimes.changeValuesWithTab",
-            "label": "Synchronize time shifting window in all tabs",
-            "page": "general",
-            "section": "Tabs",
-            "type": "bool"
-        },
-        {
             "control": "number",
-            "default": 0,
+            "default": 40,
             "hint": "Number of tab name characters. Range from 20 to 150",
             "key": "program.tabTextMaxChars",
             "label": "Tab name length",
