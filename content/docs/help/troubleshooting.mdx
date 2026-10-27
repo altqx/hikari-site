@@ -1,6 +1,99 @@
 ---
 title: Troubleshooting
-draft: true
+description: Read the Log, get your work back after a crash, find HikariSub's folders, and fix common problems.
 ---
 
-This guide is not written yet.
+When something goes wrong, HikariSub tells you in a notice at the bottom right of the window, and keeps every notice in the Log. This page covers the Log, what to do after a crash, where HikariSub keeps its files, and the fixes for common problems.
+
+## Notices
+
+A notice of each kind behaves a little differently:
+
+- **Information** fades after 5 seconds. Holding the pointer over it keeps it.
+- **Warnings** and **Errors** stay until you close them with their **×**.
+
+At most three show at once. A fourth makes the oldest information notice go. If the three showing are warnings or errors, the oldest folds into a line such as "1 more notice", which opens the Log. A notice with more to say has a **Details** button, which opens the Log at that entry.
+
+To stop notices popping up, turn off **File › Settings › General › Notices › Show notices as toasts**. They then go to the Log only.
+
+## The Log panel
+
+The Log lists every notice since HikariSub started, oldest first. Each entry shows its time, its kind, the command that gave it and its text, with any details below.
+
+The Log never opens by itself. To open it:
+
+- **File › Log**, which shows or hides it. It has no key.
+- **View › Panels › Log › Show**, where you can also float or dock it.
+- **Details** on a notice, which opens the Log at that entry and marks it. In full screen, it leaves full screen first.
+
+The first time, it opens at the bottom of the window. Above the entries:
+
+| Control | Does |
+| --- | --- |
+| **Information**, **Warnings**, **Errors** | Show or hide entries of that kind. Each shows how many there are |
+| **Filter** | Shows only the entries containing the text you type. <kbd>Esc</kbd> clears it |
+| **Copy** | Copies the entries shown |
+
+<kbd>Ctrl</kbd>+<kbd>C</kbd> copies the selected entry. <kbd>F1</kbd> in the Log opens this page.
+
+<Callout type="warn">
+The Log is kept in memory only. Nothing is written to a log file, and the entries are gone when HikariSub quits. Copy what you need before you quit.
+</Callout>
+
+Automation scripts write their output to the Automation panel's **Runs** view, not to the Log. A script that fails to load is reported in the Log.
+
+## After a crash
+
+HikariSub notices when it was not closed properly. At the next start, the Home page shows **HikariSub did not close properly**, with the documents the last session had and how many have autosaved work. If you started HikariSub with files, the same offer is a bar under the tabs. It doesn't stop you working: you can answer it later or not at all.
+
+- **Restore session** opens the documents of the last session again.
+- **Autosaves…** opens the Autosaves window, when there is autosaved work.
+- **×** dismisses the offer.
+
+HikariSub does not write crash reports or crash dumps. If it crashed, see [Reporting bugs](/en/docs/help/reporting-bugs) for what to tell us.
+
+### Autosaves
+
+A changed document is autosaved 20 seconds after its first change since the last autosave. Read-only documents are not autosaved. **File › Settings › General › Saving › Autosave files kept** sets how many autosaves each document keeps, 3 at first.
+
+**File › Open auto save** opens the Autosaves window. **File › Remove temporary files** opens the same window, with **Delete older than…** already open.
+
+| In the window | Does |
+| --- | --- |
+| **Search autosaves** | Finds autosaves by document name and folder |
+| **Saved** | Shows those saved **Today**, in the **Last 7 days**, the **Last 30 days**, or **Before a date** |
+| **Open copy** | Opens the autosave as a new, unsaved copy and closes the window. The original file is not changed |
+| **Delete** | Deletes that autosave |
+| **Delete older than…** | Deletes every autosave saved before a date: **A week ago**, **A month ago** or **Everything** |
+
+The work of a HikariSub that is still running is never deleted. Autosaves from HikariSub 0.0.x are marked **Read only**: you can open them but not delete them.
+
+[Files and formats](/en/docs/basics/files-and-formats#autosave-and-recovery) has more on autosaves and sessions.
+
+## Where things are
+
+| What | Windows | Linux |
+| --- | --- | --- |
+| Settings, hotkeys, saved layouts, the last session, your dictionaries | `%LOCALAPPDATA%\HikariSub\HikariSub\` | `~/.config/HikariSub/HikariSub/` |
+| Autosaves | `%APPDATA%\HikariSub\HikariSub\Recovery` | `~/.local/share/HikariSub/HikariSub/Recovery` |
+| Your Automation scripts | `%APPDATA%\HikariSub\HikariSub\Automation` | `~/.local/share/HikariSub/HikariSub/Automation` |
+| Downloaded updates | `%LOCALAPPDATA%\HikariSub\Updates` | `~/.cache/HikariSub/Updates` |
+
+- Every package uses these folders, the portable ones too. The one exception: a portable copy keeps its Automation folder beside the program.
+- Uninstalling or updating HikariSub never deletes them. [Install](/en/docs/get-started/install#uninstall) says how to remove them.
+- The Log and crash dumps are not on disk at all.
+
+[Settings](/en/docs/customize/settings#where-settings-are-kept) explains the settings file, and how to reset settings from the Settings window.
+
+## Common problems
+
+| Problem | What to do |
+| --- | --- |
+| A notice disappeared before you read it | Open **File › Log** |
+| Spelling isn't checked, and a **Spellchecker** notice says no dictionary files were found | Put the language's `.dic` and `.aff` files in the `Dictionary` folder of the settings folder. The notice names the folder |
+| A script shows **Stopped** in the Automation panel, and its macros do nothing | Press its **Reload** button. The script starts again; the macro is not rerun |
+| A macro doesn't finish | Press **Cancel** on its card. If it hasn't stopped after 3 seconds, **Force stop** appears: it ends the script and changes nothing |
+| Work lost in a crash | **Restore session** or **Autosaves…** on the Home page, or **File › Open auto save** |
+| A bar says the file "was changed by another program" | **Reload** reads the file again and drops your changes to it, **Compare** compares it with yours, and **Keep mine** keeps your version |
+
+If none of this helps, [report the problem](/en/docs/help/reporting-bugs).
