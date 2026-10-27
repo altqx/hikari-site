@@ -1,0 +1,35 @@
+{
+  "_doc": "Where each app image comes from (decisions.md, Media). Captures under vx11 from the coordinator's qt build tree; the example subtitles are credited \"Subtitles: Jibrill\".",
+  "images": {
+    "src/assets/home/hero-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "surface": "Editing layout, ray MV at 1:15.75",
+      "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/hero-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "surface": "Editing layout, ray MV at 1:15.75",
+      "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/karaoke-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "surface": "crop of hero-light: the Audio panel's karaoke syllables",
+      "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/karaoke-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "surface": "crop of hero-dark: the Audio panel's karaoke syllables",
+      "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/typesetting-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/typesetting-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
+      "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    }
+  }
+}
