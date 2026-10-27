@@ -2922,6 +2922,17 @@
             "context": "Global",
             "defaultKeys": [
             ],
+            "id": 5176,
+            "menus": [
+                "Help > Getting started"
+            ],
+            "name": "Getting started",
+            "symbol": "GLOBAL_GETTING_STARTED"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
             "id": 5200,
             "menus": [
                 "Edit > Sort all lines > The starting time"

@@ -97,6 +97,11 @@
             "path": "/en/docs/typesetting/fonts"
         },
         {
+            "id": "gettingStarted",
+            "kind": "window",
+            "path": "/en/docs/get-started/getting-started-window"
+        },
+        {
             "id": "hotkeyCapture",
             "kind": "window",
             "path": "/en/docs/customize/hotkeys"

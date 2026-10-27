@@ -1,6 +1,139 @@
 ---
 title: The Getting started window
-draft: true
+description: The setup HikariSub shows at its first start, what each step sets, bringing legacy settings over, and opening it again.
 ---
 
-This guide is not written yet.
+import lookLight from './images/getting-started-look-light.webp';
+import lookDark from './images/getting-started-look-dark.webp';
+import mediaLight from './images/getting-started-media-light.webp';
+import mediaDark from './images/getting-started-media-dark.webp';
+
+The **Getting started** window walks through the settings most people change first: the language, the theme, the layout, video and audio, editing, updates. Each step is a page, and each page says at its foot where its choice lives later, so nothing here is set for good.
+
+## When it opens
+
+It opens by itself the first time HikariSub starts, when there are no settings yet. Once you answer it, with **Finish** or **Skip setup**, it doesn't open by itself again. If HikariSub is closed before you answer, it opens again at the next start.
+
+To open it later, choose **Help › Getting started**. It has no key at first; you can give it one in [Hotkeys](/en/docs/customize/hotkeys). Opened again, the pages show your settings as they are now.
+
+<kbd>F1</kbd>, or the **?** in its title bar, opens this page.
+
+## Moving through it
+
+<figure>
+  <ThemedImage
+    light={lookLight}
+    dark={lookDark}
+    alt="The Getting started window on its Look step: eight page dots with the third marked, Follow system theme, samples of the Light and Dark themes, seven accent colours, Enable high contrast, the line Later: Settings › Appearance, and Back, Next and Skip setup"
+    width={752}
+    height={622}
+    className="rounded-lg border"
+  />
+  <figcaption>The Look step.</figcaption>
+</figure>
+
+The dots at the top show the step you are on. There are seven steps, or eight when HikariSub finds HikariSub 0.0.x (*legacy*) on the computer.
+
+- **Next** goes to the next step. On the last step it becomes **Finish**.
+- **Back** goes to the step before.
+- **Skip setup** closes the window.
+
+Nothing is saved until **Finish**. The language and the theme change while you choose them, so you can see them, but they go back if you don't finish.
+
+**Finish** saves every step's choices and, if you picked a layout, shows your tab in it.
+
+**Skip setup**, <kbd>Esc</kbd> and closing the window all do the same: nothing you chose is saved, and nothing is imported. A notice says that the default settings are in use and that **Help › Getting started** opens the setup again.
+
+## The steps
+
+### Language
+
+The first step, **Welcome to HikariSub**, lists the interface languages. The window switches to the language you pick, so you can read the rest of it in that language.
+
+Later: **File › Settings › General › Language › Interface language**.
+
+### Import from legacy
+
+This step shows only when HikariSub finds legacy on this computer. It reads its settings and changes nothing in them.
+
+- **Import my old settings**, chosen at first, shows the legacy settings that differ from HikariSub's, with their legacy value and their value now. The legacy values HikariSub proposes are ticked; tick or untick any. **All** shows every setting read, and the search field finds one.
+- **Set up from scratch** starts from HikariSub's defaults.
+
+If some legacy files are not UTF-8, choose how to read them under **Files that are not UTF-8 are read as**: Latin-1 or Windows-1252.
+
+When you import, the next steps start from the imported values. A change you make on a later step wins over the imported value, even if you go back to this step.
+
+At **Finish**, the steps' own settings are saved at once. The rest of the import is staged and takes effect the next time HikariSub starts, as **File › Import legacy settings…** does. What can come over, and what can't, is in [Moving from legacy](/en/docs/get-started/moving-from-legacy#what-comes-over). Legacy themes are not imported.
+
+If the import can't be staged, for example because the legacy files changed since they were read, **Finish** saves nothing and takes you back to this step with the reason. **Read again** reads the files again.
+
+The window takes the first legacy installation it finds. To import from another, such as a portable copy, use **File › Import legacy settings…** later, which can also roll an import back.
+
+Later: **File › Import legacy settings…**
+
+### Look
+
+- **Follow system theme** uses Light or Dark as your system does.
+- The two samples, **Light** and **Dark**, pick a theme. Picking one turns off Follow system theme.
+- **Accent colour** picks one of seven accents for the theme shown. Light and Dark keep their own.
+- **Enable high contrast** switches to High contrast white, or High contrast black from Dark. Its colours are set in Settings.
+- **Title bar** chooses between **HikariSub's** title bar and **The system's**, with a note on which suits your desktop. It shows only where HikariSub can draw its own title bar.
+
+The whole window changes as you choose.
+
+Later: **File › Settings › Appearance**. See [Themes](/en/docs/customize/themes).
+
+### What do you mostly do?
+
+This step picks the [layout](/en/docs/customize/layouts) your first tab opens with. Each card shows the layout's arrangement:
+
+| Card | Layout |
+| --- | --- |
+| **Time** | Timing |
+| **Translate** | Translation |
+| **Typeset** | Typesetting |
+
+Click a card again to unpick it. With none picked, the tab keeps Editing, which has a bit of everything.
+
+Later: **View › Layout**, or the layout switcher in the title bar.
+
+### Video and audio
+
+<figure>
+  <ThemedImage
+    light={mediaLight}
+    dark={mediaDark}
+    alt="The Video and audio step: Subtitles drawn by libass, the only renderer here, a sample frame with the subtitle I said I'd be there by nine, and Sound plays on System default with a Test sound button"
+    width={752}
+    height={622}
+    className="rounded-lg border"
+  />
+  <figcaption>The Video and audio step on Linux.</figcaption>
+</figure>
+
+- **Subtitles drawn by** chooses the subtitle renderer. Where libass is the only one, as on Linux, it says so. The sample frame below is drawn by the renderer chosen.
+- **Sound plays on** chooses the output device. **Test sound** plays a short tone on it.
+
+Later: **File › Settings › Video › Subtitles on video › Subtitle display filter**, and **File › Settings › Audio › Output › Device**.
+
+### Editing
+
+- **Save while editing every** … **edits**, 1 at first. 0 turns it off.
+- **Autosave files kept**: how many autosaved copies of each file HikariSub keeps, from 2, 3 at first. See [Autosave and recovery](/en/docs/basics/files-and-formats#autosave-and-recovery).
+- **Check spelling** and the dictionary beside it. The **Example** line marks its misspelt word when spelling is on and the dictionary is installed.
+
+Later: **File › Settings › General › Saving**, and **File › Settings › Line editor › Spelling**. See [Spelling](/en/docs/checking/spelling).
+
+### Updates
+
+- **Stable versions only**, chosen at first, offers tested releases.
+- **Pre-releases too** offers beta versions as well.
+- **Check for updates automatically** looks for a new version at most once a day, when HikariSub starts. It is off at first. The release notes on the Home page need it too.
+
+An install from the AUR shows only the checkbox: there, the package you installed decides which versions you get.
+
+Later: **File › Settings › Updates**. See [Updates](/en/docs/get-started/install#updates).
+
+### Your files
+
+The last step shows the folder that holds your settings, hotkeys and saved layouts. **Open folder** opens it in your file manager. Copy it to take your settings to another computer. [Settings](/en/docs/customize/settings#where-settings-are-kept) lists where it is on each system.
