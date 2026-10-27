@@ -1,0 +1,12 @@
+{
+    "application": "HikariSub",
+    "commit": "6cee588a836cb4d5b3195810a09db40f0dafce67",
+    "files": [
+        "commands.json",
+        "settings.json",
+        "guide-links.json"
+    ],
+    "schema": 1,
+    "site": "https://hikarisub.altqx.com",
+    "version": "0.1.0"
+}

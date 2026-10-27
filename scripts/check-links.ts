@@ -49,8 +49,33 @@ for await (const file of glob('**/*.html', { cwd: root })) {
   }
 }
 
+// The pages the app's User guide (F1, the ? buttons) opens, from its docs export
+// (scripts/fetch-docs.ts). A path with no guide at all fails. A guide that is still a
+// draft is left out of production builds; those are listed, as pages still to write.
+const guideLinksFile = 'src/generated/docs-export/guide-links.json';
+const drafts: string[] = [];
+let guidePaths = 0;
+if (existsSync(guideLinksFile)) {
+  const map = JSON.parse(readFileSync(guideLinksFile, 'utf8')) as {
+    home: string;
+    links: { kind: string; id: string; path: string }[];
+  };
+  for (const { kind, id, path } of [{ kind: 'home', id: 'home', path: map.home }, ...map.links]) {
+    guidePaths++;
+    if (resolves(path)) continue;
+    const source = join('content/docs', `${path.replace(/^\/en\/docs\/?/, '') || 'index'}.mdx`);
+    const isDraft =
+      existsSync(source) && /^draft:\s*true\s*$/m.test(readFileSync(source, 'utf8').split(/^---$/m)[1] ?? '');
+    (isDraft ? drafts : broken).push(`guide-links.json (${kind} ${id}): ${path}`);
+  }
+}
+
 if (broken.length > 0) {
   console.error(`Broken internal links (${broken.length}):\n${broken.join('\n')}`);
   process.exit(1);
 }
 console.log(`Checked ${checked} internal links: all resolve.`);
+console.log(`User guide pages: ${guidePaths - drafts.length} of ${guidePaths} in this build.`);
+if (drafts.length > 0) {
+  console.log(`Still drafts, so F1 finds no page there yet (${drafts.length}):\n${drafts.join('\n')}`);
+}

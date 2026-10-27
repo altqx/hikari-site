@@ -105,3 +105,25 @@ test('the homepage has a Download button for the app', async ({ page }) => {
     /^https:\/\/github\.com\/altqx\/hikari\/releases/,
   );
 });
+
+test('the reference pages list the commands and settings of the docs export', async ({ page }) => {
+  await page.goto('/en/docs/reference/hotkeys');
+  const help = page.getByTestId('hotkeys-Global').getByRole('row', { name: /^User guide/ });
+  await expect(help.locator('kbd')).toHaveText('F1');
+  await expect(help).toContainText('Help › User guide');
+  await page.goto('/en/docs/reference/settings');
+  await expect(
+    page.getByTestId('settings-general').getByRole('row', { name: /Tab name length/ }),
+  ).toContainText('20 to 150 characters');
+});
+
+test('search finds a setting that only the generated reference lists', async ({ page }) => {
+  await page.goto('/en/docs');
+  await page
+    .getByRole('button', { name: /search/i })
+    .first()
+    .click();
+  const dialog = page.getByRole('dialog');
+  await dialog.getByRole('combobox', { name: 'Search' }).fill('Tab name length');
+  await expect(dialog.getByText('Tab name length').first()).toBeVisible();
+});
