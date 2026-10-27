@@ -1,6 +1,6 @@
 // Checks that every internal href/src/data-still in the built HTML resolves to a file in the
 // output, the way Cloudflare serves it (wrangler.jsonc: drop-trailing-slash), or to
-// a rule in _redirects whose target resolves.
+// a rule in _redirects whose target resolves, and that no page was written empty.
 import { existsSync, readFileSync } from 'node:fs';
 import { glob } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -40,6 +40,7 @@ let checked = 0;
 for await (const file of glob('**/*.html', { cwd: root })) {
   if (file === '_shell.html' || file === '404.html') continue;
   const html = readFileSync(join(root, file), 'utf8');
+  if (!html.includes('</html>')) broken.push(`${file}: the page is empty or cut short`);
   // data-still: the static image of an <AssPreview>, made by scripts/render-stills.ts.
   for (const [, url] of html.matchAll(/\s(?:href|src|data-still)="([^"]*)"/g)) {
     if (!url.startsWith('/') || url.startsWith('//')) continue;
