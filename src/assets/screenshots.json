@@ -220,6 +220,36 @@
       "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356",
       "surface": "Grid in the Editing layout, ray MV, line 34 active",
       "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/line-editor-light.webp": {
+      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246",
+      "surface": "Line editor on a karaoke comment line, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/styles-panel-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-light.png, top 327x272",
+      "surface": "Styles panel with four test styles",
+      "credit": ""
+    },
+    "content/docs/basics/images/style-manager-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-light.png",
+      "surface": "Style manager editing a file style",
+      "credit": ""
+    },
+    "content/docs/basics/images/line-editor-dark.webp": {
+      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246",
+      "surface": "Line editor on a karaoke comment line, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/styles-panel-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-dark.png, top 327x272",
+      "surface": "Styles panel with four test styles",
+      "credit": ""
+    },
+    "content/docs/basics/images/style-manager-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-dark.png",
+      "surface": "Style manager editing a file style",
+      "credit": ""
     }
   }
 }
