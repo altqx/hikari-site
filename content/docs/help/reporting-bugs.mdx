@@ -1,6 +1,42 @@
 ---
 title: Reporting bugs
-draft: true
+description: Where to report a problem with HikariSub or with this guide, and what to put in the report.
 ---
 
-This guide is not written yet.
+Bugs are reported as issues on GitHub, which needs a GitHub account. Before you write one, search the open issues: someone may have reported it already.
+
+| Problem with | Report it at |
+| --- | --- |
+| HikariSub itself | [github.com/altqx/hikari/issues](https://github.com/altqx/hikari/issues) |
+| A page of this guide | **Report a problem** at the bottom of the page |
+| This website | [github.com/altqx/hikari-site/issues](https://github.com/altqx/hikari-site/issues) |
+
+## From HikariSub
+
+**Help › Report an issue**, or **Report an issue** in **Help › About**, opens HikariSub's issue list in your browser. Choose **New issue** there. GitHub shows an empty form: there is no template to fill in, so use the list below.
+
+## From a guide page
+
+Every guide page ends with **Report a problem**. It opens a new issue in HikariSub's issue list, titled "Guide:" followed by the page's title, with the page's address already in it. Say what is wrong or missing, and submit it. **Edit this page on GitHub**, beside it, lets you propose the fix yourself.
+
+## What to include
+
+Report one problem per issue, with as much of this as you can:
+
+- **The version and package.** **Help › About** shows both, such as `0.1.0 (deb)`, and the **Copy version** button beside them copies them. Or run `hikarisub --version`, which names the package a little differently, such as `nsis-user` for the Windows setup (see [Command line](/en/docs/reference/command-line#switches)).
+- **Your system.** Windows 10 or 11, or your Linux distribution and its version.
+- **The steps.** What you did, what you expected, and what happened instead. Exact steps from opening HikariSub are best.
+- **The file.** Attach the subtitle file, or a small part of it that shows the problem. If the video matters, say what kind it is rather than attaching it.
+- **The Log.** Open **File › Log**, then **Copy** copies the entries shown, or select one entry and press <kbd>Ctrl</kbd>+<kbd>C</kbd>. Paste them into the issue.
+
+<Callout type="warn">
+The Log is lost when HikariSub quits. Copy it before you close HikariSub or start it again.
+</Callout>
+
+### A script problem
+
+Add the script, or its name and where you got it, and the run's log: in the Automation panel's **Runs** view, **Copy** or **Save…** the lines of that run.
+
+### A crash
+
+HikariSub writes no crash report, so describe what you were doing just before it closed. If HikariSub said **HikariSub did not close properly** at the next start, mention it. On Linux, your system may have kept a core dump of the crash; that is up to your system, not HikariSub.
