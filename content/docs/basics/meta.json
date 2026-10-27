@@ -1,5 +1,14 @@
 {
   "title": "Basics",
   "defaultOpen": true,
-  "pages": ["files-and-formats", "grid", "line-editor", "styles", "video", "audio", "timing"]
+  "pages": [
+    "files-and-formats",
+    "grid",
+    "line-editor",
+    "styles",
+    "video",
+    "audio",
+    "timing",
+    "find-and-replace"
+  ]
 }

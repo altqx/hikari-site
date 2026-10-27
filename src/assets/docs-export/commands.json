@@ -1,0 +1,3094 @@
+{
+    "commands": [
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "G"
+                }
+            ],
+            "id": 1000,
+            "menus": [
+            ],
+            "name": "Commit alt",
+            "symbol": "AUDIO_COMMIT_ALT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "S"
+                }
+            ],
+            "id": 1001,
+            "menus": [
+            ],
+            "name": "Play alt",
+            "symbol": "AUDIO_PLAY_ALT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "R"
+                }
+            ],
+            "id": 1002,
+            "menus": [
+            ],
+            "name": "Play line alt",
+            "symbol": "AUDIO_PLAY_LINE_ALT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Z"
+                }
+            ],
+            "id": 1003,
+            "menus": [
+            ],
+            "name": "Previous line alt",
+            "symbol": "AUDIO_PREVIOUS_ALT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "X"
+                }
+            ],
+            "id": 1004,
+            "menus": [
+            ],
+            "name": "Next line alt",
+            "symbol": "AUDIO_NEXT_ALT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Return"
+                }
+            ],
+            "id": 1010,
+            "menus": [
+            ],
+            "name": "Commit",
+            "symbol": "AUDIO_COMMIT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Down"
+                }
+            ],
+            "id": 1011,
+            "menus": [
+            ],
+            "name": "Play",
+            "symbol": "AUDIO_PLAY"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Up"
+                }
+            ],
+            "id": 1012,
+            "menus": [
+            ],
+            "name": "Play line",
+            "symbol": "AUDIO_PLAY_LINE"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Left"
+                }
+            ],
+            "id": 1013,
+            "menus": [
+            ],
+            "name": "Previous line",
+            "symbol": "AUDIO_PREVIOUS"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Right"
+                }
+            ],
+            "id": 1014,
+            "menus": [
+            ],
+            "name": "Next line",
+            "symbol": "AUDIO_NEXT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "H"
+                }
+            ],
+            "id": 1015,
+            "menus": [
+            ],
+            "name": "Stop",
+            "symbol": "AUDIO_STOP"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Num+0"
+                }
+            ],
+            "id": 1016,
+            "menus": [
+            ],
+            "name": "Play before the marker",
+            "symbol": "AUDIO_PLAY_BEFORE_MARK"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Num+."
+                }
+            ],
+            "id": 1017,
+            "menus": [
+            ],
+            "name": "Play after the marker",
+            "symbol": "AUDIO_PLAY_AFTER_MARK"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Q"
+                }
+            ],
+            "id": 1018,
+            "menus": [
+            ],
+            "name": "Play 500ms before",
+            "symbol": "AUDIO_PLAY_500MS_BEFORE"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "W"
+                }
+            ],
+            "id": 1019,
+            "menus": [
+            ],
+            "name": "Play 500ms after",
+            "symbol": "AUDIO_PLAY_500MS_AFTER"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "E"
+                }
+            ],
+            "id": 1020,
+            "menus": [
+            ],
+            "name": "Play first 500ms",
+            "symbol": "AUDIO_PLAY_500MS_FIRST"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "D"
+                }
+            ],
+            "id": 1021,
+            "menus": [
+            ],
+            "name": "Play last 500ms",
+            "symbol": "AUDIO_PLAY_500MS_LAST"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "T"
+                }
+            ],
+            "id": 1022,
+            "menus": [
+            ],
+            "name": "Play to the end",
+            "symbol": "AUDIO_PLAY_TO_END"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "F"
+                }
+            ],
+            "id": 1023,
+            "menus": [
+            ],
+            "name": "Scroll right",
+            "symbol": "AUDIO_SCROLL_LEFT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "A"
+                }
+            ],
+            "id": 1024,
+            "menus": [
+            ],
+            "name": "Scroll left",
+            "symbol": "AUDIO_SCROLL_RIGHT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "B"
+                }
+            ],
+            "id": 1025,
+            "menus": [
+            ],
+            "name": "Go to selection",
+            "symbol": "AUDIO_GOTO"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "C"
+                }
+            ],
+            "id": 1026,
+            "menus": [
+            ],
+            "name": "Add lead-in",
+            "symbol": "AUDIO_LEAD_IN"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "V"
+                }
+            ],
+            "id": 1027,
+            "menus": [
+            ],
+            "name": "Add lead-out",
+            "symbol": "AUDIO_LEAD_OUT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "K"
+                }
+            ],
+            "id": 1028,
+            "menus": [
+            ],
+            "name": "Split syllable at the cursor",
+            "symbol": "AUDIO_KARAOKE_SPLIT"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Shift+K"
+                }
+            ],
+            "id": 1029,
+            "menus": [
+            ],
+            "name": "Switch long syllables between \\k and \\kf",
+            "symbol": "AUDIO_KARAOKE_KF"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "Y"
+                }
+            ],
+            "id": 1030,
+            "menus": [
+            ],
+            "name": "Tap to time",
+            "symbol": "AUDIO_TAP"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "["
+                }
+            ],
+            "id": 1031,
+            "menus": [
+            ],
+            "name": "Slower",
+            "symbol": "AUDIO_SPEED_DOWN"
+        },
+        {
+            "context": "Audio",
+            "defaultKeys": [
+                {
+                    "context": "Audio",
+                    "keys": "]"
+                }
+            ],
+            "id": 1032,
+            "menus": [
+            ],
+            "name": "Faster",
+            "symbol": "AUDIO_SPEED_UP"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Space"
+                }
+            ],
+            "id": 2000,
+            "menus": [
+            ],
+            "name": "Play / Pause",
+            "symbol": "VIDEO_PLAY_PAUSE"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2001,
+            "menus": [
+            ],
+            "name": "Stop",
+            "symbol": "VIDEO_STOP"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "L"
+                }
+            ],
+            "id": 2002,
+            "menus": [
+            ],
+            "name": "5 seconds forward",
+            "symbol": "VIDEO_5_SECONDS_FORWARD"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": ";"
+                }
+            ],
+            "id": 2003,
+            "menus": [
+            ],
+            "name": "5 seconds backward",
+            "symbol": "VIDEO_5_SECONDS_BACKWARD"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Down"
+                }
+            ],
+            "id": 2004,
+            "menus": [
+            ],
+            "name": "1 minute backward",
+            "symbol": "VIDEO_MINUTE_BACKWARD"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Up"
+                }
+            ],
+            "id": 2005,
+            "menus": [
+            ],
+            "name": "1 minute forward",
+            "symbol": "VIDEO_MINUTE_FORWARD"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Num+."
+                }
+            ],
+            "id": 2006,
+            "menus": [
+            ],
+            "name": "Volume up",
+            "symbol": "VIDEO_VOLUME_PLUS"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Num+0"
+                }
+            ],
+            "id": 2007,
+            "menus": [
+            ],
+            "name": "Volume down",
+            "symbol": "VIDEO_VOLUME_MINUS"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": ","
+                }
+            ],
+            "id": 2008,
+            "menus": [
+            ],
+            "name": "Previous file",
+            "symbol": "VIDEO_PREVIOUS_FILE"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "."
+                }
+            ],
+            "id": 2009,
+            "menus": [
+            ],
+            "name": "Next file",
+            "symbol": "VIDEO_NEXT_FILE"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "N"
+                }
+            ],
+            "id": 2010,
+            "menus": [
+            ],
+            "name": "Previous chapter",
+            "symbol": "VIDEO_PREVIOUS_CHAPTER"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "M"
+                }
+            ],
+            "id": 2011,
+            "menus": [
+            ],
+            "name": "Next chapter",
+            "symbol": "VIDEO_NEXT_CHAPTER"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2012,
+            "menus": [
+            ],
+            "name": "Full screen",
+            "symbol": "VIDEO_FULL_SCREEN"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2013,
+            "menus": [
+            ],
+            "name": "Show / hide progress bar",
+            "symbol": "VIDEO_HIDE_PROGRESS_BAR"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2014,
+            "menus": [
+            ],
+            "name": "Unload video",
+            "symbol": "VIDEO_DELETE_FILE"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2015,
+            "menus": [
+            ],
+            "name": "Change aspect ratio",
+            "symbol": "VIDEO_ASPECT_RATIO"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2017,
+            "menus": [
+            ],
+            "name": "Save frame as PNG",
+            "symbol": "VIDEO_SAVE_FRAME_TO_PNG"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2018,
+            "menus": [
+            ],
+            "name": "Copy frame to clipboard",
+            "symbol": "VIDEO_COPY_FRAME_TO_CLIPBOARD"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2019,
+            "menus": [
+            ],
+            "name": "Save frame with subtitles as PNG",
+            "symbol": "VIDEO_SAVE_SUBBED_FRAME_TO_PNG"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+            ],
+            "id": 2020,
+            "menus": [
+            ],
+            "name": "Copy frame with subtitles to clipboard",
+            "symbol": "VIDEO_COPY_SUBBED_FRAME_TO_CLIPBOARD"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Tab"
+                }
+            ],
+            "id": 2021,
+            "menus": [
+            ],
+            "name": "Full screen bar: Auto / Always / Never",
+            "symbol": "VIDEO_FULLSCREEN_BAR"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "X"
+                }
+            ],
+            "id": 2022,
+            "menus": [
+            ],
+            "name": "Position pointer",
+            "symbol": "VIDEO_TOOL_CROSSHAIR"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "P"
+                }
+            ],
+            "id": 2023,
+            "menus": [
+            ],
+            "name": "Text positioning",
+            "symbol": "VIDEO_TOOL_POSITION"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "G"
+                }
+            ],
+            "id": 2024,
+            "menus": [
+            ],
+            "name": "Text moving",
+            "symbol": "VIDEO_TOOL_MOVE"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "S"
+                }
+            ],
+            "id": 2025,
+            "menus": [
+            ],
+            "name": "Text scaling",
+            "symbol": "VIDEO_TOOL_SCALE"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "R"
+                }
+            ],
+            "id": 2026,
+            "menus": [
+            ],
+            "name": "Text Z rotation",
+            "symbol": "VIDEO_TOOL_ROTATION_Z"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "T"
+                }
+            ],
+            "id": 2027,
+            "menus": [
+            ],
+            "name": "Text X / Y rotation",
+            "symbol": "VIDEO_TOOL_ROTATION_XY"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "C"
+                }
+            ],
+            "id": 2028,
+            "menus": [
+            ],
+            "name": "Rectangle clipping",
+            "symbol": "VIDEO_TOOL_RECTANGLE_CLIP"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "V"
+                }
+            ],
+            "id": 2029,
+            "menus": [
+            ],
+            "name": "Vector clipping",
+            "symbol": "VIDEO_TOOL_VECTOR_CLIP"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "D"
+                }
+            ],
+            "id": 2030,
+            "menus": [
+            ],
+            "name": "Vector drawing",
+            "symbol": "VIDEO_TOOL_DRAWING"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "A"
+                }
+            ],
+            "id": 2031,
+            "menus": [
+            ],
+            "name": "Position shifter",
+            "symbol": "VIDEO_TOOL_POSITION_SHIFTER"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "H"
+                }
+            ],
+            "id": 2032,
+            "menus": [
+            ],
+            "name": "Hydra",
+            "symbol": "VIDEO_TOOL_HYDRA"
+        },
+        {
+            "context": "Video",
+            "defaultKeys": [
+                {
+                    "context": "Video",
+                    "keys": "Q"
+                }
+            ],
+            "id": 2033,
+            "menus": [
+            ],
+            "name": "Perspective",
+            "symbol": "VIDEO_TOOL_PERSPECTIVE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3000,
+            "menus": [
+            ],
+            "name": "Font selection",
+            "symbol": "EDITBOX_CHANGE_FONT"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3001,
+            "menus": [
+            ],
+            "name": "Underline",
+            "symbol": "EDITBOX_CHANGE_UNDERLINE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3002,
+            "menus": [
+            ],
+            "name": "Strikethrough",
+            "symbol": "EDITBOX_CHANGE_STRIKEOUT"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3003,
+            "menus": [
+            ],
+            "name": "Paste all",
+            "symbol": "EDITBOX_PASTE_ALL_TO_TRANSLATION"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3004,
+            "menus": [
+            ],
+            "name": "Paste the selected",
+            "symbol": "EDITBOX_PASTE_SELECTION_TO_TRANSLATION"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3005,
+            "menus": [
+            ],
+            "name": "Hide original",
+            "symbol": "EDITBOX_HIDE_ORIGINAL"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3006,
+            "menus": [
+            ],
+            "name": "Primary color",
+            "symbol": "EDITBOX_CHANGE_COLOR_PRIMARY"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3007,
+            "menus": [
+            ],
+            "name": "Secondary color for karaoke",
+            "symbol": "EDITBOX_CHANGE_COLOR_SECONDARY"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3008,
+            "menus": [
+            ],
+            "name": "Border color",
+            "symbol": "EDITBOX_CHANGE_COLOR_OUTLINE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3009,
+            "menus": [
+            ],
+            "name": "Shadow color",
+            "symbol": "EDITBOX_CHANGE_COLOR_SHADOW"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+Return"
+                }
+            ],
+            "id": 3010,
+            "menus": [
+            ],
+            "name": "Apply changes",
+            "symbol": "EDITBOX_COMMIT"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Return"
+                }
+            ],
+            "id": 3011,
+            "menus": [
+            ],
+            "name": "Apply the changes and go to the next line",
+            "symbol": "EDITBOX_COMMIT_GO_NEXT_LINE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+B"
+                }
+            ],
+            "id": 3012,
+            "menus": [
+            ],
+            "name": "Add bold",
+            "symbol": "EDITBOX_INSERT_BOLD"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+I"
+                }
+            ],
+            "id": 3013,
+            "menus": [
+            ],
+            "name": "Add italic",
+            "symbol": "EDITBOX_INSERT_ITALIC"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Shift+Return"
+                }
+            ],
+            "id": 3014,
+            "menus": [
+            ],
+            "name": "Add line wrap",
+            "symbol": "EDITBOX_SPLIT_LINE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+,"
+                }
+            ],
+            "id": 3015,
+            "menus": [
+            ],
+            "name": "Insert difference from the start",
+            "symbol": "EDITBOX_START_DIFFERENCE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+."
+                }
+            ],
+            "id": 3016,
+            "menus": [
+            ],
+            "name": "Insert difference to the end",
+            "symbol": "EDITBOX_END_DIFFERENCE"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+D"
+                }
+            ],
+            "id": 3017,
+            "menus": [
+            ],
+            "name": "Next unconfirmed line",
+            "symbol": "EDITBOX_FIND_NEXT_DOUBTFUL"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Ctrl+R"
+                }
+            ],
+            "id": 3018,
+            "menus": [
+            ],
+            "name": "Next untranslated line",
+            "symbol": "EDITBOX_FIND_NEXT_UNTRANSLATED"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+Down"
+                }
+            ],
+            "id": 3019,
+            "menus": [
+            ],
+            "name": "Mark as unconfirmed and go to the next line",
+            "symbol": "EDITBOX_SET_DOUBTFUL"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+1"
+                }
+            ],
+            "id": 3020,
+            "menus": [
+            ],
+            "name": "Place run 1",
+            "symbol": "EDITBOX_PLACE_RUN_1"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+2"
+                }
+            ],
+            "id": 3021,
+            "menus": [
+            ],
+            "name": "Place run 2",
+            "symbol": "EDITBOX_PLACE_RUN_2"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+3"
+                }
+            ],
+            "id": 3022,
+            "menus": [
+            ],
+            "name": "Place run 3",
+            "symbol": "EDITBOX_PLACE_RUN_3"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+4"
+                }
+            ],
+            "id": 3023,
+            "menus": [
+            ],
+            "name": "Place run 4",
+            "symbol": "EDITBOX_PLACE_RUN_4"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+5"
+                }
+            ],
+            "id": 3024,
+            "menus": [
+            ],
+            "name": "Place run 5",
+            "symbol": "EDITBOX_PLACE_RUN_5"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+6"
+                }
+            ],
+            "id": 3025,
+            "menus": [
+            ],
+            "name": "Place run 6",
+            "symbol": "EDITBOX_PLACE_RUN_6"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+7"
+                }
+            ],
+            "id": 3026,
+            "menus": [
+            ],
+            "name": "Place run 7",
+            "symbol": "EDITBOX_PLACE_RUN_7"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+8"
+                }
+            ],
+            "id": 3027,
+            "menus": [
+            ],
+            "name": "Place run 8",
+            "symbol": "EDITBOX_PLACE_RUN_8"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+                {
+                    "context": "Editor",
+                    "keys": "Alt+9"
+                }
+            ],
+            "id": 3028,
+            "menus": [
+            ],
+            "name": "Place run 9",
+            "symbol": "EDITBOX_PLACE_RUN_9"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3029,
+            "menus": [
+            ],
+            "name": "Place the next run",
+            "symbol": "EDITBOX_PLACE_NEXT_RUN"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3100,
+            "menus": [
+            ],
+            "name": "First tag button",
+            "symbol": "EDITBOX_TAG_BUTTON1"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3101,
+            "menus": [
+            ],
+            "name": "Second tag button",
+            "symbol": "EDITBOX_TAG_BUTTON2"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3102,
+            "menus": [
+            ],
+            "name": "Third tag button",
+            "symbol": "EDITBOX_TAG_BUTTON3"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3103,
+            "menus": [
+            ],
+            "name": "4th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON4"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3104,
+            "menus": [
+            ],
+            "name": "5th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON5"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3105,
+            "menus": [
+            ],
+            "name": "6th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON6"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3106,
+            "menus": [
+            ],
+            "name": "7th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON7"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3107,
+            "menus": [
+            ],
+            "name": "8th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON8"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3108,
+            "menus": [
+            ],
+            "name": "9th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON9"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3109,
+            "menus": [
+            ],
+            "name": "10th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON10"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3110,
+            "menus": [
+            ],
+            "name": "11th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON11"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3111,
+            "menus": [
+            ],
+            "name": "12th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON12"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3112,
+            "menus": [
+            ],
+            "name": "13th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON13"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3113,
+            "menus": [
+            ],
+            "name": "14th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON14"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3114,
+            "menus": [
+            ],
+            "name": "15th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON15"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3115,
+            "menus": [
+            ],
+            "name": "16th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON16"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3116,
+            "menus": [
+            ],
+            "name": "17th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON17"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3117,
+            "menus": [
+            ],
+            "name": "18th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON18"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3118,
+            "menus": [
+            ],
+            "name": "19th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON19"
+        },
+        {
+            "context": "Editor",
+            "defaultKeys": [
+            ],
+            "id": 3119,
+            "menus": [
+            ],
+            "name": "20th tag button",
+            "symbol": "EDITBOX_TAG_BUTTON20"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4001,
+            "menus": [
+                "Grid menu > Hide columns > Hide layer"
+            ],
+            "name": "Hide layer",
+            "symbol": "GRID_HIDE_LAYER"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4002,
+            "menus": [
+                "Grid menu > Hide columns > Hide start time"
+            ],
+            "name": "Hide start time",
+            "symbol": "GRID_HIDE_START"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4004,
+            "menus": [
+                "Grid menu > Hide columns > Hide end time"
+            ],
+            "name": "Hide end time",
+            "symbol": "GRID_HIDE_END"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4008,
+            "menus": [
+                "Grid menu > Hide columns > Hide style"
+            ],
+            "name": "Hide style",
+            "symbol": "GRID_HIDE_STYLE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4016,
+            "menus": [
+                "Grid menu > Hide columns > Hide actor"
+            ],
+            "name": "Hide actor",
+            "symbol": "GRID_HIDE_ACTOR"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4032,
+            "menus": [
+                "Grid menu > Hide columns > Hide left margin"
+            ],
+            "name": "Hide left margin",
+            "symbol": "GRID_HIDE_MARGINL"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4064,
+            "menus": [
+                "Grid menu > Hide columns > Hide right margin"
+            ],
+            "name": "Hide right margin",
+            "symbol": "GRID_HIDE_MARGINR"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4128,
+            "menus": [
+                "Grid menu > Hide columns > Hide vertical margin"
+            ],
+            "name": "Hide vertical margin",
+            "symbol": "GRID_HIDE_MARGINV"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4256,
+            "menus": [
+                "Grid menu > Hide columns > Hide effect"
+            ],
+            "name": "Hide effect",
+            "symbol": "GRID_HIDE_EFFECT"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4512,
+            "menus": [
+                "Grid menu > Hide columns > Hide characters per second"
+            ],
+            "name": "Hide characters per second",
+            "symbol": "GRID_HIDE_CPS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4514,
+            "menus": [
+                "Grid menu > Insert > Insert before"
+            ],
+            "name": "Insert before",
+            "symbol": "GRID_INSERT_BEFORE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4515,
+            "menus": [
+                "Grid menu > Insert > Insert after"
+            ],
+            "name": "Insert after",
+            "symbol": "GRID_INSERT_AFTER"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4516,
+            "menus": [
+                "Grid menu > Insert > Insert before with video time"
+            ],
+            "name": "Insert before with video time",
+            "symbol": "GRID_INSERT_BEFORE_VIDEO"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4517,
+            "menus": [
+                "Grid menu > Insert > Insert after with video time"
+            ],
+            "name": "Insert after with video time",
+            "symbol": "GRID_INSERT_AFTER_VIDEO"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4518,
+            "menus": [
+                "Grid menu > Insert > Insert before with video frame time"
+            ],
+            "name": "Insert before with video frame time",
+            "symbol": "GRID_INSERT_BEFORE_WITH_VIDEO_FRAME"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4519,
+            "menus": [
+                "Grid menu > Insert > Insert after with video frame time"
+            ],
+            "name": "Insert after with video frame time",
+            "symbol": "GRID_INSERT_AFTER_WITH_VIDEO_FRAME"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4520,
+            "menus": [
+                "Grid menu > Select all lines visible on video"
+            ],
+            "name": "Select all lines visible on video",
+            "symbol": "GRID_SELECT_VISIBLE_LINES"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4521,
+            "menus": [
+                "Grid menu > Split lines > Split line at video time"
+            ],
+            "name": "Split line at video time",
+            "symbol": "GRID_SPLIT_BY_VIDEO_TIME"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4522,
+            "menus": [
+                "Grid menu > Split lines > Split lines into frames"
+            ],
+            "name": "Split lines into frames",
+            "symbol": "GRID_SPLIT_BY_FRAME"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4523,
+            "menus": [
+                "Grid menu > Split lines > Split lines into characters"
+            ],
+            "name": "Split lines into characters",
+            "symbol": "GRID_SPLIT_BY_CHARS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4524,
+            "menus": [
+                "Grid menu > Split lines > Split lines into words"
+            ],
+            "name": "Split lines into words",
+            "symbol": "GRID_SPLIT_BY_WORDS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4525,
+            "menus": [
+                "Grid menu > Split lines > Split lines by wraps"
+            ],
+            "name": "Split lines by wraps",
+            "symbol": "GRID_SPLIT_BY_WRAPS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4526,
+            "menus": [
+                "Grid menu > Swap"
+            ],
+            "name": "Swap lines",
+            "symbol": "GRID_SWAP_LINES"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+                {
+                    "context": "Subtitles",
+                    "keys": "Ctrl+D"
+                }
+            ],
+            "id": 4527,
+            "menus": [
+                "Grid menu > Duplicate lines"
+            ],
+            "name": "Duplicate lines",
+            "symbol": "GRID_DUPLICATE_LINES"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4528,
+            "menus": [
+                "Grid menu > Join lines"
+            ],
+            "name": "Join lines",
+            "symbol": "GRID_JOIN_LINES"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4529,
+            "menus": [
+                "Grid menu > Join lines and keep first"
+            ],
+            "name": "Join lines and keep first",
+            "symbol": "GRID_JOIN_TO_FIRST_LINE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4530,
+            "menus": [
+                "Grid menu > Join lines and keep last"
+            ],
+            "name": "Join lines and keep last",
+            "symbol": "GRID_JOIN_TO_LAST_LINE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+                {
+                    "context": "Subtitles",
+                    "keys": "Ctrl+Q"
+                }
+            ],
+            "id": 4534,
+            "menus": [
+                "Grid menu > Show subtitles preview"
+            ],
+            "name": "Show subtitles preview",
+            "symbol": "GRID_SHOW_PREVIEW"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4535,
+            "menus": [
+                "Grid menu > Hide selected lines"
+            ],
+            "name": "Hide selected lines",
+            "symbol": "GRID_HIDE_SELECTED"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4536,
+            "menus": [
+                "Grid menu > Filtering > Turn off filtering"
+            ],
+            "name": "Turn off filtering",
+            "symbol": "GRID_FILTER_BY_NOTHING"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4537,
+            "menus": [
+            ],
+            "name": "Hide lines with styles",
+            "symbol": "GRID_FILTER_BY_STYLES"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4538,
+            "menus": [
+                "Grid menu > Filtering > Hide selected lines"
+            ],
+            "name": "Hide selected lines",
+            "symbol": "GRID_FILTER_BY_SELECTIONS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4539,
+            "menus": [
+                "Grid menu > Filtering > Hide comments"
+            ],
+            "name": "Hide comments",
+            "symbol": "GRID_FILTER_BY_DIALOGUES"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4540,
+            "menus": [
+                "Grid menu > Filtering > Show unconfirmed"
+            ],
+            "name": "Show unconfirmed",
+            "symbol": "GRID_FILTER_BY_DOUBTFUL"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4541,
+            "menus": [
+                "Grid menu > Filtering > Show untranslated"
+            ],
+            "name": "Show untranslated",
+            "symbol": "GRID_FILTER_BY_UNTRANSLATED"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4542,
+            "menus": [
+                "Grid menu > Filtering > Filter"
+            ],
+            "name": "Filter",
+            "symbol": "GRID_FILTER"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4543,
+            "menus": [
+                "Grid menu > Filtering > Filter after loading subtitles"
+            ],
+            "name": "Filter after loading subtitles",
+            "symbol": "GRID_FILTER_AFTER_SUBS_LOAD"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4544,
+            "menus": [
+                "Grid menu > Filtering > Reverse filtering"
+            ],
+            "name": "Reverse filtering",
+            "symbol": "GRID_FILTER_INVERT"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4545,
+            "menus": [
+                "Grid menu > Filtering > Do not reset previous filtering"
+            ],
+            "name": "Do not reset previous filtering",
+            "symbol": "GRID_FILTER_DO_NOT_RESET"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4546,
+            "menus": [
+                "Grid menu > Ignore filtering in some actions"
+            ],
+            "name": "Ignore filtering in some actions",
+            "symbol": "GRID_FILTER_IGNORE_IN_ACTIONS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4547,
+            "menus": [
+                "Grid menu > Make tree"
+            ],
+            "name": "Make tree",
+            "symbol": "GRID_TREE_MAKE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4548,
+            "menus": [
+                "Grid menu > Paste translation text"
+            ],
+            "name": "Paste translation text",
+            "symbol": "GRID_PASTE_TRANSLATION"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4549,
+            "menus": [
+                "Grid menu > Dialogue shifting window"
+            ],
+            "name": "Dialogue shifting window",
+            "symbol": "GRID_TRANSLATION_DIALOG"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4550,
+            "menus": [
+                "Grid menu > Load subtitles from an MKV/OGM file"
+            ],
+            "name": "Load subtitles from an MKV file",
+            "symbol": "GRID_SUBS_FROM_MKV"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4551,
+            "menus": [
+                "Grid menu > Set times as a continuous (previous line)"
+            ],
+            "name": "Set times as a continuous (previous line)",
+            "symbol": "GRID_MAKE_CONTINOUS_PREVIOUS_LINE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4552,
+            "menus": [
+                "Grid menu > Set times as a continuous (next line)"
+            ],
+            "name": "Set times as a continuous (next line)",
+            "symbol": "GRID_MAKE_CONTINOUS_NEXT_LINE"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+                {
+                    "context": "Subtitles",
+                    "keys": "Ctrl+Shift+V"
+                }
+            ],
+            "id": 4553,
+            "menus": [
+                "Grid menu > Paste columns"
+            ],
+            "name": "Paste columns",
+            "symbol": "GRID_PASTE_COLUMNS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+                {
+                    "context": "Subtitles",
+                    "keys": "Ctrl+Shift+C"
+                }
+            ],
+            "id": 4554,
+            "menus": [
+                "Grid menu > Copy columns"
+            ],
+            "name": "Copy columns",
+            "symbol": "GRID_COPY_COLUMNS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4555,
+            "menus": [
+                "Grid menu > Set FPS from video"
+            ],
+            "name": "Set FPS from video",
+            "symbol": "GRID_SET_FPS_FROM_VIDEO"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
+            "id": 4556,
+            "menus": [
+                "Grid menu > Set new FPS"
+            ],
+            "name": "Set new FPS",
+            "symbol": "GRID_SET_NEW_FPS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+S"
+                }
+            ],
+            "id": 5000,
+            "menus": [
+                "File > Save"
+            ],
+            "name": "Save",
+            "symbol": "GLOBAL_SAVE_SUBS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5001,
+            "menus": [
+                "File > Save all"
+            ],
+            "name": "Save all subtitles",
+            "symbol": "GLOBAL_SAVE_ALL_SUBS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Shift+S"
+                }
+            ],
+            "id": 5002,
+            "menus": [
+                "File > Save as…"
+            ],
+            "name": "Save as...",
+            "symbol": "GLOBAL_SAVE_SUBS_AS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5003,
+            "menus": [
+                "File > Save translation"
+            ],
+            "name": "Save translation",
+            "symbol": "GLOBAL_SAVE_TRANSLATION"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5004,
+            "menus": [
+                "File > Remove subtitles from the editor"
+            ],
+            "name": "Remove subtitles from the editor",
+            "symbol": "GLOBAL_REMOVE_SUBS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Y"
+                }
+            ],
+            "id": 5005,
+            "menus": [
+                "Edit > Redo"
+            ],
+            "name": "Redo",
+            "symbol": "GLOBAL_REDO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Z"
+                }
+            ],
+            "id": 5006,
+            "menus": [
+                "Edit > Undo"
+            ],
+            "name": "Undo",
+            "symbol": "GLOBAL_UNDO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5007,
+            "menus": [
+                "Edit > Undo to last save"
+            ],
+            "name": "Undo to last save",
+            "symbol": "GLOBAL_UNDO_TO_LAST_SAVE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Shift+H"
+                }
+            ],
+            "id": 5008,
+            "menus": [
+                "Edit > History"
+            ],
+            "name": "History",
+            "symbol": "GLOBAL_HISTORY"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+F"
+                }
+            ],
+            "id": 5009,
+            "menus": [
+                "Edit > Find"
+            ],
+            "name": "Find",
+            "symbol": "GLOBAL_SEARCH"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+H"
+                }
+            ],
+            "id": 5010,
+            "menus": [
+                "Edit > Find and replace"
+            ],
+            "name": "Find and replace",
+            "symbol": "GLOBAL_FIND_REPLACE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F3"
+                }
+            ],
+            "id": 5011,
+            "menus": [
+                "Edit > Find next"
+            ],
+            "name": "Find next",
+            "symbol": "GLOBAL_FIND_NEXT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5012,
+            "menus": [
+                "Edit > Fix minor errors (experimental)"
+            ],
+            "name": "Fix minor errors (experimental)",
+            "symbol": "GLOBAL_MISSPELLS_REPLACER"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5013,
+            "menus": [
+                "Edit > Select lines"
+            ],
+            "name": "Select lines",
+            "symbol": "GLOBAL_OPEN_SELECT_LINES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5014,
+            "menus": [
+                "Subtitles > Check spelling"
+            ],
+            "name": "Check spelling",
+            "symbol": "GLOBAL_OPEN_SPELLCHECKER"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5016,
+            "menus": [
+                "File > Save subtitles using the video name"
+            ],
+            "name": "Save subtitles using the video name",
+            "symbol": "GLOBAL_SAVE_WITH_VIDEO_NAME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5017,
+            "menus": [
+                "Audio > Open audio"
+            ],
+            "name": "Open audio",
+            "symbol": "GLOBAL_OPEN_AUDIO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5018,
+            "menus": [
+                "Audio > Open audio from video"
+            ],
+            "name": "Open audio from video",
+            "symbol": "GLOBAL_AUDIO_FROM_VIDEO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5019,
+            "menus": [
+                "Audio > Close audio"
+            ],
+            "name": "Close audio",
+            "symbol": "GLOBAL_CLOSE_AUDIO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F9"
+                }
+            ],
+            "id": 5020,
+            "menus": [
+                "Subtitles > Conversion > Convert to ASS"
+            ],
+            "name": "Convert to ASS",
+            "symbol": "GLOBAL_CONVERT_TO_ASS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F8"
+                }
+            ],
+            "id": 5021,
+            "menus": [
+                "Subtitles > Conversion > Convert to SRT"
+            ],
+            "name": "Convert to SRT",
+            "symbol": "GLOBAL_CONVERT_TO_SRT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+F12"
+                }
+            ],
+            "id": 5022,
+            "menus": [
+                "Subtitles > Conversion > Convert to TMP"
+            ],
+            "name": "Convert to TMP",
+            "symbol": "GLOBAL_CONVERT_TO_TMP"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5023,
+            "menus": [
+                "Subtitles > Conversion > Convert to MDVD"
+            ],
+            "name": "Convert to MDVD",
+            "symbol": "GLOBAL_CONVERT_TO_MDVD"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F11"
+                }
+            ],
+            "id": 5024,
+            "menus": [
+                "Subtitles > Conversion > Convert to MPL2"
+            ],
+            "name": "Convert to MPL2",
+            "symbol": "GLOBAL_CONVERT_TO_MPL2"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5025,
+            "menus": [
+                "Subtitles > ASS file properties"
+            ],
+            "name": "ASS file properties",
+            "symbol": "GLOBAL_OPEN_ASS_PROPERTIES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+M"
+                }
+            ],
+            "id": 5026,
+            "menus": [
+                "Subtitles > Style manager"
+            ],
+            "name": "Style manager",
+            "symbol": "GLOBAL_OPEN_STYLE_MANAGER"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5027,
+            "menus": [
+                "Subtitles > Resample subtitles"
+            ],
+            "name": "Resample subtitles",
+            "symbol": "GLOBAL_OPEN_SUBS_RESAMPLE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5028,
+            "menus": [
+                "Subtitles > Font collector",
+                "Grid menu > Font collector"
+            ],
+            "name": "Font collector",
+            "symbol": "GLOBAL_OPEN_FONT_COLLECTOR"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5029,
+            "menus": [
+                "Subtitles > Hide tags"
+            ],
+            "name": "Hide tags",
+            "symbol": "GLOBAL_HIDE_TAGS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+I"
+                }
+            ],
+            "id": 5030,
+            "menus": [
+                "Subtitles > Shift times..."
+            ],
+            "name": "Time shift window",
+            "symbol": "GLOBAL_SHOW_SHIFT_TIMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5036,
+            "menus": [
+                "Automation > Load script…"
+            ],
+            "name": "Load script",
+            "symbol": "GLOBAL_AUTOMATION_LOAD_SCRIPT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5037,
+            "menus": [
+                "Automation > Refresh autoload scripts"
+            ],
+            "name": "Refresh autoload scripts",
+            "symbol": "GLOBAL_AUTOMATION_RELOAD_AUTOLOAD"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5038,
+            "menus": [
+                "Automation > Run the last loaded script"
+            ],
+            "name": "Run the last loaded script",
+            "symbol": "GLOBAL_AUTOMATION_LOAD_LAST_SCRIPT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Alt+Space"
+                }
+            ],
+            "id": 5040,
+            "menus": [
+                "Video > Play / Pause"
+            ],
+            "name": "Play / Pause",
+            "symbol": "GLOBAL_PLAY_PAUSE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Left"
+                }
+            ],
+            "id": 5041,
+            "menus": [
+                "Video > Previous frame"
+            ],
+            "name": "Previous frame",
+            "symbol": "GLOBAL_PREVIOUS_FRAME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Right"
+                }
+            ],
+            "id": 5042,
+            "menus": [
+                "Video > Next frame"
+            ],
+            "name": "Next frame",
+            "symbol": "GLOBAL_NEXT_FRAME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5043,
+            "menus": [
+                "Video > Zoom video"
+            ],
+            "name": "Zoom video",
+            "symbol": "GLOBAL_VIDEO_ZOOM"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5044,
+            "menus": [
+                "Video > Turn off video zoom"
+            ],
+            "name": "Turn off video zoom",
+            "symbol": "GLOBAL_RESET_VIDEO_ZOOM"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Left"
+                }
+            ],
+            "id": 5045,
+            "menus": [
+                "Video > Insert start time from video"
+            ],
+            "name": "Insert start time from video",
+            "symbol": "GLOBAL_SET_START_TIME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Right"
+                }
+            ],
+            "id": 5046,
+            "menus": [
+                "Video > Insert end time from video"
+            ],
+            "name": "Insert end time from video",
+            "symbol": "GLOBAL_SET_END_TIME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5047,
+            "menus": [
+                "Video > Go to start time"
+            ],
+            "name": "Go to start time",
+            "symbol": "GLOBAL_SET_VIDEO_AT_START_TIME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5048,
+            "menus": [
+                "Video > Go to end time of line"
+            ],
+            "name": "Go to end time of line",
+            "symbol": "GLOBAL_SET_VIDEO_AT_END_TIME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5049,
+            "menus": [
+                "Video > Go to next keyframe"
+            ],
+            "name": "Go to next keyframe",
+            "symbol": "GLOBAL_GO_TO_NEXT_KEYFRAME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5050,
+            "menus": [
+                "Video > Go to previous keyframe"
+            ],
+            "name": "Go to previous keyframe",
+            "symbol": "GLOBAL_GO_TO_PREVIOUS_KEYFRAME"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5051,
+            "menus": [
+                "Video > Set audio position to video time"
+            ],
+            "name": "Set audio position to video time",
+            "symbol": "GLOBAL_SET_AUDIO_FROM_VIDEO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5052,
+            "menus": [
+                "Video > Set audio marker to video time"
+            ],
+            "name": "Set audio marker to video time",
+            "symbol": "GLOBAL_SET_AUDIO_MARK_FROM_VIDEO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5055,
+            "menus": [
+                "File > Last session > Load last session"
+            ],
+            "name": "Load last session",
+            "symbol": "GLOBAL_LOAD_LAST_SESSION"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+O"
+                }
+            ],
+            "id": 5100,
+            "menus": [
+                "File > Open…"
+            ],
+            "name": "Open subtitles",
+            "symbol": "GLOBAL_OPEN_SUBS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Shift+O"
+                }
+            ],
+            "id": 5101,
+            "menus": [
+                "File > Open video…",
+                "Video > Open video…"
+            ],
+            "name": "Open video",
+            "symbol": "GLOBAL_OPEN_VIDEO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5102,
+            "menus": [
+                "Video > Open keyframes"
+            ],
+            "name": "Open keyframes",
+            "symbol": "GLOBAL_OPEN_KEYFRAMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5105,
+            "menus": [
+                "File > Open auto save"
+            ],
+            "name": "Open auto save",
+            "symbol": "GLOBAL_OPEN_AUTO_SAVE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5107,
+            "menus": [
+                "File > Settings"
+            ],
+            "name": "Settings",
+            "symbol": "GLOBAL_SETTINGS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5110,
+            "menus": [
+                "Help > About"
+            ],
+            "name": "About",
+            "symbol": "GLOBAL_ABOUT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5111,
+            "menus": [
+                "Help > Credits"
+            ],
+            "name": "Credits",
+            "symbol": "GLOBAL_HELPERS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F1"
+                }
+            ],
+            "id": 5112,
+            "menus": [
+                "Help > User guide"
+            ],
+            "name": "User guide",
+            "symbol": "GLOBAL_HELP"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5113,
+            "menus": [
+                "Help > Report an issue"
+            ],
+            "name": "Report an issue",
+            "symbol": "GLOBAL_ANSI"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5114,
+            "menus": [
+                "Help > Check for updates"
+            ],
+            "name": "Check for updates",
+            "symbol": "GLOBAL_CHECK_FOR_UPDATES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Up"
+                }
+            ],
+            "id": 5150,
+            "menus": [
+            ],
+            "name": "Previous line",
+            "symbol": "GLOBAL_PREVIOUS_LINE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+Down"
+                }
+            ],
+            "id": 5151,
+            "menus": [
+            ],
+            "name": "Next line",
+            "symbol": "GLOBAL_NEXT_LINE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F4"
+                }
+            ],
+            "id": 5152,
+            "menus": [
+            ],
+            "name": "Merge with previous line",
+            "symbol": "GLOBAL_JOIN_WITH_PREVIOUS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F5"
+                }
+            ],
+            "id": 5153,
+            "menus": [
+            ],
+            "name": "Merge with next line",
+            "symbol": "GLOBAL_JOIN_WITH_NEXT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+PgDown"
+                }
+            ],
+            "id": 5154,
+            "menus": [
+            ],
+            "name": "Next tab",
+            "symbol": "GLOBAL_NEXT_TAB"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+PgUp"
+                }
+            ],
+            "id": 5155,
+            "menus": [
+            ],
+            "name": "Previous tab",
+            "symbol": "GLOBAL_PREVIOUS_TAB"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Shift+Del"
+                }
+            ],
+            "id": 5156,
+            "menus": [
+                "Grid menu > Delete lines"
+            ],
+            "name": "Delete line",
+            "symbol": "GLOBAL_REMOVE_LINES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Alt+Del"
+                }
+            ],
+            "id": 5157,
+            "menus": [
+                "Grid menu > Delete text"
+            ],
+            "name": "Delete text",
+            "symbol": "GLOBAL_REMOVE_TEXT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Shift+Left"
+                }
+            ],
+            "id": 5158,
+            "menus": [
+            ],
+            "name": "Change start time to nearest keyframe",
+            "symbol": "GLOBAL_SNAP_WITH_START"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Shift+Right"
+                }
+            ],
+            "id": 5159,
+            "menus": [
+            ],
+            "name": "Change end time to nearest keyframe",
+            "symbol": "GLOBAL_SNAP_WITH_END"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "F2"
+                }
+            ],
+            "id": 5166,
+            "menus": [
+            ],
+            "name": "Select line at current video position",
+            "symbol": "GLOBAL_SELECT_FROM_VIDEO"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5167,
+            "menus": [
+            ],
+            "name": "Play active line",
+            "symbol": "GLOBAL_PLAY_ACTUAL_LINE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5168,
+            "menus": [
+            ],
+            "name": "Clean styles of ASS file",
+            "symbol": "GLOBAL_STYLE_MANAGER_CLEAN_STYLE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5169,
+            "menus": [
+                "Subtitles > Hide tags in the line editor"
+            ],
+            "name": "Hide tags in the line editor",
+            "symbol": "GLOBAL_EDITOR_HIDE_TAGS"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5170,
+            "menus": [
+                "Video > Show / hide render cost"
+            ],
+            "name": "Show / hide render cost",
+            "symbol": "GLOBAL_VIDEO_RENDER_COST"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5171,
+            "menus": [
+                "Subtitles > Translation mode"
+            ],
+            "name": "Translation mode",
+            "symbol": "GLOBAL_TRANSLATION_MODE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5172,
+            "menus": [
+                "Subtitles > Check karaoke"
+            ],
+            "name": "Check karaoke",
+            "symbol": "GLOBAL_CHECK_KARAOKE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5173,
+            "menus": [
+                "Automation > Repeat last run"
+            ],
+            "name": "Repeat last run",
+            "symbol": "GLOBAL_AUTOMATION_REPEAT_LAST_RUN"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5174,
+            "menus": [
+                "Subtitles > Kanji timer…"
+            ],
+            "name": "Kanji timer",
+            "symbol": "GLOBAL_KANJI_TIMER"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5200,
+            "menus": [
+                "Edit > Sort all lines > The starting time"
+            ],
+            "name": "Sort all lines by start time",
+            "symbol": "GLOBAL_SORT_ALL_BY_START_TIMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5201,
+            "menus": [
+                "Edit > Sort all lines > End time"
+            ],
+            "name": "Sort all lines by end time",
+            "symbol": "GLOBAL_SORT_ALL_BY_END_TIMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5202,
+            "menus": [
+                "Edit > Sort all lines > Styles"
+            ],
+            "name": "Sort all lines by styles",
+            "symbol": "GLOBAL_SORT_ALL_BY_STYLE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5203,
+            "menus": [
+                "Edit > Sort all lines > Actor"
+            ],
+            "name": "Sort all lines by actor",
+            "symbol": "GLOBAL_SORT_ALL_BY_ACTOR"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5204,
+            "menus": [
+                "Edit > Sort all lines > Effect"
+            ],
+            "name": "Sort all lines by effect",
+            "symbol": "GLOBAL_SORT_ALL_BY_EFFECT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5205,
+            "menus": [
+                "Edit > Sort all lines > Layer"
+            ],
+            "name": "Sort all lines by layer",
+            "symbol": "GLOBAL_SORT_ALL_BY_LAYER"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5206,
+            "menus": [
+                "Edit > Sort selected lines > The starting time"
+            ],
+            "name": "Sort selected lines by start time",
+            "symbol": "GLOBAL_SORT_SELECTED_BY_START_TIMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5207,
+            "menus": [
+                "Edit > Sort selected lines > End time"
+            ],
+            "name": "Sort selected lines by end time",
+            "symbol": "GLOBAL_SORT_SELECTED_BY_END_TIMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5208,
+            "menus": [
+                "Edit > Sort selected lines > Styles"
+            ],
+            "name": "Sort selected lines by styles",
+            "symbol": "GLOBAL_SORT_SELECTED_BY_STYLE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5209,
+            "menus": [
+                "Edit > Sort selected lines > Actor"
+            ],
+            "name": "Sort selected lines by actor",
+            "symbol": "GLOBAL_SORT_SELECTED_BY_ACTOR"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5210,
+            "menus": [
+                "Edit > Sort selected lines > Effect"
+            ],
+            "name": "Sort selected lines by effect",
+            "symbol": "GLOBAL_SORT_SELECTED_BY_EFFECT"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5211,
+            "menus": [
+                "Edit > Sort selected lines > Layer"
+            ],
+            "name": "Sort selected lines by layer",
+            "symbol": "GLOBAL_SORT_SELECTED_BY_LAYER"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+            ],
+            "id": 5300,
+            "menus": [
+                "Subtitles > Shift times / run time post processor"
+            ],
+            "name": "Shift times / run time post processor",
+            "symbol": "GLOBAL_SHIFT_TIMES"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+T"
+                }
+            ],
+            "id": 5301,
+            "menus": [
+            ],
+            "name": "Open new tab",
+            "symbol": "GLOBAL_ADD_PAGE"
+        },
+        {
+            "context": "Global",
+            "defaultKeys": [
+                {
+                    "context": "Global",
+                    "keys": "Ctrl+W"
+                }
+            ],
+            "id": 5302,
+            "menus": [
+                "File > Close"
+            ],
+            "name": "Close current tab",
+            "symbol": "GLOBAL_CLOSE_PAGE"
+        }
+    ]
+}

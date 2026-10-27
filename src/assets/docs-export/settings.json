@@ -1,0 +1,1533 @@
+{
+    "pages": [
+        {
+            "id": "general",
+            "name": "General"
+        },
+        {
+            "id": "appearance",
+            "name": "Appearance"
+        },
+        {
+            "id": "lineEditor",
+            "name": "Line editor"
+        },
+        {
+            "id": "grid",
+            "name": "Subtitle grid"
+        },
+        {
+            "id": "video",
+            "name": "Video"
+        },
+        {
+            "id": "audio",
+            "name": "Audio"
+        },
+        {
+            "id": "conversion",
+            "name": "Conversion"
+        },
+        {
+            "id": "subtitleProperties",
+            "name": "Subtitle properties"
+        },
+        {
+            "id": "automation",
+            "name": "Automation"
+        },
+        {
+            "id": "hotkeys",
+            "name": "Hotkeys"
+        },
+        {
+            "id": "updates",
+            "name": "Updates"
+        }
+    ],
+    "settings": [
+        {
+            "control": "choice",
+            "default": "",
+            "hint": "",
+            "key": "program.language",
+            "label": "Interface language",
+            "page": "general",
+            "section": "Language",
+            "type": "string",
+            "values": [
+                {
+                    "label": "English",
+                    "value": "en"
+                },
+                {
+                    "label": "한국어",
+                    "value": "ko_KR"
+                },
+                {
+                    "label": "Polski",
+                    "value": "pl"
+                },
+                {
+                    "label": "தமிழ்",
+                    "value": "ta"
+                },
+                {
+                    "label": "ไทย",
+                    "value": "th_TH"
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "subtitles.openInNewTab",
+            "label": "Always open subtitles in a new tab",
+            "page": "general",
+            "section": "Tabs",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.loadSortedSubs",
+            "label": "Open sorted subtitles",
+            "page": "general",
+            "section": "Tabs",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "shiftTimes.changeValuesWithTab",
+            "label": "Synchronize time shifting window in all tabs",
+            "page": "general",
+            "section": "Tabs",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 0,
+            "hint": "Number of tab name characters. Range from 20 to 150",
+            "key": "program.tabTextMaxChars",
+            "label": "Tab name length",
+            "max": 150,
+            "min": 20,
+            "page": "general",
+            "section": "Tabs",
+            "type": "int",
+            "unit": "characters"
+        },
+        {
+            "control": "number",
+            "default": 1,
+            "hint": "0 turns saving while editing off.",
+            "key": "editor.saveAfterCharacterCount",
+            "label": "Save while editing every",
+            "max": 10000,
+            "min": 0,
+            "page": "general",
+            "section": "Saving",
+            "type": "int",
+            "unit": "edits"
+        },
+        {
+            "control": "number",
+            "default": 3,
+            "hint": "Number of autosaves can be set from 2 to 1000000",
+            "key": "autosave.maxFiles",
+            "label": "Autosave files kept",
+            "max": 1000000,
+            "min": 2,
+            "page": "general",
+            "section": "Saving",
+            "type": "int"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "Off: notices go to the Log only.",
+            "key": "notices.toasts",
+            "label": "Show notices as toasts",
+            "page": "general",
+            "section": "Notices",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "fonts.externalDirectory",
+            "label": "Fonts folder",
+            "page": "general",
+            "section": "Folders",
+            "type": "string"
+        },
+        {
+            "control": "choice",
+            "default": "dark",
+            "hint": "",
+            "key": "appearance.theme",
+            "label": "Interface theme",
+            "page": "appearance",
+            "section": "Theme",
+            "type": "string",
+            "values": [
+                {
+                    "label": "Light",
+                    "value": "light"
+                },
+                {
+                    "label": "Dark",
+                    "value": "dark"
+                },
+                {
+                    "label": "High contrast white",
+                    "value": "highContrastWhite"
+                },
+                {
+                    "label": "High contrast black",
+                    "value": "highContrastBlack"
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "Light or Dark as the system's colour scheme sets it; high contrast stays as chosen",
+            "key": "appearance.followSystem",
+            "label": "Follow system theme",
+            "page": "appearance",
+            "section": "Theme",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": "green",
+            "hint": "",
+            "key": "appearance.lightAccent",
+            "label": "Accent (Light)",
+            "page": "appearance",
+            "section": "Accent color",
+            "type": "string",
+            "values": [
+                {
+                    "label": "Red",
+                    "value": "red"
+                },
+                {
+                    "label": "Orange",
+                    "value": "orange"
+                },
+                {
+                    "label": "Gold",
+                    "value": "gold"
+                },
+                {
+                    "label": "Green",
+                    "value": "green"
+                },
+                {
+                    "label": "Blue",
+                    "value": "blue"
+                },
+                {
+                    "label": "Purple",
+                    "value": "purple"
+                },
+                {
+                    "label": "Pink",
+                    "value": "pink"
+                }
+            ]
+        },
+        {
+            "control": "choice",
+            "default": "green",
+            "hint": "",
+            "key": "appearance.darkAccent",
+            "label": "Accent (Dark)",
+            "page": "appearance",
+            "section": "Accent color",
+            "type": "string",
+            "values": [
+                {
+                    "label": "Red",
+                    "value": "red"
+                },
+                {
+                    "label": "Orange",
+                    "value": "orange"
+                },
+                {
+                    "label": "Gold",
+                    "value": "gold"
+                },
+                {
+                    "label": "Green",
+                    "value": "green"
+                },
+                {
+                    "label": "Blue",
+                    "value": "blue"
+                },
+                {
+                    "label": "Purple",
+                    "value": "purple"
+                },
+                {
+                    "label": "Pink",
+                    "value": "pink"
+                }
+            ]
+        },
+        {
+            "control": "colour",
+            "default": "#0037B3",
+            "hint": "",
+            "key": "appearance.highContrastWhite.accent",
+            "label": "Accent color (High contrast white)",
+            "page": "appearance",
+            "section": "UI colors",
+            "type": "string"
+        },
+        {
+            "control": "colour",
+            "default": "#000000",
+            "hint": "",
+            "key": "appearance.highContrastWhite.text",
+            "label": "Text and icons (High contrast white)",
+            "page": "appearance",
+            "section": "UI colors",
+            "type": "string"
+        },
+        {
+            "control": "colour",
+            "default": "#000000",
+            "hint": "",
+            "key": "appearance.highContrastWhite.border",
+            "label": "Border color (High contrast white)",
+            "page": "appearance",
+            "section": "UI colors",
+            "type": "string"
+        },
+        {
+            "control": "colour",
+            "default": "#FFFF00",
+            "hint": "",
+            "key": "appearance.highContrastBlack.accent",
+            "label": "Accent color (High contrast black)",
+            "page": "appearance",
+            "section": "UI colors",
+            "type": "string"
+        },
+        {
+            "control": "colour",
+            "default": "#FFFFFF",
+            "hint": "",
+            "key": "appearance.highContrastBlack.text",
+            "label": "Text and icons (High contrast black)",
+            "page": "appearance",
+            "section": "UI colors",
+            "type": "string"
+        },
+        {
+            "control": "colour",
+            "default": "#FFFFFF",
+            "hint": "",
+            "key": "appearance.highContrastBlack.border",
+            "label": "Border color (High contrast black)",
+            "page": "appearance",
+            "section": "UI colors",
+            "type": "string"
+        },
+        {
+            "control": "font",
+            "default": "Tahoma",
+            "hint": "",
+            "key": "program.font",
+            "label": "Program font",
+            "page": "appearance",
+            "section": "Font",
+            "type": "string"
+        },
+        {
+            "control": "number",
+            "default": 10,
+            "hint": "",
+            "key": "program.fontSize",
+            "label": "Font size",
+            "max": 200,
+            "min": 1,
+            "page": "appearance",
+            "section": "Font",
+            "type": "int"
+        },
+        {
+            "control": "choice",
+            "default": "auto",
+            "hint": "Off by default on Windows, KDE Plasma and GNOME; on by default on tiling window managers.",
+            "key": "appearance.titleBar",
+            "label": "Use system title bar",
+            "page": "appearance",
+            "section": "Window",
+            "type": "string",
+            "values": [
+                {
+                    "label": "The desktop's default",
+                    "value": "auto"
+                },
+                {
+                    "label": "The system's title bar",
+                    "value": "system"
+                },
+                {
+                    "label": "HikariSub's title bar",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "editor.spellchecker",
+            "label": "Check spelling",
+            "page": "lineEditor",
+            "section": "Spelling",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": "en_US",
+            "hint": "",
+            "key": "editor.dictionaryLanguage",
+            "label": "Dictionary",
+            "page": "lineEditor",
+            "section": "Spelling",
+            "type": "string",
+            "values": [
+            ]
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "editor.suggestionsOnDoubleClick",
+            "label": "Show suggestions on double-click",
+            "page": "lineEditor",
+            "section": "Spelling",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "editor.hideTags",
+            "label": "Hide tags",
+            "page": "lineEditor",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "In the line editor and the subtitle grid.",
+            "key": "editor.timesToFramesSwitch",
+            "label": "Show video frames instead of times",
+            "page": "lineEditor",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "editor.dontGoToNextLineOnTimesEdit",
+            "label": "Stay on the line when editing times",
+            "page": "lineEditor",
+            "section": "Editing",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "editor.allowNumpadHotkeys",
+            "label": "Use numpad shortcuts in text fields",
+            "page": "lineEditor",
+            "section": "Editing",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "translation.showOriginal",
+            "label": "Show the original",
+            "page": "lineEditor",
+            "section": "Translation mode",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "translation.hideOriginalOnVideo",
+            "label": "Hide the original on the video",
+            "page": "lineEditor",
+            "section": "Translation mode",
+            "type": "bool"
+        },
+        {
+            "control": "font",
+            "default": "Tahoma",
+            "hint": "",
+            "key": "grid.font",
+            "label": "Grid font",
+            "page": "grid",
+            "section": "Font",
+            "type": "string"
+        },
+        {
+            "control": "number",
+            "default": 10,
+            "hint": "",
+            "key": "grid.fontSize",
+            "label": "Grid font size",
+            "max": 200,
+            "min": 1,
+            "page": "grid",
+            "section": "Font",
+            "type": "int"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.autoSelectLinesFromLastTab",
+            "label": "Select the line at the previous tab's time",
+            "page": "grid",
+            "section": "Active line",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grid.changeActiveOnSelection",
+            "label": "Change the active line when adding to the selection",
+            "page": "grid",
+            "section": "Active line",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.duplicationDontChangeSelection",
+            "label": "Keep the selection when duplicating lines",
+            "page": "grid",
+            "section": "Active line",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.dontCenterActiveLine",
+            "label": "Don't center the active line",
+            "page": "grid",
+            "section": "Active line",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.setVisibleLineAfterFullScreen",
+            "label": "Find the visible line after leaving full screen",
+            "page": "grid",
+            "section": "Active line",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grid.autoHideColumns",
+            "label": "Hide empty columns",
+            "page": "grid",
+            "section": "Columns",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.calcSpacesAndPunctuationForWraps",
+            "label": "Count spaces and punctuation for wraps",
+            "page": "grid",
+            "section": "Counting",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "grid.calcSpacesAndPunctuationForCps",
+            "label": "Count spaces and punctuation for CPS",
+            "page": "grid",
+            "section": "Counting",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 0,
+            "hint": "",
+            "key": "grid.insertStartOffset",
+            "label": "Start frame offset",
+            "max": 100000,
+            "min": -100000,
+            "page": "grid",
+            "section": "New lines",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "number",
+            "default": 0,
+            "hint": "",
+            "key": "grid.insertEndOffset",
+            "label": "End frame offset",
+            "max": 100000,
+            "min": -100000,
+            "page": "grid",
+            "section": "New lines",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "text",
+            "default": "☀",
+            "hint": "",
+            "key": "grid.tagsSwapCharacter",
+            "label": "ASS tag replacement",
+            "page": "grid",
+            "section": "New lines",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "video.pauseOnClick",
+            "label": "Left mouse button pauses video",
+            "page": "video",
+            "section": "Playback",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "video.fullScreenOnStart",
+            "label": "Open video from the context menu in full screen",
+            "page": "video",
+            "section": "Playback",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "video.openAtActiveLine",
+            "label": "Open video at the active line's time",
+            "page": "video",
+            "section": "Playback",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "",
+            "key": "video.moveToActiveLine",
+            "label": "Move video to selected line on:",
+            "page": "video",
+            "section": "Playback",
+            "type": "int",
+            "values": [
+                {
+                    "label": "Double-clicking a line (always on)",
+                    "value": 0
+                },
+                {
+                    "label": "Every line change",
+                    "value": 1
+                },
+                {
+                    "label": "Clicking a line or editing when paused",
+                    "value": 2
+                },
+                {
+                    "label": "Clicking a line or editing",
+                    "value": 3
+                },
+                {
+                    "label": "Editing line when paused",
+                    "value": 4
+                },
+                {
+                    "label": "Editing",
+                    "value": 5
+                }
+            ]
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "",
+            "key": "video.playAfterSelection",
+            "label": "On moving to another line play:",
+            "page": "video",
+            "section": "Playback",
+            "type": "int",
+            "values": [
+                {
+                    "label": "Nothing",
+                    "value": 0
+                },
+                {
+                    "label": "Audio to the line end time",
+                    "value": 1
+                },
+                {
+                    "label": "Video and audio to the line end time",
+                    "value": 2
+                },
+                {
+                    "label": "Video and audio to the next line start time",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "",
+            "key": "video.playbackPlayer",
+            "label": "Player",
+            "page": "video",
+            "platform": "windows",
+            "section": "Playback",
+            "type": "int",
+            "values": [
+                {
+                    "label": "Built-in",
+                    "value": 0
+                },
+                {
+                    "label": "DirectShow",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "control": "choice",
+            "default": "",
+            "hint": "",
+            "key": "video.subtitleProvider",
+            "label": "Subtitle display filter",
+            "page": "video",
+            "section": "Subtitles on video",
+            "type": "string",
+            "values": [
+            ]
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "Screen size draws subtitles at the size the picture takes on screen, so they stay sharp on large and high-DPI screens. The script's layout is the same either way. Also used by the previews in the Style manager, the font picker and the Template editor.",
+            "key": "video.previewSubtitlesAt",
+            "label": "Preview subtitles at",
+            "page": "video",
+            "section": "Subtitles on video",
+            "type": "int",
+            "values": [
+                {
+                    "label": "Video resolution (as encoded)",
+                    "value": 0
+                },
+                {
+                    "label": "Screen size (sharp)",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "Applies when the tab opens again.",
+            "key": "video.disableLiveEditing",
+            "label": "Turn off the edits preview",
+            "page": "video",
+            "section": "Subtitles on video",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": 2,
+            "hint": "Applies when the video opens again.",
+            "key": "video.ffms2Seeking",
+            "label": "Seeking method",
+            "page": "video",
+            "section": "Decoding",
+            "type": "int",
+            "values": [
+                {
+                    "label": "Linear",
+                    "value": 0
+                },
+                {
+                    "label": "Normal",
+                    "value": 1
+                },
+                {
+                    "label": "Unsafe (always fast)",
+                    "value": 2
+                },
+                {
+                    "label": "Aggressive (fast in rewind)",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "Applies when the video opens again.",
+            "key": "video.gpuConversion",
+            "label": "Convert video colours on the GPU",
+            "page": "video",
+            "section": "Decoding",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "Separated by semicolons.",
+            "key": "video.acceptedAudioStream",
+            "label": "Preferred audio",
+            "page": "video",
+            "section": "Decoding",
+            "type": "string"
+        },
+        {
+            "control": "text",
+            "default": 0,
+            "hint": "",
+            "key": "video.zoomPercent",
+            "label": "Start zoom",
+            "page": "video",
+            "section": "View",
+            "type": "int"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "video.visualWarningsOff",
+            "label": "Turn off the visual tools warning",
+            "page": "video",
+            "section": "Script resolution",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "video.dontAskForBadResolution",
+            "label": "Don't warn about a resolution mismatch",
+            "page": "video",
+            "section": "Script resolution",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "automation.scriptResolutionFromVideo",
+            "label": "Set a missing script resolution from the video without asking",
+            "page": "video",
+            "section": "Script resolution",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": "",
+            "hint": "",
+            "key": "audio.outputDevice",
+            "label": "Device",
+            "page": "audio",
+            "section": "Output",
+            "type": "string",
+            "values": [
+            ]
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "Applies when the output opens again.",
+            "key": "audio.outputHostApi",
+            "label": "API",
+            "page": "audio",
+            "platform": "windows",
+            "section": "Output",
+            "type": "int",
+            "values": [
+                {
+                    "label": "WASAPI",
+                    "value": 0
+                },
+                {
+                    "label": "DirectSound",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "control": "number",
+            "default": 0,
+            "hint": "",
+            "key": "audio.delay",
+            "label": "Audio delay",
+            "max": 50000000,
+            "min": -50000000,
+            "page": "audio",
+            "section": "Playback",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "number",
+            "default": 1000,
+            "hint": "",
+            "key": "audio.markPlayTime",
+            "label": "Play around the marker",
+            "max": 5000,
+            "min": 400,
+            "page": "audio",
+            "section": "Playback",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "number",
+            "default": 200,
+            "hint": "",
+            "key": "audio.leadInValue",
+            "label": "Lead-in",
+            "max": 10000,
+            "min": 0,
+            "page": "audio",
+            "section": "Playback",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "number",
+            "default": 300,
+            "hint": "",
+            "key": "audio.leadOutValue",
+            "label": "Lead-out",
+            "max": 10000,
+            "min": 0,
+            "page": "audio",
+            "section": "Playback",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.lockScrollOnCursor",
+            "label": "Follow audio during playback",
+            "page": "audio",
+            "section": "Playback",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.dontPlayWhenLineChanges",
+            "label": "Don't play after changing the line",
+            "page": "audio",
+            "section": "Playback",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "audio.autoFocus",
+            "label": "Hotkeys follow the panel under the pointer",
+            "page": "audio",
+            "section": "Playback",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "audio.drawTimeCursor",
+            "label": "Show the time beside the cursor",
+            "page": "audio",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "audio.drawSecondaryLines",
+            "label": "Show seconds markers",
+            "page": "audio",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "audio.drawSelectionBackground",
+            "label": "Show the selection background",
+            "page": "audio",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "audio.drawVideoPosition",
+            "label": "Show the video position",
+            "page": "audio",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "audio.drawKeyframes",
+            "label": "Show keyframes",
+            "page": "audio",
+            "section": "Display",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 2,
+            "hint": "",
+            "key": "audio.lineBoundariesThickness",
+            "label": "Line boundaries thickness",
+            "max": 5,
+            "min": 1,
+            "page": "audio",
+            "section": "Display",
+            "type": "int"
+        },
+        {
+            "control": "choice",
+            "default": 1,
+            "hint": "",
+            "key": "audio.inactiveLinesDisplayMode",
+            "label": "Inactive lines",
+            "page": "audio",
+            "section": "Display",
+            "type": "int",
+            "values": [
+                {
+                    "label": "None",
+                    "value": 0
+                },
+                {
+                    "label": "Before and after the active",
+                    "value": 1
+                },
+                {
+                    "label": "All visible",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.snapToKeyframes",
+            "label": "Snap to keyframes",
+            "page": "audio",
+            "section": "Snapping",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.snapToOtherLines",
+            "label": "Snap to other lines",
+            "page": "audio",
+            "section": "Snapping",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.mergeEveryNWithSyllable",
+            "label": "Merge every \"n\" with the previous syllable",
+            "page": "audio",
+            "section": "Karaoke",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.karaokeMoveOnClick",
+            "label": "Move the syllable line after a click",
+            "page": "audio",
+            "section": "Karaoke",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.karaokeDoubleConsonantApart",
+            "label": "Give a double consonant its own syllable (so|ma|t|ta)",
+            "page": "audio",
+            "section": "Karaoke",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 100,
+            "hint": "Switch long syllables between \\k and \\kf changes the syllables at least this long.",
+            "key": "audio.karaokeKfThreshold",
+            "label": "Long syllables for \\kf",
+            "max": 10000,
+            "min": 10,
+            "page": "audio",
+            "section": "Karaoke",
+            "type": "int",
+            "unit": "cs"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "audio.ramCache",
+            "label": "Load audio into RAM",
+            "page": "audio",
+            "section": "Cache",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 10,
+            "hint": "0 keeps them all. Range from 0 to 10000, where 0 turns off\nremoving audio cache files.",
+            "key": "audio.cacheFilesLimit",
+            "label": "Cache files kept",
+            "max": 10000,
+            "min": 0,
+            "page": "audio",
+            "section": "Cache",
+            "type": "int",
+            "unit": "files"
+        },
+        {
+            "control": "choice",
+            "default": "Default",
+            "hint": "",
+            "key": "convert.styleCatalog",
+            "label": "Catalog",
+            "page": "conversion",
+            "section": "Style",
+            "type": "string",
+            "values": [
+            ]
+        },
+        {
+            "control": "choice",
+            "default": "Default",
+            "hint": "",
+            "key": "convert.style",
+            "label": "Style",
+            "page": "conversion",
+            "section": "Style",
+            "type": "string",
+            "values": [
+            ]
+        },
+        {
+            "control": "choice",
+            "default": "23.976",
+            "hint": "",
+            "key": "convert.fps",
+            "label": "Frame rate",
+            "page": "conversion",
+            "section": "Timing",
+            "type": "string",
+            "values": [
+                {
+                    "label": "23.976",
+                    "value": "23.976"
+                },
+                {
+                    "label": "24",
+                    "value": "24"
+                },
+                {
+                    "label": "25",
+                    "value": "25"
+                },
+                {
+                    "label": "29.97",
+                    "value": "29.97"
+                },
+                {
+                    "label": "30",
+                    "value": "30"
+                },
+                {
+                    "label": "60",
+                    "value": "60"
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "convert.fpsFromVideo",
+            "label": "Frame rate from the video",
+            "page": "conversion",
+            "section": "Timing",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "convert.newEndTimes",
+            "label": "New end times",
+            "page": "conversion",
+            "section": "Timing",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 110,
+            "hint": "",
+            "key": "convert.timePerCharacter",
+            "label": "Time per letter",
+            "max": 1000,
+            "min": 30,
+            "page": "conversion",
+            "section": "Timing",
+            "type": "int",
+            "unit": "ms"
+        },
+        {
+            "control": "number",
+            "default": "1280",
+            "hint": "",
+            "key": "convert.resolutionWidth",
+            "label": "Width",
+            "max": 3000,
+            "min": 1,
+            "page": "conversion",
+            "section": "ASS",
+            "type": "string"
+        },
+        {
+            "control": "number",
+            "default": "720",
+            "hint": "",
+            "key": "convert.resolutionHeight",
+            "label": "Height",
+            "max": 3000,
+            "min": 1,
+            "page": "conversion",
+            "section": "ASS",
+            "type": "string"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "convert.assTagsToInsertInLine",
+            "label": "Tags at the start of each line",
+            "page": "conversion",
+            "section": "ASS",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "convert.showSettings",
+            "label": "Show the conversion window first",
+            "page": "conversion",
+            "section": "ASS",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "scriptProperties.title",
+            "label": "Title",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.titleOn",
+            "label": "Write Title into the subtitles",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "scriptProperties.script",
+            "label": "Author",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.scriptOn",
+            "label": "Write Author into the subtitles",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "scriptProperties.translation",
+            "label": "Translator",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.translationOn",
+            "label": "Write Translator into the subtitles",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "scriptProperties.editing",
+            "label": "Proofreading",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.editingOn",
+            "label": "Write Proofreading into the subtitles",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "scriptProperties.timing",
+            "label": "Timer",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.timingOn",
+            "label": "Write Timer into the subtitles",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "bool"
+        },
+        {
+            "control": "text",
+            "default": "",
+            "hint": "",
+            "key": "scriptProperties.update",
+            "label": "Editing",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.updateOn",
+            "label": "Write Editing into the subtitles",
+            "page": "subtitleProperties",
+            "section": "Subtitle information",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "scriptProperties.askForChange",
+            "label": "Always ask before changing subtitle information",
+            "page": "subtitleProperties",
+            "section": "Files",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "subtitles.layoutInFile",
+            "label": "Save the panel layout in subtitle files",
+            "page": "subtitleProperties",
+            "section": "Files",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "",
+            "key": "automation.loadingMethod",
+            "label": "Load scripts",
+            "page": "automation",
+            "section": "Loading",
+            "type": "int",
+            "values": [
+                {
+                    "label": "After program start asynchronously",
+                    "value": 0
+                },
+                {
+                    "label": "After program start",
+                    "value": 1
+                },
+                {
+                    "label": "After open menu asynchronously",
+                    "value": 2
+                },
+                {
+                    "label": "After open menu",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "",
+            "key": "automation.oldScriptsCompatibility",
+            "label": "Compatibility with older HikariSub scripts",
+            "page": "automation",
+            "section": "Loading",
+            "type": "bool"
+        },
+        {
+            "control": "number",
+            "default": 3,
+            "hint": "",
+            "key": "automation.traceLevel",
+            "label": "Lua trace level",
+            "max": 5,
+            "min": 0,
+            "page": "automation",
+            "section": "Debugging",
+            "type": "int"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "Script dialogs open with the answers you gave last time. A value the script works out itself, from the selection say, still wins. Off: they open with the script’s values, and ⋯ › Last used fills yours in.",
+            "key": "automation.fillLastAnswers",
+            "label": "Fill in my last answers",
+            "page": "automation",
+            "section": "Script dialogs",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "At most once a day, when HikariSub starts.",
+            "key": "updater.autoCheck",
+            "label": "Check for updates automatically",
+            "page": "updates",
+            "section": "Checking",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "Off: prereleases (beta versions) are offered too.",
+            "key": "updater.checkForStable",
+            "label": "Stable versions only",
+            "page": "updates",
+            "section": "Checking",
+            "type": "bool"
+        },
+        {
+            "control": "readonly",
+            "default": "",
+            "hint": "Skip this version hides one version; a newer one is offered again.",
+            "key": "updater.skippedVersion",
+            "label": "Skipped version",
+            "page": "updates",
+            "section": "Checking",
+            "type": "string"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "This copy does not install updates itself: the update window opens the download page.",
+            "key": "updater.autoInstall",
+            "label": "Install updates automatically",
+            "page": "updates",
+            "section": "Installing",
+            "type": "bool"
+        }
+    ]
+}

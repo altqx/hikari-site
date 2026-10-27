@@ -1,0 +1,156 @@
+{
+    "home": "/en/docs",
+    "links": [
+        {
+            "id": "Video",
+            "kind": "panel",
+            "path": "/en/docs/basics/video"
+        },
+        {
+            "id": "Audio",
+            "kind": "panel",
+            "path": "/en/docs/basics/audio"
+        },
+        {
+            "id": "Editor",
+            "kind": "panel",
+            "path": "/en/docs/basics/line-editor"
+        },
+        {
+            "id": "Grid",
+            "kind": "panel",
+            "path": "/en/docs/basics/grid"
+        },
+        {
+            "id": "Reference",
+            "kind": "panel",
+            "path": "/en/docs/translation/line-matching"
+        },
+        {
+            "id": "Timing",
+            "kind": "panel",
+            "path": "/en/docs/basics/timing"
+        },
+        {
+            "id": "Search",
+            "kind": "panel",
+            "path": "/en/docs/basics/find-and-replace"
+        },
+        {
+            "id": "Automation",
+            "kind": "panel",
+            "path": "/en/docs/automation/automation-panel"
+        },
+        {
+            "id": "Original",
+            "kind": "panel",
+            "path": "/en/docs/translation/translation-mode"
+        },
+        {
+            "id": "Log",
+            "kind": "panel",
+            "path": "/en/docs/help/troubleshooting"
+        },
+        {
+            "id": "Styles",
+            "kind": "panel",
+            "path": "/en/docs/basics/styles"
+        },
+        {
+            "id": "FixMinorErrors",
+            "kind": "panel",
+            "path": "/en/docs/checking/fix-minor-errors"
+        },
+        {
+            "id": "Spellchecker",
+            "kind": "panel",
+            "path": "/en/docs/checking/spelling"
+        },
+        {
+            "id": "Template",
+            "kind": "panel",
+            "path": "/en/docs/karaoke/template-editor"
+        },
+        {
+            "id": "allTagsEdition",
+            "kind": "window",
+            "path": "/en/docs/typesetting/shapes-and-tags-editors"
+        },
+        {
+            "id": "automation",
+            "kind": "window",
+            "path": "/en/docs/automation/running-scripts"
+        },
+        {
+            "id": "dummyVideo",
+            "kind": "window",
+            "path": "/en/docs/basics/video"
+        },
+        {
+            "id": "fontCatalogs",
+            "kind": "window",
+            "path": "/en/docs/typesetting/fonts"
+        },
+        {
+            "id": "fontCollector",
+            "kind": "window",
+            "path": "/en/docs/typesetting/fonts"
+        },
+        {
+            "id": "hotkeyCapture",
+            "kind": "window",
+            "path": "/en/docs/customize/hotkeys"
+        },
+        {
+            "id": "kanjiTimer",
+            "kind": "window",
+            "path": "/en/docs/karaoke/kanji-timer"
+        },
+        {
+            "id": "karaokeCheck",
+            "kind": "window",
+            "path": "/en/docs/karaoke/karaoke-check"
+        },
+        {
+            "id": "manageLayouts",
+            "kind": "window",
+            "path": "/en/docs/customize/layouts"
+        },
+        {
+            "id": "resample",
+            "kind": "window",
+            "path": "/en/docs/basics/files-and-formats"
+        },
+        {
+            "id": "saveLayout",
+            "kind": "window",
+            "path": "/en/docs/customize/layouts"
+        },
+        {
+            "id": "scriptProperties",
+            "kind": "window",
+            "path": "/en/docs/basics/files-and-formats"
+        },
+        {
+            "id": "settings",
+            "kind": "window",
+            "path": "/en/docs/customize/settings"
+        },
+        {
+            "id": "settingsImport",
+            "kind": "window",
+            "path": "/en/docs/get-started/moving-from-legacy"
+        },
+        {
+            "id": "shapesEdition",
+            "kind": "window",
+            "path": "/en/docs/typesetting/shapes-and-tags-editors"
+        },
+        {
+            "id": "styleManager",
+            "kind": "window",
+            "path": "/en/docs/basics/styles"
+        }
+    ],
+    "site": "https://hikarisub.altqx.com"
+}

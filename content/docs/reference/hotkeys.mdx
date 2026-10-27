@@ -1,6 +1,32 @@
 ---
 title: Hotkeys
-draft: true
+description: Every command you can give a key, with its default keys and where the menus have it.
 ---
 
-This guide is not written yet.
+import { ExportSource, HotkeyTable } from '../../../src/components/reference-tables';
+
+<ExportSource />
+
+A key works in one part of the window. **Global** keys work anywhere; the others work only while that panel has the keyboard: the Subtitle grid, the Line editor, the Video or the Audio panel. One key can do different things in different panels.
+
+To change a key, open **File › Settings › Hotkeys**, select the command and press **Map hotkey…**. **Restore default** puts back the key below; **Delete** leaves the command without one. A macro's key is set in the Automation panel. Commands without a key here can still be given one.
+
+## Global
+
+<HotkeyTable context="Global" />
+
+## Subtitle grid
+
+<HotkeyTable context="Subtitles" />
+
+## Line editor
+
+<HotkeyTable context="Editor" />
+
+## Video
+
+<HotkeyTable context="Video" />
+
+## Audio
+
+<HotkeyTable context="Audio" />
