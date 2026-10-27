@@ -426,6 +426,36 @@
       "surface": "Font collector after Check fonts",
       "credit": ""
     },
+    "content/docs/checking/images/spellchecker-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-light.png, crop 1280x400+0+372",
+      "surface": "Grid and the Spellchecker panel on a misspelled word",
+      "credit": ""
+    },
+    "content/docs/checking/images/spellchecker-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-dark.png, crop 1280x400+0+371",
+      "surface": "Grid and the Spellchecker panel on a misspelled word",
+      "credit": ""
+    },
+    "content/docs/checking/images/added-words-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-added-words-light.png",
+      "surface": "Words added to dictionary window with one word",
+      "credit": ""
+    },
+    "content/docs/checking/images/added-words-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-added-words-dark.png",
+      "surface": "Words added to dictionary window with one word",
+      "credit": ""
+    },
+    "content/docs/checking/images/fix-minor-errors-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-light.png, crop 420x712+860+60",
+      "surface": "Fix minor errors panel with the default rules and the Rule section",
+      "credit": ""
+    },
+    "content/docs/checking/images/fix-minor-errors-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-dark.png, crop 420x712+860+60",
+      "surface": "Fix minor errors panel with the default rules and the Rule section",
+      "credit": ""
+    },
     "content/docs/karaoke/images/karaoke-mode-light.webp": {
       "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-light.webp (last changed in 4131b3084)",
       "surface": "Audio panel in Karaoke mode over the spectrum, ray MV romaji line, with its \\k tags in the Line editor",

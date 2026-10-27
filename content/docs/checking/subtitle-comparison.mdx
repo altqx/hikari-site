@@ -1,6 +1,65 @@
 ---
 title: Subtitle comparison
-draft: true
+description: Compare the file you are editing with another open file, the reference, or its own copy on disk, and see in the Grid which lines differ.
 ---
 
-This guide is not written yet.
+Subtitle comparison pairs the lines of the file you are editing with those of another file, and compares the paired lines' text letter by letter. The Grid then shows which lines are the same, which differ and where, and which have no partner. Use it to check a new version of a script against the old one, or your edits against a colleague's.
+
+A comparison never changes either file.
+
+## Comparing two tabs
+
+1. Open both files, each in its own [tab](/en/docs/basics/files-and-formats#tabs).
+2. Go to the tab of the file you want to edit.
+3. Right-click the other file's tab and open **Subtitle comparison**.
+4. Tick how the lines should pair (below), then choose **Compare**.
+
+The menu is greyed out on the tab you are in, unless a comparison is on. Its check items keep the menu open, so you can tick several before you choose **Compare**.
+
+## How lines pair
+
+The lines are walked in order. Each line of your file pairs with the next line of the other file that passes every option you ticked:
+
+| Option | Lines pair only when |
+| --- | --- |
+| **Compare by times** | They start and end at the same time, to the millisecond |
+| **Compare by visible lines** | Neither is [hidden](/en/docs/basics/grid#hiding-lines) in the Grid |
+| **Compare by selections** | Both are selected. It can be ticked only when both files have lines selected |
+| **Compare by styles** | They have the same style |
+| **Compare by selected styles** | They have the same style, and it is one of the styles you tick in this submenu |
+
+**Compare by selected styles** lists only the styles both files have. With no option ticked, the lines pair in order, the first with the first and so on.
+
+HikariSub remembers your options. After you change them, choose **Compare** again.
+
+## What the Grid shows
+
+| Row | Means |
+| --- | --- |
+| A background of its own | The line has a partner, and their text is the same |
+| Another background, some letters outlined | The line has a partner, and the outlined letters differ |
+| The usual colour | The line has no partner |
+
+In Translation mode, the translated text is compared.
+
+The comparison follows your edits: change a line, and it is compared again. Hiding or showing lines compares them again only with **Compare by visible lines** ticked.
+
+**Turn off comparison**, in the **Subtitle comparison** menu of any tab, ends it. Loading a [session](/en/docs/basics/files-and-formats#sessions) turns it off too.
+
+## Comparing with the reference
+
+The Reference panel shows another file under the Grid, to read beside your own. Its tab's **⋯** menu has **Compare with reference**, which compares your file with it, using the options of the **Subtitle comparison** menu.
+
+It works the other way round too. While two tabs are compared, **Show subtitles preview** in the Grid's menu (<kbd>Ctrl</kbd>+<kbd>Q</kbd> with the Grid focused) opens the other file in the Reference panel, if your active line has a partner, and the panel follows the comparison's pairs: it shows the line paired with the one you edit. The Line matching guide describes the Reference panel.
+
+## Comparing with the file on disk
+
+When another program changes the file you are editing, a bar says "… was changed by another program." with three buttons:
+
+- **Reload** loads the file from disk. If you had changed it in HikariSub too, the bar warns that your changes will be lost.
+- **Compare** opens the file as it is on disk as a reference, and compares it with yours, so you can see what changed.
+- **Keep mine** keeps your version.
+
+## Keys
+
+Subtitle comparison has no keys and no hotkey commands; it is used from the menus.

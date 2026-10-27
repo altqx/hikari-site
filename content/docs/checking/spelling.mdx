@@ -1,6 +1,117 @@
 ---
 title: Spelling
-draft: true
+description: Check the spelling of your lines in the Spellchecker panel, add dictionaries for other languages, and keep your own words in a personal dictionary.
 ---
 
-This guide is not written yet.
+import spellcheckerLight from './images/spellchecker-light.webp';
+import spellcheckerDark from './images/spellchecker-dark.webp';
+import addedWordsLight from './images/added-words-light.webp';
+import addedWordsDark from './images/added-words-dark.webp';
+
+HikariSub checks spelling in two places. As you type, the [Line editor](/en/docs/basics/line-editor) and the [Grid](/en/docs/basics/grid) mark misspelled words with a coloured background. The **Spellchecker** panel goes through the file one misspelled word at a time, so that you can fix, skip or keep each one.
+
+Only the text is checked: tags in `{…}` and drawings are left out, and so are numbers. A stray `{` or `}`, or a bracket that isn't closed, is marked too.
+
+## The Spellchecker panel
+
+Open it with **Subtitles › Check spelling**, or from **View › Panels › Spellchecker**. It docks under the Grid, and starts checking at once.
+
+<figure>
+  <ThemedImage
+    light={spellcheckerLight}
+    dark={spellcheckerDark}
+    alt="The Grid with line 4, Hello tehm good text, selected and tehm marked. Under it, the Spellchecker panel shows tehm on Line 4 with its context, Replace with set to text, a list of suggestions, and the buttons Replace, Replace all, Ignore, Ignore All and Add to dictionary"
+    width={1280}
+    height={400}
+    className="rounded-lg border"
+  />
+  <figcaption>The Spellchecker on a misspelled word of line 4.</figcaption>
+</figure>
+
+The check starts at the active line and goes down to the end of the file. To check the whole file, select the first line before you open the panel. Each word it stops on is selected in the Grid, and the panel shows:
+
+- the word, and the number of its line
+- the text around it, with the word underlined
+- **Replace with**, filled with the first suggestion, and the list of suggestions
+
+Click a suggestion to put it in **Replace with**, or double-click it to replace at once. Then:
+
+| Button | Does |
+| --- | --- |
+| **Replace** | Replaces this word with **Replace with**. <kbd>Enter</kbd> in the field does the same |
+| **Replace all** | Replaces the word in every line of the file, keeping each one's capitals |
+| **Ignore** | Skips this word, here only |
+| **Ignore All** | Skips the word everywhere, until the check starts over |
+| **Add to dictionary** | Adds the word to your [personal dictionary](#your-personal-dictionary) |
+
+Each button moves on to the next misspelled word. Ignore All and Replace all match the word in any case.
+
+**Replace** and **Replace all** can be undone with <kbd>Ctrl</kbd>+<kbd>Z</kbd>; Replace all is a single step. If a replace isn't possible, for example while a macro is running on the file, a notice says why.
+
+When no word is left, the panel says so, and a notice reads "No spelling errors were found". **Check again** starts over from the active line. Closing the panel stops the check, and opening it again starts a new one, which forgets the words you ignored.
+
+In Translation mode, the translated text is checked and replaced instead of the original.
+
+### Options
+
+The panel's **⋯** menu has two options. They last until you close HikariSub.
+
+- **Ignore comments** skips comment lines.
+- **Ignore words in capitals** skips words written all in capitals.
+
+## In the Line editor
+
+Right-click a marked word in the Line editor's text for:
+
+- suggestions to replace it with, at the top
+- **Spellchecker**, which turns spell checking on or off
+- **Installed languages**, to choose the dictionary
+- **Add word "…" to dictionary**
+
+With **Show suggestions on double-click** on, double-clicking a marked word opens the **Fix suggestions** list instead. Click a suggestion or press <kbd>Enter</kbd> to replace the word; <kbd>Esc</kbd> closes the list.
+
+## Dictionaries
+
+HikariSub uses Hunspell dictionaries. A dictionary is a pair of files with the same name: `en_US.dic` and `en_US.aff`, for example. The Windows packages come with English (US), Polish and Thai.
+
+To add a language, put its two files in a folder named `Dictionary` inside your [settings folder](/en/docs/customize/settings#where-settings-are-kept), then choose it. HikariSub looks there first, then in the `Dictionary` folder that comes with the program. Dictionaries made for LibreOffice use the same files.
+
+Choose the language in **File › Settings › Line editor › Spelling**, or from **Installed languages** in the Line editor's right-click menu. Changing it checks the text again.
+
+| Setting | Does | Default |
+| --- | --- | --- |
+| **Check spelling** | Marks misspelled words in the Line editor and the Grid | On |
+| **Dictionary** | The language to check | English (US) |
+| **Show suggestions on double-click** | Double-clicking a marked word opens the suggestions | Off |
+
+On a Polish system, the dictionary is Polish at first.
+
+If no dictionary is found, HikariSub turns **Check spelling** off and a notice names the folder it looked in. The Spellchecker panel then offers **Spelling settings…**, which opens the page above.
+
+## Your personal dictionary
+
+Words you add go to your personal dictionary, so that they are never marked again: names, places, made-up words. There is one personal dictionary for all languages, kept as `UserDic.udic` in the `Dictionary` folder of your settings folder.
+
+<figure>
+  <ThemedImage
+    light={addedWordsLight}
+    dark={addedWordsDark}
+    alt="The Words added to dictionary window: a Filter field, a list holding the word Mei with a check box, and the buttons Remove and Close"
+    width={348}
+    height={338}
+    className="rounded-lg border"
+  />
+  <figcaption>The Words added to dictionary window.</figcaption>
+</figure>
+
+To remove words, choose **Words added to dictionary…** in the Spellchecker's **⋯** menu. Type in **Filter** to find a word, tick the words to remove, and press the button that counts them, such as **Remove 2 word(s)**. The words go at once and the window closes; this has no undo.
+
+## Keys
+
+**Check spelling** has no key at first. Give it one in **File › Settings › Hotkeys**; see [Hotkeys](/en/docs/customize/hotkeys).
+
+| Key | Does |
+| --- | --- |
+| <kbd>Enter</kbd> in **Replace with** | Replace |
+| <kbd>Tab</kbd> | Moves past the suggestions list |
+| <kbd>F1</kbd> | Opens this page while the panel is in use |
