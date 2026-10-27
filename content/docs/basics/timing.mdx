@@ -1,6 +1,115 @@
 ---
 title: Timing
-draft: true
+description: Set when each line shows, from the audio, the video or by hand, and shift or tidy many lines at once.
 ---
 
-This guide is not written yet.
+import shiftLight from './images/shift-times-light.webp';
+import shiftDark from './images/shift-times-dark.webp';
+import postLight from './images/post-processor-light.webp';
+import postDark from './images/post-processor-dark.webp';
+
+Each line has a start and an end time. You can set them from the audio, from the video, or by typing them, and then shift or tidy many lines at once with **Shift times**.
+
+## From the audio
+
+The [Audio panel](/en/docs/basics/audio) is the usual way to time dialogue:
+
+1. Select a line. Its times show as the bright range on the waveform.
+2. Click to set the start, right-click to set the end, or drag the boundaries. Hold <kbd>Alt</kbd> as you let go to move the neighbouring line's boundary to the same place.
+3. Play it back: <kbd>R</kbd> plays the line, <kbd>Q</kbd> the 500 ms before it and <kbd>W</kbd> the 500 ms after it.
+4. With **Automatically apply changes** on, as it is at first, the times are already in the line. Otherwise press <kbd>G</kbd> or <kbd>Enter</kbd> to commit them.
+5. <kbd>X</kbd> moves to the next line and plays it. Commit moves there too.
+
+**In** (<kbd>C</kbd>) and **Out** (<kbd>V</kbd>) add a lead-in of 200 ms before the start and a lead-out of 300 ms after the end, so a line shows a moment before the voice and stays a moment after it. **File › Settings › Audio › Lead-in and lead-out** changes the amounts.
+
+## From the video
+
+**Video › Insert start time from video** (<kbd>Ctrl</kbd>+<kbd>Left</kbd>) sets the selected lines' start to the frame on screen, and **Insert end time from video** (<kbd>Ctrl</kbd>+<kbd>Right</kbd>) their end to that frame's end. A start after the end moves the end along, and the other way round. Step through the frames with <kbd>Left</kbd> and <kbd>Right</kbd> to find the frame where a sign appears or a shot changes.
+
+**Start frame offset** and **End frame offset**, under **File › Settings › Subtitle grid › New lines**, add a fixed amount to these times.
+
+## In the Line editor
+
+The Line editor's **Start**, **End** and **Duration** fields take typed times, h:mm:ss.cc. A typed digit replaces the next one and skips the colons, and a pasted time must be whole. Over a field, the wheel steps the part under the pointer, and dragging with the right button held steps it faster.
+
+<kbd>Enter</kbd> applies the times and moves to the next line; <kbd>Ctrl</kbd>+<kbd>Enter</kbd> applies them and stays. **Stay on the line when editing times**, under **File › Settings › Line editor**, makes <kbd>Enter</kbd> stay in a time field too. Start and End turn the warning colour while the start is after the end.
+
+**Show video frames instead of times**, in the same place, shows frame numbers in the fields and the Grid.
+
+## Snapping to keyframes
+
+A keyframe usually starts a new shot. Lines that start or end on one look tidier than lines that cross a cut by a frame or two.
+
+- <kbd>Shift</kbd>+<kbd>Left</kbd> moves the active line's start to the nearest keyframe or line boundary, up to 5 seconds away, and <kbd>Shift</kbd>+<kbd>Right</kbd> its end. They need a video and the audio open.
+- In the Audio panel, **Snap to keyframes** and **Snap to other lines** under **File › Settings › Audio › Snapping** make a dragged boundary jump to a keyframe or line near it. Hold <kbd>Shift</kbd> while dragging to snap only this once, or to not snap when they are on.
+- **Video › Go to previous keyframe** and **Go to next keyframe** move the video there. They have no key at first; give them one in Settings › Hotkeys.
+
+Keyframes come from the video. **Video › Open keyframes** loads them from a file instead, as the [Video guide](/en/docs/basics/video#keyframes) explains.
+
+## Shift times
+
+**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel, beside the Line editor. It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later. Its **Shift** button, or **Subtitles › Shift times / run time post processor**, runs it as one undo step.
+
+<div className="grid gap-4 sm:grid-cols-2">
+  <figure>
+    <ThemedImage
+      light={shiftLight}
+      dark={shiftDark}
+      alt="The Shift times panel in Shift mode: Profiles, the amount 0:00:02.35 with Time and Backward chosen, Tag times, the Lines choices and Shift by video or audio, with the Shift button at the bottom"
+      width={340}
+      height={800}
+      className="rounded-lg border"
+    />
+    <figcaption>Shift mode.</figcaption>
+  </figure>
+  <figure>
+    <ThemedImage
+      light={postLight}
+      dark={postDark}
+      alt="The Shift times panel in Post processor mode: Which lines, Lead-in and Lead-out, Set times as continuous with its two thresholds, and Snap to keyframes, with the Run post processor button"
+      width={340}
+      height={800}
+      className="rounded-lg border"
+    />
+    <figcaption>Post processor mode.</figcaption>
+  </figure>
+</div>
+
+### Shift mode
+
+- **Amount:** the time to move by, or a number of frames with **Frames** (with a video open), and **Forward** (later) or **Backward** (earlier). **Tag times** keeps `\move`, `\t` and `\fad` in step with the video when the shift lands between frames.
+- **Which lines:** all lines, the selected lines, the lines from the selected one on, the lines starting at or after it, at or before it, or the lines of the styles you list. The **+** button picks the styles.
+- **A method of time shift:** both times, or only the start or the end. Shifting only one asks first, because a line can end up ending before it starts.
+- **Correction end times:** **Adjust overlapping times** ends each line where the next one starts, if it would overlap it. **New times** also gives each line that doesn't overlap the next a new end, one second after its start. Both need a video open; without one, the shift runs and the correction is skipped.
+- **Shift by video / audio:** with **Move the marker to video time**, the active line's **Beginning** or **End** moves to the video's frame, and every other line moves by the same amount. **Move the marker to audio time** does the same with the mark you set on the audio ruler. The amount in the field is added on top.
+
+**Profiles** saves the current choices under a name, to use again.
+
+Times never go below zero. Hidden lines, filtered out of the Grid, are left alone.
+
+### Post processor mode
+
+The post processor tidies the lines' times rather than moving them. It needs a video open.
+
+- **Lead-in/lead-out** adds time before each start and after each end.
+- **Set times as continuous** closes small gaps between lines: when the gap is no larger than the two thresholds together, the earlier line's end and the later line's start meet in it.
+- **Snap to keyframes** moves starts and ends to a keyframe within the distances you set before and after them. It leaves a line alone if snapping would make it 600 ms long or less.
+
+They run in that order, on the lines **Which lines** chooses.
+
+## Lines next to each other
+
+**Set times as a continuous (previous line)** and **(next line)**, in the Grid's right-click menu, make each selected line start where the line before it ends, or end where the next one starts.
+
+## Keys
+
+| Key | Does |
+| --- | --- |
+| <kbd>Ctrl</kbd>+<kbd>I</kbd> | Shift times panel |
+| <kbd>Ctrl</kbd>+<kbd>Left</kbd> <kbd>Ctrl</kbd>+<kbd>Right</kbd> | Start or end time from the video |
+| <kbd>Shift</kbd>+<kbd>Left</kbd> <kbd>Shift</kbd>+<kbd>Right</kbd> | Start or end to the nearest keyframe |
+| <kbd>Ctrl</kbd>+<kbd>Up</kbd> <kbd>Ctrl</kbd>+<kbd>Down</kbd> | Previous or next line |
+| <kbd>C</kbd> <kbd>V</kbd> | Lead-in or lead-out, in the Audio panel |
+| <kbd>G</kbd> or <kbd>Enter</kbd> | Commit, in the Audio panel |
+
+Inside the Line editor, <kbd>Ctrl</kbd>+<kbd>I</kbd> is italic instead. The [Hotkeys reference](/en/docs/reference/hotkeys) lists them all.
