@@ -1,6 +1,181 @@
 ---
 title: Running scripts
-draft: true
+description: Load automation scripts, run their macros from the Automation menu, answer their dialogs and follow each run to its end.
 ---
 
-This guide is not written yet.
+import cardLight from './images/automation-card-light.webp';
+import cardDark from './images/automation-card-dark.webp';
+import dialogLight from './images/script-dialog-menu-light.webp';
+import dialogDark from './images/script-dialog-menu-dark.webp';
+
+Automation scripts are Lua or MoonScript files that add **macros**: commands that change the subtitles, such as adding a gradient or retiming karaoke. HikariSub runs the Automation 4 scripts written for Aegisub, and comes with a set of its own. This page is about using scripts; to write one, see [Writing scripts](/en/docs/automation/writing-scripts).
+
+You can run macros from the **Automation** menu or from the [Automation panel](/en/docs/automation/automation-panel), which also shows each script's state and the log of every run.
+
+## The Automation menu
+
+| Item | Does |
+| --- | --- |
+| **Load script…** | Loads a `.lua` or `.moon` file for the current subtitle file |
+| **Refresh autoload scripts** | Reloads the autoload scripts, and loads any new ones |
+| **Run the last loaded script** | Runs the first macro of the last script added to this subtitle file |
+| **Rerun last macro** | Runs the last macro again, with its dialogs |
+| **Repeat last run** | Runs the last macro again with the same answers, without its dialogs when they are unchanged |
+| **Cancel macro** | Shown only while a macro runs |
+| **Show panel** | Opens the Automation panel |
+
+Below these come the macros of every loaded script, in the order they were loaded, as one flat list. They are greyed out while a macro runs. <kbd>Shift</kbd>+click a macro to give it a shortcut instead of running it.
+
+None of the items has a key at first. **Load script**, **Refresh autoload scripts**, **Run the last loaded script** and **Repeat last run** can have one: see [Hotkeys](/en/docs/customize/hotkeys).
+
+Opening the menu also loads the scripts the current file names, and reloads any loaded script whose file changed on disk.
+
+## Loading scripts
+
+There are two kinds of script:
+
+- **Autoload** scripts load when HikariSub starts and are there for every file. HikariSub comes with some, among them the karaoke templater, Aegisub-Motion and gradient, edgeblur and strip-tags macros. To add your own, see [Where scripts live](/en/docs/automation/writing-scripts#where-scripts-live).
+- **Subtitle scripts** belong to a subtitle file. Load one with **Automation › Load script…**, the same button in the Automation panel, or by dropping `.lua` or `.moon` files on the window.
+
+Loading a subtitle script also writes its path into the file's `Automation Scripts` header, so it loads with the file next time. That change is an undo step, *Changing the subtitle header*.
+
+When you open a file that names scripts not yet loaded, the Automation panel says so and offers **Load**. Nothing loads until you press it, or until you open the Automation menu.
+
+<Callout type="warn">
+  Loading a script runs its code. Scripts are not sandboxed: they can read and write files and run programs with your permissions. Load only scripts you trust.
+</Callout>
+
+If a script fails to load, its row in the Automation panel reads **Failed to load**, with the error.
+
+Scripts that only add export filters load, but add nothing: HikariSub has no export filters.
+
+## Reloading scripts
+
+A script is reloaded:
+
+- when you press **Reload** on its row in the Automation panel;
+- by **Automation › Refresh autoload scripts**, for the autoload scripts;
+- by itself, when its file changed on disk and you open the Automation menu or choose **Run the last loaded script**.
+
+Each script runs in a process of its own. A reload starts a new one, so the script's top level runs again and anything it kept from earlier runs is lost. A script can't be reloaded while one of its macros runs.
+
+If a script's process ends, by a crash for example, only that script stops. Its row reads **Stopped** until you reload it.
+
+## Running a macro
+
+Choose the macro in the Automation menu, run it from the Automation panel, or press its shortcut. Only one macro runs at a time.
+
+Before it starts, the line you are editing in the Line editor is committed. If it can't be, or no file is open, the macro doesn't start and a notice says why.
+
+While the macro runs, its subtitle file is read-only. Your other open files can still be edited.
+
+A script can check that a macro may run on the lines you selected. That check runs each time you run the macro; the menu doesn't grey out macros. If the check says no, the run ends with "Its validation did not let it run; nothing was changed."
+
+When the macro ends, its changes go into the file as **one undo step**, named *Automation: * and the macro's name. A macro that fails or is cancelled changes nothing. Nor does one whose file was changed, reloaded or closed while it ran: the card says "nothing was changed".
+
+Some scripts need the file's script resolution. If the file has none, HikariSub asks for it. **File › Settings › Video › Set a missing script resolution from the video without asking** takes the video's size instead.
+
+### The progress card
+
+<figure>
+  <ThemedImage
+    light={cardLight}
+    dark={cardDark}
+    alt="The progress card for Retime karaoke at 26 %: the task Retiming line 31 of 120 with a progress bar, the note episode.ass is read-only until the macro ends, four log lines marked hint, warning and error, Log · 4 lines, and Cancel"
+    width={408}
+    height={247}
+    className="rounded-lg border"
+  />
+  <figcaption>A macro running, its log open.</figcaption>
+</figure>
+
+When a macro starts, a slim notice with its name and a bar appears in the corner where notices show. After about a second, or as soon as the script writes to its log, it grows into a card with:
+
+- the macro's name, its task and how far it has got;
+- which file is read-only until the macro ends;
+- the log, which **Log** folds and unfolds;
+- **Open in panel**, which shows the run in the Automation panel's **Runs**;
+- **Cancel**.
+
+**Cancel** asks the script to stop. Most stop at once, but a script that is busy in a long loop may not notice. If it hasn't stopped after three seconds, the card says "The script has not stopped yet. Force stop ends its helper; nothing is changed." and offers **Force stop**. Nothing is ever stopped without you asking; reload the script afterwards to use it again.
+
+When the macro ends, the card's title says how: just the name when the changes were applied, or *cancelled*, *failed* or *named problems*. The card stays until you close it when it has something to read: a log, problems, or an error. A run that applied its changes and logged nothing leaves no card.
+
+The card never takes the keyboard by itself. <kbd>F6</kbd> reaches it, and <kbd>Esc</kbd> leaves it.
+
+### Running a macro again
+
+- **Rerun last macro** runs the last macro again on the lines selected now, as if you had chosen it from the menu. Its dialogs show as usual.
+- **Repeat last run** runs it again with the same answers. Each dialog that is the same as last time is answered for you, without showing. A dialog that changed is shown, filled with your last answers, with a note saying why. Questions, which have only buttons, are asked again.
+
+Repeat last run remembers the last run that ended without a dialog cancelled, until you quit. The menu item names the macro and the button you pressed, such as **Repeat last run: Gradient, as Apply with the same answers**. If the script was unloaded, the macro can't be repeated.
+
+**Run the last loaded script** runs the first macro of the last script added to this file, reloading it first if its file changed. If the file names no scripts, it says "This subtitle file does not have any scripts added". If the script failed to load, it shows the error and opens the script in your editor. Asked for by its key while another macro runs, it waits for that one to end.
+
+## A script's dialog
+
+Many macros ask for settings first in a dialog of their own. Its title is the macro's name, and its controls are the script's.
+
+<figure>
+  <ThemedImage
+    light={dialogLight}
+    dark={dialogDark}
+    alt="A script's dialog with fields for Tags, Start and End colours, Strip width, Accel and Mode. The ⋯ menu at the bottom left is open on Presets, listing Soft pink fade, Blue to clear and Karaoke glow, then Save as preset… and Delete preset"
+    width={506}
+    height={297}
+    className="rounded-lg border"
+  />
+  <figcaption>The ⋯ menu of a script's dialog, with three presets.</figcaption>
+</figure>
+
+- You can resize the dialog. HikariSub remembers its size and place for each script and dialog. A dialog too tall for the screen scrolls, and its buttons stay in view.
+- The strip above the buttons shows the hint of the control under the pointer, or of the focused one. For a number it also gives the range, such as "10 to 500".
+- A number field takes any typing. A value out of range is brought into the range when you leave the field, and the strip says so first: "5000 becomes 500 when you leave the field." The arrows, the mouse wheel, <kbd>Up</kbd>, <kbd>Down</kbd>, <kbd>Page Up</kbd> and <kbd>Page Down</kbd> step it.
+- A colour has a swatch, which opens the colour picker, and a field that takes `#RRGGBB`, `RRGGBB` or `&HBBGGRR&`.
+- A list of more than 10 items filters as you type.
+
+The keys are the same on every platform:
+
+| Key | Does |
+| --- | --- |
+| <kbd>Tab</kbd> | Moves through the controls row by row, then the buttons |
+| <kbd>Enter</kbd> | Presses the focused button, else the script's default one. In a multi-line text box, <kbd>Ctrl</kbd>+<kbd>Enter</kbd> |
+| <kbd>Space</kbd> | Ticks a check box or presses a button |
+| <kbd>Alt</kbd>+letter | Presses the button, ticks the box or goes to the field whose label has that letter underlined. The letters show while <kbd>Alt</kbd> is held |
+| <kbd>Esc</kbd> | Closes the dialog without pressing a button |
+
+Closing the window is the same as <kbd>Esc</kbd>. <kbd>F1</kbd>, or the **?** in the title bar, opens this page.
+
+### Answers and presets
+
+The **⋯** button at the bottom left, **Answers and presets**, has:
+
+- **Last used**, which fills in the answers you gave last time.
+- **Presets**, the answers you saved for this dialog. **Save as preset…** saves the ones shown under a name; a name in use asks to **Replace** it. **Delete preset** asks first.
+- **Reset to the script's values**.
+
+These only change what the dialog shows; nothing runs until you press one of its buttons.
+
+A control whose value differs from the script's has a thin coloured bar beside it. Hover it to see the script's value, and click it to put that value back.
+
+Dialogs open with the script's values. Turn on **File › Settings › Automation › Fill in my last answers** to open them with your last answers instead; a value the script works out itself, from the selection say, still wins. **Clear last answers…** on the same page forgets the answers of every dialog, and turns Repeat last run off until a macro runs again. Presets are kept.
+
+## Shortcuts for macros
+
+Any macro can have a key. Set it in the Automation panel: press **Add shortcut** on the macro's row, or <kbd>Shift</kbd>+click the macro in the Automation menu, then press the keys. Macro keys work everywhere in the program. See [Shortcuts](/en/docs/automation/automation-panel#shortcuts) in the Automation panel guide, and [Macro keys](/en/docs/customize/hotkeys#macro-keys).
+
+**File › Settings › Hotkeys** lists them under the **Automation shortcuts** filter. **Import legacy hotkeys…** on that page brings in the macro keys of HikariSub 0.0.x.
+
+## Settings
+
+**File › Settings › Automation** has:
+
+| Setting | Does |
+| --- | --- |
+| **Fill in my last answers** | Script dialogs open with your last answers. Off at first |
+| **Clear last answers…** | Forgets the answers given in every script dialog |
+| **Load scripts** | No effect in this version: autoload scripts always load at start |
+| **Compatibility with older HikariSub scripts** | No effect in this version |
+| **Lua trace level** | No effect in this version: logs always keep levels 0 to 3 |
+
+The [Settings reference](/en/docs/reference/settings#automation) lists them all.

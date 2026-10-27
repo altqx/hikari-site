@@ -325,6 +325,46 @@
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-dark.png",
       "surface": "Style manager editing a file style",
       "credit": ""
+    },
+    "content/docs/automation/images/automation-panel-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-light.png, crop 460x655+0+0",
+      "surface": "Automation panel, Scripts view, recording a macro shortcut",
+      "credit": ""
+    },
+    "content/docs/automation/images/automation-panel-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationPanelScreenshots under vx11, automation-panel-dark.png, crop 460x655+0+0",
+      "surface": "Automation panel, Scripts view, recording a macro shortcut",
+      "credit": ""
+    },
+    "content/docs/automation/images/automation-runs-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-runs-light.png",
+      "surface": "Automation panel, Runs view with a cancelled run's log",
+      "credit": ""
+    },
+    "content/docs/automation/images/automation-runs-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-runs-dark.png",
+      "surface": "Automation panel, Runs view with a cancelled run's log",
+      "credit": ""
+    },
+    "content/docs/automation/images/automation-card-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-card-light.png",
+      "surface": "Automation progress card, macro running with its log",
+      "credit": ""
+    },
+    "content/docs/automation/images/automation-card-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests automationProgressScreenshots under vx11, automation-card-dark.png",
+      "surface": "Automation progress card, macro running with its log",
+      "credit": ""
+    },
+    "content/docs/automation/images/script-dialog-menu-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-light.png, crop 506x297+8+8",
+      "surface": "Script dialog with the Answers and presets menu open on Presets",
+      "credit": ""
+    },
+    "content/docs/automation/images/script-dialog-menu-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-dark.png, crop 506x297+8+8",
+      "surface": "Script dialog with the Answers and presets menu open on Presets",
+      "credit": ""
     }
   }
 }
