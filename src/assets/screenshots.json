@@ -206,6 +206,126 @@
       "surface": "Settings window, General page",
       "credit": ""
     },
+    "content/docs/basics/images/fullscreen-light.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/fullscreen-light.webp",
+      "surface": "Full-screen playback with the player bar, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/audio-panel-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-default-light.png, crop of the panel, 640x212",
+      "surface": "Audio panel in Line mode, default row, test audio",
+      "credit": ""
+    },
+    "content/docs/basics/images/audio-commit-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-light.png, top 640x300",
+      "surface": "Audio panel with the Commit options menu open",
+      "credit": ""
+    },
+    "content/docs/basics/images/shift-times-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-light.png",
+      "surface": "Shift times panel, floating, Shift mode",
+      "credit": ""
+    },
+    "content/docs/basics/images/post-processor-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-light.png",
+      "surface": "Shift times panel, floating, Post processor mode",
+      "credit": ""
+    },
+    "content/docs/basics/images/convert-srt-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-light.png",
+      "surface": "Convert to SRT window with What changes",
+      "credit": ""
+    },
+    "content/docs/basics/images/file-properties-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-properties-light.png",
+      "surface": "ASS file properties window",
+      "credit": ""
+    },
+    "content/docs/basics/images/resample-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-resample-light.png",
+      "surface": "Resample subtitles window, 1280x720 to 1440x1080",
+      "credit": ""
+    },
+    "content/docs/basics/images/grid-light.webp": {
+      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356",
+      "surface": "Grid in the Editing layout, ray MV, line 34 active",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/fullscreen-dark.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/fullscreen-dark.webp",
+      "surface": "Full-screen playback with the player bar, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/audio-panel-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-default-dark.png, crop of the panel, 640x212",
+      "surface": "Audio panel in Line mode, default row, test audio",
+      "credit": ""
+    },
+    "content/docs/basics/images/audio-commit-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-dark.png, top 640x300",
+      "surface": "Audio panel with the Commit options menu open",
+      "credit": ""
+    },
+    "content/docs/basics/images/shift-times-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-dark.png",
+      "surface": "Shift times panel, floating, Shift mode",
+      "credit": ""
+    },
+    "content/docs/basics/images/post-processor-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-dark.png",
+      "surface": "Shift times panel, floating, Post processor mode",
+      "credit": ""
+    },
+    "content/docs/basics/images/convert-srt-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-dark.png",
+      "surface": "Convert to SRT window with What changes",
+      "credit": ""
+    },
+    "content/docs/basics/images/file-properties-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-properties-dark.png",
+      "surface": "ASS file properties window",
+      "credit": ""
+    },
+    "content/docs/basics/images/resample-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-resample-dark.png",
+      "surface": "Resample subtitles window, 1280x720 to 1440x1080",
+      "credit": ""
+    },
+    "content/docs/basics/images/grid-dark.webp": {
+      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; line_grid.cpp and line_table_model.cpp unchanged to qt 6cee588a8), 1600x356",
+      "surface": "Grid in the Editing layout, ray MV, line 34 active",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/line-editor-light.webp": {
+      "source": "crop of src/assets/home/hero-light.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246",
+      "surface": "Line editor on a karaoke comment line, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/styles-panel-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-light.png, top 327x272",
+      "surface": "Styles panel with four test styles",
+      "credit": ""
+    },
+    "content/docs/basics/images/style-manager-light.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-light.png",
+      "surface": "Style manager editing a file style",
+      "credit": ""
+    },
+    "content/docs/basics/images/line-editor-dark.webp": {
+      "source": "crop of src/assets/home/hero-dark.webp (recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344; LineInspector.qml, LineEditorStrip.qml and LineCounters.qml unchanged to qt 6cee588a8), 800x246",
+      "surface": "Line editor on a karaoke comment line, ray MV",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/basics/images/styles-panel-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_typesetting_preset_tests typesettingScreenshots under vx11, typesetting-styles-panel-dark.png, top 327x272",
+      "surface": "Styles panel with four test styles",
+      "credit": ""
+    },
+    "content/docs/basics/images/style-manager-dark.webp": {
+      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests styleManagerScreenshots under vx11, sy1-window-dark.png",
+      "surface": "Style manager editing a file style",
+      "credit": ""
+    },
     "content/docs/karaoke/images/karaoke-mode-light.webp": {
       "source": "origin/qt 6cee588a836cb4d5b3195810a09db40f0dafce67 docs/readme/audio-light.webp (last changed in 4131b3084)",
       "surface": "Audio panel in Karaoke mode over the spectrum, ray MV romaji line, with its \\k tags in the Line editor",

@@ -1,6 +1,115 @@
 ---
 title: Grid
-draft: true
+description: The list of every line in the file, where you select, insert, join, split, sort, hide and copy lines.
 ---
 
-This guide is not written yet.
+import gridLight from './images/grid-light.webp';
+import gridDark from './images/grid-dark.webp';
+
+The Grid lists every line of the file, one row each, in file order. The line you click becomes the active line, which the [Line editor](/en/docs/basics/line-editor), the video and the audio follow.
+
+<figure>
+  <ThemedImage
+    light={gridLight}
+    dark={gridDark}
+    alt="The Grid: columns #, L., Start, End, Styles, Actor, Effect, CPS, Wraps and Text, with line 34 active and the comment lines on a tinted background"
+    width={1600}
+    height={356}
+    className="rounded-lg border"
+  />
+  <figcaption>The Grid, with the active line outlined and comment lines tinted. Subtitles: Jibrill.</figcaption>
+</figure>
+
+## Columns
+
+| Column | Shows |
+| --- | --- |
+| **#** | The line's number |
+| **L.** | Layer: a higher layer is drawn over a lower one |
+| **Start**, **End** | The times |
+| **Styles**, **Actor**, **Effect** | The line's fields |
+| **Left**, **Right**, **Vert.** | Margins that replace the style's |
+| **CPS** | Characters per second |
+| **Wraps** | How the text wraps |
+| **Text** | The text |
+
+**CPS** turns the warning colour above 15 characters per second, and **Wraps** above 43 characters on a line, or at three lines. Tags and drawings don't count. **File › Settings › Subtitle grid › Counting** chooses whether spaces and punctuation do.
+
+Columns that have nothing to show hide themselves: Layer when every layer is 0, Actor and Effect when they are all empty, and each margin when it is 0 everywhere. A column comes back as soon as a line uses it. Turn this off with **Hide columns › Hide empty columns** in the right-click menu, and hide any column by hand in the same menu. SRT and the other simple formats have no layers, styles, actors, margins or effects, so those columns never show for them.
+
+## What the rows show
+
+- **Comment lines**, kept in the file but not shown on the video, have a tinted background.
+- A **dot** in the **#** column marks a line changed since the file opened, and a **ring** one changed and saved since.
+- A **triangle** marks the line you are editing in the Line editor but haven't applied yet. The row shows your edit as you type.
+
+## Selecting
+
+| Mouse or key | Does |
+| --- | --- |
+| Click | Makes the line active, and the only one selected |
+| <kbd>Ctrl</kbd>+click | Adds the line to the selection, or takes it out |
+| <kbd>Shift</kbd>+click | Selects from the active line to this one |
+| Drag | Selects the rows you pass |
+| Double-click | Moves the video to the line's start, or its end in the End column |
+| <kbd>Up</kbd> <kbd>Down</kbd> <kbd>PgUp</kbd> <kbd>PgDn</kbd> <kbd>Home</kbd> <kbd>End</kbd> | Move the active line. With <kbd>Shift</kbd>, select as they go |
+| <kbd>Ctrl</kbd>+<kbd>A</kbd> | Selects every line |
+| <kbd>Ctrl</kbd>+<kbd>Up</kbd> <kbd>Ctrl</kbd>+<kbd>Down</kbd> | Previous or next line, from anywhere |
+| <kbd>F2</kbd> | Selects the line at the video's time |
+
+The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Move video to selected line on**. **Edit › Select lines** selects lines by their text, style or other fields.
+
+Most commands act on the selected lines. Right-click a line for the Grid's menu.
+
+## Making and removing lines
+
+- **Insert › Insert before** and **Insert after** add an empty line beside the active one, with its style and fields, timed to fit the gap or 4 seconds long. **Insert before with video time** and the other video items start it at the video's time.
+- **Duplicate lines** (<kbd>Ctrl</kbd>+<kbd>D</kbd>) copies the selected lines, and selects the copies.
+- **Swap** swaps two selected lines.
+- **Delete lines** (<kbd>Shift</kbd>+<kbd>Del</kbd>) deletes the selected lines. **Delete text** (<kbd>Alt</kbd>+<kbd>Del</kbd>) empties their text and keeps their times.
+
+## Joining and splitting
+
+- **Join lines** makes the selected lines one, from the earliest start to the latest end, their texts joined with line breaks.
+- **Join lines and keep first** and **Join lines and keep last** keep only one line's text.
+- <kbd>F4</kbd> and <kbd>F5</kbd> join the active line with the line before or after it.
+
+Lines between the selected ones that you didn't select are left alone.
+
+**Split lines** cuts a line at the video's time, or into one line per frame, character, word or wrapped line. A split into characters, words or wraps gives each piece its own position, so it stays where it was on the video.
+
+## Copying and pasting
+
+<kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste whole lines. Pasted lines go before the first selected line.
+
+**Copy columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>) copies only the fields you tick, such as the times or the text without tags. **Paste columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes them into the same fields of the selected lines, in order. Use them to copy the timing of one set of lines onto another.
+
+## Sorting
+
+**Edit › Sort all lines** and **Sort selected lines** order the lines by start time, end time, style, actor, effect or layer. Lines that tie keep their order.
+
+## Hiding lines
+
+Hidden lines are still in the file; the Grid just leaves them out, and most commands skip them.
+
+- **Hide selected lines** hides them.
+- **Filtering** hides the lines of chosen styles, or comments, or shows only unconfirmed or untranslated lines. **Reverse filtering** shows the opposite, and **Turn off filtering** shows them all again.
+- The marks at the left edge show where hidden lines are. Click one to open or close that run.
+- **Ignore filtering in some actions** lets Replace all and Shift times reach hidden lines too.
+
+**Subtitles › Hide tags** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Subtitle grid › ASS tag replacement** sets the character.
+
+## Line groups
+
+**Make tree** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row to add lines to it, copy it, rename it, select its lines, or delete the group. An edit that would split a group's lines apart asks first, or is refused.
+
+## Other commands
+
+- **Set times as a continuous (previous line)** and **(next line)** close the gaps between lines, as [Timing](/en/docs/basics/timing#lines-next-to-each-other) explains.
+- **Set new FPS** and **Set FPS from video** retime lines from one frame rate to another.
+- **Select all lines visible on video** selects the lines showing at the video's time.
+- **Show subtitles preview** (<kbd>Ctrl</kbd>+<kbd>Q</kbd>) opens another file beside this one, to compare or translate against.
+- **Font collector** gathers the fonts the file uses.
+- **Load subtitles from an MKV/OGM file** opens a video's subtitle track.
+
+Every Grid command has a place in the [Hotkeys reference](/en/docs/reference/hotkeys#subtitle-grid), and most have no key at first. **Shift**+click a menu item to give it one.

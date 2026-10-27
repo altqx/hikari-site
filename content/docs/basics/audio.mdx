@@ -1,6 +1,146 @@
 ---
 title: Audio
-draft: true
+description: Open audio, see it as a waveform or spectrum, play around your lines and time them with the mouse.
 ---
 
-This guide is not written yet.
+import panelLight from './images/audio-panel-light.webp';
+import panelDark from './images/audio-panel-dark.webp';
+import commitLight from './images/audio-commit-light.webp';
+import commitDark from './images/audio-commit-dark.webp';
+
+The Audio panel shows the sound as a waveform or a spectrum, with the active line marked on it. You can play any part of it and set a line's times with the mouse. In the Editing layout it sits above the Line editor.
+
+<figure>
+  <ThemedImage
+    light={panelLight}
+    dark={panelDark}
+    alt="The Audio panel: a waveform with the active line highlighted between two red boundaries, a time ruler, and the row of buttons below it"
+    width={640}
+    height={212}
+    className="rounded-lg border"
+  />
+  <figcaption>The Audio panel in Line mode.</figcaption>
+</figure>
+
+## Opening audio
+
+When you open a video that has sound, its audio opens in the panel too, without indexing again. A video without sound closes the panel's audio. A [dummy video](/en/docs/basics/video#dummy-video) brings silence as long as itself.
+
+The **Audio** menu can also open audio on its own:
+
+- **Open audio:** WAV, W64, FLAC, AC3, AAC, OGG, MP3, MP4, M4A, MKV or AVI. Choose **All files** to open another kind.
+- **Recently opened audio:** <kbd>Ctrl</kbd>+click an entry to show the file in its folder.
+- **Open audio from video:** the open video's sound again, after you opened another file.
+- **Close audio.**
+
+If the file has several audio tracks, **Choose the audio track** asks which one. Decoded audio is kept in a cache on disk, so the same file opens faster the next time.
+
+## What the display shows
+
+- The active line is the bright range, between its start and end boundaries. The lines before and after it are shaded.
+- **Modified** at the top left means the times you set are not yet applied to the line. **Negative time** means the start is after the end.
+- The ruler shows the time, with a line every second. Keyframes from the video show as lines, and the paused video's frame as a dashed line.
+- Under the pointer, a line shows the time there.
+
+**Waveform | Spectrum** switches between the waveform and a spectrogram. With the spectrum on, **Speech** brings out the frequencies of voices.
+
+**Sync with video**, on at first, keeps the two together: while the video plays, the audio cursor follows it, and while the audio plays, the paused video shows the frame at the audio's time.
+
+## Playing
+
+| Button | Key | Does |
+| --- | --- | --- |
+| **Previous line** | <kbd>Left</kbd> or <kbd>Z</kbd> | Goes to the previous line and plays it |
+| **Play** | <kbd>Down</kbd> or <kbd>S</kbd> | Plays the selection |
+| **Play line** | <kbd>Up</kbd> or <kbd>R</kbd> | Plays the whole line |
+| **Stop** | <kbd>H</kbd> | Stops. Pressed again, plays on from where it stopped |
+| **Next line** | <kbd>Right</kbd> or <kbd>X</kbd> | Goes to the next line and plays it |
+
+Playing audio pauses the video first. To move between lines without playing them, turn on **Don't play after changing the line** in **File › Settings › Audio**.
+
+**Play around** plays a short range around the line. Its face plays the range you last chose from its arrow; each range also has a key that plays it without changing the face:
+
+| Range | Key |
+| --- | --- |
+| Play 500 ms before the start | <kbd>Q</kbd> |
+| Play the first 500 ms | <kbd>E</kbd> |
+| Play the last 500 ms | <kbd>D</kbd> |
+| Play 500 ms after the end | <kbd>W</kbd> |
+| Play to the end | <kbd>T</kbd> |
+| Play before the mark | <kbd>Num 0</kbd> |
+| Play after the mark | <kbd>Num .</kbd> |
+
+Right-click the ruler to set the mark. Playing around it uses **Play around the marker** in Settings, 1 second at first.
+
+The speaker button holds the volume, the output device, and the **Speed**: 25%, 33%, 50%, 75% or 100%, with the pitch kept. <kbd>[</kbd> and <kbd>]</kbd> change the speed. **Audio settings…** opens the Audio page of Settings.
+
+## Timing with the mouse
+
+| Mouse | Does |
+| --- | --- |
+| Left click | Sets the start there. Drag on to set the end too |
+| Right click | Sets the end there |
+| Drag a boundary | Moves the start or the end |
+| <kbd>Alt</kbd> held on release | Also moves the neighbouring line: the next line's start to this end, or the previous line's end to this start |
+| <kbd>Shift</kbd> while dragging | Turns snapping on, or off if it is on |
+| <kbd>Ctrl</kbd>+click or middle click | Moves the video there, without timing |
+| Drag the ruler | Scrolls the view |
+| Right-click the ruler | Sets the mark |
+
+Times are rounded to the centisecond. **Snap to keyframes** and **Snap to other lines**, under **File › Settings › Audio**, make a boundary jump to a keyframe or another line's boundary near it. Both are off at first.
+
+**In** (<kbd>C</kbd>) moves the start 200 ms earlier and **Out** (<kbd>V</kbd>) the end 300 ms later. Settings sets both amounts.
+
+## Applying the times
+
+**Commit** (<kbd>Enter</kbd> or <kbd>G</kbd>) writes the times into the line, or into every selected line, as one undo step. It then moves to the next line. On the last line it adds a new, empty line five seconds long after it.
+
+<figure>
+  <ThemedImage
+    light={commitLight}
+    dark={commitDark}
+    alt="The Commit button's menu open under it: Commit with Enter or G, then the Automatically apply changes and Go to the next line after applying changes checks, both on"
+    width={640}
+    height={300}
+    className="rounded-lg border"
+  />
+  <figcaption>The Commit options.</figcaption>
+</figure>
+
+**Automatically apply changes**, on at first, applies every change you make with the mouse, In and Out at once, so you rarely need Commit. Turn it off to try times first: they wait in the Line editor, the display shows **Modified**, and Commit applies them. The small **A** on the Commit button shows that it is on.
+
+<Callout type="warn">
+  **Go to the next line after applying changes** does not work yet: Commit always moves to the next line.
+</Callout>
+
+A selection that ends before it starts is refused.
+
+## Moving around
+
+- The wheel scrolls. <kbd>Shift</kbd>+wheel zooms in and out around the pointer, and <kbd>Ctrl</kbd>+wheel stretches the waveform up and down.
+- <kbd>A</kbd> and <kbd>F</kbd> scroll left and right.
+- The **Zoom** button shows the zoom, such as **1.0×**, and opens sliders for both stretches with **Reset zoom**.
+- **Auto-scroll**, on at first, scrolls to each line you select.
+- When the line is out of view, a **Back to line** chip shows at the edge it lies past. It, or <kbd>B</kbd>, scrolls back to it.
+
+## Karaoke
+
+**Line | Karaoke** switches to Karaoke mode, which splits the line into syllables you time one by one, and adds **Auto split** and **Tap to time** to the row. The karaoke guides cover it.
+
+## Keys and the pointer
+
+The Audio panel's keys work while the pointer is over it, without clicking it first. Turn this off with **Hotkeys follow the panel under the pointer** in Settings. <kbd>Space</kbd> plays the video from the Audio panel too.
+
+Most of its keys also work with the pointer over the Grid, except <kbd>Enter</kbd> and the arrow keys, which the Grid keeps. So <kbd>G</kbd>, <kbd>Z</kbd> and <kbd>X</kbd> commit and move between lines from the Grid. The [Hotkeys reference](/en/docs/reference/hotkeys#audio) lists them all.
+
+## Arranging the buttons
+
+The gear, **Customise the audio panel**, chooses what the row shows: the Play around button, each play on its own, **Auto-commit**, **Go to the next line after commit**, **Go to selection** and the zoom and volume sliders. **Classic arrangement** shows them all, as older versions did, and **Default arrangement** goes back. When the panel is too narrow, the buttons that don't fit move into its **⋯** menu.
+
+## Settings
+
+**File › Settings › Audio** holds the output device, the audio delay, the lead-in and lead-out, snapping, the karaoke options and the cache. The [Settings reference](/en/docs/reference/settings#audio) lists them with their defaults.
+
+<Callout>
+  The **Display** section's options are not applied yet: the display always looks as it does with their defaults.
+</Callout>
