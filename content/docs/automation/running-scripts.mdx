@@ -54,6 +54,7 @@ Scripts that only add export filters load, but add nothing: HikariSub has no exp
 A script is reloaded:
 
 - when you press **Reload** on its row in the Automation panel;
+- when you load a subtitle script again with **Load script…**, which leaves the file's header as it is;
 - by **Automation › Refresh autoload scripts**, for the autoload scripts;
 - by itself, when its file changed on disk and you open the Automation menu or choose **Run the last loaded script**.
 
@@ -110,7 +111,7 @@ The card never takes the keyboard by itself. <kbd>F6</kbd> reaches it, and <kbd>
 
 Repeat last run remembers the last run that ended without a dialog cancelled, until you quit. The menu item names the macro and the button you pressed, such as **Repeat last run: Gradient, as Apply with the same answers**. If the script was unloaded, the macro can't be repeated.
 
-**Run the last loaded script** runs the first macro of the last script added to this file, reloading it first if its file changed. If the file names no scripts, it says "This subtitle file does not have any scripts added". If the script failed to load, it shows the error and opens the script in your editor. Asked for by its key while another macro runs, it waits for that one to end.
+**Run the last loaded script** runs the first macro of the last script added to this file, reloading it first if its file changed. If the file names no scripts, it says "This subtitle file does not have any scripts added". If the script failed to load, it shows the error and opens the script in your editor. If it loaded but has no macros, as a library has none, a notice says "*name* has no macros to run". Asked for by its key while another macro runs, it waits for that one to end.
 
 ## A script's dialog
 

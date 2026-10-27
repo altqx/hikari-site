@@ -22,7 +22,7 @@ At the top, **Scripts** and **Runs** switch between the two views. Runs shows ho
 
 | Button | Does |
 | --- | --- |
-| **Load script…** | Loads a script for the current subtitle file |
+| **Load script…** | Loads a script for the current subtitle file, or reloads it if it is already a subtitle script |
 | **Refresh autoload scripts** | Reloads the autoload scripts and loads new ones |
 | **Rerun last macro** | Runs the last macro again, with its dialogs |
 | **Repeat last run** | Runs the last macro again with the same answers |
@@ -63,7 +63,7 @@ Each script shows its name in bold; hover it for the script's description. Besid
 | --- | --- |
 | **Loading** | Its top level is running |
 | **Running** | One of its macros is running |
-| **Failed to load** | The script has an error. The row shows it; **Show full error** shows all of it |
+| **Failed to load** | The script has an error. The row shows it, starting with the file name and line, such as `myscript.lua:12: '=' expected near 'end'`; **Show full error** shows all of it |
 | **Stopped** | Its process ended. Reload it to use it again; nothing is rerun by itself |
 
 **Reload** loads the script again from its file. The **⋯** button on the row also has:
