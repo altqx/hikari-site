@@ -27,7 +27,7 @@ jobs:
       - name: Build with drafts (as PR previews do)
         run: bun run build
         env:
-          VITE_SHOW_DRAFTS: '1'
+          VITE_SHOW_DRAFTS: "1"
       - name: Link check (with drafts)
         run: bun run check-links
 

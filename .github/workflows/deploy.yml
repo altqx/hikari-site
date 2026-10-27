@@ -48,7 +48,7 @@ jobs:
       - if: steps.secrets.outputs.present
         run: bun run build
         env:
-          VITE_SHOW_DRAFTS: '1'
+          VITE_SHOW_DRAFTS: "1"
       - name: Upload preview version
         id: upload
         if: steps.secrets.outputs.present

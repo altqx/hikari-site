@@ -27,7 +27,10 @@ test('draft pages are left out of the production build', async ({ page }) => {
 
 test('search finds a guide', async ({ page }) => {
   await page.goto('/en/docs');
-  await page.getByRole('button', { name: /search/i }).first().click();
+  await page
+    .getByRole('button', { name: /search/i })
+    .first()
+    .click();
   const dialog = page.getByRole('dialog');
   await dialog.getByRole('combobox', { name: 'Search' }).fill('typesetting');
   await expect(dialog.getByText('HikariSub guides')).toBeVisible();
@@ -38,7 +41,10 @@ test('the theme toggle switches between light and dark', async ({ page }) => {
   await page.goto('/en/docs');
   const html = page.locator('html');
   await expect(html).not.toHaveClass(/dark/);
-  await page.getByRole('button', { name: /toggle theme/i }).first().click();
+  await page
+    .getByRole('button', { name: /toggle theme/i })
+    .first()
+    .click();
   await expect(html).toHaveClass(/dark/);
 });
 
