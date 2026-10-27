@@ -1,6 +1,118 @@
 ---
 title: The user folder
-draft: true
+description: Find the one folder that holds your settings, scripts, dictionaries and catalogs, how bundled scripts are copied into it, and how to back it up.
 ---
 
-This guide is not written yet.
+import helpMenuLight from './images/help-open-user-folder-light.webp';
+import helpMenuDark from './images/help-open-user-folder-dark.webp';
+
+Everything of yours is in one folder, the **user folder**: your settings and hotkeys, automation scripts and modules, dictionaries, catalogs, saved layouts and autosaves. Copy it, and you have your whole setup. Uninstalling or updating HikariSub never deletes it.
+
+For scripts, the user folder is `?user`, as in Aegisub.
+
+## Where it is
+
+| Copy | User folder |
+| --- | --- |
+| Windows setup | `%APPDATA%\HikariSub` |
+| Linux: AppImage, deb, rpm, AUR | `~/.config/hikarisub`, or `$XDG_CONFIG_HOME/hikarisub` when that is set |
+| Portable zip or tar.gz | `user`, in the folder you unpacked |
+
+To open it:
+
+- **Help › Open user folder** opens it in your file manager.
+- **File › Settings › General › Folders › User folder** shows where it is; **Open** opens it.
+- The last step of the [Getting started window](/en/docs/get-started/getting-started-window#your-files), **Your files**, shows it with an **Open folder** button.
+
+<figure>
+  <ThemedImage
+    light={helpMenuLight}
+    dark={helpMenuDark}
+    alt="The Help menu open: Getting started, User guide on F1, Report an issue, Check for updates, Open user folder (highlighted), What's new, About and Credits"
+    width={590}
+    height={262}
+    className="rounded-lg border"
+  />
+  <figcaption>Help › Open user folder.</figcaption>
+</figure>
+
+The index files of your videos and the audio cache are not in the user folder. HikariSub can make them again, so they go to a cache folder instead: `%LOCALAPPDATA%\HikariSub\cache` on Windows, `~/.cache/hikarisub` on Linux. Portable copies use these too.
+
+To use another folder, start HikariSub with the environment variable `HIKARISUB_USER_DIR` set to it.
+
+## What's in it
+
+```text
+hikari.ini              your settings and hotkeys
+layout.json             the current panel layout
+LastSession.txt         the last session
+Rules.txt               the Fix minor errors rules
+ShapesSettings.txt      your shapes from Edit shapes
+AllTagsSettings.txt     your tags from Edit tags
+automation/
+  autoload/             scripts that load at start: the bundled ones and yours
+  include/              modules that scripts require
+dictionaries/           spelling dictionaries (.dic and .aff) and UserDic.udic
+catalogs/               style catalogs (.sty) and FontCatalogs.txt
+presets/                layouts.json, your saved layouts
+recovery/               autosaved copies of your files
+config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
+log/  temp/  autosave/  folders scripts write to
+.bundled-files          which bundled version each copied file came from
+```
+
+Some files appear only once you use what they belong to. Edit `hikari.ini` only while HikariSub is closed: a running HikariSub writes its own values over it.
+
+To add a script that loads at start, put it in `automation/autoload`. To add a spelling language, put its `.dic` and `.aff` files in `dictionaries`. See [Writing scripts](/en/docs/automation/writing-scripts#where-scripts-live) and [Spelling](/en/docs/checking/spelling#dictionaries).
+
+## Bundled scripts and dictionaries
+
+The scripts, modules and spelling dictionaries that come with HikariSub are copied into your user folder, so you can edit them and [DependencyControl](/en/docs/automation/dependencycontrol) can update them. Each time HikariSub starts, it compares its bundled files with the copies:
+
+- A file that is **missing** is copied in. A bundled file you delete comes back at the next start.
+- A file that is **unchanged** since it was copied is replaced when HikariSub brings a new version of it.
+- A file that **you changed**, or that DependencyControl updated, is kept. HikariSub's new version is not copied over it, and the Log says so once: "Kept your changed …; the new bundled version was not copied over it."
+- A file that a new version **no longer brings** is removed while it is unchanged. If you changed it, it stays, and is yours from then on.
+
+To go back to the bundled version of a file you changed, move your copy out of the user folder and restart HikariSub.
+
+HikariSub also reads the program's own copies, after yours, so the bundled scripts load even without them. A file in your user folder is used instead of the program's copy with the same name. The furigana dictionary is not copied: it stays with the program.
+
+## Moving in from earlier versions
+
+HikariSub versions before the user folder kept your files in two folders:
+
+| | Windows | Linux |
+| --- | --- | --- |
+| Settings | `%LOCALAPPDATA%\HikariSub\HikariSub` | `~/.config/HikariSub/HikariSub` |
+| Data: autosaves and scripts | `%APPDATA%\HikariSub\HikariSub` | `~/.local/share/HikariSub/HikariSub` |
+
+The first time HikariSub starts with a user folder that has no `hikari.ini`, it moves their contents in, once. A notice says "Your settings and files moved to …", with the folder; **Details** lists the folders they came from.
+
+- Everything goes into the layout above: `Dictionary` into `dictionaries`, `Catalog` and the font catalogs into `catalogs`, saved layouts into `presets`, `Recovery` into `recovery`, and the Automation folder's contents to the top, with `automation/Autoload` and `Include` merged into `autoload` and `include`.
+- The index files and the audio cache go to the cache folder.
+- A file with the same name as one already in the user folder stays where it was. The notice counts these, and **Details** lists them under **Not moved**.
+- The old DependencyControl stays behind, because HikariSub brings a newer one. The notice says "The old DependencyControl stayed behind: HikariSub brings a newer one."
+- Empty folders are removed. What stays behind is not used any more: once you have checked it, delete it. On Windows the old data folder is inside the new user folder, so a `HikariSub` folder there can hold what stayed behind.
+
+A portable copy, or a start with `HIKARISUB_USER_DIR`, moves nothing. HikariSub 0.0.x's folders are never moved or changed: bring its settings over with **File › Import legacy settings…**, as [Moving from legacy](/en/docs/get-started/moving-from-legacy) explains.
+
+## Backing up and moving to another computer
+
+1. Close HikariSub.
+2. Copy the whole user folder, hidden files included.
+3. On the other computer, close HikariSub, and put the copy where that computer's user folder is, replacing it.
+
+Keep `.bundled-files` with the rest. Without it, copies of bundled files from another HikariSub version count as your changes and are not updated.
+
+A portable copy's user folder is inside its own folder. When you unpack a new version beside the old one, copy the old `user` folder into it.
+
+## When something goes wrong
+
+| Problem | What to do |
+| --- | --- |
+| After an update, your settings are the defaults | A portable copy doesn't move files in from the folders earlier versions used, and nothing is moved into a user folder that already has a `hikari.ini`. Copy the files across by hand while HikariSub is closed |
+| The notice says some items stayed where they were | Your user folder already had items with those names. **Details** lists them under **Not moved**; compare them and copy across what you want |
+| A bundled script you edited doesn't get HikariSub's fixes | Your changed copy is kept. Move it out of the user folder and restart to get the new version |
+| A bundled script you deleted is back | Each start copies in missing bundled files. Bundled scripts always load |
+| The Log says "Could not copy the bundled … into the user folder." | HikariSub couldn't write the file, for example because the disk is full or the folder is read-only. It tries again at the next start |

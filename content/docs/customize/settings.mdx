@@ -63,12 +63,15 @@ Both wait for **OK** or **Apply** like any other change, so **Cancel** undoes th
 
 HikariSub keeps one set of settings for each user on the computer, in a file named `hikari.ini`, with your hotkeys. It has no profiles to switch between.
 
-| System | Folder |
-| --- | --- |
-| Windows | `%LOCALAPPDATA%\HikariSub\HikariSub\` |
-| Linux | `~/.config/HikariSub/HikariSub/` |
+The file is in your [user folder](/en/docs/automation/user-folder), with your scripts, dictionaries and saved layouts. **Help › Open user folder** opens it.
 
-Every package uses the same folder, the portable ones too, so removing or updating HikariSub never deletes your settings. The saved layouts, the last session and your dictionary sit beside the file. Edit it only while HikariSub is closed: a running HikariSub writes its own values over it.
+| Copy | Folder |
+| --- | --- |
+| Windows setup | `%APPDATA%\HikariSub\` |
+| Linux packages | `~/.config/hikarisub/` |
+| Portable zip or tar.gz | `user`, in the folder you unpacked |
+
+Uninstalling or updating HikariSub never deletes your settings. Edit the file only while HikariSub is closed: a running HikariSub writes its own values over it.
 
 ## Settings from older versions
 

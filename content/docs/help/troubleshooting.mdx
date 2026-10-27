@@ -74,13 +74,14 @@ The work of a HikariSub that is still running is never deleted. Autosaves from H
 
 | What | Windows | Linux |
 | --- | --- | --- |
-| Settings, hotkeys, saved layouts, the last session, your dictionaries | `%LOCALAPPDATA%\HikariSub\HikariSub\` | `~/.config/HikariSub/HikariSub/` |
-| Autosaves | `%APPDATA%\HikariSub\HikariSub\Recovery` | `~/.local/share/HikariSub/HikariSub/Recovery` |
-| Your Automation scripts | `%APPDATA%\HikariSub\HikariSub\Automation` | `~/.local/share/HikariSub/HikariSub/Automation` |
+| Your [user folder](/en/docs/automation/user-folder): settings, hotkeys, saved layouts, the last session, scripts, dictionaries, catalogs | `%APPDATA%\HikariSub\` | `~/.config/hikarisub/` |
+| Autosaves | `recovery` in the user folder | `recovery` in the user folder |
+| Index files and the audio cache | `%LOCALAPPDATA%\HikariSub\cache` | `~/.cache/hikarisub` |
 | Downloaded updates | `%LOCALAPPDATA%\HikariSub\Updates` | `~/.cache/HikariSub/Updates` |
 
-- Every package uses these folders, the portable ones too. The one exception: a portable copy keeps its Automation folder beside the program.
-- Uninstalling or updating HikariSub never deletes them. [Install](/en/docs/get-started/install#uninstall) says how to remove them.
+- **Help › Open user folder** opens the user folder.
+- A portable copy keeps its user folder inside its own folder, as `user`. Its index files and audio cache go to the cache folder above.
+- Uninstalling or updating HikariSub never deletes your user folder. [Install](/en/docs/get-started/install#uninstall) says how to remove it.
 - The Log and crash dumps are not on disk at all.
 
 [Settings](/en/docs/customize/settings#where-settings-are-kept) explains the settings file, and how to reset settings from the Settings window.
@@ -90,7 +91,7 @@ The work of a HikariSub that is still running is never deleted. Autosaves from H
 | Problem | What to do |
 | --- | --- |
 | A notice disappeared before you read it | Open **File › Log** |
-| Spelling isn't checked, and a **Spellchecker** notice says no dictionary files were found | Put the language's `.dic` and `.aff` files in the `Dictionary` folder of the settings folder. The notice names the folder |
+| Spelling isn't checked, and a **Spellchecker** notice says no dictionary files were found | Put the language's `.dic` and `.aff` files in the `dictionaries` folder of the user folder. The notice names the folder |
 | A script shows **Stopped** in the Automation panel, and its macros do nothing | Press its **Reload** button. The script starts again; the macro is not rerun |
 | A macro doesn't finish | Press **Cancel** on its card. If it hasn't stopped after 3 seconds, **Force stop** appears: it ends the script and changes nothing |
 | Work lost in a crash | **Restore session** or **Autosaves…** on the Home page, or **File › Open auto save** |

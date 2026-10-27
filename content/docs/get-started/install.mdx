@@ -50,7 +50,7 @@ Exit codes: 0 done, 1 cancelled, 2 failed, 3 HikariSub was running, 4 administra
 
 Download `HikariSub-<version>-windows-x64.zip`, unpack it anywhere and run `HikariSub_x64\HikariSub.exe`. Nothing is installed and no administrator rights are needed.
 
-A portable copy keeps its Automation folder (scripts, logs and autosaves) beside the program. Its settings are stored in your user profile like an installed copy's. A portable copy does not update itself: when there is a new version, it opens the download page.
+A portable copy keeps your settings, scripts and autosaves in a `user` folder inside its own folder: see [The user folder](/en/docs/automation/user-folder). To move to a new version, copy that folder into the new copy. A portable copy does not update itself: when there is a new version, it opens the download page.
 
 ## Linux
 
@@ -133,14 +133,14 @@ Each download is checked against its SHA-256 before it is installed. To see whic
 ## Uninstall
 
 - **Setup:** remove HikariSub in Windows Settings › Apps, or run `Uninstall HikariSub.exe` in the install folder.
-- **AppImage, portable zip, tar.gz:** delete the file or folder. For the tar.gz, run `./install-desktop-integration.sh --uninstall` first if you used it.
+- **AppImage, portable zip, tar.gz:** delete the file or folder. Deleting a portable copy's folder deletes its `user` folder too. For the tar.gz, run `./install-desktop-integration.sh --uninstall` first if you used it.
 - **deb, rpm:** `sudo apt remove hikarisub`, `sudo dnf remove hikarisub` or `sudo zypper remove hikarisub`.
 - **AUR:** `sudo pacman -R hikarisub-stable-bin` or `hikarisub-beta-bin`.
 
-Uninstalling keeps your settings, autosaves and scripts. To remove those too, delete these folders:
+Uninstalling keeps your settings, autosaves and scripts, in your [user folder](/en/docs/automation/user-folder). To remove those too, delete it, and the cache folder beside it:
 
-- Windows: `%LOCALAPPDATA%\HikariSub\HikariSub` and `%APPDATA%\HikariSub\HikariSub`
-- Linux: `~/.config/HikariSub/HikariSub` and `~/.local/share/HikariSub/HikariSub`
+- Windows: `%APPDATA%\HikariSub` and `%LOCALAPPDATA%\HikariSub\cache`
+- Linux: `~/.config/hikarisub` and `~/.cache/hikarisub`
 
 ## Coming from 0.0.x
 

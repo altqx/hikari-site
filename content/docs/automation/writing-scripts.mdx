@@ -51,12 +51,12 @@ Save it, load it with **Automation › Load script…**, then choose **Add edgeb
 
 A script is a `.lua` or `.moon` file. A `.moon` file is compiled as MoonScript, anything else as Lua.
 
-- **Autoload** scripts load when HikariSub starts. Put yours in the `automation/Autoload` folder of your Automation folder:
-  - Windows: `%APPDATA%\HikariSub\HikariSub\Automation\automation\Autoload`
-  - Linux: `~/.local/share/HikariSub/HikariSub/Automation/automation/Autoload`
-  - A portable copy uses the `Automation` folder beside the program instead.
+- **Autoload** scripts load when HikariSub starts. Put yours in the `automation/autoload` folder of your [user folder](/en/docs/automation/user-folder), which **Help › Open user folder** opens:
+  - Windows: `%APPDATA%\HikariSub\automation\autoload`
+  - Linux: `~/.config/hikarisub/automation/autoload`
+  - A portable copy: `user/automation/autoload`, in the folder you unpacked.
 
-  A script of yours with the same file name as a bundled one replaces it.
+  The bundled scripts are copied there too, so you can edit them. A script there replaces a bundled one with the same file name.
 - **Automation › Load script…** loads a script for the current subtitle file and records it in the file's `Automation Scripts` header, so it loads again with the file. When a file names scripts that are not loaded, the Automation panel offers to load them.
 
 HikariSub reloads a script when you choose **Reload** in the Automation panel or **Automation › Refresh autoload scripts**, and by itself when you open the Automation menu after the file changed. A reload runs the script's top level again from scratch.
@@ -238,14 +238,14 @@ When a script fails to load, its row in the Automation panel says so, with **Sho
 | --- | --- |
 | `?script` | The subtitle file's folder |
 | `?video`, `?audio` | The video's or audio's folder |
-| `?user`, `?local` | Your Automation folder (beside the program for a portable copy) |
+| `?user`, `?local` | Your [user folder](/en/docs/automation/user-folder) |
 | `?data` | The Automation folder that comes with HikariSub |
-| `?temp` | `temp` in your Automation folder |
-| `?dictionary` | The dictionaries folder |
+| `?temp` | `temp` in your user folder |
+| `?dictionary` | The `Dictionary` folder that comes with HikariSub |
 
 ## Modules
 
-`require` finds modules in the script's own folder, then in the `automation/Include` folders of your Automation folder and of HikariSub's. A `.moon` module is preferred over a `.lua` one of the same name. `include("file.lua")` runs a file from the same folders. `dofile` and `loadfile` are not available.
+`require` finds modules in the script's own folder, then in `automation/include` in your user folder, then in HikariSub's own `automation/Include`. A `.moon` module is preferred over a `.lua` one of the same name. `include("file.lua")` runs a file from the same folders. `dofile` and `loadfile` are not available.
 
 HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unicode`, `re`, `lfs`, `json`, `Yutils`, `aegisub.clipboard`, `aegisub.util` and more, plus DependencyControl and the libraries its scripts use.
 

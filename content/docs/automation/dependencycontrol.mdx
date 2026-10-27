@@ -61,11 +61,7 @@ DependencyControl updates scripts by itself. When HikariSub starts, the Toolbox 
 
 To update now, choose **Automation › DependencyControl/Update Script**, pick the script or module, and press **OK**. The log ends with "Update of module '…' (v…) complete.", or "The module '…' is up-to-date (v…)." Then choose **Automation › Refresh autoload scripts**, or reload the script in the Automation panel.
 
-Which scripts DependencyControl may update depends on the copy of HikariSub:
-
-- **Installed on Windows:** the scripts that come with HikariSub, DependencyControl among them, are left alone. They are in the program's folder, and the log says "Skipped update of module '…' because its entry point (…) is in Aegisub's data automation directory." HikariSub's own updates bring their new versions. Scripts you installed update as usual.
-- **Installed on Linux:** DependencyControl can update the scripts that come with HikariSub. The new version goes into your Automation folder and is used instead of the one in the program's folder.
-- **Portable:** everything is in the Automation folder beside the program, and an update replaces the files there.
+DependencyControl can update every script, the ones that come with HikariSub too, on every copy of HikariSub. HikariSub copies its scripts and modules into your [user folder](/en/docs/automation/user-folder), and an update replaces the copy there. When a later HikariSub brings its own new version of a file DependencyControl updated, the updated file is kept and the Log says so. See [Bundled scripts and dictionaries](/en/docs/automation/user-folder#bundled-scripts-and-dictionaries).
 
 An installed package updates only from its own feed, or from the feed its copy came from. Use **Package Source Configuration** to change where the next update comes from.
 
@@ -73,7 +69,7 @@ To remove a script or module, choose **DependencyControl/Uninstall Script** and 
 
 ## Where its files are
 
-DependencyControl keeps everything in your Automation folder: in the app's data folder for an installed copy, or beside the program for a portable one. See [Where scripts live](/en/docs/automation/writing-scripts#where-scripts-live).
+DependencyControl keeps everything in your [user folder](/en/docs/automation/user-folder), which **Help › Open user folder** opens.
 
 | Folder | Holds |
 | --- | --- |
@@ -84,7 +80,7 @@ DependencyControl keeps everything in your Automation folder: in the app's data 
 | `log` | Its log files |
 | `temp` | Downloads in progress |
 
-DependencyControl uses lower-case `autoload` and `include`. On Linux these are separate from the `Autoload` and `Include` folders you put your own scripts in; HikariSub loads from all of them.
+These are the same `autoload` and `include` folders that hold the bundled scripts and your own.
 
 ## Network and certificates
 
@@ -114,7 +110,7 @@ The run's log on the progress card, or in **Runs**, says what happened. Some mes
 | "Failed to download feed: … (Could not connect to server)", then "no suitable package could be found" | No connection, or a proxy is needed. On Windows: "an internet connection is currently not available" |
 | "… can only be satisfied from a feed DependencyControl doesn't trust" | Answer the question, or trust the feed in **Manage Feeds** |
 | "… because you blocked the feed (…)" | Unblock it in **Manage Feeds › Block List** |
-| "Skipped update of … because its entry point (…) is in Aegisub's data automation directory" | It came with HikariSub, on Windows: update HikariSub instead |
+| "Skipped update of … because its entry point (…) is in Aegisub's data automation directory" | The file is only in the program's folder, not in your user folder. Restart HikariSub, which copies the bundled files in, and try again |
 | "… another update initiated by … is already running" | Another script is updating. Try again when it ends |
 | "… because the updater is disabled" | **Update mode** is `off` in Global Configuration |
 | "Refusing to download from a private, loopback, or link-local address …" | See **Block private hosts** above |
