@@ -1,6 +1,111 @@
 ---
-title: Shapes and tags editors
-draft: true
+title: Edit shapes and Edit tags
+description: Make your own shapes for the Vector drawing tool and your own tags for Hydra, in two windows that save as you go.
 ---
 
-This guide is not written yet.
+import shapesLight from './images/shapes-editor-light.webp';
+import shapesDark from './images/shapes-editor-dark.webp';
+import tagsLight from './images/tags-editor-light.webp';
+import tagsDark from './images/tags-editor-dark.webp';
+
+Two [visual tools](/en/docs/typesetting/visual-tools) take their choices from lists you can edit:
+
+- **Edit shapes** holds the shapes that Vector drawing's **Shape** list draws.
+- **Edit tags** holds the tags that Hydra's **Tag** list changes, with each one's range and step.
+
+The lists belong to HikariSub, not to a subtitle file, so they are there for every file you open.
+
+## Opening them
+
+- **Edit shapes:** choose Vector drawing (<kbd>D</kbd>), open the **Shape** list in the inspector bar, and choose **Edit shapes…** at its end. The window opens on the shape you had chosen.
+- **Edit tags:** choose Hydra (<kbd>H</kbd>), open the **Tag** list, and choose **Edit tags…** at its end. The window opens on the tag you had chosen.
+
+There is no menu item or key for them. Choosing the entry again brings the open window to the front. You can keep working on the video while it is open.
+
+## Changes are saved as you go
+
+Neither window has OK or Cancel. Each change goes into the tool's list and is saved at once, and **Close** or <kbd>Esc</kbd> keeps everything.
+
+**Undo** and **Redo** at the bottom, or <kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd>, step back through your changes while the window is open. Their tooltips name the step. Typing in one field is one step, and choosing another item in the list isn't one. **⋯ › Undo all changes** goes back to the list as it was when the window opened. These steps aren't in the subtitle file's history, and closing the window ends them.
+
+A value the tool can't use shows a message under its field as you type. The item keeps its last good value, and leaving the field shows it again.
+
+### Names
+
+Names are compared ignoring case. A name another item has says so under the field: press <kbd>Enter</kbd>, and HikariSub asks whether to **Replace** the other item, which takes its place in the list, or **Keep editing**.
+
+### Restoring the defaults
+
+**⋯ › Restore default shapes…** or **Restore default tags…** asks first, saying how many of yours will go, then puts back the five default shapes or the 22 default tags. An item counts as yours if its name isn't a default's, so a renamed default goes too. **Undo** brings yours back while the window is open.
+
+## Edit shapes
+
+<figure>
+  <ThemedImage
+    light={shapesLight}
+    dark={shapesDark}
+    alt="The Edit shapes window: the list of rectangle, circle and three rounded squares on the left with circle selected, its Name, Scale from the cursor set to Keep aspect ratio, its drawing, Take from the active line, a preview of the circle with its size, 310 × 310, and Undo, Redo and Close"
+    width={756}
+    height={522}
+    className="rounded-lg border"
+  />
+  <figcaption>Edit shapes.</figcaption>
+</figure>
+
+The list shows each shape with a small picture of it, and **yours** beside the ones you made. Under it, **New shape**, **Duplicate** and **Delete**; the list always keeps at least one shape.
+
+| Field | Is |
+| --- | --- |
+| **Name** | Up to 20 characters, with no `;` |
+| **Scale from the cursor** | How the shape fills the rectangle you drag: **Width and height** freely, or **Keep aspect ratio**. <kbd>Shift</kbd> while dragging switches between the two |
+| **Drawing** | The shape as an ASS drawing, such as `m 0 0 l 100 0 100 100 0 100`. The [ASS tags reference](/en/docs/reference/ass-tags) explains drawings |
+
+**Take from the active line** copies the last drawing in the active line, the text after its `\p1`. **New shape** starts from that drawing too, or from a square when the line has none.
+
+The **Preview** draws the shape on a grid, with a red cross at its 0,0: the point where you start dragging on the video. Under it is the shape's size.
+
+**Width only** is kept from older versions. It behaves like Width and height for every shape made in this window.
+
+The five default shapes are a rectangle, a circle and three rounded squares.
+
+## Edit tags
+
+<figure>
+  <ThemedImage
+    light={tagsLight}
+    dark={tagsDark}
+    alt="The Edit tags window: a search field and the Common section of the tag list, with blur selected; its Name, Tag and Default value; the Advanced section with Range 0 to 100, Step 0.5, Decimal places 1, Count 1 and Starts on Set at the cursor; and a preview of the inspector bar and of what Set writes on the active line"
+    width={756}
+    height={756}
+    className="rounded-lg border"
+  />
+  <figcaption>Edit tags, with Advanced open.</figcaption>
+</figure>
+
+The list has three sections: **Common**, **More**, folded at first, and **Your tags**. **Search tags** finds a tag by name or by tag. Each row shows the name and the tag, such as **blur** `\blur`.
+
+| Field | Is |
+| --- | --- |
+| **Name** | What Hydra's list shows. No `,` |
+| **Tag** | The tag, typed without its backslash: `bord`, not `\bord` |
+| **Default** | The value Set writes in the preview, and where Multiply starts. One field per value: **R**, **G** and **B** for a colour, **X** and **Y** for `pos` |
+
+**Advanced**, folded each time the window opens, has:
+
+| Field | Is |
+| --- | --- |
+| **Range** | The lowest and highest value a drag or the wheel reaches |
+| **Step** | How much one notch of the wheel changes the value. At most half the range |
+| **Decimal places** | How many decimals the written value has, 0 to 6 |
+| **Count** | How many values the tag takes, 1 to 4 |
+| **Starts on** | The change Hydra switches to when you choose this tag: **Set**, **Add**, **Multiply** or **Gradient**, and for Set, Multiply and Gradient, the list beside it |
+
+Numbers go from -10000 to 10000, and a comma works as the decimal point.
+
+The **Preview** shows how the tag looks in Hydra's inspector bar, and what **Set** would write in the active line, with the tag in bold.
+
+**New tag** adds a tag with a range of 0 to 100 and a step of 1, and puts you in **Tag**. It reaches Hydra once it has a tag.
+
+## Where they are kept
+
+The shapes are saved in `ShapesSettings.txt` and the tags in `AllTagsSettings.txt`, beside your settings file, `hikari.ini`. [Settings](/en/docs/customize/settings#where-settings-are-kept) says where that is. Their format is HikariSub 0.0.x's. A tags file that doesn't start with `HYDRA2.0`, from an older version, is replaced by the defaults.
