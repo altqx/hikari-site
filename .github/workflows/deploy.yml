@@ -1,11 +1,17 @@
 name: Deploy
 
-# main deploys to production only when the repo variable PRODUCTION_DEPLOY is 'true'
-# (off until the design gate, #2, is approved). PR previews: preview.yml.
+# main deploys to production only when the repo variable PRODUCTION_DEPLOY is 'true'.
+# PR previews: preview.yml. The download links are read at build time, so a hikari
+# release rebuilds the site (repository_dispatch from hikari's release workflow), with
+# a daily rebuild as the backup.
 
 on:
   push:
     branches: [main]
+  repository_dispatch:
+    types: [hikari-release]
+  schedule:
+    - cron: "17 4 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -31,6 +37,7 @@ jobs:
       - run: bun run build
         env:
           VITE_CF_BEACON_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
       - run: bunx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

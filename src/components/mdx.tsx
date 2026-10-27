@@ -1,11 +1,13 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import { AssPreview } from './ass-preview';
+import { DownloadTable } from './download-table';
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
     ...defaultMdxComponents,
     AssPreview,
+    DownloadTable,
     ...components,
   } satisfies MDXComponents;
 }

@@ -4,14 +4,15 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build && bun scripts/postbuild.ts",
+    "dev": "bun scripts/fetch-downloads.ts --offline && vite dev",
+    "build": "bun scripts/fetch-downloads.ts && vite build && bun scripts/postbuild.ts",
     "preview": "wrangler dev --port 8787",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "bun scripts/fetch-downloads.ts --offline && tsc --noEmit",
     "lint": "biome check",
     "format": "biome check --write",
     "check-links": "bun scripts/check-links.ts",
     "test:e2e": "playwright test",
+    "downloads": "bun scripts/fetch-downloads.ts",
     "test": "bun test src",
     "stills": "VITE_SHOW_DRAFTS=1 bun run build && bun scripts/render-stills.ts"
   },

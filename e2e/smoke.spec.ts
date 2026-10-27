@@ -97,3 +97,11 @@ test('the credits page links the shipped licences', async ({ page }) => {
   expect(notices.ok()).toBe(true);
   expect(await notices.text()).toContain('libass');
 });
+
+test('the homepage has a Download button for the app', async ({ page }) => {
+  await page.goto('/en');
+  await expect(page.getByTestId('download-button')).toHaveAttribute(
+    'href',
+    /^https:\/\/github\.com\/altqx\/hikari\/releases/,
+  );
+});
