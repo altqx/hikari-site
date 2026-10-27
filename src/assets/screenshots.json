@@ -625,6 +625,16 @@
       "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
       "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
       "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/automation/images/help-open-user-folder-light.webp": {
+      "source": "origin/evidence/w6-ud1 9bcd15529 ud1-help-menu-light.png (taken at qt a03505a62; the UD1 merge 079644545 changes only docs/qt/coverage.md after it), crop 590x262+0+0, leaving out the move notice and its path",
+      "surface": "Help menu open, Open user folder highlighted, over the Home page",
+      "credit": ""
+    },
+    "content/docs/automation/images/help-open-user-folder-dark.webp": {
+      "source": "origin/evidence/w6-ud1 9bcd15529 ud1-help-menu-dark.png (taken at qt a03505a62; the UD1 merge 079644545 changes only docs/qt/coverage.md after it), crop 590x262+0+0, leaving out the move notice and its path",
+      "surface": "Help menu open, Open user folder highlighted, over the Home page",
+      "credit": ""
     }
   }
 }
