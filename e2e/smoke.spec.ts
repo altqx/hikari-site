@@ -141,3 +141,38 @@ test('search finds a setting that only the generated reference lists', async ({ 
   await dialog.getByRole('combobox', { name: 'Search' }).fill('Tab name length');
   await expect(dialog.getByText('Tab name length').first()).toBeVisible();
 });
+
+test('a clip plays in view, with an AV1 source and an H.264 fallback', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/en/docs/typesetting/visual-tools');
+  const clip = page.locator('[data-clip]:visible');
+  await expect(clip).toHaveCount(1);
+  const sources = clip.locator('video source');
+  await expect(sources).toHaveCount(2);
+  await expect(sources.nth(0)).toHaveAttribute('type', /codecs="av01\./);
+  await expect(sources.nth(1)).toHaveAttribute('type', /codecs="avc1\./);
+  for (const source of await sources.all()) {
+    const response = await page.request.get((await source.getAttribute('src')) ?? '');
+    expect(response.ok()).toBe(true);
+    expect(response.headers()['content-type']).toContain('video/mp4');
+  }
+  await expect(clip.locator('video')).toHaveAttribute('poster', /perspective-light/);
+  await clip.scrollIntoViewIfNeeded();
+  await expect(clip).toHaveAttribute('data-clip', 'playing', { timeout: 10_000 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(clip).toHaveAttribute('data-clip', 'paused');
+});
+
+test('with reduced motion a clip shows its still until Play is pressed', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/en/docs/typesetting/visual-tools');
+  const clip = page.locator('[data-clip]:visible');
+  await clip.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1000);
+  await expect(clip).toHaveAttribute('data-clip', 'paused');
+  expect(await clip.locator('video').evaluate((video: HTMLVideoElement) => video.currentTime)).toBe(0);
+  await clip.getByRole('button', { name: 'Play clip' }).click();
+  await expect(clip).toHaveAttribute('data-clip', 'playing', { timeout: 10_000 });
+  await clip.getByRole('button', { name: 'Pause clip' }).click();
+  await expect(clip).toHaveAttribute('data-clip', 'paused');
+});

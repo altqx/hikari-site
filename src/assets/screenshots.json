@@ -56,19 +56,9 @@
       "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
-    "content/docs/typesetting/images/perspective-drag-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
-      "surface": "Video panel, a Perspective corner drag (animated; stand-in for the #5 clip)",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/typesetting/images/perspective-dark.webp": {
       "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
       "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/typesetting/images/perspective-drag-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
-      "surface": "Video panel, a Perspective corner drag (animated; stand-in for the #5 clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/karaoke/images/kanji-timer-light.webp": {
@@ -156,14 +146,9 @@
       "surface": "The window in the four themes, ray MV",
       "credit": "Subtitles: Jibrill"
     },
-    "content/docs/customize/images/layouts-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp (animated) (surface unchanged at qt d24047335)",
-      "surface": "The window cycling through the four layout presets, ray MV",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/customize/images/layouts-still-light.webp": {
       "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, first frame (surface unchanged at qt d24047335)",
-      "surface": "Editing layout, ray MV (reduced-motion still)",
+      "surface": "Editing layout, ray MV (poster of the layouts clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-light.webp": {
@@ -191,14 +176,9 @@
       "surface": "Settings window, General page",
       "credit": ""
     },
-    "content/docs/customize/images/layouts-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp (animated) (surface unchanged at qt d24047335)",
-      "surface": "The window cycling through the four layout presets, ray MV",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/customize/images/layouts-still-dark.webp": {
       "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, first frame (surface unchanged at qt d24047335)",
-      "surface": "Editing layout, ray MV (reduced-motion still)",
+      "surface": "Editing layout, ray MV (poster of the layouts clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-dark.webp": {
@@ -605,6 +585,46 @@
       "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (copied out with a deb package-kind.txt beside it, so ?user is a throwaway folder; network blocked by a dead proxy) under vx11 at 1280x800, dark theme, Automation > DependencyControl/Update Script on a new file, dialog resized to 360x340, Modules list open, crop 360x340+460+250",
       "surface": "DependencyControl Toolbox, Update Script dialog with the Modules list open",
       "credit": ""
+    },
+    "content/docs/typesetting/images/perspective-drag-light-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-light-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-dark-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-dark-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-light-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-light-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, light)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-dark-av1.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/customize/images/layouts-dark-h264.mp4": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
+      "surface": "The window switching Editing, Timing, Translation (Turn on Translation mode) and Typesetting from the title-bar layout button (muted clip, dark)",
+      "credit": "Subtitles: Jibrill"
     },
     "content/docs/automation/images/help-open-user-folder-light.webp": {
       "source": "origin/evidence/w6-ud1 9bcd15529 ud1-help-menu-light.png (taken at qt a03505a62; the UD1 merge 079644545 changes only docs/qt/coverage.md after it), crop 590x262+0+0, leaving out the move notice and its path",
