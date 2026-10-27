@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import react from '@vitejs/plugin-react';
@@ -25,12 +26,31 @@ function dropDraftBodies(): Plugin {
   };
 }
 
+// AkariSub's WebAssembly bundles libass, FreeType, HarfBuzz, FriBidi and more; their notices
+// ship beside it, linked from the Credits page. Emitted with the client build, so the
+// prerender crawl finds the file.
+function akariSubNotices(): Plugin {
+  return {
+    name: 'hikari-site:akarisub-notices',
+    apply: 'build',
+    applyToEnvironment: (environment) => environment.name === 'client',
+    generateBundle() {
+      this.emitFile({
+        type: 'asset',
+        fileName: 'licenses/akarisub.txt',
+        source: readFileSync('node_modules/akarisub/dist/COPYRIGHT'),
+      });
+    },
+  };
+}
+
 export default defineConfig({
   server: {
     port: 3000,
   },
   plugins: [
     dropDraftBodies(),
+    akariSubNotices(),
     fumadocsMdx(),
     tailwindcss(),
     tanstackStart({
