@@ -131,6 +131,26 @@
       "surface": "The video with the Preview · Line 5 · not applied badge",
       "credit": ""
     },
+    "content/docs/karaoke/images/template-presets-light.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-menu-light.png), crop of the Template editor panel, 800x622",
+      "surface": "Template editor, New › From a preset open on a file with no templates",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-presets-dark.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-menu-dark.png), crop of the Template editor panel, 800x622",
+      "surface": "Template editor, New › From a preset open on a file with no templates",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-preset-letters-light.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-preview-letters-light.png), crop of the top of the video, 758x100",
+      "surface": "The video previewing the Falling letters preset under the Preview · Line 2 · not applied badge",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-preset-letters-dark.webp": {
+      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-preview-letters-dark.png), crop of the top of the video, 758x100",
+      "surface": "The video previewing the Falling letters preset under the Preview · Line 2 · not applied badge",
+      "credit": ""
+    },
     "content/docs/customize/images/themes.webp": {
       "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/themes.webp",
       "surface": "The window in the four themes, ray MV",
