@@ -50,6 +50,56 @@
       "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, frame 4 of 4",
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/karaoke/images/template-editor-light.webp": {
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor, template line 3 previewed on line 5",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-editor-dark.webp": {
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor, template line 3 previewed on line 5",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-problem-light.webp": {
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor with a problem in template line 3",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-problem-dark.webp": {
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor with a problem in template line 3",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-trust-light.webp": {
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor asking to trust the file",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-trust-dark.webp": {
+      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor asking to trust the file",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-variables-light.webp": {
+      "source": "origin/evidence/w6-ke2-shots be57994d6 ke2-284/linux/template-variables-light.png, crop of the $ list, 796x360 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor $ variable list with values",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-variables-dark.webp": {
+      "source": "origin/evidence/w6-ke2-shots be57994d6 ke2-284/linux/template-variables-dark.png, crop of the $ list, 796x360 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "Template editor $ variable list with values",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-video-light.webp": {
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "The video with the Preview · Line 5 · not applied badge",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/template-video-dark.webp": {
+      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8)",
+      "surface": "The video with the Preview · Line 5 · not applied badge",
+      "credit": ""
     }
   }
 }
