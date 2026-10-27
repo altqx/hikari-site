@@ -88,6 +88,15 @@ export const settingsPages = [
   'updates',
 ] as const;
 
+/** The heading each window has on the Hotkeys page, as the app's Hotkeys page names it. */
+export const hotkeyContextTitles: Record<(typeof hotkeyContexts)[number], string> = {
+  Global: 'Global',
+  Subtitles: 'Subtitle grid',
+  Editor: 'Line editor',
+  Video: 'Video',
+  Audio: 'Audio',
+};
+
 /** The newest Qt release with its docs zip, if it carries one. */
 export function pickDocsRelease(releases: GitHubRelease[]): (ReleaseChoice & { url: string }) | undefined {
   const picked = pickReleases(releases);
@@ -192,4 +201,33 @@ export function formatValue(setting: Setting, value: unknown = setting.default):
   if (typeof value === 'number' && setting.min !== undefined && value < setting.min) return 'Off';
   // The unit is plural ("edits"), so it goes with the range, not the value.
   return String(value);
+}
+
+/**
+ * The rows of the generated tables as search text, under the heading of their section
+ * (by its title), so search finds a command or setting the page's MDX does not spell out.
+ */
+export function referenceSearchRows(data: DocsExport, page: 'hotkeys' | 'settings') {
+  if (page === 'hotkeys') {
+    return hotkeyContexts.flatMap((context) =>
+      commandsIn(data.commands.commands, context).map((command) => ({
+        section: hotkeyContextTitles[context],
+        content: [
+          command.name,
+          ...command.defaultKeys.filter((k) => k.context === context).map((k) => k.keys),
+          ...command.menus.map(menuPath),
+        ].join(' · '),
+      })),
+    );
+  }
+  return data.settings.pages.flatMap((p) =>
+    data.settings.settings
+      .filter((setting) => setting.page === p.id)
+      .map((setting) => ({
+        section: p.name,
+        content: [setting.label, setting.hint, `Default: ${formatValue(setting)}`]
+          .filter(Boolean)
+          .join(' · '),
+      })),
+  );
 }

@@ -7,6 +7,7 @@ import {
   menuPath,
   parseDocsExport,
   pickDocsRelease,
+  referenceSearchRows,
   type Setting,
   settingsOn,
 } from './docs-export';
@@ -171,4 +172,48 @@ test('formatValue shows a default as the Settings window does', () => {
   );
   expect(formatValue({ ...base, control: 'number', type: 'int', default: 0, min: 20, max: 150 })).toBe('Off');
   expect(formatValue({ ...base, control: 'text', type: 'stringList', default: [] })).toBe('None');
+});
+
+test('referenceSearchRows gives each table row as text under its section', () => {
+  const data = parseDocsExport(
+    files({
+      'commands.json': {
+        commands: [
+          {
+            id: 5112,
+            symbol: 'GLOBAL_HELP',
+            name: 'User guide',
+            context: 'Global',
+            defaultKeys: [{ context: 'Global', keys: 'F1' }],
+            menus: ['Help > User guide'],
+          },
+          { id: 7, symbol: 'GRID_X', name: 'Duplicate', context: 'Subtitles', defaultKeys: [], menus: [] },
+        ],
+      },
+      'settings.json': {
+        pages: [{ id: 'general', name: 'General' }],
+        settings: [
+          {
+            key: 'k',
+            page: 'general',
+            section: 'Tabs',
+            label: 'Tab name length',
+            hint: 'Characters',
+            control: 'number',
+            type: 'int',
+            default: 0,
+            min: 20,
+            max: 150,
+          },
+        ],
+      },
+    }),
+  );
+  expect(referenceSearchRows(data, 'hotkeys')).toEqual([
+    { section: 'Global', content: 'User guide · F1 · Help › User guide' },
+    { section: 'Subtitle grid', content: 'Duplicate' },
+  ]);
+  expect(referenceSearchRows(data, 'settings')).toEqual([
+    { section: 'General', content: 'Tab name length · Characters · Default: Off' },
+  ]);
 });

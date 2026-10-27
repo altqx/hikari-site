@@ -116,3 +116,14 @@ test('the reference pages list the commands and settings of the docs export', as
     page.getByTestId('settings-general').getByRole('row', { name: /Tab name length/ }),
   ).toContainText('20 to 150 characters');
 });
+
+test('search finds a setting that only the generated reference lists', async ({ page }) => {
+  await page.goto('/en/docs');
+  await page
+    .getByRole('button', { name: /search/i })
+    .first()
+    .click();
+  const dialog = page.getByRole('dialog');
+  await dialog.getByRole('combobox', { name: 'Search' }).fill('Tab name length');
+  await expect(dialog.getByText('Tab name length').first()).toBeVisible();
+});
