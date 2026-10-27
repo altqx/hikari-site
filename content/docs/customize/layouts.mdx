@@ -34,8 +34,22 @@ Each tab has its own layout, so a file you translate and a file you time can be 
 - **Timing:** Editing without the Video.
 - **Translation:** Editing without the Audio. Choosing it asks whether to turn on Translation mode for the file.
 - **Typesetting:** a large Video with the Styles panel beside it, and the Line editor beside a short Grid below.
+- **Karaoke:** the Video with the [Template editor](/en/docs/karaoke/template-editor) beside it, the Line editor as the tab behind it. The Audio panel spans the window's whole width under them, so a line's syllables get the whole waveform, and a short Grid sits at the bottom. Choosing it turns on Karaoke mode and folds the generated lines in the Grid.
+
+The clip above shows the first four.
 
 Choosing a layout keeps the window's size and changes only the current tab.
+
+### Karaoke mode and folding
+
+Choosing the Karaoke layout asks nothing and changes nothing in the file. It turns on the Audio panel's [Karaoke mode](/en/docs/karaoke/split-and-join#turning-karaoke-mode-on) and the Grid's [Fold generated lines](/en/docs/basics/grid#folding-generated-lines). A saved layout made from Karaoke does the same.
+
+Choosing another layout afterwards, in this tab or another, turns off again only what Karaoke turned on:
+
+- If Karaoke mode or folding was already on before, it stays on.
+- If you switched either one yourself while in the Karaoke layout, it stays as you left it.
+
+The **Line | Karaoke** switch and **Fold generated lines** work in any layout. Showing another tab, opening a file and **Reset this layout** switch neither.
 
 ## Choosing a layout
 
@@ -53,7 +67,7 @@ The layout button in the title bar, after the menus, shows the tab's layout. Cli
   <figcaption>The layout menu, with two saved layouts.</figcaption>
 </figure>
 
-- The four built-in layouts, then your saved layouts.
+- The built-in layouts, then your saved layouts.
 - **Save layout as…** saves the tab's arrangement under a name.
 - **Reset this layout** puts the tab back the way its layout had it, undoing the moves you made since.
 - **Manage layouts…** renames and deletes saved layouts.
