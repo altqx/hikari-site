@@ -262,7 +262,7 @@
     </style>
   </head>
   <body>
-    <p class="mockup-note">Mockup for altqx/hikari-site#2 · screenshots from evidence/w6-vt3-shots and w6-vt1-shots · the preview canvas is a stand-in</p>
+    <p class="mockup-note">Mockup for altqx/hikari-site#2 · shots captured under vx11 from the current qt build · the preview canvas is a stand-in</p>
     <header class="topbar">
       <a class="brand" href="home.html"><img src="img/favicon.png" alt="" />HikariSub</a>
       <nav>
@@ -315,13 +315,13 @@
         <h2 id="parts">Parts of the Video panel</h2>
         <figure class="annotated" style="margin-inline: 0">
           <div class="window-shot">
-            <img class="only-light" src="img/perspective-light.png" alt="The Video panel with the Perspective tool on: the tool rail, a quad with four corner handles, and the inspector bar with Origin and Rotation values." />
-            <img class="only-dark" src="img/perspective-dark.png" alt="The Video panel with the Perspective tool on: the tool rail, a quad with four corner handles, and the inspector bar with Origin and Rotation values." />
+            <img class="only-light" src="img/perspective-light.webp" width="794" height="405" alt="The Video panel with the Perspective tool on: the tool rail, a quad fitted to a Thai sign, and the inspector bar with Origin and Rotation values." />
+            <img class="only-dark" src="img/perspective-dark.webp" width="794" height="405" alt="The Video panel with the Perspective tool on: the tool rail, a quad fitted to a Thai sign, and the inspector bar with Origin and Rotation values." />
           </div>
-          <span class="pin" style="left: 8%; top: 36.5%">1</span>
-          <span class="pin" style="left: 69.5%; top: 18%">2</span>
-          <span class="pin" style="left: 18%; top: 72.6%">3</span>
-          <span class="pin" style="left: 74%; top: 72.6%">4</span>
+          <span class="pin" style="left: 7%; top: 36%">1</span>
+          <span class="pin" style="left: 65%; top: 51%">2</span>
+          <span class="pin" style="left: 21.5%; top: 80.5%">3</span>
+          <span class="pin" style="left: 54%; top: 80.5%">4</span>
         </figure>
         <ol class="legend">
           <li><span class="n">1</span><span>The tool rail. Hover a tool to see its name and key.</span></li>
@@ -329,6 +329,7 @@
           <li><span class="n">3</span><span>The inspector bar: the tool's options for the active line.</span></li>
           <li><span class="n">4</span><span>Exact values. Type a number, or drag across the field to scrub it.</span></li>
         </ol>
+        <p class="figcredit">Subtitles: Jibrill.</p>
 
         <h2 id="tools">The tools</h2>
         <table>
@@ -382,19 +383,22 @@
           <p>Over the video, the arrows nudge instead of stepping frames. Move the pointer to the Grid to step frames with them again.</p>
         </div>
 
-        <h2 id="clip">Drawing a vector clip</h2>
-        <p>Choose a mode in the inspector bar, such as Add line or Move points, then click and drag on the video.</p>
+        <h2 id="clip">Fitting text to a surface</h2>
+        <p>
+          With Perspective (<kbd>Q</kbd>), drag the corners of the quad onto the surface the text should sit on. HikariSub
+          works out the rotation, shear and origin, and the inspector bar shows the values as you drag.
+        </p>
         <figure class="clip" style="margin-inline: 0">
           <div class="window-shot">
-            <img class="only-light" src="img/drawing-light.png" alt="Drawing a vector clip on the video." />
-            <img class="only-dark" src="img/drawing-dark.png" alt="Drawing a vector clip on the video." />
+            <img class="only-light" src="img/perspective-drag-light.webp" width="794" height="405" alt="Dragging a corner of the perspective quad; the Thai line tilts to follow it." />
+            <img class="only-dark" src="img/perspective-drag-dark.webp" width="794" height="405" alt="Dragging a corner of the perspective quad; the Thai line tilts to follow it." />
           </div>
           <span class="state">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-            8 s loop · muted
+            loop · muted
           </span>
         </figure>
-        <p class="figcredit">Clip: 8 s, AV1 with an H.264 fallback. Plays in view; paused with reduced motion.</p>
+        <p class="figcredit">Subtitles: Jibrill. On the site: AV1 MP4 with an H.264 fallback, plays in view, paused with reduced motion.</p>
 
         <h2 id="undo">Undo and cancelling</h2>
         <p>Each drag is one step in the history. Press <kbd>Esc</kbd> during a drag to drop it.</p>
@@ -415,7 +419,7 @@
         <a href="#tools" aria-current="true">The tools</a>
         <a href="#try">Try a rotation</a>
         <a href="#nudge">Nudging with the arrow keys</a>
-        <a href="#clip">Drawing a vector clip</a>
+        <a href="#clip">Fitting text to a surface</a>
         <a href="#undo">Undo and cancelling</a>
       </nav>
     </div>
