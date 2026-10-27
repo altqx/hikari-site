@@ -1,0 +1,287 @@
+/* Mockup styles for #2. Colours follow Fumadocs' neutral theme with HikariSub's accent. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=K2D:wght@600&display=swap');
+
+:root {
+  --bg: hsl(0 0% 98%);
+  --fg: hsl(0 0% 9%);
+  --muted: hsl(0 0% 42%);
+  --card: #ffffff;
+  --subtle: hsl(0 0% 95%);
+  --border: hsl(0 0% 88%);
+  --accent: #145c4c;
+  --accent-fg: #ffffff;
+  --accent-soft: hsl(166 40% 93%);
+  --accent-text: #145c4c;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  --sans: 'IBM Plex Sans', 'IBM Plex Sans Thai', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  color-scheme: light;
+}
+
+html.dark {
+  --bg: hsl(0 0% 7%);
+  --fg: hsl(0 0% 92%);
+  --muted: hsl(0 0% 64%);
+  --card: hsl(0 0% 10%);
+  --subtle: hsl(0 0% 13%);
+  --border: hsl(0 0% 20%);
+  --accent: #9cdbc9;
+  --accent-fg: #0b2620;
+  --accent-soft: hsl(165 30% 15%);
+  --accent-text: #9cdbc9;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.3);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+code,
+kbd,
+.mono {
+  font-family: var(--mono);
+}
+
+html:not(.dark) .only-dark,
+html.dark .only-light {
+  display: none !important;
+}
+
+/* Top bar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 56px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.brand img {
+  width: 22px;
+  height: 22px;
+}
+.topbar nav {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.topbar nav a {
+  text-decoration: none;
+}
+.topbar nav a:hover,
+.topbar nav a[aria-current] {
+  color: var(--fg);
+}
+.topbar .spacer {
+  flex: 1;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 240px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--subtle);
+  color: var(--muted);
+  font-size: 13px;
+}
+.search kbd {
+  margin-left: auto;
+}
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0 0.4em;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--card);
+  font-size: 0.8em;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--fg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  font: 500 14px var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+.btn small {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+/* The live ASS preview block */
+.ass-preview {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+}
+.ass-preview .stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 70% 20%, #e7b26a 0%, transparent 55%),
+    radial-gradient(90% 80% at 20% 90%, #2f5d3a 0%, transparent 60%),
+    linear-gradient(160deg, #6f8f55, #2b3f2a);
+}
+.ass-preview .stage::after {
+  content: 'AkariSub canvas (stand-in)';
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 0.45);
+  color: #fff;
+  font: 11px var(--mono);
+}
+.ass-text {
+  position: absolute;
+  font-family: 'K2D', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 4px #1b1b1b;
+  text-shadow: 2px 2px 0 rgb(0 0 0 / 0.5);
+}
+.ass-preview .editor {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid var(--border);
+}
+.ass-preview textarea {
+  flex: 1;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 0;
+  background: var(--subtle);
+  color: var(--fg);
+  font: 13px/1.5 var(--mono);
+  resize: none;
+}
+.ass-preview .editor .btn {
+  height: auto;
+  border: 0;
+  border-left: 1px solid var(--border);
+  border-radius: 0;
+}
+.ass-preview .controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+.ass-preview .controls input[type='range'] {
+  flex: 1;
+  accent-color: var(--accent);
+}
+.ass-preview .controls .play {
+  width: 28px;
+  height: 28px;
+}
+.credit {
+  padding: 6px 12px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.window-shot {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.window-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mockup-note {
+  margin: 0;
+  padding: 6px 24px;
+  border-bottom: 1px dashed var(--border);
+  background: var(--subtle);
+  color: var(--muted);
+  font: 12px var(--mono);
+}

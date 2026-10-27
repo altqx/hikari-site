@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visual tools | HikariSub</title>
+    <link rel="stylesheet" href="site.css" />
+    <script src="theme.js"></script>
+    <style>
+      .layout {
+        display: grid;
+        grid-template-columns: 264px minmax(0, 1fr) 220px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 56px;
+        height: calc(100vh - 56px);
+        overflow: auto;
+        padding: 20px 12px 40px 24px;
+        border-right: 1px solid var(--border);
+        font-size: 14px;
+      }
+      .sidebar .group {
+        margin-bottom: 14px;
+      }
+      .sidebar .group > span {
+        display: block;
+        padding: 4px 8px;
+        font-weight: 600;
+      }
+      .sidebar a {
+        display: block;
+        padding: 4px 8px;
+        border-radius: 6px;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .sidebar a:hover {
+        background: var(--subtle);
+        color: var(--fg);
+      }
+      .sidebar a[aria-current] {
+        background: var(--accent-soft);
+        color: var(--accent-text);
+        font-weight: 500;
+      }
+      .sidebar .closed > span {
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .sidebar .closed > span::after {
+        content: ' ›';
+      }
+
+      article {
+        max-width: 760px;
+        padding: 32px 48px 80px;
+      }
+      .crumbs {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      article h1 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 6px 0 8px;
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+      article .desc {
+        margin: 0 0 24px;
+        font-size: 17px;
+        color: var(--muted);
+      }
+      article h2 {
+        margin: 40px 0 10px;
+        padding-top: 8px;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      article p,
+      article li {
+        line-height: 1.7;
+      }
+      article code {
+        padding: 1px 5px;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        background: var(--subtle);
+        font-size: 0.88em;
+      }
+
+      .annotated {
+        position: relative;
+        margin: 20px 0 8px;
+      }
+      .annotated .window-shot {
+        box-shadow: none;
+      }
+      .pin {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--card);
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--accent-fg);
+        font: 600 12px var(--sans);
+        transform: translate(-50%, -50%);
+        box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+      }
+      .legend {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 6px 10px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        font-size: 14px;
+      }
+      .legend li {
+        display: contents;
+      }
+      .legend .n {
+        display: grid;
+        place-items: center;
+        width: 20px;
+        height: 20px;
+        margin-top: 3px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--accent-fg);
+        font-size: 11px;
+        font-weight: 600;
+      }
+      figcaption,
+      .figcredit {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      table {
+        width: 100%;
+        margin: 16px 0;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th,
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        font-weight: 600;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .callout {
+        display: flex;
+        gap: 12px;
+        margin: 20px 0;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        background: var(--subtle);
+        font-size: 14px;
+      }
+      .callout svg {
+        flex: none;
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        color: var(--accent-text);
+      }
+      .callout p {
+        margin: 0;
+      }
+
+      .clip {
+        position: relative;
+        margin: 20px 0 8px;
+      }
+      .clip .state {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        background: rgb(0 0 0 / 0.6);
+        color: #fff;
+        font-size: 12px;
+      }
+
+      .page-actions {
+        display: flex;
+        gap: 24px;
+        margin-top: 48px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .pager {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .pager a {
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .pager a small {
+        display: block;
+        color: var(--muted);
+      }
+      .pager a:last-child {
+        text-align: right;
+      }
+
+      .toc {
+        position: sticky;
+        top: 56px;
+        height: calc(100vh - 56px);
+        padding: 36px 24px 0 8px;
+        font-size: 13px;
+      }
+      .toc b {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      .toc a {
+        display: block;
+        padding: 3px 0 3px 12px;
+        border-left: 1px solid var(--border);
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .toc a[aria-current] {
+        border-left: 2px solid var(--accent);
+        color: var(--fg);
+      }
+    </style>
+  </head>
+  <body>
+    <p class="mockup-note">Mockup for altqx/hikari-site#2 · screenshots from evidence/w6-vt3-shots and w6-vt1-shots · the preview canvas is a stand-in</p>
+    <header class="topbar">
+      <a class="brand" href="home.html"><img src="img/favicon.png" alt="" />HikariSub</a>
+      <nav>
+        <a href="#" aria-current="page">Guides</a>
+        <a href="home.html#download">Download</a>
+        <a href="https://github.com/altqx/hikari">GitHub</a>
+      </nav>
+      <span class="spacer"></span>
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+        Search the guides
+        <kbd>Ctrl K</kbd>
+      </div>
+      <button class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+      </button>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="group closed"><span>Get started</span></div>
+        <div class="group closed"><span>Basics</span></div>
+        <div class="group">
+          <span>Typesetting</span>
+          <a href="#" aria-current="page">Visual tools</a>
+          <a href="#">Shapes and tags editors</a>
+          <a href="#">Perspective</a>
+          <a href="#">Fonts and font catalogs</a>
+        </div>
+        <div class="group closed"><span>Karaoke</span></div>
+        <div class="group closed"><span>Translation</span></div>
+        <div class="group closed"><span>Checking</span></div>
+        <div class="group closed"><span>Automation</span></div>
+        <div class="group closed"><span>Customize</span></div>
+        <div class="group closed"><span>Reference</span></div>
+        <div class="group closed"><span>Help</span></div>
+      </aside>
+
+      <article>
+        <div class="crumbs">Typesetting</div>
+        <h1>Visual tools <span class="badge">Since 0.1.0</span></h1>
+        <p class="desc">Position, rotate, scale and clip a line by dragging on the video. Each drag writes the matching override tags into the line.</p>
+
+        <p>
+          The tools sit in the rail on the left of the Video panel. Click one, or press its key while the pointer is over the
+          video: <kbd>P</kbd> for Text positioning, <kbd>R</kbd> for Z rotation. Pressing the key of the tool that is already
+          on goes back to the Position pointer.
+        </p>
+
+        <h2 id="parts">Parts of the Video panel</h2>
+        <figure class="annotated" style="margin-inline: 0">
+          <div class="window-shot">
+            <img class="only-light" src="img/perspective-light.png" alt="The Video panel with the Perspective tool on: the tool rail, a quad with four corner handles, and the inspector bar with Origin and Rotation values." />
+            <img class="only-dark" src="img/perspective-dark.png" alt="The Video panel with the Perspective tool on: the tool rail, a quad with four corner handles, and the inspector bar with Origin and Rotation values." />
+          </div>
+          <span class="pin" style="left: 8%; top: 36.5%">1</span>
+          <span class="pin" style="left: 69.5%; top: 18%">2</span>
+          <span class="pin" style="left: 18%; top: 72.6%">3</span>
+          <span class="pin" style="left: 74%; top: 72.6%">4</span>
+        </figure>
+        <ol class="legend">
+          <li><span class="n">1</span><span>The tool rail. Hover a tool to see its name and key.</span></li>
+          <li><span class="n">2</span><span>Handles of the current tool, here the corners of the perspective quad.</span></li>
+          <li><span class="n">3</span><span>The inspector bar: the tool's options for the active line.</span></li>
+          <li><span class="n">4</span><span>Exact values. Type a number, or drag across the field to scrub it.</span></li>
+        </ol>
+
+        <h2 id="tools">The tools</h2>
+        <table>
+          <thead>
+            <tr><th>Tool</th><th>Key</th><th>Writes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Position pointer</td><td><kbd>X</kbd></td><td>Nothing; shows the script coordinates under the pointer</td></tr>
+            <tr><td>Text positioning</td><td><kbd>P</kbd></td><td><code>\pos</code></td></tr>
+            <tr><td>Text moving</td><td><kbd>G</kbd></td><td><code>\move</code></td></tr>
+            <tr><td>Text scaling</td><td><kbd>S</kbd></td><td><code>\fscx</code> <code>\fscy</code></td></tr>
+            <tr><td>Text Z rotation</td><td><kbd>R</kbd></td><td><code>\frz</code></td></tr>
+            <tr><td>Text X / Y rotation</td><td><kbd>T</kbd></td><td><code>\frx</code> <code>\fry</code></td></tr>
+            <tr><td>Rectangle clipping</td><td><kbd>C</kbd></td><td><code>\clip</code> <code>\iclip</code></td></tr>
+            <tr><td>Vector clipping</td><td><kbd>V</kbd></td><td><code>\clip</code> with a drawing</td></tr>
+            <tr><td>Vector drawing</td><td><kbd>D</kbd></td><td>a <code>\p</code> drawing</td></tr>
+            <tr><td>…</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="try">Try a rotation</h2>
+        <p>Edit the line and the preview follows. Drag the slider to see the <code>\t</code> animation at any moment.</p>
+        <div class="ass-preview">
+          <div class="stage">
+            <span class="ass-text" style="left: 50%; top: 58%; font-size: 52px; transform: translate(-50%, -50%) rotate(-7deg) scale(1.15)">Ready when you are</span>
+          </div>
+          <div class="controls">
+            <button class="icon-btn play" type="button" aria-label="Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </button>
+            <input type="range" min="0" max="2000" value="1300" aria-label="Time" />
+            <span class="mono">0:00:01.30</span>
+          </div>
+          <div class="editor">
+            <textarea spellcheck="false" aria-label="ASS line">{\an5\pos(640,410)\t(0,1500,\frz-8\fscx120\fscy120)}Ready when you are</textarea>
+            <button class="btn" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
+              Copy line
+            </button>
+          </div>
+          <div class="credit">Frame: <i>Sprite Fright</i>, © Blender Foundation, studio.blender.org, CC BY 4.0 · Font: K2D (OFL)</div>
+        </div>
+
+        <h2 id="nudge">Nudging with the arrow keys</h2>
+        <p>
+          While the pointer is over the video, the arrow keys move what the tool edits by one script pixel, and
+          <kbd>Shift</kbd>+arrows by a tenth. With Text moving, <kbd>Alt</kbd>+arrows move the end point.
+        </p>
+        <div class="callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path d="M12 8h.01M11 12h1v5h1" /></svg>
+          <p>Over the video, the arrows nudge instead of stepping frames. Move the pointer to the Grid to step frames with them again.</p>
+        </div>
+
+        <h2 id="clip">Drawing a vector clip</h2>
+        <p>Choose a mode in the inspector bar, such as Add line or Move points, then click and drag on the video.</p>
+        <figure class="clip" style="margin-inline: 0">
+          <div class="window-shot">
+            <img class="only-light" src="img/drawing-light.png" alt="Drawing a vector clip on the video." />
+            <img class="only-dark" src="img/drawing-dark.png" alt="Drawing a vector clip on the video." />
+          </div>
+          <span class="state">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            8 s loop · muted
+          </span>
+        </figure>
+        <p class="figcredit">Clip: 8 s, AV1 with an H.264 fallback. Plays in view; paused with reduced motion.</p>
+
+        <h2 id="undo">Undo and cancelling</h2>
+        <p>Each drag is one step in the history. Press <kbd>Esc</kbd> during a drag to drop it.</p>
+
+        <div class="page-actions">
+          <a href="#">Edit this page on GitHub</a>
+          <a href="#">Report a problem</a>
+        </div>
+        <div class="pager">
+          <a href="#"><small>Previous</small>Timing</a>
+          <a href="#"><small>Next</small>Shapes and tags editors</a>
+        </div>
+      </article>
+
+      <nav class="toc" aria-label="On this page">
+        <b>On this page</b>
+        <a href="#parts">Parts of the Video panel</a>
+        <a href="#tools" aria-current="true">The tools</a>
+        <a href="#try">Try a rotation</a>
+        <a href="#nudge">Nudging with the arrow keys</a>
+        <a href="#clip">Drawing a vector clip</a>
+        <a href="#undo">Undo and cancelling</a>
+      </nav>
+    </div>
+  </body>
+</html>
