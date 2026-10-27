@@ -5,8 +5,10 @@ description: Position, rotate, scale and clip a line by dragging on the video. E
 
 import perspectiveLight from './images/perspective-light.webp';
 import perspectiveDark from './images/perspective-dark.webp';
-import dragLight from './images/perspective-drag-light.webp';
-import dragDark from './images/perspective-drag-dark.webp';
+import dragLightAv1 from './images/perspective-drag-light-av1.mp4';
+import dragLightH264 from './images/perspective-drag-light-h264.mp4';
+import dragDarkAv1 from './images/perspective-drag-dark-av1.mp4';
+import dragDarkH264 from './images/perspective-drag-dark-h264.mp4';
 
 The tools sit in the rail on the left of the Video panel. Click one, or press its key while the pointer is over the video: <kbd>P</kbd> for Text positioning, <kbd>R</kbd> for Z rotation. Choosing the tool that is already on goes back to the Position pointer.
 
@@ -90,14 +92,12 @@ The arrows nudge with Text positioning, Text moving, Text scaling, Perspective, 
 
 With Perspective (<kbd>Q</kbd>), drag the corners of the quad onto the surface the text should sit on. HikariSub works out the rotation, shear and origin, and the inspector bar shows the values as you drag.
 
-<MotionImage
-  light={dragLight}
-  dark={dragDark}
-  lightStill={perspectiveLight}
-  darkStill={perspectiveDark}
+<ThemedClip
+  light={{ av1: dragLightAv1, h264: dragLightH264, poster: perspectiveLight }}
+  dark={{ av1: dragDarkAv1, h264: dragDarkH264, poster: perspectiveDark }}
   width={794}
-  height={405}
-  alt="Dragging a corner of the perspective quad; the Thai line tilts to follow it"
+  height={404}
+  label="Dragging two corners of the perspective quad; the Thai line tilts to follow them"
 />
 
 <small>Subtitles: Jibrill.</small>
