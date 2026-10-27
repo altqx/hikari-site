@@ -1,6 +1,275 @@
 ---
 title: Writing scripts
-draft: true
+description: The Lua and MoonScript automation API as HikariSub implements it.
 ---
 
-This guide is not written yet.
+HikariSub runs automation scripts written in Lua or MoonScript. Its API is Automation 4, the one Aegisub scripts use, so most existing scripts run unchanged. This page describes the API as HikariSub has it, and ends with the differences that matter when you port a script.
+
+Scripts run on **LuaJIT 2.1** (Lua 5.1 with LuaJIT's Lua 5.2 extensions, and the FFI) and **MoonScript 0.3.0**.
+
+## A first macro
+
+A macro is a function that changes the subtitles. This one adds `\be1` to the start of each selected line:
+
+```lua title="add-edgeblur.lua"
+script_name = "Add edgeblur"
+script_description = "Adds \\be1 to the selected lines"
+script_author = "You"
+script_version = "1"
+
+local function add_edgeblur(subs, selected, active)
+  for _, i in ipairs(selected) do
+    local line = subs[i]
+    line.text = "{\\be1}" .. line.text
+    subs[i] = line
+  end
+end
+
+aegisub.register_macro(script_name, script_description, add_edgeblur)
+```
+
+The same macro in MoonScript. `export` makes the script globals visible to HikariSub:
+
+```coffee title="add-edgeblur.moon"
+export script_name = "Add edgeblur"
+export script_description = "Adds \\be1 to the selected lines"
+export script_author = "You"
+export script_version = "1"
+
+add_edgeblur = (subs, selected, active) ->
+  for i in *selected
+    line = subs[i]
+    line.text = "{\\be1}" .. line.text
+    subs[i] = line
+
+aegisub.register_macro script_name, script_description, add_edgeblur
+```
+
+Save it, load it with **Automation › Load script…**, then choose **Add edgeblur** in the Automation menu. The run is one undo step, named *Automation: Add edgeblur*.
+
+## Where scripts live
+
+A script is a `.lua` or `.moon` file. A `.moon` file is compiled as MoonScript, anything else as Lua.
+
+- **Autoload** scripts load when HikariSub starts. Put yours in the `automation/Autoload` folder of your Automation folder:
+  - Windows: `%APPDATA%\HikariSub\HikariSub\Automation\automation\Autoload`
+  - Linux: `~/.local/share/HikariSub/HikariSub/Automation/automation/Autoload`
+  - A portable copy uses the `Automation` folder beside the program instead.
+
+  A script of yours with the same file name as a bundled one replaces it.
+- **Automation › Load script…** loads a script for the current subtitle file and records it in the file's `Automation Scripts` header, so it loads again with the file. When a file names scripts that are not loaded, the Automation panel offers to load them.
+
+HikariSub reloads a script when you choose **Reload** in the Automation panel or **Automation › Refresh autoload scripts**, and by itself when you open the Automation menu after the file changed. A reload runs the script's top level again from scratch.
+
+## Script globals
+
+HikariSub reads these globals after the script's top level has run:
+
+| Global | Shown as |
+| --- | --- |
+| `script_name` | The script's name in the Automation panel. The file name if empty. |
+| `script_description` | The script's tooltip. |
+| `script_author` | |
+| `script_version` | |
+
+`script_namespace` is not read by HikariSub; DependencyControl uses it.
+
+## Registering macros
+
+```lua
+aegisub.register_macro(name, description, process [, validate])
+```
+
+- `name` is the macro's menu item. The menu is flat: a `/` in the name shows as it is and makes no submenu.
+- `description` is accepted but not shown.
+- `process(subs, selected, active)` does the work (see below).
+- `validate(subs, selected, active)`, if given, runs just before `process` each time the macro is run. Return `true` to let it run. If it returns false or fails, the macro does not run, nothing is changed, and the progress card says why. The menu does not grey out macros.
+
+A script can register several macros, each with its own name. Register them at the top level of the script.
+
+## The macro's arguments and result
+
+`process` receives:
+
+- `subs`, the subtitles object.
+- `selected`, an array of the indices of the selected dialogue lines in `subs`.
+- `active`, the index of the active line, or 0.
+
+Return a new selection to change it: `return selected_indices, active_index`. Return nothing to keep the selection as it was. If you return a selection but no active line, the first selected line becomes active.
+
+The macro works on a copy. HikariSub applies the result in one undo step when the macro ends, and only if it ends normally: a macro that fails or is cancelled changes nothing. While a macro runs, its file is read-only; other files can still be edited. One macro runs at a time.
+
+## The subtitles object
+
+`subs` holds every line of the file in order: first the `[Script Info]` lines, then the styles, then the dialogue lines. Indices start at 1.
+
+| | |
+| --- | --- |
+| `subs[i]` | A copy of line `i` as a table, or `nil` past the end. |
+| `#subs`, `subs.n` | The number of lines. |
+| `ipairs(subs)` | Each index and line. |
+| `subs[i] = line` | Replace line `i`. The line must be of the same class. |
+| `subs[0] = line` | Append a line. |
+| `subs[-i] = line` | Insert a line before line `i`. |
+| `subs[i] = nil` | Delete line `i`. |
+| `subs.append(line, ...)` | Append lines. |
+| `subs.insert(i, line, ...)` | Insert lines before line `i`. |
+| `subs.delete(i, ...)` or `subs.delete({i, ...})` | Delete lines. |
+| `subs.deleterange(first, last)` | Delete lines `first` to `last`. |
+| `subs.lengths()` | HikariSub only: the numbers of info, style and dialogue lines. |
+| `subs.script_resolution()` | HikariSub only: PlayResX and PlayResY. If the file lacks them, HikariSub asks for them and adds them to the file. |
+
+The methods are called with a dot, `subs.delete(i)`, not a colon. Reading a line gives you a copy: change it, then assign it back.
+
+### Lines
+
+Every line has `class`, `section` and `raw`. The other fields depend on the class.
+
+**Dialogue** (`class = "dialogue"`):
+
+| Field | Type | |
+| --- | --- | --- |
+| `comment` | boolean | The line is a comment. |
+| `layer` | number | |
+| `start_time`, `end_time` | number | Milliseconds. |
+| `style`, `actor`, `effect` | string | |
+| `margin_l`, `margin_r`, `margin_t` | number | `margin_t` is the vertical margin; `margin_b` reads the same. |
+| `text` | string | Tags and text. |
+| `text_translation` | string | Only in translation mode: then `text` is the translation and `text_translation` the original. |
+| `extra` | table | Always empty. |
+
+**Style** (`class = "style"`): `name`, `fontname`, `fontsize`, `color1` to `color4` (`&HAABBGGRR&`), `bold`, `italic`, `underline`, `strikeout` (booleans), `scale_x`, `scale_y`, `spacing`, `angle`, `borderstyle`, `outline`, `shadow`, `align`, `margin_l`, `margin_r`, `margin_t`, `margin_b`, `encoding`.
+
+`borderstyle` reads as 1 for an opaque box and 0 otherwise. When you write a style, set `borderstyle = -3` to keep an opaque box; any other value writes an outline.
+
+**Info** (`class = "info"`): `key` and `value`, from a `[Script Info]` line such as `PlayResX: 1280`.
+
+To make a new line, copy an existing one of the same class and change it; a written line needs all of its class's fields.
+
+## Dialogs
+
+```lua
+local pressed, results = aegisub.dialog.display(controls [, buttons [, button_ids]])
+```
+
+`controls` is an array of tables, each with a `class`, a `name`, and a place on a grid: `x`, `y`, `width`, `height` (defaults 0, 0, 1, 1). `hint` is a tooltip.
+
+| `class` | Fields | Result |
+| --- | --- | --- |
+| `label` | `label` | none |
+| `edit`, `textbox` | `value` | string |
+| `intedit` | `value`, `min`, `max` | integer |
+| `floatedit` | `value`, `min`, `max`, `step` (arrows step by it) | number |
+| `checkbox` | `label`, `value` | boolean |
+| `dropdown` | `items`, `value` | string |
+| `color`, `coloralpha`, `alpha` | `value` (`&HBBGGRR&`, `#RRGGBB` or a number) | `#RRGGBB`; `coloralpha` gives `#AARRGGBB` when the alpha is not 0 |
+
+Without `buttons` the dialog has OK and Cancel. `pressed` is the label of the button pressed, `""` for the default OK, and `false` for Cancel or when the dialog is closed. `results` holds each control's value by name, however the dialog ended. `button_ids` maps ids such as `ok` and `cancel` to labels: Enter presses the `ok` button, and the `cancel` button returns `false`.
+
+```lua
+local pressed, results = aegisub.dialog.display({
+  { class = "label", label = "Blur", x = 0, y = 0 },
+  { class = "floatedit", name = "blur", value = 1, min = 0, max = 20, step = 0.5, x = 1, y = 0 },
+}, { "Apply", "Cancel" }, { ok = "Apply", cancel = "Cancel" })
+if not pressed then aegisub.cancel() end
+```
+
+The dialog's title is the macro's name. HikariSub remembers what was entered: the dialog can fill in the last answers and keep presets, and **Automation › Repeat last run** runs the macro again with the same answers.
+
+File dialogs:
+
+```lua
+aegisub.dialog.open(title, folder, file, filter [, multiple [, must_exist]])
+aegisub.dialog.save(title, folder, file, filter [, dont_prompt_overwrite])
+```
+
+Both return the chosen path, a table of paths for `multiple`, or `nil` when cancelled. The second argument is the starting folder and the third the file name.
+
+## Progress and cancelling
+
+```lua
+aegisub.progress.title("Blurring")
+for n, i in ipairs(selected) do
+  if aegisub.progress.is_cancelled() then aegisub.cancel() end
+  aegisub.progress.task(("Line %d"):format(n))
+  aegisub.progress.set(n / #selected * 100)
+  -- ...
+end
+```
+
+A progress card opens in the corner after a second of work, or as soon as the script writes to the log. Its **Cancel** stops the script the next time it reads or writes `subs`, calls an `aegisub` function or checks `is_cancelled()`. A loop that does none of these cannot be cancelled, so check `is_cancelled()` in long loops. If the script has not stopped three seconds after Cancel, **Force stop** ends it.
+
+`aegisub.cancel()` ends the macro as cancelled, from inside the script.
+
+## Log and errors
+
+```lua
+aegisub.log("Changed %d lines\n", count)
+aegisub.debug.out(2, "Style %s not found\n", name)
+```
+
+`aegisub.log` and `aegisub.debug.out` are the same function. A first number argument is the level: 0 fatal, 1 error, 2 warning, 3 hint (the default). Levels 4 and 5 are not shown. With more arguments, the text is formatted with `string.format`.
+
+The output shows in the progress card and in the **Runs** view of the Automation panel, which keeps the last 20 runs with their logs. `print` writes nowhere you can see.
+
+When a script fails to load, its row in the Automation panel says so, with **Show full error**. When a macro fails, the card shows the error with its traceback; for MoonScript the line numbers are those of the `.moon` file. Validation errors go to the **Log** panel.
+
+`aegisub.progress`, `aegisub.debug`, `aegisub.log` and `aegisub.dialog` exist only while a macro runs, not at the script's top level. During validation there is no progress or log.
+
+## Other functions
+
+| Function | Returns |
+| --- | --- |
+| `aegisub.text_extents(style, text)` | `width, height, descent, external_leading` of the text in that style (a style line). |
+| `aegisub.frame_from_ms(ms)`, `aegisub.ms_from_frame(frame)` | The frame shown at a time, and the time of a frame. `nil` without video. |
+| `aegisub.video_size()` | `width, height, aspect_ratio, aspect_type`, or `nil` without video. |
+| `aegisub.keyframes()` | The keyframes as frame numbers. |
+| `aegisub.get_audio_selection()` | The start and end of the current line, or `nil` without audio. |
+| `aegisub.get_frame(frame [, with_subtitles])` | A video frame, with `:width()`, `:height()`, `:getPixel(x, y)` and `:getPixelFormatted(x, y)` (`&HBBGGRR&`). |
+| `aegisub.parse_karaoke_data(line)` | The line's karaoke syllables, from index 0, each with `duration`, `start_time`, `end_time`, `tag`, `text` and `text_stripped`. |
+| `aegisub.file_name()` | The subtitle file's name, or `nil`. |
+| `aegisub.project_properties()` | The video, audio and keyframes files and the video position. |
+| `aegisub.decode_path(path)` | The path with a `?` prefix expanded (below). |
+| `aegisub.gettext(text)` | The text translated, for scripts that ship translations. |
+| `aegisub.set_status_text(text)` | HikariSub only: sets the status bar text. |
+| `aegisub.gui.get_cursor()`, `set_cursor(pos)`, `get_selection()`, `set_selection(start, end)` | The cursor and selection in the Line editor's text, counted from 1. |
+
+| Prefix for `decode_path` | Folder |
+| --- | --- |
+| `?script` | The subtitle file's folder |
+| `?video`, `?audio` | The video's or audio's folder |
+| `?user`, `?local` | Your Automation folder (beside the program for a portable copy) |
+| `?data` | The Automation folder that comes with HikariSub |
+| `?temp` | `temp` in your Automation folder |
+| `?dictionary` | The dictionaries folder |
+
+## Modules
+
+`require` finds modules in the script's own folder, then in the `automation/Include` folders of your Automation folder and of HikariSub's. A `.moon` module is preferred over a `.lua` one of the same name. `include("file.lua")` runs a file from the same folders. `dofile` and `loadfile` are not available.
+
+HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unicode`, `re`, `lfs`, `json`, `Yutils`, `aegisub.clipboard`, `aegisub.util` and more, plus DependencyControl and the libraries its scripts use.
+
+## How scripts run
+
+Each loaded script runs in a process of its own. This has a few consequences:
+
+- A script that crashes takes only itself down. HikariSub marks it stopped; reload it to use it again.
+- A script's globals survive from one run of its macros to the next, until it is reloaded. Scripts do not see each other's globals.
+- There is no time limit on a macro.
+- It is not a sandbox: `io`, `os`, the FFI and native modules work as in any Lua program, with your user's permissions. Cancelling a macro does not undo what it wrote to disk.
+
+## Coming from Aegisub
+
+Most Aegisub scripts run as they are. These differences can matter:
+
+- `register_filter` does nothing: HikariSub has no export filters.
+- `aegisub.set_undo_point` does nothing: each run is one undo step.
+- Validation runs when the macro is run, not when the menu opens, and its help text is not shown. The fifth argument of `register_macro` (is active) is not used.
+- The macro description is not shown, and `/` in a macro name does not make a submenu.
+- `dialog.open` and `dialog.save` take the folder before the file name.
+- The default OK button returns `""`, not `true`; `if pressed then` works either way.
+- `coloralpha` returns `#AARRGGBB`.
+- A style's `borderstyle` is 0 or 1; write `-3` to keep an opaque box.
+- `extra` (extradata) is always empty and is not saved.
+- Log levels above 3 are not shown, and `print` output is not shown at all.
+- Automation 3 scripts are not supported.

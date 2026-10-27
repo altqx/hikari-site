@@ -1,6 +1,273 @@
 ---
 title: ASS override tags
-draft: true
+description: Every override tag libass renders, with a live preview of each.
 ---
 
-This guide is not written yet.
+Override tags change how part of a line looks. They go in braces in the line's text, each starting with a backslash: `{\b1\fs80}Big and bold`. Every preview below renders with libass, as HikariSub does. Edit a line to try a variation, and use **Copy line** to paste it into a script.
+
+The previews use a 1280×720 script with a Default style in K2D SemiBold 64, white with a dark border, at the bottom centre.
+
+## How tags work
+
+- A tag changes the text from where it is written to the end of the line, or until another tag changes the same thing. `{\b1}Bold {\b0}regular` makes one word bold.
+- A tag with no value goes back to the line's style: `{\fs}` restores the style's font size.
+- Some tags apply to the whole line, wherever they are written, and only the first counts: `\pos`, `\move`, `\org`, `\an`, `\a`, `\fad`, `\fade` and the vector `\clip`. For the rectangle `\clip` and `\iclip`, the last one counts.
+- Positions, sizes and drawings are in script pixels, the PlayResX × PlayResY grid of the script, whatever the video's size.
+- Colours are written blue, green, red: `&HBBGGRR&`. `&H0000FF&` is red. Alpha is a separate tag, from `&H00&` (opaque) to `&HFF&` (invisible).
+- Tag names are case-sensitive, and an unknown tag is ignored. Text in braces that is not a tag is a comment and does not show.
+
+<AssPreview line="{\b1}Bold {\b0}regular {\i1}italic {\i0}and back" />
+
+## Text
+
+### `\b`: bold
+
+`\b1` is bold and `\b0` is not. A value of 100 or more asks for that font weight, such as `\b300` for light.
+
+<AssPreview line="{\fnK2D\b0}Regular {\b1}Bold" />
+
+### `\i`: italic
+
+`\i1` is italic and `\i0` is not. A font without an italic face is slanted.
+
+<AssPreview line="{\i1}Slanted{\i0} upright" />
+
+### `\u`, `\s`: underline and strikeout
+
+`\u1` underlines and `\s1` strikes the text out; `0` turns them off.
+
+<AssPreview line="{\u1}Underlined{\u0} and {\s1}struck out" />
+
+### `\fn`: font
+
+`\fn<name>` sets the font family. The name runs up to the next backslash or brace, spaces included. HikariSub's **Font collector** gathers the fonts a script uses.
+
+<AssPreview line="{\fnFira Sans}Fira Sans {\fnK2D}and K2D" />
+
+### `\fs`: font size
+
+`\fs<size>` in script pixels. `\fs+<n>` and `\fs-<n>` change the size by n tenths: `\fs+2` is 20% larger.
+
+<AssPreview line="{\fs40}Small {\fs64}normal {\fs100}large" />
+
+### `\fsp`: letter spacing
+
+`\fsp<n>` adds n script pixels between letters; a negative value draws them closer.
+
+<AssPreview line="{\fsp16}Spaced out {\fsp-4}tight" />
+
+### `\fe`: encoding
+
+`\fe<n>` sets the font encoding (charset) for the line. libass only uses it to set the text direction: `\fe-1` detects it from the text. Rarely needed.
+
+### `\q`: wrapping
+
+How a long line wraps, for the whole line: `\q0` wraps evenly with the top line wider, `\q1` wraps at the end of the line, `\q2` does not wrap (only `\N` and `\n` break it), and `\q3` wraps evenly with the bottom line wider. Without it the script's **Wrap style** applies.
+
+<AssPreview line="{\q3\fs80}A long line that wraps so that its lower line is the wider of the two" />
+
+### `\r`: reset
+
+`\r` resets the tags before it to the line's style; `\r<style>` resets them to another style. It leaves the line-wide tags (`\pos`, `\move`, `\clip`, `\an` and so on) alone.
+
+<AssPreview line="{\1c&H00D7FF&\fs80\i1}Gold and big, {\r}back to the style" />
+
+## Scale, rotation and shear
+
+### `\fscx`, `\fscy`: scale
+
+Horizontal and vertical scale in percent; 100 is normal.
+
+<AssPreview line="{\fscx160}Wide {\fscx100\fscy160}tall" />
+
+### `\frz`: rotation
+
+`\frz<degrees>` turns the text in the plane of the screen; positive turns it counter-clockwise. `\fr` is the same tag. It turns about the line's alignment point, or about `\org`.
+
+<AssPreview line="{\an5\pos(640,360)\frz20}Turned 20 degrees" />
+
+### `\frx`, `\fry`: 3D rotation
+
+`\frx` turns the text about the horizontal axis, tilting it away; `\fry` turns it about the vertical axis. Both rotate about the alignment point or `\org`, with a fixed perspective.
+
+<AssPreview line="{\an5\pos(640,360)\frx50}Tilted on X" frame="sprites" />
+
+<AssPreview line="{\an5\pos(640,360)\fry50}Turned on Y" frame="sprites" />
+
+### `\fax`, `\fay`: shear
+
+`\fax<factor>` slants the text horizontally and `\fay<factor>` vertically. The value is a factor, not an angle: `\fax0.5` shifts each row by half its height.
+
+<AssPreview line="{\an5\pos(640,300)\fax0.4}Sheared on X" />
+
+<AssPreview line="{\an5\pos(640,360)\fay0.15}Sheared on Y" />
+
+### `\org`: origin of rotation
+
+`\org(x,y)` sets the point `\frx`, `\fry` and `\frz` turn about. Only the first `\org` counts. Play this one to see the text swing about a point to its left:
+
+<AssPreview line="{\an5\pos(760,360)\org(300,360)\t(\frz-40)}Turning about a point" duration={3000} />
+
+## Position and alignment
+
+### `\pos`: position
+
+`\pos(x,y)` puts the line's alignment point at (x, y). Only the first `\pos` or `\move` counts. A positioned line does not move aside for other lines.
+
+<AssPreview line="{\an7\pos(80,80)}Up here" />
+
+### `\move`: movement
+
+`\move(x1,y1,x2,y2)` moves the line from (x1, y1) to (x2, y2) over its whole duration. `\move(x1,y1,x2,y2,t1,t2)` moves it between t1 and t2, in milliseconds from the line's start; before t1 it waits at the start and after t2 at the end.
+
+<AssPreview line="{\move(300,650,980,300)}On the move" duration={3000} />
+
+### `\an`: alignment
+
+`\an1` to `\an9` place the line like the keys of a numeric keypad: 1 to 3 at the bottom, 4 to 6 in the middle, 7 to 9 at the top, each left, centre and right. The margins apply. It also decides which point of the text `\pos` places. Only the first `\an` counts.
+
+<AssPreview line="{\an9}Top right" />
+
+### `\a`: alignment, old style
+
+The SSA numbering: `\a1`, `\a2`, `\a3` are bottom left, centre and right; add 4 for the top (`\a5` to `\a7`) and 8 for the middle (`\a9` to `\a11`). Prefer `\an`.
+
+<AssPreview line="{\a6}Top centre" />
+
+## Colour and transparency
+
+### `\1c`, `\2c`, `\3c`, `\4c`: colours
+
+`\1c` is the fill, `\2c` the karaoke colour before a syllable is sung, `\3c` the border and `\4c` the shadow. `\c` is `\1c`. Write the colour as `&HBBGGRR&`.
+
+<AssPreview line="{\1c&H00D7FF&}Gold fill {\1c&HFFFFFF&\3c&H4C5C14&\bord6}green border" />
+
+<AssPreview line="{\4c&HE6A040&\4a&H00&\shad8}Blue shadow" frame="ellie" />
+
+### `\alpha`, `\1a` to `\4a`: transparency
+
+`\alpha` sets the transparency of all four colours; `\1a` to `\4a` set one each. `&H00&` is opaque and `&HFF&` invisible. A colour tag never changes transparency, so set it with these tags rather than inside `\c`.
+
+<AssPreview line="{\alpha&H80&}Half see-through {\alpha&H00&\1a&HFF&\3c&HFFFFFF&\bord3}only the border" />
+
+## Border, shadow and blur
+
+### `\bord`: border
+
+`\bord<width>` sets the border width; `\bord0` removes it. `\xbord` and `\ybord` set it horizontally and vertically.
+
+<AssPreview line="{\bord8}Thick {\bord0}none {\bord3\xbord10}wide" />
+
+### `\shad`: shadow
+
+`\shad<distance>` moves the shadow down and to the right; `\shad0` removes it. `\xshad` and `\yshad` set each direction and can be negative.
+
+<AssPreview line="{\shad8}Long shadow {\shad0\xshad-8\yshad8}to the left" />
+
+### `\be`: soft edges
+
+`\be<n>` softens the edges n times. It takes whole numbers, up to 127. With a border, it softens the border rather than the text.
+
+<AssPreview line="{\fs110\bord0\shad0}Sharp {\be3}soft {\be10}softer" />
+
+### `\blur`: blur
+
+`\blur<radius>` blurs the edges smoothly; it takes decimals, up to 100. With a border, it blurs the border, so a glow is a thick, coloured, blurred border. Blur is costly to render: **Video › Show / hide render cost** counts the lines that use it.
+
+<AssPreview line="{\bord8\3c&HFFC870&\blur8}Glowing" frame="night" />
+
+## Animation
+
+### `\t`: animated tags
+
+`\t(t1,t2,accel,\tags)` changes the tags inside it gradually from t1 to t2, in milliseconds from the line's start. t2 of 0 means the end of the line. Leave out t1 and t2 to animate over the whole line, and accel to animate evenly; accel above 1 starts slow, below 1 starts fast. Several `\t` can follow each other.
+
+Tags that can be animated: `\fs`, `\fsp`, `\fscx`, `\fscy`, `\frx`, `\fry`, `\frz`, `\fax`, `\fay`, the colours and alphas, `\bord`, `\xbord`, `\ybord`, `\shad`, `\xshad`, `\yshad`, `\be`, `\blur`, and the rectangle `\clip` and `\iclip`.
+
+<AssPreview line="{\an5\pos(640,360)\t(0,1500,\fscx140\fscy140\1c&H00D7FF&)\t(1500,3000,2,\frz-15)}Growing, then turning" duration={3000} />
+
+### `\fad`: fade in and out
+
+`\fad(in,out)` fades the line in over its first `in` milliseconds and out over its last `out`. It needs no `\t`.
+
+<AssPreview line="{\fad(800,800)}Fading in and out" duration={3000} time={400} />
+
+### `\fade`: fade, in detail
+
+`\fade(a1,a2,a3,t1,t2,t3,t4)` goes from transparency a1 to a2 between t1 and t2, then to a3 between t3 and t4. Here the values are decimal, 0 (opaque) to 255 (invisible).
+
+<AssPreview line="{\fade(255,0,160,0,1000,2000,3000)}In, then half out" duration={3000} time={1500} />
+
+## Karaoke
+
+Each karaoke tag starts a syllable and gives its duration in **centiseconds**: `\k50` is half a second. Syllables follow one another from the start of the line. Before its time a syllable shows the secondary colour (`\2c`), and the primary colour (`\1c`) once sung. HikariSub's Audio panel times syllables; see the karaoke guides.
+
+### `\k`: karaoke
+
+The syllable changes colour all at once.
+
+<AssPreview line="{\k50}Ka{\k50}ra{\k50}o{\k50}ke" duration={2500} time={1200} />
+
+### `\kf`, `\K`: karaoke fill
+
+The colour sweeps across the syllable from left to right over its duration. `\K` is the same tag.
+
+<AssPreview line="{\kf80}Fill{\kf80}ing {\kf80}in" duration={2600} time={1200} />
+
+### `\ko`: karaoke outline
+
+Like `\k`, but the syllable's border appears only when it is sung.
+
+<AssPreview line="{\ko50}Out{\ko50}line {\ko50}first" duration={1800} time={700} />
+
+### `\kt`: karaoke start time
+
+`\kt<cs>` starts the next syllable that many centiseconds from the line's start, instead of where the previous one ended.
+
+## Clipping
+
+### `\clip`, `\iclip`: rectangle
+
+`\clip(x1,y1,x2,y2)` shows only the part of the line inside the rectangle; `\iclip` hides that part instead. The values are whole script pixels. Both can be animated with `\t`.
+
+<AssPreview line="{\clip(0,0,640,720)}Only the left half shows" />
+
+### `\clip`, `\iclip`: shape
+
+`\clip(<drawing>)` clips to a shape drawn with the drawing commands below, and `\iclip(<drawing>)` hides the shape. `\clip(<scale>,<drawing>)` gives the drawing a scale as `\p` does. Only the first shape clip counts, and it cannot be animated.
+
+<AssPreview line="{\an5\pos(640,360)\fs260\fnK2D\b1\1c&H00D7FF&\clip(m 0 0 l 1280 0 0 720)}HIKARI" frame="night" />
+
+## Drawing
+
+### `\p`: drawing mode
+
+`\p1` turns the text after it into a drawing, until `\p0`. A drawing takes the line's colours, border, shadow, blur, scale and rotation, and `\pos` places it. `\p2` and up draw at half, quarter and so on of the size, for finer coordinates.
+
+| Command | Draws |
+| --- | --- |
+| `m x y` | Moves to (x, y) and starts a new shape. |
+| `n x y` | Moves to (x, y) without closing the shape. |
+| `l x y …` | Lines to each point. |
+| `b x1 y1 x2 y2 x3 y3 …` | A cubic Bézier curve. |
+| `s x1 y1 x2 y2 x3 y3 …` | A B-spline through three or more points; `p …` extends it and `c` closes it. |
+
+<AssPreview line="{\an5\pos(640,360)\1c&H00D7FF&\bord3\p1}m 0 -90 b 50 -90 90 -50 90 0 b 90 50 50 90 0 90 b -50 90 -90 50 -90 0 b -90 -50 -50 -90 0 -90" frame="night" />
+
+### `\pbo`: drawing baseline
+
+`\pbo<n>` moves a drawing down by n of its units, to line it up with text.
+
+## Line breaks and spaces
+
+These go in the text, not in braces:
+
+- `\N` always breaks the line.
+- `\n` breaks it only with wrap style 2 (`\q2`); otherwise it is a space.
+- `\h` is a space that never breaks.
+
+<AssPreview line="First line\NSecond line" />
+
+## Tags libass does not draw
+
+VSFilterMod adds tags such as `\fsvp`, `\frs`, `\rnd`, `\z`, `\distort`, `\jitter`, `\moves3`, `\1img` and the gradient tags `\1vc` and `\1va`. libass does not render them, and some are mistaken for its own tags: `\frs` is read as `\frz0` and `\rnd` as `\r`. They render only with VSFilterMod, which HikariSub offers on Windows as a slower renderer. HikariSub's tag list in the Line editor shows them with **Show VSFiltermod tags**.

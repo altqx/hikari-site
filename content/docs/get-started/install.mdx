@@ -1,10 +1,147 @@
 ---
 title: Install
-draft: true
+description: Download HikariSub for Windows or Linux, install it, keep it updated and remove it.
 ---
 
-This guide is not written yet.
-
-## Downloads
+HikariSub 0.1 runs on 64-bit Windows and Linux. Each release comes in seven packages; pick the one that suits how you like to install software.
 
 <DownloadTable />
+
+Every release also carries `SHA256SUMS`, the SHA-256 checksum of each package. The packages are not code-signed, so the checksum and the download from github.com over HTTPS are what vouch for them.
+
+## What you need
+
+- **Windows:** Windows 10 version 1809 or later, or Windows 11, 64-bit (x64). The setup refuses older or 32-bit Windows.
+- **Linux:** an x86_64 distribution with glibc 2.34 or later: Ubuntu 22.04, Debian 12, Fedora, openSUSE Tumbleweed, Arch Linux and their newer releases, for example. HikariSub runs on X11 and Wayland.
+
+There is no ARM build yet.
+
+## Windows
+
+### Setup (recommended)
+
+Download `HikariSub-<version>-windows-x64-setup.exe` and run it. Windows may warn that the publisher is unknown, because the setup is not signed.
+
+1. **Install for:** choose **Just me** to install in your user folder (`%LOCALAPPDATA%\Programs\HikariSub`), with no administrator rights, or **All users** to install in Program Files for everyone on the computer. All users asks for administrator approval once.
+2. **Components:** **Associate subtitle files (.ass, .ssa, .srt, .sub)** is on by default, and **Desktop shortcut** is off. HikariSub becomes the default app only for file types no other app has claimed.
+3. Choose the folder, install, and tick **Start HikariSub** on the last page if you want it to start straight away.
+
+The setup adds HikariSub to the Start menu. If HikariSub is already installed, the setup updates it where it is. Close HikariSub first; the setup waits until it is closed.
+
+To switch between Just me and All users, uninstall first. To install an older version over a newer one, the setup asks you to confirm.
+
+<details>
+<summary>Silent install</summary>
+
+The setup accepts these switches:
+
+| Switch | Effect |
+| --- | --- |
+| `/S` | Install without showing any window. |
+| `/CURRENTUSER`, `/ALLUSERS` | Just me or All users. |
+| `/COMPONENTS=assoc,desktop` | The components to install. The default is `assoc`. |
+| `/D=<folder>` | The install folder. It must come last. |
+
+Exit codes: 0 done, 1 cancelled, 2 failed, 3 HikariSub was running, 4 administrator approval refused or needed, 5 a newer version is installed, 6 installed for the other scope.
+
+</details>
+
+### Portable zip
+
+Download `HikariSub-<version>-windows-x64.zip`, unpack it anywhere and run `HikariSub_x64\HikariSub.exe`. Nothing is installed and no administrator rights are needed.
+
+A portable copy keeps its Automation folder (scripts, logs and autosaves) beside the program. Its settings are stored in your user profile like an installed copy's. A portable copy does not update itself: when there is a new version, it opens the download page.
+
+## Linux
+
+### AppImage
+
+Download `HikariSub-<version>-linux-x86_64.AppImage`, make it executable and run it:
+
+```sh
+chmod +x HikariSub-*-linux-x86_64.AppImage
+./HikariSub-*-linux-x86_64.AppImage
+```
+
+If it does not start because FUSE is missing, run it with `APPIMAGE_EXTRACT_AND_RUN=1` in front of the command.
+
+The AppImage brings its own Qt and the libraries a desktop may lack. Graphics drivers, audio, fonts and glibc come from your system. HikariSub does not add the AppImage to your applications menu itself; a tool such as Gear Lever or AppImageLauncher can. The AppImage updates itself (see [Updates](#updates)), so keep it in a folder you can write to.
+
+### Debian and Ubuntu (.deb)
+
+```sh
+sudo apt install ./hikarisub-<version>-linux-amd64.deb
+```
+
+### Fedora and openSUSE (.rpm)
+
+```sh
+sudo dnf install ./hikarisub-<version>-linux-x86_64.rpm
+sudo zypper install ./hikarisub-<version>-linux-x86_64.rpm
+```
+
+The packages are not GPG-signed. If dnf refuses the file for that reason, add `--nogpgcheck`. zypper needs `--allow-unsigned-rpm`.
+
+The deb and rpm install HikariSub in `/opt/hikarisub`, with the command `hikarisub`, a menu entry, icons and file types for `.ass`, `.ssa`, `.srt` and `.sub`.
+
+### Arch Linux (AUR)
+
+Two AUR packages carry the release build:
+
+- `hikarisub-stable-bin`: stable releases only.
+- `hikarisub-beta-bin`: every release, betas included.
+
+Install one of them with your AUR helper, for example:
+
+```sh
+yay -S hikarisub-beta-bin
+```
+
+Only one of the two can be installed at a time. The package you choose decides which versions you get.
+
+### Portable tar.gz
+
+Download `hikarisub-<version>-linux-x86_64.tar.gz`, unpack it and run `hikarisub-linux-x86_64/hikarisub`. It uses the libraries of your system, as the deb and rpm do.
+
+To add it to your applications menu, with its icons and file types, run the script beside it. It writes only to `~/.local/share` and needs no root:
+
+```sh
+./install-desktop-integration.sh
+```
+
+The menu entry points at this folder, so run the script again if you move the folder. `./install-desktop-integration.sh --uninstall` removes the entry again.
+
+## Updates
+
+HikariSub can check GitHub for a new version once a day when it starts. The check is **off** until you turn it on: **File › Settings › Updates › Check for updates automatically**. You can check at any time with **Help › Check for updates**.
+
+- **Stable versions only** is on by default. Turn it off to be offered betas too. A beta build is always offered newer betas.
+- **Install updates automatically** (on by default) downloads an update in the background and installs it when you quit HikariSub. When an update is ready, a bar offers **Restart now** or **Later**.
+
+How the update is installed depends on the package:
+
+| Package | Updates |
+| --- | --- |
+| Setup | Downloads and installs itself. An All users install asks for administrator approval. |
+| AppImage | Replaces the AppImage file with the new one. If the new version does not start, the old one is put back. |
+| deb, rpm | Downloads the package and asks for your password to install it. |
+| AUR | Shows the command for your AUR helper, such as `yay -Syu hikarisub-beta-bin`. |
+| Portable zip, tar.gz | Opens the download page. |
+
+Each download is checked against its SHA-256 before it is installed. To see which version and package you have, open **Help › About**.
+
+## Uninstall
+
+- **Setup:** remove HikariSub in Windows Settings › Apps, or run `Uninstall HikariSub.exe` in the install folder.
+- **AppImage, portable zip, tar.gz:** delete the file or folder. For the tar.gz, run `./install-desktop-integration.sh --uninstall` first if you used it.
+- **deb, rpm:** `sudo apt remove hikarisub`, `sudo dnf remove hikarisub` or `sudo zypper remove hikarisub`.
+- **AUR:** `sudo pacman -R hikarisub-stable-bin` or `hikarisub-beta-bin`.
+
+Uninstalling keeps your settings, autosaves and scripts. To remove those too, delete these folders:
+
+- Windows: `%LOCALAPPDATA%\HikariSub\HikariSub` and `%APPDATA%\HikariSub\HikariSub`
+- Linux: `~/.config/HikariSub/HikariSub` and `~/.local/share/HikariSub/HikariSub`
+
+## Coming from 0.0.x
+
+An installed HikariSub 0.1 replaces an installed 0.0.x: they share the install folder and package names. Your 0.0.x settings are kept apart and are not changed. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).

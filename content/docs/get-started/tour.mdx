@@ -1,6 +1,112 @@
 ---
 title: A tour of the window
-draft: true
+description: The parts of HikariSub's window, its menus and layouts, and the keys you need first.
 ---
 
-This guide is not written yet.
+import windowLight from './images/window-light.webp';
+import windowDark from './images/window-dark.webp';
+import typesettingLight from './images/typesetting-light.webp';
+import typesettingDark from './images/typesetting-dark.webp';
+
+<figure>
+  <ThemedImage
+    light={windowLight}
+    dark={windowDark}
+    alt="HikariSub in the Editing layout: the video on the left, the audio waveform and the Line editor on the right, and the Grid along the bottom"
+    width={1600}
+    height={960}
+    className="rounded-lg border"
+  />
+  <figcaption>The Editing layout. Subtitles: Jibrill.</figcaption>
+</figure>
+
+## From top to bottom
+
+- **Title bar:** the menus, the layout switcher (it shows the current layout, *Editing* above) and the window title. Press Alt or F10 to reach the menus from the keyboard. On a tiling window manager the system's title bar is used instead; **File › Settings › Appearance › Use system title bar** switches between the two.
+- **Document tabs:** one tab per open subtitle file. **+** or a double-click on the empty bar opens a new tab, a middle-click closes one, and tabs can be dragged into another order. A tab with unsaved changes shows a mark.
+- **Notice bars** appear under the tabs only when there is something to act on, such as a file changed on disk or an update ready to install.
+- **Panels:** the video, audio, Line editor, Grid and the other tools. See below.
+- **Status bar:** the number of selected lines and whether the file is saved, then the video's scale, zoom, duration, frame rate, resolution and aspect ratio, the subtitles' resolution and the video file name. The video and subtitles resolutions turn to the warning colour when they differ.
+
+## The panels
+
+The Editing layout shows four panels:
+
+- **Video**, with the visual typesetting tools down its left side, their options below the picture, the seek bar, and playback buttons from Previous file to Next frame.
+- **Audio**, the waveform of the audio (or of the video's audio), with its own play and timing buttons.
+- **Line editor**, the line you are working on: its tag buttons (bold, italic, font, colours and more), the text, and the line's Start, End, Duration, Style, Comment, Layer, Actor, Effect and Margins.
+- **Grid**, every line of the file. Right-click it to insert, split, filter or hide lines and columns.
+
+Ten more panels open from the menus: Original text (in translation mode), Reference, Shift times, Search, Automation, Spellchecker, Styles, Template editor, Log and Fix minor errors. **View › Panels** shows, hides, floats or docks any of them.
+
+Every panel can be moved. Drag a panel by its header to dock it elsewhere or into another panel as a tab, or double-click the header to float it in a window of its own. The **⋯** button on the header has the same actions, plus **Move panel…** for the keyboard. F6 and Shift+F6 move the focus from panel to panel.
+
+## Layouts
+
+A layout is an arrangement of panels. HikariSub has four:
+
+| Layout | Panels |
+| --- | --- |
+| Editing | Video, Audio, Line editor and Grid. The default. |
+| Timing | Editing without the Video panel, for timing to audio. |
+| Translation | Editing without the Audio panel. It also offers to turn on translation mode. |
+| Typesetting | A large video with the Styles panel beside it, a short Grid and the Line editor. |
+
+<figure>
+  <ThemedImage
+    light={typesettingLight}
+    dark={typesettingDark}
+    alt="The Typesetting layout: a large video with the Styles panel on its right, and the Line editor and a short Grid below"
+    width={1000}
+    height={600}
+    className="rounded-lg border"
+  />
+  <figcaption>The Typesetting layout. Subtitles: Jibrill.</figcaption>
+</figure>
+
+Switch with the layout switcher in the title bar or with **View › Layout**. Each tab keeps its own layout, so a file you typeset and a file you time can sit side by side. When you save as ASS, the tab's layout is saved in the file and comes back with it.
+
+Move panels around as you like, then save the arrangement with **Save layout as…** in the same menu. **Reset this layout** returns the tab to the layout it started from, and **Manage layouts…** looks after the ones you saved.
+
+## Menus
+
+| Menu | What is there |
+| --- | --- |
+| File | Open, save and close subtitles; recent files; the last session and autosaves; **Settings**; **Import legacy settings…** |
+| Edit | Undo, redo and history; sorting; find and replace; select lines; fix minor errors |
+| Automation | Load and reload scripts, run macros, the Automation panel |
+| Video | Open video and keyframes; frame by frame; play; set times from the video; zoom |
+| Audio | Open audio, or the audio of the loaded video; close audio |
+| View | Layouts and panels |
+| Subtitles | Shift times, the Style manager, ASS file properties, conversion, the font collector, resampling, spelling and karaoke checks, the Kanji timer, translation mode |
+| Help | The website, reporting an issue, checking for updates, what's new, About, Credits |
+
+Shift+click a menu item to give its command a hotkey.
+
+## The keys you need first
+
+| Action | Key |
+| --- | --- |
+| Open subtitles | Ctrl+O |
+| Open video | Ctrl+Shift+O |
+| Save, Save as | Ctrl+S, Ctrl+Shift+S |
+| New tab, close tab | Ctrl+T, Ctrl+W |
+| Play or pause the video | Space (outside text fields), or Alt+Space anywhere |
+| Previous, next frame | Left, Right |
+| Previous, next line | Ctrl+Up, Ctrl+Down |
+| Apply the edit and go to the next line | Enter (on the last line it adds a new one) |
+| Apply the edit and stay | Ctrl+Enter |
+| Undo, redo | Ctrl+Z, Ctrl+Y |
+| Find, find and replace | Ctrl+F, Ctrl+H |
+| Style manager | Ctrl+M |
+| The HikariSub website | F1 |
+
+There is no Apply button: edits in the Line editor are applied with Enter or Ctrl+Enter, and the editor marks a line whose changes are not applied yet. To open the audio of the loaded video, use **Audio › Open audio from video**.
+
+## The Home page
+
+With no file open, the Home page covers the panels. It has **New**, **Open…** and **Open video…**, the last session with **Restore**, and your recent files, which you can filter by name. After a crash it also offers to restore the session or open an autosave. When a new version has release notes, they show on the right.
+
+## Light and dark
+
+HikariSub follows the system's light or dark scheme by default. To choose for yourself, open **File › Settings › Appearance**: there are Light, Dark, High contrast white and High contrast black themes, seven accent colours, and the program font and size. Picking a theme turns off **Follow system theme**.

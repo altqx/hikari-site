@@ -1,6 +1,78 @@
 ---
 title: Moving from legacy
-draft: true
+description: Trying HikariSub 0.1 when you use 0.0.x, bringing your settings over, and going back.
 ---
 
-This guide is not written yet.
+HikariSub 0.1 is a rewrite of HikariSub 0.0.x, which these guides call *legacy*. Moving is optional. Legacy keeps getting updates, and if you try 0.1 and want to go back, your legacy settings are still there.
+
+## The offer in legacy
+
+From 0.0.2, legacy offers the new HikariSub when a release of it is available, in a window titled **The new HikariSub**:
+
+- **Try it** downloads the new version, checks it and offers to restart into it, or to install it when you next quit. Nothing is downloaded before you choose Try it.
+- **Remind me later** shows the offer again at a start three or more days later. Closing the window counts as Remind me later.
+- **Don't offer again** stops the offer for this version. A later version can offer again.
+
+You can bring the offer back at any time with **Help › Try the new HikariSub...** in legacy. Legacy shows the offer at start-up only when **Check for updates automatically** is on, and never ahead of a legacy update you have not installed yet.
+
+A portable copy of legacy opens the release page instead. Unpack the new version into a folder of its own; the old copy stays as it is.
+
+Betas are offered only if you see beta versions in legacy, that is, with **Stable versions only** turned off. After the move, 0.1 keeps that choice.
+
+Copies installed from the AUR do not get the offer: there, the AUR package you install decides the version. See [Install](/en/docs/get-started/install#arch-linux-aur).
+
+## What replaces what
+
+An installed 0.1 takes the place of an installed legacy: the setup, AppImage, deb, rpm and AUR package share their install folder and names, so installing one replaces the other. Portable copies can sit side by side.
+
+Settings are kept apart. 0.1 never changes legacy's settings, only reads them when you import them.
+
+| | Legacy 0.0.2 and later, installed | 0.1 |
+| --- | --- | --- |
+| Windows | `%LOCALAPPDATA%\HikariSub\Legacy` | `%LOCALAPPDATA%\HikariSub\HikariSub` |
+| Linux | `~/.local/share/HikariSub/Legacy` | `~/.config/HikariSub/HikariSub` |
+
+Legacy 0.0.1 and portable copies of legacy keep their settings beside the program, in its `Config` folder.
+
+## Importing your settings
+
+0.1 starts with its own defaults. To bring your legacy settings over, use **File › Import legacy settings...** It opens a window in three steps:
+
+1. **Installation:** HikariSub lists the legacy installations it finds and picks the first. If yours is not listed, for example a portable copy, choose **Choose folder…** and pick its folder. Files that are not UTF-8 can be read as Latin-1 or Windows-1252.
+2. **Review:** every setting legacy sets differently from 0.1, with its legacy value and its value now. Where you have not changed a setting in 0.1 yet, the legacy value is ticked; where you have, yours is kept unless you tick the legacy one. **All** shows every setting read, and the search field finds one.
+3. **Import:** the chosen settings are staged, and take effect the next time HikariSub starts. A setting you change before then keeps your change.
+
+The import never changes the legacy files. You can run it again at any time: settings you have not touched since the last import follow the legacy values, and settings you changed are kept. **Roll back…** goes back to the settings you had before the last import.
+
+### What comes over
+
+- Program options: the program font and size, the language, window size and position, and the options of the Grid, Line editor (including your tag buttons), video, audio, shift times, conversion, the font collector, find and replace, translation and the updater.
+- Recent files: subtitles, video, audio and keyframes.
+- Hotkeys, including the hotkeys of automation macros. A macro's hotkey is matched to its script when the scripts load; scripts do not run during the import.
+- Misspell rules, your personal dictionary, and dictionaries you added (each needs its `.dic` and `.aff` file).
+
+Paths that do not exist on this computer, and a subtitle renderer that is not installed here, are shown as unresolved and left as they are. HikariSub draws with libass instead.
+
+To bring over only the hotkeys of your automation macros, use **File › Settings › Hotkeys › Import legacy hotkeys…** and pick legacy's `Hotkeys.txt`.
+
+### What does not
+
+- **Themes.** 0.1 has its own themes in **File › Settings › Appearance**; legacy themes and colours are not imported.
+- **Style catalogs, font catalogs, sessions and autosaves.** Open a legacy session with **File › Last session › Load session from file**.
+- **Your automation scripts.** Copy them into 0.1's Automation folder.
+- **Install updates automatically.** 0.1 has its own setting, on by default.
+- Commands that 0.1 does not have (see below).
+
+## What is different
+
+- There is no main toolbar. The panels carry their own buttons.
+- The Line editor is always there. Legacy's View arrangements and the editor switch are replaced by [layouts](/en/docs/get-started/tour#layouts): Editing, Timing, Translation and Typesetting, plus the ones you save.
+- The shortcut mapping window is gone. Set a macro's hotkey in the Automation panel, or Shift+click it in the Automation menu.
+- There is no video indexing command, and no dummy audio: a dummy video brings its own silent audio.
+- **Check for updates automatically** is off by default in 0.1, where legacy had it on. An import brings your legacy choice over.
+
+## Going back
+
+To return to legacy, install a 0.0.x release again. The Windows setup asks before it replaces a newer version. Your legacy settings are as you left them.
+
+Files saved by 0.1 open in legacy. An ASS file may gain a `[Hikari]` section holding the tab's layout; legacy keeps it as it is. To leave it out, turn off **File › Settings › Subtitle properties › Files › Save the panel layout in subtitle files**. Sessions saved by 0.1 open in legacy too.
