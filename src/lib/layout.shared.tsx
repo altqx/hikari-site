@@ -12,11 +12,21 @@ export const translations = i18n
     },
   });
 
-export function baseOptions(_locale: string): BaseLayoutProps {
+export function baseOptions(locale: string): BaseLayoutProps {
   return {
     nav: {
-      title: appName,
+      title: (
+        <>
+          <img src="/favicon.png" alt="" width={22} height={22} />
+          {appName}
+        </>
+      ),
+      url: `/${locale}`,
     },
+    links: [
+      { text: 'Guides', url: `/${locale}/docs`, active: 'nested-url' },
+      { text: 'Download', url: `/${locale}#download`, active: 'none' },
+    ],
     githubUrl: appRepoUrl,
   };
 }
