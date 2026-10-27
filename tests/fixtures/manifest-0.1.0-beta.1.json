@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "product": "HikariSub",
+  "version": "0.1.0-beta.1",
+  "codebase": "qt",
+  "offer_to": ["qt"],
+  "published": "2026-11-03T00:00:00Z",
+  "packages": {
+    "nsis": {
+      "name": "HikariSub-0.1.0-beta.1-windows-x64-setup.exe",
+      "size": 90442474,
+      "sha256": "a0fc2ff5798d9284b3b4963dfb7a1c85b6ef833b189152e5fff8bbab7901f2e1",
+      "min_os": "10.0.17763"
+    },
+    "portable-windows": {
+      "name": "HikariSub-0.1.0-beta.1-windows-x64.zip",
+      "size": 142818625,
+      "sha256": "ea1667f3489dbbddb7f2cc9d9eddcdd781dbf2a94b29bcadb859f964cf56fe23",
+      "min_os": "10.0.17763"
+    },
+    "appimage": {
+      "name": "HikariSub-0.1.0-beta.1-linux-x86_64.AppImage",
+      "size": 105105912,
+      "sha256": "76cf8cb750e3fc7e81aa84812051c10f7d4daafcad542260f5b4e2171cec4959",
+      "min_glibc": "2.34"
+    },
+    "deb": {
+      "name": "hikarisub-0.1.0-beta.1-linux-amd64.deb",
+      "size": 36250064,
+      "sha256": "f56557adb388a4f892ea02cb686ec623d346cee2bb2bf40a064e899762055602",
+      "min_glibc": "2.34"
+    },
+    "rpm": {
+      "name": "hikarisub-0.1.0-beta.1-linux-x86_64.rpm",
+      "size": 40254466,
+      "sha256": "193012f76e11eafc1bc0c2139f467f6c32bf074666c6e2ac1e90851ae30701ff",
+      "min_glibc": "2.34"
+    },
+    "portable-linux": {
+      "name": "hikarisub-0.1.0-beta.1-linux-x86_64.tar.gz",
+      "size": 41935566,
+      "sha256": "c4509853c2cbfab8fd4459de9df6cbdfcebc2f8f1ef520962b5f1334c6a8f022",
+      "min_glibc": "2.34"
+    }
+  }
+}

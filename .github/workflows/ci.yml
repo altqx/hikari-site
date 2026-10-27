@@ -23,11 +23,13 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run lint
       - run: bun run typecheck
+      - run: bun run test
 
       - name: Build with drafts (as PR previews do)
         run: bun run build
         env:
           VITE_SHOW_DRAFTS: "1"
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Link check (with drafts)
         run: bun run check-links
       # Deployed by preview.yml, which runs from main with the Cloudflare secrets.
@@ -42,6 +44,8 @@ jobs:
 
       - name: Build for production
         run: bun run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Link check (production)
         run: bun run check-links
 

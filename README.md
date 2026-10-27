@@ -24,10 +24,12 @@ bun run check-links
 bun run test:e2e                # Playwright smoke, against the build
 ```
 
+The download links come from hikari's newest releases and their `hikarisub-update.json`, read at build time into `src/generated/downloads.json` (`bun run downloads`; `bun run dev` works offline).
+
 Guides are MDX in `content/docs/`. A page with `draft: true` in its frontmatter appears only in PR previews.
 
 ## Deploys
 
 - Each PR gets a preview at `pr-<number>-hikari-site.<subdomain>.workers.dev`, built with drafts.
-- `main` deploys to https://hikarisub.altqx.com only while the repo variable `PRODUCTION_DEPLOY` is `true`.
+- `main` deploys to https://hikarisub.altqx.com only while the repo variable `PRODUCTION_DEPLOY` is `true`. It also rebuilds on a hikari release (`repository_dispatch` event `hikari-release`) and daily.
 - Secret: `CLOUDFLARE_API_TOKEN`. Variables: `CLOUDFLARE_ACCOUNT_ID` (a secret of that name works too), `PRODUCTION_DEPLOY`, `CF_WEB_ANALYTICS_TOKEN` (Cloudflare Web Analytics beacon, production only).

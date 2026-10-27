@@ -1,0 +1,48 @@
+[
+  {
+    "tag_name": "v0.0.2",
+    "name": "v0.0.2",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-10-22T00:25:29Z",
+    "html_url": "https://github.com/altqx/hikari/releases/tag/v0.0.2",
+    "assets": [
+      {
+        "name": "hikarisub-0.0.2-linux-amd64.deb",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/hikarisub-0.0.2-linux-amd64.deb"
+      },
+      {
+        "name": "HikariSub-0.0.2-linux-x86_64.AppImage",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/HikariSub-0.0.2-linux-x86_64.AppImage"
+      },
+      {
+        "name": "HikariSub-0.0.2-linux-x86_64.AppImage.zsync",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/HikariSub-0.0.2-linux-x86_64.AppImage.zsync"
+      },
+      {
+        "name": "hikarisub-0.0.2-linux-x86_64.rpm",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/hikarisub-0.0.2-linux-x86_64.rpm"
+      },
+      {
+        "name": "hikarisub-0.0.2-linux-x86_64.tar.gz",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/hikarisub-0.0.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "HikariSub-0.0.2-windows-x64-setup.exe",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/HikariSub-0.0.2-windows-x64-setup.exe"
+      },
+      {
+        "name": "HikariSub-0.0.2-windows-x64.zip",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/HikariSub-0.0.2-windows-x64.zip"
+      },
+      {
+        "name": "hikarisub-update.json",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/hikarisub-update.json"
+      },
+      {
+        "name": "SHA256SUMS",
+        "browser_download_url": "https://github.com/altqx/hikari/releases/download/v0.0.2/SHA256SUMS"
+      }
+    ]
+  }
+]
