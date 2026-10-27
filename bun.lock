@@ -11,6 +11,7 @@
         "@tanstack/react-router": "1.170.45",
         "@tanstack/react-start": "1.169.3",
         "@tanstack/start-static-server-functions": "1.167.43",
+        "akarisub": "1.1.6",
         "fumadocs-core": "16.17.8",
         "fumadocs-mdx": "15.4.10",
         "fumadocs-ui": "npm:@fumadocs/base-ui@16.17.8",
@@ -491,6 +492,8 @@
     "acorn": ["acorn@8.19.0", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw=="],
 
     "acorn-jsx": ["acorn-jsx@5.3.2", "", { "peerDependencies": { "acorn": "^6.0.0 || ^7.0.0 || ^8.0.0" } }, "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ=="],
+
+    "akarisub": ["akarisub@1.1.6", "", {}, "sha512-EEdIJSRqF7vQaBdVN7OzS51gONIDeZ05nRlBohnrN+TjLDSYlYUGXj6BonyM9mmTRnvSSZvsmvzqRaTY5EK7fA=="],
 
     "ansis": ["ansis@4.4.0", "", {}, "sha512-9k3v7xcHwgdO/DruxGIg4HtjvlAZlcnsX/mzqUb1t3NkYnl9kK2UJ+Gq0io+vQf7iT//BD/HB/NBkUR1LWxoeA=="],
 
