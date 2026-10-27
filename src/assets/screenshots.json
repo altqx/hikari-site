@@ -50,6 +50,26 @@
       "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, frame 4 of 4",
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, a Perspective corner drag (animated; stand-in for the #5 clip)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, a Perspective corner drag (animated; stand-in for the #5 clip)",
+      "credit": "Subtitles: Jibrill"
     }
   }
 }
