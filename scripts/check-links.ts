@@ -1,4 +1,4 @@
-// Checks that every internal href/src in the built HTML resolves to a file in the
+// Checks that every internal href/src/data-still in the built HTML resolves to a file in the
 // output, the way Cloudflare serves it (wrangler.jsonc: drop-trailing-slash), or to
 // a rule in _redirects whose target resolves.
 import { existsSync, readFileSync } from 'node:fs';
@@ -40,7 +40,8 @@ let checked = 0;
 for await (const file of glob('**/*.html', { cwd: root })) {
   if (file === '_shell.html' || file === '404.html') continue;
   const html = readFileSync(join(root, file), 'utf8');
-  for (const [, url] of html.matchAll(/\s(?:href|src)="([^"]*)"/g)) {
+  // data-still: the static image of an <AssPreview>, made by scripts/render-stills.ts.
+  for (const [, url] of html.matchAll(/\s(?:href|src|data-still)="([^"]*)"/g)) {
     if (!url.startsWith('/') || url.startsWith('//')) continue;
     const path = decodeURI(url.split(/[?#]/)[0]);
     checked++;

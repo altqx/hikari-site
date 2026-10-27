@@ -23,6 +23,7 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run lint
       - run: bun run typecheck
+      - run: bun run test
 
       - name: Build with drafts (as PR previews do)
         run: bun run build
