@@ -108,7 +108,13 @@ function Clip({
       <button
         type="button"
         className="absolute top-2 right-2 grid size-8 place-items-center rounded-md border bg-fd-background/80 text-fd-foreground backdrop-blur-sm"
-        onClick={() => setChoice(playing ? 'pause' : 'play')}
+        onClick={() => {
+          const video = videoRef.current;
+          // Play from the click itself: a browser that refused autoplay allows it here.
+          if (playing) video?.pause();
+          else video?.play().catch(() => {});
+          setChoice(playing ? 'pause' : 'play');
+        }}
         aria-label={playing ? 'Pause clip' : 'Play clip'}
       >
         {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
