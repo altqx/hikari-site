@@ -51,6 +51,36 @@
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
     },
+    "content/docs/typesetting/images/perspective-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, a Perspective corner drag (animated; stand-in for the #5 clip)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-drag-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2)",
+      "surface": "Video panel, a Perspective corner drag (animated; stand-in for the #5 clip)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/karaoke/images/kanji-timer-light.webp": {
+      "source": "origin/evidence/w6-ka8 d9d9d5fdcbd6b9ef88cced2fc55327a9529dcf5c ka8-354/ka8-multi-light.png (KanjiTimerDialog.qml unchanged at qt 9370fedc8)",
+      "surface": "Kanji timer window, Multi-highlight (#) on, test song kanji-shots.ass",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/kanji-timer-dark.webp": {
+      "source": "origin/evidence/w6-ka8 d9d9d5fdcbd6b9ef88cced2fc55327a9529dcf5c ka8-354/ka8-multi-dark.png (KanjiTimerDialog.qml unchanged at qt 9370fedc8)",
+      "surface": "Kanji timer window, Multi-highlight (#) on, test song kanji-shots.ass",
+      "credit": ""
+    },
     "content/docs/karaoke/images/template-editor-light.webp": {
       "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8)",
       "surface": "Template editor, template line 3 previewed on line 5",
