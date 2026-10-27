@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hikari-site",
+  "compatibility_date": "2026-10-01",
+  // Static assets only; no Worker script runs.
+  "assets": {
+    "directory": ".output/public",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // Attached on `wrangler deploy` only, which CI runs once PRODUCTION_DEPLOY is on.
+  "routes": [{ "pattern": "hikarisub.altqx.com", "custom_domain": true }],
+  "workers_dev": true,
+  "preview_urls": true
+}

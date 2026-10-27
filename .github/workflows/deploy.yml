@@ -1,0 +1,99 @@
+name: Deploy
+
+# PRs get a preview at pr-<number>-hikari-site.<subdomain>.workers.dev, built with drafts.
+# main deploys to production only when the repo variable PRODUCTION_DEPLOY is 'true'
+# (off until the design gate, #2, is approved).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+jobs:
+  preview:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check for Cloudflare secrets
+        id: secrets
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Cloudflare secrets are not set yet; skipping the preview deploy."
+          fi
+      - uses: actions/checkout@v5
+        if: steps.secrets.outputs.present
+      - uses: oven-sh/setup-bun@v2
+        if: steps.secrets.outputs.present
+        with:
+          bun-version: 1.4.4
+      - if: steps.secrets.outputs.present
+        run: bun install --frozen-lockfile
+      - if: steps.secrets.outputs.present
+        run: bun run build
+        env:
+          VITE_SHOW_DRAFTS: '1'
+      - name: Upload preview version
+        id: upload
+        if: steps.secrets.outputs.present
+        env:
+          WRANGLER_OUTPUT_FILE_PATH: ${{ runner.temp }}/wrangler-output.json
+        run: |
+          bunx wrangler versions upload \
+            --preview-alias "pr-${{ github.event.pull_request.number }}" \
+            --message "PR #${{ github.event.pull_request.number }} at ${GITHUB_SHA::7}"
+          url=$(jq -r 'select(.type == "version-upload") | .preview_alias_url // .preview_url // empty' "$WRANGLER_OUTPUT_FILE_PATH" | tail -n 1)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Comment the preview URL
+        if: steps.upload.outputs.url
+        env:
+          GH_TOKEN: ${{ github.token }}
+          URL: ${{ steps.upload.outputs.url }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          body="Preview (with drafts): $URL
+
+          Built from ${{ github.event.pull_request.head.sha }}."
+          marker="<!-- hikari-site-preview -->"
+          id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+            --jq "[.[] | select(.body | contains(\"$marker\"))][0].id // empty")
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -f body="$marker
+          $body"
+          else
+            gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "$marker
+          $body"
+          fi
+
+  production:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.PRODUCTION_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://hikarisub.altqx.com
+    steps:
+      - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        env:
+          VITE_CF_BEACON_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN }}
+      - run: bunx wrangler deploy

@@ -1,0 +1,5 @@
+{
+  "title": "Checking",
+  "defaultOpen": true,
+  "pages": ["spelling", "grammar", "fix-minor-errors", "subtitle-comparison"]
+}

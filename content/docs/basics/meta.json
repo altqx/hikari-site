@@ -1,0 +1,5 @@
+{
+  "title": "Basics",
+  "defaultOpen": true,
+  "pages": ["files-and-formats", "grid", "line-editor", "styles", "video", "audio", "timing"]
+}
