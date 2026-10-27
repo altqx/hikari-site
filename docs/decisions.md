@@ -53,6 +53,7 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 
 - Fumadocs static search (Orama), built at build time.
 - Cloudflare Web Analytics (no cookies, no banner). No comments. Each page has "Edit this page on GitHub" and "Report a problem" (altqx/hikari issues).
+- **Link check:** a build fails when an internal link or a User guide (F1) target names a page that doesn't exist. An F1 target whose page is still a draft is only listed, since drafts are left out of production builds; it doesn't fail the build.
 
 ## Process
 
