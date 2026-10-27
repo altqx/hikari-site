@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import { DownloadButton } from '@/components/download-button';
 import { baseOptions } from '@/lib/layout.shared';
 
 // Placeholder until the homepage design (#2) is approved.
@@ -17,10 +18,11 @@ function Home() {
         <p className="max-w-md text-fd-muted-foreground">
           A subtitle editor and player for everything from quick fixes to full typesetting.
         </p>
+        <DownloadButton />
         <Link
           to="/$lang/docs/$"
           params={{ lang, _splat: '' }}
-          className="rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground"
+          className="rounded-lg border px-4 py-2 text-sm font-medium"
         >
           Read the guides
         </Link>

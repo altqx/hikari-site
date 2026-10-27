@@ -10,3 +10,4 @@ dist/
 out/
 test-results/
 playwright-report/
+src/generated/

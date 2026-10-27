@@ -53,3 +53,11 @@ test('unknown paths show the not-found page', async ({ page }) => {
   expect(response?.status()).toBe(404);
   await expect(page.getByText(/not found/i).first()).toBeVisible();
 });
+
+test('the homepage has a Download button for the app', async ({ page }) => {
+  await page.goto('/en');
+  await expect(page.getByTestId('download-button')).toHaveAttribute(
+    'href',
+    /^https:\/\/github\.com\/altqx\/hikari\/releases/,
+  );
+});
