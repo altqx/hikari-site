@@ -30,6 +30,26 @@
       "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344",
       "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/get-started/images/window-light.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-light.webp",
+      "surface": "Editing layout, ray MV (the README hero)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/get-started/images/window-dark.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-dark.webp",
+      "surface": "Editing layout, ray MV (the README hero)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/get-started/images/typesetting-light.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, frame 4 of 4",
+      "surface": "Typesetting layout",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/get-started/images/typesetting-dark.webp": {
+      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, frame 4 of 4",
+      "surface": "Typesetting layout",
+      "credit": "Subtitles: Jibrill"
     }
   }
 }

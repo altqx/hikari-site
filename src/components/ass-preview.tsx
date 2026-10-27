@@ -71,8 +71,7 @@ export function AssPreview({
   inputRef.current = input;
   const still = `/previews/still/${stillName({ text: line, styles, style, duration, frame, time: stillTime(line, duration, time) })}`;
 
-  // Start AkariSub the first time the preview scrolls into view; keep track of visibility
-  // so playback pauses off screen.
+  // AkariSub runs only while the preview is on screen or within 200px of it.
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
@@ -83,8 +82,14 @@ export function AssPreview({
     return () => observer.disconnect();
   }, []);
 
+  // A preview that leaves the screen gives its renderer back, so a page of many previews
+  // keeps only the ones near the screen alive. The line and time stay for when it returns.
   useEffect(() => {
-    if (!visible || state !== 'waiting') return;
+    if (!visible) {
+      if (state === 'loading' || state === 'live') setState('waiting');
+      return;
+    }
+    if (state !== 'waiting') return;
     if (prefersStill()) {
       setState('still');
       return;
@@ -94,7 +99,7 @@ export function AssPreview({
 
   const started = state === 'loading' || state === 'live';
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: created once; later edits go through setTrack
+  // Created when the preview starts; later edits go through setTrack.
   useEffect(() => {
     if (!started) return;
     const canvas = canvasRef.current;
