@@ -62,6 +62,11 @@ export default defineConfig({
           crawlLinks: true,
         },
       },
+      // Crawl each page once. A link with a #fragment or ?query names the same
+      // file, and two crawls writing one file at once can leave it empty.
+      prerender: {
+        filter: ({ path }) => !/[?#]/.test(path),
+      },
       pages: [{ path: '/en' }, { path: '/en/docs' }, { path: '/api/search' }],
     }),
     react(),
