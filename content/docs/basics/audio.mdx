@@ -93,7 +93,7 @@ Times are rounded to the centisecond. **Snap to keyframes** and **Snap to other 
 
 ## Applying the times
 
-**Commit** (<kbd>Enter</kbd> or <kbd>G</kbd>) writes the times into the line, or into every selected line, as one undo step. It then moves to the next line. On the last line it adds a new, empty line five seconds long after it.
+**Commit** (<kbd>Enter</kbd> or <kbd>G</kbd>) writes the times into the line, or into every selected line, as one undo step. It then moves to the next line. On the last line it adds a new, empty line five seconds long after it. Turn off **Go to the next line after applying changes** to stay on the line instead.
 
 <figure>
   <ThemedImage
@@ -108,10 +108,6 @@ Times are rounded to the centisecond. **Snap to keyframes** and **Snap to other 
 </figure>
 
 **Automatically apply changes**, on at first, applies every change you make with the mouse, In and Out at once, so you rarely need Commit. Turn it off to try times first: they wait in the Line editor, the display shows **Modified**, and Commit applies them. The small **A** on the Commit button shows that it is on.
-
-<Callout type="warn">
-  **Go to the next line after applying changes** does not work yet: Commit always moves to the next line.
-</Callout>
 
 A selection that ends before it starts is refused.
 
@@ -141,6 +137,4 @@ The gear, **Customise the audio panel**, chooses what the row shows: the Play ar
 
 **File › Settings › Audio** holds the output device, the audio delay, the lead-in and lead-out, snapping, the karaoke options and the cache. The [Settings reference](/en/docs/reference/settings#audio) lists them with their defaults.
 
-<Callout>
-  The **Display** section's options are not applied yet: the display always looks as it does with their defaults.
-</Callout>
+Its **Display** section chooses what the display draws: the time beside the cursor, the seconds markers, the selection background, the video position, keyframes, how thick the line boundaries are, and which **Inactive lines** are shaded: **None**, **Before and after the active** or **All visible**. The display changes as soon as you apply them.

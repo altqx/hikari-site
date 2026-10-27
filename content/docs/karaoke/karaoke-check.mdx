@@ -69,6 +69,7 @@ The Audio panel's Karaoke mode reads tags its own way. It sees karaoke only in a
 - Lines with a `\k`, `\K`, `\kf` or `\ko` tag. Lines without one give no rows.
 - Comments are checked as well. So is a karaoke line that the templater has turned into a comment with the Effect `karaoke`.
 - Lines whose Effect starts with `template`, `code` or `mixin` are skipped: they are templates, not karaoke.
+- Lines the [templater](/en/docs/karaoke/templater) generated, which have the Effect `fx` and aren't comments, are skipped too. Its next run makes them again, so check the karaoke lines they come from.
 - In Translation mode, a line is checked on its translation, the text that plays.
 - The active line is checked as it stands in the Line editor, even before you apply your changes.
 
