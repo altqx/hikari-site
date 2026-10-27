@@ -30,4 +30,4 @@ Guides are MDX in `content/docs/`. A page with `draft: true` in its frontmatter 
 
 - Each PR gets a preview at `pr-<number>-hikari-site.<subdomain>.workers.dev`, built with drafts.
 - `main` deploys to https://hikarisub.altqx.com only while the repo variable `PRODUCTION_DEPLOY` is `true`.
-- Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Variable: `CF_WEB_ANALYTICS_TOKEN` (Cloudflare Web Analytics beacon, production only).
+- Secret: `CLOUDFLARE_API_TOKEN`. Variables: `CLOUDFLARE_ACCOUNT_ID` (a secret of that name works too), `PRODUCTION_DEPLOY`, `CF_WEB_ANALYTICS_TOKEN` (Cloudflare Web Analytics beacon, production only).
