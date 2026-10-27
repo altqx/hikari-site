@@ -66,6 +66,9 @@ export function AssPreview({
 
   const animated = isAnimated(text);
   const input = useMemo(() => ({ text, styles, style, duration }), [text, styles, style, duration]);
+  // Edits made while AkariSub loads reach the renderer when it is created.
+  const inputRef = useRef(input);
+  inputRef.current = input;
   const still = `/previews/still/${stillName({ text: line, styles, style, duration, frame, time: stillTime(line, duration, time) })}`;
 
   // Start AkariSub the first time the preview scrolls into view; keep track of visibility
@@ -114,7 +117,7 @@ export function AssPreview({
         canvas.height = height;
         const renderer = new AkariSub({
           canvas,
-          subContent: buildScript(input),
+          subContent: buildScript(inputRef.current),
           onDemandRender: false,
           useLocalFonts: false,
           fonts: Object.values(fontFiles).flat(),
