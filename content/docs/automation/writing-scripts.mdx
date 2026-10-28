@@ -80,7 +80,7 @@ HikariSub reads these globals after the script's top level has run:
 aegisub.register_macro(name, description, process [, validate])
 ```
 
-- `name` is the macro's menu item. The menu is flat: a `/` in the name shows as it is and makes no submenu.
+- `name` is the macro's menu item. A `/` in it makes submenus, as in Aegisub: `"Typesetting/Move"` shows Move under **Automation › Typesetting**. Each part but the last names a submenu, and names sharing a start share its submenus. Unlike Aegisub, each level keeps the order the macros were registered in, not alphabetical order, and a macro and a submenu with the same name both show.
 - `description` is accepted but not shown.
 - `process(subs, selected, active)` does the work (see below).
 - `validate(subs, selected, active)`, if given, runs just before `process` each time the macro is run. Return `true` to let it run. If it returns false or fails, the macro does not run, nothing is changed, and the progress card says why. The menu does not grey out macros.
@@ -265,7 +265,7 @@ Most Aegisub scripts run as they are. These differences can matter:
 - `register_filter` does nothing: HikariSub has no export filters.
 - `aegisub.set_undo_point` does nothing: each run is one undo step.
 - Validation runs when the macro is run, not when the menu opens, and its help text is not shown. The fifth argument of `register_macro` (is active) is not used.
-- The macro description is not shown, and `/` in a macro name does not make a submenu.
+- The macro description is not shown. In the submenus a `/` makes, each level keeps registration order, where Aegisub sorts it.
 - `dialog.open` and `dialog.save` take the folder before the file name.
 - The default OK button returns `""`, not `true`; `if pressed then` works either way.
 - `coloralpha` returns `#AARRGGBB`.

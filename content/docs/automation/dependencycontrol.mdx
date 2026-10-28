@@ -14,23 +14,23 @@ DependencyControl's own messages say "Aegisub"; in HikariSub they mean HikariSub
 
 ## The Toolbox macros
 
-The Toolbox is an autoload script, so its macros are always in the **Automation** menu. The menu has no submenus, so each name starts with `DependencyControl/`:
+The Toolbox is an autoload script, so its macros are always in the **Automation** menu. They are in its **DependencyControl** submenu:
 
 | Macro | Does |
 | --- | --- |
-| **DependencyControl/Install Script** | Installs a script or module from a feed |
-| **DependencyControl/Update Script** | Checks for and installs a newer version of an installed script or module |
-| **DependencyControl/Uninstall Script** | Removes an installed script or module |
-| **DependencyControl/Manage Feeds** | Lists the feeds DependencyControl knows, and lets you trust, block or remove them, or add your own |
-| **DependencyControl/Macro Configuration** | Sets a Menu Group and a Custom Update Feed for each script |
-| **DependencyControl/Package Source Configuration** | Chooses where a package's next update comes from, without running one |
-| **DependencyControl/Global Configuration** | DependencyControl's own settings: see [Settings](#settings) |
+| **DependencyControl › Install Script** | Installs a script or module from a feed |
+| **DependencyControl › Update Script** | Checks for and installs a newer version of an installed script or module |
+| **DependencyControl › Uninstall Script** | Removes an installed script or module |
+| **DependencyControl › Manage Feeds** | Lists the feeds DependencyControl knows, and lets you trust, block or remove them, or add your own |
+| **DependencyControl › Macro Configuration** | Sets a Menu Group and a Custom Update Feed for each script |
+| **DependencyControl › Package Source Configuration** | Chooses where a package's next update comes from, without running one |
+| **DependencyControl › Global Configuration** | DependencyControl's own settings: see [Settings](#settings) |
 
 They run like any macro: the progress card shows what they log, and each run is in the Automation panel's **Runs**. See [Running scripts](/en/docs/automation/running-scripts).
 
 ## Installing a script
 
-1. Choose **Automation › DependencyControl/Install Script**.
+1. Choose **Automation › DependencyControl › Install Script**.
 2. DependencyControl fetches every feed it knows, and the card says "Scanning 21 available feeds..." or how many there are. This needs the internet and can take a minute or more.
 3. A dialog lists what you can install: **Automation Scripts:** and **Modules:**, each as name and version, such as `Abacus v1.1.0`. A version that isn't on the feed's default channel shows its channel in brackets. Scripts you already have are not listed.
 4. Pick a script, a module or one of each, and press **OK**.
@@ -59,13 +59,13 @@ If a package names its own feed but only another feed has it, DependencyControl 
 
 DependencyControl updates scripts by itself. When HikariSub starts, the Toolbox checks every module it knows, and each script that uses DependencyControl checks itself when you run one of its macros. A script is checked at most once every three and a half days (**Check interval (s)** in Global Configuration). While the start-up check runs, the Toolbox reads **Loading** in the Automation panel.
 
-To update now, choose **Automation › DependencyControl/Update Script**, pick the script or module, and press **OK**. The log ends with "Update of module '…' (v…) complete.", or "The module '…' is up-to-date (v…)." Then choose **Automation › Refresh autoload scripts**, or reload the script in the Automation panel.
+To update now, choose **Automation › DependencyControl › Update Script**, pick the script or module, and press **OK**. The log ends with "Update of module '…' (v…) complete.", or "The module '…' is up-to-date (v…)." Then choose **Automation › Refresh autoload scripts**, or reload the script in the Automation panel.
 
 DependencyControl can update every script, the ones that come with HikariSub too, on every copy of HikariSub. HikariSub copies its scripts and modules into your [user folder](/en/docs/automation/user-folder), and an update replaces the copy there. When a later HikariSub brings its own new version of a file DependencyControl updated, the updated file is kept and the Log says so. See [Bundled scripts and dictionaries](/en/docs/automation/user-folder#bundled-scripts-and-dictionaries).
 
 An installed package updates only from its own feed, or from the feed its copy came from. Use **Package Source Configuration** to change where the next update comes from.
 
-To remove a script or module, choose **DependencyControl/Uninstall Script** and pick it. DependencyControl itself and the modules it needs are not offered. Choose **Automation › Refresh autoload scripts** afterwards.
+To remove a script or module, choose **DependencyControl › Uninstall Script** and pick it. DependencyControl itself and the modules it needs are not offered. Choose **Automation › Refresh autoload scripts** afterwards.
 
 ## Where its files are
 
@@ -156,7 +156,7 @@ Scripts written for DependencyControl 0.6 keep working. One difference: on a new
 
 ## Settings
 
-**DependencyControl/Global Configuration** has four groups. A field left at its default keeps following the default. **Restore Defaults** puts them all back, after asking; your feed lists are kept.
+**DependencyControl › Global Configuration** has four groups. A field left at its default keeps following the default. **Restore Defaults** puts them all back, after asking; your feed lists are kept.
 
 | Group | Settings |
 | --- | --- |
@@ -167,4 +167,4 @@ Scripts written for DependencyControl 0.6 keep working. One difference: on a new
 
 Each field's hint, in the strip above the buttons, says what it does.
 
-**Macro Configuration** sets two things per script. **Menu Group** adds a prefix to the script's macro names; in HikariSub it shows as part of the name, since the menu has no submenus. **Custom Update Feed** makes the script update only from that feed.
+**Macro Configuration** sets two things per script. **Menu Group** puts the script's macros in a submenu of that name in the Automation menu. **Custom Update Feed** makes the script update only from that feed.
