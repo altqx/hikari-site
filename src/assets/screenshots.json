@@ -707,12 +707,12 @@
       "credit": ""
     },
     "content/docs/help/images/settings-updates-light.webp": {
-      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-updates-light.png, title bar cropped, 880x620+0+32",
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-updates-light.png, title bar cropped, 880x620+0+32",
       "surface": "Settings window, Updates and privacy page",
       "credit": ""
     },
     "content/docs/help/images/settings-updates-dark.webp": {
-      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-updates-dark.png, title bar cropped, 880x620+0+32",
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-updates-dark.png, title bar cropped, 880x620+0+32",
       "surface": "Settings window, Updates and privacy page",
       "credit": ""
     },
@@ -724,6 +724,46 @@
     "content/docs/get-started/images/getting-started-updates-dark.webp": {
       "source": "recaptured at qt de3b0c316e9a301df6632e7e685553f4eb27e81d: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-7-updates-dark.png",
       "surface": "Getting started window, step 7 of 8 (Updates and privacy)",
+      "credit": ""
+    },
+    "content/docs/help/images/crash-report-light.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), crash-report-light.png, whole image",
+      "surface": "The crash report window (HikariSub closed unexpectedly), note typed, report opened",
+      "credit": ""
+    },
+    "content/docs/help/images/crash-report-dark.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), crash-report-dark.png, whole image",
+      "surface": "The crash report window (HikariSub closed unexpectedly), note typed, report opened",
+      "credit": ""
+    },
+    "content/docs/help/images/freeze-report-light.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), freeze-report-light.png, whole image",
+      "surface": "The Report a freeze window, report opened",
+      "credit": ""
+    },
+    "content/docs/help/images/freeze-report-dark.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), freeze-report-dark.png, whole image",
+      "surface": "The Report a freeze window, report opened",
+      "credit": ""
+    },
+    "content/docs/help/images/report-issue-bug-light.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), report-issue-bug-light.png, whole image",
+      "surface": "Help › Report an issue, Bug, filled in",
+      "credit": ""
+    },
+    "content/docs/help/images/report-issue-bug-dark.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), report-issue-bug-dark.png, whole image",
+      "surface": "Help › Report an issue, Bug, filled in",
+      "credit": ""
+    },
+    "content/docs/help/images/report-issue-finish-light.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), report-issue-finish-light.png, whole image",
+      "surface": "Report an issue, Finish on GitHub",
+      "credit": ""
+    },
+    "content/docs/help/images/report-issue-finish-dark.webp": {
+      "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), report-issue-finish-dark.png, whole image",
+      "surface": "Report an issue, Finish on GitHub",
       "credit": ""
     }
   }

@@ -28,6 +28,7 @@ The packages are not code-signed, so Windows says the publisher is unknown. Each
 Yes:
 
 - **Anonymous usage data**, which is **on by default**. HikariSub sends which features are used, errors and crashes, and how fast things open to PostHog Cloud EU, under a random ID, and the IP address is discarded. It never sends your files, their names or what is in them. [What is sent](/en/docs/help/what-is-sent) lists every event. Only release packages send it.
+- **Crash and freeze reports**, only when you press **Send report** in a report's window or turn on **Always send crash reports**, even with usage data off. See [Crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports).
 - **The update check**, which is off by default: when you choose **Help › Check for updates**, or at most once a day when it starts if you turn on **File › Settings › Updates and privacy › Check for updates automatically**. The check asks GitHub (`api.github.com`) for the list of releases, so GitHub sees your IP address. **What's new** reads the same list and never loads the images or links in the release notes. See [Updates](/en/docs/get-started/install#updates).
 - **DependencyControl**, which comes with HikariSub, checks its scripts' feeds for updates by itself. See [Updating scripts](/en/docs/automation/dependencycontrol#updating-scripts).
 
@@ -51,11 +52,11 @@ In your [user folder](/en/docs/automation/user-folder). **Help › Open user fol
 
 ### Is there a log file?
 
-No. The Log is kept in memory and is gone when HikariSub quits. Copy its entries with **Copy** before you quit if you need them. See [The Log panel](/en/docs/help/troubleshooting#the-log-panel).
+No. The Log panel starts empty at each start. Copy its entries with **Copy** before you quit if you need them. HikariSub keeps only the last 200 lines, with file names, text and folders replaced, for a [crash report](/en/docs/help/reporting-problems#what-a-report-holds). See [The Log panel](/en/docs/help/troubleshooting#the-log-panel).
 
 ### Does HikariSub save crash reports?
 
-No crash reports or crash dumps that you can open or send. While anonymous usage data is on, a crash leaves a small record, with no file names or text, that is sent at the next start and then deleted: see [Crash records](/en/docs/help/what-is-sent#crash-records). After a crash, HikariSub offers your last session and autosaves at the next start: see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
+Yes, a small record of a crash or a freeze, with no file names or text. It writes no crash dumps. At the next start after a crash or a freeze, a window shows the whole report and you choose: **Send report**, **Open GitHub issue** or **Don't send**. See [Crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports). The same window offers your last session and autosaves: see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
 
 ## Automation
 

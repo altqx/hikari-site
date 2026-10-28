@@ -37,7 +37,7 @@ The first time, it opens at the bottom of the window. Above the entries:
 <kbd>Ctrl</kbd>+<kbd>C</kbd> copies the selected entry. <kbd>F1</kbd> in the Log opens this page.
 
 <Callout type="warn">
-The Log is kept in memory only. Nothing is written to a log file, and the entries are gone when HikariSub quits. Copy what you need before you quit.
+There is no log file: the Log panel starts empty each time HikariSub starts. Copy what you need before you quit. Only for a [crash report](/en/docs/help/reporting-problems#what-a-report-holds), HikariSub keeps the Log's last 200 lines, with file names, text and folders replaced, in its cache folder.
 </Callout>
 
 Automation scripts write their output to the Automation panel's **Runs** view, not to the Log. A script that fails to load is reported in the Log.
@@ -50,7 +50,7 @@ HikariSub notices when it was not closed properly. At the next start, the Home p
 - **Autosaves…** opens the Autosaves window, when there is autosaved work.
 - **×** dismisses the offer.
 
-HikariSub does not write crash reports or crash dumps. While anonymous usage data is on, a crash leaves a small [crash record](/en/docs/help/what-is-sent#crash-records), which HikariSub sends at the next start and then deletes. If it crashed, see [Reporting bugs](/en/docs/help/reporting-bugs) for what to tell us.
+After a crash, or after HikariSub was closed while frozen, the next start also opens a report window over the Home page, with the same offer under **Your work**. Apart from the bare record that [usage data](/en/docs/help/what-is-sent#crash-and-freeze-reports) sends, the report goes only if you send it, take it to GitHub or turn on **Always send crash reports**: see [Crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports). HikariSub writes no crash dumps.
 
 ### Autosaves
 
@@ -78,12 +78,12 @@ The work of a HikariSub that is still running is never deleted. Autosaves from H
 | Autosaves | `recovery` in the user folder | `recovery` in the user folder |
 | Index files and the audio cache | `%LOCALAPPDATA%\HikariSub\cache` | `~/.cache/hikarisub` |
 | Downloaded updates | `%LOCALAPPDATA%\HikariSub\Updates` | `~/.cache/HikariSub/Updates` |
-| [Usage data](/en/docs/help/what-is-sent) waiting to be sent, and a crash record | `analytics-queue.json` and `crash-record.txt` in `%LOCALAPPDATA%\HikariSub\cache` | `analytics-queue.json` and `crash-record.txt` in `~/.cache/hikarisub` |
+| [Usage data](/en/docs/help/what-is-sent) waiting to be sent, and [crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports) | `analytics-queue.json`, the crash and freeze records, and `reports` in `%LOCALAPPDATA%\HikariSub\cache` | `analytics-queue.json`, the crash and freeze records, and `reports` in `~/.cache/hikarisub` |
 
 - **Help › Open user folder** opens the user folder.
 - A portable copy keeps its user folder inside its own folder, as `user`. Its index files and audio cache go to the cache folder above.
 - Uninstalling or updating HikariSub never deletes your user folder. [Install](/en/docs/get-started/install#uninstall) says how to remove it.
-- The Log and crash dumps are not on disk at all.
+- HikariSub writes no log file and no crash dumps. The `reports` folder holds a report waiting for you, the Log's last 200 lines with names replaced, and the files of **Report an issue** until you close it.
 
 [Settings](/en/docs/customize/settings#where-settings-are-kept) explains the settings file, and how to reset settings from the Settings window.
 
@@ -99,4 +99,4 @@ The work of a HikariSub that is still running is never deleted. Autosaves from H
 | Work lost in a crash | **Restore session** or **Autosaves…** on the Home page, or **File › Open auto save** |
 | A bar says the file "was changed by another program" | **Reload** reads the file again and drops your changes to it, **Compare** compares it with yours, and **Keep mine** keeps your version |
 
-If none of this helps, [report the problem](/en/docs/help/reporting-bugs).
+If none of this helps, [report the problem](/en/docs/help/reporting-problems).

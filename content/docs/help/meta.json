@@ -1,5 +1,5 @@
 {
   "title": "Help",
   "defaultOpen": true,
-  "pages": ["troubleshooting", "faq", "what-is-sent", "reporting-bugs"]
+  "pages": ["troubleshooting", "faq", "what-is-sent", "reporting-problems"]
 }

@@ -24,7 +24,7 @@ Any of these turns it off:
   <ThemedImage
     light={updatesLight}
     dark={updatesDark}
-    alt="The Settings window on Updates and privacy: the Checking section with Check for updates automatically and Stable versions only; the Installing section, which here says this copy does not install updates itself; and the Privacy section with Send anonymous usage data, ticked, its note Which features are used, errors and crashes, and how fast things open. Never your files, their names or what is in them., and the What is sent link"
+    alt="The Settings window on Updates and privacy: the Checking section with Check for updates automatically and Stable versions only; the Installing section, which here says this copy does not install updates itself; and the Privacy section with Send anonymous usage data, ticked, its note Which features are used, errors and crashes, and how fast things open. Never your files, their names or what is in them., and the What is sent link; then Always send crash reports, unticked, with its note After a crash or a freeze, the report is sent without asking"
     width={880}
     height={620}
     className="rounded-lg border"
@@ -44,15 +44,13 @@ It takes effect at once:
 
 - Nothing more is queued or sent. A send that is under way is stopped.
 - The events waiting to be sent are deleted, from memory and from the cache folder.
-- A crash record waiting to be sent is deleted.
 - The [anonymous ID](#the-anonymous-id) is deleted.
-- The crash handler is removed.
 
-Events that were already sent are not deleted.
+Events that were already sent are not deleted. [Crash and freeze reports](#crash-and-freeze-reports) are not affected: they go only when you send them, or when **Always send crash reports** is on.
 
 The first send is 60 seconds after HikariSub starts. If you turn it off before then, for example on Getting started's Updates and privacy step at the first start, nothing has been sent.
 
-With `DO_NOT_TRACK` set, the events waiting from earlier runs and any crash record are deleted when HikariSub starts. The anonymous ID is kept.
+With `DO_NOT_TRACK` set, the events waiting from earlier runs are deleted when HikariSub starts. The anonymous ID is kept.
 
 If you turn it on again, HikariSub starts a new ID. The session length and the frame counts in `app_closed` then count from that moment.
 
@@ -160,7 +158,7 @@ The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500
 - `command`: the command's ID in the hotkey list, such as `GLOBAL_SAVE_SUBS` or `AUDIO_PLAY`. Only the commands in that list are sent. Automation macros are never sent.
 - `via`: `key` for a command a key ran, or `pointer` for one from a menu, a toolbar or a panel's button.
 - `panel`: `video`, `audio`, `editor`, `grid`, `reference`, `timing`, `search`, `automation`, `original`, `log`, `styles`, `fix_minor_errors`, `template` or `spellchecker`.
-- `dialog`: `about`, `allTagsEdition`, `aspectRatio`, `autosaves`, `columns`, `conversion`, `credits`, `dummyVideo`, `fontCatalogClashes`, `fontCatalogs`, `fontCollector`, `fontPicker`, `fontsFromSubtitles`, `gettingStarted`, `history`, `hotkeyCapture`, `kanjiTimer`, `karaokeCheck`, `listChooser`, `manageLayouts`, `movePanel`, `resample`, `saveLayout`, `scriptProperties`, `selectLines`, `setNewFps`, `settings`, `settingsImport`, `shapesEdition`, `spellAddedWords`, `styleClashes`, `styleManager`, `translationShift`, `unsavedChanges`, `updateAvailable` or `whatsNew`. A script's dialog is `automation_script`, whichever script it is.
+- `dialog`: `about`, `allTagsEdition`, `aspectRatio`, `autosaves`, `columns`, `conversion`, `crashReport`, `credits`, `dummyVideo`, `fontCatalogClashes`, `fontCatalogs`, `fontCollector`, `fontPicker`, `fontsFromSubtitles`, `gettingStarted`, `history`, `hotkeyCapture`, `kanjiTimer`, `karaokeCheck`, `listChooser`, `manageLayouts`, `movePanel`, `reportIssue`, `resample`, `saveLayout`, `scriptProperties`, `selectLines`, `setNewFps`, `settings`, `settingsImport`, `shapesEdition`, `spellAddedWords`, `styleClashes`, `styleManager`, `translationShift`, `unsavedChanges`, `updateAvailable` or `whatsNew`. A script's dialog is `automation_script`, whichever script it is.
 - `layout`: `editing`, `timing`, `translation`, `typesetting`, `karaoke`, or `saved` for one of your saved layouts. Its name is not sent.
 - `pages_changed`: the Getting started pages whose settings **Finish** changed, from `language`, `import`, `look`, `layout`, `media`, `editing`, `updates` and `files`. Which values you chose is not sent. If you turn sending off on the Updates and privacy step, this event is not sent either.
 
@@ -175,16 +173,18 @@ How often:
 | Event | Sent | Properties |
 | --- | --- | --- |
 | `automation_error` | When a macro fails, its script's process is lost or force-stopped, or a script doesn't load | `kind`, `script` |
-| `$exception` | At the start after HikariSub crashed | `$exception_list`, `$exception_level`, `crashed_version` |
+| `$exception` | At the start after HikariSub crashed or was closed while frozen, and when it comes back from a freeze | `$exception_list`, `$exception_level`, `crashed_version`, `report_id`, `freeze_seconds` |
 
 - `kind`: `failed`, `lost`, `stopped` or `load_failed`.
 - `script`: the file name of a script that comes with HikariSub, such as `kara-templater.lua`, with spaces turned into `_` (`skew_gradient.lua`). It counts as one only while its contents match the copy HikariSub came with, in the program's folder or copied to your user folder. Any other script is `user script`, and its name is not sent. A macro whose check declines to run on your selection is not an error and sends nothing.
 - `$exception_list`: one entry with the crash's type, how it was caught, and where it happened:
-  - the type: on Linux the signal, `SIGSEGV`, `SIGABRT`, `SIGBUS`, `SIGFPE` or `SIGILL`; on Windows the exception's name, such as `EXCEPTION_ACCESS_VIOLATION`, or else its code, `0x…`;
-  - how it was caught: `signal` or `seh`, not handled;
+  - the type: on Linux the signal, `SIGSEGV`, `SIGABRT`, `SIGBUS`, `SIGFPE` or `SIGILL`; on Windows the exception's name, such as `EXCEPTION_ACCESS_VIOLATION`, or else its code, `0x…`; `APP_HANG` for a freeze;
+  - how it was caught: `signal`, `seh` or, for a freeze, `watchdog`; not handled;
   - up to 32 stack frames, each a module and an offset. The module is a file name only, and only for HikariSub's own files and the system's (in `/usr` or `/lib`, or the Windows folder). Any other module is `other`. The offset is a hex number into that module.
-- `$exception_level`: `fatal`.
-- `crashed_version`: the version that crashed.
+- `$exception_level`: `fatal`, or `error` for a freeze HikariSub came back from.
+- `crashed_version`: the version that crashed or froze.
+- `report_id`: a random UUID made for the report, the same as its [`crash_report`](#crash-and-freeze-reports)'s.
+- `freeze_seconds`: for a freeze, how many seconds the window didn't respond.
 
 ### Opening video and audio
 
@@ -199,10 +199,26 @@ How often:
 
 Audio that you close or replace before it finishes loading sends nothing.
 
-## Crash records
+## Crash and freeze reports
 
-While sending is on, HikariSub has a crash handler. If HikariSub crashes, it writes a small record to `crash-record.txt` in the cache folder: the version, the type of crash and the stack frames, as above. At the next start the record is sent as `$exception` and deleted.
+When HikariSub crashes, or its window doesn't answer for 10 seconds, it writes a small record to the cache folder: the version, the type of crash or how long it froze, and the stack frames, as above. It does so whether usage data is on or off. The record is not a crash dump: it holds no memory, no file names and no text. At the next start, or when HikariSub comes back from a freeze, the record becomes a report and HikariSub asks you about it: see [Crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports).
 
-If sending is off at the next start, the record is deleted without being sent. While sending is off, no record is written.
+A report goes once, only when you press **Send report** in its window, or by itself when you have turned on **Always send crash reports**. That is so even with usage data off.
 
-The record is not a crash dump: it holds no memory, no file names and no text. HikariSub still offers your last session after a crash; see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
+- **With usage data on**, the record alone was already queued as `$exception`, like any other event. **Send report** then sends only `crash_report`, which holds the rest: your note, the Log lines and the settings summary. `report_id` links the two. If you turned usage data off after the record was queued, the queue was deleted, so **Send report** sends the record again.
+- **With usage data off, or `DO_NOT_TRACK` set**, **Send report** sends both `$exception` and `crash_report`, under a random ID made for that one report and kept nowhere. No [anonymous ID](#the-anonymous-id) is made, and there is no session ID.
+
+A report goes straight away to the same address, with the same project key and user agent, and is not queued. Only release packages can send one.
+
+`crash_report` has:
+
+| Property | Value |
+| --- | --- |
+| `report_id` | The same random UUID as its `$exception`'s |
+| `kind` | `crash` or `freeze` |
+| `note` | What you typed in the report window, up to 4,000 characters. Left out when you typed nothing |
+| `log` | The Log's last 200 lines, with file names, quoted text, font names and folders replaced |
+| `settings` | The settings summary: ids and plain values from a fixed list, never a folder, font or name |
+| `version`, `channel`, `$os`, `$os_version`, `arch`, `package`, `qt_version` | As in `app_started` |
+
+[What a report holds](/en/docs/help/reporting-problems#what-a-report-holds) lists the settings in the summary and how the Log lines are changed. HikariSub still offers your last session after a crash; see [After a crash](/en/docs/help/troubleshooting#after-a-crash).

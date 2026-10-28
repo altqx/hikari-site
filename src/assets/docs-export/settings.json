@@ -1481,6 +1481,16 @@
             "page": "updates",
             "section": "Privacy",
             "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": false,
+            "hint": "After a crash or a freeze, the report is sent without asking: what crashed, your system, settings and the last Log lines. Never your subtitles, files or their names.",
+            "key": "privacy.alwaysSendCrashReports",
+            "label": "Always send crash reports",
+            "page": "updates",
+            "section": "Privacy",
+            "type": "bool"
         }
     ]
 }
