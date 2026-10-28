@@ -34,7 +34,7 @@ Any of these turns it off:
 
 Both switches are the same setting, and both have a **What is sent** link that opens the full list in your browser.
 
-Only release packages send. Every release package (setup, portable zip, AppImage, deb, rpm, tar.gz and AUR) carries the key that lets HikariSub send, so they all send while the switch is on. Builds from source don't carry it, and neither do forks' builds or test builds: they queue nothing and send nothing, though the switch still shows.
+Only release packages send. Every release package (setup, portable zip, AppImage, deb, rpm and tar.gz) carries the key that lets HikariSub send, so they all send while the switch is on. Builds from source don't carry it, and neither do forks' builds or test builds: they queue nothing and send nothing, though the switch still shows.
 
 **Reset page** on the Updates and privacy page, and **Reset all settings…**, turn it back on, since on is the default.
 
@@ -127,7 +127,7 @@ Each event also has its name and the time it happened, in UTC, to the second.
 | `$os` | `windows`, `linux` or `other` |
 | `$os_version` | The system's version as Qt reports it, such as `11` or `24.04`; `other` if it is longer than 24 characters or has other characters than letters, digits, `.`, `_` and `-` |
 | `arch` | `x86_64`, `arm64` or `other` |
-| `package` | `installer`, `portable`, `appimage`, `deb`, `rpm`, `aur` or `build_tree` |
+| `package` | `installer`, `portable`, `appimage`, `deb`, `rpm`, `aur` (when the AUR packages are out) or `build_tree` |
 | `qt_version` | The Qt version, such as `6.11.2` |
 | `language` | The interface language: `en`, `ko_KR`, `pl`, `ta` or `th_TH` |
 | `theme` | `light`, `dark`, `high_contrast_white` or `high_contrast_black` |

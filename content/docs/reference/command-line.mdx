@@ -8,7 +8,7 @@ HikariSub's command line is a list of files to open, and two switches.
 | Package | Command |
 | --- | --- |
 | Windows | `HikariSub.exe` |
-| deb, rpm, AUR, tar.gz | `hikarisub` |
+| deb, rpm, tar.gz | `hikarisub` |
 | AppImage | the `.AppImage` file itself |
 
 ```sh
@@ -24,7 +24,7 @@ hikarisub episode.ass episode.mkv
 
 There is no `--help`. Anything else on the command line is a file to open, so a mistyped switch is taken for a file name.
 
-`--version` prints one of these package kinds: `nsis-user` or `nsis-machine` for the Windows installer, `appimage`, `deb`, `rpm`, `arch`, or `portable-windows` and `portable-linux` for the zip and tar.gz. On Windows, `HikariSub.exe` is a windowed program, so redirect the output to see it: `HikariSub.exe --version > version.txt`.
+`--version` prints one of these package kinds: `nsis-user` or `nsis-machine` for the Windows installer, `appimage`, `deb`, `rpm`, `arch` (the AUR packages, when they are out), or `portable-windows` and `portable-linux` for the zip and tar.gz. On Windows, `HikariSub.exe` is a windowed program, so redirect the output to see it: `HikariSub.exe --version > version.txt`.
 
 `--export-docs` (or `--export-docs=<folder>`) writes `commands.json`, `settings.json`, `guide-links.json` and `meta.json`, which this site's [Hotkeys](/en/docs/reference/hotkeys) and [Settings](/en/docs/reference/settings) references are made from. It uses a fresh profile of its own in English, so your settings don't change the result, and it needs no display. Each release attaches the same files as `hikarisub-docs-<version>.zip`.
 

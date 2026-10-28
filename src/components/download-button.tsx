@@ -2,6 +2,7 @@ import { Download } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   aurPackages,
+  aurPublished,
   aurUrl,
   type Channel,
   detectOs,
@@ -58,17 +59,21 @@ function Formats({ channel }: { channel: Channel }) {
           ))}
         </div>
       ))}
-      <div className="flex flex-col gap-1">
-        <span className="font-medium text-fd-foreground">Arch Linux</span>
-        <a href={aurUrl(aur)} className={linkClass}>
-          AUR: {aur}
-        </a>
-        {channel.checksumsUrl && (
-          <a href={channel.checksumsUrl} className={linkClass}>
-            SHA-256 checksums
-          </a>
-        )}
-      </div>
+      {(aurPublished || channel.checksumsUrl) && (
+        <div className="flex flex-col gap-1">
+          <span className="font-medium text-fd-foreground">{aurPublished ? 'Arch Linux' : 'Checksums'}</span>
+          {aurPublished && (
+            <a href={aurUrl(aur)} className={linkClass}>
+              AUR: {aur}
+            </a>
+          )}
+          {channel.checksumsUrl && (
+            <a href={channel.checksumsUrl} className={linkClass}>
+              SHA-256 checksums
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }
