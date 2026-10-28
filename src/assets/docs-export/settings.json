@@ -13,6 +13,10 @@
             "name": "Line editor"
         },
         {
+            "id": "spelling",
+            "name": "Spelling & grammar"
+        },
+        {
             "id": "grid",
             "name": "Subtitle grid"
         },
@@ -89,16 +93,6 @@
             "type": "bool"
         },
         {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "grid.loadSortedSubs",
-            "label": "Open sorted subtitles",
-            "page": "general",
-            "section": "Tabs",
-            "type": "bool"
-        },
-        {
             "control": "number",
             "default": 40,
             "hint": "Number of tab name characters. Range from 20 to 150",
@@ -110,19 +104,6 @@
             "section": "Tabs",
             "type": "int",
             "unit": "characters"
-        },
-        {
-            "control": "number",
-            "default": 1,
-            "hint": "0 turns saving while editing off.",
-            "key": "editor.saveAfterCharacterCount",
-            "label": "Save while editing every",
-            "max": 10000,
-            "min": 0,
-            "page": "general",
-            "section": "Saving",
-            "type": "int",
-            "unit": "edits"
         },
         {
             "control": "number",
@@ -392,38 +373,6 @@
         },
         {
             "control": "check",
-            "default": true,
-            "hint": "",
-            "key": "editor.spellchecker",
-            "label": "Check spelling",
-            "page": "lineEditor",
-            "section": "Spelling",
-            "type": "bool"
-        },
-        {
-            "control": "choice",
-            "default": "en_US",
-            "hint": "",
-            "key": "editor.dictionaryLanguage",
-            "label": "Dictionary",
-            "page": "lineEditor",
-            "section": "Spelling",
-            "type": "string",
-            "values": [
-            ]
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "editor.suggestionsOnDoubleClick",
-            "label": "Show suggestions on double-click",
-            "page": "lineEditor",
-            "section": "Spelling",
-            "type": "bool"
-        },
-        {
-            "control": "check",
             "default": false,
             "hint": "",
             "key": "editor.hideTags",
@@ -483,35 +432,217 @@
             "type": "bool"
         },
         {
-            "control": "font",
-            "default": "Tahoma",
+            "control": "check",
+            "default": true,
             "hint": "",
-            "key": "grid.font",
-            "label": "Grid font",
-            "page": "grid",
-            "section": "Font",
-            "type": "string"
+            "key": "editor.spellchecker",
+            "label": "Check spelling",
+            "page": "spelling",
+            "section": "Spelling",
+            "type": "bool"
         },
         {
-            "control": "number",
-            "default": 10,
+            "control": "choice",
+            "default": "en_US",
             "hint": "",
-            "key": "grid.fontSize",
-            "label": "Grid font size",
-            "max": 200,
-            "min": 1,
-            "page": "grid",
-            "section": "Font",
-            "type": "int"
+            "key": "editor.dictionaryLanguage",
+            "label": "Dictionary",
+            "page": "spelling",
+            "section": "Spelling",
+            "type": "string",
+            "values": [
+            ]
         },
         {
             "control": "check",
             "default": false,
             "hint": "",
-            "key": "grid.autoSelectLinesFromLastTab",
-            "label": "Select the line at the previous tab's time",
-            "page": "grid",
-            "section": "Active line",
+            "key": "editor.suggestionsOnDoubleClick",
+            "label": "Show suggestions on double-click",
+            "page": "spelling",
+            "section": "Spelling",
+            "type": "bool"
+        },
+        {
+            "control": "choice",
+            "default": 0,
+            "hint": "Harper checks the Text field (the Translated field in translation mode) after you stop typing. It runs as a separate program only while grammar check is on.",
+            "key": "grammar.language",
+            "label": "Grammar check",
+            "page": "spelling",
+            "section": "Grammar",
+            "type": "int",
+            "values": [
+                {
+                    "label": "Off",
+                    "value": 0
+                },
+                {
+                    "label": "English (US)",
+                    "value": 1
+                },
+                {
+                    "label": "English (UK)",
+                    "value": 2
+                },
+                {
+                    "label": "English (Canada)",
+                    "value": 3
+                },
+                {
+                    "label": "English (Australia)",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.properNouns",
+            "label": "Proper nouns",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.initialisms",
+            "label": "Initialisms",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.closedCompounds",
+            "label": "Closed compounds",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.phraseCorrections",
+            "label": "Phrase corrections",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.capitalizationAndCase",
+            "label": "Capitalization and case",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.punctuationAndSpacing",
+            "label": "Punctuation and spacing",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.numbersAndUnits",
+            "label": "Numbers and units",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.pronounsAndPossession",
+            "label": "Pronouns and possession",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.compoundsAndHyphenation",
+            "label": "Compounds and hyphenation",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.spellingAndOrthography",
+            "label": "Spelling and orthography",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.styleAndRedundancy",
+            "label": "Style and redundancy",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.grammarAndAgreement",
+            "label": "Grammar and agreement",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.wordChoiceAndUsage",
+            "label": "Word choice and usage",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.regionalismsAndDialect",
+            "label": "Regionalisms and dialect",
+            "page": "spelling",
+            "section": "Rule groups",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "",
+            "key": "grammar.group.miscellaneous",
+            "label": "Miscellaneous",
+            "page": "spelling",
+            "section": "Rule groups",
             "type": "bool"
         },
         {
@@ -530,16 +661,6 @@
             "hint": "",
             "key": "grid.duplicationDontChangeSelection",
             "label": "Keep the selection when duplicating lines",
-            "page": "grid",
-            "section": "Active line",
-            "type": "bool"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "grid.dontCenterActiveLine",
-            "label": "Don't center the active line",
             "page": "grid",
             "section": "Active line",
             "type": "bool"
@@ -1281,190 +1402,12 @@
         },
         {
             "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "convert.showSettings",
-            "label": "Show the conversion window first",
-            "page": "conversion",
-            "section": "ASS",
-            "type": "bool"
-        },
-        {
-            "control": "text",
-            "default": "",
-            "hint": "",
-            "key": "scriptProperties.title",
-            "label": "Title",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "string"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.titleOn",
-            "label": "Write Title into the subtitles",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "bool"
-        },
-        {
-            "control": "text",
-            "default": "",
-            "hint": "",
-            "key": "scriptProperties.script",
-            "label": "Author",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "string"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.scriptOn",
-            "label": "Write Author into the subtitles",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "bool"
-        },
-        {
-            "control": "text",
-            "default": "",
-            "hint": "",
-            "key": "scriptProperties.translation",
-            "label": "Translator",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "string"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.translationOn",
-            "label": "Write Translator into the subtitles",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "bool"
-        },
-        {
-            "control": "text",
-            "default": "",
-            "hint": "",
-            "key": "scriptProperties.editing",
-            "label": "Proofreading",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "string"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.editingOn",
-            "label": "Write Proofreading into the subtitles",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "bool"
-        },
-        {
-            "control": "text",
-            "default": "",
-            "hint": "",
-            "key": "scriptProperties.timing",
-            "label": "Timer",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "string"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.timingOn",
-            "label": "Write Timer into the subtitles",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "bool"
-        },
-        {
-            "control": "text",
-            "default": "",
-            "hint": "",
-            "key": "scriptProperties.update",
-            "label": "Editing",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "string"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.updateOn",
-            "label": "Write Editing into the subtitles",
-            "page": "subtitleProperties",
-            "section": "Subtitle information",
-            "type": "bool"
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "scriptProperties.askForChange",
-            "label": "Always ask before changing subtitle information",
-            "page": "subtitleProperties",
-            "section": "Files",
-            "type": "bool"
-        },
-        {
-            "control": "check",
             "default": true,
             "hint": "",
             "key": "subtitles.layoutInFile",
             "label": "Save the panel layout in subtitle files",
             "page": "subtitleProperties",
             "section": "Files",
-            "type": "bool"
-        },
-        {
-            "control": "choice",
-            "default": 0,
-            "hint": "",
-            "key": "automation.loadingMethod",
-            "label": "Load scripts",
-            "page": "automation",
-            "section": "Loading",
-            "type": "int",
-            "values": [
-                {
-                    "label": "After program start asynchronously",
-                    "value": 0
-                },
-                {
-                    "label": "After program start",
-                    "value": 1
-                },
-                {
-                    "label": "After open menu asynchronously",
-                    "value": 2
-                },
-                {
-                    "label": "After open menu",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "control": "check",
-            "default": false,
-            "hint": "",
-            "key": "automation.oldScriptsCompatibility",
-            "label": "Compatibility with older HikariSub scripts",
-            "page": "automation",
-            "section": "Loading",
             "type": "bool"
         },
         {

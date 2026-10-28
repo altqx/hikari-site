@@ -135,6 +135,6 @@ Select a run to read its log below:
 | **Copy** | Copies the lines shown |
 | **Save…** | Saves the lines shown to a `.log` or `.txt` file |
 
-Beside the filter, a count such as **4 of 6** gives the lines shown out of all. Lines without a level always show, and so do HikariSub's own lines, such as an error or how the run ended. In this version scripts' debug and trace lines are not kept, so **Up to debug** and **All levels** show the same lines as **Up to hint**.
+Beside the filter, a count such as **4 of 6** gives the lines shown out of all. Lines without a level always show, and so do HikariSub's own lines, such as an error or how the run ended. Scripts' lines above **File › Settings › Automation › Lua trace level**, 3 at first, are not kept: raise it to 4 or 5 to see debug and trace lines under **Up to debug** and **All levels**.
 
 A run keeps up to 10,000 lines. Runs are kept until you quit or choose **Clear runs**; nothing is written to disk unless you use **Save…**.

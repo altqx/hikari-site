@@ -12,7 +12,7 @@ import generalDark from './images/settings-general-dark.webp';
   <ThemedImage
     light={generalLight}
     dark={generalDark}
-    alt="The Settings window on its General page: the list of eleven pages on the left, the Language, Tabs, Saving and Notices sections on the right, and Reset page, OK, Cancel and Apply at the bottom"
+    alt="The Settings window on its General page: the list of twelve pages on the left, the Language, Tabs, Saving, Notices and Folders sections on the right, and Reset page, OK, Cancel and Apply at the bottom"
     width={880}
     height={620}
     className="rounded-lg border"
@@ -26,19 +26,20 @@ import generalDark from './images/settings-general-dark.webp';
 | --- | --- |
 | **General** | The interface language, tabs, autosave, notices and folders |
 | **Appearance** | The [theme](/en/docs/customize/themes), accent, program font, preview text and title bar |
-| **Line editor** | Spelling, how the text shows, editing, Translation mode and the tag buttons |
+| **Line editor** | How the text shows, editing, Translation mode and the tag buttons |
+| **Spelling & grammar** | [Spelling](/en/docs/checking/spelling) and the [grammar check](/en/docs/checking/grammar) with its rule groups |
 | **Subtitle grid** | The active line, columns, counting and new lines |
 | **Video** | Playback, subtitles on the video, decoding and the script resolution |
 | **Audio** | The output device, playback, snapping, karaoke and the cache |
 | **Conversion** | The defaults for converting to other formats |
-| **Subtitle properties** | Default credits, and saving the panel layout in files |
-| **Automation** | Script loading and the answers scripts' dialogs keep |
+| **Subtitle properties** | Saving the panel layout in subtitle files |
+| **Automation** | The Lua trace level, and the answers scripts' dialogs keep |
 | **Hotkeys** | Every command's keys: see [Hotkeys](/en/docs/customize/hotkeys) |
 | **Updates** | Checking for and installing updates |
 
 Some rows show only where they apply: the video player and the audio API only on Windows, for example.
 
-Some panels open their page directly: **Audio settings…** in the Audio panel's speaker menu, **Spelling settings…** in the Spellchecker when it finds no dictionary, and **Shortcuts in Settings…** in the Automation panel's menu.
+Some panels open their page directly: **Audio settings…** in the Audio panel's speaker menu, **Spelling settings…** in the Spellchecker when it finds no dictionary, **Grammar settings…** in its Grammar mode while grammar check is off, and **Shortcuts in Settings…** in the Automation panel's menu.
 
 There is no search across all settings; the Hotkeys page has its own.
 
