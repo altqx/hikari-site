@@ -357,6 +357,16 @@
             "type": "int"
         },
         {
+            "control": "text",
+            "default": "光 Hikari 日本",
+            "hint": "The sample text of the style and font previews.",
+            "key": "styles.previewText",
+            "label": "Preview text",
+            "page": "appearance",
+            "section": "Font",
+            "type": "string"
+        },
+        {
             "control": "choice",
             "default": "auto",
             "hint": "Off by default on Windows, KDE Plasma and GNOME; on by default on tiling window managers.",
