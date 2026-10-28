@@ -27,6 +27,8 @@ The packages are not code-signed, so Windows says the publisher is unknown. Each
 
 Only to check for updates: when you choose **Help › Check for updates**, or at most once a day when it starts if you turn on **File › Settings › Updates › Check for updates automatically**, which is off by default. The check asks GitHub (`api.github.com`) for the list of releases, so GitHub sees your IP address. **What's new** reads the same list and never loads the images or links in the release notes. See [Updates](/en/docs/get-started/install#updates).
 
+The [grammar check](/en/docs/checking/grammar#harper) runs on your computer and sends nothing.
+
 ## Legacy and files
 
 ### Can I keep my settings from HikariSub 0.0.x?
@@ -72,6 +74,10 @@ English, with partial translations into Polish, Korean, Thai and Tamil.
 ### Which languages can it check the spelling of?
 
 The Windows packages bring English (US), Polish and Thai dictionaries. For other languages, add the language's `.dic` and `.aff` files to the `dictionaries` folder in your [user folder](/en/docs/automation/user-folder).
+
+### Can it check grammar?
+
+Yes, in English only: US, UK, Canadian or Australian English. The check uses Harper, which comes with HikariSub, and is off at first. See [Grammar](/en/docs/checking/grammar).
 
 ## Known limits
 

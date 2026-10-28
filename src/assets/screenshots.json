@@ -665,6 +665,46 @@
       "source": "origin/evidence/w6-ka4 5d9017071adcb66120342fbca8088e1a09ed5ee3 ka4/ka4-furigana-dark.png (taken at c83b7e0bd; KanjiTimerDialog.qml changes up to qt 98396e53a are focus order only)",
       "surface": "Kanji timer window, Furigana on, test song kanji-shots.ass",
       "credit": ""
+    },
+    "content/docs/checking/images/grammar-menu-light.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-menu-light.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 640x302+640+340 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "Line editor text with grammar underlines and the right-click menu on a finding (test fixture shots.ass)",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-menu-dark.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-menu-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 640x302+640+272 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "Line editor text with grammar underlines and the right-click menu on a finding (test fixture shots.ass)",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-panel-light.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-panel-light.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 1280x220+0+552 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "Spellchecker panel in Grammar mode on its first finding (test fixture shots.ass)",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-panel-dark.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-panel-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 1280x220+0+552 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "Spellchecker panel in Grammar mode on its first finding (test fixture shots.ass)",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-toast-light.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-toast-light.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 380x120+898+652 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "The information notice after Ignore this rule, with Undo and Grammar settings…",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-toast-dark.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-toast-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 380x120+898+652 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "The information notice after Ignore this rule, with Undo and Grammar settings…",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-settings-light.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-settings-light.png (grammar_ui_tests screenshots, taken at 7a519e4f2), whole image (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "Settings window, Spelling & grammar page",
+      "credit": ""
+    },
+    "content/docs/checking/images/grammar-settings-dark.webp": {
+      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-settings-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), whole image (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "surface": "Settings window, Spelling & grammar page",
+      "credit": ""
     }
   }
 }

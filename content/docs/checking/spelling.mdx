@@ -14,7 +14,7 @@ Only the text is checked: tags in `{…}` and drawings are left out, and so are 
 
 ## The Spellchecker panel
 
-Open it with **Subtitles › Check spelling**, or from **View › Panels › Spellchecker**. It docks under the Grid, and starts checking at once.
+Open it with **Subtitles › Check spelling**, or from **View › Panels › Spellchecker**. It docks under the Grid, and starts checking at once. **Spelling** and **Grammar** at its top switch between this check and the [grammar check](/en/docs/checking/grammar#checking-the-whole-file).
 
 <figure>
   <ThemedImage
@@ -68,6 +68,8 @@ Right-click a marked word in the Line editor's text for:
 - **Installed languages**, to choose the dictionary
 - **Add word "…" to dictionary**
 
+Where the [grammar check](/en/docs/checking/grammar#in-the-line-editor) also found something, the menu shows the grammar finding instead.
+
 With **Show suggestions on double-click** on, double-clicking a marked word opens the **Fix suggestions** list instead. Click a suggestion or press <kbd>Enter</kbd> to replace the word; <kbd>Esc</kbd> closes the list.
 
 ## Dictionaries
@@ -76,7 +78,7 @@ HikariSub uses Hunspell dictionaries. A dictionary is a pair of files with the s
 
 To add a language, put its two files in the `dictionaries` folder of your [user folder](/en/docs/automation/user-folder), then choose it. **Help › Open user folder** opens it. The dictionaries that come with HikariSub are copied there too. HikariSub looks there first, then in the `Dictionary` folder that comes with the program. Dictionaries made for LibreOffice use the same files.
 
-Choose the language in **File › Settings › Line editor › Spelling**, or from **Installed languages** in the Line editor's right-click menu. Changing it checks the text again.
+Choose the language in **File › Settings › Spelling & grammar › Spelling**, or from **Installed languages** in the Line editor's right-click menu. Changing it checks the text again.
 
 | Setting | Does | Default |
 | --- | --- | --- |
