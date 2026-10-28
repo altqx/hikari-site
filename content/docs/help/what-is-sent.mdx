@@ -3,8 +3,8 @@ title: What is sent
 description: The anonymous usage data HikariSub sends, every event and property in it, what is never sent, and how to turn it off.
 ---
 
-import privacyLight from './images/settings-privacy-light.webp';
-import privacyDark from './images/settings-privacy-dark.webp';
+import updatesLight from './images/settings-updates-light.webp';
+import updatesDark from './images/settings-updates-dark.webp';
 
 HikariSub sends **anonymous usage data**: which features are used, errors and crashes, and how fast things open. It shows what people use, what goes wrong and what is slow, so work can go where it helps. It never sends your files, their names or what is in them.
 
@@ -22,19 +22,19 @@ Any of these turns it off:
 
 <figure>
   <ThemedImage
-    light={privacyLight}
-    dark={privacyDark}
-    alt="The Privacy section of Settings › Updates and privacy: Send anonymous usage data, ticked, the note Which features are used, errors and crashes, and how fast things open. Never your files, their names or what is in them., and the What is sent link"
-    width={535}
-    height={140}
+    light={updatesLight}
+    dark={updatesDark}
+    alt="The Settings window on Updates and privacy: the Checking section with Check for updates automatically and Stable versions only; the Installing section, which here says this copy does not install updates itself; and the Privacy section with Send anonymous usage data, ticked, its note Which features are used, errors and crashes, and how fast things open. Never your files, their names or what is in them., and the What is sent link"
+    width={880}
+    height={620}
     className="rounded-lg border"
   />
-  <figcaption>The Privacy section in Settings.</figcaption>
+  <figcaption>File › Settings › Updates and privacy, on a copy that doesn't install updates itself.</figcaption>
 </figure>
 
 Both switches are the same setting, and both have a **What is sent** link that opens the full list in your browser.
 
-Only release packages send. The key that lets HikariSub send is added when a release is built. A build without it, such as a build from source, a fork's build or a test build, queues nothing and sends nothing; the switch still shows.
+Only release packages send. Every release package (setup, portable zip, AppImage, deb, rpm, tar.gz and AUR) carries the key that lets HikariSub send, so they all send while the switch is on. Builds from source don't carry it, and neither do forks' builds or test builds: they queue nothing and send nothing, though the switch still shows.
 
 **Reset page** on the Updates and privacy page, and **Reset all settings…**, turn it back on, since on is the default.
 
