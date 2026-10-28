@@ -34,7 +34,7 @@ A line's font comes from its style, or from a `\fn` tag in its text. HikariSub s
 - **Characters** shows only the fonts that have every character you type, such as the letters of your language.
 - **Size** and the **Bold**, **Italic**, **Underline** and **Strikethrough** buttons set the rest.
 
-The preview is drawn by the subtitle renderer, with the fonts attached to the file and your Fonts folder: the selected text of the line, else the whole line, else a sample text. The note under it says which font the renderer used. A warning says when the name isn't installed and the renderer puts another font in its place.
+The preview is drawn by the subtitle renderer, with the fonts attached to the file and your Fonts folder: the selected text of the line, else the whole line, else the [Preview text](/en/docs/customize/settings#preview-text). The note under it says which font the renderer used. A warning says when the name isn't installed and the renderer puts another font in its place.
 
 Each change shows in the line at once. **OK** keeps it; **Cancel** takes back everything you did in the picker. Only what you changed is written, such as `\fnVerdana` or `\b1`, at the cursor or for the selected text. With several lines selected in the Grid, every one of them changes.
 
@@ -51,7 +51,7 @@ A catalog is a named list of fonts, such as "Signs" or "Karaoke", to find yours 
     light={catalogsLight}
     dark={catalogsDark}
     alt="The Manage font catalogs window: catalogs A and B on the left, with their buttons; on the right a search field, Show set to All fonts, and the fonts Arial, Comic Sans MS, Impact, Tahoma and Verdana with a check box for catalog A, the catalogs each is in and a sample; a large preview of Verdana and Close"
-    width={756}
+    width={864}
     height={653}
     className="rounded-lg border"
   />
@@ -65,7 +65,7 @@ To open **Manage font catalogs**, use **Manage catalogs…** in the picker, or *
 - **Show** lists **All fonts**, the chosen catalog's, or those **Not in a catalog**.
 - **Refresh fonts** reads the installed fonts and your Fonts folder again.
 
-The samples in the list are drawn by your system; the preview under it is drawn by the subtitle renderer.
+The samples in the list show the [Preview text](/en/docs/customize/settings#preview-text) in each font, drawn by your system; the preview under it is drawn by the subtitle renderer.
 
 Renaming a catalog to another's name offers to **Merge** the two or **Replace** the other. Catalog names ignore case, and font names must match exactly.
 

@@ -25,7 +25,7 @@ import generalDark from './images/settings-general-dark.webp';
 | Page | Holds |
 | --- | --- |
 | **General** | The interface language, tabs, autosave, notices and folders |
-| **Appearance** | The [theme](/en/docs/customize/themes), accent, program font and title bar |
+| **Appearance** | The [theme](/en/docs/customize/themes), accent, program font, preview text and title bar |
 | **Line editor** | Spelling, how the text shows, editing, Translation mode and the tag buttons |
 | **Subtitle grid** | The active line, columns, counting and new lines |
 | **Video** | Playback, subtitles on the video, decoding and the script resolution |
@@ -41,6 +41,16 @@ Some rows show only where they apply: the video player and the audio API only on
 Some panels open their page directly: **Audio settings…** in the Audio panel's speaker menu, **Spelling settings…** in the Spellchecker when it finds no dictionary, and **Shortcuts in Settings…** in the Automation panel's menu.
 
 There is no search across all settings; the Hotkeys page has its own.
+
+## Preview text
+
+**Appearance › Font › Preview text** is the text of every style and font sample: the Style manager's preview, the samples in the [Styles panel](/en/docs/basics/styles#the-styles-panel), and the samples and preview in [Manage font catalogs](/en/docs/typesetting/fonts#font-catalogs). The font picker shows it when there is no selected text or line text to draw. Its note reads "The sample text of the style and font previews."
+
+- The default is `光 Hikari 日本`.
+- A change applies on **OK** or **Apply**, to every sample that is open.
+- Leave it empty to use the default.
+- Editing the text under the Style manager's preview changes this setting too.
+- A stored `Podgląd`, the old default, reads as `光 Hikari 日本`, also when **Import legacy settings** brings it over. Any other text you chose is kept.
 
 ## When changes apply
 

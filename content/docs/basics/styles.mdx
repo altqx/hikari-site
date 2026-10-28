@@ -18,7 +18,7 @@ There are two places to work with them: the **Styles** panel, to see and apply t
   <ThemedImage
     light={panelLight}
     dark={panelDark}
-    alt="The Styles panel listing four styles, Default, Italic, Sign and Unused, each with an Aa sample in its font and colours, its font and size, and how many lines use it"
+    alt="The Styles panel listing four styles, Default, Italic, Sign and Unused, each with a sample reading 光 Hikari 日本 in its font and colours, its font and size, and how many lines use it"
     width={327}
     height={272}
     className="rounded-lg border"
@@ -26,7 +26,7 @@ There are two places to work with them: the **Styles** panel, to see and apply t
   <figcaption>The Styles panel.</figcaption>
 </figure>
 
-The panel lists the file's styles, each with a sample in its font and colours and the number of lines that use it. The active line's style is marked. Type to filter the list.
+The panel lists the file's styles, each with a sample of the [preview text](/en/docs/customize/settings#preview-text) in its font and colours, and the number of lines that use it. The active line's style is marked. Type to filter the list.
 
 To give the selected lines a style, double-click it or press <kbd>Enter</kbd>. The buttons above the list add, edit, copy and delete styles, and open the Style manager. Right-click a style to also select every line that uses it, or copy it to a catalog.
 
@@ -40,9 +40,9 @@ In the Editing layout the panel is a tab beside the Line editor; open it from **
   <ThemedImage
     light={managerLight}
     dark={managerDark}
-    alt="The Style manager: on the left a Catalog list and the file's styles under This file, with Sign - Station selected; on the right a preview reading Podgląd and the style's fields for Name, Font, Colours and transparency, and Shape and position"
-    width={756}
-    height={721}
+    alt="The Style manager: on the left a Catalog list and the file's styles under This file, with Sign - Station selected; on the right a preview reading 光 Hikari 日本 and the style's fields for Name, Font, Colours and transparency, and Shape and position"
+    width={981}
+    height={724}
     className="rounded-lg border"
   />
   <figcaption>The Style manager, editing a style of the file.</figcaption>
@@ -59,7 +59,7 @@ On the left are two lists: the styles of a **Catalog**, and those of **This file
 | **Colours and transparency** | Primary, secondary (for karaoke), border and shadow, each with a transparency from 0 (opaque) to 255 |
 | **Shape and position** | Border width, shadow distance, scale, angle, spacing, opaque box, alignment and the three margins |
 
-Click a colour to open the colour picker. Each field's reset button puts back the value it had. Click the preview to change its text.
+Click a colour to open the colour picker. Each field's reset button puts back the value it had. To change the preview's text, edit the field under it. This is the [Preview text](/en/docs/customize/settings#preview-text) setting, so every style and font sample changes with it.
 
 **OK** or **Apply** writes the changes as one undo step, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in the main window takes them back. **Revert** throws them away. If you move to another style with changes not applied, the manager asks whether to apply them.
 
