@@ -17,7 +17,7 @@ This page is about the HikariSub app. This website uses Cloudflare Web Analytics
 Any of these turns it off:
 
 - **File › Settings › Updates and privacy › Privacy › Send anonymous usage data**. The change applies on **OK** or **Apply**.
-- **Send anonymous usage data** on the Updates step of the [Getting started window](/en/docs/get-started/getting-started-window#updates). It is saved when you press **Finish**.
+- **Send anonymous usage data** on the Updates and privacy step of the [Getting started window](/en/docs/get-started/getting-started-window#updates-and-privacy). It is saved when you press **Finish**.
 - The `DO_NOT_TRACK` environment variable, set to anything but `0`, turns it off for each run that has it. On Linux, start HikariSub with `DO_NOT_TRACK=1 hikarisub`, or export it in your shell profile. On Windows, add a user environment variable named `DO_NOT_TRACK` with the value `1`. The switch in Settings still shows your setting.
 
 <figure>
@@ -50,7 +50,7 @@ It takes effect at once:
 
 Events that were already sent are not deleted.
 
-The first send is 60 seconds after HikariSub starts. If you turn it off before then, for example on Getting started's Updates step at the first start, nothing has been sent.
+The first send is 60 seconds after HikariSub starts. If you turn it off before then, for example on Getting started's Updates and privacy step at the first start, nothing has been sent.
 
 With `DO_NOT_TRACK` set, the events waiting from earlier runs and any crash record are deleted when HikariSub starts. The anonymous ID is kept.
 
@@ -162,7 +162,7 @@ The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500
 - `panel`: `video`, `audio`, `editor`, `grid`, `reference`, `timing`, `search`, `automation`, `original`, `log`, `styles`, `fix_minor_errors`, `template` or `spellchecker`.
 - `dialog`: `about`, `allTagsEdition`, `aspectRatio`, `autosaves`, `columns`, `conversion`, `credits`, `dummyVideo`, `fontCatalogClashes`, `fontCatalogs`, `fontCollector`, `fontPicker`, `fontsFromSubtitles`, `gettingStarted`, `history`, `hotkeyCapture`, `kanjiTimer`, `karaokeCheck`, `listChooser`, `manageLayouts`, `movePanel`, `resample`, `saveLayout`, `scriptProperties`, `selectLines`, `setNewFps`, `settings`, `settingsImport`, `shapesEdition`, `spellAddedWords`, `styleClashes`, `styleManager`, `translationShift`, `unsavedChanges`, `updateAvailable` or `whatsNew`. A script's dialog is `automation_script`, whichever script it is.
 - `layout`: `editing`, `timing`, `translation`, `typesetting`, `karaoke`, or `saved` for one of your saved layouts. Its name is not sent.
-- `pages_changed`: the Getting started pages whose settings **Finish** changed, from `language`, `import`, `look`, `layout`, `media`, `editing`, `updates` and `files`. Which values you chose is not sent. If you turn sending off on the Updates step, this event is not sent either.
+- `pages_changed`: the Getting started pages whose settings **Finish** changed, from `language`, `import`, `look`, `layout`, `media`, `editing`, `updates` and `files`. Which values you chose is not sent. If you turn sending off on the Updates and privacy step, this event is not sent either.
 
 How often:
 
