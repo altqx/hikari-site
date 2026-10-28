@@ -101,8 +101,8 @@ describe('parseDocsExport', () => {
       commands: [{ id: 1, symbol: 'X', name: 'X', context: 'Styles', defaultKeys: [], menus: [] }],
     };
     expect(() => parseDocsExport(files({ 'commands.json': commands }))).toThrow('Styles');
-    const settings = { pages: [{ id: 'spelling', name: 'Spelling' }], settings: [] };
-    expect(() => parseDocsExport(files({ 'settings.json': settings }))).toThrow('spelling');
+    const settings = { pages: [{ id: 'scripting', name: 'Scripting' }], settings: [] };
+    expect(() => parseDocsExport(files({ 'settings.json': settings }))).toThrow('scripting');
     const orphan = { pages: [{ id: 'general', name: 'General' }], settings: [{ key: 'a.b', page: 'video' }] };
     expect(() => parseDocsExport(files({ 'settings.json': orphan }))).toThrow('a.b');
   });

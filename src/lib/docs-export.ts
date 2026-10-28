@@ -78,6 +78,7 @@ export const settingsPages = [
   'general',
   'appearance',
   'lineEditor',
+  'spelling',
   'grid',
   'video',
   'audio',

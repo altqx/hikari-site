@@ -175,8 +175,6 @@ Any macro can have a key. Set it in the Automation panel: press **Add shortcut**
 | --- | --- |
 | **Fill in my last answers** | Script dialogs open with your last answers. Off at first |
 | **Clear last answers…** | Forgets the answers given in every script dialog |
-| **Load scripts** | No effect in this version: autoload scripts always load at start |
-| **Compatibility with older HikariSub scripts** | No effect in this version |
-| **Lua trace level** | No effect in this version: logs always keep levels 0 to 3 |
+| **Lua trace level** | The highest level of `aegisub.debug.out` and `aegisub.log` message kept, from 0 to 5; 3, hints, at first. A change reloads the loaded scripts, except one whose macro is running |
 
 The [Settings reference](/en/docs/reference/settings#automation) lists them all.

@@ -172,7 +172,7 @@
       "credit": ""
     },
     "content/docs/customize/images/settings-general-light.webp": {
-      "source": "recaptured at qt d5c6b444b230661641364be924d474d47bdd95db: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-light.png, title bar cropped, 880x620",
+      "source": "recaptured at qt c1a0a65b04a63bdf7a7bfacfaad2253c56af43d5: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-light.png, title bar cropped, 880x620+0+32",
       "surface": "Settings window, General page",
       "credit": ""
     },
@@ -202,7 +202,7 @@
       "credit": ""
     },
     "content/docs/customize/images/settings-general-dark.webp": {
-      "source": "recaptured at qt d5c6b444b230661641364be924d474d47bdd95db: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-dark.png, title bar cropped, 880x620",
+      "source": "recaptured at qt c1a0a65b04a63bdf7a7bfacfaad2253c56af43d5: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-dark.png, title bar cropped, 880x620+0+32",
       "surface": "Settings window, General page",
       "credit": ""
     },
@@ -427,13 +427,13 @@
       "credit": ""
     },
     "content/docs/checking/images/spellchecker-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-light.png, crop 1280x400+0+372 (surface unchanged at qt d24047335)",
-      "surface": "Grid and the Spellchecker panel on a misspelled word",
+      "source": "recaptured at qt c1a0a65b04a63bdf7a7bfacfaad2253c56af43d5: coord2 hikari_ui_shell_tests pu6Screenshots under vx11 (offscreen), pu6-spellchecker-light.png, crop 1280x400+0+372",
+      "surface": "Grid and the Spellchecker panel on a misspelled word, in Spelling mode",
       "credit": ""
     },
     "content/docs/checking/images/spellchecker-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-spellchecker-dark.png, crop 1280x400+0+371 (surface unchanged at qt d24047335)",
-      "surface": "Grid and the Spellchecker panel on a misspelled word",
+      "source": "recaptured at qt c1a0a65b04a63bdf7a7bfacfaad2253c56af43d5: coord2 hikari_ui_shell_tests pu6Screenshots under vx11 (offscreen), pu6-spellchecker-dark.png, crop 1280x400+0+372",
+      "surface": "Grid and the Spellchecker panel on a misspelled word, in Spelling mode",
       "credit": ""
     },
     "content/docs/checking/images/added-words-light.webp": {

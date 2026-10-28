@@ -1508,6 +1508,17 @@
             "context": "Subtitles",
             "defaultKeys": [
             ],
+            "id": 4513,
+            "menus": [
+                "Grid menu > Hide columns > Hide line wraps"
+            ],
+            "name": "Hide line wraps",
+            "symbol": "GRID_HIDE_WRAPS"
+        },
+        {
+            "context": "Subtitles",
+            "defaultKeys": [
+            ],
             "id": 4514,
             "menus": [
                 "Grid menu > Insert > Insert before"
