@@ -7,8 +7,10 @@ import lookLight from './images/getting-started-look-light.webp';
 import lookDark from './images/getting-started-look-dark.webp';
 import mediaLight from './images/getting-started-media-light.webp';
 import mediaDark from './images/getting-started-media-dark.webp';
+import updatesLight from './images/getting-started-updates-light.webp';
+import updatesDark from './images/getting-started-updates-dark.webp';
 
-The **Getting started** window walks through the settings most people change first: the language, the theme, the layout, video and audio, editing, updates. Each step is a page, and each page says at its foot where its choice lives later, so nothing here is set for good.
+The **Getting started** window walks through the settings most people change first: the language, the theme, the layout, video and audio, editing, updates and usage data. Each step is a page, and each page says at its foot where its choice lives later, so nothing here is set for good.
 
 ## When it opens
 
@@ -127,13 +129,28 @@ Later: **File › Settings › General › Saving**, and **File › Settings ›
 
 ### Updates
 
+<figure>
+  <ThemedImage
+    light={updatesLight}
+    dark={updatesDark}
+    alt="The Updates step: eight page dots with the seventh marked, Stable versions only, chosen and marked Recommended, and Pre-releases too, then Check for updates automatically, unticked, Send anonymous usage data, ticked, with its note and a What is sent link, and the line Later: Settings › Updates and privacy"
+    width={752}
+    height={622}
+    className="rounded-lg border"
+  />
+  <figcaption>The Updates step.</figcaption>
+</figure>
+
 - **Stable versions only**, chosen at first, offers tested releases.
 - **Pre-releases too** offers beta versions as well.
 - **Check for updates automatically** looks for a new version at most once a day, when HikariSub starts. It is off at first. The release notes on the Home page need it too.
+- **Send anonymous usage data** sends which features are used, errors and crashes, and how fast things open. It is on at first. Untick it to turn it off; **What is sent** opens the full list in your browser. See [What is sent](/en/docs/help/what-is-sent).
 
-An install from the AUR shows only the checkbox: there, the package you installed decides which versions you get.
+An install from the AUR shows no version choice, only the checkboxes: there, the package you installed decides which versions you get.
 
-Later: **File › Settings › Updates**. See [Updates](/en/docs/get-started/install#updates).
+Skipping setup leaves it as it is, which at the first start means on.
+
+Later: **File › Settings › Updates and privacy**. See [Updates](/en/docs/get-started/install#updates).
 
 ### Your files
 

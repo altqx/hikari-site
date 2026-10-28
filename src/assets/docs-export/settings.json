@@ -46,7 +46,7 @@
         },
         {
             "id": "updates",
-            "name": "Updates"
+            "name": "Updates and privacy"
         }
     ],
     "settings": [
@@ -1470,6 +1470,16 @@
             "label": "Install updates automatically",
             "page": "updates",
             "section": "Installing",
+            "type": "bool"
+        },
+        {
+            "control": "check",
+            "default": true,
+            "hint": "Which features are used, errors and crashes, and how fast things open. Never your files, their names or what is in them.",
+            "key": "privacy.usageData",
+            "label": "Send anonymous usage data",
+            "page": "updates",
+            "section": "Privacy",
             "type": "bool"
         }
     ]

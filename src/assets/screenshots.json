@@ -162,7 +162,7 @@
       "credit": ""
     },
     "content/docs/customize/images/settings-hotkeys-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-light.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-hotkeys-light.png, title bar cropped, 880x620+0+32",
       "surface": "Settings › Hotkeys page",
       "credit": ""
     },
@@ -172,7 +172,7 @@
       "credit": ""
     },
     "content/docs/customize/images/settings-general-light.webp": {
-      "source": "recaptured at qt c1a0a65b04a63bdf7a7bfacfaad2253c56af43d5: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-light.png, title bar cropped, 880x620+0+32",
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-light.png, title bar cropped, 880x620+0+32",
       "surface": "Settings window, General page",
       "credit": ""
     },
@@ -192,7 +192,7 @@
       "credit": ""
     },
     "content/docs/customize/images/settings-hotkeys-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu7Screenshots under vx11, pu7-settings-hotkeys-dark.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-hotkeys-dark.png, title bar cropped, 880x620+0+32",
       "surface": "Settings › Hotkeys page",
       "credit": ""
     },
@@ -202,7 +202,7 @@
       "credit": ""
     },
     "content/docs/customize/images/settings-general-dark.webp": {
-      "source": "recaptured at qt c1a0a65b04a63bdf7a7bfacfaad2253c56af43d5: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-dark.png, title bar cropped, 880x620+0+32",
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-general-dark.png, title bar cropped, 880x620+0+32",
       "surface": "Settings window, General page",
       "credit": ""
     },
@@ -697,13 +697,33 @@
       "credit": ""
     },
     "content/docs/checking/images/grammar-settings-light.webp": {
-      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-settings-light.png (grammar_ui_tests screenshots, taken at 7a519e4f2), whole image (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-settings-light.png, whole image",
       "surface": "Settings window, Spelling & grammar page",
       "credit": ""
     },
     "content/docs/checking/images/grammar-settings-dark.webp": {
-      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-settings-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), whole image (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-settings-dark.png, whole image",
       "surface": "Settings window, Spelling & grammar page",
+      "credit": ""
+    },
+    "content/docs/help/images/settings-updates-light.webp": {
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-updates-light.png, title bar cropped, 880x620+0+32",
+      "surface": "Settings window, Updates and privacy page",
+      "credit": ""
+    },
+    "content/docs/help/images/settings-updates-dark.webp": {
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests settingsWindowScreenshots under vx11 (offscreen, 1920x1080 screen), pf1-updates-dark.png, title bar cropped, 880x620+0+32",
+      "surface": "Settings window, Updates and privacy page",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-updates-light.webp": {
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-7-updates-light.png",
+      "surface": "Getting started window, step 7 of 8 (Updates)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-updates-dark.webp": {
+      "source": "recaptured at qt a6baf325de09d4d975bf6e5aac12fa1efcd7190e: coord2 hikari_ui_shell_tests gettingStartedScreenshots under vx11, fr1-7-updates-dark.png",
+      "surface": "Getting started window, step 7 of 8 (Updates)",
       "credit": ""
     }
   }
