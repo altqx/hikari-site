@@ -20,7 +20,7 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 
 ## Content
 
-- Covers the Qt app (0.1.x) only. Legacy 0.0.x gets one page, "Moving from legacy" (opt-in offer, settings import, going back).
+- Covers HikariSub 0.1.x only. HikariSub legacy (0.0.x) gets one page, "Moving from legacy" (opt-in offer, settings import, going back).
 - English only at launch, with Fumadocs i18n in place from the start (`/en/...`, language switcher hidden until a second language exists). Thai comes next.
 - One set of guides for the newest release. Features added after 0.1.0 get a "Since 0.1.x" badge; beta-only features get a Beta badge. No per-version docs until 1.0.
 - Sidebar:
@@ -35,7 +35,7 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
   9. Reference: ASS override tags (each with a live preview), hotkeys, settings, command line.
   10. Help: troubleshooting, FAQ, reporting bugs.
 - Hotkeys and settings reference pages are generated from the app's `--export-docs` JSON (altqx/hikari#367, DX1), attached to each release as `hikarisub-docs-<version>.zip`. Until it exists those pages say "coming with 0.1.0-beta.1".
-- Write the stable pages first (install, first run, moving from legacy, automation and the user folder). Feature guides are written as each wave-6 card merges into hikari's `qt` branch; the coordinator says when.
+- Write the stable pages first (install, first run, moving from legacy, automation and the user folder). Feature guides are written as each wave-6 card merges into hikari's `main` branch (named `qt` until 2026-10-29); the coordinator says when.
 
 ## Homepage
 
@@ -46,7 +46,7 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 ## Media
 
 - **Example subtitle:** "[Jibrill] Chou Kaguya-hime! - ray MV v2" (owner's local file). It appears **only in app screenshots and muted clips**, credited "Subtitles: Jibrill". The MKV, the full `.ass` and its fonts are never published. Of its fonts only K2D is OFL; Commie Sans (Linotype Finnegan), MN Chaeo Hon, the FC fonts, Arial and Leelawadee are not redistributable.
-- **Screenshots:** reuse the non-mockup `evidence/*` branches of altqx/hikari and the shots in card evidence comments. Mockup branches are never used. Check each against current hikari `qt`; recapture changed surfaces from a qt build under the private X server (`/home/altq/Work/hikari-wt/bin/vx11`), never on the owner's desktop. Stored as WebP beside the guide, light and dark pairs, with `screenshots.json` recording each image's source branch and commit or "recaptured at qt <sha>".
+- **Screenshots:** reuse the non-mockup `evidence/*` branches of altqx/hikari (since wave 6 closed, tags of the same name, with the files in `archive/wave6`) and the shots in card evidence comments. Mockup branches are never used. Check each against current hikari `main`; recapture changed surfaces from a `main` build under the private X server (`/home/altq/Work/hikari-wt/bin/vx11`), never on the owner's desktop. Stored as WebP beside the guide, light and dark pairs, with `screenshots.json` recording each image's source branch and commit or "recaptured at main <sha>" (entries before the rename say "at qt <sha>"; the SHAs are the same).
 - **Clips:** loops of 10 s or less, muted, AV1 MP4 with an H.264 fallback, each under 5 MB, served from static assets; autoplay in view, paused with reduced motion; captured under vx11.
 
 ## Site features
