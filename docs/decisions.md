@@ -41,6 +41,7 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 
 - An app screenshot (light or dark to match the site theme), a Download button that detects the visitor's OS with links for every format (setup.exe, portable zip, AppImage, deb, rpm, tar.gz, AUR), 6–8 feature tiles linking to guides (with a small live preview where it fits), and a "Moving from legacy" strip.
 - Understated copy, no sales-pitch tone. HikariSub's accent green (#145C4C light, #9CDBC9 dark); follows the system theme.
+- **AUR:** off until the AUR packages ship (owner, 2026-10-28). No page or download link mentions them; only the `aur` and `arch` package values the app can report stay, marked "when they are out". `aurPublished` in `src/lib/downloads.ts` brings the download links back, and reverting the commit "Take the AUR out of the guides until its packages are out" brings the page text back.
 - Download links come from the app's update manifest `hikarisub-update.json` at build time (assets, checksums, stable vs beta). A hikari release triggers a rebuild through `repository_dispatch` (event `hikari-release`); a daily cron is the backup.
 
 ## Media
