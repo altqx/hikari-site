@@ -67,6 +67,11 @@
             "path": "/en/docs/checking/spelling"
         },
         {
+            "id": "Spellchecker.grammar",
+            "kind": "panel",
+            "path": "/en/docs/checking/grammar"
+        },
+        {
             "id": "Template",
             "kind": "panel",
             "path": "/en/docs/karaoke/template-editor"
