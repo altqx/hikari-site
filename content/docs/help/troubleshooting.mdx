@@ -50,7 +50,7 @@ HikariSub notices when it was not closed properly. At the next start, the Home p
 - **Autosaves…** opens the Autosaves window, when there is autosaved work.
 - **×** dismisses the offer.
 
-HikariSub does not write crash reports or crash dumps. If it crashed, see [Reporting bugs](/en/docs/help/reporting-bugs) for what to tell us.
+HikariSub does not write crash reports or crash dumps. While anonymous usage data is on, a crash leaves a small [crash record](/en/docs/help/what-is-sent#crash-records), which HikariSub sends at the next start and then deletes. If it crashed, see [Reporting bugs](/en/docs/help/reporting-bugs) for what to tell us.
 
 ### Autosaves
 
@@ -78,6 +78,7 @@ The work of a HikariSub that is still running is never deleted. Autosaves from H
 | Autosaves | `recovery` in the user folder | `recovery` in the user folder |
 | Index files and the audio cache | `%LOCALAPPDATA%\HikariSub\cache` | `~/.cache/hikarisub` |
 | Downloaded updates | `%LOCALAPPDATA%\HikariSub\Updates` | `~/.cache/HikariSub/Updates` |
+| [Usage data](/en/docs/help/what-is-sent) waiting to be sent, and a crash record | `analytics-queue.json` and `crash-record.txt` in `%LOCALAPPDATA%\HikariSub\cache` | `analytics-queue.json` and `crash-record.txt` in `~/.cache/hikarisub` |
 
 - **Help › Open user folder** opens the user folder.
 - A portable copy keeps its user folder inside its own folder, as `user`. Its index files and audio cache go to the cache folder above.

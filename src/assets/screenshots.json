@@ -705,6 +705,26 @@
       "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-settings-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), whole image (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
       "surface": "Settings window, Spelling & grammar page",
       "credit": ""
+    },
+    "content/docs/help/images/settings-privacy-light.webp": {
+      "source": "origin/evidence/w6-an1 5f537681f742e0c361cd3300bcfea37cadcb7333 an1-settings-light.png (taken at 6bea9df7a), Privacy section cropped 535x140+221+262 (to qt a6baf325d: the Updates and privacy page's QML, SettingsSection.qml, SettingsRow.qml and LinkButton.qml unchanged; the page list left of the crop is stale and cropped out)",
+      "surface": "Settings › Updates and privacy, Privacy section",
+      "credit": ""
+    },
+    "content/docs/help/images/settings-privacy-dark.webp": {
+      "source": "origin/evidence/w6-an1 5f537681f742e0c361cd3300bcfea37cadcb7333 an1-settings-dark.png (taken at 6bea9df7a), Privacy section cropped 535x140+221+262 (to qt a6baf325d: the Updates and privacy page's QML, SettingsSection.qml, SettingsRow.qml and LinkButton.qml unchanged; the page list left of the crop is stale and cropped out)",
+      "surface": "Settings › Updates and privacy, Privacy section",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-updates-light.webp": {
+      "source": "origin/evidence/w6-an1 5f537681f742e0c361cd3300bcfea37cadcb7333 an1-getting-started-light.png (taken at 6bea9df7a), whole image (to qt a6baf325d: the Updates step's QML, DialogWindow.qml and LinkButton.qml unchanged; GettingStartedDialog.qml changed only on the Editing step)",
+      "surface": "Getting started window, step 6 of 7 (Updates)",
+      "credit": ""
+    },
+    "content/docs/get-started/images/getting-started-updates-dark.webp": {
+      "source": "origin/evidence/w6-an1 5f537681f742e0c361cd3300bcfea37cadcb7333 an1-getting-started-dark.png (taken at 6bea9df7a), whole image (to qt a6baf325d: the Updates step's QML, DialogWindow.qml and LinkButton.qml unchanged; GettingStartedDialog.qml changed only on the Editing step)",
+      "surface": "Getting started window, step 6 of 7 (Updates)",
+      "credit": ""
     }
   }
 }

@@ -1,0 +1,208 @@
+---
+title: What is sent
+description: The anonymous usage data HikariSub sends, every event and property in it, what is never sent, and how to turn it off.
+---
+
+import privacyLight from './images/settings-privacy-light.webp';
+import privacyDark from './images/settings-privacy-dark.webp';
+
+HikariSub sends **anonymous usage data**: which features are used, errors and crashes, and how fast things open. It shows what people use, what goes wrong and what is slow, so work can go where it helps. It never sends your files, their names or what is in them.
+
+It is **on by default**, also in a copy updated from an earlier version and after importing legacy settings, which never had this option. This page lists every event and every property HikariSub can send, and how to turn it off.
+
+This page is about the HikariSub app. This website uses Cloudflare Web Analytics instead, with no cookies.
+
+## Turning it off
+
+Any of these turns it off:
+
+- **File › Settings › Updates and privacy › Privacy › Send anonymous usage data**. The change applies on **OK** or **Apply**.
+- **Send anonymous usage data** on the Updates step of the [Getting started window](/en/docs/get-started/getting-started-window#updates). It is saved when you press **Finish**.
+- The `DO_NOT_TRACK` environment variable, set to anything but `0`, turns it off for each run that has it. On Linux, start HikariSub with `DO_NOT_TRACK=1 hikarisub`, or export it in your shell profile. On Windows, add a user environment variable named `DO_NOT_TRACK` with the value `1`. The switch in Settings still shows your setting.
+
+<figure>
+  <ThemedImage
+    light={privacyLight}
+    dark={privacyDark}
+    alt="The Privacy section of Settings › Updates and privacy: Send anonymous usage data, ticked, the note Which features are used, errors and crashes, and how fast things open. Never your files, their names or what is in them., and the What is sent link"
+    width={535}
+    height={140}
+    className="rounded-lg border"
+  />
+  <figcaption>The Privacy section in Settings.</figcaption>
+</figure>
+
+Both switches are the same setting, and both have a **What is sent** link that opens the full list in your browser.
+
+Only release packages send. The key that lets HikariSub send is added when a release is built. A build without it, such as a build from source, a fork's build or a test build, queues nothing and sends nothing; the switch still shows.
+
+**Reset page** on the Updates and privacy page, and **Reset all settings…**, turn it back on, since on is the default.
+
+### What turning it off does
+
+It takes effect at once:
+
+- Nothing more is queued or sent. A send that is under way is stopped.
+- The events waiting to be sent are deleted, from memory and from the cache folder.
+- A crash record waiting to be sent is deleted.
+- The [anonymous ID](#the-anonymous-id) is deleted.
+- The crash handler is removed.
+
+Events that were already sent are not deleted.
+
+The first send is 60 seconds after HikariSub starts. If you turn it off before then, for example on Getting started's Updates step at the first start, nothing has been sent.
+
+With `DO_NOT_TRACK` set, the events waiting from earlier runs and any crash record are deleted when HikariSub starts. The anonymous ID is kept.
+
+If you turn it on again, HikariSub starts a new ID. The session length and the frame counts in `app_closed` then count from that moment.
+
+## Where it goes
+
+Events go to PostHog Cloud EU, at `https://eu.i.posthog.com`.
+
+- PostHog receives your IP address with each send, as any server does. The HikariSub project there discards it.
+- Every event asks PostHog to make no location lookup from the IP address (`$geoip_disable`) and no person profile (`$process_person_profile`).
+- Each send also carries HikariSub's project key, which is the same in every copy, and the user agent `HikariSub/` followed by the version.
+
+## The anonymous ID
+
+Events go under a random ID (a UUID), made the first time HikariSub queues an event. It is not made from anything about you or your computer, and is not tied to anything else.
+
+It is kept in your settings, `hikari.ini` in your [user folder](/en/docs/automation/user-folder), as `privacy.usageDataId`.
+
+To get a new one, turn **Send anonymous usage data** off, press **Apply**, then turn it on again. **Reset all settings…** also clears it.
+
+Each run of HikariSub also has a session ID, a new random UUID for every start. It is not kept in your settings.
+
+## When it is sent
+
+- Events wait in memory and in `analytics-queue.json` in the cache folder: `%LOCALAPPDATA%\HikariSub\cache` on Windows, `~/.cache/hikarisub` on Linux. Portable copies use it too.
+- The queue holds at most 1000 events, or 1 MB of them. Past that, the oldest are dropped.
+- HikariSub sends up to 100 events at a time: 60 seconds after it starts, then every 5 minutes.
+- At quit, after the window has closed, it sends once more and waits at most 2 seconds for it.
+- HikariSub never waits for a send, and a failed send shows no message. Without a connection, the events wait for the next send, also in a later run.
+- If PostHog refuses a batch outright, those events are dropped and not tried again.
+- When HikariSub reads the queue at the next start, it checks each event against the lists below again and drops any that doesn't match.
+
+## What is never sent
+
+- File names and paths, of subtitles, video, audio, scripts or anything else
+- Subtitle text, script text, or anything else you typed
+- Style names and font names
+- The names of scripts, other than the scripts that come with HikariSub
+- The names of your saved layouts
+- Which values you chose in Getting started
+- An automation macro's hotkey
+
+Every property is an ID from a fixed list, a bucket, a yes or no, a version or a count. Before an event is queued, HikariSub checks it against the lists below, and drops any event that doesn't match them.
+
+## Every event
+
+### On every event
+
+| Property | Value |
+| --- | --- |
+| `distinct_id` | The [anonymous ID](#the-anonymous-id) |
+| `$process_person_profile` | `false`: PostHog makes no person profile |
+| `$geoip_disable` | `true`: PostHog makes no location lookup |
+| `$session_id` | This run's random session ID |
+| `$lib` | `hikarisub` |
+| `$lib_version` | The app version, such as `0.1.0-beta.1` |
+
+Each event also has its name and the time it happened, in UTC, to the second.
+
+### Start and quit
+
+| Event | Sent | Properties |
+| --- | --- | --- |
+| `app_started` | When the main window first shows | See below |
+| `app_closed` | At quit | `session_length` and the frame counts, below |
+
+`app_started` has:
+
+| Property | Value |
+| --- | --- |
+| `version` | The app version |
+| `channel` | `stable` or `prerelease` |
+| `$os` | `windows`, `linux` or `other` |
+| `$os_version` | The system's version as Qt reports it, such as `11` or `24.04`; `other` if it is longer than 24 characters or has other characters than letters, digits, `.`, `_` and `-` |
+| `arch` | `x86_64`, `arm64` or `other` |
+| `package` | `installer`, `portable`, `appimage`, `deb`, `rpm`, `aur` or `build_tree` |
+| `qt_version` | The Qt version, such as `6.11.2` |
+| `language` | The interface language: `en`, `ko_KR`, `pl`, `ta` or `th_TH` |
+| `theme` | `light`, `dark`, `high_contrast_white` or `high_contrast_black` |
+| `theme_follows_system` | `true` or `false` |
+| `layout` | The layout the window opened in: `editing`, `timing`, `translation`, `typesetting`, `karaoke`, `saved` (one of your saved layouts, not its name) or `custom` |
+| `screens` | `1`, `2` or `3+` |
+| `scale` | The window's display scale: `1x`, `1.25x`, `1.5x`, `2x` or `3x+` |
+| `startup_time` | How long the window took to show, as a time bucket |
+
+`app_closed` has:
+
+| Property | Value |
+| --- | --- |
+| `session_length` | `<1m`, `1-5m`, `5-15m`, `15-60m`, `1-3h` or `3h+`, since the start or since you turned sending on |
+| `render_frames_lt8ms`, `render_frames_8_16ms`, `render_frames_16_33ms`, `render_frames_33_66ms`, `render_frames_66_200ms`, `render_frames_200ms_plus` | How many frames of subtitles took that long to draw in this run, while sending was on: under 8 ms, 8 to 16 ms, and so on, up to 200 ms or more |
+
+The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500ms`, `0.5-1s`, `1-2s`, `2-5s`, `5-15s`, `15-60s` and `60s+`.
+
+### Features used
+
+| Event | Sent | Properties |
+| --- | --- | --- |
+| `command_used` | When a command runs | `command`, `via` |
+| `panel_opened` | When you show a panel, from the View menu, a panel's menu or a button such as Fix minor errors | `panel` |
+| `dialog_opened` | When a dialog or window opens | `dialog` |
+| `layout_changed` | When you choose a layout | `layout` |
+| `getting_started_finished` | When you press **Finish** in Getting started | `pages_changed` |
+| `getting_started_skipped` | When you close Getting started without finishing: **Skip setup**, <kbd>Esc</kbd> or closing the window | None |
+
+- `command`: the command's ID in the hotkey list, such as `GLOBAL_SAVE_SUBS` or `AUDIO_PLAY`. Only the commands in that list are sent. Automation macros are never sent.
+- `via`: `key` for a command a key ran, or `pointer` for one from a menu, a toolbar or a panel's button.
+- `panel`: `video`, `audio`, `editor`, `grid`, `reference`, `timing`, `search`, `automation`, `original`, `log`, `styles`, `fix_minor_errors`, `template` or `spellchecker`.
+- `dialog`: `about`, `allTagsEdition`, `aspectRatio`, `autosaves`, `columns`, `conversion`, `credits`, `dummyVideo`, `fontCatalogClashes`, `fontCatalogs`, `fontCollector`, `fontPicker`, `fontsFromSubtitles`, `gettingStarted`, `history`, `hotkeyCapture`, `kanjiTimer`, `karaokeCheck`, `listChooser`, `manageLayouts`, `movePanel`, `resample`, `saveLayout`, `scriptProperties`, `selectLines`, `setNewFps`, `settings`, `settingsImport`, `shapesEdition`, `spellAddedWords`, `styleClashes`, `styleManager`, `translationShift`, `unsavedChanges`, `updateAvailable` or `whatsNew`. A script's dialog is `automation_script`, whichever script it is.
+- `layout`: `editing`, `timing`, `translation`, `typesetting`, `karaoke`, or `saved` for one of your saved layouts. Its name is not sent.
+- `pages_changed`: the Getting started pages whose settings **Finish** changed, from `language`, `import`, `look`, `layout`, `media`, `editing`, `updates` and `files`. Which values you chose is not sent. If you turn sending off on the Updates step, this event is not sent either.
+
+How often:
+
+- `command_used` is sent once per command and `via` in each run.
+- `panel_opened` and `dialog_opened` are sent once per panel or dialog in each run.
+- `layout_changed` is sent each time, up to 20 times in each run.
+
+### Errors and crashes
+
+| Event | Sent | Properties |
+| --- | --- | --- |
+| `automation_error` | When a macro fails, its script's process is lost or force-stopped, or a script doesn't load | `kind`, `script` |
+| `$exception` | At the start after HikariSub crashed | `$exception_list`, `$exception_level`, `crashed_version` |
+
+- `kind`: `failed`, `lost`, `stopped` or `load_failed`.
+- `script`: the file name of a script that comes with HikariSub, such as `kara-templater.lua`, with spaces turned into `_` (`skew_gradient.lua`). It counts as one only while its contents match the copy HikariSub came with, in the program's folder or copied to your user folder. Any other script is `user script`, and its name is not sent. A macro whose check declines to run on your selection is not an error and sends nothing.
+- `$exception_list`: one entry with the crash's type, how it was caught, and where it happened:
+  - the type: on Linux the signal, `SIGSEGV`, `SIGABRT`, `SIGBUS`, `SIGFPE` or `SIGILL`; on Windows the exception's name, such as `EXCEPTION_ACCESS_VIOLATION`, or else its code, `0x…`;
+  - how it was caught: `signal` or `seh`, not handled;
+  - up to 32 stack frames, each a module and an offset. The module is a file name only, and only for HikariSub's own files and the system's (in `/usr` or `/lib`, or the Windows folder). Any other module is `other`. The offset is a hex number into that module.
+- `$exception_level`: `fatal`.
+- `crashed_version`: the version that crashed.
+
+### Opening video and audio
+
+| Event | Sent | Properties |
+| --- | --- | --- |
+| `video_opened` | When opening a video ends | `open_time`, `outcome`, `kind` |
+| `audio_opened` | When opening audio ends: it is all loaded, or it failed | `open_time`, `outcome`, `kind` |
+
+- `open_time`: how long it took, as a time bucket.
+- `outcome`: `ready` or `failed`.
+- `kind`: `file` or `dummy` for video; `file`, `from_video` or `dummy` for audio.
+
+Audio that you close or replace before it finishes loading sends nothing.
+
+## Crash records
+
+While sending is on, HikariSub has a crash handler. If HikariSub crashes, it writes a small record to `crash-record.txt` in the cache folder: the version, the type of crash and the stack frames, as above. At the next start the record is sent as `$exception` and deleted.
+
+If sending is off at the next start, the record is deleted without being sent. While sending is off, no record is written.
+
+The record is not a crash dump: it holds no memory, no file names and no text. HikariSub still offers your last session after a crash; see [After a crash](/en/docs/help/troubleshooting#after-a-crash).

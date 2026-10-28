@@ -25,7 +25,17 @@ The packages are not code-signed, so Windows says the publisher is unknown. Each
 
 ### Does HikariSub connect to the internet?
 
-Only to check for updates: when you choose **Help › Check for updates**, or at most once a day when it starts if you turn on **File › Settings › Updates › Check for updates automatically**, which is off by default. The check asks GitHub (`api.github.com`) for the list of releases, so GitHub sees your IP address. **What's new** reads the same list and never loads the images or links in the release notes. See [Updates](/en/docs/get-started/install#updates).
+Yes:
+
+- **Anonymous usage data**, which is **on by default**. HikariSub sends which features are used, errors and crashes, and how fast things open to PostHog Cloud EU, under a random ID, and the IP address is discarded. It never sends your files, their names or what is in them. [What is sent](/en/docs/help/what-is-sent) lists every event. Only release packages send it.
+- **The update check**, which is off by default: when you choose **Help › Check for updates**, or at most once a day when it starts if you turn on **File › Settings › Updates and privacy › Check for updates automatically**. The check asks GitHub (`api.github.com`) for the list of releases, so GitHub sees your IP address. **What's new** reads the same list and never loads the images or links in the release notes. See [Updates](/en/docs/get-started/install#updates).
+- **DependencyControl**, which comes with HikariSub, checks its scripts' feeds for updates by itself. See [Updating scripts](/en/docs/automation/dependencycontrol#updating-scripts).
+
+To turn off the usage data, use any of these:
+
+- **File › Settings › Updates and privacy › Privacy › Send anonymous usage data**
+- **Send anonymous usage data** on the Updates step of the [Getting started window](/en/docs/get-started/getting-started-window#updates)
+- `DO_NOT_TRACK=1` in the environment, for each run that has it
 
 The [grammar check](/en/docs/checking/grammar#harper) runs on your computer and sends nothing.
 
@@ -45,7 +55,7 @@ No. The Log is kept in memory and is gone when HikariSub quits. Copy its entries
 
 ### Does HikariSub save crash reports?
 
-No. It writes no crash reports or crash dumps. After a crash, it offers your last session and autosaves at the next start: see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
+No crash reports or crash dumps that you can open or send. While anonymous usage data is on, a crash leaves a small record, with no file names or text, that is sent at the next start and then deleted: see [Crash records](/en/docs/help/what-is-sent#crash-records). After a crash, HikariSub offers your last session and autosaves at the next start: see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
 
 ## Automation
 
