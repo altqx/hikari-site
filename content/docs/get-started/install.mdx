@@ -84,21 +84,6 @@ The packages are not GPG-signed. If dnf refuses the file for that reason, add `-
 
 The deb and rpm install HikariSub in `/opt/hikarisub`, with the command `hikarisub`, a menu entry, icons and file types for `.ass`, `.ssa`, `.srt` and `.sub`.
 
-### Arch Linux (AUR)
-
-Two AUR packages carry the release build:
-
-- `hikarisub-stable-bin`: stable releases only.
-- `hikarisub-beta-bin`: every release, betas included.
-
-Install one of them with your AUR helper, for example:
-
-```sh
-yay -S hikarisub-beta-bin
-```
-
-Only one of the two can be installed at a time. The package you choose decides which versions you get.
-
 ### Portable tar.gz
 
 Download `hikarisub-<version>-linux-x86_64.tar.gz`, unpack it and run `hikarisub-linux-x86_64/hikarisub`. It uses the libraries of your system, as the deb and rpm do.
@@ -125,7 +110,6 @@ How the update is installed depends on the package:
 | Setup | Downloads and installs itself. An All users install asks for administrator approval. |
 | AppImage | Replaces the AppImage file with the new one. If the new version does not start, the old one is put back. |
 | deb, rpm | Downloads the package and asks for your password to install it. |
-| AUR | Shows the command for your AUR helper, such as `yay -Syu hikarisub-beta-bin`. |
 | Portable zip, tar.gz | Opens the download page. |
 
 Each download is checked against its SHA-256 before it is installed. To see which version and package you have, open **Help › About**.
@@ -137,7 +121,6 @@ The same Settings page, **Updates and privacy**, holds **Send anonymous usage da
 - **Setup:** remove HikariSub in Windows Settings › Apps, or run `Uninstall HikariSub.exe` in the install folder.
 - **AppImage, portable zip, tar.gz:** delete the file or folder. Deleting a portable copy's folder deletes its `user` folder too. For the tar.gz, run `./install-desktop-integration.sh --uninstall` first if you used it.
 - **deb, rpm:** `sudo apt remove hikarisub`, `sudo dnf remove hikarisub` or `sudo zypper remove hikarisub`.
-- **AUR:** `sudo pacman -R hikarisub-stable-bin` or `hikarisub-beta-bin`.
 
 Uninstalling keeps your settings, autosaves and scripts, in your [user folder](/en/docs/automation/user-folder). To remove those too, delete it, and the cache folder beside it:
 

@@ -38,12 +38,12 @@ The **⋯** button on the panel's tab has **Load script…** and **Refresh autol
   <ThemedImage
     light={panelLight}
     dark={panelDark}
-    alt="The Automation panel's Scripts view: the Filter macros field, the script Shell fixture under Subtitle scripts with the macro Prefix from dialog on Ctrl+Alt+P and Wait for cancel recording Ctrl+Alt+P with the note Already assigned to: Prefix from dialog, and the script Host fixture under Autoload with its macros, one on Ctrl+S with the note Save also uses Ctrl+S and takes it"
+    alt="The Automation panel's Scripts view: the Filter macros field, the script Shell fixture under Subtitle scripts with the macro Prefix from dialog on Ctrl+Alt+P and Wait for cancel recording Ctrl+Alt+P with the note Already assigned to: Prefix from dialog, and under Autoload the ticked script Host fixture with its macros, one on Ctrl+S with the note Save also uses Ctrl+S and takes it, the ticked syntax-error.lua marked Failed to load with its error, and macro-1-edgeblur.lua unticked, muted and without Reload"
     width={460}
-    height={655}
+    height={760}
     className="rounded-lg border"
   />
-  <figcaption>Recording a shortcut that another macro already has.</figcaption>
+  <figcaption>Recording a shortcut that another macro already has. The last autoload script is turned off.</figcaption>
 </figure>
 
 The scripts are in two sections, each of which folds:
@@ -70,6 +70,10 @@ Each script shows its name in bold; hover it for the script's description. Besid
 
 - **Edit script**, which opens the file in your script editor. The first time, or with <kbd>Shift</kbd> held, HikariSub asks which program to use, in **Select a script editor**.
 - **Unload**, which takes the script out of the list, and its macros out of the menu. The script's path stays in the header of a subtitle file that names it.
+
+An autoload script has a box before its name, **Load at start**. Untick it to turn the script off: it unloads, and it stays off at the next start and on **Refresh autoload scripts**. Its name shows muted, without **Reload**. Tick the box to load it again. The box is greyed out while the script loads or one of its macros runs. Subtitle scripts have no box.
+
+This is how to turn off a bundled script you don't use. Deleting its file doesn't work: a bundled file you delete [comes back](/en/docs/automation/user-folder#bundled-scripts-and-dictionaries) at the next start.
 
 ### Macro rows
 

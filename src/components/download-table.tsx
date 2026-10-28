@@ -1,4 +1,12 @@
-import { aurPackages, aurUrl, type Channel, formatSize, packageKinds, releasesUrl } from '@/lib/downloads';
+import {
+  aurPackages,
+  aurPublished,
+  aurUrl,
+  type Channel,
+  formatSize,
+  packageKinds,
+  releasesUrl,
+} from '@/lib/downloads';
 import { downloads } from '@/lib/downloads-data';
 
 function ChannelTable({ channel, title }: { channel: Channel; title: string }) {
@@ -43,13 +51,15 @@ function ChannelTable({ channel, title }: { channel: Channel; title: string }) {
               </tr>
             );
           })}
-          <tr>
-            <td>Arch Linux</td>
-            <td>
-              <a href={aurUrl(aur)}>AUR: {aur}</a>
-            </td>
-            <td colSpan={2}>Built from the tar.gz</td>
-          </tr>
+          {aurPublished && (
+            <tr>
+              <td>Arch Linux</td>
+              <td>
+                <a href={aurUrl(aur)}>AUR: {aur}</a>
+              </td>
+              <td colSpan={2}>Built from the tar.gz</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

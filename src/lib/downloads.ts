@@ -22,6 +22,9 @@ export const packageKinds: Record<PackageKind, { os: Os; label: string; format: 
 /** What each OS downloads first. */
 export const primaryKind: Record<Os, PackageKind> = { windows: 'nsis', linux: 'appimage' };
 
+/** Off until the AUR packages are out (owner, 2026-10-28): set to true to show their links again. */
+export const aurPublished = false;
+
 export const aurPackages = {
   stable: 'hikarisub-stable-bin',
   beta: 'hikarisub-beta-bin',

@@ -15,7 +15,7 @@ For scripts, the user folder is `?user`, as in Aegisub.
 | Copy | User folder |
 | --- | --- |
 | Windows setup | `%APPDATA%\HikariSub` |
-| Linux: AppImage, deb, rpm, AUR | `~/.config/hikarisub`, or `$XDG_CONFIG_HOME/hikarisub` when that is set |
+| Linux: AppImage, deb, rpm | `~/.config/hikarisub`, or `$XDG_CONFIG_HOME/hikarisub` when that is set |
 | Portable zip or tar.gz | `user`, in the folder you unpacked |
 
 To open it:
@@ -70,7 +70,7 @@ To add a script that loads at start, put it in `automation/autoload`. To add a s
 
 The scripts, modules and spelling dictionaries that come with HikariSub are copied into your user folder, so you can edit them and [DependencyControl](/en/docs/automation/dependencycontrol) can update them. Each time HikariSub starts, it compares its bundled files with the copies:
 
-- A file that is **missing** is copied in. A bundled file you delete comes back at the next start.
+- A file that is **missing** is copied in. A bundled file you delete comes back at the next start. To turn off a bundled script, untick its box in the [Automation panel](/en/docs/automation/automation-panel#script-rows) instead.
 - A file that is **unchanged** since it was copied is replaced when HikariSub brings a new version of it.
 - A file that **you changed**, or that DependencyControl updated, is kept. HikariSub's new version is not copied over it, and the Log says so once: "Kept your changed …; the new bundled version was not copied over it."
 - A file that a new version **no longer brings** is removed while it is unchanged. If you changed it, it stays, and is yours from then on.
@@ -115,5 +115,5 @@ A portable copy's user folder is inside its own folder. When you unpack a new ve
 | After an update, your settings are the defaults | A portable copy doesn't move files in from the folders earlier versions used, and nothing is moved into a user folder that already has a `hikari.ini`. Copy the files across by hand while HikariSub is closed |
 | The notice says some items stayed where they were | Your user folder already had items with those names. **Details** lists them under **Not moved**; compare them and copy across what you want |
 | A bundled script you edited doesn't get HikariSub's fixes | Your changed copy is kept. Move it out of the user folder and restart to get the new version |
-| A bundled script you deleted is back | Each start copies in missing bundled files. Bundled scripts always load |
+| A bundled script you deleted is back | Each start copies in missing bundled files. To keep a script from loading, untick its box in the [Automation panel](/en/docs/automation/automation-panel#script-rows) |
 | The Log says "Could not copy the bundled … into the user folder." | HikariSub couldn't write the file, for example because the disk is full or the folder is read-only. It tries again at the next start |
