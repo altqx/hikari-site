@@ -48,7 +48,7 @@ Right-click an underlined word to see what Harper found:
 
 At the top of the menu:
 
-- Harper's message, with the finding's rule group below it, such as *Grammar · Miscellaneous*.
+- Harper's message, with the finding's rule group below it, such as *Grammar · Miscellaneous*. Text that Harper quotes in its message is shown in quotation marks.
 - Harper's suggestions, in bold. Click one to put it in. A suggestion is one undo step, *Correcting grammar errors in the text field*, and the tags in the text stay where they were.
 - **Ignore this rule** turns off the finding's whole rule group: see [below](#ignore-this-rule).
 - **Add “…” to dictionary**, for a misspelt word. This shows only while Harper checks spelling, that is while **Check spelling** is off.
@@ -79,7 +79,7 @@ For each finding, its line is selected in the Grid and the finding in the Line e
 
 - Harper's message
 - the line's number and the rule group
-- the text around the finding, without tags, with the finding underlined
+- the text around the finding, without tags, with the finding underlined. At most 40 characters show on each side, cut at a whole word, with … where text is left out
 - **Replace with**, filled with the first suggestion, and the list of suggestions
 
 | Button | Does |
@@ -145,7 +145,7 @@ The groups are:
 | **Initialisms** | Abbreviations and initialisms use the expected letter case and punctuation |
 | **Closed compounds** | Compound words written as one word instead of split apart |
 | **Phrase corrections** | Common phrase-level mistakes where a standard expression is preferred |
-| **Capitalization and case** | Sentence starts, titles, brands and other case-sensitive text |
+| **Capitalization and case** | Personal pronouns, titles, brands and other case-sensitive text |
 | **Punctuation and spacing** | Punctuation marks, apostrophes, quotation marks, commas and spacing |
 | **Numbers and units** | Numbers, dates, times, decades and units of measurement |
 | **Pronouns and possession** | Pronouns, contractions, possessives and their agreement |
@@ -159,7 +159,7 @@ The groups are:
 
 A group's switch turns on only the rules Harper itself has on; a few are off in Harper by default. While **Grammar check** is Off, the switches are greyed out and keep their state.
 
-One rule is always off: Harper's check that a sentence starts with a capital. A subtitle line is often the middle or end of a sentence, so it would mark most lines that continue one.
+One rule is always off: Harper's check that a sentence starts with a capital. A subtitle line is often the middle or end of a sentence, so it would mark most lines that continue one. No setting turns it on: the **Capitalization and case** switch turns only that group's other rules on and off.
 
 ## Spelling and grammar together
 
@@ -202,4 +202,4 @@ A line longer than 4096 characters isn't checked.
 | A replace says "The line changed since it was checked." | The line was edited after it was read. Press **Check again** |
 | A replace says "The text there cannot be replaced." | The finding touches a drawing or a broken tag, or the replacement contains tag characters. Edit the line by hand |
 
-<kbd>F1</kbd> in the Spellchecker panel opens [Spelling](/en/docs/checking/spelling).
+<kbd>F1</kbd> in the Spellchecker panel opens this page while the panel is in Grammar mode, and [Spelling](/en/docs/checking/spelling) while it is in Spelling mode.
