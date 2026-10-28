@@ -71,6 +71,10 @@ Each script shows its name in bold; hover it for the script's description. Besid
 - **Edit script**, which opens the file in your script editor. The first time, or with <kbd>Shift</kbd> held, HikariSub asks which program to use, in **Select a script editor**.
 - **Unload**, which takes the script out of the list, and its macros out of the menu. The script's path stays in the header of a subtitle file that names it.
 
+An autoload script has a box before its name, **Load at start**. Untick it to turn the script off: it unloads, and it stays off at the next start and on **Refresh autoload scripts**. Its name shows muted, without **Reload**. Tick the box to load it again. The box is greyed out while the script loads or one of its macros runs. Subtitle scripts have no box.
+
+This is how to turn off a bundled script you don't use. Deleting its file doesn't work: a bundled file you delete [comes back](/en/docs/automation/user-folder#bundled-scripts-and-dictionaries) at the next start.
+
 ### Macro rows
 
 Under each script are its macros. To run one, press its **Run** button, double-click it, or select it and press <kbd>Enter</kbd>. Right-click a macro, or press the <kbd>Menu</kbd> key, for **Run**, **Set shortcut…** and **Clear shortcut**.

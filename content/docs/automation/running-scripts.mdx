@@ -34,7 +34,7 @@ Opening the menu also loads the scripts the current file names, and reloads any 
 
 There are two kinds of script:
 
-- **Autoload** scripts load when HikariSub starts and are there for every file. HikariSub comes with some, among them the karaoke templater, Aegisub-Motion, the [DependencyControl](/en/docs/automation/dependencycontrol) Toolbox and gradient, edgeblur and strip-tags macros. To add your own, see [Where scripts live](/en/docs/automation/writing-scripts#where-scripts-live).
+- **Autoload** scripts load when HikariSub starts and are there for every file. HikariSub comes with some, among them the karaoke templater, Aegisub-Motion, the [DependencyControl](/en/docs/automation/dependencycontrol) Toolbox and gradient, edgeblur and strip-tags macros. To turn one off, untick its box in the [Automation panel](/en/docs/automation/automation-panel#script-rows). To add your own, see [Where scripts live](/en/docs/automation/writing-scripts#where-scripts-live).
 - **Subtitle scripts** belong to a subtitle file. Load one with **Automation › Load script…**, the same button in the Automation panel, or by dropping `.lua` or `.moon` files on the window.
 
 Loading a subtitle script also writes its path into the file's `Automation Scripts` header, so it loads with the file next time. That change is an undo step, *Changing the subtitle header*.
