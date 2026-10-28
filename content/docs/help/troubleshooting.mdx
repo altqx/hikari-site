@@ -50,7 +50,7 @@ HikariSub notices when it was not closed properly. At the next start, the Home p
 - **Autosaves…** opens the Autosaves window, when there is autosaved work.
 - **×** dismisses the offer.
 
-After a crash, or after HikariSub was closed while frozen, the next start also opens a report window over the Home page, with the same offer under **Your work**. Apart from the bare record that [usage data](/en/docs/help/what-is-sent#crash-and-freeze-reports) sends, the report goes only if you send it, take it to GitHub or turn on **Always send crash reports**: see [Crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports). HikariSub writes no crash dumps.
+After a crash, or after HikariSub was closed while frozen, the next start also opens a report window over the Home page, with the same offer under **Your work**. Apart from the bare record that [usage data](/en/docs/help/what-is-sent#crash-and-freeze-reports) sends, the report goes only if you send it, take it to GitHub or turn on **Always send crash reports**: see [Crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports). The record and the report wait in the cache folder, listed [below](#where-things-are). HikariSub writes no crash dumps.
 
 ### Autosaves
 
@@ -78,12 +78,12 @@ The work of a HikariSub that is still running is never deleted. Autosaves from H
 | Autosaves | `recovery` in the user folder | `recovery` in the user folder |
 | Index files and the audio cache | `%LOCALAPPDATA%\HikariSub\cache` | `~/.cache/hikarisub` |
 | Downloaded updates | `%LOCALAPPDATA%\HikariSub\Updates` | `~/.cache/HikariSub/Updates` |
-| [Usage data](/en/docs/help/what-is-sent) waiting to be sent, and [crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports) | `analytics-queue.json`, the crash and freeze records, and `reports` in `%LOCALAPPDATA%\HikariSub\cache` | `analytics-queue.json`, the crash and freeze records, and `reports` in `~/.cache/hikarisub` |
+| [Usage data](/en/docs/help/what-is-sent) waiting to be sent, and [crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports) | `analytics-queue.json`, `crash-record.txt`, `hang-record.txt` and `reports` in `%LOCALAPPDATA%\HikariSub\cache` | `analytics-queue.json`, `crash-record.txt`, `hang-record.txt` and `reports` in `~/.cache/hikarisub` |
 
 - **Help › Open user folder** opens the user folder.
 - A portable copy keeps its user folder inside its own folder, as `user`. Its index files and audio cache go to the cache folder above.
 - Uninstalling or updating HikariSub never deletes your user folder. [Install](/en/docs/get-started/install#uninstall) says how to remove it.
-- HikariSub writes no log file and no crash dumps. The `reports` folder holds a report waiting for you, the Log's last 200 lines with names replaced, and the files of **Report an issue** until you close it.
+- HikariSub writes no log file and no crash dumps. `crash-record.txt` and `hang-record.txt` are the short records of a crash or a freeze, read at the next start. The `reports` folder holds a report waiting for you (`crash-report.json`), the Log's last 200 lines with names replaced (`log-tail.txt`), and the screenshot and `.zip` of **Report an issue** until you close it.
 
 [Settings](/en/docs/customize/settings#where-settings-are-kept) explains the settings file, and how to reset settings from the Settings window.
 

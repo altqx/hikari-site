@@ -36,7 +36,7 @@ To open it:
   <figcaption>Help › Open user folder.</figcaption>
 </figure>
 
-The index files of your videos and the audio cache are not in the user folder. HikariSub can make them again, so they go to a cache folder instead: `%LOCALAPPDATA%\HikariSub\cache` on Windows, `~/.cache/hikarisub` on Linux. Portable copies use these too.
+The index files of your videos and the audio cache are not in the user folder. HikariSub can make them again, so they go to a cache folder instead: `%LOCALAPPDATA%\HikariSub\cache` on Windows, `~/.cache/hikarisub` on Linux. Portable copies use these too. The same folder holds [crash and freeze reports](/en/docs/help/reporting-problems#crash-and-freeze-reports) and the [usage data](/en/docs/help/what-is-sent) waiting to be sent.
 
 To use another folder, start HikariSub with the environment variable `HIKARISUB_USER_DIR` set to it.
 
@@ -53,16 +53,21 @@ automation/
   autoload/             scripts that load at start: the bundled ones and yours
   include/              modules that scripts require
 dictionaries/           spelling dictionaries (.dic and .aff) and UserDic.udic
-Harper/                 the grammar check's files, with a copy of your dictionary words
+Harper/                 the grammar checker's dictionary and data, kept by harper-ls
+Import/                 the legacy settings import's snapshots, for Roll back…
+ReplaceBackup/          copies of files made before Replace in subtitles changes them
 catalogs/               style catalogs (.sty) and FontCatalogs.txt
 presets/                layouts.json, your saved layouts
 recovery/               autosaved copies of your files
 config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
 log/  temp/  autosave/  folders scripts write to
 .bundled-files          which bundled version each copied file came from
+.old-folders            hidden: the earlier folders were moved in, so it isn't done again
 ```
 
 Some files appear only once you use what they belong to. Edit `hikari.ini` only while HikariSub is closed: a running HikariSub writes its own values over it.
+
+[Roll back…](/en/docs/get-started/moving-from-legacy) uses `Import`, and [Replace in subtitles](/en/docs/basics/find-and-replace#searching-files) writes to `ReplaceBackup`; delete old copies there when you no longer need them. `.old-folders` records that the [earlier folders were moved in](#moving-in-from-earlier-versions); leave it in place.
 
 To add a script that loads at start, put it in `automation/autoload`. To add a spelling language, put its `.dic` and `.aff` files in `dictionaries`. See [Writing scripts](/en/docs/automation/writing-scripts#where-scripts-live) and [Spelling](/en/docs/checking/spelling#dictionaries).
 
