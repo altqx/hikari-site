@@ -51,16 +51,6 @@
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
     },
-    "content/docs/typesetting/images/perspective-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
-      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
-    },
-    "content/docs/typesetting/images/perspective-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
-      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
-    },
     "content/docs/karaoke/images/kanji-timer-light.webp": {
       "source": "recaptured at qt 98396e53a: coord2 hikari_ui_shell_tests kanjiTimerScreenshots under vx11 (offscreen, 1920x1080 screen), ka8-multi-light.png, 920x521 uncropped",
       "surface": "Kanji timer window, Multi-highlight (#) on, Furigana off, test song kanji-shots.ass",
@@ -367,7 +357,7 @@
       "credit": ""
     },
     "content/docs/typesetting/images/perspective-plane-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-light.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11 (offscreen), vt3-perspective-plane-light.png",
       "surface": "Video panel with Perspective, the surrounding plane and the grid, on a test frame",
       "credit": ""
     },
@@ -397,7 +387,7 @@
       "credit": ""
     },
     "content/docs/typesetting/images/perspective-plane-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11, vt3-perspective-plane-dark.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_shell_tests visualPerspectiveScreenshots under vx11 (offscreen), vt3-perspective-plane-dark.png",
       "surface": "Video panel with Perspective, the surrounding plane and the grid, on a test frame",
       "credit": ""
     },
@@ -667,12 +657,12 @@
       "credit": ""
     },
     "content/docs/checking/images/grammar-menu-light.webp": {
-      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-menu-light.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 640x302+640+340 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-menu-light.png, crop 640x276+640+340",
       "surface": "Line editor text with grammar underlines and the right-click menu on a finding (test fixture shots.ass)",
       "credit": ""
     },
     "content/docs/checking/images/grammar-menu-dark.webp": {
-      "source": "origin/evidence/w6-gr1 2bf5b1dc0aeeab0fb1a005640afe190ca06d736b gr1-menu-dark.png (grammar_ui_tests screenshots, taken at 7a519e4f2), crop 640x302+640+272 (to qt c1a0a65b0: SpellCheckerPanel.qml, ToastStack.qml, application_grammar.cpp, harper_client.cpp and grammar.cpp unchanged; the Main.qml and SettingsDialog.qml changes are outside this surface)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-menu-dark.png, crop 640x276+640+272",
       "surface": "Line editor text with grammar underlines and the right-click menu on a finding (test fixture shots.ass)",
       "credit": ""
     },
@@ -697,12 +687,12 @@
       "credit": ""
     },
     "content/docs/checking/images/grammar-settings-light.webp": {
-      "source": "recaptured at qt de3b0c316e9a301df6632e7e685553f4eb27e81d: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-settings-light.png, whole image",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-settings-light.png, whole image",
       "surface": "Settings window, Spelling & grammar page",
       "credit": ""
     },
     "content/docs/checking/images/grammar-settings-dark.webp": {
-      "source": "recaptured at qt de3b0c316e9a301df6632e7e685553f4eb27e81d: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-settings-dark.png, whole image",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-settings-dark.png, whole image",
       "surface": "Settings window, Spelling & grammar page",
       "credit": ""
     },
@@ -765,6 +755,26 @@
       "source": "recaptured at main 350c1152a3560230913ce89d163ebd52766cc5ce: coord2 hikari_ui_crash_report_session_tests under vx11 (offscreen, 1920x1080 screen), report-issue-finish-dark.png, whole image",
       "surface": "Report an issue, Finish on GitHub",
       "credit": ""
+    },
+    "content/docs/typesetting/images/visual-tools-bar-light.webp": {
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_shell_tests visualToolbarAdaptiveScreenshots under vx11 (offscreen), dummy video, vb1-short-more-options-light.png, crop 935x372+0+92",
+      "surface": "Short Video panel with Perspective, the rail ending in More tools and the bar's More options open, on the dummy video",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/visual-tools-bar-dark.webp": {
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_shell_tests visualToolbarAdaptiveScreenshots under vx11 (offscreen), dummy video, vb1-short-more-options-dark.png, crop 935x372+0+92",
+      "surface": "Short Video panel with Perspective, the rail ending in More tools and the bar's More options open, on the dummy video",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/perspective-light.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
+      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/typesetting/images/perspective-dark.webp": {
+      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
+      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "credit": "Subtitles: Jibrill"
     }
   }
 }

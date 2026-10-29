@@ -444,9 +444,9 @@
         {
             "control": "choice",
             "default": "en_US",
-            "hint": "",
+            "hint": "Words in other languages are checked with the other installed dictionaries for their script. Words in a script with no dictionary are not marked.",
             "key": "editor.dictionaryLanguage",
-            "label": "Dictionary",
+            "label": "Primary language",
             "page": "spelling",
             "section": "Spelling",
             "type": "string",
