@@ -23,12 +23,12 @@
     },
     "src/assets/home/typesetting-light.webp": {
       "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
+      "surface": "Perspective tool on a Thai line (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/typesetting-dark.webp": {
       "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "Perspective tool on a Thai sign (last frame of the corner drag)",
+      "surface": "Perspective tool on a Thai line (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/window-light.webp": {
@@ -577,23 +577,23 @@
       "credit": ""
     },
     "content/docs/typesetting/images/perspective-drag-light-av1.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV line 11 at frame 202, the one-line inspector bar, a Perspective drag of the top-right then the top-left corner recorded with ffmpeg x11grab (794x404), muted, AV1 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai line (muted clip, light)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/typesetting/images/perspective-drag-light-h264.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, light)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV line 11 at frame 202, the one-line inspector bar, a Perspective drag of the top-right then the top-left corner recorded with ffmpeg x11grab (794x404), muted, H.264 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai line (muted clip, light)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/typesetting/images/perspective-drag-dark-av1.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, AV1 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV line 11 at frame 202, the one-line inspector bar, a Perspective drag of the top-right then the top-left corner recorded with ffmpeg x11grab (794x404), muted, AV1 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai line (muted clip, dark)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/typesetting/images/perspective-drag-dark-h264.mp4": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0: coord2 hikarisub (deb copy) under vx11, Jibrill ray MV line 11 on the frame of perspective-light.webp, a Perspective drag of two corners recorded with ffmpeg x11grab, H.264 encode",
-      "surface": "Video panel, a Perspective corner drag on a Thai sign (muted clip, dark)",
+      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV line 11 at frame 202, the one-line inspector bar, a Perspective drag of the top-right then the top-left corner recorded with ffmpeg x11grab (794x404), muted, H.264 encode",
+      "surface": "Video panel, a Perspective corner drag on a Thai line (muted clip, dark)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layouts-light-av1.mp4": {
@@ -767,13 +767,13 @@
       "credit": ""
     },
     "content/docs/typesetting/images/perspective-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
-      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "source": "last frame of perspective-drag-light (recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886, as the clip), lossy WebP q92, the clip poster",
+      "surface": "Video panel, Perspective tool on a Thai line (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/typesetting/images/perspective-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (mockup/home mockups/img, approved on #2) (surface unchanged at qt d24047335)",
-      "surface": "Video panel, Perspective tool on a Thai sign (last frame of the corner drag)",
+      "source": "last frame of perspective-drag-dark (recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886, as the clip), lossy WebP q92, the clip poster",
+      "surface": "Video panel, Perspective tool on a Thai line (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
     }
   }
