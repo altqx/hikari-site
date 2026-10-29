@@ -85,3 +85,32 @@ export function DownloadTable() {
     </>
   );
 }
+
+/** The FAQ's answer to whether 0.1 is out, from the same release data as the download table. */
+export function ReleaseStatus() {
+  const { stable, beta } = downloads;
+
+  if (!stable && !beta) {
+    return (
+      <p data-testid="release-status">
+        Not yet. The first release will be 0.1.0-beta.1. This site gives no date for it.
+      </p>
+    );
+  }
+  if (!stable && beta) {
+    return (
+      <p data-testid="release-status">
+        As a beta: {beta.version}, published {beta.published.slice(0, 10)}. The first stable release will be
+        0.1.0. Get it from <a href="/en/docs/get-started/install">Install</a>, or read the{' '}
+        <a href={beta.notesUrl}>release notes</a>.
+      </p>
+    );
+  }
+  return (
+    <p data-testid="release-status">
+      Yes: {stable?.version}, published {stable?.published.slice(0, 10)}.
+      {beta && ` A newer beta, ${beta.version}, is out too.`} Get it from{' '}
+      <a href="/en/docs/get-started/install">Install</a>.
+    </p>
+  );
+}

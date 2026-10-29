@@ -2,7 +2,7 @@ import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import { AnnotatedImage } from './annotated-image';
 import { AssPreview } from './ass-preview';
-import { DownloadTable } from './download-table';
+import { DownloadTable, ReleaseStatus } from './download-table';
 import { ThemedClip } from './themed-clip';
 import { ThemedImage } from './themed-image';
 
@@ -12,6 +12,7 @@ export function getMDXComponents(components?: MDXComponents) {
     AnnotatedImage,
     AssPreview,
     DownloadTable,
+    ReleaseStatus,
     ThemedClip,
     ThemedImage,
     ...components,
