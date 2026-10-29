@@ -72,9 +72,9 @@ Both wait for **OK** or **Apply** like any other change, so **Cancel** undoes th
 
 ## Where settings are kept
 
-HikariSub keeps one set of settings for each user on the computer, in a file named `hikari.ini`, with your hotkeys. It has no profiles to switch between.
+HikariSub keeps one set of settings for each user on the computer, in `settings.toml`, with your hotkeys in `hotkeys.toml`. It has no profiles to switch between.
 
-The file is in your [user folder](/en/docs/automation/user-folder), with your scripts, dictionaries and saved layouts. **Help › Open user folder** opens it.
+The files are in your [user folder](/en/docs/automation/user-folder), with your scripts, dictionaries and saved layouts. **Help › Open user folder** opens it.
 
 | Copy | Folder |
 | --- | --- |
@@ -82,7 +82,7 @@ The file is in your [user folder](/en/docs/automation/user-folder), with your sc
 | Linux packages | `~/.config/hikarisub/` |
 | Portable zip or tar.gz | `user`, in the folder you unpacked |
 
-Uninstalling or updating HikariSub never deletes your settings. Edit the file only while HikariSub is closed: a running HikariSub writes its own values over it.
+Uninstalling or updating HikariSub never deletes your settings. Edit the files only while HikariSub is closed: a running HikariSub writes its own values over them. [Settings files](/en/docs/automation/user-folder#settings-files) explains them, and what happens to a file that has a mistake in it.
 
 ## Settings from older versions
 

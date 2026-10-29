@@ -66,7 +66,7 @@ Events go to PostHog Cloud EU, at `https://eu.i.posthog.com`.
 
 Events go under a random ID (a UUID), made the first time HikariSub queues an event. It is not made from anything about you or your computer, and is not tied to anything else.
 
-It is kept in your settings, `hikari.ini` in your [user folder](/en/docs/automation/user-folder), as `privacy.usageDataId`.
+It is kept in `state.json` in your [user folder](/en/docs/automation/user-folder#settings-files), as `usageDataId` under `privacy`.
 
 To get a new one, turn **Send anonymous usage data** off, press **Apply**, then turn it on again. **Reset all settings…** also clears it.
 

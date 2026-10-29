@@ -43,7 +43,9 @@ To use another folder, start HikariSub with the environment variable `HIKARISUB_
 ## What's in it
 
 ```text
-hikari.ini              your settings and hotkeys
+settings.toml           your settings
+hotkeys.toml            your hotkeys
+state.json              what HikariSub remembers: window places, recent files and more
 layout.json             the current panel layout
 LastSession.txt         the last session
 Rules.txt               the Fix minor errors rules
@@ -65,11 +67,42 @@ log/  temp/  autosave/  folders scripts write to
 .old-folders            hidden: the earlier folders were moved in, so it isn't done again
 ```
 
-Some files appear only once you use what they belong to. Edit `hikari.ini` only while HikariSub is closed: a running HikariSub writes its own values over it.
+Some files appear only once you use what they belong to. If you used a HikariSub version from before the settings files, `hikari.ini.old` is there too.
 
 [Roll back…](/en/docs/get-started/moving-from-legacy) uses `Import`, and [Replace in subtitles](/en/docs/basics/find-and-replace#searching-files) writes to `ReplaceBackup`; delete old copies there when you no longer need them. `.old-folders` records that the [earlier folders were moved in](#moving-in-from-earlier-versions); leave it in place.
 
 To add a script that loads at start, put it in `automation/autoload`. To add a spelling language, put its `.dic` and `.aff` files in `dictionaries`. See [Writing scripts](/en/docs/automation/writing-scripts#where-scripts-live) and [Spelling](/en/docs/checking/spelling#dictionaries).
+
+## Settings files
+
+Your settings are in three files. Each holds only what differs from the defaults, so a new user folder starts with almost nothing in them.
+
+| File | What it holds |
+| --- | --- |
+| `settings.toml` | What you choose: everything in Settings, the tag buttons, the toolbar and the presets of script dialogs |
+| `hotkeys.toml` | The hotkeys you changed, one table per window: `[global]`, `[grid]`, `[editor]`, `[video]` and `[audio]`, and `[automation]` for scripts |
+| `state.json` | What HikariSub remembers by itself: window and dialog places, the folders pickers open in, recent files, finds and colours, the last answers in script dialogs, the skipped update and the usage data ID |
+
+Each file starts with `version = 1` (`"version": 1` in `state.json`). In `settings.toml` a setting's name is split at its dots, so `audio.cacheFilesLimit` is `cacheFilesLimit` under `[audio]`. In `hotkeys.toml` each line names a command and its keys, with the command's name in a comment after it:
+
+```toml
+[global]
+GLOBAL_SAVE_SUBS = "Ctrl+Shift+S"  # Save
+```
+
+`""` takes a default hotkey away. A command has one hotkey in each window: if you give it a list, only the first is used, and the Log names the rest as ignored. The [Hotkeys](/en/docs/customize/hotkeys) page of Settings is the easier way to change them.
+
+### Editing them by hand
+
+Edit the files only while HikariSub is closed. A running HikariSub writes them from what it has in memory, over your changes, and comments you add are not kept. Keys it doesn't know are kept.
+
+If a file can't be read, because of a mistake in it or a `version` that is missing or newer than 1, HikariSub never writes over it. It renames the file `settings.toml.broken` (or `.broken-2` and on), uses the defaults for what was in it, and shows a notice: "settings.toml could not be read, so its settings are back at their defaults. The file is kept as settings.toml.broken: fix it while HikariSub is closed and give it its name back to use it again." The notice's details name the line and column. Close HikariSub, fix the file, and rename it back.
+
+### From hikari.ini
+
+HikariSub versions before these files kept settings and hotkeys in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, hotkeys.toml and state.json." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
+
+**File › Import legacy settings…** still brings in HikariSub 0.0.x settings, and writes them into these files.
 
 ## Bundled scripts and dictionaries
 
@@ -93,9 +126,9 @@ HikariSub versions before the user folder kept your files in two folders:
 | Settings | `%LOCALAPPDATA%\HikariSub\HikariSub` | `~/.config/HikariSub/HikariSub` |
 | Data: autosaves and scripts | `%APPDATA%\HikariSub\HikariSub` | `~/.local/share/HikariSub/HikariSub` |
 
-The first time HikariSub starts with a user folder that has no `hikari.ini`, it moves their contents in, once. A notice says "Your settings and files moved to …", with the folder; **Details** lists the folders they came from.
+The first time HikariSub starts with a user folder that has no settings (no `settings.toml`, `hikari.ini` or `hikari.ini.old`), it moves their contents in, once. A notice says "Your settings and files moved to …", with the folder; **Details** lists the folders they came from.
 
-- Everything goes into the layout above: `Dictionary` into `dictionaries`, `Catalog` and the font catalogs into `catalogs`, saved layouts into `presets`, `Recovery` into `recovery`, and the Automation folder's contents to the top, with `automation/Autoload` and `Include` merged into `autoload` and `include`.
+- Everything goes into the layout above, and `hikari.ini` is converted [as above](#from-hikariini): `Dictionary` into `dictionaries`, `Catalog` and the font catalogs into `catalogs`, saved layouts into `presets`, `Recovery` into `recovery`, and the Automation folder's contents to the top, with `automation/Autoload` and `Include` merged into `autoload` and `include`.
 - The index files and the audio cache go to the cache folder.
 - A file with the same name as one already in the user folder stays where it was. The notice counts these, and **Details** lists them under **Not moved**.
 - The old DependencyControl stays behind, because HikariSub brings a newer one. The notice says "The old DependencyControl stayed behind: HikariSub brings a newer one."
@@ -117,7 +150,8 @@ A portable copy's user folder is inside its own folder. When you unpack a new ve
 
 | Problem | What to do |
 | --- | --- |
-| After an update, your settings are the defaults | A portable copy doesn't move files in from the folders earlier versions used, and nothing is moved into a user folder that already has a `hikari.ini`. Copy the files across by hand while HikariSub is closed |
+| After an update, your settings are the defaults | A portable copy doesn't move files in from the folders earlier versions used, and nothing is moved into a user folder that already has settings. Copy the files across by hand while HikariSub is closed |
+| A notice says "settings.toml could not be read" (or `hotkeys.toml` or `state.json`) | The file has a mistake in it. See [Editing them by hand](#editing-them-by-hand) |
 | The notice says some items stayed where they were | Your user folder already had items with those names. **Details** lists them under **Not moved**; compare them and copy across what you want |
 | A bundled script you edited doesn't get HikariSub's fixes | Your changed copy is kept. Move it out of the user folder and restart to get the new version |
 | A bundled script you deleted is back | Each start copies in missing bundled files. To keep a script from loading, untick its box in the [Automation panel](/en/docs/automation/automation-panel#script-rows) |
