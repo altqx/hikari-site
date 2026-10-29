@@ -1,6 +1,6 @@
 // Download data from hikari's releases and their update manifests (hikarisub-update.json).
 // The manifest format is hikari's tools/release/make-update-manifest.py on qt; the
-// channels follow docs/qt/distribution.md. Pure functions only: scripts/fetch-downloads.ts
+// channels follow docs/distribution.md. Pure functions only: scripts/fetch-downloads.ts
 // does the network part at build time.
 
 export const appRepo = 'altqx/hikari';
