@@ -47,7 +47,7 @@ settings.toml           your settings
 hotkeys.toml            your hotkeys
 state.json              what HikariSub remembers: window places, recent files and more
 layout.json             the current panel layout
-LastSession.txt         the last session
+last-session.json       the last session
 rules.toml              the Fix minor errors rules
 shapes.toml             your shapes from Edit shapes
 tags.toml               your tags from Edit tags
@@ -117,7 +117,7 @@ The lists you build up are TOML files too, each starting with `version = 1`:
 
 When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `Rules.txt.old`. It is never written again. The Log says, for example, "Rules.txt moved to rules.toml. The old file is kept as Rules.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
 
-Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "rules.toml could not be read, so its list is back at its defaults."
+Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "rules.toml could not be read, so its list is back at its defaults." If the file goes bad while HikariSub is running, for example because you edited it, the next save keeps it as `.broken` and saves the list HikariSub has in its place, with a notice: "rules.toml could not be read, so it is kept as rules.toml.broken and a new one is saved."
 
 ## Bundled scripts and dictionaries
 

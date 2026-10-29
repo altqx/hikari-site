@@ -65,7 +65,7 @@ chmod +x HikariSub-*-linux-x86_64.AppImage
 
 If it does not start because FUSE is missing, run it with `APPIMAGE_EXTRACT_AND_RUN=1` in front of the command.
 
-The AppImage brings its own Qt and the libraries a desktop may lack. Graphics drivers, audio, fonts and glibc come from your system. HikariSub does not add the AppImage to your applications menu itself; a tool such as Gear Lever or AppImageLauncher can. The AppImage updates itself (see [Updates](#updates)), so keep it in a folder you can write to.
+The AppImage brings its own Qt and the libraries a desktop may lack. Graphics drivers, audio, fonts and glibc come from your system. HikariSub does not add the AppImage to your applications menu or register its file types itself, `.hksession` sessions among them; a tool such as Gear Lever or AppImageLauncher can. The AppImage updates itself (see [Updates](#updates)), so keep it in a folder you can write to.
 
 ### Debian and Ubuntu (.deb)
 
@@ -82,13 +82,13 @@ sudo zypper install ./hikarisub-<version>-linux-x86_64.rpm
 
 The packages are not GPG-signed. If dnf refuses the file for that reason, add `--nogpgcheck`. zypper needs `--allow-unsigned-rpm`.
 
-The deb and rpm install HikariSub in `/opt/hikarisub`, with the command `hikarisub`, a menu entry, icons and file types for `.ass`, `.ssa`, `.srt` and `.sub`.
+The deb and rpm install HikariSub in `/opt/hikarisub`, with the command `hikarisub`, a menu entry, icons and file types for `.ass`, `.ssa`, `.srt` and `.sub`, and for `.hksession` sessions.
 
 ### Portable tar.gz
 
 Download `hikarisub-<version>-linux-x86_64.tar.gz`, unpack it and run `hikarisub-linux-x86_64/hikarisub`. It uses the libraries of your system, as the deb and rpm do.
 
-To add it to your applications menu, with its icons and file types, run the script beside it. It writes only to `~/.local/share` and needs no root:
+To add it to your applications menu, with its icons and file types, `.hksession` sessions among them, run the script beside it. It writes only to `~/.local/share` and needs no root:
 
 ```sh
 ./install-desktop-integration.sh
