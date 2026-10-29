@@ -36,7 +36,7 @@ HikariSub comes with these rules, all off at first:
 
 - **Remove space before comma or dot**
 - **Remove doubled spaces**
-- **Replace more than three dots with a suspension point** and **Replace two dots to suspension point**, which both make `...`. A `Rules.txt` made by an earlier version keeps the first one's old name, *Replace more then three dots to suspension point*
+- **Replace more than three dots with a suspension point** and **Replace two dots to suspension point**, which both make `...`. Rules brought over from an earlier version's `Rules.txt` keep the first one's old name, *Replace more then three dots to suspension point*
 - **Replace missing spaces after dot or comma**
 - **Removing japanese suffixes**, such as `-san` and `-chan`
 - Seven rules for common Polish mistakes, such as `sie` for `się`
@@ -96,9 +96,9 @@ Each replace is one undo step in each file it changes, named *Fixing minor error
 
 ## The rules file
 
-The rules are kept in `Rules.txt` in your [settings folder](/en/docs/customize/settings#where-settings-are-kept), with which ones are on. HikariSub reads it the first time the panel opens, and writes it when you close HikariSub. If the file is missing, the rules above are used.
+The rules are kept in `rules.toml` in your [user folder](/en/docs/automation/user-folder#list-files), with which ones are on. An earlier version's `Rules.txt` is converted into it once, and kept as `Rules.txt.old`. HikariSub reads it the first time the panel opens, and writes it when you close HikariSub. If the file is missing, the rules above are used.
 
-[Moving from legacy](/en/docs/get-started/moving-from-legacy) brings in the rules of HikariSub 0.0.x. A line of the file that can't be read is reported in a notice.
+[Moving from legacy](/en/docs/get-started/moving-from-legacy) brings in the rules of HikariSub 0.0.x. When an old `Rules.txt` is converted, a rule in it that can't be read is named in a notice. A `rules.toml` that can't be read is handled as the [settings files](/en/docs/automation/user-folder#editing-them-by-hand) are.
 
 ## Keys
 

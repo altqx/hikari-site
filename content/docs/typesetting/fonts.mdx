@@ -77,11 +77,11 @@ From the picker, the **+** button adds the chosen font to a catalog, or makes a 
 
 ### Loading catalogs
 
-**Load from a file** reads catalogs from a `.txt` file, such as one a friend sent you. New catalogs are added. If some already exist with other fonts, a window lists them, and lets you **Merge**, **Replace**, **Rename** or **Skip** each.
+**Load from a file** reads catalogs from a `fonts.toml` file, or a `FontCatalogs.txt` from HikariSub 0.0.x, such as one a friend sent you. New catalogs are added. If some already exist with other fonts, a window lists them, and lets you **Merge**, **Replace**, **Rename** or **Skip** each.
 
 ### Where catalogs are kept
 
-Catalogs are saved in `FontCatalogs.txt`, in the `catalogs` folder of your [user folder](/en/docs/automation/user-folder), as you change them. The window's footer says **Saved** after each safety copy. Changes to catalogs have no undo.
+Catalogs are saved in `fonts.toml`, in the `catalogs` folder of your [user folder](/en/docs/automation/user-folder#list-files), as you change them. The window's footer says **Saved** after each safety copy, `fonts.autosave-0.toml` to `fonts.autosave-2.toml` beside it. An earlier version's `FontCatalogs.txt` is converted into `fonts.toml` once, and kept as `FontCatalogs.txt.old`. Changes to catalogs have no undo.
 
 ## Your Fonts folder
 

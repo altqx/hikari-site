@@ -48,9 +48,9 @@ hotkeys.toml            your hotkeys
 state.json              what HikariSub remembers: window places, recent files and more
 layout.json             the current panel layout
 LastSession.txt         the last session
-Rules.txt               the Fix minor errors rules
-ShapesSettings.txt      your shapes from Edit shapes
-AllTagsSettings.txt     your tags from Edit tags
+rules.toml              the Fix minor errors rules
+shapes.toml             your shapes from Edit shapes
+tags.toml               your tags from Edit tags
 automation/
   autoload/             scripts that load at start: the bundled ones and yours
   include/              modules that scripts require
@@ -58,7 +58,7 @@ dictionaries/           spelling dictionaries (.dic and .aff) and UserDic.udic
 Harper/                 the grammar checker's dictionary and data, kept by harper-ls
 Import/                 the legacy settings import's snapshots, for Roll back…
 ReplaceBackup/          copies of files made before Replace in subtitles changes them
-catalogs/               style catalogs (.sty) and FontCatalogs.txt
+catalogs/               style catalogs (.sty) and fonts.toml, your font catalogs
 presets/                layouts.json, your saved layouts
 recovery/               autosaved copies of your files
 config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
@@ -67,7 +67,7 @@ log/  temp/  autosave/  folders scripts write to
 .old-folders            hidden: the earlier folders were moved in, so it isn't done again
 ```
 
-Some files appear only once you use what they belong to. If you used a HikariSub version from before the settings files, `hikari.ini.old` is there too.
+Some files appear only once you use what they belong to. If you used a HikariSub version from before these files, the old ones are there too, with `.old` added: `hikari.ini.old`, `Rules.txt.old` and so on.
 
 [Roll back…](/en/docs/get-started/moving-from-legacy) uses `Import`, and [Replace in subtitles](/en/docs/basics/find-and-replace#searching-files) writes to `ReplaceBackup`; delete old copies there when you no longer need them. `.old-folders` records that the [earlier folders were moved in](#moving-in-from-earlier-versions); leave it in place.
 
@@ -103,6 +103,21 @@ If a file can't be read, because of a mistake in it or a `version` that is missi
 HikariSub versions before these files kept settings and hotkeys in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, hotkeys.toml and state.json." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
 
 **File › Import legacy settings…** still brings in HikariSub 0.0.x settings, and writes them into these files.
+
+### List files
+
+The lists you build up are TOML files too, each starting with `version = 1`:
+
+| File | What it holds | Was |
+| --- | --- | --- |
+| `rules.toml` | The [Fix minor errors](/en/docs/checking/fix-minor-errors#the-rules-file) rules, one `[[rule]]` each | `Rules.txt` |
+| `shapes.toml` | The shapes of [Edit shapes](/en/docs/typesetting/shapes-and-tags-editors), one `[[shape]]` each | `ShapesSettings.txt` |
+| `tags.toml` | The tags of [Edit tags](/en/docs/typesetting/shapes-and-tags-editors), one `[[tag]]` each | `AllTagsSettings.txt` |
+| `catalogs/fonts.toml` | The [font catalogs](/en/docs/typesetting/fonts#where-catalogs-are-kept), one `[[catalog]]` each, with its safety copies `fonts.autosave-0.toml` to `fonts.autosave-2.toml` | `FontCatalogs.txt` and `FontCatalogsAutosave0.txt` to `2.txt` |
+
+When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `Rules.txt.old`. It is never written again. The Log says, for example, "Rules.txt moved to rules.toml. The old file is kept as Rules.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
+
+Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "rules.toml could not be read, so its list is back at its defaults."
 
 ## Bundled scripts and dictionaries
 
@@ -151,7 +166,7 @@ A portable copy's user folder is inside its own folder. When you unpack a new ve
 | Problem | What to do |
 | --- | --- |
 | After an update, your settings are the defaults | A portable copy doesn't move files in from the folders earlier versions used, and nothing is moved into a user folder that already has settings. Copy the files across by hand while HikariSub is closed |
-| A notice says "settings.toml could not be read" (or `hotkeys.toml` or `state.json`) | The file has a mistake in it. See [Editing them by hand](#editing-them-by-hand) |
+| A notice says "settings.toml could not be read" (or another of the files above) | The file has a mistake in it. See [Editing them by hand](#editing-them-by-hand) |
 | The notice says some items stayed where they were | Your user folder already had items with those names. **Details** lists them under **Not moved**; compare them and copy across what you want |
 | A bundled script you edited doesn't get HikariSub's fixes | Your changed copy is kept. Move it out of the user folder and restart to get the new version |
 | A bundled script you deleted is back | Each start copies in missing bundled files. To keep a script from loading, untick its box in the [Automation panel](/en/docs/automation/automation-panel#script-rows) |

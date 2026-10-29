@@ -108,4 +108,4 @@ The **Preview** shows how the tag looks in Hydra's inspector bar, and what **Set
 
 ## Where they are kept
 
-The shapes are saved in `ShapesSettings.txt` and the tags in `AllTagsSettings.txt`, in your user folder, beside your settings files. [Settings](/en/docs/customize/settings#where-settings-are-kept) says where that is. Their format is HikariSub 0.0.x's. A tags file that doesn't start with `HYDRA2.0`, from an older version, is replaced by the defaults.
+The shapes are saved in `shapes.toml` and the tags in `tags.toml`, in your [user folder](/en/docs/automation/user-folder#list-files), beside your settings files. An earlier version's `ShapesSettings.txt` and `AllTagsSettings.txt` are converted into them once, and kept with `.old` added. An `AllTagsSettings.txt` that doesn't start with `HYDRA2.0`, from an older version, converts to the default tags.
