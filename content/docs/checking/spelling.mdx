@@ -65,7 +65,6 @@ Right-click a marked word in the Line editor's text for:
 
 - suggestions to replace it with, at the top
 - **Spellchecker**, which turns spell checking on or off
-- **Installed languages**, to choose the dictionary
 - **Add word "…" to dictionary**
 
 Where the [grammar check](/en/docs/checking/grammar#in-the-line-editor) also found something, the menu shows the grammar finding instead.
@@ -76,17 +75,19 @@ With **Show suggestions on double-click** on, double-clicking a marked word open
 
 HikariSub uses Hunspell dictionaries. A dictionary is a pair of files with the same name: `en_US.dic` and `en_US.aff`, for example. Every package, on Windows and Linux, comes with English (US), Korean, Polish, Tamil and Thai.
 
-To add a language, put its two files in the `dictionaries` folder of your [user folder](/en/docs/automation/user-folder), then choose it. **Help › Open user folder** opens it. The dictionaries that come with HikariSub are copied there too. HikariSub looks there first, then in the `Dictionary` folder that comes with the program. Dictionaries made for LibreOffice use the same files.
+Every installed dictionary checks, not only one. Each word goes to the dictionaries of its own script: a Hangul word to Korean, a Tamil word to Tamil, a Thai word to Thai, and a Latin word to English and Polish. A word is marked only when none of them accepts it, so an English line with Korean or Polish words marks only real misspellings. A word in a script with no installed dictionary, such as Cyrillic without a Russian one, is not marked.
 
-Choose the language in **File › Settings › Spelling & grammar › Spelling**, or from **Installed languages** in the Line editor's right-click menu. Changing it checks the text again.
+To add a language, put its two files in the `dictionaries` folder of your [user folder](/en/docs/automation/user-folder). HikariSub finds it the next time it starts. **Help › Open user folder** opens it. The dictionaries that come with HikariSub are copied there too. HikariSub looks there first, then in the `Dictionary` folder that comes with the program. Dictionaries made for LibreOffice use the same files.
+
+The **Primary language**, in **File › Settings › Spelling & grammar › Spelling** or on the Editing step of [Getting started](/en/docs/get-started/getting-started-window#editing), comes first in the suggestions; the other dictionaries of the word's script follow. There is no switching between dictionaries. Changing it checks the text again.
 
 | Setting | Does | Default |
 | --- | --- | --- |
 | **Check spelling** | Marks misspelled words in the Line editor and the Grid | On |
-| **Dictionary** | The language to check | English (US) |
+| **Primary language** | The language whose suggestions come first | English (US) |
 | **Show suggestions on double-click** | Double-clicking a marked word opens the suggestions | Off |
 
-On a Polish system, the dictionary is Polish at first.
+On a Polish system, the primary language is Polish at first. A profile from an earlier version, and settings you [import from legacy](/en/docs/get-started/moving-from-legacy), keep their dictionary as the primary language.
 
 If no dictionary is found, HikariSub turns **Check spelling** off and a notice names the folder it looked in. The Spellchecker panel then offers **Spelling settings…**, which opens the page above.
 
