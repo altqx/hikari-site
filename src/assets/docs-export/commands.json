@@ -2337,7 +2337,7 @@
             ],
             "id": 5029,
             "menus": [
-                "Subtitles > Hide tags"
+                "View > Hide tags"
             ],
             "name": "Hide tags",
             "symbol": "GLOBAL_HIDE_TAGS"
@@ -2537,7 +2537,7 @@
             ],
             "id": 5051,
             "menus": [
-                "Video > Set audio position to video time"
+                "Audio > Set audio position to video time"
             ],
             "name": "Set audio position to video time",
             "symbol": "GLOBAL_SET_AUDIO_FROM_VIDEO"
@@ -2548,7 +2548,7 @@
             ],
             "id": 5052,
             "menus": [
-                "Video > Set audio marker to video time"
+                "Audio > Set audio marker to video time"
             ],
             "name": "Set audio marker to video time",
             "symbol": "GLOBAL_SET_AUDIO_MARK_FROM_VIDEO"
@@ -2869,7 +2869,7 @@
             ],
             "id": 5169,
             "menus": [
-                "Subtitles > Hide tags in the line editor"
+                "View > Hide tags in the line editor"
             ],
             "name": "Hide tags in the line editor",
             "symbol": "GLOBAL_EDITOR_HIDE_TAGS"

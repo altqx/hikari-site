@@ -2,12 +2,12 @@
   "_doc": "Where each app image comes from (decisions.md, Media). Captures under vx11 from the coordinator's qt build tree; the example subtitles are credited \"Subtitles: Jibrill\".",
   "images": {
     "src/assets/home/hero-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
       "surface": "Editing layout, ray MV at 1:15.75",
       "credit": "Subtitles: Jibrill"
     },
     "src/assets/home/hero-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
       "surface": "Editing layout, ray MV at 1:15.75",
       "credit": "Subtitles: Jibrill"
     },
@@ -32,22 +32,22 @@
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/window-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-light.webp (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
       "surface": "Editing layout, ray MV (the README hero)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/window-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/hero-dark.webp (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
       "surface": "Editing layout, ray MV (the README hero)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/typesetting-light.webp": {
-      "source": "recaptured at qt 73cf6593b42df4457883b7b2bff5b2875044c38e: coord2 (built at a6d3683a5, the same tree) hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Typesetting layout from the title-bar layout button, 1600x960 window scaled to 1000x600",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting from the title-bar layout button, 1600x960 window scaled to 1000x600",
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/get-started/images/typesetting-dark.webp": {
-      "source": "recaptured at qt 73cf6593b42df4457883b7b2bff5b2875044c38e: coord2 (built at a6d3683a5, the same tree) hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Typesetting layout from the title-bar layout button, 1600x960 window scaled to 1000x600",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting from the title-bar layout button, 1600x960 window scaled to 1000x600",
       "surface": "Typesetting layout",
       "credit": "Subtitles: Jibrill"
     },
@@ -142,17 +142,17 @@
       "credit": ""
     },
     "content/docs/customize/images/themes.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/themes.webp (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window in light, dark, high contrast white and high contrast black, each scaled to 600x360 and tiled 2x2 with 4 px transparent margins (montage -geometry 600x360+4+4)",
       "surface": "The window in the four themes, ray MV",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layouts-still-light.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-light.webp, first frame (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window scaled to 1000x600, the clip's first state without the pointer",
       "surface": "Editing layout, ray MV (poster of the layouts clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-light.webp": {
-      "source": "recaptured at qt 73844a4d43a607c3035949770c857e7ceb0f2be3: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-light.png, top-left 640x312",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-light.png, top-left 640x312",
       "surface": "Layout menu open under the title-bar switcher, five built-in layouts and two saved layouts",
       "credit": ""
     },
@@ -177,12 +177,12 @@
       "credit": ""
     },
     "content/docs/customize/images/layouts-still-dark.webp": {
-      "source": "origin/qt 4131b3084fc096fc43c0def599886caffff585ed docs/readme/layouts-dark.webp, first frame (surface unchanged at qt d24047335)",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window scaled to 1000x600, the clip's first state without the pointer",
       "surface": "Editing layout, ray MV (poster of the layouts clip)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-dark.webp": {
-      "source": "recaptured at qt 73844a4d43a607c3035949770c857e7ceb0f2be3: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-dark.png, top-left 640x312",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-dark.png, top-left 640x312",
       "surface": "Layout menu open under the title-bar switcher, five built-in layouts and two saved layouts",
       "credit": ""
     },
@@ -607,37 +607,37 @@
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layouts-light-av1.mp4": {
-      "source": "recaptured at qt 73cf6593b42df4457883b7b2bff5b2875044c38e: coord2 (built at a6d3683a5, the same tree) hikarisub (deb copy) under vx11, fresh profile, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window scaled to 1000x600, switching layouts from the title-bar layout button recorded with ffmpeg x11grab, AV1 encode",
       "surface": "The window switching Editing, Timing, Translation (Not now to Translation mode), Typesetting and Karaoke from the title-bar layout button (muted clip, light)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layouts-light-h264.mp4": {
-      "source": "recaptured at qt 73cf6593b42df4457883b7b2bff5b2875044c38e: coord2 (built at a6d3683a5, the same tree) hikarisub (deb copy) under vx11, fresh profile, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window scaled to 1000x600, switching layouts from the title-bar layout button recorded with ffmpeg x11grab, H.264 encode",
       "surface": "The window switching Editing, Timing, Translation (Not now to Translation mode), Typesetting and Karaoke from the title-bar layout button (muted clip, light)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layouts-dark-av1.mp4": {
-      "source": "recaptured at qt 73cf6593b42df4457883b7b2bff5b2875044c38e: coord2 (built at a6d3683a5, the same tree) hikarisub (deb copy) under vx11, fresh profile, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, AV1 encode",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window scaled to 1000x600, switching layouts from the title-bar layout button recorded with ffmpeg x11grab, AV1 encode",
       "surface": "The window switching Editing, Timing, Translation (Not now to Translation mode), Typesetting and Karaoke from the title-bar layout button (muted clip, dark)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layouts-dark-h264.mp4": {
-      "source": "recaptured at qt 73cf6593b42df4457883b7b2bff5b2875044c38e: coord2 (built at a6d3683a5, the same tree) hikarisub (deb copy) under vx11, fresh profile, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, recorded with ffmpeg x11grab, H.264 encode",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window scaled to 1000x600, switching layouts from the title-bar layout button recorded with ffmpeg x11grab, H.264 encode",
       "surface": "The window switching Editing, Timing, Translation (Not now to Translation mode), Typesetting and Karaoke from the title-bar layout button (muted clip, dark)",
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/automation/images/help-open-user-folder-light.webp": {
-      "source": "origin/evidence/w6-ud1 9bcd15529 ud1-help-menu-light.png (taken at qt a03505a62; the UD1 merge 079644545 changes only docs/qt/coverage.md after it), crop 590x262+0+0, leaving out the move notice and its path",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_shell_tests userFolderScreenshots under vx11, ud1-help-menu-light.png, crop 590x262+0+0, leaving out the move notice and its path",
       "surface": "Help menu open, Open user folder highlighted, over the Home page",
       "credit": ""
     },
     "content/docs/automation/images/help-open-user-folder-dark.webp": {
-      "source": "origin/evidence/w6-ud1 9bcd15529 ud1-help-menu-dark.png (taken at qt a03505a62; the UD1 merge 079644545 changes only docs/qt/coverage.md after it), crop 590x262+0+0, leaving out the move notice and its path",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_shell_tests userFolderScreenshots under vx11, ud1-help-menu-dark.png, crop 590x262+0+0, leaving out the move notice and its path",
       "surface": "Help menu open, Open user folder highlighted, over the Home page",
       "credit": ""
     },
     "content/docs/customize/images/karaoke-layout-light.webp": {
-      "source": "recaptured at qt 73844a4d43a607c3035949770c857e7ceb0f2be3: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, Karaoke chosen from the title-bar layout button, Grid scrolled one notch to show line 34",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting and Karaoke from the title-bar layout button (the Grid shows line 34 without scrolling), 1600x960 window scaled to 1000x600",
       "surface": "Karaoke layout, ray MV, Audio panel in Karaoke mode",
       "credit": "Subtitles: Jibrill"
     },
@@ -647,7 +647,7 @@
       "credit": ""
     },
     "content/docs/customize/images/karaoke-layout-dark.webp": {
-      "source": "recaptured at qt 73844a4d43a607c3035949770c857e7ceb0f2be3: coord2 hikarisub (deb copy) under vx11, 1600x960 window scaled to 1000x600, Jibrill ray MV at 1:15.75 on line 34, Karaoke chosen from the title-bar layout button, Grid scrolled one notch to show line 34",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting and Karaoke from the title-bar layout button (the Grid shows line 34 without scrolling), 1600x960 window scaled to 1000x600",
       "surface": "Karaoke layout, ray MV, Audio panel in Karaoke mode",
       "credit": "Subtitles: Jibrill"
     },
