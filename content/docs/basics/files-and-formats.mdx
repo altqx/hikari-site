@@ -154,7 +154,19 @@ HikariSub keeps copies of changed files as you work, 20 seconds after a change. 
 A session is the set of open tabs, with their videos, audio and positions. **File › Last session** can:
 
 - **Load last session**, the tabs open when you last quit.
-- **Load session from file** or **Save session to file**, as a `.kls` file.
+- **Load session from file** or **Save session to file**, as a `.hksession` file.
 - Ask whether to load the last session when HikariSub starts, or load it without asking.
 
 If a file the session names has moved, a bar offers to **Retry**, **Relink…** it, or **Remove** it.
+
+**Load session from file** also opens `.kls` sessions from HikariSub 0.0.x, but HikariSub never writes one: a name you type ending in `.kls` is saved as `.hksession`. Opening a `.hksession` or `.kls` file from your file manager, or dropping one on the window on its own, loads it the same way.
+
+A session file is JSON, with each tab's files and positions. Its paths are full paths, so a session made on one computer opens the same files only where they have the same paths.
+
+### Files on another computer
+
+When a session names files on a network share, such as `\\server\subs\ep01.ass`, HikariSub asks first: "This session opens files on another computer.", naming the computers. Nothing is contacted until you press **Open**, and **Open** reaches only the computers it named. **Cancel** loads nothing.
+
+### The last session
+
+The last session is kept in `last-session.json` in your [user folder](/en/docs/automation/user-folder). HikariSub versions before it kept `LastSession.txt`: the first start of a newer version converts it once and keeps it as `LastSession.txt.old`, and the offer to restore after a crash still works. If `last-session.json` can't be read, it is kept as `last-session.json.broken`, the Log names the file and line, and no tabs are restored.
