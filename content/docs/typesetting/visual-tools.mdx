@@ -10,7 +10,7 @@ import dragLightH264 from './images/perspective-drag-light-h264.mp4';
 import dragDarkAv1 from './images/perspective-drag-dark-av1.mp4';
 import dragDarkH264 from './images/perspective-drag-dark-h264.mp4';
 
-The tools sit in the rail on the left of the Video panel. Click one, or press its key while the pointer is over the video: <kbd>P</kbd> for Text positioning, <kbd>R</kbd> for Z rotation. Choosing the tool that is already on goes back to the Position pointer.
+The tools sit in the rail on the left of the Video panel. Click one, or press its key while the pointer is over the video: <kbd>P</kbd> for Text positioning, <kbd>R</kbd> for Z rotation. Choosing the tool that is already on goes back to the Position pointer. The rail's checked button is the tool that is on; hover it for its name. When the Video panel is too short for every tool, the rail shows the ones that fit and ends in **More tools**, a menu of the rest. The tool that is on always stays in view.
 
 ## Parts of the Video panel
 
@@ -25,7 +25,7 @@ The tools sit in the rail on the left of the Video panel. Click one, or press it
 
 1. **The tool rail.** Hover a tool to see its name and key.
 2. **Handles** of the current tool, here the corners of the perspective quad.
-3. **The inspector bar:** the tool's options for the active line.
+3. **The inspector bar:** the tool's options for the active line, on one line. When they don't fit, the last groups fold under **More options**, where typing or scrubbing a value works at once, as on the bar. The bar has the same height for every tool, so switching tools never resizes the video.
 4. **Exact values.** Type a number and press Enter, or drag across the field's label to scrub it; hold Shift to scrub in tenths.
 
 <small>Subtitles: Jibrill.</small>
@@ -59,7 +59,7 @@ When a line has no `\pos`, the handles start where the line would show, from its
 
 ## Using each tool
 
-- **Position pointer:** a cross follows the pointer with its coordinates, which the bar also shows. **Copy video position** copies them. Ctrl+click or middle-click puts `\pos` there. Only with this tool does the wheel zoom the video, a right-click open its menu and a double-click go full screen.
+- **Position pointer:** a cross follows the pointer with its coordinates. It has no inspector bar: its **X**, **Y** and **Copy video position** sit at the end of the video's times line, and **Copy video position** copies them. Ctrl+click or middle-click puts `\pos` there. Only with this tool does the wheel zoom the video, a right-click open its menu and a double-click go full screen.
 - **Text positioning:** drag anywhere on the video to move the line; you need not grab it. Shift locks to one axis. A right-click puts the line at the pointer. **Set position by rectangle** places it by a rectangle you draw instead, using the alignment you choose.
 - **Text moving:** the left button sets the start point and the right button the end point. The bar's **Start** and **End** fields include the times, in milliseconds from the line's start. **Set movement using 2 points and the video position** builds the move from a point on two frames.
 - **Text scaling:** left-drag scales the width, right-drag the height, and middle-drag or Shift+drag both. **Set scale by rectangle** scales the line to fit a rectangle.
