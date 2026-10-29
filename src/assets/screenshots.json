@@ -62,32 +62,32 @@
       "credit": ""
     },
     "content/docs/karaoke/images/template-editor-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-editor-light.png, crop of the panel 796x536+800+60",
       "surface": "Template editor, template line 3 previewed on line 5",
       "credit": ""
     },
     "content/docs/karaoke/images/template-editor-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-editor-dark.png, crop of the panel 796x536+800+60",
       "surface": "Template editor, template line 3 previewed on line 5",
       "credit": ""
     },
     "content/docs/karaoke/images/template-problem-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-problem-light.png, crop of the panel 796x536+800+60",
       "surface": "Template editor with a problem in template line 3",
       "credit": ""
     },
     "content/docs/karaoke/images/template-problem-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-problem-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-problem-dark.png, crop of the panel 796x536+800+60",
       "surface": "Template editor with a problem in template line 3",
       "credit": ""
     },
     "content/docs/karaoke/images/template-trust-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-light.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-trust-light.png, crop of the panel 796x536+800+60",
       "surface": "Template editor asking to trust the file",
       "credit": ""
     },
     "content/docs/karaoke/images/template-trust-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots d218ff3df ke2-284/linux/template-trust-dark.png, crop of the panel, 796x536 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-trust-dark.png, crop of the panel 796x536+800+60",
       "surface": "Template editor asking to trust the file",
       "credit": ""
     },
@@ -102,32 +102,32 @@
       "credit": ""
     },
     "content/docs/karaoke/images/template-video-light.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-light.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-editor-light.png, crop of the video 758x424+36+98",
       "surface": "The video with the Preview · Line 5 · not applied badge",
       "credit": ""
     },
     "content/docs/karaoke/images/template-video-dark.webp": {
-      "source": "origin/evidence/w6-ke2-shots 689f5d3ed ke2-284/linux/template-editor-dark.png, crop of the video, 760x368 (KE2 files unchanged at qt 9370fedc8; surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests screenshots under vx11 (offscreen, 1920x1080 screen), template-editor-dark.png, crop of the video 758x424+36+98",
       "surface": "The video with the Preview · Line 5 · not applied badge",
       "credit": ""
     },
     "content/docs/karaoke/images/template-presets-light.webp": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-menu-light.png), crop of the Template editor panel, 800x622",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests presetScreenshots under vx11 (offscreen), template-presets-menu-light.png, crop of the Template editor panel 800x622+800+60",
       "surface": "Template editor, New › From a preset open on a file with no templates",
       "credit": ""
     },
     "content/docs/karaoke/images/template-presets-dark.webp": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-menu-dark.png), crop of the Template editor panel, 800x622",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests presetScreenshots under vx11 (offscreen), template-presets-menu-dark.png, crop of the Template editor panel 800x622+800+60",
       "surface": "Template editor, New › From a preset open on a file with no templates",
       "credit": ""
     },
     "content/docs/karaoke/images/template-preset-letters-light.webp": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-preview-letters-light.png), crop of the top of the video, 758x100",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests presetScreenshots under vx11 (offscreen), template-presets-preview-letters-light.png, crop of the top of the video 758x100+36+98",
       "surface": "The video previewing the Falling letters preset under the Preview · Line 2 · not applied badge",
       "credit": ""
     },
     "content/docs/karaoke/images/template-preset-letters-dark.webp": {
-      "source": "recaptured at qt d2404733561d3d1f8660d5ee362e6f9b48ed97a0 (coord2 hikari_ui_template_editor_shell_tests presetScreenshots, template-presets-preview-letters-dark.png), crop of the top of the video, 758x100",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_template_editor_shell_tests presetScreenshots under vx11 (offscreen), template-presets-preview-letters-dark.png, crop of the top of the video 758x100+36+98",
       "surface": "The video previewing the Falling letters preset under the Preview · Line 2 · not applied badge",
       "credit": ""
     },
@@ -212,12 +212,12 @@
       "credit": ""
     },
     "content/docs/basics/images/shift-times-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-light.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-shift-light.png",
       "surface": "Shift times panel, floating, Shift mode",
       "credit": ""
     },
     "content/docs/basics/images/post-processor-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-light.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-postprocessor-light.png",
       "surface": "Shift times panel, floating, Post processor mode",
       "credit": ""
     },
@@ -257,12 +257,12 @@
       "credit": ""
     },
     "content/docs/basics/images/shift-times-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-shift-dark.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-shift-dark.png",
       "surface": "Shift times panel, floating, Shift mode",
       "credit": ""
     },
     "content/docs/basics/images/post-processor-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11, shift-times-postprocessor-dark.png (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-postprocessor-dark.png",
       "surface": "Shift times panel, floating, Post processor mode",
       "credit": ""
     },
@@ -437,12 +437,12 @@
       "credit": ""
     },
     "content/docs/checking/images/fix-minor-errors-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-light.png, crop 420x712+860+60 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests pu2Screenshots under vx11 (offscreen), pu2-fix-minor-errors-light.png, crop 420x712+860+60",
       "surface": "Fix minor errors panel with the default rules and the Rule section",
       "credit": ""
     },
     "content/docs/checking/images/fix-minor-errors-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu2Screenshots under vx11, pu2-fix-minor-errors-dark.png, crop 420x712+860+60 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests pu2Screenshots under vx11 (offscreen), pu2-fix-minor-errors-dark.png, crop 420x712+860+60",
       "surface": "Fix minor errors panel with the default rules and the Rule section",
       "credit": ""
     },
@@ -457,22 +457,22 @@
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/karaoke/images/tap-tapping-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-light.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11 (offscreen), audio-panel-tap-tapping-light.png, crop 640x210+0+0",
       "surface": "Audio panel tapping: tap bar, syllables and tap lane",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-tapping-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-tapping-dark.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11 (offscreen), audio-panel-tap-tapping-dark.png, crop 640x210+0+0",
       "surface": "Audio panel tapping: tap bar, syllables and tap lane",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-needs-split-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-light.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11 (offscreen), audio-panel-tap-needs-split-light.png, crop 640x210+0+0",
       "surface": "Audio panel tap bar, a one-syllable line waiting for Auto split",
       "credit": ""
     },
     "content/docs/karaoke/images/tap-needs-split-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11, audio-panel-tap-needs-split-dark.png, crop 640x210+0+0 (surface unchanged at qt d24047335)",
+      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests audioTapScreenshots under vx11 (offscreen), audio-panel-tap-needs-split-dark.png, crop 640x210+0+0",
       "surface": "Audio panel tap bar, a one-syllable line waiting for Auto split",
       "credit": ""
     },

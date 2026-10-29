@@ -1,6 +1,6 @@
 {
     "application": "HikariSub",
-    "commit": "7bfbd74d7b0842f79d9de9c42698dc1f700c1886",
+    "commit": "b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6",
     "files": [
         "commands.json",
         "settings.json",

@@ -40,10 +40,10 @@ From the top, the panel has:
 
 - **Templates:** every template and code line of the file in file order, with its number, Effect, Style and text. The right-hand column gives the lines it made and the time it took in the last preview, or **Problem**. A dot marks a template changed since the last Apply. Click a row to edit it; selecting a template line in the Grid does the same.
 - **Line N:** the current template's **Effect**, **Style**, **Layer** and text.
-- **Preview on Line N:** the lines the templates make from the karaoke line, with their layer, start, end and text. The current template's own lines have a bar at their left.
+- **Preview on line N:** the lines the templates make from the karaoke line, with their layer, start, end and text. The current template's own lines have a bar at their left.
 - **Apply**, with the state of the generated lines beside it.
 
-Two buttons sit at the right of the panel's tab. **Preview on the video** (the eye) turns the preview on the video on or off. **Loop the Line** plays the karaoke line over and over while you edit; pausing, stopping or seeking ends the loop.
+Two buttons sit at the right of the panel's tab. **Preview on the video** (the eye) turns the preview on the video on or off. **Loop the line** plays the karaoke line over and over while you edit; pausing, stopping or seeking ends the loop.
 
 ## Adding a template
 
@@ -52,12 +52,12 @@ Two buttons sit at the right of the panel's tab. **Preview on the video** (the e
 | Item | Writes the Effect |
 | --- | --- |
 | Template for each syllable | `template syl` |
-| Template for each Line | `template line` |
-| Template before each Line | `template pre-line` |
+| Template for each line | `template line` |
+| Template before each line | `template pre-line` |
 | Template for each character | `template char` |
 | Template for each furigana syllable | `template furi` |
 | Code run once | `code once` |
-| Code for each Line | `code line` |
+| Code for each line | `code line` |
 | Code for each syllable | `code syl` |
 | Code for each furigana syllable | `code furi` |
 
@@ -75,7 +75,7 @@ Type in the **Effect** field, or press the arrow beside it, **Choose what the te
 | Modifier | Writes | Code lines too |
 | --- | --- | --- |
 | Skip blank syllables | `noblank` | Yes |
-| Keep the Line's override tags | `keeptags` | No |
+| Keep the line's override tags | `keeptags` | No |
 | Every Style, not only *the line's style* | `all` | Yes |
 | Repeat | `loop 2` | Yes |
 | Only syllables marked with an effect | `fx name` | No |
@@ -117,9 +117,9 @@ On the video, the preview's lines take the place of the line's generated lines, 
   <ThemedImage
     light={videoLight}
     dark={videoDark}
-    alt="The video with the badge Preview · Line 5 · not applied in its corner, and the previewed karaoke line at the top"
-    width={760}
-    height={368}
+    alt="The video with the badge Preview · line 5 · not applied in its corner, and the previewed karaoke line at the top"
+    width={758}
+    height={424}
     className="rounded-lg border"
   />
 </figure>
@@ -163,7 +163,7 @@ The preview keeps the last run that worked, dimmed and marked *Kept from the las
 
 ## Applying
 
-**Apply** runs **Apply karaoke template**, the same macro as in the Automation menu, on every karaoke line. It replaces the lines generated earlier, and turns each karaoke line it used into a comment with the Effect `karaoke`. The arrow beside it offers **Apply to the selected Lines**, which regenerates only the karaoke lines selected in the Grid and leaves the others' lines as they are.
+**Apply** runs **Apply karaoke template**, the same macro as in the Automation menu, on every karaoke line. It replaces the lines generated earlier, and turns each karaoke line it used into a comment with the Effect `karaoke`. The arrow beside it offers **Apply to the selected lines**, which regenerates only the karaoke lines selected in the Grid and leaves the others' lines as they are.
 
 Afterwards the panel says how many lines came from how many karaoke lines. Each Apply is one undo step, so **Edit › Undo** takes all the generated lines back at once.
 

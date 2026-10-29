@@ -54,7 +54,7 @@ While tap mode is on, a bar over the waveform shows, from the left:
 - The line's syllables. Tapped ones are dimmed, the one you are holding is filled, and the next one is outlined.
 - After **›**, the next line's text.
 - A message, when there is one.
-- On the right, what you can do next: **Undo** and **Stop** while tapping, **Resume** and **Revert Line** when stopped.
+- On the right, what you can do next: **Undo** and **Stop** while tapping, **Resume** and **Revert line** when stopped.
 
 On the waveform, each tapped syllable shows as a block with its text, under the letters. The syllable you are holding grows at the playhead, and a gap is hatched.
 
@@ -95,11 +95,11 @@ Switching between Hold and Press while you hold a syllable drops that syllable.
 
 ## Line after line
 
-Each finished line is applied as one step named *Tap timing*. The next line becomes active, the bar shows its syllables, and you go on tapping while the song plays. After the last line the audio stops and the bar says *Every Line is tapped.*
+Each finished line is applied as one step named *Tap timing*. The next line becomes active, the bar shows its syllables, and you go on tapping while the song plays. After the last line the audio stops and the bar says *Every line is tapped.*
 
 Choose another line while tapping, in the Grid or with Previous line and Next line, and tapping starts on that line afresh, one second before it.
 
-If a line can't take the new times, for example because the Line editor holds an edit that isn't valid, nothing is written. The audio stops and the bar says *Not applied: the Line cannot take these times as it is.*
+If a line can't take the new times, for example because the Line editor holds an edit that isn't valid, nothing is written. The audio stops and the bar says *Not applied: the line cannot take these times as it is.*
 
 When the audio reaches its end, a syllable you are holding ends there.
 
@@ -107,8 +107,8 @@ When the audio reaches its end, a syllable you are holding ends there.
 
 - **Stop**, <kbd>Esc</kbd>, drops a syllable you are holding, keeps the tapped ones and stops the audio. The bar says how far you got, such as *3 of 5 tapped*.
 - **Resume**, or <kbd>Space</kbd>, plays again from two seconds before the end of the last tapped syllable, or from one second before the line if nothing is tapped.
-- **Revert Line** drops every tap on the line. The line itself is unchanged, since nothing was written yet.
-- <kbd>Backspace</kbd> takes back the syllable you are holding, if any, and the last tapped one, and says which, such as *Undid “mi”*. The audio plays again from two seconds before the earliest of them. <kbd>Shift</kbd>+<kbd>Backspace</kbd> takes back the whole line and says *Undid the Line*. Neither goes back before the start of the audio.
+- **Revert line** drops every tap on the line. The line itself is unchanged, since nothing was written yet.
+- <kbd>Backspace</kbd> takes back the syllable you are holding, if any, and the last tapped one, and says which, such as *Undid “mi”*. The audio plays again from two seconds before the earliest of them. <kbd>Shift</kbd>+<kbd>Backspace</kbd> takes back the whole line and says *Undid the line*. Neither goes back before the start of the audio.
 
 These keys only change the line you are tapping. Lines already applied are undone with **Edit › Undo**: each is one *Tap timing* step.
 
@@ -123,13 +123,13 @@ Tap to time taps the syllables of the line's split, with two changes:
 - Empty syllables are skipped, so tapping a line again replaces the gaps of the last time.
 - A syllable of only spaces joins the syllable before it.
 
-A line of one syllable can't be tapped: a tap would only set its start and end. The bar says *This Line is one syllable. Split it first, then tap.* Press **Auto split** on the bar to split it, then <kbd>Space</kbd> to start.
+A line of one syllable can't be tapped: a tap would only set its start and end. The bar says *This line is one syllable. Split it first, then tap.* Press **Auto split** on the bar to split it, then <kbd>Space</kbd> to start.
 
 <figure>
   <ThemedImage
     light={needsSplitLight}
     dark={needsSplitDark}
-    alt="The tap bar reads Ready, Line 1, hibiku, This Line is one syllable. Split it first, then tap., with an Auto split button on the right"
+    alt="The tap bar reads Ready, Line 1, hibiku, This line is one syllable. Split it first, then tap., with an Auto split button on the right"
     width={640}
     height={210}
     className="rounded-lg border"

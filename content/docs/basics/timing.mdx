@@ -48,7 +48,7 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
 
 ## Shift times
 
-**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel, beside the Line editor. It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later. Its **Shift** button, or **Subtitles › Shift times / run time post processor**, runs it as one undo step.
+**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel, beside the Line editor. It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later. Its **Shift** button, or **Subtitles › Shift times / run timing postprocessor**, runs it as one undo step.
 
 <div className="grid gap-4 sm:grid-cols-2">
   <figure>
@@ -66,12 +66,12 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
     <ThemedImage
       light={postLight}
       dark={postDark}
-      alt="The Shift times panel in Post processor mode: Which lines, Lead-in and Lead-out, Set times as continuous with its two thresholds, and Snap to keyframes, with the Run post processor button"
+      alt="The Shift times panel in Timing postprocessor mode: Which lines, Lead-in and Lead-out, Set times as continuous with its two thresholds, and Snap to keyframes, with the Run timing postprocessor button"
       width={340}
       height={800}
       className="rounded-lg border"
     />
-    <figcaption>Post processor mode.</figcaption>
+    <figcaption>Timing postprocessor mode.</figcaption>
   </figure>
 </div>
 
@@ -80,16 +80,16 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
 - **Amount:** the time to move by, or a number of frames with **Frames** (with a video open), and **Forward** (later) or **Backward** (earlier). **Tag times** keeps `\move`, `\t` and `\fad` in step with the video when the shift lands between frames.
 - **Which lines:** all lines, the selected lines, the lines from the selected one on, the lines starting at or after it, at or before it, or the lines of the styles you list. The **+** button picks the styles.
 - **A method of time shift:** both times, or only the start or the end. Shifting only one asks first, because a line can end up ending before it starts.
-- **Correction end times:** **Adjust overlapping times** ends each line where the next one starts, if it would overlap it. **New times** also gives each line that doesn't overlap the next a new end: **Time per letter** in **File › Settings › Conversion**, 110 ms at first, for each character of its text, tags included, and at least one second. Both need a video open; without one, the shift runs and the correction is skipped.
+- **End time correction:** **Adjust overlapping times** ends each line where the next one starts, if it would overlap it. **New times** also gives each line that doesn't overlap the next a new end: **Time per letter** in **File › Settings › Conversion**, 110 ms at first, for each character of its text, tags included, and at least one second. Both need a video open; without one, the shift runs and the correction is skipped.
 - **Shift by video / audio:** with **Move the marker to video time**, the active line's **Beginning** or **End** moves to the video's frame, and every other line moves by the same amount. **Move the marker to audio time** does the same with the mark you set on the audio ruler. The amount in the field is added on top.
 
 **Profiles** saves the current choices under a name, to use again.
 
 Times never go below zero. Hidden lines, filtered out of the Grid, are left alone.
 
-### Post processor mode
+### Timing postprocessor mode
 
-The post processor tidies the lines' times rather than moving them. It needs a video open.
+The timing postprocessor tidies the lines' times rather than moving them. It needs a video open.
 
 - **Lead-in/lead-out** adds time before each start and after each end.
 - **Set times as continuous** closes small gaps between lines: when the gap is no larger than the two thresholds together, the earlier line's end and the later line's start meet in it.
@@ -99,7 +99,7 @@ They run in that order, on the lines **Which lines** chooses.
 
 ## Lines next to each other
 
-**Set times as a continuous (previous line)** and **(next line)**, in the Grid's right-click menu, make each selected line start where the line before it ends, or end where the next one starts.
+**Make times continuous with the previous line** and **with the next line**, in the Grid's right-click menu, make each selected line start where the line before it ends, or end where the next one starts.
 
 ## Keys
 

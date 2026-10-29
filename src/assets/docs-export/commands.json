@@ -193,7 +193,7 @@
             "id": 1018,
             "menus": [
             ],
-            "name": "Play 500ms before",
+            "name": "Play 500 ms before",
             "symbol": "AUDIO_PLAY_500MS_BEFORE"
         },
         {
@@ -207,7 +207,7 @@
             "id": 1019,
             "menus": [
             ],
-            "name": "Play 500ms after",
+            "name": "Play 500 ms after",
             "symbol": "AUDIO_PLAY_500MS_AFTER"
         },
         {
@@ -221,7 +221,7 @@
             "id": 1020,
             "menus": [
             ],
-            "name": "Play first 500ms",
+            "name": "Play first 500 ms",
             "symbol": "AUDIO_PLAY_500MS_FIRST"
         },
         {
@@ -235,7 +235,7 @@
             "id": 1021,
             "menus": [
             ],
-            "name": "Play last 500ms",
+            "name": "Play last 500 ms",
             "symbol": "AUDIO_PLAY_500MS_LAST"
         },
         {
@@ -865,7 +865,7 @@
             "id": 3004,
             "menus": [
             ],
-            "name": "Paste the selected",
+            "name": "Paste the selected text",
             "symbol": "EDITBOX_PASTE_SELECTION_TO_TRANSLATION"
         },
         {
@@ -1761,7 +1761,7 @@
             "menus": [
                 "Grid menu > Filtering > Hide selected lines"
             ],
-            "name": "Hide selected lines",
+            "name": "Filtering: hide selected lines",
             "symbol": "GRID_FILTER_BY_SELECTIONS"
         },
         {
@@ -1858,9 +1858,9 @@
             ],
             "id": 4547,
             "menus": [
-                "Grid menu > Make tree"
+                "Grid menu > Make line group"
             ],
-            "name": "Make tree",
+            "name": "Make line group",
             "symbol": "GRID_TREE_MAKE"
         },
         {
@@ -1902,9 +1902,9 @@
             ],
             "id": 4551,
             "menus": [
-                "Grid menu > Set times as a continuous (previous line)"
+                "Grid menu > Make times continuous with the previous line"
             ],
-            "name": "Set times as a continuous (previous line)",
+            "name": "Make times continuous with the previous line",
             "symbol": "GRID_MAKE_CONTINOUS_PREVIOUS_LINE"
         },
         {
@@ -1913,9 +1913,9 @@
             ],
             "id": 4552,
             "menus": [
-                "Grid menu > Set times as a continuous (next line)"
+                "Grid menu > Make times continuous with the next line"
             ],
-            "name": "Set times as a continuous (next line)",
+            "name": "Make times continuous with the next line",
             "symbol": "GRID_MAKE_CONTINOUS_NEXT_LINE"
         },
         {
@@ -2008,7 +2008,7 @@
             "menus": [
                 "File > Save as…"
             ],
-            "name": "Save as...",
+            "name": "Save as…",
             "symbol": "GLOBAL_SAVE_SUBS_AS"
         },
         {
@@ -2493,9 +2493,9 @@
             ],
             "id": 5047,
             "menus": [
-                "Video > Go to start time"
+                "Video > Go to start time of line"
             ],
-            "name": "Go to start time",
+            "name": "Go to start time of line",
             "symbol": "GLOBAL_SET_VIDEO_AT_START_TIME"
         },
         {
@@ -3078,9 +3078,9 @@
             ],
             "id": 5300,
             "menus": [
-                "Subtitles > Shift times / run time post processor"
+                "Subtitles > Shift times / run timing postprocessor"
             ],
-            "name": "Shift times / run time post processor",
+            "name": "Shift times / run timing postprocessor",
             "symbol": "GLOBAL_SHIFT_TIMES"
         },
         {
