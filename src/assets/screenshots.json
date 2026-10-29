@@ -637,7 +637,7 @@
       "credit": ""
     },
     "content/docs/customize/images/karaoke-layout-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting and Karaoke from the title-bar layout button (the Grid shows line 34 without scrolling), 1600x960 window scaled to 1000x600",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout, then Karaoke from the title-bar layout button, which turns Karaoke mode on itself (zoom 4.6x here), 1600x960 window scaled to 1000x600, WebP quality 92",
       "surface": "Karaoke layout, ray MV, Audio panel in Karaoke mode",
       "credit": "Subtitles: Jibrill"
     },
@@ -647,7 +647,7 @@
       "credit": ""
     },
     "content/docs/customize/images/karaoke-layout-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting and Karaoke from the title-bar layout button (the Grid shows line 34 without scrolling), 1600x960 window scaled to 1000x600",
+      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout, then Karaoke from the title-bar layout button, which turns Karaoke mode on itself (zoom 4.6x here), 1600x960 window scaled to 1000x600, WebP quality 92",
       "surface": "Karaoke layout, ray MV, Audio panel in Karaoke mode",
       "credit": "Subtitles: Jibrill"
     },
