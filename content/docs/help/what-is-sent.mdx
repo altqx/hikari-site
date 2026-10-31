@@ -173,7 +173,7 @@ How often:
 | Event | Sent | Properties |
 | --- | --- | --- |
 | `automation_error` | When a macro fails, its script's process is lost or force-stopped, or a script doesn't load | `kind`, `script` |
-| `$exception` | At the start after HikariSub crashed or was closed while frozen, and when it comes back from a freeze | `$exception_list`, `$exception_level`, `crashed_version`, `report_id`, `freeze_seconds` |
+| `$exception` | At the start after HikariSub crashed or was closed while frozen, and when it comes back from a freeze | `$exception_list`, `$debug_images`, `$exception_level`, `crashed_version`, `report_id`, `freeze_seconds` |
 
 - `kind`: `failed`, `lost`, `stopped` or `load_failed`.
 - `script`: the file name of a script that comes with HikariSub, such as `kara-templater.lua`, with spaces turned into `_` (`skew_gradient.lua`). It counts as one only while its contents match the copy HikariSub came with, in the program's folder or copied to your user folder. Any other script is `user script`, and its name is not sent. A macro whose check declines to run on your selection is not an error and sends nothing.
@@ -181,6 +181,8 @@ How often:
   - the type: on Linux the signal, `SIGSEGV`, `SIGABRT`, `SIGBUS`, `SIGFPE` or `SIGILL`; on Windows the exception's name, such as `EXCEPTION_ACCESS_VIOLATION`, or else its code, `0x…`; `APP_HANG` for a freeze;
   - how it was caught: `signal`, `seh` or, for a freeze, `watchdog`; not handled;
   - up to 32 stack frames, each a module and an offset. The module is a file name only, and only for HikariSub's own files and the system's (in `/usr` or `/lib`, or the Windows folder). Any other module is `other`. The offset is a hex number into that module.
+  - from 0.1.0-beta.2, a frame in a named module also has `image_addr`, the address the module was loaded at, and `instruction_addr`, that address plus the offset. An `other` module has neither.
+- `$debug_images` (from 0.1.0-beta.2): for each named module, its file name (`code_file`, the same as the frame's module), where it was loaded (`image_addr`) and its debug id: the GNU build-id on Linux, or the GUID and age of its PDB on Windows. The debug id says which build the module is, so PostHog can show function names and lines from the symbols each release uploads. It names the build, not your computer.
 - `$exception_level`: `fatal`, or `error` for a freeze HikariSub came back from.
 - `crashed_version`: the version that crashed or froze.
 - `report_id`: a random UUID made for the report, the same as its [`crash_report`](#crash-and-freeze-reports)'s.
