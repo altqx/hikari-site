@@ -44,6 +44,10 @@ A file is saved in the format it is in: an SRT file stays SRT. Save asks for a n
 
 Only what you changed is rewritten. Everything else, including sections and lines other programs added, is saved exactly as it was. The file is written beside the old one first and then put in its place, so a failed save never leaves half a file.
 
+On Windows, another program reading the file, such as a virus scanner, the search indexer or a preview, can briefly stop HikariSub from putting the new file in place. From 0.1.0-beta.3, HikariSub keeps trying for up to 3 seconds.
+
+When a save fails, an error notice and the status bar say **Save failed; the file on disk is unchanged**. The file keeps its last saved version, and your changes stay unsaved in HikariSub. Close the program that has the file open, or wait a moment, and save again. The notice's entry in the [Log](/en/docs/help/troubleshooting#the-log-panel) gives the file's full path.
+
 If the file changed on disk since you opened it, Save stops and a bar offers to **Reload** it, **Compare** the two, or **Keep mine**. A read-only file offers **Save as…** instead.
 
 **Edit › Undo to last save** goes back to the saved version, and **Edit › History** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>) to any step before or after it.

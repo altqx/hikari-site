@@ -1,0 +1,60 @@
+---
+title: What's new
+description: What changed in each HikariSub 0.1 beta, newest first, with the security fix in 0.1.0-beta.3.
+---
+
+The newest release comes first. Each release's notes on GitHub also list its downloads. [Install](/en/docs/get-started/install) has the current version.
+
+## 0.1.0-beta.3
+
+Published 2026-10-31. [Release notes](https://github.com/altqx/hikari/releases/tag/v0.1.0-beta.3)
+
+<Callout type="warn" title="Security fix: please update">
+  0.1.0-beta.1 and 0.1.0-beta.2 have a security issue in how scripts are loaded. In them, a subtitle file can make HikariSub load and run the Automation scripts it names without asking, and a file in your `include` folder can replace HikariSub's own Lua modules. 0.1.0-beta.3 fixes it, so update if you use an earlier beta. The advisory, [GHSA-g2j7-9r6j-r28v](https://github.com/altqx/hikari/security/advisories/GHSA-g2j7-9r6j-r28v), has the details.
+</Callout>
+
+### Security
+
+- **Scripts a subtitle file names ask before they load.** The question shows each script's full path. You can load them, not load them, or always trust their folder. See [Running scripts](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names).
+- **HikariSub's own Lua modules always load from the copy that ships with it**, so a file of the same name elsewhere can't replace them. See [Modules](/en/docs/automation/writing-scripts#modules).
+
+### Fixed
+
+- **No more freeze on the first start on Windows.** Getting started mistook HikariSub's own bundled dictionaries for old settings to import, and copied them while the window waited.
+- **Saving on Windows no longer fails when another program is reading the file.** A virus scanner, the search indexer or a preview could briefly block the save. HikariSub now retries for up to 3 seconds. If the save still fails, it says the file on disk is unchanged. See [Saving](/en/docs/basics/files-and-formats#saving).
+- **Audio keeps playing when its output device goes away.** Playback moves to the system default instead of going silent. See [Output device](/en/docs/basics/audio#output-device).
+- **Screen readers read a panel's ⋯ menu in the order it is drawn.** The panel's own items used to be read after Move panel…, Undock and Close.
+- **Crash reports from Linux builds have symbols again**, so crashes can be traced to a line.
+
+### New and improved
+
+- **A splash on Windows while HikariSub starts**, with the "Hikari sunrise" artwork in light and dark. See [Install](/en/docs/get-started/install#starting-hikarisub).
+- **Full screen bar in the video's right-click menu:** Auto, Always or Never, from the Video panel or in full screen. See [Full screen](/en/docs/basics/video#full-screen).
+- **More icons** in menus and toolbars, so commands that shared one icon now have their own.
+
+## 0.1.0-beta.2
+
+Published 2026-10-31. [Release notes](https://github.com/altqx/hikari/releases/tag/v0.1.0-beta.2)
+
+### Fixed
+
+- Moving the Video panel no longer crashes HikariSub, and panels no longer go missing after a dock move.
+- Pointing at a panel focuses it, so its hotkeys work without a click first.
+- Wheel scrolling follows your system's lines-per-notch setting everywhere, including the [Grid](/en/docs/basics/grid) on Wayland.
+- In narrow windows, menus folded into the title bar's More button keep their <kbd>Alt</kbd>+letter shortcut.
+- Font names with a `%` in them are no longer garbled.
+
+### New and improved
+
+- The [Grid](/en/docs/basics/grid) has a scrollbar and resizable columns.
+- [Spelling mistakes](/en/docs/checking/spelling) get a red wavy underline in the Line editor, the Grid and the Template editor.
+- Select all on 50,000 lines is about five times quicker.
+- Screen readers hear when a folded run or a panel's ⋯ menu is open.
+- Qt 6.12 and KDDockWidgets 2.5.1. Layouts saved by beta.1 carry over.
+- Crash and freeze reports carry where each of HikariSub's modules was loaded. See [What is sent](/en/docs/help/what-is-sent#crash-and-freeze-reports).
+
+## 0.1.0-beta.1
+
+Published 2026-10-30. [Release notes](https://github.com/altqx/hikari/releases/tag/v0.1.0-beta.1)
+
+The first beta of the new HikariSub, rebuilt on Qt 6. The [tour](/en/docs/get-started/tour) shows the window. If you're coming from 0.0.x, read [Moving from legacy](/en/docs/get-started/moving-from-legacy).

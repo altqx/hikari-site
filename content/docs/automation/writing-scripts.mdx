@@ -247,6 +247,8 @@ When a script fails to load, its row in the Automation panel says so, with **Sho
 
 `require` finds modules in the script's own folder, then in `automation/include` in your user folder, then in HikariSub's own `automation/Include`. A `.moon` module is preferred over a `.lua` one of the same name. `include("file.lua")` runs a file from the same folders. `dofile` and `loadfile` are not available.
 
+From 0.1.0-beta.3, the modules and include files that ship with HikariSub, such as `karaskel`, `util` and `moonscript`, always load from HikariSub's own `automation/Include`. A file of the same name in the script's folder or in your `include` folder doesn't replace them, but a module with a new name still loads from there. The packages DependencyControl manages (`l0`, `a-mo`, `BM`, `DM`, `PT`, `requireffi`, `SubInspector`, `json`, `Yutils` and `lyger`) keep the order above, so DependencyControl's updates still take their place.
+
 HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unicode`, `re`, `lfs`, `json`, `Yutils`, `aegisub.clipboard`, `aegisub.util` and more, plus DependencyControl and the libraries its scripts use.
 
 ## How scripts run
