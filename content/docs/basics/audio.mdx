@@ -74,6 +74,12 @@ Right-click the ruler to set the mark. Playing around it uses **Play around the 
 
 The speaker button holds the volume, the output device, and the **Speed**: 25%, 33%, 50%, 75% or 100%, with the pitch kept. <kbd>[</kbd> and <kbd>]</kbd> change the speed. **Audio settings…** opens the Audio page of Settings.
 
+## Output device
+
+Audio plays on the system default output unless you pick a device, in the speaker button's menu or in **File › Settings › Audio › Output › Device**. Holding the pointer over the speaker button shows the volume and the device playing.
+
+From 0.1.0-beta.3, playback doesn't stop if the device it plays on goes away, for example when you unplug headphones or USB speakers. It moves to the system default and keeps playing. If you had picked that device, a warning says so once, such as "USB Headset is not connected. Audio plays through Speakers." When the device is plugged back in, HikariSub plays on it again. If no output is left at all, the warning says no output device is available.
+
 ## Timing with the mouse
 
 | Mouse | Does |

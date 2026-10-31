@@ -28,7 +28,7 @@ Below these come the macros of every loaded script, in the order they were loade
 
 None of the items has a key at first. **Load script**, **Refresh autoload scripts**, **Run the last loaded script** and **Repeat last run** can have one: see [Hotkeys](/en/docs/customize/hotkeys).
 
-Opening the menu also loads the scripts the current file names, and reloads any loaded script whose file changed on disk.
+Opening the menu also loads the scripts the current file names, after [asking you](#scripts-a-subtitle-file-names), and reloads any loaded script whose file changed on disk.
 
 ## Loading scripts
 
@@ -39,10 +39,24 @@ There are two kinds of script:
 
 Loading a subtitle script also writes its path into the file's `Automation Scripts` header, so it loads with the file next time. That change is an undo step, *Changing the subtitle header*.
 
-When you open a file that names scripts not yet loaded, the Automation panel says so and offers **Load**. Nothing loads until you press it, or until you open the Automation menu.
-
 <Callout type="warn">
   Loading a script runs its code. Scripts are not sandboxed: they can read and write files and run programs with your permissions. Load only scripts you trust.
+</Callout>
+
+### Scripts a subtitle file names
+
+When you open a file that names scripts not yet loaded, the Automation panel says so and offers **Load**. Nothing loads until you press it, open the Automation menu, choose **Run the last loaded script** or use **Load script…**.
+
+From 0.1.0-beta.3, HikariSub then asks first, once for each file in a session: "This subtitle file wants to run 2 scripts on your computer." The question lists each script's full path, up to eight, and **Details** has the rest. You can choose:
+
+- **Load:** load them for this file until you quit HikariSub.
+- **Don't load**, the default, or <kbd>Esc</kbd>: leave them unloaded. HikariSub doesn't ask again for this file until you restart it, but the panel's **Load** asks again.
+- **Always trust scripts in this folder:** load them, and from then on load scripts from that folder without asking.
+
+Trusted folders are listed in **File › Settings › Automation › Trusted script folders**, where **Remove** stops trusting one. Scripts in HikariSub's own script folders and in your `autoload` folder never ask. A script you pick yourself with **Load script…** loads without asking.
+
+<Callout type="warn" title="Update from beta.1 or beta.2">
+  0.1.0-beta.1 and 0.1.0-beta.2 load the scripts a subtitle file names without asking. That's a security issue: opening a file from someone else could run their code. Update to 0.1.0-beta.3 or later. See the advisory, [GHSA-g2j7-9r6j-r28v](https://github.com/altqx/hikari/security/advisories/GHSA-g2j7-9r6j-r28v).
 </Callout>
 
 If a script fails to load, its row in the Automation panel reads **Failed to load**, with the error.
