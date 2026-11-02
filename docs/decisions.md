@@ -8,6 +8,23 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 - Cloudflare Workers with static assets, at **hikarisub.org** (custom domain on the hikarisub.org zone; the owner moved the site there on 2026-11-02). **www.hikarisub.org** and the old **hikarisub.altqx.com** answer forever with a path- and query-preserving 301 to https://hikarisub.org, from the `redirect/` Worker that CI deploys. Shipped 0.1.0 betas link to the old host. The plugin marketplace will later be at marketplace.hikarisub.org; nothing is built for it yet.
 - GitHub Actions deploys on every push to `main`, and each PR gets a preview URL. The deploy uses the repo secrets `CLOUDFLARE_API_TOKEN` (account Workers edit, plus Workers Routes edit on the altqx.com and hikarisub.org zones; custom domains need no DNS permission, and the token has none) and `CLOUDFLARE_ACCOUNT_ID`. The coordinator asks the owner for them through a secret prompt; they are never pasted in chat or committed.
 
+### Usage data endpoint
+
+- **i.hikarisub.org** is our own Worker, `hikari-ingest` (`ingest/`), not PostHog's managed proxy (owner, 2026-11-03). DNS blockers that follow CNAMEs (NextDNS, Pi-hole, AdGuard) blocked the managed proxy, because its CNAME pointed at PostHog. A Worker on an orange-cloud custom domain shows no such CNAME.
+- It forwards only `POST /batch/` and `POST /i/v0/e/`, and their `OPTIONS`, to `https://eu.i.posthog.com` with the same path and query. Everything else gets a plain 404.
+  - The request body streams through untouched, keeping `Content-Type` and `Content-Encoding`.
+  - Cookies, `CF-*`, `X-Forwarded-*` and the other client-address headers are dropped.
+  - PostHog's status and body come back without stale encoding, length or cookie headers.
+- **Limits:** 1 MiB body cap (413), 10 s timeout (504), 502 when PostHog can't be reached.
+- **No logging:** observability and logpush are off, and the code logs nothing.
+- **No secrets:** the PostHog project key stays in the app.
+- CI deploys it in its own `ingest` job in `deploy.yml`.
+- **Rollout:**
+  1. workers.dev first.
+  2. The owner removes the managed proxy's `i` CNAME.
+  3. `i.hikarisub.org` is attached as the Worker's custom domain.
+  4. The coordinator deletes the managed proxy in PostHog.
+
 ## Examples in MDX
 
 - Interactive TSX components inside MDX demonstrate features.
