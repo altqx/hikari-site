@@ -1,4 +1,5 @@
-import { copyFile, writeFile } from 'node:fs/promises';
+import { copyFile, readdir, writeFile } from 'node:fs/promises';
+import { robotsTxt, sitemapXml } from '../src/lib/seo';
 
 const out = '.output/public';
 
@@ -7,6 +8,16 @@ const out = '.output/public';
 await copyFile(`${out}/_shell.html`, `${out}/404.html`);
 
 // Builds with drafts are previews: keep them out of search engines.
-if (process.env.VITE_SHOW_DRAFTS === '1') {
+const preview = process.env.VITE_SHOW_DRAFTS === '1';
+
+// sitemap.xml lists every pre-rendered page (each is a folder with an index.html), and
+// robots.txt points at it.
+const pages = (await readdir(out, { recursive: true }))
+  .filter((file) => file.endsWith('/index.html') && !file.startsWith('api/'))
+  .map((file) => `/${file.slice(0, -'/index.html'.length)}`);
+await writeFile(`${out}/sitemap.xml`, sitemapXml(pages));
+await writeFile(`${out}/robots.txt`, robotsTxt(preview));
+
+if (preview) {
   await writeFile(`${out}/_headers`, '/*\n  X-Robots-Tag: noindex\n');
 }
