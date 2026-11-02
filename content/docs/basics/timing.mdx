@@ -22,9 +22,24 @@ The [Audio panel](/en/docs/basics/audio) is the usual way to time dialogue:
 
 **In** (<kbd>C</kbd>) and **Out** (<kbd>V</kbd>) add a lead-in of 200 ms before the start and a lead-out of 300 ms after the end, so a line shows a moment before the voice and stays a moment after it. **File › Settings › Audio › Lead-in and lead-out** changes the amounts.
 
+**Audio › Join with previous line using the audio selection** gives the active line the times of the audio selection, and makes the line before it in the file end where the selection starts. Both change as one undo step. It needs audio, and has no key at first.
+
 ## From the video
 
 **Video › Insert start time from video** (<kbd>Ctrl</kbd>+<kbd>Left</kbd>) sets the selected lines' start to the frame on screen, and **Insert end time from video** (<kbd>Ctrl</kbd>+<kbd>Right</kbd>) their end to that frame's end. A start after the end moves the end along, and the other way round. Step through the frames with <kbd>Left</kbd> and <kbd>Right</kbd> to find the frame where a sign appears or a shot changes.
+
+A neighbour that is joined to a selected line stays joined, even when it isn't selected. With **Insert start time from video**, the line before in the file, if it ended exactly where the selected line started, now ends at the new start. With **Insert end time from video**, the line after, if it started exactly where the selected line ended, now starts at the new end.
+
+**Video › Shift by frames to video** moves lines by whole frames, so that the active line lines up with the frame on screen:
+
+| Command | Moves | So that the active line |
+| --- | --- | --- |
+| **Selected lines, start at video** | The selected lines | Starts on the frame on screen |
+| **Selected lines, end at video** | The selected lines | Has its last frame on the frame on screen |
+| **Following lines, start at video** | The active line and every line that starts at or after it | Starts on the frame on screen |
+| **Following lines, end at video** | The active line and every line that starts at or after it | Has its last frame on the frame on screen |
+
+Every start and end moves by the same number of frames, so each line keeps its length in frames. Each shift is one undo step. The commands need a video, and have no keys at first.
 
 **Start frame offset** and **End frame offset**, under **File › Settings › Subtitle grid › New lines**, add a fixed amount to these times.
 
@@ -48,7 +63,7 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
 
 ## Shift times
 
-**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel, beside the Line editor. It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later. Its **Shift** button, or **Subtitles › Shift times / run timing postprocessor**, runs it as one undo step.
+**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel (see [Where a panel opens](/en/docs/customize/layouts#where-a-panel-opens)). It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later. Its **Shift** button, or **Subtitles › Shift times / run timing postprocessor**, runs it as one undo step.
 
 <div className="grid gap-4 sm:grid-cols-2">
   <figure>
