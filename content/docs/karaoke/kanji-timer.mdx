@@ -75,6 +75,20 @@ When a syllable has no kanji left, you can link it on its own as a *blank* group
 
 **Skip romaji line** and **Skip kanji line** take that line out of the pair, for a line that has no counterpart in the other style. The line you keep then pairs again without it. **Previous** goes back to the previous pair, as you left it.
 
+### Spaces
+
+A space is never a character or a syllable to time. This covers every kind of space: a plain space, a full-width space, a no-break space, a tab, `\h`, and the line breaks `\N` and `\n`.
+
+- **In the kanji line,** a space separates the kanji on either side of it, but no group takes it as a kanji. <kbd>→</kbd> steps over it to the next kanji.
+- **In the romaji line,** a syllable that is only a space goes into a suggested group: the group before it, or the first group when the line starts with one. Its time goes into that group's tag. With **Suggest groupings** off, add it to a group yourself.
+- **The written line keeps its spaces** where they were, even at the start or end of the line, or two in a row.
+
+```
+Romaji  {\k20}ki{\k20}mi{\k30}no
+Kanji   君 の
+Result  {\k40}君 {\k30}の
+```
+
 ## Accepting and applying
 
 Accepting a line marks its pair Done and moves to the next pair that is not done. **Accept all suggestions** marks Done every pair whose status is Suggested, so check the pairs marked Check by hand.
