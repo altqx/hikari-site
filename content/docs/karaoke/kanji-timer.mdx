@@ -75,6 +75,8 @@ When a syllable has no kanji left, you can link it on its own as a *blank* group
 
 **Skip romaji line** and **Skip kanji line** take that line out of the pair, for a line that has no counterpart in the other style. The line you keep then pairs again without it. **Previous** goes back to the previous pair, as you left it.
 
+**Apply** saves the skips with the subtitles, so a skipped line is still skipped when you open the window again, also after reopening the file or a trip through Aegisub 3.4 or later. A skipped line's row has **Pair again**, which puts the line back into pairing; the next **Apply** saves that too.
+
 ### Spaces
 
 A space is never a character or a syllable to time. This covers every kind of space: a plain space, a full-width space, a no-break space, a tab, `\h`, and the line breaks `\N` and `\n`.
@@ -146,4 +148,4 @@ With **Furigana** on, the timer also writes each group's reading after its kanji
 
 ## Undo
 
-In the window, each change to the groups is one step: growing or shrinking a group, linking, unlinking, accepting and skipping, and setting a reading or using the suggestion. <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes it and takes you back to its pair. Opening another pair is not a step. **Apply** clears the window's history, because the changes are then in the subtitles' own history.
+In the window, each change to the groups is one step: growing or shrinking a group, linking, unlinking, accepting, skipping and pairing again, and setting a reading or using the suggestion. <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes it and takes you back to its pair. Opening another pair is not a step. **Apply** clears the window's history, because the changes are then in the subtitles' own history.
