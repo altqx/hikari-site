@@ -12,6 +12,16 @@ Automation scripts are Lua or MoonScript files that add **macros**: commands tha
 
 You can run macros from the **Automation** menu or from the [Automation panel](/en/docs/automation/automation-panel), which also shows each script's state and the log of every run.
 
+## Scripts written for Aegisub
+
+Scripts see Aegisub 3.5.1's Lua API, with the additions of arch1t3cht's Aegisub fork, so scripts written for Aegisub run unchanged, those that use [DependencyControl](/en/docs/automation/dependencycontrol) included:
+
+- A video frame gives its pixels' colours with `getPixel`, and all its pixel data at once for scripts that use FFI.
+- `frame_from_ms` and `ms_from_frame` round as Aegisub does, so frame-based scripts land on the same frames.
+- Each line's extradata is there for scripts, and what they change in it is saved.
+
+The few differences that remain are in [Coming from Aegisub](/en/docs/automation/writing-scripts#coming-from-aegisub).
+
 ## The Automation menu
 
 | Item | Does |

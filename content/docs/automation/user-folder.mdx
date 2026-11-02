@@ -1,12 +1,12 @@
 ---
 title: The user folder
-description: Find the one folder that holds your settings, scripts, dictionaries and catalogs, how bundled scripts are copied into it, and how to back it up.
+description: Find the one folder that holds your settings, scripts, dictionaries and catalogues, how bundled scripts are copied into it, and how to back it up.
 ---
 
 import helpMenuLight from './images/help-open-user-folder-light.webp';
 import helpMenuDark from './images/help-open-user-folder-dark.webp';
 
-Everything of yours is in one folder, the **user folder**: your settings and hotkeys, automation scripts and modules, dictionaries, catalogs, saved layouts and autosaves. Copy it, and you have your whole setup. Uninstalling or updating HikariSub never deletes it.
+Everything of yours is in one folder, the **user folder**: your settings and hotkeys, automation scripts and modules, dictionaries, catalogues, saved layouts and autosaves. Copy it, and you have your whole setup. Uninstalling or updating HikariSub never deletes it.
 
 For scripts, the user folder is `?user`, as in Aegisub.
 
@@ -58,7 +58,7 @@ dictionaries/           spelling dictionaries (.dic and .aff) and UserDic.udic
 Harper/                 the grammar checker's dictionary and data, kept by harper-ls
 Import/                 the legacy settings import's snapshots, for Roll back…
 ReplaceBackup/          copies of files made before Replace in subtitles changes them
-catalogs/               style catalogs (.sty) and fonts.toml, your font catalogs
+catalogs/               style catalogues (.sty) and fonts.toml, your font catalogues
 presets/                layouts.json, your saved layouts
 recovery/               autosaved copies of your files
 config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
@@ -113,7 +113,7 @@ The lists you build up are TOML files too, each starting with `version = 1`:
 | `rules.toml` | The [Fix minor errors](/en/docs/checking/fix-minor-errors#the-rules-file) rules, one `[[rule]]` each | `Rules.txt` |
 | `shapes.toml` | The shapes of [Edit shapes](/en/docs/typesetting/shapes-and-tags-editors), one `[[shape]]` each | `ShapesSettings.txt` |
 | `tags.toml` | The tags of [Edit tags](/en/docs/typesetting/shapes-and-tags-editors), one `[[tag]]` each | `AllTagsSettings.txt` |
-| `catalogs/fonts.toml` | The [font catalogs](/en/docs/typesetting/fonts#where-catalogs-are-kept), one `[[catalog]]` each, with its safety copies `fonts.autosave-0.toml` to `fonts.autosave-2.toml` | `FontCatalogs.txt` and `FontCatalogsAutosave0.txt` to `2.txt` |
+| `catalogs/fonts.toml` | The [font catalogues](/en/docs/typesetting/fonts#where-catalogues-are-kept), one `[[catalog]]` each, with its safety copies `fonts.autosave-0.toml` to `fonts.autosave-2.toml` | `FontCatalogs.txt` and `FontCatalogsAutosave0.txt` to `2.txt` |
 
 When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `Rules.txt.old`. It is never written again. The Log says, for example, "Rules.txt moved to rules.toml. The old file is kept as Rules.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
 
@@ -143,7 +143,7 @@ HikariSub versions before the user folder kept your files in two folders:
 
 The first time HikariSub starts with a user folder that has no settings (no `settings.toml`, `hikari.ini` or `hikari.ini.old`), it moves their contents in, once. A notice says "Your settings and files moved to …", with the folder; **Details** lists the folders they came from.
 
-- Everything goes into the layout above, and `hikari.ini` is converted [as above](#from-hikariini): `Dictionary` into `dictionaries`, `Catalog` and the font catalogs into `catalogs`, saved layouts into `presets`, `Recovery` into `recovery`, and the Automation folder's contents to the top, with `automation/Autoload` and `Include` merged into `autoload` and `include`.
+- Everything goes into the layout above, and `hikari.ini` is converted [as above](#from-hikariini): `Dictionary` into `dictionaries`, `Catalog` and the font catalogues into `catalogs`, saved layouts into `presets`, `Recovery` into `recovery`, and the Automation folder's contents to the top, with `automation/Autoload` and `Include` merged into `autoload` and `include`.
 - The index files and the audio cache go to the cache folder.
 - A file with the same name as one already in the user folder stays where it was. The notice counts these, and **Details** lists them under **Not moved**.
 - The old DependencyControl stays behind, because HikariSub brings a newer one. The notice says "The old DependencyControl stayed behind: HikariSub brings a newer one."
