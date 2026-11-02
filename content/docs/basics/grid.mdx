@@ -37,7 +37,11 @@ The Grid lists every line of the file, one row each, in file order. The line you
 
 **CPS** turns the warning colour above 15 characters per second, and **Wraps** above 43 characters on a line, or at three lines. Tags and drawings don't count. **File › Settings › Subtitle grid › Counting** chooses whether spaces and punctuation do.
 
-Columns that have nothing to show hide themselves: Layer when every layer is 0, Actor and Effect when they are all empty, and each margin when it is 0 everywhere. A column comes back as soon as a line uses it. Turn this off with **Hide columns › Hide empty columns** in the right-click menu, and hide any column by hand in the same menu. SRT and the other simple formats have no layers, styles, actors, margins or effects, so those columns never show for them.
+Columns that have nothing to show hide themselves: Layer when every layer is 0, Actor and Effect when they are all empty, and each margin when it is 0 everywhere. A column comes back as soon as a line uses it.
+
+Right-click the row of column names for the list of columns: tick or untick one to show or hide it. **Hide empty columns** turns the hiding above on or off, and **Reset column widths** puts the widths back. The same list is under **Columns** in the menu of the **⋯** button on the Grid panel's header.
+
+ SRT and the other simple formats have no layers, styles, actors, margins or effects, so those columns never show for them.
 
 ## What the rows show
 
@@ -61,7 +65,22 @@ Columns that have nothing to show hide themselves: Layer when every layer is 0, 
 
 The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Move video to selected line on**. **Edit › Select lines** selects lines by their text, style or other fields.
 
-Most commands act on the selected lines. Right-click a line for the Grid's menu.
+Most commands act on the selected lines.
+
+## The right-click menu
+
+Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>, for the Grid's menu:
+
+- **Insert ›** Before or After, also at the video's time or frame time.
+- **Duplicate**, **Cut**, **Copy** and **Paste**.
+- **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
+- **Join ›** Join, Keep first or Keep last.
+- **Split ›** At video time, Into frames, Into characters, Into words or By wraps.
+- **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**.
+- **Select lines visible on video**, **Show subtitles preview** and [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation).
+- **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
+
+The sections below explain each of them.
 
 ## Making and removing lines
 
@@ -101,16 +120,18 @@ Each sort is one undo step. None of them has a key at first; give one in **File 
 
 Hidden lines are still in the file; the Grid just leaves them out, and most commands skip them.
 
-- **Hide selected lines** hides them.
-- **Filtering** hides the lines of chosen styles, or comments, or shows only unconfirmed or untranslated lines. **Reverse filtering** shows the opposite, and **Turn off filtering** shows them all again.
+The filters are under **Filtering**, in the menu of the **⋯** button on the Grid panel's header:
+
+- **Hide selected lines (filter)** hides them.
+- **Hide comments** and **Hide lines with styles ›** hide those lines, and **Show unconfirmed** and **Show untranslated** show only those. **Reverse filtering** shows the opposite, and **Turn off filtering** shows them all again.
 - The marks at the left edge show where hidden lines are. Click one to open or close that run.
-- **Ignore filtering in some actions** lets Replace all and Shift times reach hidden lines too.
+- **Ignore filtering in some actions**, in the same **⋯** menu, lets Replace all and Shift times reach hidden lines too.
 
 **View › Hide tags** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Subtitle grid › ASS tag replacement** sets the character.
 
 ## Line groups
 
-**Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row to add lines to it, copy it, rename it, select its lines, or delete the group. An edit that would split a group's lines apart asks first, or is refused.
+**Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…** and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
 
 ## Folding generated lines
 
@@ -142,10 +163,10 @@ Turning the option off shows every line, and turning it on again folds every run
 ## Other commands
 
 - **Make times continuous with the previous line** and **with the next line** close the gaps between lines, as [Timing](/en/docs/basics/timing#lines-next-to-each-other) explains.
-- **Set new FPS** and **Set FPS from video** retime lines from one frame rate to another.
-- **Select all lines visible on video** selects the lines showing at the video's time.
+- **Subtitles › Set FPS › Set new FPS…** and **Set FPS from video** retime lines from one frame rate to another.
+- **Select lines visible on video** selects the lines showing at the video's time.
 - **Show subtitles preview** (<kbd>Ctrl</kbd>+<kbd>Q</kbd>) opens another file beside this one, to compare or translate against.
-- **Font collector** gathers the fonts the file uses.
-- **Load subtitles from an MKV/OGM file** opens a video's subtitle track.
+- **Subtitles › Font collector** gathers the fonts the file uses.
+- **File › Import subtitles from MKV…** opens a video's subtitle track.
 
 Every Grid command has a place in the [Hotkeys reference](/en/docs/reference/hotkeys#subtitle-grid), and most have no key at first. **Shift**+click a menu item to give it one.
