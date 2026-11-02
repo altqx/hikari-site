@@ -43,6 +43,16 @@ Every start and end moves by the same number of frames, so each line keeps its l
 
 **Start frame offset** and **End frame offset**, under **File › Settings › Subtitle grid › New lines**, add a fixed amount to these times.
 
+### Centring times within frames
+
+ASS stores times in hundredths of a second, so a time rarely falls exactly where a frame starts. A time close to the edge of its frame can cross into the next frame when you later [shift lines by a time](#shift-mode), while a time near the middle can't.
+
+**Video › Centre times within frames** moves the selected lines' starts and ends to the hundredth nearest the middle of their frames. Each one stays on the frame it was on, so nothing changes on the video. A later shift by time then moves every line by the same number of frames.
+
+- It acts on every selected line, hidden ones included.
+- It is one undo step, and does nothing when the times are already centred.
+- It needs a video, a [dummy video](/en/docs/basics/video#dummy-video) included, and has no key at first. Give it one in **File › Settings › Hotkeys**, where it is named **Centre times within frames**.
+
 ## In the Line editor
 
 The Line editor's **Start**, **End** and **Duration** fields take typed times, h:mm:ss.cc. A typed digit replaces the next one and skips the colons, and a pasted time must be whole. Over a field, the wheel steps the part under the pointer, and dragging with the right button held steps it faster.
