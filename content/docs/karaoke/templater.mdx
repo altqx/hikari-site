@@ -8,7 +8,7 @@ import renderCostDark from './images/render-cost-dark.webp';
 
 The karaoke templater makes effects from karaoke lines. You write **templates**: comment lines whose Effect starts with `template`, holding override tags, variables such as `$start` and Lua expressions. When you apply them, the templater makes new lines from every karaoke line, one per syllable or one per line, with the tags filled in for each.
 
-HikariSub ships Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, and its output is the same as Aegisub 3.2.2's, byte for byte. Existing templates work unchanged. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
+HikariSub ships Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, and its output is the same as Aegisub 3.2.2's, byte for byte, apart from a mark on each line saying which karaoke line it came from ([below](#applying-to-selected-lines)). Existing templates work unchanged. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
 
 To write templates with a live preview, use the [Template editor](/en/docs/karaoke/template-editor); to start from a ready-made effect, insert one of the [presets](/en/docs/karaoke/presets). This page covers the template language and running the templater.
 
@@ -198,7 +198,9 @@ The messages show at the default **Lua trace level**, 3, in **File › Settings 
 
 It runs the templates over every karaoke line up to the last selected one, so that counters and remembered values are what a whole run gives them, but keeps only the selected lines' output. Their old generated lines are replaced where the first of them stood. A line that had none gets its new lines at the end. Problems in the other lines aren't reported.
 
-HikariSub knows which karaoke line each generated line came from while the file is open, but doesn't save it. In a file just opened, it matches the `fx` lines against what the templates give the other karaoke lines now. If they don't match, because the templates or the lines changed, or the templates use random values, nothing changes and HikariSub asks you to apply the template to the whole file once. After that, selected lines can be applied on their own.
+Each run marks every generated line with the karaoke line it came from, in the run's own undo step. The marks are saved with the file, in its `[Aegisub Extradata]` section, and Aegisub 3.4 and later keep them. So in a reopened file, selected lines can still be applied on their own, exactly. There is no setting to leave the marks out.
+
+A file saved without marks, by an older HikariSub or by another editor, has none. HikariSub then matches the `fx` lines against what the templates give the other karaoke lines now. If they don't match, because the templates or the lines changed, or the templates use random values, nothing changes and HikariSub asks you to apply the template to the whole file once. That run marks every line.
 
 ## How long it took
 
