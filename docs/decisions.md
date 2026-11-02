@@ -24,6 +24,7 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
   2. The owner removes the managed proxy's `i` CNAME.
   3. `i.hikarisub.org` is attached as the Worker's custom domain.
   4. The coordinator deletes the managed proxy in PostHog.
+- **Checking it:** PostHog's capture answers `200 {"status":"Ok"}` even for an invalid `phc_` key, which it checks later, so a 200 is not a fault. A batch without an event name gets PostHog's own 400 message through the Worker, which shows the request reached PostHog.
 
 ## Examples in MDX
 
