@@ -3,6 +3,7 @@
   "defaultOpen": true,
   "pages": [
     "files-and-formats",
+    "export",
     "grid",
     "line-editor",
     "styles",
