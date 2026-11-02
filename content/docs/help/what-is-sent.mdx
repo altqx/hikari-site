@@ -12,6 +12,8 @@ It is **on by default**, also in a copy updated from an earlier version and afte
 
 This page is about the HikariSub app. This website uses Cloudflare Web Analytics instead, with no cookies.
 
+[Discord presence](#discord-presence), which shows what you are doing in your Discord status, is separate from usage data and off by default.
+
 ## Turning it off
 
 Any of these turns it off:
@@ -224,3 +226,23 @@ A report goes straight away to the same address, with the same project key and u
 | `version`, `channel`, `$os`, `$os_version`, `arch`, `package`, `qt_version` | As in `app_started` |
 
 [What a report holds](/en/docs/help/reporting-problems#what-a-report-holds) lists the settings in the summary and how the Log lines are changed. HikariSub still offers your last session after a crash; see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
+
+## Discord presence
+
+HikariSub can show what you are doing in your Discord status. It is **off by default**. Turn it on in **File › Settings › Updates and privacy › Privacy › Show what I am doing in Discord**.
+
+It talks only to the Discord app on the same computer, never to a HikariSub server. Discord shows the status to the people who can see yours. Without Discord running, nothing happens; HikariSub looks for Discord again every 20 seconds.
+
+| Shown | Value |
+| --- | --- |
+| Activity | "Editing subtitles" |
+| Mode | Editing, Timing, Translation, Typesetting or Karaoke: the workspace layout you chose last |
+| Time | How long since presence was turned on in this run |
+| Images | The HikariSub icon, and the mode's icon |
+| Button | **Get HikariSub**, which opens [hikarisub.altqx.com](https://hikarisub.altqx.com) |
+
+The texts are in HikariSub's interface language. **Include the file name**, under the switch and also off by default, adds the current tab's file name after the mode, such as `Timing · episode01.ass`. Only the name is sent, never its folder.
+
+It never sends the video or audio name, folders or paths, subtitle text, line counts or progress.
+
+Turning it off clears your status at once, and so does quitting HikariSub.
