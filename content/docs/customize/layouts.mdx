@@ -63,6 +63,16 @@ Choosing another layout afterwards, in this tab or another, turns off again only
 
 The **Line | Karaoke** switch and **Fold generated lines** work in any layout. Showing another tab, opening a file and **Reset this layout** switch neither.
 
+### Typing applies itself
+
+In the Karaoke layout, the Line editor applies what you type on its own, with no <kbd>Enter</kbd>:
+
+- The text is applied 300 ms after your last keystroke, or at once when the field loses focus, so a click on the karaoke bar or the Grid always works on the text you see.
+- The Grid, the karaoke bar and the video follow each time it is applied.
+- One burst of typing is one undo step. A pause longer than about a second starts a new step, and so do a line change, <kbd>Enter</kbd>, Undo and saving. Until a burst is applied, <kbd>Ctrl</kbd>+<kbd>Z</kbd> in the field still undoes keystroke by keystroke.
+
+It applies to the text field, and to the Translated text in translation mode. It is always on in the Karaoke layout and has no setting. Every other layout keeps a [draft](/en/docs/basics/line-editor#applying-changes) until you press <kbd>Enter</kbd> or choose another line.
+
 ## Choosing a layout
 
 The layout button in the title bar, after the menus, shows the tab's layout. Click it, or use **View › Layout**:
