@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
-import worker, { redirectTarget } from '../../redirect/worker';
+import { redirectTarget } from '../../redirect/target';
+import worker from '../../redirect/worker';
 
 describe('redirect worker', () => {
   test('keeps the path and the query', () => {

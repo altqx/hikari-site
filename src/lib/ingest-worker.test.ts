@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import { gunzipSync, gzipSync } from 'node:zlib';
-import { handleIngest, type IngestOptions } from '../../ingest/worker';
+import { handleIngest, type IngestOptions } from '../../ingest/proxy';
+import worker from '../../ingest/worker';
 
 interface Seen {
   url: string;
@@ -200,5 +201,26 @@ describe('timeout and errors', () => {
       throw new TypeError('network down');
     }) as typeof fetch;
     expect((await handleIngest(post('/batch/', '{}'), options(failing))).status).toBe(502);
+  });
+});
+
+describe('the entry module', () => {
+  test("calls fetch unbound, as workerd's fetch requires", async () => {
+    // workerd's fetch throws "Illegal invocation" when `this` is anything but the global scope.
+    const strict = function (this: unknown, _input: RequestInfo | URL, _init?: RequestInit) {
+      if (this !== undefined && this !== globalThis) throw new TypeError('Illegal invocation');
+      return Promise.resolve(new Response('ok'));
+    } as typeof fetch;
+    expect((await handleIngest(post('/batch/', '{}'), options(strict))).status).toBe(200);
+  });
+
+  test('the default export answers a path outside the allowlist without reaching PostHog', async () => {
+    const response = await worker.fetch(new Request('https://i.hikarisub.org/decide/', { method: 'POST' }));
+    expect(response.status).toBe(404);
+  });
+
+  test('the entry modules export nothing but their default', async () => {
+    expect(Object.keys(await import('../../ingest/worker'))).toEqual(['default']);
+    expect(Object.keys(await import('../../redirect/worker'))).toEqual(['default']);
   });
 });
