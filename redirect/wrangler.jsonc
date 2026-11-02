@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "hikari-site-redirect",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-01",
+  // The old host and www answer with a 301 to the same path and query on https://hikarisub.org.
+  // Deployed by CI after the site, so the site has already let go of hikarisub.altqx.com.
+  "routes": [
+    { "pattern": "www.hikarisub.org", "custom_domain": true },
+    { "pattern": "hikarisub.altqx.com", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false
+}

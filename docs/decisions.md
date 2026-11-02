@@ -5,8 +5,8 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 ## Stack and hosting
 
 - TanStack Start + Fumadocs (fumadocs-mdx, fumadocs-ui) + bun. MDX is compiled at build time and pages are pre-rendered.
-- Cloudflare Workers with static assets, at **hikarisub.altqx.com** (custom domain on the altqx.com zone).
-- GitHub Actions deploys on every push to `main`, and each PR gets a preview URL. The deploy uses the repo secrets `CLOUDFLARE_API_TOKEN` (Workers edit plus this zone's routes and DNS) and `CLOUDFLARE_ACCOUNT_ID`. The coordinator asks the owner for them through a secret prompt; they are never pasted in chat or committed.
+- Cloudflare Workers with static assets, at **hikarisub.org** (custom domain on the hikarisub.org zone; the owner moved the site there on 2026-11-02). **www.hikarisub.org** and the old **hikarisub.altqx.com** answer forever with a path- and query-preserving 301 to https://hikarisub.org, from the `redirect/` Worker that CI deploys. Shipped 0.1.0 betas link to the old host. The plugin marketplace will later be at marketplace.hikarisub.org; nothing is built for it yet.
+- GitHub Actions deploys on every push to `main`, and each PR gets a preview URL. The deploy uses the repo secrets `CLOUDFLARE_API_TOKEN` (account Workers edit, plus Workers Routes edit on the altqx.com and hikarisub.org zones; custom domains need no DNS permission, and the token has none) and `CLOUDFLARE_ACCOUNT_ID`. The coordinator asks the owner for them through a secret prompt; they are never pasted in chat or committed.
 
 ## Examples in MDX
 

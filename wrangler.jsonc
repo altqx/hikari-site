@@ -8,8 +8,9 @@
     "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page"
   },
-  // Attached on `wrangler deploy` only, which CI runs once PRODUCTION_DEPLOY is on.
-  "routes": [{ "pattern": "hikarisub.altqx.com", "custom_domain": true }],
+  // Attached on `wrangler deploy` only, which CI runs once PRODUCTION_DEPLOY is on. www and the
+  // old host, hikarisub.altqx.com, redirect here through redirect/wrangler.jsonc.
+  "routes": [{ "pattern": "hikarisub.org", "custom_domain": true }],
   "workers_dev": true,
   "preview_urls": true
 }

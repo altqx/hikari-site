@@ -1,5 +1,5 @@
 export const appName = 'HikariSub';
-export const siteUrl = 'https://hikarisub.altqx.com';
+export const siteUrl = 'https://hikarisub.org';
 
 export const gitConfig = {
   user: 'altqx',
