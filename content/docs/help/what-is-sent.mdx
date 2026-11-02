@@ -156,6 +156,8 @@ The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500
 | `layout_changed` | When you choose a layout | `layout` |
 | `getting_started_finished` | When you press **Finish** in Getting started | `pages_changed` |
 | `getting_started_skipped` | When you close Getting started without finishing: **Skip setup**, <kbd>Esc</kbd> or closing the window | None |
+| `star_prompt_shown` | When the [suggestion to star HikariSub on GitHub](#star-on-github-suggestion) shows, at most twice ever | None |
+| `star_prompt_clicked` | When you press its **Star on GitHub** | None |
 
 - `command`: the command's ID in the hotkey list, such as `GLOBAL_SAVE_SUBS` or `AUDIO_PLAY`. Only the commands in that list are sent. Automation macros are never sent.
 - `via`: `key` for a command a key ran, or `pointer` for one from a menu, a toolbar or a panel's button.
@@ -246,3 +248,18 @@ The texts are in HikariSub's interface language. **Include the file name**, unde
 It never sends the video or audio name, folders or paths, subtitle text, line counts or progress.
 
 Turning it off clears your status at once, and so does quitting HikariSub.
+
+## Star on GitHub suggestion
+
+Once you have used HikariSub for a while, a quiet message may suggest starring it on GitHub: **Enjoying HikariSub?** "A star on GitHub helps others find it." **Star on GitHub** opens [HikariSub on GitHub](https://github.com/altqx/hikari); **Not now** closes it. It never asks for anything else: no rating, sign-in or email.
+
+It shows at most twice ever, and never again once you press **Star on GitHub**:
+
+- only after HikariSub has been opened on at least 5 different days, with at least 3 hours in all while its window was active and a file was open, and at least 10 minutes into the current run;
+- never on the first run, or on the first run after an update;
+- never while video or audio plays, in full screen, while a dialog is open, or within 10 seconds of your last key press;
+- at least 30 days after it last showed, however you closed it.
+
+To stop it for good, turn off **File › Settings › Updates and privacy › Privacy › Suggest starring HikariSub on GitHub**. It is on by default.
+
+The counts it needs stay in your [settings file](/en/docs/automation/user-folder#settings-files) on this computer. Nothing about it is sent, except with usage data on: [`star_prompt_shown` and `star_prompt_clicked`](#features-used), with no properties.
