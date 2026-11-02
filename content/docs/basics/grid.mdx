@@ -88,7 +88,14 @@ Lines between the selected ones that you didn't select are left alone.
 
 ## Sorting
 
-**Edit › Sort all lines** and **Sort selected lines** order the lines by start time, end time, style, actor, effect or layer. Lines that tie keep their order.
+**Edit › Sort all lines** and **Sort selected lines** order the lines by start time, end time, style, actor, effect, layer or text. Lines that tie keep their order. Sort selected lines moves the selected lines only among their own rows.
+
+There are two text orders:
+
+- **Text** sorts by the whole text, tags included.
+- **Text without tags** leaves out the `{…}` blocks, so lines sort by their words.
+
+Each sort is one undo step. None of them has a key at first; give one in **File › Settings › Hotkeys**.
 
 ## Hiding lines
 
