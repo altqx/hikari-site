@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "hikari-ingest",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-01",
+  // HikariSub's usage data endpoint: forwards POST /batch/ and /i/v0/e/ to eu.i.posthog.com.
+  // Step 1 of the rollout: workers.dev only. i.hikarisub.org is attached as a custom domain once
+  // the owner has removed the old PostHog proxy CNAME (decisions.md, Usage data endpoint).
+  "workers_dev": true,
+  "preview_urls": false,
+  // No logs: the Worker must not keep request bodies or IPs anywhere.
+  "observability": { "enabled": false, "logs": { "enabled": false } },
+  "logpush": false
+}
