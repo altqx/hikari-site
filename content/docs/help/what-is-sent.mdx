@@ -58,9 +58,10 @@ If you turn it on again, HikariSub starts a new ID. The session length and the f
 
 ## Where it goes
 
-Events go to PostHog Cloud EU, at `https://eu.i.posthog.com`.
+Events go to PostHog Cloud EU through HikariSub's own proxy, at `https://i.hikarisub.org`. The proxy runs on Cloudflare and only forwards the events to PostHog. It keeps no logs, and it doesn't pass your IP address on, so PostHog sees the proxy's address instead of yours. There is no fallback: if the proxy can't be reached, nothing goes to PostHog's own address, and the events wait for the next send.
 
-- PostHog receives your IP address with each send, as any server does. The HikariSub project there discards it.
+0.1.0-beta.3 and earlier send straight to `https://eu.i.posthog.com`. PostHog then receives your IP address with each send, as any server does, and the HikariSub project there discards it.
+
 - Every event asks PostHog to make no location lookup from the IP address (`$geoip_disable`) and no person profile (`$process_person_profile`).
 - Each send also carries HikariSub's project key, which is the same in every copy, and the user agent `HikariSub/` followed by the version.
 
@@ -214,7 +215,7 @@ A report goes once, only when you press **Send report** in its window, or by its
 - **With usage data on**, the record alone was already queued as `$exception`, like any other event. **Send report** then sends only `crash_report`, which holds the rest: your note, the Log lines and the settings summary. `report_id` links the two. If you turned usage data off after the record was queued, the queue was deleted, so **Send report** sends the record again.
 - **With usage data off, or `DO_NOT_TRACK` set**, **Send report** sends both `$exception` and `crash_report`, under a random ID made for that one report and kept nowhere. No [anonymous ID](#the-anonymous-id) is made, and there is no session ID.
 
-A report goes straight away to the same address, with the same project key and user agent, and is not queued. Only release packages can send one.
+A report goes straight away to the same address, through the same proxy, with the same project key and user agent, and is not queued. Only release packages can send one.
 
 `crash_report` has:
 
