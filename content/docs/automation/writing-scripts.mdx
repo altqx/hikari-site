@@ -136,7 +136,7 @@ Every line has `class`, `section` and `raw`. The other fields depend on the clas
 | `margin_l`, `margin_r`, `margin_t` | number | `margin_t` is the vertical margin; `margin_b` reads the same. |
 | `text` | string | Tags and text. |
 | `text_translation` | string | Only in translation mode: then `text` is the translation and `text_translation` the original. |
-| `extra` | table | Always empty. |
+| `extra` | table | The line's extradata, string keys and values, as Aegisub 3.5 gives it. A changed table replaces the line's extradata when the macro's changes are applied, and is saved with the file. |
 
 **Style** (`class = "style"`): `name`, `fontname`, `fontsize`, `color1` to `color4` (`&HAABBGGRR&`), `bold`, `italic`, `underline`, `strikeout` (booleans), `scale_x`, `scale_y`, `spacing`, `angle`, `borderstyle`, `outline`, `shadow`, `align`, `margin_l`, `margin_r`, `margin_t`, `margin_b`, `encoding`.
 
@@ -221,14 +221,14 @@ When a script fails to load, its row in the Automation panel says so, with **Sho
 | Function | Returns |
 | --- | --- |
 | `aegisub.text_extents(style, text)` | `width, height, descent, external_leading` of the text in that style (a style line). |
-| `aegisub.frame_from_ms(ms)`, `aegisub.ms_from_frame(frame)` | The frame shown at a time, and the time of a frame. `nil` without video. |
+| `aegisub.frame_from_ms(ms)`, `aegisub.ms_from_frame(frame)` | The frame shown at a time, and the time of a frame, rounded as Aegisub rounds them. `nil` without video. |
 | `aegisub.video_size()` | `width, height, aspect_ratio, aspect_type`, or `nil` without video. |
 | `aegisub.keyframes()` | The keyframes as frame numbers. |
 | `aegisub.get_audio_selection()` | The start and end of the current line, or `nil` without audio. |
-| `aegisub.get_frame(frame [, with_subtitles])` | A video frame, with `:width()`, `:height()`, `:getPixel(x, y)` and `:getPixelFormatted(x, y)` (`&HBBGGRR&`). |
+| `aegisub.get_frame(frame [, with_subtitles])` | A video frame, with `:width()`, `:height()`, `:getPixel(x, y)` (`r, g, b`), `:getPixelFormatted(x, y)` (`&HBBGGRR&`) and `:data()`: the BGRA pixels for FFI, the pitch in bytes and `false` (not flipped), valid while the frame is. |
 | `aegisub.parse_karaoke_data(line)` | The line's karaoke syllables, from index 0, each with `duration`, `start_time`, `end_time`, `tag`, `text` and `text_stripped`. |
 | `aegisub.file_name()` | The subtitle file's name, or `nil`. |
-| `aegisub.project_properties()` | The video, audio and keyframes files and the video position. |
+| `aegisub.project_properties()` | The video, audio and keyframes files, the video position, and `video_zoom`: the Video panel's zoom (1 without video). `timecodes_file` is empty. |
 | `aegisub.decode_path(path)` | The path with a `?` prefix expanded (below). |
 | `aegisub.gettext(text)` | The text translated, for scripts that ship translations. |
 | `aegisub.set_status_text(text)` | HikariSub only: sets the status bar text. |
@@ -262,7 +262,7 @@ Each loaded script runs in a process of its own. This has a few consequences:
 
 ## Coming from Aegisub
 
-Most Aegisub scripts run as they are. These differences can matter:
+Scripts get the Lua API of Aegisub 3.5.1, with the additions of arch1t3cht's Aegisub fork, and `aegisub.version` says 3.5.1. Most scripts written for Aegisub run as they are. These differences can matter:
 
 - `register_filter` does nothing: HikariSub has no export filters.
 - `aegisub.set_undo_point` does nothing: each run is one undo step.
@@ -272,6 +272,5 @@ Most Aegisub scripts run as they are. These differences can matter:
 - The default OK button returns `""`, not `true`; `if pressed then` works either way.
 - `coloralpha` returns `#AARRGGBB`.
 - A style's `borderstyle` is 0 or 1; write `-3` to keep an opaque box.
-- `extra` (extradata) is always empty and is not saved.
 - Log levels above 3 are not shown, and `print` output is not shown at all.
 - Automation 3 scripts are not supported.

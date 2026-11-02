@@ -1,6 +1,6 @@
 ---
 title: Fonts
-description: Choose fonts with the font picker, sort them into catalogs, use fonts that aren't installed, and collect the fonts a file needs.
+description: Choose fonts with the font picker, sort them into catalogues, use fonts that aren't installed, and collect the fonts a file needs.
 ---
 
 import pickerLight from './images/font-picker-light.webp';
@@ -23,14 +23,14 @@ A line's font comes from its style, or from a `\fn` tag in its text. HikariSub s
     height={609}
     className="rounded-lg border"
   />
-  <figcaption>The font picker, showing the fonts of catalog A.</figcaption>
+  <figcaption>The font picker, showing the fonts of catalogue A.</figcaption>
 </figure>
 
 **Font selection**, the **F** button in the Line editor's tag strip, opens the picker on the font at the cursor. It has no key at first; give it one in **File › Settings › Hotkeys**.
 
 - **Search fonts** narrows the list as you type. <kbd>Up</kbd> and <kbd>Down</kbd> move in it, <kbd>Enter</kbd> is OK, and <kbd>Ctrl</kbd>+<kbd>F</kbd> goes back to the search.
-- Each font is drawn in its own face, with the catalogs that hold it at the end of its row.
-- The **catalog** chip shows **All fonts**, **Without catalog**, or one catalog's fonts.
+- Each font is drawn in its own face, with the catalogues that hold it at the end of its row.
+- The **catalogue** chip shows **All fonts**, **Without catalogue**, or one catalogue's fonts.
 - **Characters** shows only the fonts that have every character you type, such as the letters of your language.
 - **Size** and the **Bold**, **Italic**, **Underline** and **Strikethrough** buttons set the rest.
 
@@ -42,9 +42,9 @@ Each change shows in the line at once. **OK** keeps it; **Cancel** takes back ev
 
 When no installed font has the name you type, the list ends with **Use “…” anyway**. Choose it for a file made on another computer: the name is written as it is, and the warning under the preview shows what this computer will draw instead.
 
-## Font catalogs
+## Font catalogues
 
-A catalog is a named list of fonts, such as "Signs" or "Karaoke", to find yours among hundreds. Catalogs belong to HikariSub, not to a subtitle file, and a font can be in several. There are none at first.
+A catalogue is a named list of fonts, such as "Signs" or "Karaoke", to find yours among hundreds. Catalogues belong to HikariSub, not to a subtitle file, and a font can be in several. There are none at first.
 
 <figure>
   <ThemedImage
@@ -55,37 +55,37 @@ A catalog is a named list of fonts, such as "Signs" or "Karaoke", to find yours 
     height={653}
     className="rounded-lg border"
   />
-  <figcaption>Manage font catalogs.</figcaption>
+  <figcaption>Manage font catalogues.</figcaption>
 </figure>
 
 To open **Manage font catalogues**, use **Manage catalogues** in the picker, or **Manage** beside the font in the Style manager.
 
-- On the left, the buttons make a **New catalogue**, **Rename** or **Delete** the chosen one, **Load from a file**, and **Add fonts from subtitles**. Deleting a catalog leaves its fonts installed.
-- On the right, the check box beside each font puts it in the chosen catalog or takes it out. Select several rows, with <kbd>Ctrl</kbd>+click or <kbd>Shift</kbd>+click, and press <kbd>Space</kbd> to do them together.
-- **Show** lists **All fonts**, the chosen catalog's, or those **Not in a catalogue**.
+- On the left, the buttons make a **New catalogue**, **Rename** or **Delete** the chosen one, **Load from a file**, and **Add fonts from subtitles**. Deleting a catalogue leaves its fonts installed.
+- On the right, the check box beside each font puts it in the chosen catalogue or takes it out. Select several rows, with <kbd>Ctrl</kbd>+click or <kbd>Shift</kbd>+click, and press <kbd>Space</kbd> to do them together.
+- **Show** lists **All fonts**, the chosen catalogue's, or those **Not in a catalogue**.
 - **Refresh fonts** reads the installed fonts and your Fonts folder again.
 
 The samples in the list show the [Preview text](/en/docs/customize/settings#preview-text) in each font, drawn by your system; the preview under it is drawn by the subtitle renderer.
 
-Renaming a catalog to another's name offers to **Merge** the two or **Replace** the other. Catalog names ignore case, and font names must match exactly.
+Renaming a catalogue to another's name offers to **Merge** the two or **Replace** the other. Catalogue names ignore case, and font names must match exactly.
 
-From the picker, the **+** button adds the chosen font to a catalog, or makes a new one.
+From the picker, the **+** button adds the chosen font to a catalogue, or makes a new one.
 
 ### Add fonts from subtitles
 
-**Add fonts from subtitles** puts every font a file uses, in its styles and its `\fn` tags, into a catalog. Choose the catalog, or type a new name, and whether to take the fonts from **This file** or **All open files**. **Replace the catalogue's fonts** empties it first.
+**Add fonts from subtitles** puts every font a file uses, in its styles and its `\fn` tags, into a catalogue. Choose the catalogue, or type a new name, and whether to take the fonts from **This file** or **All open files**. **Replace the catalogue's fonts** empties it first.
 
-### Loading catalogs
+### Loading catalogues
 
-**Load from a file** reads catalogs from a `fonts.toml` file, or a `FontCatalogs.txt` from HikariSub 0.0.x, such as one a friend sent you. New catalogs are added. If some already exist with other fonts, a window lists them, and lets you **Merge**, **Replace**, **Rename** or **Skip** each.
+**Load from a file** reads catalogues from a `fonts.toml` file, or a `FontCatalogs.txt` from HikariSub 0.0.x, such as one a friend sent you. New catalogues are added. If some already exist with other fonts, a window lists them, and lets you **Merge**, **Replace**, **Rename** or **Skip** each.
 
-### Where catalogs are kept
+### Where catalogues are kept
 
-Catalogs are saved in `fonts.toml`, in the `catalogs` folder of your [user folder](/en/docs/automation/user-folder#list-files), as you change them. The window's footer says **Saved** after each safety copy, `fonts.autosave-0.toml` to `fonts.autosave-2.toml` beside it. An earlier version's `FontCatalogs.txt` is converted into `fonts.toml` once, and kept as `FontCatalogs.txt.old`. Changes to catalogs have no undo.
+Catalogues are saved in `fonts.toml`, in the `catalogs` folder of your [user folder](/en/docs/automation/user-folder#list-files), as you change them. The window's footer says **Saved** after each safety copy, `fonts.autosave-0.toml` to `fonts.autosave-2.toml` beside it. An earlier version's `FontCatalogs.txt` is converted into `fonts.toml` once, and kept as `FontCatalogs.txt.old`. Changes to catalogues have no undo.
 
 ## Your Fonts folder
 
-**File › Settings › General › Folders › Fonts folder** names a folder of fonts that HikariSub uses without installing them. The `.ttf`, `.otf`, `.ttc` and `.pfb` files directly in it show in the picker, the catalogs and the Style manager, and the video draws subtitles with them. Fonts attached to the subtitle file come before them.
+**File › Settings › General › Folders › Fonts folder** names a folder of fonts that HikariSub uses without installing them. The `.ttf`, `.otf`, `.ttc` and `.pfb` files directly in it show in the picker, the catalogues and the Style manager, and the video draws subtitles with them. Fonts attached to the subtitle file come before them.
 
 HikariSub notices when you add or remove a font there, after a second. Problems reading the folder or a file go to the **Log** panel.
 
