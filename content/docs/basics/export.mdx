@@ -1,0 +1,70 @@
+---
+title: Export
+description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2 or TMPlayer, and see what each format couldn't keep.
+---
+
+**File › Export as…** writes a copy of the file in another format. The file you are editing doesn't change: it stays ASS, with the same undo history, and nothing is marked as changed. Text you have typed in the Line editor but not yet applied goes into the copy too.
+
+To turn the file itself into another format, use [Converting](/en/docs/basics/files-and-formats#converting) instead.
+
+## The Export as window
+
+- **Format:** one of the formats in the table below.
+- **Lines:** **All**, **Selected** (the lines selected in the Grid) or **Shown** (the rows the Grid shows, after [filtering](/en/docs/basics/grid#hiding-lines) and [folding](/en/docs/basics/grid#folding-generated-lines)). Each choice shows how many lines it holds.
+- **Save to:** starts with the file's own name and folder, and the format's extension. Changing the format changes the extension. **Browse…** picks another place.
+- **Options:** only those for the chosen format show.
+
+**Export** writes the file. If a file with that name exists, HikariSub asks before replacing it.
+
+HikariSub remembers the format and options for each file, so the next export of the same file starts the same way. A file you haven't exported yet starts with the choices of your last export.
+
+## Formats
+
+| Format | Extension | Times | Keeps | Options |
+| --- | --- | --- | --- | --- |
+| **SubRip (SRT)** | `.srt` | Milliseconds | Bold, italic and underline; alignment as `{\anN}` | **Alignment as `{\an}` tags** (on), **Text colours as font tags** (off), merging (off) |
+| **WebVTT** | `.vtt` | Milliseconds | Bold, italic and underline; positions and alignment; each style's colours, font, outline and box; text colours | **Positions and alignment** (on), **Styles and colours** (on), **Karaoke timing** (off) |
+| **YouTube SBV** | `.sbv` | Milliseconds | Text only | Merging |
+| **Plain text** | `.txt` | None | Text only, one line per row | **Start and end times**, **Actor names** |
+| **MicroDVD** | `.sub` | Frames | Bold, italic, underline, strikeout and colour that cover a whole row | **Frame rate**, merging |
+| **MPL2** | `.txt` | Tenths of a second | Italics that cover a whole row | Merging |
+| **TMPlayer** | `.txt` | Whole seconds, start only | Text only | None |
+
+- **Merge overlapping lines into one subtitle:** where lines overlap, the time is cut at every start and end, and each piece becomes one subtitle holding the lines on screen then. Top lines come first, then middle, then bottom.
+- **Frame rate** (MicroDVD) starts at the rate you used last for this file, otherwise the open video's, otherwise 23.976. With a video open, **Use video frame rate** puts the video's back.
+- **Plain text** with **Start and end times** puts the times before the text, separated by tabs.
+- **TMPlayer** has no end times, so overlapping lines are always merged, and an empty subtitle clears the screen when no line follows straight away.
+
+Every format is written as UTF-8.
+
+## What goes out
+
+- Only dialogue lines. Comment lines are skipped.
+- A line left with nothing to show, such as a drawing or empty text, is skipped, and so is a line with no length. Plain text keeps lines with no length, because it has no times.
+- The timed formats list lines by start time. Plain text keeps the order of the file.
+- `\N` starts a new row: `|` in MicroDVD, MPL2 and TMPlayer, and a space in plain text. `\n` is a space, or a new row when the file's [Wrap style](/en/docs/basics/files-and-formats#the-files-properties) is **2: No wrapping**. `\h` becomes a no-break space.
+- Comments in braces with no tags in them are removed. Spaces at the start and end of each row are trimmed, and empty rows are dropped, because a blank line ends a subtitle in SRT, WebVTT and SBV.
+- Karaoke tags are removed, leaving the text. WebVTT with **Karaoke timing** keeps each syllable's time.
+
+## What each export couldn't keep
+
+After writing, the window says how many lines went out and how many it skipped. Below that it lists each line that lost something, or had something approximated, with its line number. Choose one to select it in the Grid.
+
+| The report says | When the line has |
+| --- | --- |
+| Drawing removed | A drawing (`\p1` and up) |
+| Clip removed | `\clip` or `\iclip` |
+| Animation (`\t`) removed | `\t` |
+| Movement removed | `\move`. WebVTT says **Movement kept as its start position** |
+| Fade removed | `\fad` or `\fade` |
+| Rotation or shearing removed | `\org`, or rotation or shearing other than 0 |
+| Font, size, scale or spacing tags removed | `\fn`, `\fs`, `\fscx`, `\fscy` or `\fsp` |
+| Border, shadow, blur, transparency or other colours removed | Borders, shadows, `\be`, `\blur`, transparency, `\2c`, `\3c` or `\4c` |
+| Text colour removed | `\c` or `\1c`, where the format or its options can't carry it |
+| Some bold, italic, underline or strikeout removed | `\b`, `\i`, `\u` or `\s`, where the format can't carry it. SRT and WebVTT lose only strikeout |
+| Position or alignment removed | `\pos`, or alignment other than bottom centre, where the format or its options don't carry it |
+| Karaoke timing removed | Karaoke tags, except in WebVTT with **Karaoke timing** |
+| Scrolling effect removed | The Effect `Banner;`, `Scroll up;` or `Scroll down;` |
+| Merged with overlapping lines | A subtitle shared with an overlapping line |
+
+**Close** closes the window.
