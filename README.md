@@ -1,6 +1,6 @@
 # hikari-site
 
-The HikariSub homepage and user guides, at https://hikarisub.altqx.com.
+The HikariSub homepage and user guides, at https://hikarisub.org.
 
 HikariSub is a subtitle editor for ASS/SSA and other formats: https://github.com/altqx/hikari.
 
@@ -34,5 +34,5 @@ Guides are MDX in `content/docs/`. A page with `draft: true` in its frontmatter 
 ## Deploys
 
 - Each PR gets a preview at `pr-<number>-hikari-site.<subdomain>.workers.dev`, built with drafts.
-- `main` deploys to https://hikarisub.altqx.com only while the repo variable `PRODUCTION_DEPLOY` is `true`. It also rebuilds on a hikari release (`repository_dispatch` event `hikari-release`) and daily.
+- `main` deploys to https://hikarisub.org only while the repo variable `PRODUCTION_DEPLOY` is `true`. It also rebuilds on a hikari release (`repository_dispatch` event `hikari-release`) and daily. The same run deploys `redirect/`, a tiny Worker that answers on www.hikarisub.org and the old host, hikarisub.altqx.com, with a 301 to the same path and query on https://hikarisub.org. Keep it: shipped releases link to the old host.
 - Secret: `CLOUDFLARE_API_TOKEN`. Variables: `CLOUDFLARE_ACCOUNT_ID` (a secret of that name works too), `PRODUCTION_DEPLOY`, `CF_WEB_ANALYTICS_TOKEN` (Cloudflare Web Analytics beacon, production only).

@@ -54,7 +54,7 @@ function files(overrides: Record<string, unknown> = {}) {
       pages: [{ id: 'general', name: 'General' }],
       settings: [{ key: 'program.language', page: 'general', section: 'Language' }],
     },
-    'guide-links.json': { site: 'https://hikarisub.altqx.com', home: '/en/docs', links: [] },
+    'guide-links.json': { site: 'https://hikarisub.org', home: '/en/docs', links: [] },
     ...overrides,
   };
 }
