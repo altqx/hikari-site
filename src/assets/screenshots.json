@@ -775,6 +775,11 @@
       "source": "last frame of perspective-drag-dark (recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886, as the clip), lossy WebP q92, the clip poster",
       "surface": "Video panel, Perspective tool on a Thai line (last frame of the corner drag)",
       "credit": "Subtitles: Jibrill"
+    },
+    "public/og-image.jpg": {
+      "source": "made from src/assets/home/hero-light.webp (see its entry): scaled to 590 px high, padded to 1200x630 with the image's own background, credit drawn in Fira Sans SemiBold, JPEG q88",
+      "surface": "Open Graph / social card image: the homepage hero, light",
+      "credit": "Subtitles: Jibrill (drawn into the image, bottom right)"
     }
   }
 }

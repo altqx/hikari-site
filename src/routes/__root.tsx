@@ -4,6 +4,7 @@ import { RootProvider } from 'fumadocs-ui/provider/tanstack';
 import SearchDialog from '@/components/search';
 import { i18n } from '@/lib/i18n';
 import { translations } from '@/lib/layout.shared';
+import { siteHeadMeta } from '@/lib/seo';
 import { appName } from '@/lib/shared';
 import appCss from '@/styles/app.css?url';
 
@@ -18,6 +19,7 @@ export const Route = createRootRoute({
       { title: appName },
       { name: 'theme-color', media: '(prefers-color-scheme: light)', content: '#ffffff' },
       { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#0a0a0a' },
+      ...siteHeadMeta,
     ],
     links: [
       { rel: 'stylesheet', href: appCss },

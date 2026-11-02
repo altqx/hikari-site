@@ -20,10 +20,12 @@ import { DownloadButton } from '@/components/download-button';
 import { GuideLink } from '@/components/guide-link';
 import { ThemedImage } from '@/components/themed-image';
 import { baseOptions } from '@/lib/layout.shared';
-import { appRepoUrl, gitConfig } from '@/lib/shared';
+import { pageHead, siteDescription } from '@/lib/seo';
+import { appName, appRepoUrl, gitConfig } from '@/lib/shared';
 
 export const Route = createFileRoute('/$lang/')({
   component: Home,
+  head: ({ params }) => pageHead({ path: `/${params.lang}`, title: appName, description: siteDescription }),
 });
 
 interface Feature {
@@ -131,10 +133,7 @@ function Home() {
         <section className="flex flex-col gap-10 pt-16 pb-14 md:pt-20" id="download">
           <div>
             <h1 className="text-4xl font-semibold tracking-tight md:text-[2.5rem]">HikariSub</h1>
-            <p className="mt-3.5 max-w-[620px] text-lg text-fd-muted-foreground">
-              A subtitle editor and player for everything from quick fixes to full typesetting. ASS, SRT and
-              other formats, with frame-accurate video, for Windows and Linux.
-            </p>
+            <p className="mt-3.5 max-w-[620px] text-lg text-fd-muted-foreground">{siteDescription}</p>
             <div className="mt-7">
               <DownloadButton />
             </div>

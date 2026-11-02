@@ -8,6 +8,7 @@ import { Suspense, use } from 'react';
 import { useMDXComponents } from '@/components/mdx';
 import { PageActions } from '@/components/page-actions';
 import { baseOptions } from '@/lib/layout.shared';
+import { pageHead } from '@/lib/seo';
 import { appName } from '@/lib/shared';
 import { docs, source } from '@/lib/source';
 
@@ -21,14 +22,14 @@ export const Route = createFileRoute('/$lang/docs/$')({
     await docs.getPage(data.path)?.preload();
     return data;
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.title} | ${appName}` },
-          ...(loaderData.description ? [{ name: 'description', content: loaderData.description }] : []),
-        ]
-      : [],
-  }),
+  head: ({ loaderData }) =>
+    loaderData
+      ? pageHead({
+          path: loaderData.url,
+          title: `${loaderData.title} | ${appName}`,
+          description: loaderData.description,
+        })
+      : {},
 });
 
 const loader = createServerFn({ method: 'GET' })
