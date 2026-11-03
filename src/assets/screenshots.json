@@ -810,6 +810,16 @@
       "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/placeholder-off-dark.png, cropped to the dock, 377x338",
       "surface": "Timing check placeholder, Line tools turned off",
       "credit": ""
+    },
+    "content/docs/basics/images/audio-more-menu-light.webp": {
+      "source": "recaptured at main b2c55499cc34f48becebdfd7b7e9829078216de2: hikari-wt/site-shots hikari_ui_shell_tests videoAndAudioMenuScreenshots under vx11 (offscreen), menu-audio-more-light.png, 451x560",
+      "surface": "Audio panel » menu, floating 440x560, Karaoke mode, folded",
+      "credit": ""
+    },
+    "content/docs/basics/images/audio-more-menu-dark.webp": {
+      "source": "recaptured at main b2c55499cc34f48becebdfd7b7e9829078216de2: hikari-wt/site-shots hikari_ui_shell_tests videoAndAudioMenuScreenshots under vx11 (offscreen), menu-audio-more-dark.png, 451x560",
+      "surface": "Audio panel » menu, floating 440x560, Karaoke mode, folded",
+      "credit": ""
     }
   }
 }
