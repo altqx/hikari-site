@@ -211,16 +211,6 @@
       "surface": "Audio panel with the Commit options menu open",
       "credit": ""
     },
-    "content/docs/basics/images/shift-times-light.webp": {
-      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-shift-light.png",
-      "surface": "Shift times panel, floating, Shift mode",
-      "credit": ""
-    },
-    "content/docs/basics/images/post-processor-light.webp": {
-      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-postprocessor-light.png",
-      "surface": "Shift times panel, floating, Post processor mode",
-      "credit": ""
-    },
     "content/docs/basics/images/convert-srt-light.webp": {
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests pu6Screenshots under vx11, pu6-convert-srt-light.png (surface unchanged at qt d24047335)",
       "surface": "Convert to SRT window with What changes",
@@ -254,16 +244,6 @@
     "content/docs/basics/images/audio-commit-dark.webp": {
       "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-dark.png, top 640x300 (surface unchanged at qt d24047335)",
       "surface": "Audio panel with the Commit options menu open",
-      "credit": ""
-    },
-    "content/docs/basics/images/shift-times-dark.webp": {
-      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-shift-dark.png",
-      "surface": "Shift times panel, floating, Shift mode",
-      "credit": ""
-    },
-    "content/docs/basics/images/post-processor-dark.webp": {
-      "source": "recaptured at main b7405fb18ae8b4a080c796fe32fa6f7b18fbb2c6: coord2 hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-postprocessor-dark.png",
-      "surface": "Shift times panel, floating, Post processor mode",
       "credit": ""
     },
     "content/docs/basics/images/convert-srt-dark.webp": {
@@ -770,6 +750,26 @@
       "source": "made from src/assets/home/hero-light.webp (see its entry): scaled to 590 px high, padded to 1200x630 with the image's own background, credit drawn in Fira Sans SemiBold, JPEG q88",
       "surface": "Open Graph / social card image: the homepage hero, light",
       "credit": "Subtitles: Jibrill (drawn into the image, bottom right)"
+    },
+    "content/docs/plugins/images/plugins-dialog-light.webp": {
+      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/plugins-dialog-light.png, 468x362",
+      "surface": "Plugins dialog with one plugin installed, Unverified, unsigned",
+      "credit": ""
+    },
+    "content/docs/plugins/images/automation-menu-light.webp": {
+      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/automation-menu-light.png, 740x608",
+      "surface": "Automation menu with the Line tools plugin submenu",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugins-dialog-dark.webp": {
+      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/plugins-dialog-dark.png, 468x362",
+      "surface": "Plugins dialog with one plugin installed, Unverified, unsigned",
+      "credit": ""
+    },
+    "content/docs/plugins/images/automation-menu-dark.webp": {
+      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/automation-menu-dark.png, 740x608",
+      "surface": "Automation menu with the Line tools plugin submenu",
+      "credit": ""
     }
   }
 }
