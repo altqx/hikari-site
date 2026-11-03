@@ -39,7 +39,7 @@ If the file has several audio tracks, **Choose the audio track** asks which one.
 
 - The active line is the bright range, between its start and end boundaries. The lines before and after it are shaded.
 - **Modified** at the top left means the times you set are not yet applied to the line. **Negative time** means the start is after the end.
-- The ruler shows the time, with a line every second. Keyframes from the video show as lines, and the paused video's frame as a dashed line.
+- The ruler shows the time, with a line every second. Keyframes from the video show as lines, and the paused video's frame as a dashed line at its start. That frame and the one before it are shaded, the frame itself more strongly.
 - Under the pointer, a line shows the time there.
 
 **Waveform | Spectrum** switches between the waveform and a spectrogram. With the spectrum on, **Speech spectrum** brings out the frequencies of voices.
@@ -93,7 +93,7 @@ From 0.1.0-beta.3, playback doesn't stop if the device it plays on goes away, fo
 | Drag the ruler | Scrolls the view |
 | Right-click the ruler | Sets the mark |
 
-Times are rounded to the centisecond. **Snap to keyframes** and **Snap to other lines**, under **File › Settings › Audio**, make a boundary jump to a keyframe or another line's boundary near it. Both are off at first.
+Times are rounded to the centisecond. **Snap to keyframes** and **Snap to other lines**, under **File › Settings › Audio**, make a boundary jump to a keyframe or another line's boundary near it. Both are off at first. With **Snap to keyframes** on, a boundary also snaps to the middle of the paused video's frame and the middle of the frame before it, the times a line uses to start or end on that frame. This needs **Show the video position**, in the **Display** section of the same page.
 
 **In** (<kbd>C</kbd>) moves the start 200 ms earlier and **Out** (<kbd>V</kbd>) the end 300 ms later. Settings sets both amounts.
 
@@ -123,6 +123,7 @@ A selection that ends before it starts is refused.
 - <kbd>A</kbd> and <kbd>F</kbd> scroll left and right.
 - The **Zoom** button shows the zoom, such as **1.0×**, and opens sliders for both stretches with **Reset zoom**.
 - **Auto-scroll**, on at first, scrolls to each line you select.
+- **Go to selection start** and **Go to selection end** centre the view on the start or the end of the selection. They have no key at first; give them one in **File › Settings › Shortcuts**.
 - When the line is out of view, a **Back to line** chip shows at the edge it lies past. It, or <kbd>B</kbd>, scrolls back to it.
 
 ## Karaoke
@@ -137,7 +138,7 @@ Most of its keys also work with the pointer over the Grid, except <kbd>Enter</kb
 
 ## Arranging the buttons
 
-The gear, **Customise the audio panel**, chooses what the row shows: the Play around button, each play on its own, **Auto-commit**, **Go to the next line after commit**, **Go to selection** and the zoom and volume sliders. **Classic arrangement** shows them all, as older versions did, and **Default arrangement** goes back. When the panel is too narrow, the buttons that don't fit move into its **»** menu, along with **Tap options ›** in Karaoke mode and **Speech spectrum**.
+The gear, **Customise the audio panel**, chooses what the row shows: the Play around button, each play on its own, **Auto-commit**, **Go to the next line after commit**, **Go to selection** and the zoom and volume sliders. **Classic arrangement** shows them all, as older versions did, and **Default arrangement** goes back. When the panel is too narrow, the buttons that don't fit move into its **»** menu, along with **Tap options ›** in Karaoke mode, **Speech spectrum**, and **Go to selection start** and **Go to selection end**.
 
 ## Settings
 
