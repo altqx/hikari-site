@@ -751,19 +751,9 @@
       "surface": "Open Graph / social card image: the homepage hero, light",
       "credit": "Subtitles: Jibrill (drawn into the image, bottom right)"
     },
-    "content/docs/plugins/images/plugins-dialog-light.webp": {
-      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/plugins-dialog-light.png, 468x362",
-      "surface": "Plugins dialog with one plugin installed, Unverified, unsigned",
-      "credit": ""
-    },
     "content/docs/plugins/images/automation-menu-light.webp": {
       "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/automation-menu-light.png, 740x608",
       "surface": "Automation menu with the Line tools plugin submenu",
-      "credit": ""
-    },
-    "content/docs/plugins/images/plugins-dialog-dark.webp": {
-      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/plugins-dialog-dark.png, 468x362",
-      "surface": "Plugins dialog with one plugin installed, Unverified, unsigned",
       "credit": ""
     },
     "content/docs/plugins/images/automation-menu-dark.webp": {
@@ -789,6 +779,36 @@
     "content/docs/basics/images/timing-postprocessor-dark.webp": {
       "source": "recaptured at main 26c8c3c6fe0fd3843793b576f12a6aea4292b79f: hikari-wt/site-shots hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-postprocessor-dark.png",
       "surface": "Timing postprocessor panel, floating, 620x640",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugin-manager-light.webp": {
+      "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/manager-light.png, 808x622",
+      "surface": "Plugin manager window, Line tools chosen",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugin-panel-light.webp": {
+      "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/panel-chart-light.png, cropped to the dock, 377x338",
+      "surface": "Timing check plugin panel, Chart tab",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugin-panel-off-light.webp": {
+      "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/placeholder-off-light.png, cropped to the dock, 377x338",
+      "surface": "Timing check placeholder, Line tools turned off",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugin-manager-dark.webp": {
+      "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/manager-dark.png, 808x622",
+      "surface": "Plugin manager window, Line tools chosen",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugin-panel-dark.webp": {
+      "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/panel-chart-dark.png, cropped to the dock, 377x338",
+      "surface": "Timing check plugin panel, Chart tab",
+      "credit": ""
+    },
+    "content/docs/plugins/images/plugin-panel-off-dark.webp": {
+      "source": "recaptured at main 9079e3c69: the plugins thread's build on a clean tree, hikari_ui_shell_tests pluginPanelScreenshots under vx11, sample plugin Line tools (docs/examples/line-tools), appearance.followSystem=false, wave8/shots/pl4/placeholder-off-dark.png, cropped to the dock, 377x338",
+      "surface": "Timing check placeholder, Line tools turned off",
       "credit": ""
     }
   }

@@ -3,8 +3,12 @@ title: Using plugins
 description: Install a HikariSub plugin from a .hikariplugin file, see what it asks for and who signed it, turn it on or off, change its settings, and use its commands and panels.
 ---
 
-import pluginsDialogLight from './images/plugins-dialog-light.webp';
-import pluginsDialogDark from './images/plugins-dialog-dark.webp';
+import managerLight from './images/plugin-manager-light.webp';
+import managerDark from './images/plugin-manager-dark.webp';
+import panelLight from './images/plugin-panel-light.webp';
+import panelDark from './images/plugin-panel-dark.webp';
+import panelOffLight from './images/plugin-panel-off-light.webp';
+import panelOffDark from './images/plugin-panel-off-dark.webp';
 import automationMenuLight from './images/automation-menu-light.webp';
 import automationMenuDark from './images/automation-menu-dark.webp';
 
@@ -14,14 +18,14 @@ A **plugin** adds commands, panels and dialogs to HikariSub itself, through the 
 
 <figure>
   <ThemedImage
-    light={pluginsDialogLight}
-    dark={pluginsDialogDark}
-    alt="The Plugins dialog listing one plugin, Line tools 1.2.0, ticked and marked Unverified, unsigned, with an Uninstall button on its row, Install from file… at the bottom left and Close at the bottom right"
-    width={468}
-    height={362}
+    light={managerLight}
+    dark={managerDark}
+    alt="The plugin manager: on the left, a Filter field and the list with Line tools 1.2.0, Unverified, unsigned, chosen; on the right, its details: Line tools 1.2.0 by HikariSub with the On switch on, Checks reading speed and line length, and shows them on a chart., Unverified, unsigned; Permissions: It asks for no permissions beyond the active subtitle file.; What it adds: Command: Rename the active line's actor… and Panel: Timing check; Settings: Characters per second 17 and Skip comments ticked; then Update from file…, Open data folder and Uninstall…. Install from file… is at the bottom left and Close at the bottom right"
+    width={808}
+    height={622}
     className="rounded-lg border"
   />
-  <figcaption>The plugin manager with one plugin installed.</figcaption>
+  <figcaption>The plugin manager, with Line tools chosen.</figcaption>
 </figure>
 
 ## Installing a plugin
@@ -90,6 +94,18 @@ A plugin can add panels of its own, such as a list of lines to check or a chart.
 - Its **⋯** menu starts with the plugin's own items, and has **About** and the plugin's name, such as **About Line tools…**, which opens the plugin manager at that plugin.
 - Hovering the panel's header names the plugin it comes from, such as *Timing check, from Line tools*.
 
+<figure>
+  <ThemedImage
+    light={panelLight}
+    dark={panelDark}
+    alt="The Timing check panel from the Line tools plugin: Limit 17 CPS and a Check button, Chart and List tabs with Chart chosen, a bar chart of each line's characters per second with a dashed line at 17 CPS, and 27 lines are over 17 CPS."
+    width={377}
+    height={338}
+    className="rounded-lg border"
+  />
+  <figcaption>A plugin panel: Line tools' Timing check, drawn in HikariSub's own controls.</figcaption>
+</figure>
+
 A plugin can also open dialogs of its own, with up to four buttons.
 
 ### When the plugin isn't running
@@ -99,6 +115,18 @@ A layout keeps a plugin panel's place even when its plugin can't run. The panel 
 - *Line tools isn't installed.* **Open Plugins…** opens the plugin manager.
 - *Line tools is turned off.* **Turn on** turns it on.
 - *Line tools stopped.* or *Line tools didn't start.* **Start again** starts it, and **Details** opens the [Log panel](/en/docs/help/troubleshooting#the-log-panel).
+
+<figure>
+  <ThemedImage
+    light={panelOffLight}
+    dark={panelOffDark}
+    alt="The Timing check panel while its plugin is off: a plugin icon, Line tools is turned off. and a Turn on button"
+    width={377}
+    height={338}
+    className="rounded-lg border"
+  />
+  <figcaption>The Timing check panel's place, kept while Line tools is turned off.</figcaption>
+</figure>
 
 When the plugin is back, its panel fills the place again. To forget the place, close the panel of a plugin that isn't installed, or choose **Remove from the layout** under the panel in **View › Panels**.
 
