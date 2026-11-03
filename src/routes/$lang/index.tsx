@@ -100,7 +100,7 @@ const features: (Feature & { icon: LucideIcon; wide?: boolean })[] = [
   {
     icon: LayoutPanelLeft,
     title: 'Your workspace',
-    text: 'Layouts for each kind of work, themes and every hotkey remappable.',
+    text: 'Layouts for each kind of work, themes and every shortcut remappable.',
     guide: 'customize/layouts',
     more: 'Customize',
     wide: true,

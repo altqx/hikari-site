@@ -211,7 +211,7 @@ test('referenceSearchRows gives each table row as text under its section', () =>
   );
   expect(referenceSearchRows(data, 'hotkeys')).toEqual([
     { section: 'Global', content: 'User guide · F1 · Help › User guide' },
-    { section: 'Subtitle grid', content: 'Duplicate' },
+    { section: 'Grid', content: 'Duplicate' },
   ]);
   expect(referenceSearchRows(data, 'settings')).toEqual([
     { section: 'General', content: 'Tab name length · Characters · Default: Off' },
