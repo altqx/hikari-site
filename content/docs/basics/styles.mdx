@@ -57,7 +57,11 @@ On the left are two lists: the styles of a **Catalogue**, and those of **This fi
 | **Name** | The style's name |
 | **Font** | Family, size, font catalogue, bold, italic, underline, strikethrough and text encoding |
 | **Colours and transparency** | Primary, secondary (for karaoke), border and shadow, each with a transparency from 0 (opaque) to 255 |
-| **Shape and position** | Border width, shadow distance, scale, angle, spacing, opaque box, alignment and the three margins |
+| **Shape and position** | Border width, shadow distance, scale, angle, spacing, border type, alignment and the three margins |
+
+**Border type** is **Outline**, **Opaque box** or **Opaque box per line (libass)**, which only libass draws. A file keeps the border type it has, these three being ASS's BorderStyle 1, 3 and 4. Any other BorderStyle in a file opens as **Outline** and is saved as one.
+
+**Text encoding** starts with **-1 - Detect text direction (libass)**. With it, libass works out each paragraph's direction from its text, so Arabic and Hebrew lines read right to left.
 
 Click a colour to open the colour picker. Each field's reset button puts back the value it had. To change the preview's text, edit the field under it. This is the [Preview text](/en/docs/customize/settings#preview-text) setting, so every style and font sample changes with it.
 
