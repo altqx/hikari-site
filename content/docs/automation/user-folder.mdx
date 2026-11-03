@@ -48,7 +48,6 @@ hotkeys.toml            your shortcuts
 state.json              what HikariSub remembers: window places, recent files and more
 layout.json             the current panel layout
 last-session.json       the last session
-rules.toml              rules of the removed Fix minor errors, unused
 shapes.toml             your shapes from Edit shapes
 tags.toml               your tags from Edit tags
 automation/
@@ -115,8 +114,6 @@ The lists you build up are TOML files too, each starting with `version = 1`:
 | `catalogs/fonts.toml` | The [font catalogues](/en/docs/typesetting/fonts#where-catalogues-are-kept), one `[[catalog]]` each, with its safety copies `fonts.autosave-0.toml` to `fonts.autosave-2.toml` | `FontCatalogs.txt` and `FontCatalogsAutosave0.txt` to `2.txt` |
 
 When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `ShapesSettings.txt.old`. It is never written again. The Log says, for example, "ShapesSettings.txt moved to shapes.toml. The old file is kept as ShapesSettings.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
-
-`rules.toml`, from the removed [Fix minor errors](/en/docs/checking/fix-minor-errors), is no longer read or written: HikariSub leaves it as it is.
 
 Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "shapes.toml could not be read, so its list is back at its defaults." If the file goes bad while HikariSub is running, for example because you edited it, the next save keeps it as `.broken` and saves the list HikariSub has in its place, with a notice: "shapes.toml could not be read, so it is kept as shapes.toml.broken and a new one is saved."
 
