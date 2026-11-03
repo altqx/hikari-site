@@ -77,6 +77,7 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
 - **Times:** **Both**, **Start** or **End**.
 - **End times:** **Leave as they are**, **Fix overlaps** or **Recalculate from text length**. **Fix overlaps** ends each line where the next one starts, if it would overlap it. **Recalculate from text length** also gives each line that doesn't overlap the next a new end: **Time per letter** in **File › Settings › Conversion**, 110 ms at first, for each character of its text, tags included, and at least one second. Both need a video.
 - **Move tag times too** (`\move`, `\t`, `\fad`) keeps those tags in step with the video when the shift lands between frames.
+- **Centre times within frames** moves each shifted time, after the shift and the end-time fix, to the middle of its frame, as [Video › Centre times within frames](#centring-times-within-frames) does, so a later shift by time keeps lines on whole frames. With **Times** at **Start** or **End**, only those are centred. With **Move tag times too**, the tag times stay on their frames. It needs a video.
 
 Times never go below zero. Hidden lines, filtered out of the Grid, are left alone.
 
@@ -102,7 +103,7 @@ Both panels show what a run would do, beside the choices when the panel is wide 
 
 **Apply** names what it does, such as **Shift 214 lines** or **Apply to 31 lines**, and is one undo step, *Shift times* or *Timing postprocessor*. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> applies from any field, and <kbd>Esc</kbd> goes back to the Grid.
 
-A choice that can't run says why, and offers what it needs: *Frames need a video.*, *Needs a video.* or *The rules need a video.* with **Open video…**, and *Needs keyframes.* with **Open keyframes…**. With both gap limits at 0 ms, Close small gaps says *Both gap limits are 0 ms. Raise one to close gaps.*
+A choice that can't run says why, and offers what it needs: *Frames need a video.*, *Needs a video.* (for the end-time fixes and for Centre times within frames) or *The rules need a video.* with **Open video…**, and *Needs keyframes.* with **Open keyframes…**. With both gap limits at 0 ms, Close small gaps says *Both gap limits are 0 ms. Raise one to close gaps.*
 
 **Shift times with the last values** and **Timing postprocessor with the last values** run a panel's last choices without opening it. They have no key at first; give them one in **File › Settings › Shortcuts**.
 
