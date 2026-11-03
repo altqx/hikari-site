@@ -61,7 +61,7 @@ When a line has no `\pos`, the handles start where the line would show, from its
 
 ## Using each tool
 
-- **Position pointer:** a cross follows the pointer with its coordinates. It has no inspector bar: its **X**, **Y** and **Copy video position** sit at the end of the video's times line, and **Copy video position** copies them. Ctrl+click or middle-click puts `\pos` there. Only with this tool does the wheel zoom the video, a right-click open its menu and a double-click go full screen.
+- **Position pointer:** a cross follows the pointer with its coordinates. It has no inspector bar: its **X**, **Y** and **Copy video position** sit at the end of the video's times line, and **Copy video position** copies them. Ctrl+click or middle-click puts `\pos` there. Only with this tool does a right-click open its menu and a double-click go full screen.
 - **Text positioning:** drag anywhere on the video to move the line; you need not grab it. Shift locks to one axis. A right-click puts the line at the pointer. **Set position by rectangle** places it by a rectangle you draw instead, using the alignment you choose.
 - **Text moving:** the left button sets the start point and the right button the end point. The bar's **Start** and **End** fields include the times, in milliseconds from the line's start. **Set movement using 2 points and the video position** builds the move from a point on two frames.
 - **Text scaling:** left-drag scales the width, right-drag the height, and middle-drag or Shift+drag both. **Set scale by rectangle** scales the line to fit a rectangle.
@@ -113,7 +113,9 @@ Perspective needs a line that one box can describe. It does nothing for lines th
 
 ## Zoom
 
-With the Position pointer on, the wheel zooms the video around the pointer. **Video › Zoom video** lets you drag and resize a zoom frame; the tools are hidden while you do, and Return ends it. **Video › Turn off video zoom**, or Ctrl+Shift+Z over the video, goes back to the whole picture. The tools follow the zoom.
+<kbd>Ctrl</kbd>+wheel zooms the video around the pointer, and <kbd>Shift</kbd>+wheel or a middle-button drag pans it. A tool that uses the wheel or the middle button keeps it: Hydra keeps the wheel and <kbd>Shift</kbd>+wheel, Vector clipping and Vector drawing keep the wheel, and Text X / Y rotation and Text scaling keep the middle button. A middle click that doesn't move still reaches the tool, so the Position pointer still puts `\pos` there. **Video › Reset zoom and pan**, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> over the video, goes back to the whole picture. The tools follow the zoom and the pan.
+
+With **Zoom and pan** set to **As in HikariSub legacy**, the wheel zooms only with the Position pointer on, and **Video › Zoom video** lets you drag and resize a zoom frame; the tools are hidden while you do, and Return ends it. See [Zoom and pan](/en/docs/basics/video#zoom-and-pan).
 
 ## Sharp previews
 

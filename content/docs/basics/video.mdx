@@ -78,9 +78,29 @@ The video's own keyframes come from indexing. **Video › Open keyframes** loads
 
 HikariSub has no timecodes files to open or save: frame times always come from the indexed video.
 
-## Zoom and aspect ratio
+## Zoom and pan
 
-With the Position pointer on, the wheel over the picture zooms around the pointer, up to 1000%. **Video › Zoom video** shows a zoom frame you can drag and resize; <kbd>Return</kbd> ends it. **Video › Turn off video zoom**, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> over the video, shows the whole frame again.
+The video zooms and pans as in Aegisub 3.5:
+
+- <kbd>Ctrl</kbd>+wheel zooms around the pointer, from 12.5% to 1000%.
+- <kbd>Shift</kbd>+wheel pans.
+- Dragging with the middle button pans. The drag starts once the pointer has moved 3 pixels, so a middle click that doesn't move still reaches the visual tool.
+- A touchpad pinch zooms.
+
+The plain wheel does nothing on the video. In Aegisub 3.5 it resizes the video box, but HikariSub's video fills a docked panel whose size the layout sets. A [visual tool](/en/docs/typesetting/visual-tools) that uses the wheel or the middle button keeps it: Hydra keeps the wheel and <kbd>Shift</kbd>+wheel, Vector clipping and Vector drawing keep the wheel, and Text X / Y rotation and Text scaling keep the middle button.
+
+**Video › Zoom video** zooms in to the **Start zoom** (200% unless you set one), or shows the whole frame again when the video is zoomed or panned. **Video › Reset zoom and pan**, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> over the video, shows the whole frame again, unpanned. It can also take a shortcut in **File › Settings › Shortcuts**.
+
+### Choosing how zoom works
+
+**File › Settings › Video › View › Zoom and pan** chooses between:
+
+- **As in Aegisub 3.5**, the default, described above.
+- **As in HikariSub legacy**, the crop zoom of earlier versions. With the Position pointer on, the plain wheel zooms around the pointer, up to 1000%. **Video › Zoom video** shows a zoom frame you can drag and resize, and <kbd>Return</kbd> ends it. Middle-drag and pinch don't pan or zoom.
+
+With **As in Aegisub 3.5**, three rows below choose what each wheel does: **Wheel on the video**, **Ctrl+wheel on the video** and **Shift+wheel on the video**. Each one **Zooms the video**, **Zooms the video (reversed)**, **Pans the video**, **Pans the video (X and Y swapped)** or **Does nothing**. They start at **Does nothing**, **Zooms the video** and **Pans the video**. Switching between the two models shows the whole frame again.
+
+## Aspect ratio
 
 **Change aspect ratio** in the right-click menu stretches the picture between **Taller** and **Wider**. **Reset** gives back the video's own ratio, and <kbd>Esc</kbd> the ratio you started with. The change lasts until the next video opens.
 
