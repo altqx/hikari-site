@@ -120,13 +120,16 @@ In **Manage layouts**, the pencil, <kbd>F2</kbd> or a double-click renames a lay
 
 - **Drag a panel's header** to move it. A highlight shows where it will land: over another panel's header or middle, it becomes a tab there; near a side, it splits that panel; along the window's edge, it takes the whole edge. Let go anywhere else and it floats.
 - **Double-click the header** to float the panel, or dock a floating one back.
-- **Drag the line between two panels** to resize them.
+- **Drag the line between two panels** to resize them. A double-click on the line shares the room between them equally.
+- **Drag where lines meet** to resize in both directions at once. Where lines between panels meet, in a T or a cross, the pointer shows the move cursor, and a drag moves every line that meets there: the lines across follow the pointer up and down, the others left and right. Each line stops at its panels' minimum size while the others go on.
 
 ### Floating panels
 
 A floating panel docks back the same way, on Windows and Linux alike: press anywhere on its header except the **⋯** button, such as the title or the empty part, and drag. The highlight shows where it can go, and letting go docks it there. On Wayland the floating panel steps out of the way while you drag, so you can drop it onto the panel it was covering.
 
 On Windows and X11 the window follows the pointer while you drag; let go away from a highlight and it stays floating there. Your desktop's own way of moving windows, with its snapping or tiling, stays on its own binding, such as <kbd>Super</kbd>+drag on Hyprland. A double-click on the header docks the panel, and a right-click opens its menu.
+
+To resize a floating panel, drag any of its four edges or four corners.
 
 Each panel's **⋯** button, or a right-click on its header, opens its menu:
 
