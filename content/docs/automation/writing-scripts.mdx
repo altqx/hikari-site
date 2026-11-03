@@ -140,7 +140,7 @@ Every line has `class`, `section` and `raw`. The other fields depend on the clas
 
 **Style** (`class = "style"`): `name`, `fontname`, `fontsize`, `color1` to `color4` (`&HAABBGGRR&`), `bold`, `italic`, `underline`, `strikeout` (booleans), `scale_x`, `scale_y`, `spacing`, `angle`, `borderstyle`, `outline`, `shadow`, `align`, `margin_l`, `margin_r`, `margin_t`, `margin_b`, `encoding`.
 
-`borderstyle` reads as 1 for an opaque box and 0 otherwise. When you write a style, set `borderstyle = -3` to keep an opaque box; any other value writes an outline.
+`borderstyle` is the style's border type as in the file and in Aegisub: 1 for an outline, 3 for an opaque box and 4 for an opaque box per line. A style you write back keeps the value you give it.
 
 **Info** (`class = "info"`): `key` and `value`, from a `[Script Info]` line such as `PlayResX: 1280`.
 
@@ -271,6 +271,5 @@ Scripts get the Lua API of Aegisub 3.5.1, with the additions of arch1t3cht's Aeg
 - `dialog.open` and `dialog.save` take the folder before the file name.
 - The default OK button returns `""`, not `true`; `if pressed then` works either way.
 - `coloralpha` returns `#AARRGGBB`.
-- A style's `borderstyle` is 0 or 1; write `-3` to keep an opaque box.
 - Log levels above 3 are not shown, and `print` output is not shown at all.
 - Automation 3 scripts are not supported.
