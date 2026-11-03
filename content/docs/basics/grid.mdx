@@ -75,7 +75,7 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 - **Duplicate**, **Cut**, **Copy** and **Paste**.
 - **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last.
-- **Split ›** At video time, Into frames, Into characters, Into words or By wraps.
+- **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words or By wraps.
 - **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**.
 - **Select lines visible on video**, **Show subtitles preview** and [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation).
 - **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
@@ -98,6 +98,16 @@ The sections below explain each of them.
 Lines between the selected ones that you didn't select are left alone.
 
 **Split lines** cuts a line at the video's time, or into one line per frame, character, word or wrapped line. A split into characters, words or wraps gives each piece its own position, so it stays where it was on the video.
+
+### Baking animations
+
+**Split › Into frames** needs a video. It makes one line for each frame the line is on, and with **Split › Bake animations** ticked, which it is at first, each frame's line shows the line as it looks on that frame:
+
+- `\t` tags give the values they have reached by that frame, with their acceleration. Sizes, colours, alphas and rectangular clips move between their values. A tag that can't be part way, such as `\an`, takes effect once its `\t` has finished.
+- `\fad` and `\fade` are worked into each frame's alphas.
+- `\move` becomes the `\pos` for that frame.
+
+Untick **Bake animations** for the split from before: every frame keeps its `\t`, `\fad` and `\fade` tags, and only `\move` becomes `\pos`. The menu item and **File › Settings › Grid › Splitting › Bake animations when splitting into frames** are the same setting. Either way, the whole split is one undo step.
 
 ## Copying and pasting
 
