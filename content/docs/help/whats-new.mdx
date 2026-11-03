@@ -17,6 +17,7 @@ Not published yet. These changes are in HikariSub's code and come with the next 
 - **Tidier Grid menus.** The right-click menu groups its commands into **Insert**, **Paste special**, **Join**, **Split** and **Make times continuous** submenus, names how many lines **Duplicate** and **Delete** act on, and ends with **Delete**. Right-click the column names for the list of columns. The Grid's **⋯** menu now has **Filtering** and **Columns**. See [The right-click menu](/en/docs/basics/grid#the-right-click-menu).
 - **Set FPS and Import subtitles from MKV are in the menu bar**, under **Subtitles › Set FPS** and **File › Import subtitles from MKV…**. **Paste translation text** is now **Paste translation from a file…**, and **Dialogue shifting window** is **Translation matching…**.
 - **The tag list has a ⋯ options button**, and tag buttons and line groups open their menus from the keyboard too. See [Tag buttons](/en/docs/basics/line-editor#tag-buttons).
+- **WebM, VP8, VP9 and AV1:** WebM videos open, with VP8, VP9 or AV1 video and Vorbis or Opus sound, and the audio picker lists `.webm`, `.mka` and `.opus`. AV1 plays only with a hardware AV1 decoder; without one, its frames still show while paused, and seeking and stepping work. HikariSub now includes dav1d (BSD-2-Clause) to read AV1, and Credits lists it. See [Formats](/en/docs/basics/video#formats).
 - **Discord presence:** HikariSub can show what you are doing in your Discord status. It is off by default, and the file name is shown only if you turn that on too. See [Discord presence](/en/docs/help/what-is-sent#discord-presence).
 - **Typing applies itself in the Karaoke layout:** the Line editor applies your text 300 ms after you stop typing, with no <kbd>Enter</kbd>, and each burst of typing is one undo step. See [Typing applies itself](/en/docs/customize/layouts#typing-applies-itself).
 - **Drag a floating panel back from anywhere on its header.** On Linux, pressing the title or the empty part of a floating panel's header now picks the panel up, shows where it can go and docks it when you let go, as on Windows. On Wayland the panel steps out of the way while you drag, so you can drop it onto the panel underneath. To move the window itself, use your desktop's own move binding, such as Super+drag on Hyprland. See [Floating panels](/en/docs/customize/layouts#floating-panels).
@@ -39,6 +40,7 @@ Not published yet. These changes are in HikariSub's code and come with the next 
 
 ### Fixed
 
+- **Subtitle tracks stored compressed in an MKV file now import as text.** They used to come through as unreadable bytes.
 - **The Kanji timer skips every kind of space:** plain, full-width and no-break spaces, tabs, `\h` and line breaks. A space separates the kanji or readings on either side of it, but it is never a character or a syllable to time, and the written line keeps its spaces. See [Spaces](/en/docs/karaoke/kanji-timer#spaces).
 
 ## 0.1.0-beta.3
