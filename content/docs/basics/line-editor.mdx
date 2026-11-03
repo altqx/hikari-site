@@ -29,7 +29,8 @@ What you type is a draft until you apply it. The video shows it at once, and the
 | <kbd>Enter</kbd> | Applies and moves to the next line. On the last line, it adds a new empty line after it, 5 seconds long |
 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Applies and stays on the line |
 | <kbd>Esc</kbd> | Throws the draft away |
-| <kbd>Shift</kbd>+<kbd>Enter</kbd> | Puts in a line break, `\N` |
+| <kbd>Shift</kbd>+<kbd>Enter</kbd> | Puts in a line break, `\N`. With **File › Settings › Line editor › Editing › Shift+Enter inserts a soft line break (\n)** on, it puts in `\n` instead |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> | Puts in a hard space, `\h`, as **Edit › Insert hard space** does |
 | <kbd>Ctrl</kbd>+<kbd>Z</kbd> | Undoes your typing first, then earlier steps |
 
 Choosing another line applies the draft too. With several lines selected in the Grid, applying writes every field you changed into each of them, as one undo step.
@@ -40,7 +41,7 @@ If the end is before the start, or a margin is outside 0 to 9999, nothing is app
 
 ## The text
 
-The text shows ASS tags in colour: the braces, tag names and their values each have their own. A comment line whose Effect starts with `template` or `code` is coloured as [template](/en/docs/karaoke/template-editor) code instead.
+The text shows ASS tags in colour: the braces, tag names and their values each have their own. A comment line whose Effect starts with `template`, `mixin` or `code` is coloured as [template](/en/docs/karaoke/template-editor) code instead. In a drawing, and in a `\clip` or `\iclip` drawn with points, the X and Y coordinates take turns between two colours, starting again after each command letter.
 
 Type `\` inside a `{…}` block to get a list of tags. <kbd>Up</kbd> and <kbd>Down</kbd> choose, <kbd>Enter</kbd> puts the tag in, and <kbd>Esc</kbd> closes the list. The **⋯** button in the list's header, **Tag list options**, has **Show description**, **Show all tags** and **Show VSFilterMod tags**. A right-click on the list opens them too, and so does <kbd>Menu</kbd> while the list is open. The [ASS tags reference](/en/docs/reference/ass-tags) explains them all.
 
@@ -96,7 +97,7 @@ SRT and the other simple formats have only the times, so the other fields are gr
 
 ### Times
 
-Type a time over the old one: each digit replaces the next, skipping the colons. Over a field, the wheel steps the part under the pointer; dragging with the right button held steps it faster. A field stepped with the mouse shows the warning colour until you apply it. [Timing](/en/docs/basics/timing#in-the-line-editor) has more.
+Type a time over the old one: each digit replaces the next, skipping the colons. A field goes up to 99:59:59.99. A longer time in a file opens and saves as it is, and changes only if you edit that field. Over a field, the wheel steps the part under the pointer; dragging with the right button held steps it faster. A field stepped with the mouse shows the warning colour until you apply it. [Timing](/en/docs/basics/timing#in-the-line-editor) has more.
 
 **File › Settings › Line editor › Show video frames instead of times** shows frame numbers here and in the Grid.
 
