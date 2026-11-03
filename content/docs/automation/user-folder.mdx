@@ -48,7 +48,7 @@ hotkeys.toml            your shortcuts
 state.json              what HikariSub remembers: window places, recent files and more
 layout.json             the current panel layout
 last-session.json       the last session
-rules.toml              the Fix minor errors rules
+rules.toml              rules of the removed Fix minor errors, unused
 shapes.toml             your shapes from Edit shapes
 tags.toml               your tags from Edit tags
 automation/
@@ -57,7 +57,7 @@ automation/
 dictionaries/           spelling dictionaries (.dic and .aff) and UserDic.udic
 Harper/                 the grammar checker's dictionary and data, kept by harper-ls
 Import/                 the legacy settings import's snapshots, for Roll back…
-ReplaceBackup/          copies of files made before Replace in subtitles changes them
+ReplaceBackup/          copies of files made before Replace in files changes them
 catalogs/               style catalogues (.sty) and fonts.toml, your font catalogues
 presets/                layouts.json, your saved layouts
 recovery/               autosaved copies of your files
@@ -67,7 +67,7 @@ log/  temp/  autosave/  folders scripts write to
 .old-folders            hidden: the earlier folders were moved in, so it isn't done again
 ```
 
-Some files appear only once you use what they belong to. If you used a HikariSub version from before these files, the old ones are there too, with `.old` added: `hikari.ini.old`, `Rules.txt.old` and so on.
+Some files appear only once you use what they belong to. If you used a HikariSub version from before these files, the old ones are there too, with `.old` added: `hikari.ini.old`, `ShapesSettings.txt.old` and so on.
 
 [Roll back…](/en/docs/get-started/moving-from-legacy) uses `Import`, and [Replace in files](/en/docs/basics/find-and-replace#searching-a-folder) writes to `ReplaceBackup`; delete old copies there when you no longer need them. `.old-folders` records that the [earlier folders were moved in](#moving-in-from-earlier-versions); leave it in place.
 
@@ -100,9 +100,9 @@ If a file can't be read, because of a mistake in it or a `version` that is missi
 
 ### From hikari.ini
 
-HikariSub versions before these files kept settings and shortcuts in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, shortcuts.toml and state.json." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
+HikariSub versions before these files kept settings and shortcuts in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, hotkeys.toml and state.json. The old file is kept as hikari.ini.old." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
 
-**File › Import legacy settings…** still brings in HikariSub 0.0.x settings, and writes them into these files.
+**Settings › General › Import legacy settings…** still brings in HikariSub 0.0.x settings, and writes them into these files.
 
 ### List files
 
@@ -110,14 +110,15 @@ The lists you build up are TOML files too, each starting with `version = 1`:
 
 | File | What it holds | Was |
 | --- | --- | --- |
-| `rules.toml` | The [Fix minor errors](/en/docs/checking/fix-minor-errors#the-rules-file) rules, one `[[rule]]` each | `Rules.txt` |
 | `shapes.toml` | The shapes of [Edit shapes](/en/docs/typesetting/shapes-and-tags-editors), one `[[shape]]` each | `ShapesSettings.txt` |
 | `tags.toml` | The tags of [Edit tags](/en/docs/typesetting/shapes-and-tags-editors), one `[[tag]]` each | `AllTagsSettings.txt` |
 | `catalogs/fonts.toml` | The [font catalogues](/en/docs/typesetting/fonts#where-catalogues-are-kept), one `[[catalog]]` each, with its safety copies `fonts.autosave-0.toml` to `fonts.autosave-2.toml` | `FontCatalogs.txt` and `FontCatalogsAutosave0.txt` to `2.txt` |
 
-When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `Rules.txt.old`. It is never written again. The Log says, for example, "Rules.txt moved to rules.toml. The old file is kept as Rules.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
+When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `ShapesSettings.txt.old`. It is never written again. The Log says, for example, "ShapesSettings.txt moved to shapes.toml. The old file is kept as ShapesSettings.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
 
-Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "rules.toml could not be read, so its list is back at its defaults." If the file goes bad while HikariSub is running, for example because you edited it, the next save keeps it as `.broken` and saves the list HikariSub has in its place, with a notice: "rules.toml could not be read, so it is kept as rules.toml.broken and a new one is saved."
+`rules.toml`, from the removed [Fix minor errors](/en/docs/checking/fix-minor-errors), is no longer read or written: HikariSub leaves it as it is.
+
+Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "shapes.toml could not be read, so its list is back at its defaults." If the file goes bad while HikariSub is running, for example because you edited it, the next save keeps it as `.broken` and saves the list HikariSub has in its place, with a notice: "shapes.toml could not be read, so it is kept as shapes.toml.broken and a new one is saved."
 
 ## Bundled scripts and dictionaries
 
@@ -149,7 +150,7 @@ The first time HikariSub starts with a user folder that has no settings (no `set
 - The old DependencyControl stays behind, because HikariSub brings a newer one. The notice says "The old DependencyControl stayed behind: HikariSub brings a newer one."
 - Empty folders are removed. What stays behind is not used any more: once you have checked it, delete it. On Windows the old data folder is inside the new user folder, so a `HikariSub` folder there can hold what stayed behind.
 
-A portable copy, or a start with `HIKARISUB_USER_DIR`, moves nothing. HikariSub 0.0.x's folders are never moved or changed: bring its settings over with **File › Import legacy settings…**, as [Moving from legacy](/en/docs/get-started/moving-from-legacy) explains.
+A portable copy, or a start with `HIKARISUB_USER_DIR`, moves nothing. HikariSub 0.0.x's folders are never moved or changed: bring its settings over with **Settings › General › Import legacy settings…**, as [Moving from legacy](/en/docs/get-started/moving-from-legacy) explains.
 
 ## Backing up and moving to another computer
 

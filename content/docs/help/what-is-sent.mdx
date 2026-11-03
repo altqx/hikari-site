@@ -152,7 +152,7 @@ The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500
 | Event | Sent | Properties |
 | --- | --- | --- |
 | `command_used` | When a command runs | `command`, `via` |
-| `panel_opened` | When you show a panel, from the View menu, a panel's menu or a button such as Fix minor errors | `panel` |
+| `panel_opened` | When you show a panel, from the View menu, a panel's menu or a button | `panel` |
 | `dialog_opened` | When a dialog or window opens | `dialog` |
 | `layout_changed` | When you choose a layout | `layout` |
 | `getting_started_finished` | When you press **Finish** in Getting started | `pages_changed` |
@@ -162,7 +162,7 @@ The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500
 
 - `command`: the command's ID in the shortcut list, such as `GLOBAL_SAVE_SUBS` or `AUDIO_PLAY`. Only the commands in that list are sent. Automation macros are never sent.
 - `via`: `key` for a command a key ran, or `pointer` for one from a menu, a toolbar or a panel's button.
-- `panel`: `video`, `audio`, `editor`, `grid`, `reference`, `timing`, `search`, `automation`, `original`, `log`, `styles`, `fix_minor_errors`, `template` or `spellchecker`.
+- `panel`: `video`, `audio`, `editor`, `grid`, `reference`, `timing`, `search`, `automation`, `original`, `log`, `styles`, `template` or `spellchecker`. Before Fix minor errors was removed, also `fix_minor_errors`.
 - `dialog`: `about`, `allTagsEdition`, `aspectRatio`, `autosaves`, `columns`, `conversion`, `crashReport`, `credits`, `dummyVideo`, `fontCatalogClashes`, `fontCatalogs`, `fontCollector`, `fontPicker`, `fontsFromSubtitles`, `gettingStarted`, `history`, `hotkeyCapture`, `kanjiTimer`, `karaokeCheck`, `listChooser`, `manageLayouts`, `movePanel`, `reportIssue`, `resample`, `saveLayout`, `scriptProperties`, `selectLines`, `setNewFps`, `settings`, `settingsImport`, `shapesEdition`, `spellAddedWords`, `styleClashes`, `styleManager`, `translationShift`, `unsavedChanges`, `updateAvailable` or `whatsNew`. A script's dialog is `automation_script`, whichever script it is.
 - `layout`: `editing`, `timing`, `translation`, `typesetting`, `karaoke`, or `saved` for one of your saved layouts. Its name is not sent.
 - `pages_changed`: the Getting started pages whose settings **Finish** changed, from `language`, `import`, `look`, `layout`, `media`, `editing`, `updates` and `files`. Which values you chose is not sent. If you turn sending off on the Updates and privacy step, this event is not sent either.

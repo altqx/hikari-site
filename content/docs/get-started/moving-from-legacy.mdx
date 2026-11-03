@@ -34,24 +34,24 @@ Legacy 0.0.1 and portable copies of legacy keep their settings beside the progra
 
 ## Importing your settings
 
-0.1 starts with its own defaults. At the first start, the [Getting started window](/en/docs/get-started/getting-started-window#import-from-legacy) offers to bring your legacy settings over when it finds legacy on this computer. At any time, use **File › Import legacy settings...** It opens a window in three steps:
+0.1 starts with its own defaults. At the first start, the [Getting started window](/en/docs/get-started/getting-started-window#import-from-legacy) offers to bring your legacy settings over when it finds legacy on this computer. At any time, use **Import legacy settings…** at the end of **File › Settings › General**, in its **Legacy** section. If HikariSub finds no legacy installation beside the program, a note there says so, and the button still lets you choose a folder. You can also give the command a key in **Settings › Shortcuts**, under Global. It opens a window in three steps:
 
 1. **Installation:** HikariSub lists the legacy installations it finds and picks the first. If yours is not listed, for example a portable copy, choose **Choose folder…** and pick its folder. Files that are not UTF-8 can be read as Latin-1 or Windows-1252.
 2. **Review:** every setting legacy sets differently from 0.1, with its legacy value and its value now. Where you have not changed a setting in 0.1 yet, the legacy value is ticked; where you have, yours is kept unless you tick the legacy one. **All** shows every setting read, and the search field finds one.
 3. **Import:** the chosen settings are staged, and take effect the next time HikariSub starts. A setting you change before then keeps your change.
 
-The import never changes the legacy files. You can run it again at any time: settings you have not touched since the last import follow the legacy values, and settings you changed are kept. **Roll back…** goes back to the settings you had before the last import.
+The import never changes the legacy files. You can run it again at any time: settings you have not touched since the last import follow the legacy values, and settings you changed are kept. **Roll back the last import…**, in the same Legacy section, goes back to the settings you had before the last import. It shows only after an import.
 
 ### What comes over
 
 - Program options: the program font and size, the language, window size and position, and the options of the Grid, Line editor (including your tag buttons), video, audio, shift times, conversion, the font collector, find and replace, translation and the updater.
 - Recent files: subtitles, video, audio and keyframes.
 - Shortcuts, including the shortcuts of automation macros. A macro's shortcut is matched to its script when the scripts load; scripts do not run during the import.
-- Misspell rules, your personal dictionary, and dictionaries you added (each needs its `.dic` and `.aff` file).
+- Your personal dictionary, and dictionaries you added (each needs its `.dic` and `.aff` file).
 
 Paths that do not exist on this computer, and a subtitle renderer that is not installed here, are shown as unresolved and left as they are. HikariSub draws with libass instead.
 
-To bring over only the shortcuts of your automation macros, use **File › Settings › Shortcuts › Import legacy shortcuts…** and pick legacy's `Hotkeys.txt`.
+To bring over only the shortcuts of your automation macros, use **Import legacy shortcuts…** in the same Legacy section of **Settings › General**, and pick legacy's `Hotkeys.txt`. Press **Apply** or **Cancel** first: the import is added at once.
 
 ### What does not
 
@@ -59,6 +59,7 @@ To bring over only the shortcuts of your automation macros, use **File › Setti
 - **Style catalogues, font catalogues, sessions and autosaves.** Open a legacy `.kls` session with **File › Last session › Load session from file**, or from your file manager. Save it again to get a `.hksession`. **File › Open auto save** lists legacy's autosaves, read only, from the `Subs` folder of the first legacy installation that **Import legacy settings** finds. A folder you pick there with **Choose folder…** is not searched.
 - **Your automation scripts.** Copy them into 0.1's Automation folder.
 - **Install updates automatically.** 0.1 has its own setting, on by default.
+- **Misspell rules** (`Rules.txt`), and a shortcut for **Fix minor errors**, which is [removed](/en/docs/checking/fix-minor-errors). The import lists them as Retired.
 - Commands that 0.1 does not have (see below).
 
 ## What is different
