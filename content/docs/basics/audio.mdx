@@ -7,6 +7,8 @@ import panelLight from './images/audio-panel-light.webp';
 import panelDark from './images/audio-panel-dark.webp';
 import commitLight from './images/audio-commit-light.webp';
 import commitDark from './images/audio-commit-dark.webp';
+import moreLight from './images/audio-more-menu-light.webp';
+import moreDark from './images/audio-more-menu-dark.webp';
 
 The Audio panel shows the sound as a waveform or a spectrum, with the active line marked on it. You can play any part of it and set a line's times with the mouse. In the Editing layout it sits above the Line editor.
 
@@ -123,7 +125,7 @@ A selection that ends before it starts is refused.
 - <kbd>A</kbd> and <kbd>F</kbd> scroll left and right.
 - The **Zoom** button shows the zoom, such as **1.0×**, and opens sliders for both stretches with **Reset zoom**.
 - **Auto-scroll**, on at first, scrolls to each line you select.
-- **Go to selection start** and **Go to selection end** centre the view on the start or the end of the selection. They have no key at first; give them one in **File › Settings › Shortcuts**.
+- **Go to selection start** and **Go to selection end**, in the panel's **»** menu, centre the view on the start or the end of the selection. They have no key at first; give them one in **File › Settings › Shortcuts**.
 - When the line is out of view, a **Back to line** chip shows at the edge it lies past. It, or <kbd>B</kbd>, scrolls back to it.
 
 ## Karaoke
@@ -138,7 +140,19 @@ Most of its keys also work with the pointer over the Grid, except <kbd>Enter</kb
 
 ## Arranging the buttons
 
-The gear, **Customise the audio panel**, chooses what the row shows: the Play around button, each play on its own, **Auto-commit**, **Go to the next line after commit**, **Go to selection** and the zoom and volume sliders. **Classic arrangement** shows them all, as older versions did, and **Default arrangement** goes back. When the panel is too narrow, the buttons that don't fit move into its **»** menu, along with **Tap options ›** in Karaoke mode, **Speech spectrum**, and **Go to selection start** and **Go to selection end**.
+The gear, **Customise the audio panel**, chooses what the row shows: the Play around button, each play on its own, **Auto-commit**, **Go to the next line after commit**, **Go to selection** and the zoom and volume sliders. **Classic arrangement** shows them all, as older versions did, and **Default arrangement** goes back. The **»** menu at the end of the row always has **Go to selection start** and **Go to selection end**. When the panel is too narrow, the buttons that don't fit move into it too, along with **Tap options ›** in Karaoke mode, **Speech spectrum**, **Auto-scroll** and **Sync with video**.
+
+<figure>
+  <ThemedImage
+    light={moreLight}
+    dark={moreDark}
+    alt="The Audio panel's » menu in a narrow panel in Karaoke mode: Line timing and Karaoke (chosen); Auto split (ticked), Split syllable at the cursor (K), Switch long syllables between \k and \kf (Shift+K), Tap to time (Y) and Tap options; Waveform (chosen), Spectrum and Speech spectrum; Go to selection start and Go to selection end (highlighted); then Auto-scroll and Sync with video, both ticked"
+    width={451}
+    height={560}
+    className="rounded-lg border"
+  />
+  <figcaption>The » menu of a narrow Audio panel in Karaoke mode. In a wide panel it holds only Go to selection start and Go to selection end.</figcaption>
+</figure>
 
 ## Settings
 
