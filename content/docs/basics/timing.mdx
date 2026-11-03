@@ -3,12 +3,7 @@ title: Timing
 description: Set when each line shows, from the audio, the video or by hand, and shift or tidy many lines at once.
 ---
 
-import shiftLight from './images/shift-times-light.webp';
-import shiftDark from './images/shift-times-dark.webp';
-import postLight from './images/post-processor-light.webp';
-import postDark from './images/post-processor-dark.webp';
-
-Each line has a start and an end time. You can set them from the audio, from the video, or by typing them, and then shift or tidy many lines at once with **Shift times**.
+Each line has a start and an end time. You can set them from the audio, from the video, or by typing them, and then shift or tidy many lines at once with the **Shift times** and **Timing postprocessor** panels.
 
 ## From the audio
 
@@ -73,54 +68,51 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
 
 ## Shift times
 
-**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel (see [Where a panel opens](/en/docs/customize/layouts#where-a-panel-opens)). It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later. Its **Shift** button, or **Subtitles › Shift times / run timing postprocessor**, runs it as one undo step.
+**Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel (see [Where a panel opens](/en/docs/customize/layouts#where-a-panel-opens)). It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later.
 
-<div className="grid gap-4 sm:grid-cols-2">
-  <figure>
-    <ThemedImage
-      light={shiftLight}
-      dark={shiftDark}
-      alt="The Shift times panel in Shift mode: Profiles, the amount 0:00:02.35 with Time and Backward chosen, Tag times, the Lines choices and Shift by video or audio, with the Shift button at the bottom"
-      width={340}
-      height={800}
-      className="rounded-lg border"
-    />
-    <figcaption>Shift mode.</figcaption>
-  </figure>
-  <figure>
-    <ThemedImage
-      light={postLight}
-      dark={postDark}
-      alt="The Shift times panel in Timing postprocessor mode: Which lines, Lead-in and Lead-out, Set times as continuous with its two thresholds, and Snap to keyframes, with the Run timing postprocessor button"
-      width={340}
-      height={800}
-      className="rounded-lg border"
-    />
-    <figcaption>Timing postprocessor mode.</figcaption>
-  </figure>
-</div>
-
-### Shift mode
-
-- **Amount:** the time to move by, or a number of frames with **Frames** (with a video open), and **Forward** (later) or **Backward** (earlier). **Tag times** keeps `\move`, `\t` and `\fad` in step with the video when the shift lands between frames.
-- **Which lines:** all lines, the selected lines, the lines from the selected one on, the lines starting at or after it, at or before it, or the lines of the styles you list. The **+** button picks the styles.
-- **A method of time shift:** both times, or only the start or the end. Shifting only one asks first, because a line can end up ending before it starts.
-- **End time correction:** **Adjust overlapping times** ends each line where the next one starts, if it would overlap it. **New times** also gives each line that doesn't overlap the next a new end: **Time per letter** in **File › Settings › Conversion**, 110 ms at first, for each character of its text, tags included, and at least one second. Both need a video open; without one, the shift runs and the correction is skipped.
-- **Shift by video / audio:** with **Move the marker to video time**, the active line's **Beginning** or **End** moves to the video's frame, and every other line moves by the same amount. **Move the marker to audio time** does the same with the mark you set on the audio ruler. The amount in the field is added on top.
-
-**Profiles** saves the current choices under a name, to use again.
+- **Shift by:** **Amount**, **To video** or **To audio mark**. **To video** needs a video and **To audio mark** an audio mark, the one you set on the audio ruler. With either, **Move** chooses whether the active line's **Start** or **End** goes there, the panel shows the time, such as *To the video at 0:12:03.45*, and every other line moves by the same amount. The amount field is then called **Plus**, and is added on top.
+- **Amount:** a **Time**, or a number of **Frames**, which needs a video.
+- **Direction:** **Later** or **Earlier**.
+- **Lines:** **All lines**, **Selected lines**, **Selected line and below**, **Starting at or after the selection**, **Starting at or before the selection**, or **Lines in chosen styles…**, which opens a list of the styles to tick. **Choose styles…** changes them later.
+- **Times:** **Both**, **Start** or **End**.
+- **End times:** **Leave as they are**, **Fix overlaps** or **Recalculate from text length**. **Fix overlaps** ends each line where the next one starts, if it would overlap it. **Recalculate from text length** also gives each line that doesn't overlap the next a new end: **Time per letter** in **File › Settings › Conversion**, 110 ms at first, for each character of its text, tags included, and at least one second. Both need a video.
+- **Move tag times too** (`\move`, `\t`, `\fad`) keeps those tags in step with the video when the shift lands between frames.
 
 Times never go below zero. Hidden lines, filtered out of the Grid, are left alone.
 
-### Timing postprocessor mode
+## Timing postprocessor
 
-The timing postprocessor tidies the lines' times rather than moving them. It needs a video open.
+**Subtitles › Timing postprocessor…** shows the **Timing postprocessor** panel. It tidies the lines' times rather than moving them, and needs a video. It has no key at first. Its **Lines** choice is its own, with the same six options as Shift times, and starts from Shift times' choice the first time.
 
-- **Lead-in/lead-out** adds time before each start and after each end.
-- **Set times as continuous** closes small gaps between lines: when the gap is no larger than the two thresholds together, the earlier line's end and the later line's start meet in it.
-- **Snap to keyframes** moves starts and ends to a keyframe within the distances you set before and after them. It leaves a line alone if snapping would make it 600 ms long or less.
+Each rule has a switch:
 
-They run in that order, on the lines **Which lines** chooses.
+- **Lead-in:** **Start earlier by** a number of milliseconds.
+- **Lead-out:** **End later by** a number of milliseconds.
+- **Close small gaps:** **Start back to the previous end if within** and **End on to the next start if within** a number of milliseconds. A gap no larger than the two together closes: the earlier line's end and the later line's start meet in it, in the proportion of the two limits.
+- **Snap to keyframes:** **Start within** and **End within** a number of milliseconds **before** and **after** a keyframe. It needs keyframes, and leaves a line alone if snapping would make it 600 ms long or less.
+
+They run in that order.
+
+## Preview and Apply
+
+Both panels show what a run would do, beside the choices when the panel is wide and under them when it is narrow, and follow every change you make:
+
+- A line such as *Changes 214 lines*, or for the postprocessor *Changes 31 of 120 lines*, with how many got a lead-in, a lead-out, a closed gap or a snap. *No line changes* when nothing would move.
+- Up to eight lines: the selected ones, or the first lines that change when none is selected, each with its old and new start and end, and its text or the rules that moved it.
+
+**Apply** names what it does, such as **Shift 214 lines** or **Apply to 31 lines**, and is one undo step, *Shift times* or *Timing postprocessor*. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> applies from any field, and <kbd>Esc</kbd> goes back to the Grid.
+
+A choice that can't run says why, and offers what it needs: *Frames need a video.*, *Needs a video.* or *The rules need a video.* with **Open video…**, and *Needs keyframes.* with **Open keyframes…**. With both gap limits at 0 ms, Close small gaps says *Both gap limits are 0 ms. Raise one to close gaps.*
+
+**Shift times with the last values** and **Timing postprocessor with the last values** run a panel's last choices without opening it. They have no key at first; give them one in **File › Settings › Shortcuts**.
+
+## Presets
+
+Each panel has its own presets. **Preset** shows the one in use, or *last used* once you change a value. The **⋯** menu beside it has **Save as preset…**, **Rename preset…** and **Delete preset…**. Saving under a name that exists replaces that preset, after saying so.
+
+The Timing postprocessor's **⋯** menu also has **Use in the Timing layout**. The preset you mark shows *(Timing default)*, and is applied each time you choose the [Timing layout](/en/docs/customize/layouts#the-built-in-layouts).
+
+Your Shift times profiles from before became presets, with the same names.
 
 ## Lines next to each other
 
@@ -131,6 +123,7 @@ They run in that order, on the lines **Which lines** chooses.
 | Key | Does |
 | --- | --- |
 | <kbd>Ctrl</kbd>+<kbd>I</kbd> | Shift times panel |
+| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Apply, in the Shift times and Timing postprocessor panels |
 | <kbd>Ctrl</kbd>+<kbd>Left</kbd> <kbd>Ctrl</kbd>+<kbd>Right</kbd> | Start or end time from the video |
 | <kbd>Shift</kbd>+<kbd>Left</kbd> <kbd>Shift</kbd>+<kbd>Right</kbd> | Start or end to the nearest keyframe |
 | <kbd>Ctrl</kbd>+<kbd>Up</kbd> <kbd>Ctrl</kbd>+<kbd>Down</kbd> | Previous or next line |
