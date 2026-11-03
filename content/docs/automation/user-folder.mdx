@@ -6,7 +6,7 @@ description: Find the one folder that holds your settings, scripts, dictionaries
 import helpMenuLight from './images/help-open-user-folder-light.webp';
 import helpMenuDark from './images/help-open-user-folder-dark.webp';
 
-Everything of yours is in one folder, the **user folder**: your settings and hotkeys, automation scripts and modules, dictionaries, catalogues, saved layouts and autosaves. Copy it, and you have your whole setup. Uninstalling or updating HikariSub never deletes it.
+Everything of yours is in one folder, the **user folder**: your settings and shortcuts, automation scripts and modules, dictionaries, catalogues, saved layouts and autosaves. Copy it, and you have your whole setup. Uninstalling or updating HikariSub never deletes it.
 
 For scripts, the user folder is `?user`, as in Aegisub.
 
@@ -44,7 +44,7 @@ To use another folder, start HikariSub with the environment variable `HIKARISUB_
 
 ```text
 settings.toml           your settings
-hotkeys.toml            your hotkeys
+hotkeys.toml            your shortcuts
 state.json              what HikariSub remembers: window places, recent files and more
 layout.json             the current panel layout
 last-session.json       the last session
@@ -80,7 +80,7 @@ Your settings are in three files. Each holds only what differs from the defaults
 | File | What it holds |
 | --- | --- |
 | `settings.toml` | What you choose: everything in Settings, the tag buttons, the toolbar and the presets of script dialogs |
-| `hotkeys.toml` | The hotkeys you changed, one table per window: `[global]`, `[grid]`, `[editor]`, `[video]` and `[audio]`, and `[automation]` for scripts |
+| `hotkeys.toml` | The shortcuts you changed, one table per window: `[global]`, `[grid]`, `[editor]`, `[video]` and `[audio]`, and `[automation]` for scripts |
 | `state.json` | What HikariSub remembers by itself: window and dialog places, the folders pickers open in, recent files, finds and colours, the last answers in script dialogs, the skipped update and the usage data ID |
 
 Each file starts with `version = 1` (`"version": 1` in `state.json`). In `settings.toml` a setting's name is split at its dots, so `audio.cacheFilesLimit` is `cacheFilesLimit` under `[audio]`. In `hotkeys.toml` each line names a command and its keys, with the command's name in a comment after it:
@@ -90,7 +90,7 @@ Each file starts with `version = 1` (`"version": 1` in `state.json`). In `settin
 GLOBAL_SAVE_SUBS = "Ctrl+Shift+S"  # Save
 ```
 
-`""` takes a default hotkey away. A command has one hotkey in each window: if you give it a list, only the first is used, and the Log names the rest as ignored. The [Hotkeys](/en/docs/customize/hotkeys) page of Settings is the easier way to change them.
+`""` takes a default shortcut away. A command has one shortcut in each window: if you give it a list, only the first is used, and the Log names the rest as ignored. The [Shortcuts](/en/docs/customize/hotkeys) page of Settings is the easier way to change them.
 
 ### Editing them by hand
 
@@ -100,7 +100,7 @@ If a file can't be read, because of a mistake in it or a `version` that is missi
 
 ### From hikari.ini
 
-HikariSub versions before these files kept settings and hotkeys in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, hotkeys.toml and state.json." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
+HikariSub versions before these files kept settings and shortcuts in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, shortcuts.toml and state.json." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
 
 **File › Import legacy settings…** still brings in HikariSub 0.0.x settings, and writes them into these files.
 

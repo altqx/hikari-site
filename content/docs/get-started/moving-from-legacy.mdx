@@ -46,12 +46,12 @@ The import never changes the legacy files. You can run it again at any time: set
 
 - Program options: the program font and size, the language, window size and position, and the options of the Grid, Line editor (including your tag buttons), video, audio, shift times, conversion, the font collector, find and replace, translation and the updater.
 - Recent files: subtitles, video, audio and keyframes.
-- Hotkeys, including the hotkeys of automation macros. A macro's hotkey is matched to its script when the scripts load; scripts do not run during the import.
+- Shortcuts, including the shortcuts of automation macros. A macro's shortcut is matched to its script when the scripts load; scripts do not run during the import.
 - Misspell rules, your personal dictionary, and dictionaries you added (each needs its `.dic` and `.aff` file).
 
 Paths that do not exist on this computer, and a subtitle renderer that is not installed here, are shown as unresolved and left as they are. HikariSub draws with libass instead.
 
-To bring over only the hotkeys of your automation macros, use **File › Settings › Hotkeys › Import legacy hotkeys…** and pick legacy's `Hotkeys.txt`.
+To bring over only the shortcuts of your automation macros, use **File › Settings › Shortcuts › Import legacy shortcuts…** and pick legacy's `Hotkeys.txt`.
 
 ### What does not
 
@@ -65,7 +65,7 @@ To bring over only the hotkeys of your automation macros, use **File › Setting
 
 - There is no main toolbar. The panels carry their own buttons.
 - The Line editor is always there. Legacy's View arrangements and the editor switch are replaced by [layouts](/en/docs/get-started/tour#layouts): Editing, Timing, Translation and Typesetting, plus the ones you save.
-- The shortcut mapping window is gone. Set a macro's hotkey in the Automation panel, or Shift+click it in the Automation menu.
+- The shortcut mapping window is gone. Set a macro's shortcut in the Automation panel, or Shift+click it in the Automation menu.
 - There is no video indexing command, and no dummy audio: a dummy video brings its own silent audio.
 - **Check for updates automatically** is off by default in 0.1, where legacy had it on. An import brings your legacy choice over.
 - The [Preview text](/en/docs/customize/settings#preview-text) of style and font samples is `光 Hikari 日本` by default, where legacy had `Podgląd`. An import that finds `Podgląd` gives you the new default; any other text you chose comes over.
@@ -74,4 +74,4 @@ To bring over only the hotkeys of your automation macros, use **File › Setting
 
 To return to legacy, install a 0.0.x release again. The Windows setup asks before it replaces a newer version. Your legacy settings are as you left them.
 
-Files saved by 0.1 open in legacy. An ASS file may gain a `[Hikari]` section holding the tab's layout; legacy keeps it as it is. To leave it out, turn off **File › Settings › Subtitle properties › Files › Save the panel layout in subtitle files**. Sessions saved by 0.1 open in legacy too.
+Files saved by 0.1 open in legacy. An ASS file may gain a `[Hikari]` section holding the tab's layout; legacy keeps it as it is. To leave it out, turn off **File › Settings › Script properties › Files › Save the panel layout in subtitle files**. Sessions saved by 0.1 open in legacy too.

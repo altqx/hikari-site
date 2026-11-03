@@ -93,7 +93,7 @@ Each run of HikariSub also has a session ID, a new random UUID for every start. 
 - The names of scripts, other than the scripts that come with HikariSub
 - The names of your saved layouts
 - Which values you chose in Getting started
-- An automation macro's hotkey
+- An automation macro's shortcut
 
 Every property is an ID from a fixed list, a bucket, a yes or no, a version or a count. Before an event is queued, HikariSub checks it against the lists below, and drops any event that doesn't match them.
 
@@ -160,7 +160,7 @@ The time buckets, used by `startup_time` and `open_time`, are `<250ms`, `250-500
 | `star_prompt_shown` | When the [suggestion to star HikariSub on GitHub](#star-on-github-suggestion) shows, at most twice ever | None |
 | `star_prompt_clicked` | When you press its **Star on GitHub** | None |
 
-- `command`: the command's ID in the hotkey list, such as `GLOBAL_SAVE_SUBS` or `AUDIO_PLAY`. Only the commands in that list are sent. Automation macros are never sent.
+- `command`: the command's ID in the shortcut list, such as `GLOBAL_SAVE_SUBS` or `AUDIO_PLAY`. Only the commands in that list are sent. Automation macros are never sent.
 - `via`: `key` for a command a key ran, or `pointer` for one from a menu, a toolbar or a panel's button.
 - `panel`: `video`, `audio`, `editor`, `grid`, `reference`, `timing`, `search`, `automation`, `original`, `log`, `styles`, `fix_minor_errors`, `template` or `spellchecker`.
 - `dialog`: `about`, `allTagsEdition`, `aspectRatio`, `autosaves`, `columns`, `conversion`, `crashReport`, `credits`, `dummyVideo`, `fontCatalogClashes`, `fontCatalogs`, `fontCollector`, `fontPicker`, `fontsFromSubtitles`, `gettingStarted`, `history`, `hotkeyCapture`, `kanjiTimer`, `karaokeCheck`, `listChooser`, `manageLayouts`, `movePanel`, `reportIssue`, `resample`, `saveLayout`, `scriptProperties`, `selectLines`, `setNewFps`, `settings`, `settingsImport`, `shapesEdition`, `spellAddedWords`, `styleClashes`, `styleManager`, `translationShift`, `unsavedChanges`, `updateAvailable` or `whatsNew`. A script's dialog is `automation_script`, whichever script it is.

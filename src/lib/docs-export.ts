@@ -89,10 +89,10 @@ export const settingsPages = [
   'updates',
 ] as const;
 
-/** The heading each window has on the Hotkeys page, as the app's Hotkeys page names it. */
+/** The heading each window has on the Shortcuts reference, as the app's Shortcuts page names it. */
 export const hotkeyContextTitles: Record<(typeof hotkeyContexts)[number], string> = {
   Global: 'Global',
-  Subtitles: 'Subtitle grid',
+  Subtitles: 'Grid',
   Editor: 'Line editor',
   Video: 'Video',
   Audio: 'Audio',

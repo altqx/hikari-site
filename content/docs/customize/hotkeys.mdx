@@ -1,5 +1,5 @@
 ---
-title: Hotkeys
+title: Shortcuts
 description: Give any command a key, from Settings, from the menus with Shift+click, or from the Automation panel.
 ---
 
@@ -8,11 +8,11 @@ import pageDark from './images/settings-hotkeys-dark.webp';
 import captureLight from './images/hotkey-capture-light.webp';
 import captureDark from './images/hotkey-capture-dark.webp';
 
-Almost every command can have a key, and most have none at first. The [Hotkeys reference](/en/docs/reference/hotkeys) lists every command with its default keys. There are three ways to change them, and all three change the same list.
+Almost every command can have a key, and most have none at first. The [Shortcuts reference](/en/docs/reference/hotkeys) lists every command with its default keys. There are three ways to change them, and all three change the same list.
 
 | Where | Takes effect |
 | --- | --- |
-| **File › Settings › Hotkeys** | When you press **OK** or **Apply** |
+| **File › Settings › Shortcuts** | When you press **OK** or **Apply** |
 | <kbd>Shift</kbd>+click a menu item or button | At once |
 | The Automation panel, for macros | At once |
 
@@ -22,7 +22,7 @@ Hold <kbd>Shift</kbd> and click a menu item, an item of the Grid's right-click m
 
 On an Audio button that has two keys, <kbd>Ctrl</kbd>+click sets the second one.
 
-## The Hotkeys page
+## The Shortcuts page
 
 <figure>
   <ThemedImage
@@ -33,14 +33,14 @@ On an Audio button that has two keys, <kbd>Ctrl</kbd>+click sets the second one.
     height={620}
     className="rounded-lg border"
   />
-  <figcaption>File › Settings › Hotkeys.</figcaption>
+  <figcaption>File › Settings › Shortcuts.</figcaption>
 </figure>
 
-The list has every command, grouped by where its key works. The filter shows only one group, only the commands that have keys, or only macros. **Search hotkeys** finds commands by name, or by key: type keys as the list shows them, such as `ctrl-s`.
+The list has every command, grouped by where its key works. The filter shows only one group, only the commands that have keys, or only macros. **Search shortcuts** finds commands by name, or by key: type keys as the list shows them, such as `ctrl-s`.
 
 Select a command, then:
 
-- **Map hotkey…**, or a double-click, asks for its keys.
+- **Map shortcut…**, or a double-click, asks for its keys.
 - **Restore default** gives it back its default keys.
 - **Delete** leaves it without a key.
 
@@ -62,7 +62,7 @@ Changed rows show in the warning colour until you press **OK** or **Apply**. **C
 
 Press the key with any of <kbd>Ctrl</kbd>, <kbd>Alt</kbd> and <kbd>Shift</kbd>. The first key you press is taken: a key is one combination, not a sequence. <kbd>Esc</kbd> alone cancels.
 
-**In** chooses where the key works: Global, the Subtitle grid, the edit box (the Line editor), Video or Audio. Choose it before you press the keys. Choosing another place gives the command a key there too, and keeps the one it had.
+**In** chooses where the key works: **Global shortcut**, **Grid shortcut**, **Line editor shortcut**, **Video shortcut** or **Audio shortcut**. Choose it before you press the keys. Choosing another place gives the command a key there too, and keeps the one it had.
 
 Some keys are refused, and the form says why:
 
@@ -82,7 +82,7 @@ If another command has the keys, the form says which, and offers:
 
 ## Where keys work
 
-**Global** keys work everywhere. The others work in their panel: while it has the keyboard, or while the pointer is over it. So you can time with the Audio panel's keys while your cursor stays in the Grid. **File › Settings › Audio › Hotkeys follow the panel under the pointer** turns the pointer part off. A panel's key wins over a Global key with the same keys.
+**Global** keys work everywhere. The others work in their panel: while it has the keyboard, or while the pointer is over it. So you can time with the Audio panel's keys while your cursor stays in the Grid. **File › Settings › Audio › Focus the panel under the pointer** turns the pointer part off. A panel's key wins over a Global key with the same keys.
 
 While you type in a text field, the keys stay with that field's panel, wherever the pointer is. The Line editor's text keeps <kbd>Enter</kbd>, the arrows, <kbd>Delete</kbd>, <kbd>Backspace</kbd> and <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>, <kbd>V</kbd> and <kbd>X</kbd> for itself, and the keypad digits type digits unless **File › Settings › Line editor › Use numpad shortcuts in text fields** is on.
 
@@ -100,8 +100,8 @@ A Global key you give to <kbd>F10</kbd> or <kbd>F6</kbd> takes their place.
 
 A macro's key is set in the Automation panel. Click **Add shortcut** on its row, or right-click it and choose **Set shortcut…**, then press the keys and <kbd>Enter</kbd>. <kbd>Esc</kbd> cancels. Macro keys always work everywhere, so they follow the Global rules. If the keys are taken, **Reassign** moves them to the macro.
 
-The Hotkeys page lists macros too, under the **Automation shortcuts** filter.
+The Shortcuts page lists macros too, under the **Automation shortcuts** filter.
 
 ## Keys from older versions
 
-**File › Import legacy settings…** brings in the keys of HikariSub 0.0.x, with the rest of its settings. **Import legacy hotkeys…** on the Hotkeys page brings in only the macro keys of a legacy `Hotkeys.txt`, at once: macros that already have keys keep them, and keys another macro has are skipped. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).
+**File › Import legacy settings…** brings in the keys of HikariSub 0.0.x, with the rest of its settings. **Import legacy shortcuts…** on the Shortcuts page brings in only the macro keys of a legacy `Hotkeys.txt`, at once: macros that already have keys keep them, and keys another macro has are skipped. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).

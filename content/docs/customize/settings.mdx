@@ -27,21 +27,21 @@ import generalDark from './images/settings-general-dark.webp';
 | **General** | The interface language, tabs, autosave, notices and folders |
 | **Appearance** | The [theme](/en/docs/customize/themes), accent, program font, preview text and title bar |
 | **Line editor** | How the text shows, editing, Translation mode and the tag buttons |
-| **Spelling & grammar** | [Spelling](/en/docs/checking/spelling) and the [grammar check](/en/docs/checking/grammar) with its rule groups |
-| **Subtitle grid** | The active line, columns, counting and new lines |
+| **Spelling and grammar** | [Spelling](/en/docs/checking/spelling) and the [grammar check](/en/docs/checking/grammar) with its rule groups |
+| **Grid** | The active line, columns, counting and new lines |
 | **Video** | Playback, subtitles on the video, decoding and the script resolution |
 | **Audio** | The output device, playback, snapping, karaoke and the cache |
 | **Conversion** | The defaults for converting to other formats |
-| **Subtitle properties** | Saving the panel layout in subtitle files |
+| **Script properties** | Saving the panel layout in subtitle files |
 | **Automation** | The Lua trace level, the answers scripts' dialogs keep, and the [trusted script folders](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names) |
-| **Hotkeys** | Every command's keys: see [Hotkeys](/en/docs/customize/hotkeys) |
+| **Shortcuts** | Every command's keys: see [Shortcuts](/en/docs/customize/hotkeys) |
 | **Updates and privacy** | Checking for and installing updates, [anonymous usage data](/en/docs/help/what-is-sent), and [Always send crash reports](/en/docs/help/reporting-problems#always-send-crash-reports) |
 
 Some rows show only where they apply: the video player and the audio API only on Windows, for example.
 
 Some panels open their page directly: **Audio settings…** in the Audio panel's speaker menu, **Spelling settings…** in the Spellchecker when it finds no dictionary, **Grammar settings…** in its Grammar mode while grammar check is off, and **Shortcuts in Settings…** in the Automation panel's menu.
 
-There is no search across all settings; the Hotkeys page has its own.
+There is no search across all settings; the Shortcuts page has its own.
 
 ## Preview text
 
@@ -62,7 +62,7 @@ Changes take effect at once, without restarting, the interface language too. The
 ## Resetting
 
 - **Reset page** puts the page you are on back to its defaults.
-- Its arrow offers **Reset all settings…**, which does every page after asking. It leaves your hotkeys and the appearance alone: reset them on their own pages.
+- Its arrow offers **Reset all settings…**, which does every page after asking. It leaves your shortcuts and the appearance alone: reset them on their own pages.
 
 Both wait for **OK** or **Apply** like any other change, so **Cancel** undoes them.
 
@@ -72,7 +72,7 @@ Both wait for **OK** or **Apply** like any other change, so **Cancel** undoes th
 
 ## Where settings are kept
 
-HikariSub keeps one set of settings for each user on the computer, in `settings.toml`, with your hotkeys in `hotkeys.toml`. It has no profiles to switch between.
+HikariSub keeps one set of settings for each user on the computer, in `settings.toml`, with your shortcuts in `hotkeys.toml`. It has no profiles to switch between.
 
 The files are in your [user folder](/en/docs/automation/user-folder), with your scripts, dictionaries and saved layouts. **Help › Open user folder** opens it.
 

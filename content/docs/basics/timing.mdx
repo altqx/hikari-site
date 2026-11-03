@@ -41,7 +41,7 @@ A neighbour that is joined to a selected line stays joined, even when it isn't s
 
 Every start and end moves by the same number of frames, so each line keeps its length in frames. Each shift is one undo step. The commands need a video, and have no keys at first.
 
-**Start frame offset** and **End frame offset**, under **File › Settings › Subtitle grid › New lines**, add a fixed amount to these times.
+**Start frame offset** and **End frame offset**, under **File › Settings › Grid › New lines**, add a fixed amount to these times.
 
 ### Centring times within frames
 
@@ -51,7 +51,7 @@ ASS stores times in hundredths of a second, so a time rarely falls exactly where
 
 - It acts on every selected line, hidden ones included.
 - It is one undo step, and does nothing when the times are already centred.
-- It needs a video, a [dummy video](/en/docs/basics/video#dummy-video) included, and has no key at first. Give it one in **File › Settings › Hotkeys**, where it is named **Centre times within frames**.
+- It needs a video, a [dummy video](/en/docs/basics/video#dummy-video) included, and has no key at first. Give it one in **File › Settings › Shortcuts**, where it is named **Centre times within frames**.
 
 ## In the Line editor
 
@@ -67,7 +67,7 @@ A keyframe usually starts a new shot. Lines that start or end on one look tidier
 
 - <kbd>Shift</kbd>+<kbd>Left</kbd> moves the active line's start to the nearest keyframe or line boundary, up to 5 seconds away, and <kbd>Shift</kbd>+<kbd>Right</kbd> its end. They need a video and the audio open.
 - In the Audio panel, **Snap to keyframes** and **Snap to other lines** under **File › Settings › Audio › Snapping** make a dragged boundary jump to a keyframe or line near it. Hold <kbd>Shift</kbd> while dragging to snap only this once, or to not snap when they are on.
-- **Video › Go to previous keyframe** and **Go to next keyframe** move the video there. They have no key at first; give them one in Settings › Hotkeys.
+- **Video › Go to previous keyframe** and **Go to next keyframe** move the video there. They have no key at first; give them one in Settings › Shortcuts.
 
 Keyframes come from the video. **Video › Open keyframes** loads them from a file instead, as the [Video guide](/en/docs/basics/video#keyframes) explains.
 
@@ -137,4 +137,4 @@ They run in that order, on the lines **Which lines** chooses.
 | <kbd>C</kbd> <kbd>V</kbd> | Lead-in or lead-out, in the Audio panel |
 | <kbd>G</kbd> or <kbd>Enter</kbd> | Commit, in the Audio panel |
 
-Inside the Line editor, <kbd>Ctrl</kbd>+<kbd>I</kbd> is italic instead. The [Hotkeys reference](/en/docs/reference/hotkeys) lists them all.
+Inside the Line editor, <kbd>Ctrl</kbd>+<kbd>I</kbd> is italic instead. The [Shortcuts reference](/en/docs/reference/hotkeys) lists them all.
