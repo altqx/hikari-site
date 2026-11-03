@@ -3,6 +3,11 @@ title: Timing
 description: Set when each line shows, from the audio, the video or by hand, and shift or tidy many lines at once.
 ---
 
+import shiftLight from './images/shift-times-light.webp';
+import shiftDark from './images/shift-times-dark.webp';
+import postLight from './images/timing-postprocessor-light.webp';
+import postDark from './images/timing-postprocessor-dark.webp';
+
 Each line has a start and an end time. You can set them from the audio, from the video, or by typing them, and then shift or tidy many lines at once with the **Shift times** and **Timing postprocessor** panels.
 
 ## From the audio
@@ -70,6 +75,18 @@ Keyframes come from the video. **Video › Open keyframes** loads them from a fi
 
 **Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel (see [Where a panel opens](/en/docs/customize/layouts#where-a-panel-opens)). It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later.
 
+<figure>
+  <ThemedImage
+    light={shiftLight}
+    dark={shiftDark}
+    alt="The Shift times panel: Preset: last used; Shift by Amount; Amount 0:00:02.35 with Time; Direction Earlier; Lines All lines; Times Both; End times Fix overlaps, with Needs a video. and Open video…; Move tag times too ticked; the preview, Changes 2 line(s), with line 1 going from 0:00:01.00 to 0:00:00.00; and the Shift 2 line(s) button"
+    width={340}
+    height={800}
+    className="rounded-lg border"
+  />
+  <figcaption>Shift times, moving every line 2.35 seconds earlier.</figcaption>
+</figure>
+
 - **Shift by:** **Amount**, **To video** or **To audio mark**. **To video** needs a video and **To audio mark** an audio mark, the one you set on the audio ruler. With either, **Move** chooses whether the active line's **Start** or **End** goes there, the panel shows the time, such as *To the video at 0:12:03.45*, and every other line moves by the same amount. The amount field is then called **Plus**, and is added on top.
 - **Amount:** a **Time**, or a number of **Frames**, which needs a video.
 - **Direction:** **Later** or **Earlier**.
@@ -83,6 +100,18 @@ Times never go below zero. Hidden lines, filtered out of the Grid, are left alon
 ## Timing postprocessor
 
 **Subtitles › Timing postprocessor…** shows the **Timing postprocessor** panel. It tidies the lines' times rather than moving them, and needs a video. It has no key at first. Its **Lines** choice is its own, with the same six options as Shift times, and starts from Shift times' choice the first time.
+
+<figure>
+  <ThemedImage
+    light={postLight}
+    dark={postDark}
+    alt="The Timing postprocessor panel: Preset: last used; The rules need a video. with Open video…; Lines All lines; Lead-in on, Start earlier by 200 ms; Lead-out off; Close small gaps on, both limits 300 ms; Snap to keyframes off; and beside them the preview, Needs a video., with the Apply button"
+    width={620}
+    height={640}
+    className="rounded-lg border"
+  />
+  <figcaption>The Timing postprocessor, wide, with its preview beside the rules.</figcaption>
+</figure>
 
 Each rule has a switch:
 
