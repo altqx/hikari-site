@@ -2,3 +2,4 @@
 /docs /en/docs 301
 /docs/* /en/docs/:splat 301
 /en/docs/help/reporting-bugs /en/docs/help/reporting-problems 301
+/en/docs/checking/fix-minor-errors /en/docs/get-started/moving-from-legacy 301
