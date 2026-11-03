@@ -1,91 +1,98 @@
 ---
 title: Find and replace
-description: Find text in your lines, replace it one match at a time or all at once, and search whole folders of subtitle files.
+description: Find text in your lines, replace it one match at a time or all at once, and search whole folders of subtitle files, all from the Find panel.
 ---
 
-The **Search** panel finds and replaces text in your subtitles. It stays open along the bottom of the window while you work, with the search options on the left and the results on the right.
+The **Find** panel finds and replaces text in your subtitles. It stays open while you work: the find row at the top, the replace row under it, the options behind a button, and the results.
 
 ## Opening the panel
 
-- **Edit › Find** (<kbd>Ctrl</kbd>+<kbd>F</kbd>) opens it on the **Find** tab.
-- **Edit › Find and replace** (<kbd>Ctrl</kbd>+<kbd>H</kbd>) opens it on the **Replace** tab.
+- **Edit › Find…** (<kbd>Ctrl</kbd>+<kbd>F</kbd>) opens it with the replace row as you last left it.
+- **Edit › Replace…** (<kbd>Ctrl</kbd>+<kbd>H</kbd>) opens it with the replace row shown.
 
-Either one puts the cursor in **Search text**. Text you selected in the Line editor becomes the search text. Pressing the same key again closes the panel and goes back to the Line editor.
+Either one puts the cursor in the find field, which starts with your last search, selected, so you can type over it. Pressing the same key again while you are in the panel closes it; <kbd>Ctrl</kbd>+<kbd>H</kbd> with the replace row hidden shows it instead. <kbd>Esc</kbd> goes back to the Line editor and leaves the panel open.
 
-**Edit › Find next** (<kbd>F3</kbd>) repeats the last search, even with the panel closed.
+The **▸** button at the start of the find row shows or hides the replace row.
+
+**Edit › Find next** (<kbd>F3</kbd>) and **Edit › Find previous** (<kbd>Shift</kbd>+<kbd>F3</kbd>) repeat the last search, even with the panel closed.
 
 ## Finding
 
-Type the text and press <kbd>Enter</kbd>, or click **Find**. The next match's line becomes the active line, and the match is selected in the Line editor, ready to edit. Press <kbd>Enter</kbd> or <kbd>F3</kbd> again for the one after it.
+Type the text and press <kbd>Enter</kbd>, or click **Find next**. The next match's line becomes the active line, and the match is selected in the Line editor, ready to edit. <kbd>Enter</kbd> or <kbd>F3</kbd> goes on to the one after it, and <kbd>Shift</kbd>+<kbd>Enter</kbd> or <kbd>Shift</kbd>+<kbd>F3</kbd> back to the one before.
 
-When the search reaches the last line, it asks whether to **Search from the start**. If nothing matches anywhere, a notice says so.
+Beside the field, the count says where you are, such as **3 of 12**, or **5 matches** before you have moved to one, or **No matches**. It counts exactly the matches Find next goes through, with the options below, and changes as you type, change an option or edit the lines.
+
+The search wraps without asking: after the last match it goes on from the first, and Find previous goes from the first to the last. If nothing matches anywhere, a notice says *Could not find* and the text.
 
 Comment lines are skipped unless **Include comments** is on, and lines hidden by the Grid's filter are always skipped.
 
 ## Options
 
-| Option | Does |
+**Aa** (**Match case**, <kbd>Alt</kbd>+<kbd>C</kbd>) tells capitals from small letters, and **.\*** (**Regular expression**, <kbd>Alt</kbd>+<kbd>R</kbd>) reads the text as a [pattern](#regular-expressions). Both are inside the find field.
+
+The rest are behind **Options**. While they are hidden, small chips under the field name each option that isn't at its default, and the button has a dot.
+
+| Option | Choices |
 | --- | --- |
-| **Match case** | Tells capitals from small letters |
-| **Regular expressions** | Reads the search text as a pattern, below |
-| **Skip tags** | Finds only text outside `{…}` blocks |
-| **Skip text** | Finds only text inside `{…}` blocks, such as tags |
-| **Beginning of text** | The match must start the field |
-| **End of text** | The match must end the field |
+| **Search in** | **This document**, **Open documents** (every open tab) or **Folder** ([below](#searching-a-folder)) |
+| **Field** | **Text**, **Style**, **Actor** or **Effect**. In Translation mode, Text covers both the original and the translation |
+| **Lines** | **All**, **Selected** or **From selected**: from the first selected line to the end. Only for This document |
+| **Styles** | **All styles**, or the styles you tick in **Choose styles**, with their line counts |
+| **In text** | **All text**, **Outside tags** (not inside `{…}` blocks) or **Inside tags** |
+| **Match at** | **Anywhere**, **Start** (the match must start the field) or **End** (the match must end it) |
+| **Include comments** | Searches comment lines too |
 
-**In field** chooses what to search: the **Text**, or the **Styles**, **Actor** or **Effect** field. In Translation mode, Text covers both the original and the translation.
-
-**Lines** chooses where:
-
-- **All lines** from the first.
-- **Selected lines** only.
-- **From selected:** from the first selected line to the end.
-
-The **Styles** field beside it limits the search to lines of the styles you list, separated by commas. **Choose styles** lists them with their line counts to tick.
+HikariSub remembers every option.
 
 ## Replacing
 
-On the **Replace** tab, type the new text in **Replace with**.
+Show the replace row with **▸**, or open the panel with <kbd>Ctrl</kbd>+<kbd>H</kbd>, and type the new text in **Replace with**.
 
-- **Replace next** (<kbd>Enter</kbd> in Replace with) replaces the selected match and finds the next one. Each click is one undo step. If the text has changed since it was found, it searches again rather than overwrite something else.
-- **Replace all** replaces every match in the chosen lines as one undo step, then says how many it replaced. With **Selected lines** and a style list, a line must be both selected and of a listed style.
-- **Replace in all open subtitles** does the same in every open tab, one undo step per tab.
+- **Replace** (<kbd>Enter</kbd> in Replace with) replaces the selected match and finds the next one. Each is one undo step. If the text has changed since it was found, it searches again rather than overwrite something else.
+- **Replace all** (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Enter</kbd>) replaces every match as one undo step, then says how many it replaced. With **Selected** lines and chosen styles, a line must be both selected and of a chosen style. With **Open documents**, it replaces in every open tab, one undo step per tab.
+
+<kbd>Up</kbd> and <kbd>Down</kbd> in either field go through your recent searches or replacements.
 
 ## Listing every match
 
-On the Find tab, **Find all in current subtitles** and **Find in all open subtitles** list the matches on the right, under each tab's name, as **Line N:** with the match marked. Double-click a row to go to that line.
+**Find all** (<kbd>Alt</kbd>+<kbd>Enter</kbd>) lists the matches, on the right of the panel when it is wide enough, or below the rows when it is narrow. A summary leads them, such as **12 matches in 9 lines**, then each match as **Line N:** with the match marked, under its tab's name. Double-click a row to go to that line, and click a header to fold its rows.
 
-Every row starts ticked. Untick the ones to leave alone, or use **Check all** and **Uncheck all**, then type the new text under the list and click **Replace**. Lines you edited since the search are skipped and noted in the Log. Click a header to fold its rows.
+With the replace row shown, each match is struck through and followed by its replacement. Every row starts ticked. Untick the ones to leave alone, or use **Check all** and **Uncheck all**, then click **Replace N checked**, which uses the text in Replace with. Lines you edited since the search are skipped and noted in the Log. **Close results** hides the list.
 
-## Searching files
+## Searching a folder
 
-The **In files** tab searches subtitle files on disk, open or not:
+With **Search in** set to **Folder**, the panel searches subtitle files on disk, open or not. Lines and Styles give way to:
 
-- **Catalog** is the folder. The folder button picks it.
-- **Filters** chooses the files, such as `*.ass; *.srt`. Left empty, it searches ASS, SRT, SUB, TXT and MPL2 files.
-- **Search in subfolders** and **Search in hidden folders** go deeper.
+- **Folder**, with **Choose folder…** to pick it.
+- **Files**, the file patterns separated by semicolons, such as `*.ass; *.srt`. Left empty, it searches ASS, SRT, SUB, TXT and MPL2 files.
+- **Subfolders** and **Hidden folders**, to go deeper.
 
-**Find in subtitles** lists the matches under each file's path. Double-click one to open the file at that line.
+**Find all** lists the matches under each file's path, with a summary such as **5 matches in 3 files**. Double-click one to open the file at that line.
 
-**Replace in subtitles** changes the files on disk. It asks first, because **Undo cannot bring them back**. Before it changes a file, it puts a copy in a `ReplaceBackup` folder beside your settings. Only files with a match are written, and they are saved as UTF-8.
+The replace row then holds only **Replace in N files…**, in red, which changes the files on disk. It asks first, because **Undo cannot bring them back**. Before it changes a file, it puts a copy in a `ReplaceBackup` folder beside your settings. Only files with a match are written, and they are saved as UTF-8.
 
 ## Regular expressions
 
-With **Regular expressions** on, the search text is a pattern. `.` is any character, `\d` a digit, `(…)` a group, `|` either side, and so on.
+With **Regular expression** on, the find text is a pattern. `.` is any character, `\d` a digit, `(…)` a group, `|` either side, and so on.
 
 In **Replace with**, `\1` to `\9` insert a group, and `&` the whole match. Write `\&` for a plain `&`.
 
 For example, to turn `Mr.` and `Mrs.` into `Mr` and `Mrs`, search for `(Mrs?)\.` and replace with `\1`.
 
-A pattern with a mistake is not searched: a notice gives the error.
+A pattern with a mistake shows the error under the find field, in red. Until you fix it, nothing is searched: the find and replace buttons are off, and <kbd>Enter</kbd> does nothing.
 
 ## Keys
 
 | Key | Does |
 | --- | --- |
-| <kbd>Ctrl</kbd>+<kbd>F</kbd> | Find |
-| <kbd>Ctrl</kbd>+<kbd>H</kbd> | Find and replace |
-| <kbd>F3</kbd> | Find next |
-| <kbd>Enter</kbd> | Find, in Search text. Replace next, in Replace with |
+| <kbd>Ctrl</kbd>+<kbd>F</kbd> | Find… |
+| <kbd>Ctrl</kbd>+<kbd>H</kbd> | Replace… |
+| <kbd>F3</kbd>, or <kbd>Enter</kbd> in the find field | Find next |
+| <kbd>Shift</kbd>+<kbd>F3</kbd>, or <kbd>Shift</kbd>+<kbd>Enter</kbd> in the find field | Find previous |
+| <kbd>Alt</kbd>+<kbd>Enter</kbd> | Find all |
+| <kbd>Enter</kbd> in Replace with | Replace, then find the next match |
+| <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Enter</kbd> | Replace all |
+| <kbd>Alt</kbd>+<kbd>C</kbd>, <kbd>Alt</kbd>+<kbd>R</kbd> | Match case, Regular expression |
+| <kbd>Esc</kbd> | Back to the Line editor; the panel stays open |
 
 **Edit › Select lines** selects lines by their text in a window of its own, without replacing anything.
