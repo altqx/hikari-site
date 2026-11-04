@@ -7,7 +7,7 @@ HikariSub 0.1 runs on 64-bit Windows and Linux. Each release comes in seven pack
 
 <DownloadTable />
 
-Every release also carries `SHA256SUMS`, the SHA-256 checksum of each package. The packages are not code-signed, so the checksum and the download from github.com over HTTPS are what vouch for them.
+Every release also carries `SHA256SUMS`, the SHA-256 checksum of each package. The packages themselves are not code-signed. From the release after 0.1.0-beta.3, `SHA256SUMS` is signed with HikariSub's release key; see [Checking a download](#checking-a-download).
 
 ## What you need
 
@@ -100,6 +100,25 @@ To add it to your applications menu, with its icons and file types, `.hksession`
 
 The menu entry points at this folder, so run the script again if you move the folder. `./install-desktop-integration.sh --uninstall` removes the entry again.
 
+## Checking a download
+
+Releases after 0.1.0-beta.3 carry two signatures made with HikariSub's release key, using [minisign](https://jedisct1.github.io/minisign/): `SHA256SUMS.minisig` for `SHA256SUMS`, and `hikarisub-update.json.minisig` for the file the update check reads.
+
+The release key, with key id A97C7A20EFD98999:
+
+```
+RWSZidnvIHp8qW7ynpUV8iDc/FH3riGpLuA+tz6zSeqwE3Q9Y+jmY5TH
+```
+
+Put the package in a folder with `SHA256SUMS` and `SHA256SUMS.minisig` from the same release, and run:
+
+```sh
+minisign -Vm SHA256SUMS -P RWSZidnvIHp8qW7ynpUV8iDc/FH3riGpLuA+tz6zSeqwE3Q9Y+jmY5TH
+sha256sum --ignore-missing -c SHA256SUMS
+```
+
+The first command checks that `SHA256SUMS` was signed with the release key. It prints the signature's trusted comment, `hikarisub`, the release's tag and `SHA256SUMS`, which must name the release you downloaded. The second checks your package against `SHA256SUMS`. On Windows, PowerShell's `Get-FileHash` shows a file's SHA-256, to compare with its line in `SHA256SUMS`.
+
 ## Updates
 
 HikariSub can check GitHub for a new version once a day when it starts. The check is **off** until you turn it on: **File › Settings › Updates and privacy › Check for updates automatically**, or the Updates and privacy step of the [Getting started window](/en/docs/get-started/getting-started-window#updates-and-privacy). You can check at any time with **Help › Check for updates**.
@@ -116,7 +135,7 @@ How the update is installed depends on the package:
 | deb, rpm | Downloads the package and asks for your password to install it. |
 | Portable zip, tar.gz | Opens the download page. |
 
-Each download is checked against its SHA-256 before it is installed. To see which version and package you have, open **Help › About**.
+Each download is checked against its SHA-256 before it is installed. From the version after 0.1.0-beta.3, HikariSub also installs an update only from a release signed with the release key. It skips a release whose signature is missing or wrong, and only announces a release without the update file, with a link to its page. To see which version and package you have, open **Help › About**.
 
 The same Settings page, **Updates and privacy**, holds **Send anonymous usage data**, which is on by default. See [What is sent](/en/docs/help/what-is-sent).
 
