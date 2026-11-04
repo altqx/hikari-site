@@ -76,7 +76,7 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 - **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last.
 - **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words or By wraps.
-- **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**.
+- **Swap lines**, **Make times continuous ›** with the previous or the next line, **Make line group** and [Convert Aegisub folds to line groups](#aegisub-folds).
 - **Select lines visible on video**, **Show subtitles preview** and [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation).
 - **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
 
@@ -141,7 +141,7 @@ The filters are under **Filtering**, in the menu of the **⋯** button on the Gr
 
 ## Line groups
 
-**Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…** and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
+**Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…**, **Convert Aegisub folds to line groups** and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
 
 ### Groups inside groups
 
@@ -157,6 +157,17 @@ Line groups can sit inside other line groups:
 Each of these is one undo step.
 
 In the file, a line keeps one `[tree_opened]` or `[tree_closed]` marker in its Actor field for each group it is inside, outermost first. The Line editor and scripts see the Actor without them. A file with no group inside another saves exactly as before. HikariSub 0.0.x opens a file with nested groups as flat groups, and if it saves the file, the nesting is lost.
+
+### Aegisub folds
+
+Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups** in the Grid's right-click menu does the same at any time; it has no key at first.
+
+- Each fold becomes a line group, and folds inside folds become groups inside groups. A collapsed fold becomes a closed group.
+- Before each group, a comment line holds the fold's first line without its tags, as the group's description.
+- Folds that overlap a line group, and fold marks without a partner, are left as they are. A notice says how many folds were converted and skipped.
+- It is one undo step.
+
+Opened in Aegisub again, the converted folds no longer show as folds; the skipped ones still do.
 
 ## Folding generated lines
 

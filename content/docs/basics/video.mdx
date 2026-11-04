@@ -1,6 +1,6 @@
 ---
 title: Video
-description: Open a video, play and step through it, follow your lines on it, and watch the result full screen.
+description: Open a video, play and step through it, follow your lines on it, load timecodes, and watch the result full screen.
 ---
 
 import fullscreenLight from './images/fullscreen-light.webp';
@@ -18,10 +18,16 @@ HikariSub may ask first:
 
 - **Subtitles with the same name** beside the video: **Open both** or **Video only**.
 - **A different resolution** from the subtitles: **Resample** scales the subtitles to the video, **Change resolution only** sets the new size without moving anything, and **Keep as is** leaves them. **Resample and stretch** appears when the aspect ratios differ. You can resample later with **Subtitles › Resample subtitles**.
+- **No YCbCr matrix** in the subtitles, or **a different one** from the video's: whether to set it to the video's. Each answer is one undo step.
+- **No layout resolution** in the subtitles, or **a different one** from the video's: whether to set it.
 
-When you open subtitles that name a video, audio or keyframes file, a bar over the picture offers to load them: **Load associated**, or **No**.
+It also warns when the video has no colour matrix tag, or has HDR or wide-gamut colours. **File › Settings › Video › Script resolution** has a row for each question, from **Ask** to always or never changing the file, and a check box for each warning. **Don't ask again** in a question sets its row to the answer you gave. Reopening or reloading a video asks again.
 
-**Video › Unload video** empties the panel. The file itself is not touched.
+When you open subtitles that name a video, audio, keyframes or timecodes file, a bar over the picture offers to load them: **Load associated**, or **No**. Files that can't be found are listed under *Linked files not found:*, and when none of them can load, the bar has only **OK**.
+
+**Video › Unload video** empties the panel. The file itself is not touched. **Video › Reload video** opens the same file again, at the frame you were on.
+
+**Video › Video details…** lists the open video's file, resolution and aspect ratio, its exact frame rate, such as *23.976 fps (24000/1001)*, or *Variable*, its frame count and length, its colour space and its colour matrix. The matrix says when it is guessed because the file isn't tagged, and shows the subtitles' own YCbCr matrix when that differs.
 
 ### Formats
 
@@ -67,16 +73,37 @@ The keys without <kbd>Alt</kbd> work while the Video panel has the keyboard. The
 - **Video › Insert start time from video** (<kbd>Ctrl</kbd>+<kbd>Left</kbd>) and **Insert end time from video** (<kbd>Ctrl</kbd>+<kbd>Right</kbd>) set the selected lines' times to the current frame, as one undo step. A line next to them that is joined to one of them stays joined.
 - **Video › Shift by frames to video** moves the selected lines, or the active line and every line that starts at or after it, by whole frames, so that the active line starts or ends on the current frame. See [From the video](/en/docs/basics/timing#from-the-video).
 - **Video › Centre times within frames** moves the selected lines' times to the middle of their frames, so a later shift by time keeps them on whole frames. See [Centring times within frames](/en/docs/basics/timing#centring-times-within-frames).
+- **Video › Align to video…** times a sign to the frames it shows on: see [Aligning to the video](#aligning-to-the-video).
 - **Video › Go to start time of line** and **Go to end time of line** move the video to the active line.
 - <kbd>F2</kbd> selects the line at the video's time.
 
 [Timing](/en/docs/basics/timing) covers snapping times to keyframes.
 
+### Aligning to the video
+
+**Video › Align to video…** times the active line to the frames where a point of the picture keeps its colour, such as a sign on a wall. It needs an open video and an active line, and has no key at first. Opening it pauses the video.
+
+1. Click a point on the sign that keeps its colour while the line should show. The window shows its **Point X** and **Point Y** and its **Colour**. The arrow keys move the point by a pixel, or 10 with <kbd>Shift</kbd>.
+2. **Tolerance** sets how far the colour may drift and still count as the same, from 0 to 255. It starts at 20 and is remembered.
+3. Press **Align**, <kbd>Enter</kbd>, or double-click the point. While it searches, the window counts the frames checked, and **Cancel** stops it.
+
+The line then starts on the first frame around the current one where the point holds, and ends at the end of the last one. It is one undo step, *Aligning to video*, and the video stays on the frame you picked. Choose a point that differs clearly from what is behind it. If a frame can't be read, nothing changes, and read-only subtitles can't be aligned.
+
 ## Keyframes
 
 The video's own keyframes come from indexing. **Video › Open keyframes** loads a keyframes file instead: Aegisub keyframes, XviD or x264 two-pass stats, or DivX. It needs a video open. Keyframes show in the times field and as lines on the audio waveform.
 
-HikariSub has no timecodes files to open or save: frame times always come from the indexed video.
+## Timecodes
+
+Frame times come from the indexed video. **Video › Open timecodes** loads a timecodes file instead: v1, v2 or v4, including mkvmerge's `# timestamp format` files. The Grid's frames, the timing commands, seeking, Shift times by frames, the audio's video marker, keyframes and scripts then use its times. The video still shows its own frames, and the subtitles are drawn at the file's time.
+
+- **Video › Recently opened timecodes** lists the files you opened.
+- **Video › Save timecodes** writes the times as a v2 file.
+- **Video › Close timecodes** goes back to the video's own times.
+
+None of them has a key at first. Each tab keeps its own timecodes file. Opening another video drops it, and unloading the video keeps it, so Shift times by frames works from the file alone. A file listing fewer frames than the video gives one warning. The status bar's frame rate then shows the file's average rate, and its tip names the file.
+
+Saving an ASS file keeps the timecodes file's path in it, as Aegisub does. Reopening the file offers to load it with the video, and the last session brings it back.
 
 ## Zoom and pan
 
@@ -147,7 +174,7 @@ The right-click menu's **Full screen bar ›** sets the same mode.
 
 ## Dummy video
 
-**Video › Open dummy video** makes a blank video to time against without the real one: choose a resolution, a colour or a checkerboard, a frame rate from 15 to 120 and a duration. It brings its own silent audio as long as itself, so the audio box works too.
+**Video › Open dummy video** makes a blank video to time against without the real one: choose a resolution, a colour or a checkerboard, a frame rate from 15 to 120 and a duration. The frame rate can be a fraction, such as `24000/1001`, which keeps the timing exact over long durations, and the list has 24000/1001, 30000/1001 and 60000/1001. A side can be up to 100000 pixels; over 8192 the picture is drawn smaller, but the video keeps the size you asked for. **1080x1920 (HD 1080p vertical)** is among the sizes. It brings its own silent audio as long as itself, so the audio box works too.
 
 ## Subtitles on the video
 
@@ -162,7 +189,7 @@ The layout is the same either way. The setting also applies to full screen and t
 
 ## Saving a frame
 
-While paused, the right-click menu's **Export frame ›** has **Save as PNG…** and **Copy**, and **Save with subtitles as PNG…** and **Copy with subtitles**. Saved frames go beside the video, named after it and the frame's time, and never replace an earlier file. They are always at the video's size.
+While paused, the right-click menu's **Export frame ›** has **Save as PNG…** and **Copy**, **Save with subtitles as PNG…** and **Copy with subtitles**, and **Save subtitles only as PNG…** and **Copy subtitles only**. The last two give the subtitles alone, on a transparent background. Saved frames go beside the video, named after it and the frame's time, and never replace an earlier file. They are always at the video's size.
 
 ## Settings
 

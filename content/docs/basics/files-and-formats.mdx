@@ -1,10 +1,8 @@
 ---
 title: Files and formats
-description: Open and save subtitle files, convert between formats, set a file's properties and resolution, and get your work back after a crash.
+description: Open and save subtitle files, save another format as ASS, set a file's properties and resolution, and get your work back after a crash.
 ---
 
-import convertLight from './images/convert-srt-light.webp';
-import convertDark from './images/convert-srt-dark.webp';
 import propertiesLight from './images/file-properties-light.webp';
 import propertiesDark from './images/file-properties-dark.webp';
 import resampleLight from './images/resample-light.webp';
@@ -40,7 +38,7 @@ When the subtitles name a video, audio or keyframes file, a bar offers to load t
 | **File › Save as…** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> |
 | **File › Save all** | |
 
-A file is saved in the format it is in: an SRT file stays SRT. Save asks for a name when the file is new, when you have converted it to another format, and when **Save subtitles using the video name** is on and the names differ. The right extension is added if the name lacks it.
+A file is saved in the format it is in: an SRT file stays SRT. Save asks for a name when the file is new, and when **Save subtitles using the video name** is on and the names differ. The right extension is added if the name lacks it.
 
 Only what you changed is rewritten. Everything else, including sections and lines other programs added, is saved exactly as it was. The file is written beside the old one first and then put in its place, so a failed save never leaves half a file.
 
@@ -54,38 +52,18 @@ If the file changed on disk since you opened it, Save stops and a bar offers to 
 
 ASS files also keep the tab's arrangement of panels in a `[Hikari]` section that other programs ignore. Opening the file again brings the panels back the way you left them. To leave it out, turn off **File › Settings › Script properties › Save the panel layout in subtitle files**.
 
-## Converting
+## Saving as ASS
 
-**Subtitles › Conversion** turns the file into another format:
+To turn an SRT, WebVTT, SBV, MicroDVD, MPL2 or TMPlayer file into ASS, use **File › Save as…**. For a file in another format, the save window offers its own format and **ASS subtitles (\*.ass)**. A name ending in `.ass` chooses ASS too.
 
-| Command | Key |
-| --- | --- |
-| Convert to ASS | <kbd>F9</kbd> |
-| Convert to SRT | <kbd>F8</kbd> |
-| Convert to MDVD | |
-| Convert to MPL2 | <kbd>F11</kbd> |
-| Convert to TMP | <kbd>Ctrl</kbd>+<kbd>F12</kbd> |
+Choosing ASS asks first: *Convert "episode-01.srt" to ASS before saving it?*, with a list of what changes, such as lines given the conversion style, tags converted, times changed, and duplicate or empty lines removed.
 
-A window shows the options that apply to the new format, and **What changes** lists what will be lost as you change them, before anything happens.
+- **Convert to ASS** converts the file in one undo step, *Subtitles conversion*, and saves it. The same list goes to the [Log](/en/docs/help/troubleshooting#the-log-panel).
+- **Cancel** leaves the file as it was and saves nothing.
 
-<figure>
-  <ThemedImage
-    light={convertLight}
-    dark={convertDark}
-    alt="The Convert to SRT window: the End times options on the left, and What changes on the right, listing that the script properties and styles are removed, a comment line removed and formatting tags converted in one line"
-    width={742}
-    height={342}
-    className="rounded-lg border"
-  />
-  <figcaption>Converting to SRT.</figcaption>
-</figure>
+Closing a tab with unsaved changes asks the same way when you save it as ASS there.
 
-- **Style** (to ASS): the style every line gets, from a catalogue, and tags to put at the start of every line.
-- **Resolution** (to ASS): the new file's resolution.
-- **Frame rate** (to MicroDVD), which counts frames rather than time. **From video** takes the open video's.
-- **End times:** **New end times** gives each line a length from its number of characters, at least one second, up to where the next starts.
-
-**Convert** does it in one undo step. The next Save asks for a new name, so the original file is kept. **File › Settings › Conversion** sets the options' defaults. Conversion isn't offered in Translation mode.
+**File › Settings › Conversion** sets how a file is converted: the style every line gets, from a catalogue, tags to put at the start of every line, the resolution, the frame rate for a MicroDVD file (or **From video**), and new end times from each line's length.
 
 To write a copy in another format and leave the file as it is, use [Export](/en/docs/basics/export).
 
