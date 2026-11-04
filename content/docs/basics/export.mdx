@@ -1,6 +1,6 @@
 ---
 title: Export
-description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2 or TMPlayer, and see what each format couldn't keep.
+description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2, TMPlayer, TTML or DFXP, and see what each format couldn't keep.
 ---
 
 **File › Export as…** writes a copy of the file in another format. The file you are editing doesn't change: it stays ASS, with the same undo history, and nothing is marked as changed. Text you have typed in the Line editor but not yet applied goes into the copy too.
@@ -29,10 +29,15 @@ HikariSub remembers the format and options for each file, so the next export of 
 | **MicroDVD** | `.sub` | Frames | Bold, italic, underline, strikeout and colour that cover a whole row | **Frame rate**, merging |
 | **MPL2** | `.txt` | Tenths of a second | Italics that cover a whole row | Merging |
 | **TMPlayer** | `.txt` | Whole seconds, start only | Text only | None |
+| **TTML (IMSC1)** | `.ttml` | Milliseconds, or frames | Each style's font, size, colours and outline; an opaque box; bold, italic, underline, strikeout and text colours; top, middle or bottom with the alignment | **Netflix timed-text style** (off), **Times in frames** (off), **Language** |
+| **DFXP** | `.dfxp` | As TTML | As TTML | As TTML |
 
 - **Merge overlapping lines into one subtitle:** where lines overlap, the time is cut at every start and end, and each piece becomes one subtitle holding the lines on screen then. Top lines come first, then middle, then bottom.
-- **Frame rate** (MicroDVD) starts at the rate you used last for this file, otherwise the open video's, otherwise 23.976. With a video open, **Use video frame rate** puts the video's back.
+- **Frame rate** (MicroDVD, and TTML or DFXP in frames) starts at the rate you used last for this file, otherwise the open video's, otherwise 23.976. With a video open, **Use video frame rate** puts the video's back.
 - **Plain text** with **Start and end times** puts the times before the text, separated by tabs.
+- **TTML (IMSC1)** and **DFXP** are both TTML documents. TTML also declares the IMSC1 text profile. Each style the lines use becomes a TTML style, with its font, size, colours, and its outline up to the thickness IMSC1 allows. TTML has no shadow. Each line sits in a top, middle or bottom band of the picture, as its alignment says, aligned left, centre or right. A line with `\pos` goes in the band its position falls in.
+- **Times in frames** writes times as frame numbers at the **Frame rate**. **Language** is the subtitles' language code, such as `en` or `pt-BR`, and may stay empty.
+- **Netflix timed-text style** follows the stricter rules of Netflix's timed-text requirements: times in frames, white text in the default font and size, centred at the top or the bottom of the picture, and only italics. The report lists the colours, bold, underline, strikeout and positions it drops or moves.
 - **TMPlayer** has no end times, so overlapping lines are always merged, and an empty subtitle clears the screen when no line follows straight away.
 
 Every format is written as UTF-8.
@@ -63,6 +68,7 @@ After writing, the window says how many lines went out and how many it skipped. 
 | Text colour removed | `\c` or `\1c`, where the format or its options can't carry it |
 | Some bold, italic, underline or strikeout removed | `\b`, `\i`, `\u` or `\s`, where the format can't carry it. SRT and WebVTT lose only strikeout |
 | Position or alignment removed | `\pos`, or alignment other than bottom centre, where the format or its options don't carry it |
+| Position approximated by the nearest region | In TTML and DFXP, `\pos`, or margins other than those most lines use. With the Netflix style, also a line moved to the top or bottom |
 | Karaoke timing removed | Karaoke tags, except in WebVTT with **Karaoke timing** |
 | Scrolling effect removed | The Effect `Banner;`, `Scroll up;` or `Scroll down;` |
 | Merged with overlapping lines | A subtitle shared with an overlapping line |
