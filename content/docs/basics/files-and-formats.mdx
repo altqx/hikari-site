@@ -119,9 +119,9 @@ A subtitle file's positions, sizes and margins are written for its resolution. *
   <ThemedImage
     light={resampleLight}
     dark={resampleDark}
-    alt="The Resample subtitles window: Subtitles 1280 by 720, Target 1440 by 1080, a note that they are scaled by 1.125 across and 1.5 down, and the Aspect ratio choice Keep it or Stretch"
+    alt="The Resample subtitles window: Subtitles 1280 by 720, Target 1440 by 1080, a note that they are scaled by 1.125 across and 1.5 down, the Aspect ratio choice Keep it or Stretch with Keep it chosen and a note that the aspect ratio changes from 16:9 to 4:3, then Adjust 3D rotations ticked, with Rotated lines keep their shape on screen., and the Resample and Cancel buttons"
     width={552}
-    height={299}
+    height={354}
     className="rounded-lg border"
   />
   <figcaption>Resampling to another aspect ratio.</figcaption>
@@ -129,7 +129,11 @@ A subtitle file's positions, sizes and margins are written for its resolution. *
 
 Set **Target**, or take it **From video**. When the aspect ratio changes, choose to **Keep it**, or **Stretch** the lines to the new shape. **Resample** scales the styles' sizes, outlines, shadows and margins, the lines' margins, and position, clip, border, shadow and size tags and drawings, in one undo step.
 
-When you open a video of another size, the same choice comes up: **Resample**, **Change resolution only**, which sets the new size without scaling anything, or **Keep as is**.
+**Adjust 3D rotations**, ticked at first, keeps lines turned in 3D with `\frx` or `\fry` looking the same on screen, as arch1t3cht's Resample Perspective script does. HikariSub works out each such line's corners on the new frame, then sets its position, origin, rotations, shearing, scaling, outline and shadow again to match them. When the aspect ratio changes, this also covers lines turned about their own `\org`, and with **Stretch**, any turned or sheared line. Lines that look the same after plain scaling keep their tags. Lines that move with `\move`, change shape over time or can't be measured are only scaled, and one notice in the [Log panel](/en/docs/help/troubleshooting#the-log-panel) lists them by line number.
+
+Resampling keeps the file's `LayoutResY`, and changes `LayoutResX` by as much as the aspect ratio changes, when the file has both.
+
+When you open a video of another size, the same choice comes up: **Resample**, which adjusts 3D rotations too, **Change resolution only**, which sets the new size without scaling anything and leaves `LayoutResX` and `LayoutResY` alone, or **Keep as is**.
 
 ## Tabs
 
