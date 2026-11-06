@@ -1,6 +1,6 @@
 ---
 title: What is sent
-description: The anonymous usage data HikariSub sends, every event and property in it, what is never sent, how to turn it off, and what goes to AI providers.
+description: The anonymous usage data HikariSub sends, every event and property in it, what is never sent, how to turn it off, and what goes to AI providers, the plugin marketplace and plugins.
 ---
 
 import updatesLight from './images/settings-updates-light.webp';
@@ -275,3 +275,36 @@ HikariSub sends nothing to an AI provider until you add one in **File › Settin
 - **Prompt caching.** **Use prompt caching**, in the same page's **Privacy** section, is on at first. It asks the provider to keep the start of a conversation for a few minutes, or up to an hour, so the turns that follow cost less. The cache is on the provider, and nothing new is stored on your computer. Turn it off, and HikariSub asks for no caching. OpenAI and Google Gemini still cache on their own, which no request can turn off.
 
 What the AI sends when you use it, such as your messages and the lines it reads, will be listed here when the AI features that use providers come out.
+
+## Plugins
+
+Plugins add to HikariSub's own internet use in two ways: the [plugin manager's](/en/docs/plugins/using-plugins) **Marketplace** downloads the list of plugins, and an installed plugin may connect to the internet for its own work, such as a translation service.
+
+### The Marketplace and plugin updates
+
+The Marketplace's list comes from `https://marketplace.hikarisub.org`. HikariSub downloads the whole list, `index.json`, and its signature, `index.json.minisig`, and works out on this computer what to show and what can be updated. The request never says which plugins you have.
+
+- **When:** at start and once a day while **Check for plugin updates** is on, and whenever you press **Check for updates**, or **Try again** after a failed try. Opening the **Marketplace** downloads the list too, when there is none yet in this run or the last try failed.
+- **What it sends:** two plain downloads, with no query and no cookies, and the user agent `HikariSub/` followed by the version. Nothing is cached, and a redirect isn't followed. The server sees your IP address, as any server does.
+- **Search and categories** filter the downloaded list on this computer. What you type is never sent.
+- **Install**, **Update to** a new version and **Move to the marketplace** download that one plugin's package from the same site, the same way, only when you press them. Nothing else is fetched: links such as a plugin's repository open in your browser only when you click them.
+- **Turning it off:** clear **Check for plugin updates**, under **Plugin updates** in the plugin manager. It is **on by default**. HikariSub then checks only when you open the Marketplace or press **Check for updates**.
+
+Usage data has no event for the Marketplace either.
+
+### Plugins connecting to the internet
+
+**File › Settings › Updates and privacy › Privacy › Let plugins connect to the internet** is **on by default**. Turn it off, and HikariSub refuses every request a plugin makes through it. It doesn't affect the Marketplace.
+
+Unless it has [full trust](#full-trust-plugins), a plugin can't connect on its own: it asks HikariSub, which makes the request for it.
+
+- **Where:** only the hosts the plugin lists, which the install question and the plugin manager show. A redirect to any other host is refused.
+- **How:** only over HTTPS, to the standard port, 443.
+- **What it sends:** only what the plugin puts in the request. HikariSub adds its name and version as the user agent, such as `HikariSub/0.1.0`, and never sends cookies.
+- **What it keeps:** nothing. Answers aren't cached, and a request is dropped after 30 seconds or when the plugin stops.
+
+Usage data has no event for plugins. It never records that a plugin connected, where, or what it sent. A plugin's own commands aren't in the list of commands it reports. Opening the plugin manager counts as one command, **Plugins…**, like any other.
+
+### Full trust plugins
+
+A plugin marked **Full trust** in the plugin manager isn't limited this way. Its install question says it gets full access to your computer, and its button reads **Install with full access**. It runs code with the same access as HikariSub itself, so it can connect to the internet without asking HikariSub, whatever **Let plugins connect to the internet** says. Install one only from someone you trust.
