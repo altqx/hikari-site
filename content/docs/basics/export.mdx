@@ -1,9 +1,9 @@
 ---
 title: Export
-description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2, TMPlayer, TTML or DFXP, and see what each format couldn't keep.
+description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2, TMPlayer, TTML, DFXP or YouTube timed text (srv3), open srv3 files, and see what each format couldn't keep.
 ---
 
-**File › Export as…** writes a copy of the file in another format. The file you are editing doesn't change: it stays ASS, with the same undo history, and nothing is marked as changed. Text you have typed in the Line editor but not yet applied goes into the copy too.
+**File › Export as…** writes a copy of the file in another format. The file you are editing doesn't change: it stays ASS, with the same undo history, and nothing is marked as changed. The one exception is changed [srv3 style options](#style-options), which are saved in the file. Text you have typed in the Line editor but not yet applied goes into the copy too.
 
 To turn the file itself into ASS, use [Saving as ASS](/en/docs/basics/files-and-formats#saving-as-ass) instead.
 
@@ -31,6 +31,7 @@ HikariSub remembers the format and options for each file, so the next export of 
 | **TMPlayer** | `.txt` | Whole seconds, start only | Text only | None |
 | **TTML (IMSC1)** | `.ttml` | Milliseconds, or frames | Each style's font, size, colours and outline; an opaque box; bold, italic, underline, strikeout and text colours; top, middle or bottom with the alignment | **Netflix timed-text style** (off), **Times in frames** (off), **Language** |
 | **DFXP** | `.dfxp` | As TTML | As TTML | As TTML |
+| **YouTube timed text (srv3)** | `.ytt` | Milliseconds | What YTSubConverter 1.6.5 carries: see [YouTube timed text (srv3)](#youtube-timed-text-srv3) | Options for each style |
 
 - **Merge overlapping lines into one subtitle:** where lines overlap, the time is cut at every start and end, and each piece becomes one subtitle holding the lines on screen then. Top lines come first, then middle, then bottom.
 - **Frame rate** (MicroDVD, and TTML or DFXP in frames) starts at the rate you used last for this file, otherwise the open video's, otherwise 23.976. With a video open, **Use video frame rate** puts the video's back.
@@ -41,6 +42,34 @@ HikariSub remembers the format and options for each file, so the next export of 
 - **TMPlayer** has no end times, so overlapping lines are always merged, and an empty subtitle clears the screen when no line follows straight away.
 
 Every format is written as UTF-8.
+
+## YouTube timed text (srv3)
+
+srv3 is the timed-text format YouTube shows with styles, colours and positions. HikariSub writes it with a port of [YTSubConverter](https://github.com/arcusmaximus/YTSubConverter) 1.6.5 (MIT, credited in **Help › About**), and the file is byte for byte what YTSubConverter writes. Lines go out as the video shows them. Fonts and graphics attached to the file are not exported, and the rules in [What goes out](#what-goes-out) don't apply. When YTSubConverter would refuse the file, nothing is written, and the window says why.
+
+### Style options
+
+With srv3 chosen, **Options** has a row for each style the chosen lines use. **Show all styles** lists the rest.
+
+- **Shadow:** how YouTube draws the style's shadow: **Glow**, **Soft**, **Hard** or **Bevel**, and more than one may be on. They are greyed out when the style's Shadow is 0. An outline is always drawn as a glow.
+- **Karaoke**, with the current word's text, outline and shadow colours, or no colour.
+- A style named like one of YTSubConverter's own, such as `YTGlow`, starts from that style's options and is marked **YTSubConverter**. Other styles start with a soft shadow and no karaoke, as YTSubConverter does. A dot and a **Reset** button mark a row you changed.
+
+**Export** saves changed options in the subtitle file, as one undo step, *Set srv3 style options*, and the file is marked as changed. The window says for how many styles. **Cancel** discards the changes. Renaming, deleting or duplicating a style in the Style manager or the Styles panel takes its options along. Aegisub and libass ignore them and keep them when they save.
+
+### Opening srv3 files
+
+**File › Open…** also opens `.ytt` and `.srv3` files: choose **YouTube timed text (\*.ytt \*.srv3)** in the picker. HikariSub converts the file back to ASS exactly as YTSubConverter 1.6.5 does. You get:
+
+- YTSubConverter's ten `YT` styles, at 1280×720.
+- Fonts, sizes, bold, italic, underline, colours and transparency as tags, and window positions as `\an` and `\pos`.
+- Vertical and right-to-left text as `\ytvert` and `\ytdir`, ruby as `\ytruby`, subscript and superscript as `\ytsub` and `\ytsup`, and karaoke timing as `\k`.
+
+Times move to frame boundaries, and lines that overlapped come back split, the way YTSubConverter writes them. Exported and opened again, each line keeps its text, its times to within a frame, and its bold, italic, underline and colours.
+
+The file opens as a new, unsaved ASS file, as [lyrics](/en/docs/basics/files-and-formats#opening) do, and the `.ytt` file itself is never changed. Saving asks where to put the `.ass`, and suggests the same name: `clip.ytt` gives `clip.ass`.
+
+A file YTSubConverter can't read opens nothing. The message says *Could not import clip.ytt as YouTube timed text.*, with the reason, such as broken XML, a bad colour or a broken ruby sequence. Files with a document type declaration are refused too.
 
 ## What goes out
 
@@ -72,5 +101,7 @@ After writing, the window says how many lines went out and how many it skipped. 
 | Karaoke timing removed | Karaoke tags, except in WebVTT with **Karaoke timing** |
 | Scrolling effect removed | The Effect `Banner;`, `Scroll up;` or `Scroll down;` |
 | Merged with overlapping lines | A subtitle shared with an overlapping line |
+
+For srv3, the report lists what YTSubConverter ignores: drawings, clips, rotation and `\org`, `\fscx`, `\fscy` and `\fsp`, the border, shadow and blur tags, `\s1`, `\a`, `\kf`, `\ko` and `\K`, and the Banner and Scroll effects.
 
 **Close** closes the window.
