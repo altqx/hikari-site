@@ -70,7 +70,7 @@ When an update is signed by a different key, or comes unsigned over a signed ins
 
 The plugin manager is one window, which you can resize. The installed plugins are on the left, and the chosen plugin's details are on the right.
 
-- **The list** shows each plugin's icon, name, version and signer. It also shows a state when the plugin isn't simply running: **Turned off**, **Didn't start**, **Stopped** or **Full trust**. **Filter** matches the name, the author and the description. <kbd>Space</kbd> turns the chosen plugin on or off, and <kbd>Del</kbd> asks to uninstall it.
+- **The list** shows each plugin's icon, name, version and signer. It also shows a state when the plugin isn't simply running: **Turned off**, **Didn't start**, **Stopped**, **Revoked**, an update that waits for you, such as **1.3.0 waits for you**, or **Full trust**. The Marketplace marks a plugin with full trust **Full trust** too. **Filter** matches the name, the author and the description. <kbd>Space</kbd> turns the chosen plugin on or off, and <kbd>Del</kbd> asks to uninstall it.
 - **The details** say what the plugin does and who made it, its trust, the **Permissions** it asks for with each reason, and **What it adds**: its commands and panels. The **On** switch turns it on or off. A plugin that is off doesn't run, its commands leave the menu, and its panels show a [placeholder](#when-the-plugin-isnt-running).
 - **Settings**, for a plugin that has them, is a form of check boxes, fields and drop-down lists. A change is kept at once, and a running plugin uses it straight away.
 - When a plugin didn't start, crashed or ran over its time limit, the details show the error and where it happened, with **Start again** and **Copy**.
@@ -83,9 +83,35 @@ A plugin's settings are kept when you update it, as long as they still fit the n
 
 ### Keeping plugins up to date
 
-HikariSub checks the marketplace for new versions at start and once a day. **Installed** then shows how many plugins can be updated, such as **Installed 2**, and each one's details have **Update to** and the new version, such as **Update to 1.3.0**. Nothing updates until you press it. **Check for updates** checks at once.
+HikariSub checks the marketplace for new versions at start and once a day, and **Check for updates** checks at once. Plugins from the marketplace then update themselves, as long as both of these are ticked, which they are at first:
 
-To stop the daily check, clear **Check for plugin updates** under **Plugin updates**. It is on by default.
+- **Install updates automatically** under **Plugin updates**, for every plugin;
+- **Install updates automatically** in a plugin's details, for that plugin.
+
+An update waits until the plugin isn't running a command, so nothing changes under it while it works. One that hasn't been installed when you quit is downloaded again at the next start. Plugins from a file never update themselves.
+
+With either box clear, **Installed** shows how many plugins can be updated, such as **Installed 2**, and each one's details have **Update to** and the new version, such as **Update to 1.3.0**. Nothing updates until you press it.
+
+To stop the daily check, clear **Check for plugin updates** under **Plugin updates**. It is on by default, and **Install updates automatically** works only while it is ticked.
+
+#### An update that asks for more
+
+An update never gives a plugin more access by itself. When a new version moves to full trust, asks for every open subtitle file, adds a network host, or adds a folder or wants to write to one, it waits for you. The list says, for example, **1.3.0 waits for you**, and the details say *1.3.0 asks for more than 1.2.0 does, so it waits for you.*, with **Review…**.
+
+**Review…** asks first, as an install does. Each permission is marked **New** or **allowed now**, and the question shows the changes in the new version. Choose **Update plugin**, **Keep 1.2.0**, which passes over this version from then on, or **Cancel**.
+
+#### Rolling back
+
+When a plugin has been updated, its details have **Roll back to** and the version before, such as **Roll back to 1.2.0**. HikariSub keeps that one copy. Rolling back keeps the plugin's data, settings and remembered folders, and automatic updates then pass over the version you left. The notice *Line tools rolled back to 1.2.0* has **Undo**, which puts the newer version back.
+
+#### Revoked plugins
+
+The marketplace can revoke a version of a plugin, or the whole plugin. When it revokes the one you have, HikariSub then turns the plugin off, and a notice says *Line tools turned off*, with the reason and **Show**. The list says **Revoked**, and the plugin can't be turned on again. Its details say *The marketplace revoked version 1.3.0, so HikariSub turned it off*, with the reason, and offer:
+
+- **Install** and the last version that wasn't revoked, such as **Install 1.2.0**, which turns the plugin back on;
+- **Uninstall…**.
+
+If the marketplace lifts the revocation, the mark goes, and the plugin stays off until you turn it on.
 
 A plugin you installed from a file gets no updates from the marketplace. When the marketplace has the same plugin, signed with the same key, its details offer to move it there: **Move to the marketplace** installs the marketplace's copy, and from then on it gets updates. **Not now** hides the offer. Installing from a file over a marketplace plugin makes it a file install again.
 

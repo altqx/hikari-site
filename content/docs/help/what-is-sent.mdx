@@ -288,7 +288,8 @@ The Marketplace's list comes from `https://marketplace.hikarisub.org`. HikariSub
 - **When:** at start and once a day while **Check for plugin updates** is on, and whenever you press **Check for updates**, or **Try again** after a failed try. Opening the **Marketplace** downloads the list too, when there is none yet in this run or the last try failed.
 - **What it sends:** two plain downloads, with no query and no cookies, and the user agent `HikariSub/` followed by the version. Nothing is cached, and a redirect isn't followed. The server sees your IP address, as any server does.
 - **Search and categories** filter the downloaded list on this computer. What you type is never sent.
-- **Install**, **Update to** a new version and **Move to the marketplace** download that one plugin's package from the same site, the same way, only when you press them. Nothing else is fetched: links such as a plugin's repository open in your browser only when you click them.
+- **Install**, **Update to** a new version and **Move to the marketplace** download that one plugin's package from the same site, the same way, only when you press them.
+- **Automatic updates:** after a check finds a newer version of a marketplace plugin, HikariSub downloads that plugin's package from the same site, the same way, while **Install updates automatically** is ticked for it. The download names only the plugin and version it fetches, as any download of that file would. Nothing else is fetched: links such as a plugin's repository open in your browser only when you click them.
 - **Turning it off:** clear **Check for plugin updates**, under **Plugin updates** in the plugin manager. It is **on by default**. HikariSub then downloads the list only when you press **Check for updates**, or when you open the Marketplace and it has no list yet.
 
 Usage data has no event for the Marketplace either.
@@ -308,4 +309,4 @@ Usage data has no event for plugins. It never records that a plugin connected, w
 
 ### Full trust plugins
 
-A plugin marked **Full trust** in the plugin manager isn't limited this way. Its install question says it gets full access to your computer, and its button reads **Install with full access**. It runs code with the same access as HikariSub itself, so it can connect to the internet without asking HikariSub, whatever **Let plugins connect to the internet** says. Install one only from someone you trust.
+A plugin marked **Full trust**, in the plugin manager's list or the Marketplace, isn't limited this way. Its install question says it gets full access to your computer, and its button reads **Install with full access**. It runs code with the same access as HikariSub itself, so it can connect to the internet without asking HikariSub, whatever **Let plugins connect to the internet** says. Install one only from someone you trust.
