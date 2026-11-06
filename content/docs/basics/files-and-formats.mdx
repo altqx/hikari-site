@@ -106,7 +106,7 @@ A subtitle file's positions, sizes and margins are written for its resolution. *
   <figcaption>Resampling to another aspect ratio.</figcaption>
 </figure>
 
-Set **Target**, or take it **From video**. When the aspect ratio changes, choose to **Keep it**, or **Stretch** the lines to the new shape. **Resample** scales the styles' sizes, outlines, shadows and margins, the lines' margins, and position, clip, border, shadow and size tags and drawings, in one undo step.
+Set **Target**, or take it **From video**. When the aspect ratio changes, choose to **Keep it**, or **Stretch** the lines to the new shape: text and drawings grow wider when the width grew more, and taller when the height did. **Resample** scales the styles' sizes, outlines, shadows and margins, the lines' margins, and position, clip, border, shadow and size tags and drawings, in one undo step.
 
 **Adjust 3D rotations**, ticked at first, keeps lines turned in 3D with `\frx` or `\fry` looking the same on screen, as arch1t3cht's Resample Perspective script does. HikariSub works out each such line's corners on the new frame, then sets its position, origin, rotations, shearing, scaling, outline and shadow again to match them. When the aspect ratio changes, this also covers lines turned about their own `\org`, and with **Stretch**, any turned or sheared line. Lines that look the same after plain scaling keep their tags. Lines that move with `\move`, change shape over time or can't be measured are only scaled, and one notice in the [Log panel](/en/docs/help/troubleshooting#the-log-panel) lists them by line number.
 
@@ -156,6 +156,8 @@ A session is the set of open tabs, with their videos, audio and positions. **Fil
 - Ask whether to load the last session when HikariSub starts, or load it without asking.
 
 If a file the session names has moved, a bar offers to **Retry**, **Relink…** it, or **Remove** it.
+
+A session also keeps the window. Loading one, at start, from **File › Last session** or a file, or after a crash, opens the window where it was, at its size and maximised or not, with its tabs in order and the same tab in front. A window last on a monitor you have since unplugged comes back on your main screen. On Wayland the desktop chooses where windows go, so only the size and whether it was maximised come back.
 
 **Load session from file** also opens `.kls` sessions from HikariSub 0.0.x, but HikariSub never writes one: a name you type ending in `.kls` is saved as `.hksession`. Opening a `.hksession` or `.kls` file from your file manager, or dropping one on the window on its own, loads it the same way.
 
