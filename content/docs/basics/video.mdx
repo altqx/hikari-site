@@ -23,11 +23,11 @@ HikariSub may ask first:
 
 It also warns when the video has no colour matrix tag, or has HDR or wide-gamut colours. **File › Settings › Video › Script resolution** has a row for each question, from **Ask** to always or never changing the file, and a check box for each warning. **Don't ask again** in a question sets its row to the answer you gave. Reopening or reloading a video asks again.
 
-When you open subtitles that name a video, audio, keyframes or timecodes file, a bar over the picture offers to load them: **Load associated**, or **No**. Files that can't be found are listed under *Linked files not found:*, and when none of them can load, the bar has only **OK**.
+When you open subtitles that name a video, audio, keyframes or timecodes file, a bar over the picture offers to load them: **Load associated**, or **No**. Files that can't be found, a timecodes file among them, are listed under *Linked files not found:*, and when none of them can load, the bar has only **OK**.
 
 **Video › Unload video** empties the panel. The file itself is not touched. **Video › Reload video** opens the same file again, at the frame you were on.
 
-**Video › Video details…** lists the open video's file, resolution and aspect ratio, its exact frame rate, such as *23.976 fps (24000/1001)*, or *Variable*, its frame count and length, its colour space and its colour matrix. The matrix says when it is guessed because the file isn't tagged, and shows the subtitles' own YCbCr matrix when that differs.
+**Video › Video details…** lists the open video's file, resolution and aspect ratio, its exact frame rate, such as *23.976 fps (24000/1001)*, or *Variable*, its frame count and length, its colour space and its colour matrix. The matrix says when it is guessed because the file isn't tagged, and shows the subtitles' own YCbCr matrix when that differs. With a [timecodes file](#timecodes) loaded, the frame rate is labelled **Video stream frame rate**, and **Frame times from** names the timecodes file, which the frame times and the length come from.
 
 ### Formats
 
