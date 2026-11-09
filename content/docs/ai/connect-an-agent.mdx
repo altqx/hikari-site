@@ -11,14 +11,15 @@ The agent works with its own AI account. HikariSub's MCP server doesn't use a pr
 
 - **HikariSub is running**, with the files you want the agent to see open.
 - **AI features are on.** With **Turn off all AI features** ticked in **File › Settings › AI**, the MCP section isn't shown and no server runs.
-- **HikariSub's AI component is on this computer.** The MCP server runs through it. It downloads with your first provider: if you haven't added one in **File › Settings › AI**, add one first.
+- **HikariSub's AI component.** The MCP server runs through it. If it isn't on this computer yet, turning the server on offers to download it. You don't need a provider.
 
 ## Turning on the MCP server
 
 1. Open **File › Settings › AI**, and in the **MCP** section tick **Let agents outside HikariSub edit through MCP**. It is off at first.
+   If the AI component isn't on this computer yet, a notice says *MCP needs the AI component, downloaded once*, with its size, and the box stays clear. Press **Download**: once it finishes, the box is ticked. **Cancel** downloads nothing, and the page says *MCP stays off. It needs the AI component.* If the download fails, the page says why in the same way.
 2. Press **OK** or **Apply**. HikariSub starts listening, on this computer only.
 
-The rows below the box, **Also listen on http://127.0.0.1** and **Copy setup**, show once it is ticked.
+The rows below the box, **Also listen on http://127.0.0.1**, **Copy setup** and **Reset token**, show once it is ticked.
 
 ## Connecting Claude Code
 
@@ -51,9 +52,16 @@ An agent that starts a program can use the same command: HikariSub's path, with 
 For an agent that connects over HTTP:
 
 1. Tick **Also listen on http://127.0.0.1**, and press **OK** or **Apply**. The row then shows the port, such as `http://127.0.0.1:41234`. HikariSub keeps the same port after a restart, unless another program has taken it.
-2. Choose **Copy setup › JSON with the address and token**, and paste it into the agent's settings. The entry is greyed out until HikariSub listens.
+2. Choose **Copy setup › JSON with the address and token**, and paste it into the agent's settings. Under the entry, the menu says *Holds your token; keep it private.* The entry is greyed out until HikariSub listens.
 
 The JSON holds a token, which lets anything that has it edit your open files through HikariSub. Keep it private: don't share it, or put it in a file others can read. Only this computer can reach the address, and only with the token.
+
+### If the token leaks
+
+Press **Reset token**, next to **Copy setup**. It acts at once, without **OK** or **Apply**: HikariSub makes a new token, says *New token saved.*, and cuts off every connected agent. The old token stops working.
+
+- Agents that start `hikarisub --mcp`, such as Claude Code and Codex set up as above, use the new token the next time they start.
+- Agents set up with the JSON stop working until you choose **Copy setup › JSON with the address and token** again and paste it into their settings.
 
 ## What the agent can do
 
@@ -71,7 +79,7 @@ The agent gets the same tools HikariSub's AI uses: reading and searching lines, 
 The agent shows what `hikarisub --mcp` said:
 
 - *HikariSub isn't running with its MCP server on. Start HikariSub, turn the MCP server on in Settings > AI, then connect again.* Check that HikariSub is running, that the box is ticked and applied, and that **Turn off all AI features** is off.
-- *HikariSub's AI sidecar isn't installed; install it in Settings > AI.* Add a provider in **File › Settings › AI**, which downloads the AI component.
+- *HikariSub's AI sidecar isn't installed; install it in Settings > AI.* In **File › Settings › AI**, clear **Let agents outside HikariSub edit through MCP** and tick it again, which offers the AI component's download.
 
 ## Turning it off
 

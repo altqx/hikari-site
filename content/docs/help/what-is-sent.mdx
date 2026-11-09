@@ -269,7 +269,7 @@ The counts it needs stay in your [settings file](/en/docs/automation/user-folder
 
 HikariSub sends nothing to an AI provider until you add one in **File › Settings › AI**. AI features are on at first. **Turn off all AI features** on that page turns them off: with it ticked, HikariSub reads no keys, downloads nothing and starts nothing for AI.
 
-- **The AI component.** The first time you test or add a provider, HikariSub downloads its AI component from HikariSub's releases on GitHub. The form says how big it is before it starts.
+- **The AI component.** The first time you test or add a provider, or turn on the MCP server, HikariSub downloads its AI component from HikariSub's releases on GitHub. The provider form, or the MCP section, says how big it is before it starts.
   - **Checking:** once it is there, and while AI features are on, HikariSub checks those releases for a newer version at start and once an hour. Each check fetches one small signed file, and sends only the user agent `HikariSub-AI` and a tag saying which copy of that file it already has. It sends nothing about you, your providers or your subtitles.
   - **Updating:** a newer version downloads in the background. HikariSub switches to it when AI has been unused for two minutes, and goes back to the version before if the new one fails to start, or crashes twice within 10 minutes.
   - **Signature:** every download is checked against HikariSub's release key, as app updates are (see [Checking a download](/en/docs/get-started/install#checking-a-download)).
