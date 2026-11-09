@@ -3,8 +3,10 @@ title: Using plugins
 description: Install HikariSub plugins from the marketplace or a .hikariplugin file, see what each asks for and who signed it, keep them up to date, choose their folders, and use their commands and panels.
 ---
 
-import managerLight from './images/plugin-manager-light.webp';
-import managerDark from './images/plugin-manager-dark.webp';
+import installedLight from './images/plugin-manager-installed-light.webp';
+import installedDark from './images/plugin-manager-installed-dark.webp';
+import marketplaceLight from './images/plugin-manager-marketplace-light.webp';
+import marketplaceDark from './images/plugin-manager-marketplace-dark.webp';
 import panelLight from './images/plugin-panel-light.webp';
 import panelDark from './images/plugin-panel-dark.webp';
 import panelOffLight from './images/plugin-panel-off-light.webp';
@@ -18,14 +20,14 @@ A **plugin** adds commands, panels and dialogs to HikariSub itself, through the 
 
 <figure>
   <ThemedImage
-    light={managerLight}
-    dark={managerDark}
-    alt="The plugin manager: on the left, a Filter field and the list with Line tools 1.2.0, Unverified, unsigned, chosen; on the right, its details: Line tools 1.2.0 by HikariSub with the On switch on, Checks reading speed and line length, and shows them on a chart., Unverified, unsigned; Permissions: It asks for no permissions beyond the active subtitle file.; What it adds: Command: Rename the active line's actor… and Panel: Timing check; Settings: Characters per second 17 and Skip comments ticked; then Update from file…, Open data folder and Uninstall…. Install from file… is at the bottom left and Close at the bottom right"
-    width={808}
-    height={622}
+    light={installedLight}
+    dark={installedDark}
+    alt="The plugin manager's Installed view: at the top left, the Installed and Marketplace switch, and at the top right three buttons, Install from file…, Check for updates and Plugin updates. On the left, a Filter field and the list with Hello 1.0.0, Unverified, signed by key EFCDAB89…, chosen. On the right, a bar says Hello is in the marketplace, signed with the same key. Move it there to get updates., with Not now and Move to the marketplace. Below it, Hello 1.0.0 by Ana with the On switch on, Says hello, Unverified, signed by key EFCDAB8967452301; Permissions: It asks for no permissions beyond the active subtitle file.; then Update from file…, Open data folder and Uninstall…. Close is at the bottom right"
+    width={796}
+    height={662}
     className="rounded-lg border"
   />
-  <figcaption>The plugin manager, with Line tools chosen.</figcaption>
+  <figcaption>The Installed view, with Hello chosen. It is also in the marketplace, so the manager offers to move it there.</figcaption>
 </figure>
 
 ## Installing a plugin
@@ -36,6 +38,18 @@ A **plugin** adds commands, panels and dialogs to HikariSub itself, through the 
 2. Find a plugin with **Search plugins**, which matches the name, the summary and the author, or choose a category. Searching happens on your computer: see [What is sent](/en/docs/help/what-is-sent#plugins).
 3. Choose a plugin to see what it does, its permissions, **What's new** in its latest version, the HikariSub version it needs, when it was last updated and its source.
 4. Press **Install**. HikariSub downloads the plugin, checks it against the marketplace, and asks first, as below.
+
+<figure>
+  <ThemedImage
+    light={marketplaceLight}
+    dark={marketplaceDark}
+    alt="The plugin manager's Marketplace view: on the left, Search plugins, All categories and the list with Glossary, Looks words up in an online dictionary, chosen; Hello, Says hello, with Update; and Native Tools, Tracks signs with a native library, with a Full trust badge. On the right, Glossary by Ana Fansubs, 2.0.0, with Install; its summary and a screenshot; Permissions: Connect to api.example.com: Looks words up, and Every plugin can read and edit the document you're working on, as one undo step.; then Needs HikariSub 0.1.0 or later, Licence MIT, Updated 2026-11-01 and Source github.com/ana/glossary"
+    width={796}
+    height={662}
+    className="rounded-lg border"
+  />
+  <figcaption>The Marketplace view, with Glossary chosen. Each plugin shows its icon, and its details show its screenshots.</figcaption>
+</figure>
 
 The question says the plugin is *Signed by* its author *and checked against the marketplace*, and lists what it asks for. A plugin with full trust asks you to install it only if you trust its author, because *it gets full access to your computer*, and its button reads **Install with full access**. A plugin that needs a newer HikariSub says so instead of **Install**.
 
