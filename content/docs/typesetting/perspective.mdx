@@ -1,6 +1,6 @@
 ---
 title: Perspective
-description: Put a line on a surface seen at an angle by dragging the corners of its box, with a surrounding plane to match a rectangle in the shot.
+description: Put a line on a surface seen at an angle by dragging the corners of its box, with a surrounding plane to match a rectangle in the shot, and track it with Power-Pin data.
 ---
 
 import planeLight from './images/perspective-plane-light.webp';
@@ -129,3 +129,42 @@ Perspective draws nothing, and its values are empty, when one box at one size ca
 ## Undo
 
 Each drag, double-click, held arrow key or typed value is one step, named *Visual perspective tool*, covering every picked line. Resizing a locked plane changes no line, so it isn't a step.
+
+## Perspective tracking
+
+**Video › Perspective tracking…** applies After Effects Power-Pin tracking data to the selected lines, as arch1t3cht's Perspective-Motion script does. Each line becomes one line per frame, fitted to the tracked plane on that frame.
+
+The command needs an open video, since tracking data is per frame, and is greyed out without one. It has no shortcut at first; give it one in **File › Settings › Shortcuts**.
+
+1. Typeset the lines on one frame of the sign, and select them.
+2. Choose **Video › Perspective tracking…**.
+3. In **Power-Pin data**, paste the Power-Pin data exported from After Effects or Blender. HikariSub reads its four CC Power Pin corners. If the clipboard already holds data with the right number of frames, the box is filled in when the window opens.
+4. In **Relative to frame**, choose the frame the lines were typeset on. It counts from the first frame of the selection, and the video frame number shows beside it. It starts at the video's current frame, when that frame is in the selection.
+5. Press **Apply**.
+
+With no lines selected, the command does nothing.
+
+### Checking the data
+
+Under the box, the window says how many frames the data has and which of the selection's frames it covers, or what is wrong. **Apply** is greyed out until the data passes:
+
+- It must be Power-Pin data, with CC Power Pin corners.
+- It must have exactly as many frames as the selected lines cover.
+- A selected line must show on the **Relative to frame**. Lines that overlap must all show on it: pick a frame every line shows, or apply them one at a time.
+
+Data tracked at a different size from the video is scaled to the video, with a warning, and **Apply** still works.
+
+If a line can't be tracked after all, because its text can't be measured or the plane folds it, the window says so and stays open.
+
+### Options
+
+| Option | What it does |
+| --- | --- |
+| **Origin** | Where each line's `\org` goes. **Centre** puts it where the diagonals of the tracked shape cross. **No \fax** puts it where the line needs no `\fax`. **Keep**, the default, keeps the line's own. |
+| **Fit flat lines to the plane first** | Before tracking, lays each line onto the tracked plane on the relative frame, at its place and size, so a line typeset flat takes the sign's perspective. This is the script's **Apply perspective**. It is ticked at first when the active line has no `\frx` or `\fry`. |
+| **Move clips with the plane** | Moves each line's clip with the plane on every frame. Ticked at first. |
+| **Scale outline and shadow** | Scales the outline and shadow with the text. Clear it to keep each line's own `\bord` and `\shad`. Ticked at first. |
+
+### After tracking
+
+The whole change is one undo step, named *Perspective tracking*, and the new lines stay selected. Each new line saves its frame's plane, as the Perspective tool does (see [The surrounding plane](#the-surrounding-plane)), so the Perspective tool shows it, and arch1t3cht's Derive Perspective Track script can read it.

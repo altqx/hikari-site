@@ -1,0 +1,102 @@
+---
+title: QC notes
+description: Keep a QC pass's notes in the subtitle file itself, see which lines they mark, step through them, tick them off, and import or export Note Browser and mpvQC notes.
+---
+
+The **QC notes** panel holds the notes from a quality check, such as "0:03:24 - typo in the second line". Each note has a time, a section, its text and a **Done** box. HikariSub keeps the notes in the subtitle file, shows which line each one marks, and takes you from one note to the next.
+
+It works like arch1t3cht's Note Browser, but the notes travel with the file: there is no separate notes file to keep next to it, and nothing to reload.
+
+## Opening the panel
+
+Choose **Subtitles › QC notes…**, or **View › Panels › QC notes**. The first time, the panel opens to the right of the Grid. None of the built-in layouts includes it.
+
+Its commands have no shortcut at first. Give them one in **File › Settings › Shortcuts**: **QC notes panel**, **Add QC note**, **Next QC note** and **Previous QC note**.
+
+With no file open, the panel says *Open a subtitle file to keep QC notes in it.*
+
+## Adding a note
+
+- Press **Add note** at the top of the panel.
+- Right-click a line in the Grid and choose **Add QC note…**, the last item, for a note at that line's start.
+- Run **Add QC note** from its shortcut. It opens the panel with a note at the video's time, or at the active line's start when there's no video.
+
+The editor opens at the top of the panel:
+
+| Field | What it holds |
+| --- | --- |
+| **Time** | `h:mm:ss` or `m:ss`, with up to three decimals. **Video time** and **Line start** fill it in from the video or the active line. It turns red when it can't be read. |
+| **Section** | A topic or an author, such as *Typesetting* or *Editor*. Pick one of the file's sections or type a new one. It starts at the last section you used, at first **General**. |
+| **Note** | What needs fixing. It can have several lines. |
+
+<kbd>Ctrl</kbd>+<kbd>Enter</kbd> adds the note, and <kbd>Esc</kbd> cancels.
+
+To change a note, double-click it, or select it and press <kbd>F2</kbd>. The editor opens in its place, with **Done**, **Delete**, **Cancel** and **Save**.
+
+## Which line a note marks
+
+A note belongs to a time, not to a line, so it keeps its place when lines are added, moved or split. It marks the line on screen at its time, the one that starts last if there are several. If no line is on screen then, it marks the line that starts nearest, within 15 seconds. Comment lines are never marked. Each row in the panel ends with that line's number, or *No line*.
+
+In the Grid, a marked line has a small flag in its number column, filled for the current note. Point at the number to see its notes, each as its time, section and text.
+
+## Going through the notes
+
+Click a note, or select it and press <kbd>Enter</kbd>, to select its line and move the video to its time. The **Previous** and **Next** arrows at the bottom of the panel, and the **Previous QC note** and **Next QC note** commands, go to the note before or after, in time order. They don't wrap: at either end, the panel says *No more notes*.
+
+In the list, <kbd>↑</kbd> and <kbd>↓</kbd> move the selection, <kbd>Space</kbd> ticks **Done**, <kbd>F2</kbd> edits, <kbd>Delete</kbd> deletes, and <kbd>Esc</kbd> goes back to the Grid.
+
+A done note is dimmed and struck through. The bottom bar shows where you are, such as *3 of 12*.
+
+### Sections and Hide done
+
+The chips above the list show **All** and each section, with their note counts. Choose one to see only its notes; choose it again to see all. Tick **Hide done** in the bottom bar to hide the notes you've done; the chips then show what is left, such as *7 of 9*.
+
+**Previous**, **Next** and the Grid's flags follow the chosen section and **Hide done**.
+
+## Kept in the file
+
+The notes are saved with the file, as lines in its `[Script Info]` section:
+
+```ini
+Hikari QC 1: 0:03:24.40,Typesetting,open,The sign at the door needs \blur
+```
+
+Aegisub keeps these lines when it saves the file, so the file can go to Aegisub and back with its notes. They never show on the video.
+
+- **Only ASS and SSA files** have a `[Script Info]` section, so only they can keep notes. To keep notes for an SRT or other file, save it as ASS first.
+- **Export as** writes no notes: none of its formats, such as SRT and WebVTT, has a place for them.
+- **Shift times** and the **Timing postprocessor** don't move the notes.
+
+Every change to the notes is one undo step, as an edit to a line is.
+
+## Importing notes
+
+Bring in notes written in another tool:
+
+- **arch1t3cht's Note Browser** text files: each note starts with a time, such as `3:24 - ` or `0:03:24 - `, and `[Section]` lines group the notes after them. Notes before the first section go into **General**.
+- **mpvQC** files: each note's category becomes its section.
+
+To import, use the panel's **⋯** menu: **Import notes file…** or **Import notes from the clipboard**. You can also drop a file on the panel. While it is empty, the panel offers **Import notes file…** and **Paste notes**. Imported notes come in as not done.
+
+If the file already has notes, HikariSub asks first:
+
+- **Add 5 notes**, the default, adds the new notes and skips the ones already there, with the same time, section and text.
+- **Replace the notes in this file** removes the old notes first.
+- **Cancel** imports nothing.
+
+Afterwards, the panel says how many notes came in, and how many have no line within 15 seconds of their time.
+
+## Exporting notes
+
+**⋯ › Export notes…** writes the notes as a Note Browser text file, for a colleague who uses it or for a QC report. Choose:
+
+- **Include done notes**, off at first.
+- **Only the chosen section**, when a section chip is chosen.
+
+Then press **Export 12 notes…** and choose where to save the file. The file doesn't say which notes are done, so they come back as not done if you import it again.
+
+## Removing notes
+
+- Press <kbd>Delete</kbd> on a note, or **Delete** in its editor. It asks nothing; undo brings it back.
+- **⋯ › Mark all as not done** clears every **Done** box.
+- **⋯ › Remove all notes…** asks first, then removes every note from the file. Undo brings them back.
