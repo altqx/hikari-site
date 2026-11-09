@@ -1,6 +1,6 @@
 ---
 title: Layouts
-description: Arrange the panels, switch between the built-in layouts, and save your own.
+description: Arrange the panels, switch between the built-in layouts, save your own, and spread your tabs over several windows.
 ---
 
 import layoutsLightAv1 from './images/layouts-light-av1.mp4';
@@ -163,6 +163,39 @@ The built-in layouts have no place for Shift times, Find and Automation, so **Re
 **View › Move panel…** opens a window for the panel you are in. Choose where it goes (**Tab with**, **Left of**, **Above**, **Right of**, **Below** or **Float**), next to which panel, and press **Move**. **Resize** sets its width and height in pixels. The window stays open, so you can move several panels in turn.
 
 <kbd>F6</kbd> and <kbd>Shift</kbd>+<kbd>F6</kbd> move to the next or previous panel.
+
+## Windows
+
+You can have more than one HikariSub window, for example one on each monitor. Each window has its own tabs, menu bar, panels and layout.
+
+### Moving a tab to another window
+
+- **Drag a tab out** of the tab row, up or down, and let go outside every HikariSub window. A new window opens with the tab, the size of the window it came from. On Wayland, an image of the tab follows the pointer, and the desktop chooses where the new window goes.
+- **Drag a tab onto another window's tab row** to move it there, at the place you let go. Let go anywhere else over a HikariSub window, and nothing moves.
+- **Right-click the tab** and choose **Move tab to new window**, or **Move tab to window ›** and the window. Each window in that list is named after its current tab, or **Home** when it has none. A tab moved this way goes at the end. The list is greyed out while there is no other window.
+
+Both commands have no shortcut at first. Give them one in **File › Settings › Shortcuts**: **Move tab to new window**, and **Move tab to window**, which opens the list under the current tab.
+
+A tab takes everything with it: its undo history, selection, scroll, video and audio, and its panel arrangement. Nothing is saved or reloaded. A window whose last tab moves away closes.
+
+There is no command for an empty new window: a window opens with the tab you move to it.
+
+### What each window has
+
+- **Its own:** tabs and the current tab, the menu bar, the panels and the layout, the Line editor and the status bar. **Styles**, the **Template editor**, **Find**, the **Spellchecker**, **Shift times**, the **Timing postprocessor** and the **Kanji timer** work on that window's current tab. Switching windows keeps where each of them was.
+- **Shared by every window:** settings and shortcuts, saved layouts, recent files, Automation, the Log, the Style manager and the comparison reference.
+
+Menus and shortcuts act on the window you used last. Files opened from your file manager, and [Install in HikariSub](/en/docs/plugins/using-plugins#from-the-marketplace-website) links, go to it too.
+
+### Closing windows
+
+Closing a window asks only about that window's unsaved changes, in a question titled *Close window*. **Cancel** keeps the window and its tabs.
+
+Closing the last window quits HikariSub. **File › Exit** asks about the unsaved changes of every window, in one list, and then closes them all.
+
+### Windows in a session
+
+A [session](/en/docs/basics/files-and-formats#sessions) keeps every window: each comes back with its size, its tabs in order and the same tab in front, maximised or not, and the window you used last comes to the front. On Windows and X11 each also comes back where it was; on Wayland only its size does. Loading a session first closes the windows you have open beyond the first, after asking about their unsaved changes.
 
 ## Layouts in your files
 
