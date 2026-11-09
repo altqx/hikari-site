@@ -54,6 +54,7 @@ Splitting doesn't change the line. Its text stays as it is until you change a sy
 | `sempai`, `zen'in`, `hon` | `se\|m\|pa\|i`, `ze\|n'\|in`, `hon` | A syllabic n is its own mora, but at a word's end it joins the syllable before it |
 | Kana: `きょう`, `ラーメン` | `きょ\|う`, `ラ\|ー\|メ\|ン` | By mora. A small kana joins the kana before it; the long vowel mark is its own mora. Half-width kana too |
 | Kanji and Hangul: `東京`, `사랑해` | `東\|京`, `사\|랑\|해` | One character each |
+| Thai: `กินน้ำ` | `กิ\|น\|น้ำ` | One character cluster each: vowel and tone marks stay with their letter. These are clusters, not Thai syllables |
 | English: `beautiful`, `happy story` | `beau\|ti\|ful`, `hap\|py \|sto\|ry` | By hyphenation, with at least two letters on each side of a break. Short words stay whole |
 | Mixed: `kimi wo love shiteru`, `君とdance` | `ki\|mi \|wo \|love \|shi\|te\|ru`, `君\|と\|dance` | A new script starts a syllable. In a romaji line, a word that isn't romaji splits as English |
 
@@ -71,6 +72,8 @@ Two options in **File › Settings**, on the **Audio** page under **Karaoke**, c
 | **Give a double consonant its own syllable (so\|ma\|t\|ta)** | `so\|mat\|ta`, `gak\|ko\|u` | `so\|ma\|t\|ta`, `ga\|k\|ko\|u`, and the same for っ |
 
 Both are off by default. They apply the next time a line is split, for example when you go to another line or turn Auto split off and on.
+
+**Split Thai into character clusters**, in the same place, is on by default. Clear it to keep each Thai word one syllable, split only at spaces. It applies the same way, the next time a line is split.
 
 ### Time for new syllables
 
