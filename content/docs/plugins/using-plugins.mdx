@@ -55,6 +55,19 @@ The question says the plugin is *Signed by* its author *and checked against the 
 
 If the marketplace can't be reached, the view says why, with **Try again**.
 
+### From the marketplace website
+
+A plugin's page on the marketplace website, [marketplace.hikarisub.org](https://marketplace.hikarisub.org), has **Install in HikariSub**. It opens HikariSub at that plugin, in the plugin manager's **Marketplace** view, and starts HikariSub if it isn't running:
+
+1. HikariSub downloads its own signed list of plugins again, and looks the plugin up in it. The link names only the plugin, and HikariSub trusts the list, not the website.
+2. It downloads the plugin, checks it, and asks the install question, as **Install** does.
+
+If you already have the newest version, it only shows the plugin. A plugin the list doesn't have, or one that needs a newer HikariSub, gets *isn't in the marketplace for this HikariSub*.
+
+If **Check for plugin updates** is off, HikariSub asks first, because it needs the list to check the plugin. **Turn on plugin updates** turns it on and carries on; **Close** installs nothing, and nothing is downloaded.
+
+The button works where HikariSub registered `hikarisub://` links: the Windows installer, the AppImage, deb and rpm packages, and the portable tar.gz once you run `install-desktop-integration.sh` (see [Install](/en/docs/get-started/install#portable-targz)). The portable zip for Windows registers nothing. There, use **Download .hikariplugin** on the same page, and install the file as below.
+
 ### From a file
 
 1. Choose **Automation › Plugins…**, then **Install from file…**.
