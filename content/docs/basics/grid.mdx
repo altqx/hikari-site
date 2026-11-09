@@ -99,6 +99,8 @@ Lines between the selected ones that you didn't select are left alone.
 
 **Split lines** cuts a line at the video's time, or into one line per frame, character, word or wrapped line. A split into characters, words or wraps gives each piece its own position, so it stays where it was on the video.
 
+A split into characters keeps each character together with its marks: Thai vowel and tone marks, combining accents and emoji sequences stay with the character they belong to. So `กินน้ำ` splits into `กิ`, `น` and `น้ำ`, an `é` typed as `e` and an accent stays whole, and an emoji, even one made of several joined emoji, is one line. Thai support is by Jibrill.
+
 ### Baking animations
 
 **Split › Into frames** needs a video. It makes one line for each frame the line is on, and with **Split › Bake animations** ticked, which it is at first, each frame's line shows the line as it looks on that frame:
