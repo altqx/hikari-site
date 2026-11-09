@@ -289,7 +289,7 @@ Plugins add to HikariSub's own internet use in two ways: the [plugin manager's](
 
 The Marketplace's list comes from `https://marketplace.hikarisub.org`. HikariSub downloads the whole list, `index.json`, and its signature, `index.json.minisig`, and works out on this computer what to show and what can be updated. The request never says which plugins you have.
 
-- **When:** at start and once a day while **Check for plugin updates** is on, and whenever you press **Check for updates**, or **Try again** after a failed try. Opening the **Marketplace** downloads the list too, when there is none yet in this run or the last try failed.
+- **When:** at start and once a day while **Check for plugin updates** is on, and whenever you press **Check for updates**, or **Try again** after a failed try. Opening the **Marketplace** downloads the list too, when there is none yet in this run or the last try failed. **Install in HikariSub** on the marketplace website downloads it again, so the plugin is checked against the newest list.
 - **What it sends:** two plain downloads, with no query and no cookies, and the user agent `HikariSub/` followed by the version. Nothing is cached, and a redirect isn't followed. The server sees your IP address, as any server does.
 - **Search and categories** filter the downloaded list on this computer. What you type is never sent.
 - **Install**, **Update to** a new version and **Move to the marketplace** download that one plugin's package from the same site, the same way, only when you press them.
