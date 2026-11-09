@@ -1,0 +1,80 @@
+---
+title: Connect Claude Code or Codex
+description: Let Claude Code, Codex or another MCP agent read your open subtitle files and edit them through HikariSub, with every edit waiting for you to keep or undo it.
+---
+
+HikariSub can serve your open files to an AI agent you run yourself, such as Claude Code or Codex, over the Model Context Protocol (MCP). The agent reads the open files and can edit them. Every edit it makes waits in the [Review panel](/en/docs/ai/review) until you keep or undo it.
+
+The agent works with its own AI account. HikariSub's MCP server doesn't use a provider of its own.
+
+## Before you start
+
+- **HikariSub is running**, with the files you want the agent to see open.
+- **AI features are on.** With **Turn off all AI features** ticked in **File › Settings › AI**, the MCP section isn't shown and no server runs.
+- **HikariSub's AI component is on this computer.** The MCP server runs through it. It downloads with your first provider: if you haven't added one in **File › Settings › AI**, add one first.
+
+## Turning on the MCP server
+
+1. Open **File › Settings › AI**, and in the **MCP** section tick **Let agents outside HikariSub edit through MCP**. It is off at first.
+2. Press **OK** or **Apply**. HikariSub starts listening, on this computer only.
+
+The rows below the box, **Also listen on http://127.0.0.1** and **Copy setup**, show once it is ticked.
+
+## Connecting Claude Code
+
+1. In the **MCP** section, choose **Copy setup › Claude Code command**. The page says *Copied. Run it in a terminal.*
+2. Run it in a terminal. It looks like this, with the path of your HikariSub, or of its AppImage:
+
+   ```sh
+   claude mcp add hikari -- "/path/to/hikarisub" --mcp
+   ```
+
+3. Start Claude Code. It starts `hikarisub --mcp`, which connects it to the HikariSub that is running.
+
+## Connecting Codex
+
+1. Choose **Copy setup › Codex config.toml**. The page says *Copied. Paste it into the agent's settings.*
+2. Paste it into Codex's `config.toml`:
+
+   ```toml
+   [mcp_servers.hikari]
+   command = "/path/to/hikarisub"
+   args = ["--mcp"]
+   ```
+
+3. Start Codex.
+
+## Other agents
+
+An agent that starts a program can use the same command: HikariSub's path, with `--mcp`.
+
+For an agent that connects over HTTP:
+
+1. Tick **Also listen on http://127.0.0.1**, and press **OK** or **Apply**. The row then shows the port, such as `http://127.0.0.1:41234`. HikariSub keeps the same port after a restart, unless another program has taken it.
+2. Choose **Copy setup › JSON with the address and token**, and paste it into the agent's settings. The entry is greyed out until HikariSub listens.
+
+The JSON holds a token, which lets anything that has it edit your open files through HikariSub. Keep it private: don't share it, or put it in a file others can read. Only this computer can reach the address, and only with the token.
+
+## What the agent can do
+
+- **Read** every open file: its lines, styles and script properties, and HikariSub's [AI tools](#the-agents-tools).
+- **Edit** in only one way, by applying an edit to a file. HikariSub refuses everything else an agent asks to change. Each edit goes into the file at once, and waits in the [Review panel](/en/docs/ai/review) under a turn named after the agent, such as *Claude Code*. Each connection gets turns of its own.
+
+Nothing in HikariSub shows that an agent is connected: you see it by its edits.
+
+### The agent's tools
+
+The agent gets the same tools HikariSub's AI uses: reading and searching lines, styles and the video, such as a frame of the video with one line drawn on it. It sees every tool at once.
+
+## If the agent can't connect
+
+The agent shows what `hikarisub --mcp` said:
+
+- *HikariSub isn't running with its MCP server on. Start HikariSub, turn the MCP server on in Settings > AI, then connect again.* Check that HikariSub is running, that the box is ticked and applied, and that **Turn off all AI features** is off.
+- *HikariSub's AI sidecar isn't installed; install it in Settings > AI.* Add a provider in **File › Settings › AI**, which downloads the AI component.
+
+## Turning it off
+
+Clear **Let agents outside HikariSub edit through MCP**, and press **OK** or **Apply**. HikariSub stops listening, and connected agents are cut off. **Turn off all AI features** stops it too.
+
+What HikariSub sends for its MCP server, and what it doesn't, is in [What is sent](/en/docs/help/what-is-sent#ai).
