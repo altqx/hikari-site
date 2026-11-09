@@ -222,8 +222,9 @@ A plugin can connect only to the hosts it listed, which the install question and
 - A command that runs longer than 10 seconds is stopped, and a notice says so. The plugin's next command starts it again.
 - A plugin may use up to 256 MB of memory. A command that needs more fails, and the plugin keeps running.
 - An ordinary (restricted) plugin can't load native libraries or compiled Lua bytecode, and has no access to files, programs or the system beyond what HikariSub gives it.
+- On Linux and Windows, an ordinary plugin runs in an operating-system sandbox. It reaches only its own package and has no network of its own: HikariSub opens the files you give it and makes its requests. Where the system can't provide the sandbox, the plugin still runs under these limits, and its details say *HikariSub keeps it to these permissions, but it isn't sandboxed on this system.*
 
-These limits come from running each plugin in its own process. They are not an operating-system sandbox, so install plugins only from authors you trust.
+A plugin with full trust runs outside the sandbox, with the same access as HikariSub, so install those only from authors you trust.
 
 ## When something goes wrong
 

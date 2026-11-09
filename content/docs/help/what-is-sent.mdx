@@ -305,7 +305,7 @@ Usage data has no event for the Marketplace either.
 
 **File › Settings › Updates and privacy › Privacy › Let plugins connect to the internet** is **on by default**. Turn it off, and HikariSub refuses every request a plugin makes through it. It doesn't affect the Marketplace.
 
-Unless it has [full trust](#full-trust-plugins), a plugin can't connect on its own: it asks HikariSub, which makes the request for it.
+Unless it has [full trust](#full-trust-plugins), a plugin can't connect on its own: it asks HikariSub, which makes the request for it. On Linux and Windows, an operating-system sandbox holds it to this: the plugin has no network of its own, and reaches only its own package. Where the sandbox can't apply, for example on a Linux kernel without Landlock or seccomp, HikariSub still makes every request for it, and the plugin's details say *HikariSub keeps it to these permissions, but it isn't sandboxed on this system.*
 
 - **Where:** only the hosts the plugin lists, which the install question and the plugin manager show. A redirect to any other host is refused.
 - **How:** only over HTTPS, to the standard port, 443.
@@ -316,4 +316,4 @@ Usage data has no event for plugins. It never records that a plugin connected, w
 
 ### Full trust plugins
 
-A plugin marked **Full trust**, in the plugin manager's list or the Marketplace, isn't limited this way. Its install question says it gets full access to your computer, and its button reads **Install with full access**. It runs code with the same access as HikariSub itself, so it can connect to the internet without asking HikariSub, whatever **Let plugins connect to the internet** says. Install one only from someone you trust.
+A plugin marked **Full trust**, in the plugin manager's list or the Marketplace, isn't limited this way. Its install question says it gets full access to your computer, and its button reads **Install with full access**. It runs outside the sandbox, with the same access as HikariSub itself, so it can connect to the internet without asking HikariSub, whatever **Let plugins connect to the internet** says. Install one only from someone you trust.
