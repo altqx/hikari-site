@@ -183,6 +183,8 @@ A plugin can add panels of its own, such as a list of lines to check or a chart.
 
 A plugin can also open dialogs of its own, with up to four buttons.
 
+A plugin with full trust can draw a panel itself, instead of with HikariSub's controls. Its install question and permissions then say *Shows its own panels inside HikariSub*. The panel docks, tabs and floats like any other, and loads the first time you show it.
+
 ### When the plugin isn't running
 
 A layout keeps a plugin panel's place even when its plugin can't run. The panel says why, with the button that helps:
@@ -202,6 +204,10 @@ A layout keeps a plugin panel's place even when its plugin can't run. The panel 
   />
   <figcaption>The Timing check panel's place, kept while Line tools is turned off.</figcaption>
 </figure>
+
+If a panel the plugin draws itself can't load, it says *The panel couldn't load.*, with the first error, **Copy** and **Load again**. The whole error goes to the Log panel. The plugin's other panels keep working.
+
+Such a panel runs inside HikariSub, so a fault in it can close or freeze HikariSub. If HikariSub closed while one was open, that plugin's panels say that HikariSub closed while the plugin's panel was open, and stay closed, even after later restarts, until you choose **Load again** in one of them.
 
 When the plugin is back, its panel fills the place again. To forget the place, close the panel of a plugin that isn't installed, or choose **Remove from the layout** under the panel in **View › Panels**.
 
@@ -234,4 +240,4 @@ A plugin with full trust runs outside the sandbox, with the same access as Hikar
 
 ## Writing plugins
 
-The plugin format, the manifest, signing and the `hikari` API for plugin authors are in [docs/plugins.md](https://github.com/altqx/hikari/blob/main/docs/plugins.md) in HikariSub's repository. Its [Panels and dialogs](https://github.com/altqx/hikari/blob/main/docs/plugins.md#panels-and-dialogs) section covers panels, their widgets and dialogs, with a sample plugin.
+The plugin format, the manifest, signing and the `hikari` API for plugin authors are in [docs/plugins.md](https://github.com/altqx/hikari/blob/main/docs/plugins.md) in HikariSub's repository. Its [Panels and dialogs](https://github.com/altqx/hikari/blob/main/docs/plugins.md#panels-and-dialogs) section covers panels, their widgets and dialogs, with a sample plugin, and [QML panels](https://github.com/altqx/hikari/blob/main/docs/plugins.md#qml-panels) the panels a full trust plugin draws itself.
