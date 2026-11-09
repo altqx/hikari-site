@@ -1,5 +1,5 @@
 {
   "title": "Checking",
   "defaultOpen": true,
-  "pages": ["spelling", "grammar", "subtitle-comparison"]
+  "pages": ["spelling", "grammar", "subtitle-comparison", "qc-notes"]
 }
