@@ -1,9 +1,9 @@
 ---
 title: Command line
-description: Opening files from a terminal or a script, the --version and --export-docs switches, and what happens when HikariSub is already running.
+description: Opening files and folders from a terminal or a script, the switches such as -n, --version and --export-docs, and what happens when HikariSub is already running.
 ---
 
-HikariSub's command line is a list of files to open, and two switches.
+HikariSub's command line is a list of files and folders to open, and a few switches.
 
 | Package | Command |
 | --- | --- |
@@ -21,8 +21,11 @@ hikarisub episode.ass episode.mkv
 | --- | --- |
 | `--version` | Prints the version and the package kind, such as `0.1.0 (deb)`, and exits. No window opens |
 | `--export-docs <folder>` | Writes the commands, settings and guide links as JSON into the folder, and exits |
+| `-n`, `--new-window` | Opens the files or folders in a new window |
+| `-r`, `--reuse-window` | Opens a folder in the current window, even when that window is in use |
+| `--mcp` | Connects an AI agent to the running HikariSub's MCP server. See [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent) |
 
-There is no `--help`. Anything else on the command line is a file to open, so a mistyped switch is taken for a file name.
+When both `-n` and `-r` are given, the last one counts. There is no `--help`. Anything else on the command line is a file to open, so a mistyped switch is taken for a file name.
 
 `--version` prints one of these package kinds: `nsis-user` or `nsis-machine` for the Windows installer, `appimage`, `deb`, `rpm`, `arch` (the AUR packages, when they are out), or `portable-windows` and `portable-linux` for the zip and tar.gz. On Windows, `HikariSub.exe` is a windowed program, so redirect the output to see it: `HikariSub.exe --version > version.txt`.
 
@@ -42,6 +45,7 @@ What a file opens as depends on its extension:
 | `.pass` `.stats` `.log`, or a name ending `_keyframes.txt` | Keyframes, when it is the only file |
 | `.hksession` `.kls` | A [session](/en/docs/basics/files-and-formats#sessions), loaded as **Load session from file** loads it, when it is the only file; refused with other files |
 | `.exe` `.zip` `.rar` `.7z` | Nothing: refused |
+| a folder | A [Project](/en/docs/basics/files-and-formats#projects) |
 | anything else | A video, whose audio opens with it |
 
 Relative paths are taken from the current folder.
@@ -50,11 +54,22 @@ Relative paths are taken from the current folder.
 - **One video** opens in a tab of its own. With **File › Settings › Video › Open video from the context menu in full screen** on, it plays full screen at once.
 - **Several files** are sorted by name, then the first subtitles file and the first video share a tab, the second of each share the next, and so on. Files left over get tabs of their own.
 
+## Folders
+
+A folder opens as a [Project](/en/docs/basics/files-and-formats#projects):
+
+```sh
+hikarisub ~/subs/my-show
+hikarisub ~/subs/my-show ~/subs/my-show/ep01.ass
+```
+
+The folder opens in the current window when that window has nothing open, and in a new window otherwise. `-n` always gives it a new window, and `-r` the current one. A folder already open in a window brings that window to the front. Files given with a folder open in the folder's window.
+
 Starting with files skips the last session. If there is one to restore, a bar under the tabs offers it.
 
 ## When HikariSub is already running
 
-Only one HikariSub runs at a time for each user and desktop session. Starting it again hands its files to the running window and exits:
+Only one HikariSub runs at a time for each user and desktop session. Starting it again hands its files and folders, and `-n` or `-r`, to the running HikariSub and exits:
 
 - The files open in new tabs. A tab with work in it is never replaced.
 - Files from several starts in quick succession, as when a file manager opens several files, open together.
