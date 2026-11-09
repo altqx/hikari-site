@@ -1,0 +1,57 @@
+---
+title: Reviewing AI changes
+description: See every edit an AI agent made, in the Grid, the Line editor and the Review panel, and keep it, undo it, or go back to before a turn.
+---
+
+An edit an AI agent makes goes into the file at once, but HikariSub marks it until you look at it. Each one waits until you **Keep** it or **Undo** it. Today these edits come from an agent you [connect over MCP](/en/docs/ai/connect-an-agent), such as Claude Code. Plugins' edits aren't reviewed: they go into the history as ordinary steps.
+
+## Seeing what changed
+
+- **In the Grid,** a line with a waiting change has a stripe at the left of its **#** column, in the accent colour. It turns to the warning colour once you edit the line yourself. The words the AI added are tinted and underlined in green.
+- **In the Line editor,** a strip below the tools says *Changed by* and the agent's name, such as *Changed by Claude Code*, with the change's name, **Undo** and **Keep**. The arrows and *2 of 5* go through the waiting lines, and wrap at the ends. Below, the text shows added words in green and removed ones struck through. For a line the agent added, it says *The AI added this line.*
+- **On the tab,** a badge counts the changes waiting there.
+- **In the status bar,** *3 AI changes to review* counts them for the current tab. Click it to open the Review panel.
+
+## The Review panel
+
+Open it with **Edit › Review › Show panel**, from **View › Panels › Review**, from the count in the status bar, or with **Show in Review panel** in the Grid's right-click menu.
+
+It lists the current tab's changes, newest turn first. Each **turn** shows its number, such as *Turn 3*, the agent's name and **Restore checkpoint**. Under it, each change the agent made has **Undo** and **Keep**, and under that each line, style or script property it touched, with its own **Undo** and **Keep**. A line you edited after the agent says *you edited it since*. Click a line to select it in the Grid.
+
+**Keep all** and **Undo all**, at the top, act on every waiting change in the tab. **Also to review**, at the bottom, lists the other tabs with waiting changes, each with **Go to tab**.
+
+With nothing waiting, the panel says *Changes the AI makes to this tab show here until you keep or undo them.*
+
+## Keep and Undo
+
+**Keep** accepts the change. The file doesn't change, the marks go away, and no history step is added.
+
+**Undo** puts back exactly what was there before the agent, as one history step, such as *Undo Claude Code change to Line 12*. A line the agent added is removed, and a line it deleted or moved comes back where it was. Styles and script properties go back too.
+
+If you edited the line after the agent did, Undo would drop your edit too, so it asks first: **Undo anyway** or **Cancel**. **Undo all** leaves those lines as they are, unless you choose **Undo all anyway**; **Leave my edits** undoes the rest.
+
+Ordinary **Edit › Undo** works too: undoing the agent's own step in the history takes it out of the review, and Redo brings it back.
+
+| Command | Key at first | Does |
+| --- | --- | --- |
+| **Keep AI change** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> | Keeps the waiting changes on the current line |
+| **Undo AI change** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Backspace</kbd> | Undoes them |
+| **Next AI change** | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down</kbd> | Goes to the next waiting line |
+| **Previous AI change** | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up</kbd> | Goes to the one before |
+| **Keep all AI changes** | | Keeps every waiting change in the tab |
+| **Undo all AI changes** | | Undoes them all |
+| **Review panel** | | Shows the panel |
+
+They are under **Edit › Review**, and change their keys in **File › Settings › Shortcuts**. On a waiting line, the Grid's right-click menu starts with **Keep AI change**, **Undo AI change**, **Next AI change** and **Show in Review panel**.
+
+## Checkpoints
+
+Each turn starts with a checkpoint: the files as they were before its first change. The **History** shows *Before turn 3* above that turn's first step, and marks the agent's steps with an AI icon.
+
+**Restore checkpoint**, on a turn in the Review panel, goes back to before it. The question says what it will undo in each tab: *Every AI change from this turn on is undone, kept ones too, in every tab it touched, as one history step per tab.* Lines you edited after the agent stay as they are, unless you tick **Also undo my edits to 2 lines I changed after the AI**. Your other edits stay. Press **Restore**; Undo brings the agent's changes back.
+
+## Saving, closing and turning AI off
+
+- Saving writes the file with the agent's edits in it. They keep waiting in the review.
+- The review isn't saved with the file. Closing a file drops its review without asking, and the agent's edits stay in it as ordinary text.
+- **Turn off all AI features** hides the marks, the Review panel, **Edit › Review** and its commands. It doesn't keep or undo anything: when AI is back on, the changes wait again.
