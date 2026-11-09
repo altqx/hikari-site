@@ -15,6 +15,12 @@ Its commands have no shortcut at first. Give them one in **File › Settings ›
 
 With no file open, the panel says *Open a subtitle file to keep QC notes in it.*
 
+### ASS and SSA files only
+
+Only ASS and SSA files can keep QC notes. With an SRT or another format open, the panel says *Only ASS and SSA files can keep QC notes. Save this file as ASS to add notes.* Adding, importing, pasting and dropping notes are turned off, and so is **Add QC note…** in the Grid. The **Add QC note** shortcut opens the panel, so that you see why.
+
+Save the file as ASS with **File › Save as…**, and notes work again.
+
 ## Adding a note
 
 - Press **Add note** at the top of the panel.
@@ -63,7 +69,7 @@ Hikari QC 1: 0:03:24.40,Typesetting,open,The sign at the door needs \blur
 
 Aegisub keeps these lines when it saves the file, so the file can go to Aegisub and back with its notes. They never show on the video.
 
-- **Only ASS and SSA files** have a `[Script Info]` section, so only they can keep notes. To keep notes for an SRT or other file, save it as ASS first.
+- **Only ASS and SSA files** have a `[Script Info]` section, so only they can keep notes (see [ASS and SSA files only](#ass-and-ssa-files-only)).
 - **Export as** writes no notes: none of its formats, such as SRT and WebVTT, has a place for them.
 - **Shift times** and the **Timing postprocessor** don't move the notes.
 
