@@ -140,6 +140,37 @@ A file opens in the current tab when the tab is empty and unchanged. **File › 
 
 **File › Remove subtitles from the editor** empties the tab, after asking about unsaved changes.
 
+## Projects
+
+A Project is a folder you open in a window, such as the folder of a whole show or of one episode. Each window can have one Project. Its name shows in the title bar, as in *Episode 01.ass - My Show - HikariSub*, and on the window's Home page. The window's tabs can still hold files from outside the folder. HikariSub writes nothing into the folder.
+
+### Opening a folder
+
+- **File › Open folder…**, or **Open folder…** on the Home page.
+- **Drop a folder** on the window, on its own.
+- **From a terminal,** `hikarisub <folder>`. See [Command line](/en/docs/reference/command-line#folders).
+
+A folder opens in the current window when that window has no Project and nothing open, or only one empty, unchanged tab. Otherwise it opens in a new window. A folder that is already open in a window brings that window to the front: one Project can't be open in two windows.
+
+Once you have opened a Project, the Home page lists **Recent projects** above **Recent files**, the last 20, and you can filter them by name. Right-click one for **Open**, **Show in folder**, **Copy path**, **Remove from list** and **Remove missing folders**.
+
+### A file in a Project folder
+
+When you open a subtitle file in a window with no Project, HikariSub looks for a folder named `.hikari` beside the file, then in each folder above it. The first folder holding one is the file's Project:
+
+- If it is in one of your trusted folders, listed in **File › Settings › Automation › Trusted script folders**, it opens as the window's Project at once.
+- Otherwise a bar says *This file is in the project My Show.*, with **Open project**, which opens it in this window.
+
+Nothing is offered when that Project is already open in another window.
+
+### Closing a Project
+
+**File › Close project** closes the window's tabs, after asking about unsaved changes, and leaves the window on the Home page without a Project. It is greyed out in a window with no Project.
+
+HikariSub keeps the tabs a Project had when you closed it, or when you closed its window. The next time the Project is open in a window with no tabs, its card on the Home page lists them, with **Reopen last tabs (3)**.
+
+**Open folder…** and **Close project** have no shortcut at first. Give them one in **File › Settings › Shortcuts**.
+
 ## Autosave and recovery
 
 HikariSub keeps copies of changed files as you work, 20 seconds after a change. If it closes without warning, the Home page says so the next time and offers them.
@@ -158,7 +189,7 @@ A session is the set of open tabs, with their videos, audio and positions. **Fil
 
 If a file the session names has moved, a bar offers to **Retry**, **Relink…** it, or **Remove** it.
 
-A session also keeps your windows. Loading one, at start, from **File › Last session** or a file, or after a crash, opens each window where it was, at its size and maximised or not, with its tabs in order and the same tab in front. A window last on a monitor you have since unplugged comes back on your main screen. On Wayland the desktop chooses where windows go, so only the size and whether it was maximised come back. See [Windows in a session](/en/docs/customize/layouts#windows-in-a-session).
+A session also keeps your windows. Loading one, at start, from **File › Last session** or a file, or after a crash, opens each window where it was, at its size and maximised or not, with its tabs in order and the same tab in front. A window last on a monitor you have since unplugged comes back on your main screen. On Wayland the desktop chooses where windows go, so only the size and whether it was maximised come back. Each window's [Project](#projects) comes back too, unless its folder is gone. See [Windows in a session](/en/docs/customize/layouts#windows-in-a-session).
 
 **Load session from file** also opens `.kls` sessions from HikariSub 0.0.x, but HikariSub never writes one: a name you type ending in `.kls` is saved as `.hksession`. Opening a `.hksession` or `.kls` file from your file manager, or dropping one on the window on its own, loads it the same way.
 
