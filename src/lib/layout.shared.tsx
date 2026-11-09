@@ -17,7 +17,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
     nav: {
       title: (
         <>
-          <img src="/favicon.png" alt="" width={22} height={22} />
+          <img src="/favicon.svg" alt="" width={26} height={22} />
           {appName}
         </>
       ),
