@@ -2,6 +2,8 @@
 // data the Hotkeys and Settings reference pages and the guide-link check read. Until a
 // release carries the zip, it copies the pinned export in src/assets/docs-export/.
 // Runs before every build; a release whose zip is missing files or unreadable fails it.
+// It also writes the Hikari API reference page from the zip's api.md, which releases after
+// 0.1.0-beta.3 carry; without one, that page says the reference comes later.
 //
 //   bun scripts/fetch-docs.ts            # fetch, or fail
 //   bun scripts/fetch-docs.ts --offline  # dev: no network; keep or copy the pinned export
@@ -9,12 +11,21 @@ import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { type DocsSource, docsFiles, parseDocsExport, pickDocsRelease } from '../src/lib/docs-export';
+import {
+  apiReferenceFile,
+  apiReferencePage,
+  apiReferencePath,
+  type DocsSource,
+  docsFiles,
+  parseDocsExport,
+  pickDocsRelease,
+} from '../src/lib/docs-export';
 import { appRepo, type GitHubRelease } from '../src/lib/downloads';
 
 const output = 'src/generated/docs-export';
 const pinned = 'src/assets/docs-export';
 const offline = process.argv.includes('--offline');
+const apiPage = join('content/docs', apiReferencePath);
 
 async function readFiles(dir: string) {
   const files = {} as Record<(typeof docsFiles)[number], unknown>;
@@ -29,15 +40,22 @@ async function write(dir: string, source: DocsSource, version?: string) {
   for (const name of docsFiles)
     await writeFile(join(output, name), `${JSON.stringify(files[name], null, 2)}\n`);
   await writeFile(join(output, 'source.json'), `${JSON.stringify(source, null, 2)}\n`);
+  const apiFile = join(dir, apiReferenceFile);
+  const api = existsSync(apiFile) ? await readFile(apiFile, 'utf8') : undefined;
+  await writeFile(apiPage, apiReferencePage(api, source, data.meta.version));
   const from = source.kind === 'release' ? source.tag : `the pinned export (${data.meta.commit.slice(0, 9)})`;
   console.log(
     `fetch-docs: ${data.commands.commands.length} commands, ${data.settings.settings.length} settings, ` +
-      `${data.guideLinks.links.length} guide links from ${from}`,
+      `${data.guideLinks.links.length} guide links${api === undefined ? '' : ', the API reference'} from ${from}`,
   );
 }
 
 if (offline) {
   if (existsSync(join(output, 'source.json'))) {
+    if (!existsSync(apiPage)) {
+      const meta = JSON.parse(await readFile(join(output, 'meta.json'), 'utf8')) as { version: string };
+      await writeFile(apiPage, apiReferencePage(undefined, { kind: 'fixture' }, meta.version));
+    }
     console.log(`fetch-docs: offline, kept ${output}`);
   } else {
     await write(pinned, { kind: 'fixture' });
@@ -80,6 +98,10 @@ if (!choice) {
     );
     const unzip = Bun.spawnSync(['unzip', '-q', '-o', zip, ...docsFiles, '-d', join(dir, 'files')]);
     if (unzip.exitCode !== 0) throw new Error(`${choice.url}: unzip failed: ${unzip.stderr.toString()}`);
+    // api.md is optional: unzip exits 11 when the zip doesn't have it.
+    const apiUnzip = Bun.spawnSync(['unzip', '-q', '-o', zip, apiReferenceFile, '-d', join(dir, 'files')]);
+    if (apiUnzip.exitCode !== 0 && apiUnzip.exitCode !== 11)
+      throw new Error(`${choice.url}: unzip of ${apiReferenceFile} failed: ${apiUnzip.stderr.toString()}`);
     await write(
       join(dir, 'files'),
       { kind: 'release', tag: choice.release.tag_name, url: choice.url },

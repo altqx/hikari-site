@@ -232,3 +232,35 @@ export function referenceSearchRows(data: DocsExport, page: 'hotkeys' | 'setting
       })),
   );
 }
+
+// The Hikari API reference (hikari's src/api/reference_markdown.cpp). From the release after
+// 0.1.0-beta.3 the docs zip also carries api.md; older zips don't, and the page then says so.
+export const apiReferenceFile = 'api.md';
+/** The page fetch-docs writes from api.md; generated, so it is gitignored and has no edit link. */
+export const apiReferencePath = 'plugins/api-reference.md';
+
+const apiReferenceFrontmatter = [
+  '---',
+  'title: Hikari API reference',
+  'description: Every operation, event and type of the Hikari API that plugins call, generated from HikariSub itself.',
+  '---',
+  '',
+].join('\n');
+
+/** The page for api.md from a docs zip, or the page that says it comes later when there is none. */
+export function apiReferencePage(api: string | undefined, source: DocsSource, version: string): string {
+  if (api === undefined) {
+    return (
+      `${apiReferenceFrontmatter}\n` +
+      'This reference comes with the next HikariSub release, whose docs export carries it. ' +
+      'Until then, the [Write your first plugin](/en/docs/plugins/write-your-first-plugin) guide covers the calls it uses.\n'
+    );
+  }
+  const body = api.replace(/\r\n/g, '\n').replace(/^# [^\n]*\n+/, '');
+  if (!/^## Operations$/m.test(body)) throw new Error(`${apiReferenceFile}: no Operations section`);
+  const from =
+    source.kind === 'release'
+      ? `Generated from HikariSub ${version} ([${source.url.split('/').pop()}](${source.url})).`
+      : `Generated from a development build of HikariSub (${version}).`;
+  return `${apiReferenceFrontmatter}\n${from}\n\n${body.trimEnd()}\n`;
+}

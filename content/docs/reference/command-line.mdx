@@ -29,7 +29,7 @@ When both `-n` and `-r` are given, the last one counts. There is no `--help`. An
 
 `--version` prints one of these package kinds: `nsis-user` or `nsis-machine` for the Windows installer, `appimage`, `deb`, `rpm`, `arch` (the AUR packages, when they are out), or `portable-windows` and `portable-linux` for the zip and tar.gz. On Windows, `HikariSub.exe` is a windowed program, so redirect the output to see it: `HikariSub.exe --version > version.txt`.
 
-`--export-docs` (or `--export-docs=<folder>`) writes `commands.json`, `settings.json`, `guide-links.json` and `meta.json`, which this site's [Shortcuts](/en/docs/reference/hotkeys) and [Settings](/en/docs/reference/settings) references are made from. It uses a fresh profile of its own in English, so your settings don't change the result, and it needs no display. Each release attaches the same files as `hikarisub-docs-<version>.zip`.
+`--export-docs` (or `--export-docs=<folder>`) writes `commands.json`, `settings.json`, `guide-links.json`, `api.json`, `api.md` and `meta.json`, which this site's [Shortcuts](/en/docs/reference/hotkeys), [Settings](/en/docs/reference/settings) and [Hikari API](/en/docs/plugins/api-reference) references are made from. It uses a fresh profile of its own in English, so your settings don't change the result, and it needs no display. Each release attaches the same files as `hikarisub-docs-<version>.zip`.
 
 Some switches starting with `--hikari-` are for the updater. Don't use them yourself.
 

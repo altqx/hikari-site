@@ -1,4 +1,5 @@
 import { Bug, SquarePen } from 'lucide-react';
+import { apiReferencePath } from '@/lib/docs-export';
 import { editUrl, reportUrl } from '@/lib/shared';
 
 export function PageActions({ path, url, title }: { path: string; url: string; title: string }) {
@@ -7,10 +8,12 @@ export function PageActions({ path, url, title }: { path: string; url: string; t
 
   return (
     <div className="flex flex-wrap gap-x-6 gap-y-2 border-t pt-4">
-      <a href={editUrl(path)} className={linkClass} target="_blank" rel="noreferrer noopener">
-        <SquarePen className="size-4" />
-        Edit this page on GitHub
-      </a>
+      {path !== apiReferencePath && (
+        <a href={editUrl(path)} className={linkClass} target="_blank" rel="noreferrer noopener">
+          <SquarePen className="size-4" />
+          Edit this page on GitHub
+        </a>
+      )}
       <a href={reportUrl(url, title)} className={linkClass} target="_blank" rel="noreferrer noopener">
         <Bug className="size-4" />
         Report a problem
