@@ -28,7 +28,13 @@ With nothing waiting, the panel says *Changes the AI makes to this tab show here
 
 **Undo** puts back exactly what was there before the agent, as one history step, such as *Undo Claude Code change to Line 12*. A line the agent added is removed, and a line it deleted or moved comes back where it was. Styles and script properties go back too.
 
-If you edited the line after the agent did, Undo would drop your edit too, so it asks first: **Undo anyway** or **Cancel**. **Undo all** leaves those lines as they are, unless you choose **Undo all anyway**; **Leave my edits** undoes the rest.
+If you edited a line after the agent did, Undo would drop your edit too, so the Review panel asks first, with **Undo anyway** and **Cancel**:
+
+- **On a line,** **Undo anyway** puts it back as it was before the agent, and drops your edit.
+- **On a whole change,** the question says how many of its lines you changed after it, such as *You changed 2 lines after this change.* **Undo anyway** puts the whole change back as it was before the agent, as one history step, and drops those edits.
+- **Cancel** leaves everything as it is.
+
+**Undo all** leaves those lines as they are, unless you choose **Undo all anyway**; **Leave my edits** undoes the rest.
 
 Ordinary **Edit › Undo** works too: undoing the agent's own step in the history takes it out of the review, and Redo brings it back.
 
