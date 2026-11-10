@@ -11,6 +11,8 @@ Not published yet. These changes are in HikariSub's code and come with the next 
 
 ### New and improved
 
+- **A tab moved into a Project says so:** moving a tab to a window with a Project, by dragging it or with **Move tab to window ›**, shows *This tab now uses the project My Show.*, and the tab uses that Project. See [Moving a tab to another window](/en/docs/customize/layouts#moving-a-tab-to-another-window).
+- **Only Close window takes Alt+F4:** mapping <kbd>Alt</kbd>+<kbd>F4</kbd> or <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F4</kbd> to any other command is refused with *Alt+F4 is kept for closing the window.* **Close window** can take it back after you removed it. See [Pressing the keys](/en/docs/customize/hotkeys#pressing-the-keys).
 - **Undoing a whole AI change asks first:** in the Review panel, **Undo** on a change asks before it drops lines you edited after the AI, and says how many. **Undo anyway** puts the whole change back as one history step; **Cancel** leaves it all. See [Keep and Undo](/en/docs/ai/review#keep-and-undo).
 - **The Agent panel in more languages:** its text is now translated into Korean, Polish, Tamil and Thai.
 - **Project settings:** a Project can share its spelling dictionary, spelling on or off, the grammar check and its rule groups, and Tags from original, in `.hikari/project.toml`, with your own changes in `.hikari/project.local.toml`. They apply in the Project's window only. Settings has no Project tab yet, so you write the file by hand. See [Project settings](/en/docs/basics/files-and-formats#project-settings).
