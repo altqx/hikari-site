@@ -158,10 +158,42 @@ Once you have opened a Project, the Home page lists **Recent projects** above **
 
 When you open a subtitle file in a window with no Project, HikariSub looks for a folder named `.hikari` beside the file, then in each folder above it. The first folder holding one is the file's Project:
 
-- If it is in one of your trusted folders, listed in **File › Settings › Automation › Trusted script folders**, it opens as the window's Project at once.
+- If it is in one of your trusted folders, listed in **File › Settings › General › Trusted folders**, it opens as the window's Project at once.
 - Otherwise a bar says *This file is in the project My Show.*, with **Open project**, which opens it in this window.
 
 Nothing is offered when that Project is already open in another window.
+
+### Project settings
+
+A Project can share a few settings with everyone who opens its folder, such as the dictionary to check spelling with. Put them in `.hikari/project.toml` in the Project's folder. For your own changes that the others don't share, add `.hikari/project.local.toml`: where both files set a setting, the local one wins. Settings has no Project tab yet, so you write these files by hand. HikariSub doesn't change them.
+
+The files use the tables and keys of your own [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept), and start with `version = 1`:
+
+```toml
+version = 1
+
+[editor]
+dictionaryLanguage = "en_GB"
+spellchecker = true
+
+[grammar]
+language = 2
+
+[grammar.group]
+properNouns = false
+```
+
+A Project can set only these:
+
+| Setting | Keys |
+| --- | --- |
+| [Spelling](/en/docs/checking/spelling#dictionaries): **Check spelling** and **Primary language** | `editor.spellchecker`, `editor.dictionaryLanguage` |
+| The [grammar check](/en/docs/checking/grammar): its language, from 0 for **Off** to 4 for **English (Australia)**, and the **Rule groups** | `grammar.language`, `grammar.group.*` |
+| [Tags from original](/en/docs/translation/translation-mode#tags-from-original) in Translation mode | `translation.autoMoveTagsFromOriginal` |
+
+Any other setting in the files is ignored, and a notice names it. A file that can't be read is renamed with `.broken` at the end, a notice says so, and its settings don't apply.
+
+A Project's settings win over yours in the Project's window only, whether or not its folder is trusted. Spelling in each window follows that window's Project, and the grammar check follows the window you're working in. While a Project sets a setting, changing it in **File › Settings** changes yours, which apply in the other windows. HikariSub reads the files when the window opens the Project: after editing them, close the Project and open it again.
 
 ### Closing a Project
 
