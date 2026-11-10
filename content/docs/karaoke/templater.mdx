@@ -86,6 +86,18 @@ A code line's Effect is `code` followed by when it runs:
 
 A run goes like this: the `once` code first. Then, for each karaoke line in file order, its line templates and line code in file order, then each syllable through every syllable template, then each furigana part.
 
+### Characters
+
+`char` splits a syllable into characters the way they are drawn: each Thai character cluster is one character, so vowel and tone marks stay on their letters. `กิน` gives `กิ` and `น`, and `น้ำ` stays one character. A letter with a combining accent, and an emoji or a sequence of joined emoji, are one character too. Thai support is by Jibrill.
+
+Aegisub's templater gives each code point its own line, which cuts the marks off. A script that needs that split can set `graphemes = false` in a `code once` line:
+
+```
+code once      graphemes = false
+```
+
+Text without marks or joined emoji splits as it always did.
+
 ## Karaoke lines
 
 The templater reads the syllables from `\k`, `\kf`, `\ko` and `\K` tags. **Syllable 0** is the text before the first tag, usually empty and of no length. A `syl` template makes a line for it too, unless it has `noblank`.
