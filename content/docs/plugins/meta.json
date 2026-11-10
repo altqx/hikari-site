@@ -1,5 +1,5 @@
 {
   "title": "Plugins",
   "defaultOpen": true,
-  "pages": ["using-plugins"]
+  "pages": ["using-plugins", "write-your-first-plugin", "api-reference"]
 }

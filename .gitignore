@@ -11,3 +11,5 @@ out/
 test-results/
 playwright-report/
 src/generated/
+# Written by scripts/fetch-docs.ts from the release's api.md
+content/docs/plugins/api-reference.md

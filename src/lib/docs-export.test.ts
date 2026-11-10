@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  apiReferencePage,
   commandsIn,
   docsAssetName,
   formatValue,
@@ -216,4 +217,34 @@ test('referenceSearchRows gives each table row as text under its section', () =>
   expect(referenceSearchRows(data, 'settings')).toEqual([
     { section: 'General', content: 'Tab name length · Characters · Default: Off' },
   ]);
+});
+
+describe('apiReferencePage', () => {
+  const source = {
+    kind: 'release' as const,
+    tag: 'v0.1.0-beta.4',
+    url: 'https://github.com/altqx/hikari/releases/download/v0.1.0-beta.4/hikarisub-docs-0.1.0-beta.4.zip',
+  };
+
+  test('drops the H1, names the release and keeps the reference', () => {
+    const page = apiReferencePage(
+      '# Hikari API reference\n\nVersion 1.\n\n## Operations\n\n### `documents.get`\n',
+      source,
+      '0.1.0-beta.4',
+    );
+    expect(page).toStartWith('---\ntitle: Hikari API reference\n');
+    expect(page).not.toContain('# Hikari API reference');
+    expect(page).toContain('Generated from HikariSub 0.1.0-beta.4 ([hikarisub-docs-0.1.0-beta.4.zip](');
+    expect(page).toContain('### `documents.get`');
+  });
+
+  test('says it comes later when the zip has no api.md', () => {
+    const page = apiReferencePage(undefined, source, '0.1.0-beta.3');
+    expect(page).toContain('comes with the next HikariSub release');
+    expect(page).not.toContain('## Operations');
+  });
+
+  test('refuses a file without operations', () => {
+    expect(() => apiReferencePage('# Something else\n', source, '0.1.0-beta.4')).toThrow('no Operations');
+  });
 });
