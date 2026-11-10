@@ -59,6 +59,7 @@ Import/                 the legacy settings import's snapshots, for Roll back…
 ReplaceBackup/          copies of files made before Replace in files changes them
 catalogs/               style catalogues (.sty) and fonts.toml, your font catalogues
 presets/                layouts.json, your saved layouts
+node-effects/           your node effects library: one file per graph, from Save to the library
 recovery/               autosaved copies of your files
 config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
 log/  temp/  autosave/  folders scripts write to
@@ -68,7 +69,7 @@ log/  temp/  autosave/  folders scripts write to
 
 Some files appear only once you use what they belong to. If you used a HikariSub version from before these files, the old ones are there too, with `.old` added: `hikari.ini.old`, `ShapesSettings.txt.old` and so on.
 
-[Roll back…](/en/docs/get-started/moving-from-legacy) uses `Import`, and [Replace in files](/en/docs/basics/find-and-replace#searching-a-folder) writes to `ReplaceBackup`; delete old copies there when you no longer need them. `.old-folders` records that the [earlier folders were moved in](#moving-in-from-earlier-versions); leave it in place.
+[Roll back…](/en/docs/get-started/moving-from-legacy) uses `Import`, and [Replace in files](/en/docs/basics/find-and-replace#searching-a-folder) writes to `ReplaceBackup`; delete old copies there when you no longer need them. `.old-folders` records that the [earlier folders were moved in](#moving-in-from-earlier-versions); leave it in place. `node-effects` is your [node effects library](/en/docs/karaoke/node-effects#the-library): **Save to the library** writes each graph there as `<name>.json`, and **From the library…** adds one to a file.
 
 To add a script that loads at start, put it in `automation/autoload`. To add a spelling language, put its `.dic` and `.aff` files in `dictionaries`. See [Writing scripts](/en/docs/automation/writing-scripts#where-scripts-live) and [Spelling](/en/docs/checking/spelling#dictionaries).
 

@@ -1,0 +1,123 @@
+---
+title: Node effects
+description: Build karaoke effects as a graph of nodes on a canvas, preview them on the video line by line, and apply them to the file.
+---
+
+A node effect is a graph of nodes, wired together on a canvas, that turns karaoke lines into new lines. It does the job of [templates](/en/docs/karaoke/templater) without writing template syntax. Each node does one thing: picks the syllables, works out a time, writes a tag or outputs the lines.
+
+A graph is saved in the file as a comment line whose Effect is `graph` and the graph's name. The lines it writes have the Effect `fx` and the same name. Like the templater's lines, they fold with [Fold generated lines](/en/docs/customize/layouts#karaoke-mode-and-folding). A file can hold several graphs, and applying one never touches another graph's lines or the templater's.
+
+## The mode
+
+Node effects are edited in a mode of their own. There are three ways in:
+
+- **View › Node effects**;
+- the node-effects button in the title bar, next to the layout switcher;
+- a key you give it. It has none at first: [Shift+click](/en/docs/customize/hotkeys#shiftclick) **View › Node effects**, or find **Node effects** on the Shortcuts page.
+
+The mode needs an open file, and it is greyed out while the [layout is locked](/en/docs/customize/layouts#locking-the-layout).
+
+**Leave node effects**, at the end of the mode bar, brings back the tab's layout as you left it. It never asks anything. The same menu item, button and key also leave the mode.
+
+The mode has its own layout. Video and **Source lines** are on the left, **Graph** is in the middle and **Node** is on the right. The Grid, the Line editor and the audio close while the mode is on. You can move these panels like any others, and the mode keeps your arrangement for the next time. **View › Layout › Reset this layout** puts the mode's own layout back.
+
+## The mode bar
+
+The mode bar picks the graph you work on, from the graphs in the file. Its menu has:
+
+- **New graph**;
+- **From a preset**, which adds one of the [presets](#presets);
+- **From the library…**, which adds a graph from [your library](#the-library);
+- **Rename…**;
+- **Duplicate**;
+- **Save to the library**;
+- **Delete graph**, which removes the graph and the lines it wrote. Undo brings them back.
+
+A graph name can't be empty, start or end with a space, end with a dot, or hold `karaoke`. Two graphs in a file can't have the same name.
+
+Also on the bar:
+
+- **Style** picks the style of the karaoke lines the graph runs on, or **All styles**.
+- **Seed** sets the graph's seed, which every Random node draws from. **New seed** picks another.
+- The problem count, such as **2 problems**, opens the list of problems. Picking one selects its node and brings it into view.
+- **Apply** writes the graph's lines for every karaoke line. The arrow next to it has **Apply to every karaoke line** and **Apply to the selected lines**, which regenerates only the lines selected in **Source lines**. The others keep their output.
+
+## Panels
+
+- **Graph** is the canvas. Its header has **Add node** and **Fit the graph in view**, and shows how many nodes and wires there are.
+- **Node** shows the selected node:
+  - what it does;
+  - its **Name**, which is the node's id. You can rename it;
+  - editors for its fields;
+  - its wired inputs, each with **Disconnect**;
+  - its values on the current source line, from the last run;
+  - its timing;
+  - its problems.
+- **Source lines** lists the karaoke lines the graph runs on. The one you pick is the line the preview runs on.
+
+## Wiring
+
+A node has its inputs on the left and its outputs on the right. Drag from an output to an input to wire them.
+
+- **Ports are typed.** Each type has its own shape and colour: Units are diamonds, Tags are squares and the other types are circles. Number, Time and Alpha share a colour, because they connect to one another. In a high-contrast theme, only the shapes differ.
+- **Wrong wires are refused.** While you drag, the inputs the output can't feed are dimmed. Dropping on one is refused, with the reason, such as *A Text can't connect to a Number input.* A wire that would make a loop is refused too.
+- **An input takes one wire.** Dropping on an input that is already wired replaces its wire. Drag a wire off an input to move it, or drop it on empty space to remove it.
+- **Unwired inputs use their field.** Their port is hollow, with the value written in.
+- **Dropping a wire on empty space** opens **Add node**, showing only the nodes that can take that output.
+
+**Add node** also opens from the Graph header or a double-click on the canvas. It lists the nodes by category, with Lua last, and searches their names and what they do. **Recently added** at the top holds the nodes you added last.
+
+To group nodes, select them and press <kbd>Ctrl</kbd>+<kbd>G</kbd>. A group is one node on the canvas, and you rename it like any other node. **Unit info**, which gives the current unit's values, shows only its wired outputs and folds the rest: **3 more outputs** unfolds them.
+
+## Keyboard
+
+| Key | What it does |
+| --- | --- |
+| Arrows | Move the selection to the nearest node in that direction |
+| <kbd>Ctrl</kbd>+arrows | Move the selected node |
+| <kbd>Delete</kbd> | Delete the selected node |
+| <kbd>Ctrl</kbd>+<kbd>G</kbd> | Group the selected nodes |
+| <kbd>Enter</kbd> | Go into the selected group. The Graph header shows where you are |
+| <kbd>Backspace</kbd> | Come back out of the group |
+| A letter or other character | Open **Add node**, searching for what you type |
+
+Each node has an accessible name for screen readers, such as *Choose, palette: 1 of 1 inputs wired*. The Node panel lists every wire of the selected node.
+
+## Preview and Apply
+
+While the mode is on, the graph runs on the current source line after every edit. The video shows that line's output in place of its generated lines, with the badge *Preview · line 4 · not applied*. **Source lines** turns the preview on the video on and off, and can loop the line. When the graph has a problem, the preview keeps the last run that worked, dimmed.
+
+Nothing is written to the file until you press **Apply**. Apply replaces the lines the graph wrote before, and marks each karaoke line it used as a comment with the Effect `karaoke`, as the templater does.
+
+Each change on the canvas is part of one **Edit graph** step in the undo history. Changes made in quick succession, or one drag, are one step. **New graph**, **Rename…**, **Duplicate**, **Delete graph** and **Apply** are one step each.
+
+## Characters
+
+A `char` unit is a character as it is drawn, as in the templater's [Characters](/en/docs/karaoke/templater#characters). Thai vowel and tone marks stay on their letters, so `กินน้ำ` gives `กิ`, `น` and `น้ำ`. A letter with a combining accent, and an emoji made of several joined emoji, are one character too. Thai support is by Jibrill.
+
+## Presets
+
+**From a preset** adds a [preset](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
+
+- Classic fill;
+- Bounce;
+- Sparkles;
+- Falling letters;
+- Colour per line.
+
+The other five presets are templates only for now.
+
+## The library
+
+**Save to the library** keeps a copy of the graph in the `node-effects` folder of your [user folder](/en/docs/automation/user-folder#whats-in-it), one file per graph. **From the library…** adds one of them to the file you are working on, so you can reuse a graph in other files.
+
+## Lua nodes
+
+The **Lua** node runs a short piece of Lua code once per line, for all its units. Its inputs are globals, and the code sets its outputs as globals. They can be Number, Text, Colour, Alpha, Time, Point, Yes or no, or Tags.
+
+- **Limited.** The code has the basic functions and `string`, `table`, `math` and `bit`, and nothing else. It has no `io`, `os` or `require`, so it can't read files or reach the network.
+- **Sandboxed.** It runs in a helper of its own, inside an operating-system sandbox with no network access. Where the system can't provide the sandbox, Lua nodes still run, with the same limits.
+- **Deterministic.** The same graph and lines always give the same output. There is no `math.random`: use the **Random** node, which draws from the graph's seed. Nothing a row of code sets carries over to the next unit or line.
+- **Ten seconds.** If a line's Lua takes longer than 10 seconds, it is stopped, and Apply writes nothing.
+
+Lua nodes need the same trust as [templates](/en/docs/karaoke/template-editor#trusting-a-file). When a graph has a Lua node, the mode says *This file's node effects run Lua code with your rights. Preview them if you trust the file.* Press **Preview** to trust the file. It is one choice per open file: trusting it here or in the Template editor covers both. A graph without a Lua node never asks.
