@@ -8,6 +8,8 @@ import planeDark from './images/perspective-plane-dark.webp';
 
 The Perspective tool draws the active line's text as a box, a four-cornered **quad**, exactly where the renderer draws it. Drag the corners onto a surface in the picture, and HikariSub writes the tags that make the text sit on it: the rotations, the shear, the scale, `\pos` and `\org`.
 
+To make a sign follow the video's motion with Mocha or Blender data, see [Motion tracking](/en/docs/typesetting/motion-tracking). This page also covers [Perspective tracking](#perspective-tracking) with Power-Pin data.
+
 Choose it on the video's tool rail, or press <kbd>Q</kbd> with the pointer over the video. Press <kbd>Q</kbd> again to go back to the Position pointer. The [Visual tools](/en/docs/typesetting/visual-tools) guide explains the rail, the inspector bar, picking several lines and undo; this page covers what is particular to Perspective.
 
 <figure>
@@ -132,13 +134,13 @@ Each drag, double-click, held arrow key or typed value is one step, named *Visua
 
 ## Perspective tracking
 
-**Video › Perspective tracking…** applies After Effects Power-Pin tracking data to the selected lines, as arch1t3cht's Perspective-Motion script does. Each line becomes one line per frame, fitted to the tracked plane on that frame.
+**Video › Tracking › Perspective tracking…** applies After Effects Power-Pin tracking data to the selected lines, as arch1t3cht's Perspective-Motion script does. Each line becomes one line per frame, fitted to the tracked plane on that frame.
 
 The command needs an open video, since tracking data is per frame, and is greyed out without one. It has no shortcut at first; give it one in **File › Settings › Shortcuts**.
 
 1. Typeset the lines on one frame of the sign, and select them.
-2. Choose **Video › Perspective tracking…**.
-3. In **Power-Pin data**, paste the Power-Pin data exported from After Effects or Blender. HikariSub reads its four CC Power Pin corners. If the clipboard already holds data with the right number of frames, the box is filled in when the window opens.
+2. Choose **Video › Tracking › Perspective tracking…**.
+3. Put the Power-Pin data exported from After Effects or Blender in **Power-Pin data**: paste it into the box, press **Paste**, or **Open file…** to load a `.txt` file. HikariSub reads its four CC Power Pin corners. If the clipboard already holds data with the right number of frames, the box is filled in when the window opens.
 4. In **Relative to frame**, choose the frame the lines were typeset on. It counts from the first frame of the selection, and the video frame number shows beside it. It starts at the video's current frame, when that frame is in the selection.
 5. Press **Apply**.
 
@@ -167,4 +169,4 @@ If a line can't be tracked after all, because its text can't be measured or the 
 
 ### After tracking
 
-The whole change is one undo step, named *Perspective tracking*, and the new lines stay selected. Each new line saves its frame's plane, as the Perspective tool does (see [The surrounding plane](#the-surrounding-plane)), so the Perspective tool shows it, and arch1t3cht's Derive Perspective Track script can read it.
+The whole change is one undo step, named *Perspective tracking*, and the new lines stay selected. Each new line saves its frame's plane, as the Perspective tool does (see [The surrounding plane](#the-surrounding-plane)), so the Perspective tool shows it. **Video › Tracking › Copy Power-Pin track from lines** copies the planes back out as Power-Pin data, as arch1t3cht's Derive Perspective Track script does. See [Copying tracking out of lines](/en/docs/typesetting/motion-tracking#copying-tracking-out-of-lines).

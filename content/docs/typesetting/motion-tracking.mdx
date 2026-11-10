@@ -1,0 +1,98 @@
+---
+title: Motion tracking
+description: Make a sign follow the video with After Effects motion data from Mocha or Blender, revert it, copy tracking back out of lines, and extend a track past its last frame.
+---
+
+**Video › Tracking** makes signs follow the video. It does natively what the Aegisub-Motion script does, together with the Derive Track, Derive Perspective Track, Extrapolate Move and Extrapolate Tracking scripts:
+
+| Command | Does |
+| --- | --- |
+| **Apply motion data…** | Moves the selected lines with After Effects motion data, one line a frame |
+| **Perspective tracking…** | Fits the selected lines to a tracked plane with Power-Pin data. See [Perspective tracking](/en/docs/typesetting/perspective#perspective-tracking) |
+| **Revert motion data** | Puts tracked lines back as the line they were made from |
+| **Copy motion data from lines** | Copies frame-by-frame lines' motion as motion data |
+| **Copy Power-Pin track from lines** | Copies lines' perspective planes as Power-Pin data |
+| **Extend tracked lines…** | Carries tracked lines on for more frames, before or after |
+| **Extrapolate \move to the line** | Runs a timed `\move` at the same speed over the whole line |
+
+Tracking data is per frame, so every command but **Revert motion data** and **Extrapolate \move to the line** needs an open video, and is greyed out without one. None has a shortcut at first: give them one in **File › Settings › Shortcuts**.
+
+Each command that changes lines is one undo step, and the lines it makes or puts back are selected afterwards.
+
+## Applying motion data
+
+1. Track the sign in Mocha or Blender, and copy the result as After Effects keyframe data, the data Aegisub-Motion reads.
+2. Typeset the sign on one frame, and select its lines, timed over the frames the data covers.
+3. Choose **Video › Tracking › Apply motion data…**.
+4. Put the data in **Motion data**: paste it into the box, press **Paste**, or **Open file…** to load a `.txt` file. If the clipboard already holds motion data, the box is filled in when the window opens.
+5. In **Relative to frame**, choose the frame the lines were typeset on. It counts from 1, the first frame of the selection, and the video frame number shows beside it. It starts at the video's current frame, when that frame is in the selection.
+6. Choose what follows the data, and press **Apply**.
+
+Each selected line becomes one line a frame, each moved, scaled and turned as the data says on that frame. The whole change is one undo step, *Apply motion data*.
+
+The data is After Effects 6.0 keyframe data with **Position**, **Scale** and **Rotation**. Under the box, the window says how many frames it has, at what frame rate and size it was tracked, and which of the selection's frames it covers, or what is wrong. **Apply** is greyed out until the data covers the selected lines' frames.
+
+The window keeps its options for next time.
+
+### What follows the data
+
+| Option | What it does | At first |
+| --- | --- | --- |
+| **Position**, with **x** and **y** | Moves the lines with the tracked position, on both axes or one | On, both |
+| **Absolute** | Puts the lines at the tracked position itself, rather than moving them by how far it moved from the relative frame | Off |
+| **Scale** | Scales the lines with the data. **Outline**, **Shadow** and **Blur** scale with them; the blur by the **%** beside it | On, all three, 100% |
+| **Rotation** | Turns the lines with the data | Off |
+| **Origin** | Moves each line's `\org` with the data too | Off |
+| **Rect clips**, **Vector clips** | Moves the lines' clips with the data | On, both |
+| **Rect to vector** | Turns rectangular clips into vector clips as they are tracked | Off |
+| **Clips only** | Moves only the clips, and leaves the text where it is | Off |
+| **Track clips with other data** | Adds a **Clip data** box, for clips that follow another track. That data needs the same number of frames, and moves the clips from the same relative frame | Off |
+| **Bake transforms and fades** | Works each line's `\t` and fades into its values on each frame. Off, they are kept, shifted to each frame's time | On |
+| **One line with \move and \t** | Makes one line with `\move` and `\t` instead of one line a frame. It works with karaoke | Off |
+| **Extrapolate past the data** | See below | Off |
+
+### Data shorter than the lines
+
+When the data has fewer frames than the selected lines cover, **Extrapolate past the data** carries it on to fill the rest. In **Data starts at frame**, choose where the data begins among the lines' frames: the frames before it and after its end are extrapolated. The window says how many frames come before and after, and warns when a value fits poorly, such as *Position fits poorly at the end; check frames 1210–1214.*
+
+Without it, data shorter or longer than the lines can't be applied, and the window says how many frames each has.
+
+## Reverting
+
+**Video › Tracking › Revert motion data** puts each tracked line in the selection back as the line it was made from, over all the frames it was split into, as one undo step. It also reverts lines made by the Aegisub-Motion script, and the Aegisub-Motion script can revert HikariSub's.
+
+## Copying tracking out of lines
+
+These two commands copy data to the clipboard, and a notice says how many frames they copied.
+
+- **Copy motion data from lines** reads the selected frame-by-frame lines of one sign, each following on from the one before with the same text and layer. It copies their `\pos` (or `\move`), `\fscx`, `\fscy` and `\frz` as After Effects keyframe data, at the video's frame rate. Applying that data to the first line again gives back the same lines.
+- **Copy Power-Pin track from lines** copies the selected lines' perspective planes as Power-Pin data, for [Perspective tracking](/en/docs/typesetting/perspective#perspective-tracking). A line without a saved plane gives its text's quad. Lines that overlap, and lines with `\move`, can't be copied: copy one sign at a time.
+
+## Extending tracked lines
+
+**Video › Tracking › Extend tracked lines…** carries a track on past its ends, for a sign that the tracker lost early or late.
+
+1. Select two or more frame-by-frame lines of one sign, each holding still on its frame with a `\pos`.
+2. Choose **Extend tracked lines…**.
+3. In **Add**, choose how many frames, 4 at first, and whether they go **before the first line** or **after the last line**.
+4. **Move the origin (\org)**, on at first, moves each new line's `\org` with it.
+5. Press **Extend**.
+
+HikariSub fits the lines' position, scale and rotation, and the line at that end grows by the frames you chose, tracked with the fit. The window says how well the fit matches, such as *Fits position, scale and rotation over the 12 selected lines (degree 2, error 0.41 px).*, and warns when it fits poorly. The change is one undo step, *Extend tracked lines*.
+
+## Extrapolating \move
+
+**Video › Tracking › Extrapolate \move to the line** takes each selected line's `\move` with start and end times, and makes it run over the whole line at the same speed. A notice says how many lines changed.
+
+## Coming from Aegisub-Motion
+
+The Aegisub-Motion script and the other tracking scripts still come with HikariSub, unchanged. **Apply motion data…** gives the same lines as Aegisub-Motion, with these differences:
+
+- **Relative to frame** goes from 1 to the number of frames. There are no 0, negative or absolute frames.
+- Shake rotoshape data isn't read.
+- A file path typed into the box isn't read: use **Open file…**.
+- A `\move` is held at its end points outside its times before tracking, as the renderer shows it, so the sign doesn't overshoot.
+- With **Bake transforms and fades** on, the style's `\1a`, `\3a` and `\4a` are added only to lines with a fade to bake.
+- Apply and Revert select the lines they made or put back.
+- **One line with \move and \t** works with karaoke.
+- The two copy commands use the video's frame rate, not 23.976.
