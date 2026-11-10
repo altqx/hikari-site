@@ -1,0 +1,123 @@
+---
+title: The Agent panel
+description: Ask HikariSub's AI agent to work on your subtitles in threads, choose how much it may do without asking, and cap what it costs.
+---
+
+The **Agent** panel is where you work with HikariSub's AI agent. You ask in a thread, a conversation of its own, and the agent reads your subtitles and changes them. Every change it makes to your subtitles waits in the [Review panel](/en/docs/ai/review) until you keep or undo it.
+
+HikariSub has no AI server of its own. The agent runs on a provider you add, with your API key, a ChatGPT or OpenRouter sign-in, or a model on this computer.
+
+## Opening the panel
+
+Open it from **View › Panels › Agent**. It opens as a tab beside the Review panel, or to the right of the Grid. <kbd>F1</kbd> in the panel opens this page.
+
+Two commands have no key at first; give them one in **File › Settings › Shortcuts**:
+
+| Command | Does |
+| --- | --- |
+| **Agent panel** | Shows the panel |
+| **New agent thread** | Shows the panel with a new thread, as its **+** does |
+
+With **Turn off all AI features** ticked in **File › Settings › AI**, the panel and both commands are gone.
+
+Until you add a provider with a chat model, the panel says *Add a provider to use the agent*, with **Open Settings › AI**. Nothing is sent or downloaded until you add one. The agent uses the **Chat** model in **File › Settings › AI › Models**.
+
+## Asking
+
+Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**. <kbd>Shift</kbd>+<kbd>Enter</kbd> starts a new line.
+
+- **What the agent sees.** The chip above the box names the active tab, as in *Episode 01.ass · active tab*. The agent reads that tab, and the tabs you attach. Type `@`, or press **Attach**, to attach another open tab; click its chip to take it off again. For a tab you haven't attached, the agent asks you to attach it.
+- **Commands.** Type `/` for the list: `/new` starts a new thread, and `/mode` opens the mode menu.
+- **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
+- **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
+
+Below the box, the model button picks the thread's model from your providers' models, and the mode button its [mode](#modes).
+
+## What the thread shows
+
+- **Your messages,** with their time and **Restore checkpoint**, which goes back to before that turn. See [Checkpoints](/en/docs/ai/review#checkpoints).
+- **The agent's answers,** as they come.
+- **Each tool the agent used,** such as reading lines. Click one to see what it asked for and what it got.
+- **Each change it made,** with **Review**, which opens the Review panel. In Auto mode, a change the judge approved says *judge approved*.
+- **Its plan,** for longer work: a list it ticks off as it goes.
+- **Questions** for you, and notices, such as *The turn failed* with **Retry the turn**.
+
+## Modes
+
+Each thread has a mode, which decides what the agent may change without asking. Reading never asks, and neither does selecting lines or opening, closing and focusing panels.
+
+| Mode | What asks you |
+| --- | --- |
+| **Manual** | Changes to your subtitles go in at once and wait in the review. Every other change, such as running a command or changing a setting, asks you first |
+| **Auto** | The judge model approves each change, or asks you, with its reason |
+| **Full access** | Nothing, except the [always-ask list](#the-always-ask-list) |
+
+New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads…**, at the foot of the mode menu, opens it.
+
+**Full access** shows in red, and the thread's title gets a *Full access* badge. The first time you choose it, HikariSub asks *Turn on Full access?*, and lists what still asks. **Don't warn me again** stops the question.
+
+### The judge
+
+In Auto mode, a model checks each change before it is made: the **Judge** model in **File › Settings › AI › Models**. It sees the change the agent wants to make and your own messages, never your files or what the agent read, so nothing in your subtitles can talk it into approving. If it doesn't approve, or can't answer, you are asked, with *Why:* and its reason. What the judge costs counts toward the thread's cost.
+
+### Questions
+
+When the agent needs your yes, the thread shows a card, such as *Run commands_run?*, with what it wants to do. A card from the judge says *The judge asks you*.
+
+- **Allow once** lets this one action through.
+- **Allow in this thread** lets the same action through for the rest of the thread without asking. For a command, it covers that one command.
+- **Deny** refuses it, and the agent is told not to try again. **Deny and tell the agent…** adds a message: *What should it do instead?*
+
+A card says what you chose, or *No longer needed* when the turn stopped first.
+
+### The always-ask list
+
+Some actions ask in every mode, Full access included. Their card has a red edge, asks *Allow …?* and says *asks in every mode*, and offers only **Allow once** and **Deny**:
+
+- **Deleting or overwriting files** outside your subtitles' folders and your [user folder](/en/docs/automation/user-folder), such as the command that deletes temporary files.
+- **Running external programs,** such as loading or rerunning an Automation script, plugin commands, and the settings for the script editor and installing updates.
+- **Installing plugins or trusting them:** the settings for plugin updates, plugin network access and trusted folders.
+- **Sending local files to the network:** every privacy setting, such as crash reports and usage data.
+- **Changing AI settings,** such as permissions, keys and budgets.
+
+Saving, exporting and the other commands that ask for a file name aren't on the list: you choose the file yourself.
+
+## Threads
+
+**Threads**, at the top left, lists your threads by day, with each one's files, model and cost. *running*, *at cap* or *Full access* marks a thread. **Search threads** finds them by title or file name. Click one to open it, and **+** starts a new one.
+
+The thread menu, beside **+**, has:
+
+- **Rename thread…**
+- **Export as Markdown…**, which saves the conversation as a `.md` file.
+- **Delete thread**, which asks first: *The conversation goes. Changes it made stay in your subtitles and in the review.*
+
+Threads are kept in `ai/threads` in your user folder, so they are still there after a restart, with their mode, model, cost and what you allowed. Images the agent looked at aren't kept.
+
+If the AI component stops during a turn, the thread says *The AI component stopped*. Changes the turn made stay in the review, and the turn doesn't run again by itself: **Retry the turn** sends your message again, and **Show the log** opens the Log.
+
+## Cost caps
+
+Each thread has a cost cap, $2.00 at first, and so does each day, $10.00, counted from what the providers report for each request. At a cap, the turn stops after the step it is on, and any open question closes.
+
+- **A thread at its cap** says *This thread reached its $2.00 cap*. **Raise to $4.00 and continue** raises this thread's cap by the cap for new threads, and tells the agent to go on.
+- **The day's cap** says *Today's $10.00 cap is reached*. Every thread stops until tomorrow, or until you raise the cap in **File › Settings › AI › Agent**.
+
+The agent never raises a cap; only you can. A model that reports no cost and has no price shows *cost not reported*, and doesn't count toward a cap.
+
+The meter above the box shows how much of the model's context the thread uses, such as *12.4K of 200K tokens*, and its cost against its cap, such as *$0.42 of $2.00*, in red once it's reached.
+
+## Settings
+
+**File › Settings › AI › Agent**:
+
+| Row | At first | Does |
+| --- | --- | --- |
+| **Mode for new threads** | Auto | Manual, Auto or Full access |
+| **Cost cap per thread** | $2.00 | A new thread's cap, in steps of $0.50. 0 is *No cap* |
+| **Cost cap per day** | $10.00 | The cap for every thread together, each day. 0 is *No cap* |
+| **Show the cost meter** | On | Shows the meter above the box |
+
+Changes to the caps don't touch threads you already have, except the day's cap, which counts for every thread.
+
+What HikariSub sends to providers is in [What is sent](/en/docs/help/what-is-sent#ai).
