@@ -97,15 +97,20 @@ A `char` unit is a character as it is drawn, as in the templater's [Characters](
 
 ## Presets
 
-**From a preset** adds a [preset](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
+**From a preset** adds one of the ten [presets](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
 
 - Classic fill;
+- Staggered fade;
+- Colour sweep;
+- Scale pop;
 - Bounce;
+- Glow;
 - Sparkles;
+- Echo;
 - Falling letters;
 - Colour per line.
 
-The other five presets are templates only for now.
+Each graph writes the same lines as its template, byte for byte, and none of them uses Lua. Colour sweep, Glow and Echo have two **Emit** nodes, one for each layer of the template.
 
 ## The library
 
