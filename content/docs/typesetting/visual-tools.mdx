@@ -50,6 +50,7 @@ The tools sit in the rail on the left of the Video panel. Click one, or press it
 | Vector drawing | <kbd>D</kbd> | a `\p` drawing |
 | Position shifter | <kbd>A</kbd> | Moves the positions, `\move` points, clips, drawings and `\org` already in the lines |
 | Hydra | <kbd>H</kbd> | Any tag from its list |
+| Gradient | <kbd>W</kbd> | Copies of the line in `\clip` strips, each with its own values; a `\p` mask drawing; or tags for each character or line |
 
 The [ASS override tags](/en/docs/reference/ass-tags) reference explains each tag.
 
@@ -73,6 +74,7 @@ When a line has no `\pos`, the handles start where the line would show, from its
 - **Vector clipping and Vector drawing:** the bar's modes are **Move points**, **Add line**, **Add Bézier curve**, **Add B-spline**, **Add separate point** and **Delete point**; the wheel steps through them. Ctrl+click selects several points, and Alt while dragging snaps to another point's x or y. Vector drawing's **Shape** list draws a ready-made shape into a rectangle you drag; **Edit shapes…** adds your own. Vector clip points keep two decimals. The vector clip modes and its **Invert clip** can take keys in **File › Settings › Shortcuts**.
 - **Position shifter:** drag to move everything the **Move** toggles choose (positions, `\move` start or end points, clips, drawings, `\org`) by the same amount in every line.
 - **Hydra:** pick a tag, then drag sideways on the video or turn the wheel to change its value. **Set**, **Add**, **Multiply** and **Gradient** decide how the value is applied across characters or lines.
+- **Gradient:** the last button on the rail. Choose a mode, drag across the sign from where the gradient starts to where it ends, check the preview and press **Apply gradient (Enter)**. See [Gradients](#gradients).
 
 The tools work only on ASS files.
 
@@ -89,7 +91,7 @@ While the pointer is over the video, the arrow keys move what the tool edits by 
 The arrows nudge with Text positioning, Text moving, Text scaling, Perspective, both clipping tools, Vector drawing and the Position shifter. In Vector clipping and Vector drawing they move the selected points.
 
 <Callout>
-  Over the video, the arrows nudge instead of stepping frames. Move the pointer to the Grid to step frames with them again. With the Position pointer, the rotations and Hydra, the arrows step frames as usual.
+  Over the video, the arrows nudge instead of stepping frames. Move the pointer to the Grid to step frames with them again. With the Position pointer, the rotations, Hydra and Gradient, the arrows step frames as usual.
 </Callout>
 
 ## Fitting text to a surface
@@ -112,6 +114,65 @@ With Perspective (<kbd>Q</kbd>), drag the corners of the quad onto the surface t
 - **Origin** sets where `\org` goes: **Center** of the quad, **No \fax** for lines with line breaks, or **Keep** to leave it where it is and drag it yourself.
 
 Perspective needs a line that one box can describe. It does nothing for lines that change size or font partway through, wrap, or animate their shape.
+
+## Gradients
+
+Gradient (<kbd>W</kbd>) does in one tool what the gradient scripts do, without leaving the video. The bundled gradient scripts still ship, so you can keep using them.
+
+### Modes
+
+The modes are icon toggles at the start of the inspector bar:
+
+- **Rectangle strips** cuts the line into strips, each in a rectangle `\clip`. They run across your drag, horizontal or vertical, whichever is nearer.
+- **Rotated strips** does the same at the angle of your drag.
+- **Skewed strips** tilts the strips' edges by **Skew**, in degrees, or with the handle. A 4-point vector clip on the line sets where it starts.
+- **Strips along the clip** makes rings inward from the line's clip. It needs no drag.
+- **Wedge strips** turns the line into a mask drawing with `\p`. **Shape** picks **Wedge**, **Box**, **Ring**, **Star** or **Vignette**. Place it with the **P1**, **P2** and **P3** handles, or put a 3-point vector clip on the line first.
+- **By character** puts a tag block before each character, so the values change along the text. A Thai character cluster or an emoji counts as one character.
+- **By line** changes each picked line by its place among them.
+
+The first four make strips. Each line you apply them to becomes a comment and is kept, with its strips after it. Wedge strips, By character and By line change the line's text instead.
+
+### Stops
+
+In the strip modes, **Stops** says where the gradient takes its values from:
+
+- **Values:** the gradient runs from **From** to **To** for each tag in it. A colour has **R**, **G** and **B** fields with a swatch. The tag picker adds tags to the gradient. It lists them under **In the gradient**, **Colour and alpha**, **Border, shadow and blur** and **Text**, and the gradient starts with the primary colour. **Remove the tag from the gradient** drops the one shown. **From** starts at the active line's value.
+- **Picked lines:** [pick](#which-lines-a-tool-edits) two or more lines with the same text and tag blocks. Each is a stop, in Grid order, and the tags that differ between them are blended. Every stop becomes a comment, and the strips follow the last one.
+
+By character and By line always use **Values**. Wedge strips has no values. Its drawing keeps the line's first tag block, apart from the position, scale, border and shadow tags.
+
+### Shaping the result
+
+| Field | Modes | What it does |
+| --- | --- | --- |
+| **Strip** | Strip modes | How wide each strip is, in pixels. 4 at first |
+| **Overlap** | Rectangle, Rotated and Skewed strips | How far each strip reaches into the next, in pixels. 0 at first |
+| **Accel** | All but Wedge strips | Speeds the change up or slows it down along the gradient; 1 is even |
+| **Skew** | Skewed strips | The tilt of the strips' edges, in degrees |
+| **Spacing**, **Thickness**, **Spikes**, **Centre**, **Hole** | Wedge strips | The shape's own sizes; each shape shows the ones it uses |
+
+- **Blend** mixes colours in **RGB** or **HSL**.
+- **Steps**, in By character, places each character **By width**, from how wide the text before it is, or **By count**, evenly.
+- **Merge equal strips**, on at first, joins neighbouring strips that come out the same, so the file gets fewer lines.
+
+### Applying
+
+Drag across the sign. The modes without a drag show the result at once. The result previews over the video, and the handles and fields still change it until you apply.
+
+**Apply gradient (Enter)**, or <kbd>Enter</kbd> over the video, writes it as one step named **Gradient** in the history. The new lines are selected. <kbd>Esc</kbd> drops the preview, and nothing is written.
+
+When a gradient can't be made, the video says why:
+
+- *Choose a tag for the gradient*
+- *Pick two or more lines as stops*
+- *The picked lines must have the same text and tag blocks*
+- *No tag differs between the picked lines*
+- *Drag from where the gradient starts to where it ends*
+- *The line has no text or clip to cover*
+- *Strips along the clip need a clip on the line*
+- *Gradients do not work on an inverse clip*
+- *No characters on the line*
 
 ## Zoom
 
