@@ -228,6 +228,30 @@ Any other setting in the files is ignored, and a notice names it. A file that ca
 
 A Project's settings win over yours in the Project's window only, whether or not its folder is trusted. Spelling in each window follows that window's Project, and the grammar check follows the window you're working in. While a Project sets a setting, changing it on the **Yours** tab changes yours, which apply in the other windows. HikariSub reads the files when the window opens the Project: after editing them by hand, close the Project and open it again.
 
+#### Project fonts
+
+A Project can bring its own fonts, so its files look the same for everyone who opens it. List the font folders in `project.toml`, relative to the Project's folder:
+
+```toml
+version = 1
+fonts = ["fonts", "../common/fonts"]
+```
+
+A `fonts` list in `project.local.toml` replaces the one in `project.toml`. Every subtitle file in the Project's window then draws with the fonts in those folders: on the video, in the style preview and font samples, and when HikariSub works out which font a name gets. The [Project tab](#the-project-tab) doesn't show the list; write it in the file.
+
+When two fonts have the same name and style, HikariSub takes the first of:
+
+1. the fonts attached to the subtitle file;
+2. the Project's fonts;
+3. your own [Fonts folder](/en/docs/typesetting/fonts#your-fonts-folder);
+4. the fonts installed on your computer.
+
+So a Project font wins over an installed one, or one in your Fonts folder, of the same name and style. A closer match elsewhere still wins, such as an installed bold face for bold text.
+
+A font folder that can't be opened gives a warning in the Log, and the other folders still load. In a Project's window, the [Font collector](/en/docs/typesetting/fonts#the-font-collector)'s **Save to** starts at the Project's first font folder.
+
+For now, the font picker's list is the same in every window, and the Font collector doesn't take fonts from a Project's folders.
+
 #### The Project tab
 
 While a window has a Project open, **File › Settings** in that window has two tabs. **Yours** holds your own settings, as in any window. **Project** holds the values in the Project's `project.toml`, on three pages: **Spelling and grammar**, **Script properties** and **Translation**.
