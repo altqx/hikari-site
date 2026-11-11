@@ -140,11 +140,11 @@ While the window is open, the video shows the result, and choosing other lines w
 
 ## Line breaks, case and dialogue alternatives
 
-**Line breaks ›**, **Change case ›** and **Swap dialogue alternatives** are in the Grid's right-click menu and in the right-click menu of the [Line editor](/en/docs/basics/line-editor)'s text. They change the selected lines that are shown. On a line that has a [Translated text](/en/docs/translation/translation-mode), they change that text; on others, the line's text. Tags stay as they are, and each use is one undo step.
+**Line breaks ›**, **Change case ›** and **Swap dialogue alternatives** are in the Grid's right-click menu and in the right-click menu of the [Line editor](/en/docs/basics/line-editor)'s text. They change the selected lines that are shown. On a line that has a [Translated text](/en/docs/translation/translation-mode), they change that text; on others, the line's text. In Translation mode, a line with no Translated text yet has its original text changed. Tags stay as they are, and each use is one undo step.
 
 **Line breaks ›** has:
 
-- **Insert balanced break** takes out the line's `\N` breaks and puts one where the two halves come out closest in width, measured with the line's style and tags. A break after `.`, `,`, `?`, `!`, `:` or `;` wins if it is within a tenth of the line's width of the best one, so `it was late, so all went home` becomes `it was late,\Nso all went home`. Breaks go between words, in Thai, Chinese and Japanese too, and never inside a character with its marks.
+- **Insert balanced break** takes out the line's `\N` breaks and puts one where the two halves come out closest in width, measured with the line's style and tags. A break after `.`, `,`, `?`, `!`, `:` or `;`, or after `。`, `、`, `，`, `？`, `！`, `：` or `；`, wins if it is within a tenth of the line's width of the best one, so `it was late, so all went home` becomes `it was late,\Nso all went home`. Breaks go between words, in Thai, Chinese and Japanese too, and never inside a character with its marks.
 - **Move break left** and **Move break right** move the line's first `\N` one word, so `one two\Nthree four` becomes `one two three\Nfour`.
 - **Remove breaks** takes out every `\N`. Each becomes one space, so `one two\Nthree` becomes `one two three`, or nothing between Chinese, Japanese or Thai text.
 - **Wrap only at \N (\q2)** puts `\q2` in the tags at the start of each line, so the line breaks only at its `\N`: `{\b1}text` becomes `{\q2\b1}text`. It is ticked when every one of the lines has it, and then takes it out of them all.
@@ -157,7 +157,7 @@ While the window is open, the video shows the result, and choosing other lines w
 
 **Swap dialogue alternatives** swaps the two wordings of a line written with `{*}`. In `{*}Big brother{*Onii-chan}!` the line shows *Big brother*, and a swap gives `{*}Onii-chan{*Big brother}!`. A swap of `Tanaka{*}-san{*}` hides *-san*, as `Tanaka{**-san}`, and a second swap brings it back. A line whose Effect is `***` also turns from a comment into dialogue, or back.
 
-None of them has a key at first. Give one in **File › Settings › Shortcuts**.
+None of them has a key at first: <kbd>Shift</kbd>+click one in the menu, or give it one in **File › Settings › Shortcuts**.
 
 ## Copying and pasting
 
