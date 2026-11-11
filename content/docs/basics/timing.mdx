@@ -71,6 +71,17 @@ A keyframe usually starts a new shot. Lines that start or end on one look tidier
 
 Keyframes come from the video. **Video › Open keyframes** loads them from a file instead, as the [Video guide](/en/docs/basics/video#keyframes) explains.
 
+## Timing helpers
+
+**Subtitles › Timing helpers** holds small timing commands, each one undo step. They have no key at first: <kbd>Shift</kbd>+click one in the menu, or give it one in **File › Settings › Shortcuts**.
+
+- **Snap start to the previous keyframe**, **Snap start to the next keyframe**, **Snap end to the previous keyframe** and **Snap end to the next keyframe** move each selected line's start or end to the keyframe before or after it. A time already on a keyframe moves on to the next one. A start never passes its line's end, nor an end its start, and a line with no keyframe that way keeps its times.
+- **Add lead-in to the selected lines**, **Remove lead-in from the selected lines**, **Add lead-out to the selected lines** and **Remove lead-out from the selected lines** use the lead-in and lead-out amounts in **File › Settings › Audio**. Adding stops at the line before's end, or the line after's start, so lines don't overlap; comment lines don't count. Removing always leaves the line at least one frame.
+- **Move start one frame earlier**, **Move start one frame later**, **Move end one frame earlier** and **Move end one frame later** move the selected lines' start or end by one frame.
+- **Extend previous line to this start** makes the line before the active one end where it starts, and **Extend next line to this end** makes the line after it start where it ends. Comment lines are skipped, and at the first or last line nothing changes.
+
+All but the two Extend commands need a video. To shift whole lines, use [Shift times](#shift-times).
+
 ## Shift times
 
 **Subtitles › Shift times…** (<kbd>Ctrl</kbd>+<kbd>I</kbd>) shows the **Shift times** panel (see [Where a panel opens](/en/docs/customize/layouts#where-a-panel-opens)). It moves many lines at once, for example to fit subtitles to a version of the video that starts two seconds later.
@@ -122,6 +133,16 @@ Each rule has a switch:
 - **Snap to keyframes:** **Start within** and **End within** a number of milliseconds **before** and **after** a keyframe. It needs keyframes, and leaves a line alone if snapping would make it 600 ms long or less.
 
 They run in that order.
+
+### The assistant
+
+The panel's **Assistant** tab, beside **Preview**, times the lines one at a time. **Subtitles › Timing helpers › Timing assistant** opens it. Like the rules, it needs a video. For the active line, it shows the start and end now and the ones it suggests, from the rules above, with the keyframes near it. **Why** says what moved each edge, such as *Snapped to the keyframe 2 frames earlier.* or *Lead-in of 200 ms, linked to the previous line.* A rule that is off isn't used.
+
+- **Accept** (<kbd>Enter</kbd>) sets the suggested times and goes to the next line. **Accept assistant suggestion**, in the same menu, does the same from anywhere.
+- **Change** (<kbd>Alt</kbd>+<kbd>C</kbd>) lets you type other times first.
+- **Skip** (<kbd>Alt</kbd>+<kbd>S</kbd>) leaves the line as it is and goes to the next.
+
+Each accepted line is one undo step. The assistant goes through every line from the active one on, *Line 4 of 120*, skipping comment lines. With **Lines in chosen styles…** it takes only those styles; it doesn't follow the panel's other **Lines** choices. At the end it says how many lines you accepted and skipped.
 
 ## Preview and Apply
 
