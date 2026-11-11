@@ -84,6 +84,31 @@ HikariSub fits the lines' position, scale and rotation, and the line at that end
 
 **Video › Tracking › Extrapolate \move to the line** takes each selected line's `\move` with start and end times, and makes it run over the whole line at the same speed. A notice says how many lines changed.
 
+## Tracking a colour
+
+**Video › Track colour…** follows the colour of one point on the video across the frames of the selected lines, and writes it as tags, so a sign can take on a colour that changes in the picture. It needs an open video, and has no key at first: <kbd>Shift</kbd>+click it in the menu, or give it one in **File › Settings › Shortcuts**.
+
+It pauses the video and opens a window on the frame you are on. Frames are read without subtitles. Click the frame to pick the point, or type its **X** and **Y**; the arrow keys move it. **Follow tracking data** moves the point with After Effects tracking data from the clipboard, one row for each frame of the active line, by how far the data moves from the frame you are on.
+
+- **Colour** writes `\c`, `\2c`, `\3c` or `\4c`, the ones you tick. `\c` is ticked at first.
+- **Alpha** writes `\alpha`, or the `\1a` to `\4a` you tick, by how close the point is to the **Sign colour** or the **Background colour**: the sign colour gives `&H00&`, the background colour `&HFF&`, and a grey halfway between black and white `&H7F&`. They start as black and white, and **Use the point's colour** takes the point's colour on this frame.
+- **Skip repeated colours**, on at first, writes nothing for a frame whose value is the same as the frame before.
+
+Each selected line gets the values of its own frames: the first frame's as plain tags, then a `\t` for each later frame, such as `\alpha&H00&\t(40,40,\alpha&H7F&)`. A frame where the point can't be read writes nothing. The tags go in the line's first tag block, in place of the ones they replace. The window shows the colour on each frame and the result, and the video shows it before you press **Apply**. **Apply** is one undo step, *Track colour*.
+
+## Finding a fade
+
+**Video › Find fade…** gives the active line a `\fad` from where its sign fades in and out on the video. It needs an open video, and has no key at first, like **Track colour…**.
+
+Move the video to a frame of the line where the sign is fully shown first. Find fade pauses the video and opens a window on that frame, read without subtitles. Pick a point on the sign, as for [Track colour](#tracking-a-colour). If the line has a one-point clip, such as `\clip(m 385 93)`, that is the point, and the clip comes out when the fade is written. **Follow tracking data** works as it does there.
+
+- **Fade in** ends on the first frame of the line, up to this one, whose colour at the point is within **Tolerance** of this frame's.
+- **Fade out** starts on the first frame after this one whose colour is further away. Every frame is checked, so a flicker can end it.
+- **Tolerance**, 5 at first, is how far apart two colours may be in RGB and still count as the same.
+- A frame where the point can't be read counts as neither, and a fade shorter than half a frame is 0.
+
+The window draws each frame's distance from the colour, with where the fade in ends and the fade out starts. If no frame up to this one has the point's colour, or the point keeps its colour to the end of the line, the window says so. Untick **Fade in** or **Fade out** to find only one: the end you untick keeps the line's own value, or 0. The `\fad` replaces the line's own or goes in its first tag block, so `{\pos(1,2)}x` becomes `{\fad(220,300)\pos(1,2)}x`. The video shows it before you press **Apply**, which is one undo step, *Find fade*.
+
 ## Coming from Aegisub-Motion
 
 The Aegisub-Motion script and the other tracking scripts still come with HikariSub, unchanged. **Apply motion data…** gives the same lines as Aegisub-Motion, with these differences:
