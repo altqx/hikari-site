@@ -5,7 +5,7 @@ description: Ask HikariSub's AI agent to work on your subtitles in threads, choo
 
 The **Agent** panel is where you work with HikariSub's AI agent. You ask in a thread, a conversation of its own, and the agent reads your subtitles and changes them. Every change it makes to your subtitles waits in the [Review panel](/en/docs/ai/review) until you keep or undo it.
 
-HikariSub has no AI server of its own. The agent runs on a provider you add, with your API key, a ChatGPT or OpenRouter sign-in, or a model on this computer.
+HikariSub has no AI server of its own. The agent runs on a provider you add, with your API key, a ChatGPT or OpenRouter sign-in, or a model on this computer. A thread can also run on an agent you have installed, such as [Claude Code](#agents-on-this-computer).
 
 ## Opening the panel
 
@@ -31,7 +31,7 @@ Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**
 - **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
 - **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
 
-Below the box, the model button picks the thread's model from your providers' models, and the mode button its [mode](#modes).
+Below the box, the model button picks the thread's model from your providers' models, or an [agent on this computer](#agents-on-this-computer), and the mode button its [mode](#modes).
 
 ## What the thread shows
 
@@ -41,6 +41,21 @@ Below the box, the model button picks the thread's model from your providers' mo
 - **Each change it made,** with **Review**, which opens the Review panel. In Auto mode, a change the judge approved says *judge approved*.
 - **Its plan,** for longer work: a list it ticks off as it goes.
 - **Questions** for you, and notices, such as *The turn failed* with **Retry the turn**.
+
+## Agents on this computer
+
+A thread can run on an AI agent you have installed instead of on a provider. For now, that agent is Claude Code.
+
+When `claude` is on your `PATH`, the model menu lists **Claude Code** first. A thread on it runs on your own `claude`, with its sign-in and its default model:
+
+- **Only HikariSub's tools.** It works through the same tools as any thread. Claude Code's own tools, such as running commands or editing files, are off, and your Claude Code settings and MCP servers aren't loaded.
+- **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
+- **Costs.** The cost Claude Code reports for each turn counts toward the thread's and the day's [cost caps](#cost-caps).
+- **A provider still.** The panel needs a provider with a Chat model before it shows the box, even for a Claude Code thread.
+
+The first time you use Claude Code, HikariSub downloads the Claude Agent SDK, which it uses to talk to `claude`. See [What is sent](/en/docs/help/what-is-sent#ai).
+
+To let Claude Code you start yourself edit your files instead, see [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent).
 
 ## Modes
 
