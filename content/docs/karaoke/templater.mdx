@@ -8,7 +8,7 @@ import renderCostDark from './images/render-cost-dark.webp';
 
 The karaoke templater makes effects from karaoke lines. You write **templates**: comment lines whose Effect starts with `template`, holding override tags, variables such as `$start` and Lua expressions. When you apply them, the templater makes new lines from every karaoke line, one per syllable or one per line, with the tags filled in for each.
 
-The templater is built into HikariSub. It is Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, run natively rather than as a Lua script: Lua runs only your templates' code lines and `!expressions!`. Its output is the same as Aegisub 3.2.2's, byte for byte, apart from [`char` templates](#characters), the order of [named line templates](#named-line-templates) and a mark on each line saying which karaoke line it came from ([below](#applying-to-selected-lines)). Existing templates work unchanged. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
+The templater is built into HikariSub. It is Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, run natively rather than as a Lua script: Lua runs only your templates' code lines and `!expressions!`. Its output is the same as Aegisub 3.2.2's, byte for byte, apart from [`char` templates](#characters), the order of [named line templates](#named-line-templates) and a mark on each line saying which karaoke line it came from ([below](#applying-to-selected-lines)). Existing templates work unchanged. It also runs templates written for [karaOK](#karaok-templates), as karaOK does. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
 
 To write templates with a live preview, use the [Template editor](/en/docs/karaoke/template-editor); to start from a ready-made effect, insert one of the [presets](/en/docs/karaoke/presets). This page covers the template language and running the templater.
 
@@ -101,6 +101,53 @@ code once      graphemes = false
 ```
 
 Text without marks or joined emoji splits as it always did.
+
+## karaOK templates
+
+The templater also runs karaOK, an extended Karaoke Templater, whose templates add more classes and variables. A file uses karaOK when its `[Script Info]` has the line `Karaoke Templater: karaOK`. `Karaoke Templater: Aegisub 3.2.2` keeps it on Aegisub 3.2.2's templater. **Script properties** has no field for this line, so add it in a text editor.
+
+Without the line, a file uses karaOK when a template or code line uses something only karaOK has:
+
+- `lsyl`, `lword`, `lchar`, `word` or `furichar` in a template's Effect;
+- `code word`, `code char` or `code furichar`;
+- `k_retime(`;
+- the variables `$ci`, `$slen`, `$llen` or `$len`;
+- `tenv.word`, `tenv.char`, `tenv.syll` or `tenv.basechar`.
+
+`template char` and the `style` modifier on their own don't choose karaOK. A file with none of these runs as it did before.
+
+karaOK adds:
+
+| Word | Template runs |
+| --- | --- |
+| `lsyl` | Once per karaoke line, as `line` does: its text goes before each syllable |
+| `lword` | Once per karaoke line, with its text before each word |
+| `lchar` | Once per karaoke line, with its text before each character |
+| `word` | Once per word |
+| `furichar` | Once per furigana character |
+
+| Modifier | Does |
+| --- | --- |
+| `style X` | Applies to the karaoke lines whose style name contains X |
+
+`code word`, `code char` and `code furichar` run once per word, character or furigana character. `$ci` is where the current syllable or character starts in the line, counted in characters; `$slen` is the syllable's length and `$llen` the line's. `$len` is the length of the syllable, or of the line in a line template. `k_retime` retimes the line as `retime` does, and moves the syllable's times the other way, so it is still sung at the same moment.
+
+As in karaOK, positions are rounded to 0.1 px rather than to whole pixels, and a loop writes no line once `j` is past `maxloop`.
+
+### Where it differs from karaOK
+
+The built-in gives the same lines as karaOK, byte for byte, apart from fixes to karaOK's own bugs:
+
+- **Words in any script.** karaOK found words by byte and characters by character, so on a line with any text outside ASCII, characters went to the wrong words. Words now count characters.
+- **`template syl char` is a `char` template.** karaOK ran it once per syllable and again once per character. Other pairs of classes on one template keep the first, and the run reports *Unable to combine … class templates with the … class this template has*.
+- **Named line templates keep their class.** `template lsyl X` followed by `template line X` lost its per-syllable part in karaOK and wrote no text. A later line of the template with another class, such as `lword` after `lsyl`, reports the same problem and adds nothing.
+- **`k_retime` moves one loop's syllable.** In karaOK, every later loop and every later template on that syllable saw the times already moved.
+- **`style X` is plain text.** karaOK read X as a Lua pattern, so `.`, `-` or `(` in it matched more styles than written.
+- **Each furigana character takes its own syllable's tags.** With `{\k40\1c&H0000FF&}漢|かん{\k30\b1}字|じ`, a `furichar` template with `keeptags` gives `{\1c&H0000FF&}か`, `{\1c&H0000FF&}ん` and `{\b1}じ`. karaOK gave the first character of each furigana part the line's first tags, whichever syllable it belonged to, and the others none.
+- **No `textbuffer` or `w` globals.** karaOK left them set while it built lines and words.
+- **Characters as they are drawn.** `char`, `lchar`, `$ci`, `$slen`, `$llen` and `$len` count characters as [`char` templates](#characters) split them, so Thai vowel and tone marks stay on their letters. `graphemes = false` in a `code once` line counts code points again, as karaOK did. Thai support is by Jibrill.
+
+karaOK itself is a separate script with two macros of its own. The built-in keeps **Apply karaoke template** and **Apply karaoke template to selected lines** for both versions.
 
 ## Karaoke lines
 
