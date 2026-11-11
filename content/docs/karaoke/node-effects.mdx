@@ -95,6 +95,14 @@ Each change on the canvas is part of one **Edit graph** step in the undo history
 
 A `char` unit is a character as it is drawn, as in the templater's [Characters](/en/docs/karaoke/templater#characters). Thai vowel and tone marks stay on their letters, so `กินน้ำ` gives `กิ`, `น` and `น้ำ`. A letter with a combining accent, and an emoji made of several joined emoji, are one character too. Thai support is by Jibrill.
 
+## Strips, copies and particles
+
+Three nodes under **Units** in **Add node** give each unit, such as a line or a syllable, once for each strip, copy or particle, with its number and how many there are:
+
+- **Clip gradient** cuts the unit's box into strips, side by side or stacked, with padding around the box if you want it. Each strip gives its own `\clip` rectangle and a colour from a gradient of `#RRGGBB` stops. The edges are whole pixels, and neighbouring strips share theirs, so the strips leave no gaps.
+- **Array** places copies around the unit: on a grid centred on it, on a circle around it, or evenly along a drawing wired into its path. Each copy gives its offset, its position and an angle in degrees, as `\frz` takes it. An Array on a path with no drawing wired in is a problem.
+- **Particles** spreads copies at random over a rectangle or an ellipse centred on the unit. They draw from the graph's seed and the node's own seed, so the same graph seed, node seed and line give the same particles on every run, on Linux and Windows alike.
+
 ## Presets
 
 **From a preset** adds one of the ten [presets](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
@@ -111,6 +119,12 @@ A `char` unit is a character as it is drawn, as in the templater's [Characters](
 - Colour per line.
 
 Each graph writes the same lines as its template, byte for byte, and none of them uses Lua. Colour sweep, Glow and Echo have two **Emit** nodes, one for each layer of the template.
+
+After the presets come three examples of the [strips, copies and particles](#strips-copies-and-particles) nodes, which no template can do:
+
+- **Gradient strips**: each line cut into eight strips, coloured from pink to blue.
+- **Ring of copies**: eight copies of each syllable on a circle around it, each turned to its place, while it is sung.
+- **Particle burst**: twelve copies of each syllable fly out to random places around it and fade.
 
 ## The library
 
