@@ -155,7 +155,7 @@ Highlight flashes and Paint and cloud also [export as template lines](#exporting
 
 Highlights exports as `multi`, and Inline-fx as `fx` and its name. An Inline-fx with an empty name exports as an `fxgroup`, which a code line sets for the units with no inline-fx.
 
-A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, a condition on an Emit, the Clip gradient, Array and Audio peaks nodes, and Highlights on whole lines. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
+A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, [nodes from plugins](#nodes-from-plugins), a condition on an Emit, the Clip gradient, Array and Audio peaks nodes, and Highlights on whole lines. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
 
 ## Lua nodes
 
@@ -167,3 +167,15 @@ The **Lua** node runs a short piece of Lua code once per line, for all its units
 - **Ten seconds.** If a line's Lua takes longer than 10 seconds, it is stopped, and Apply writes nothing.
 
 Lua nodes need the same trust as [templates](/en/docs/karaoke/template-editor#trusting-a-file). When a graph has a Lua node, the mode says *This file's node effects run Lua code with your rights. Preview them if you trust the file.* Press **Preview** to trust the file. It is one choice per open file: trusting it here or in the Template editor covers both. A graph without a Lua node never asks.
+
+## Nodes from plugins
+
+A [plugin](/en/docs/plugins/using-plugins) can add nodes of its own. They are listed in **Add node** under the plugin's name, and work like Lua nodes:
+
+- **The plugin is the trust.** Installing the plugin and turning it on is all its nodes need. They don't ask for the file's trust, which is still needed for the file's own Lua nodes.
+- **The same sandbox.** They run in the same helper as Lua nodes, with the same limits and the same ten seconds.
+- **Only the plugin's code.** A node's code always comes from the installed plugin's files. The graph keeps only which node it is and its fields, so code that a file carries for a plugin node is ignored.
+
+When the plugin isn't installed, is turned off or revoked, or its files are no longer signed with the key it had when you installed it, the node stays in the graph. It shows a problem naming the plugin, such as *comes from the plugin "Zigzag", which is turned off or not trusted*, and Apply writes nothing.
+
+A graph with a plugin node can't be [exported as template lines](#exporting-as-template-lines): the node *runs in HikariSub's Lua helper, not in the templater*.
