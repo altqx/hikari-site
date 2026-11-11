@@ -76,6 +76,7 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 - **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last.
 - **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words or By wraps.
+- [Remove tags…](#removing-tags).
 - [Interpolate across lines…](#interpolating-across-lines), for three or more lines.
 - **Swap lines**, **Make times continuous ›** with the previous or the next line, **Make line group** and [Convert Aegisub folds to line groups](#aegisub-folds).
 - [Line breaks ›, Change case › and Swap dialogue alternatives](#line-breaks-case-and-dialogue-alternatives).
@@ -164,6 +165,22 @@ None of them has a key at first: <kbd>Shift</kbd>+click one in the menu, or give
 <kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste whole lines. Pasted lines go before the first selected line.
 
 **Copy columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>) copies only the fields you tick, such as the times or the text without tags. **Paste columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes them into the same fields of the selected lines, in order. Use them to copy the timing of one set of lines onto another.
+
+## Removing tags
+
+**Remove tags…**, in the Grid's menu and in the Line editor's right-click menu, removes the override tags you choose. It has no key at first: give it one in **File › Settings › Shortcuts**. The window has:
+
+- **Lines:** **Selected lines**, or **Whole file, without comment lines**.
+- **Blocks:** **All blocks**, **Start block** for the `{…}` block at the start of a line, or **Inline blocks** for the others.
+- **Tags:** the tag families to remove, such as **Colour** (`\c`, `\1c` to `\4c`), **Blur** (`\blur`, `\be`) and **Position** (`\pos`, `\move`), and **Other tags** for any tag not listed. **Select all** ticks every family.
+- **Clean up:**
+  - **Remove comments:** blocks with no tag, such as `{note}`.
+  - **Merge adjacent tag blocks:** `{\b1}{\i1}` becomes `{\b1\i1}`.
+  - **Drop overridden tags:** a tag that a later one in its block replaces, and repeats of `\pos`, `\org`, `\an` and `\fad` in a line, where the first is the one that counts.
+  - **Clean Tags rules:** what the bundled Clean Tags script does, with the same result byte for byte. It merges blocks, moves tags that act on the whole line to the start, and drops empty blocks.
+  - **Delete lines left empty.**
+
+The preview shows the lines as they will be, and how many change or are deleted. **Remove** applies it all as one undo step, *Remove tags*. The window keeps your choices for next time. The Clean Tags and Strip tags scripts still come with HikariSub, in the **Automation** menu.
 
 ## Sorting
 
