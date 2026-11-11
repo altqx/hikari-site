@@ -8,7 +8,7 @@ import renderCostDark from './images/render-cost-dark.webp';
 
 The karaoke templater makes effects from karaoke lines. You write **templates**: comment lines whose Effect starts with `template`, holding override tags, variables such as `$start` and Lua expressions. When you apply them, the templater makes new lines from every karaoke line, one per syllable or one per line, with the tags filled in for each.
 
-HikariSub ships Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, and its output is the same as Aegisub 3.2.2's, byte for byte, apart from a mark on each line saying which karaoke line it came from ([below](#applying-to-selected-lines)). Existing templates work unchanged. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
+The templater is built into HikariSub. It is Karaoke Templater 2.1.7, the version in Aegisub 3.2.2, run natively rather than as a Lua script: Lua runs only your templates' code lines and `!expressions!`. Its output is the same as Aegisub 3.2.2's, byte for byte, apart from [`char` templates](#characters), the order of [named line templates](#named-line-templates) and a mark on each line saying which karaoke line it came from ([below](#applying-to-selected-lines)). Existing templates work unchanged. Kara Effector's `ke4` library ships too; templates reach it as `_G.ke4`.
 
 To write templates with a live preview, use the [Template editor](/en/docs/karaoke/template-editor); to start from a ready-made effect, insert one of the [presets](/en/docs/karaoke/presets). This page covers the template language and running the templater.
 
@@ -19,7 +19,7 @@ The templater adds two macros to the **Automation** menu:
 - **Apply karaoke template** applies the templates to every karaoke line.
 - **Apply karaoke template to selected lines** applies them to the selected karaoke lines only: see [below](#applying-to-selected-lines).
 
-The Template editor's **Apply** runs the same two. **Automation › Rerun last macro** and **Repeat last run** run the templater again. The macros have no keys at first: <kbd>Shift</kbd>+click one in the menu to give it one.
+The Template editor's **Apply** runs the same two. In the [Automation panel](/en/docs/automation/automation-panel#script-rows), the templater shows as **Karaoke Templater**, marked **Built-in**. A script of your own whose macros have the same names, such as a copy of `kara-templater.lua` in your autoload folder, isn't loaded. Its card says *Not loaded: its macros … are the built-in Karaoke Templater's, which runs them instead.* **Automation › Rerun last macro** and **Repeat last run** run the templater again. The macros have no keys at first: <kbd>Shift</kbd>+click one in the menu to give it one.
 
 The file needs at least one template line; code lines alone don't count. Without one, the run stops with *Its validation did not let it run; nothing was changed.*
 
@@ -71,7 +71,11 @@ The Effect of a template line is `template` followed by a class and modifiers, i
 | `fx name` | Runs only for syllables marked `{\-name}` |
 | `fxgroup name` | Runs only while `fxgroup.name` isn't `false` |
 
+### Named line templates
+
 `template line name` and `template pre-line name` on several lines join into one template, in file order. The name can't be one of the words above.
+
+Line templates without a name run first, in file order. Then the named ones run, in the order their names first appear in the file. Aegisub 3.2.2 ran named line templates in an order that could change from one run to the next.
 
 A code line's Effect is `code` followed by when it runs:
 
@@ -84,7 +88,7 @@ A code line's Effect is `code` followed by when it runs:
 
 `all`, `noblank` and `loop N` work on code lines too.
 
-A run goes like this: the `once` code first. Then, for each karaoke line in file order, its line templates and line code in file order, then each syllable through every syllable template, then each furigana part.
+A run goes like this: the `once` code first. Then, for each karaoke line in file order, its line code and unnamed line templates in file order, then its [named line templates](#named-line-templates), then each syllable through every syllable template, then each furigana part.
 
 ### Characters
 
@@ -250,3 +254,10 @@ When nothing is drawn, it says *No subtitles on this frame*. Counting the lines 
 ## Not in HikariSub
 
 HikariSub has no export filters, so the templater's *Karaoke template* export filter isn't there. Apply templates with the macros or the Template editor.
+
+A few things work differently from Aegisub 3.2.2's templater:
+
+- **No `f` or `err` globals.** Working out an `!expression!` no longer sets them, so a template or code line can't read the last expression's function or error.
+- **No level 5 trace lines.** Lines such as *Applying template to one syllable with text: …* aren't written, even at **Lua trace level** 5. Problems are still logged.
+- **Text that can't be measured counts as 0 wide.** The run logs *could not measure text in the Style …* as a problem and goes on, where 3.2.2 stopped with a Lua error.
+- **The layout uses the styles as they are when the run starts.** A code line that changes `line.styleref` or the `styles` table, or replaces `aegisub.text_extents`, no longer moves later lines' syllables. `char` templates still measure each character with `aegisub.text_extents`.
