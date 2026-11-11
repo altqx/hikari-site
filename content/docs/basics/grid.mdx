@@ -76,7 +76,10 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 - **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last.
 - **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words or By wraps.
+- [Remove tags…](#removing-tags).
+- [Interpolate across lines…](#interpolating-across-lines), for three or more lines.
 - **Swap lines**, **Make times continuous ›** with the previous or the next line, **Make line group** and [Convert Aegisub folds to line groups](#aegisub-folds).
+- [Line breaks ›, Change case › and Swap dialogue alternatives](#line-breaks-case-and-dialogue-alternatives).
 - **Select lines visible on video**, **Show subtitles preview** and [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation).
 - **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
 
@@ -111,11 +114,73 @@ A split into characters keeps each character together with its marks: Thai vowel
 
 Untick **Bake animations** for the split from before: every frame keeps its `\t`, `\fad` and `\fade` tags, and only `\move` becomes `\pos`. The menu item and **File › Settings › Grid › Splitting › Bake animations when splitting into frames** are the same setting. Either way, the whole split is one undo step.
 
+## Interpolating across lines
+
+**Interpolate across lines…** fills the lines between the first and the last selected line with the tag values between theirs, so a sign can move, turn or change colour from one line to the next. It needs at least three selected lines, such as the lines **Split › Into frames** makes. Lines you didn't select, and hidden lines, aren't part of the run.
+
+Each middle line gets values by its place in the run. With `{\pos(0,0)}` on the first of three lines and `{\pos(100,50)}` on the last, the middle line gets `{\pos(50,25)}`. It works on:
+
+- numbers such as sizes, scales, borders and rotations;
+- colours and alphas, channel by channel;
+- `\pos` and `\org`;
+- rectangle and drawing `\clip` and `\iclip`. A drawing moves point by point, so both ends need the same commands and number of points;
+- `\t` tags written the same way at both ends, with the same tags inside: their times, acceleration and values.
+
+Only the tags whose values differ between the first and last line change. In each middle line, the tag's old values go, from its `\t` tags too, and the new value is written. Other tags, and the text, are left alone. A tag that one end doesn't have takes the value an earlier tag block gives it, or else the style's. A missing `\pos` takes the start of a `\move`, or else where the line's alignment puts it. A tag keeps the spelling the ends give it, so `\1c` stays `\1c` and `\fr` stays `\fr`.
+
+Tags in the middle of the text count too: they are matched by the characters they come before. When the first and last lines have different text, only the tags at the start are interpolated, and the window says so.
+
+The window lists every tag that changes, with its value on the first and last line, each ticked. Untick one to leave it as it is. A clip or `\t` that can't be interpolated is greyed, with the reason, such as *The clips have different shapes.* Below the list:
+
+- **Acceleration** is 1 for even steps. Above 1 starts slow and ends fast; below 1 starts fast and ends slow.
+- **Rotate the shortest way** takes the shorter way round the circle. From `\frz350` to `\frz10`, the middle line gets `\frz180` without it and `\frz0` with it.
+- **Cascade transforms** runs each line's `\t` tags one after another over the line. On a one-second line, `{\t(\fscx200)\t(0,5,2,\frz30)}` becomes `{\t(0,500,\fscx200)\t(500,1000,2,\frz30)}`. It re-times the first and last lines' `\t` tags too.
+- **Result** shows each line's new text.
+
+While the window is open, the video shows the result, and choosing other lines works it out again. **Apply** or <kbd>Enter</kbd> makes the change as one undo step; **Cancel** or <kbd>Esc</kbd> changes nothing. It has no key at first: <kbd>Shift</kbd>+click it in the menu to give it one.
+
+## Line breaks, case and dialogue alternatives
+
+**Line breaks ›**, **Change case ›** and **Swap dialogue alternatives** are in the Grid's right-click menu and in the right-click menu of the [Line editor](/en/docs/basics/line-editor)'s text. They change the selected lines that are shown. On a line that has a [Translated text](/en/docs/translation/translation-mode), they change that text; on others, the line's text. In Translation mode, a line with no Translated text yet has its original text changed. Tags stay as they are, and each use is one undo step.
+
+**Line breaks ›** has:
+
+- **Insert balanced break** takes out the line's `\N` breaks and puts one where the two halves come out closest in width, measured with the line's style and tags. A break after `.`, `,`, `?`, `!`, `:` or `;`, or after `。`, `、`, `，`, `？`, `！`, `：` or `；`, wins if it is within a tenth of the line's width of the best one, so `it was late, so all went home` becomes `it was late,\Nso all went home`. Breaks go between words, in Thai, Chinese and Japanese too, and never inside a character with its marks.
+- **Move break left** and **Move break right** move the line's first `\N` one word, so `one two\Nthree four` becomes `one two three\Nfour`.
+- **Remove breaks** takes out every `\N`. Each becomes one space, so `one two\Nthree` becomes `one two three`, or nothing between Chinese, Japanese or Thai text.
+- **Wrap only at \N (\q2)** puts `\q2` in the tags at the start of each line, so the line breaks only at its `\N`: `{\b1}text` becomes `{\q2\b1}text`. It is ticked when every one of the lines has it, and then takes it out of them all.
+
+**Change case ›** has **lowercase**, **UPPERCASE**, **Title Case**, **Sentence case**, **Full-width** and **Half-width**:
+
+- **Title Case** turns `the lord of the rings` into `The Lord of the Rings`.
+- **Sentence case** gives each sentence a capital first letter, so `my friend in Tokyo` becomes `My friend in Tokyo`. Only a line written all in capitals has its other letters made small: `WHAT IS THIS. NOTHING.` becomes `What is this. Nothing.`
+- **Full-width** turns letters, digits and signs into their full-width forms, and **Half-width** turns them back. `\N`, `\n`, `\h` and drawings stay, so `a\Nb\hc\nd` becomes `ａ\Nｂ\hｃ\nｄ`. Half-width leaves `｛`, `｝` and `＼` full-width, so that they can't become tags: `Ｈｅｌｌｏ　ｗｏｒｌｄ！ ｛＼Ｎ｝` becomes `Hello world! ｛＼N｝`.
+
+**Swap dialogue alternatives** swaps the two wordings of a line written with `{*}`. In `{*}Big brother{*Onii-chan}!` the line shows *Big brother*, and a swap gives `{*}Onii-chan{*Big brother}!`. A swap of `Tanaka{*}-san{*}` hides *-san*, as `Tanaka{**-san}`, and a second swap brings it back. A line whose Effect is `***` also turns from a comment into dialogue, or back.
+
+None of them has a key at first: <kbd>Shift</kbd>+click one in the menu, or give it one in **File › Settings › Shortcuts**.
+
 ## Copying and pasting
 
 <kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste whole lines. Pasted lines go before the first selected line.
 
 **Copy columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>) copies only the fields you tick, such as the times or the text without tags. **Paste columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes them into the same fields of the selected lines, in order. Use them to copy the timing of one set of lines onto another.
+
+## Removing tags
+
+**Remove tags…**, in the Grid's menu and in the Line editor's right-click menu, removes the override tags you choose. It has no key at first: give it one in **File › Settings › Shortcuts**. The window has:
+
+- **Lines:** **Selected lines**, or **Whole file, without comment lines**.
+- **Blocks:** **All blocks**, **Start block** for the `{…}` block at the start of a line, or **Inline blocks** for the others.
+- **Tags:** the tag families to remove, such as **Colour** (`\c`, `\1c` to `\4c`), **Blur** (`\blur`, `\be`) and **Position** (`\pos`, `\move`), and **Other tags** for any tag not listed. **Select all** ticks every family.
+- **Clean up:**
+  - **Remove comments:** blocks with no tag, such as `{note}`.
+  - **Merge adjacent tag blocks:** `{\b1}{\i1}` becomes `{\b1\i1}`.
+  - **Drop overridden tags:** a tag that a later one in its block replaces, and repeats of `\pos`, `\org`, `\an` and `\fad` in a line, where the first is the one that counts.
+  - **Clean Tags rules:** what the bundled Clean Tags script does, with the same result byte for byte. It merges blocks, moves tags that act on the whole line to the start, and drops empty blocks.
+  - **Delete lines left empty.**
+
+The preview shows the lines as they will be, and how many change or are deleted. **Remove** applies it all as one undo step, *Remove tags*. The window keeps your choices for next time. The Clean Tags and Strip tags scripts still come with HikariSub, in the **Automation** menu.
 
 ## Sorting
 

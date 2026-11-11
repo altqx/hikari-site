@@ -1,5 +1,5 @@
 {
   "title": "AI",
   "defaultOpen": true,
-  "pages": ["agent", "connect-an-agent", "review"]
+  "pages": ["agent", "inline-actions", "connect-an-agent", "review"]
 }

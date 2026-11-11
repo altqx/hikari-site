@@ -15,7 +15,7 @@ HikariSub works on ASS subtitles, and opens and saves the common simpler formats
 **File › Open…** (<kbd>Ctrl</kbd>+<kbd>O</kbd>) opens a subtitle file. The picker opens in the folder you last used and lists:
 
 - **Subtitles:** ASS, SSA, SRT, SUB, TXT and MPL files.
-- **Word-timed lyrics:** LRC and TTML files, which open as a new ASS file named after them.
+- **Word-timed lyrics:** LRC, TTML and decoded KRC and QRC files, which open as a new ASS file named after them. To add lyrics to the open file instead, or to choose the encoding, use [Import lyrics](#importing-lyrics).
 - **YouTube timed text:** `.ytt` and `.srv3` files, which open as a new ASS file too. See [Opening srv3 files](/en/docs/basics/export#opening-srv3-files).
 - **Videos with embedded subtitles:** an MKV file's subtitle track opens as subtitles, also one stored compressed. **File › Import subtitles from MKV…** does the same.
 
@@ -30,6 +30,22 @@ If the file can't be opened, nothing changes: the tab keeps what it had, and the
 </Callout>
 
 When the subtitles name a video, audio or keyframes file, a bar offers to load them. If the video's size differs from the subtitles' resolution, HikariSub asks whether to [resample](#resolution) them.
+
+### Importing lyrics
+
+**File › Import lyrics…** turns a lyrics file into lines, with one `\k` syllable for each timed word. It has no key at first: give it one in **File › Settings › Shortcuts**. It reads:
+
+- **LRC** (`.lrc`): line times, several on one line for repeated lyrics, and word times;
+- **TTML** (`.ttml`): Apple Music's word and line timing;
+- **Kugou KRC** (`.krc`) and **QQ Music QRC** (`.qrc`), once they are decoded to text. As Kugou and QQ Music ship them they are encrypted, and HikariSub doesn't decrypt them. The window then says *This Kugou lyrics file is encrypted, so HikariSub can't read it.*, or the same for QQ Music: decode the file with your own tool first, then import that.
+
+After you choose the file, the **Import lyrics** window shows its format, how many lines it has and a preview of the first ones.
+
+- **Encoding** is the one HikariSub detected, marked *detected*: UTF-8, UTF-16 with a byte order mark, GB18030 (which also reads GBK and GB2312), Big5, Shift_JIS or EUC-KR. Pick another one, and the preview changes at once.
+- **Add the lines to:** **After the last line of the open file**, the choice when an ASS file is open, or **A new file**. In the open file, each line gets the **Style** you choose, the current line's at first. The import is one undo step, *Import lyrics*, and the new lines are selected afterwards. A new file takes the song's title as its Title.
+- **End times** are for lines whose end the file leaves open, such as a plain LRC line. **Each line ends when the next one starts**, or **Leave a gap before the next line**, 0.20 s at first. **Last line lasts (s)** gives the last line its length, 5 s at first. HikariSub keeps these choices for next time.
+
+**File › Open…** opens the same files straight into a new file, with the encoding detected and the end times at their defaults: each line ends when the next one starts, and the last one lasts 5 s.
 
 ## Saving
 
@@ -105,7 +121,7 @@ HikariSub can write the same credits into each ASS file you save, as HikariSub l
 
 Every save except an autosave writes the switched-on credits that differ from the file, as one undo step, *Changing the subtitle header*. Other formats are left alone.
 
-**File › Settings** doesn't show these yet. Set them in [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept), or for everyone in a Project, in its [Project settings](#project-settings). The [legacy settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
+Your own aren't in **File › Settings** yet: set them in [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept). For everyone in a Project, set them on the [Project tab](#the-project-tab) under **Script properties**, or in its [Project settings](#project-settings) file. The [legacy settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
 
 ```toml
 [scriptProperties]
@@ -197,7 +213,7 @@ Nothing is offered when that Project is already open in another window.
 
 ### Project settings
 
-A Project can share a few settings with everyone who opens its folder, such as the dictionary to check spelling with. Put them in `.hikari/project.toml` in the Project's folder. For your own changes that the others don't share, add `.hikari/project.local.toml`: where both files set a setting, the local one wins. Settings has no Project tab yet, so you write these files by hand. HikariSub doesn't change them.
+A Project can share a few settings with everyone who opens its folder, such as the dictionary to check spelling with. Put them in `.hikari/project.toml` in the Project's folder. For your own changes that the others don't share, add `.hikari/project.local.toml`: where both files set a setting, the local one wins. You can set them on the [Project tab](#the-project-tab) of **File › Settings**, or write the files by hand.
 
 The files use the tables and keys of your own [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept), and start with `version = 1`:
 
@@ -226,7 +242,44 @@ A Project can set only these:
 
 Any other setting in the files is ignored, and a notice names it. A file that can't be read is renamed with `.broken` at the end, a notice says so, and its settings don't apply.
 
-A Project's settings win over yours in the Project's window only, whether or not its folder is trusted. Spelling in each window follows that window's Project, and the grammar check follows the window you're working in. While a Project sets a setting, changing it in **File › Settings** changes yours, which apply in the other windows. HikariSub reads the files when the window opens the Project: after editing them, close the Project and open it again.
+A Project's settings win over yours in the Project's window only, whether or not its folder is trusted. Spelling in each window follows that window's Project, and the grammar check follows the window you're working in. While a Project sets a setting, changing it on the **Yours** tab changes yours, which apply in the other windows. HikariSub reads the files when the window opens the Project: after editing them by hand, close the Project and open it again.
+
+#### Project fonts
+
+A Project can bring its own fonts, so its files look the same for everyone who opens it. List the font folders in `project.toml`, relative to the Project's folder:
+
+```toml
+version = 1
+fonts = ["fonts", "../common/fonts"]
+```
+
+A `fonts` list in `project.local.toml` replaces the one in `project.toml`. Every subtitle file in the Project's window then draws with the fonts in those folders: on the video, in the style preview and font samples, and when HikariSub works out which font a name gets. The [Project tab](#the-project-tab) doesn't show the list; write it in the file.
+
+When two fonts have the same name and style, HikariSub takes the first of:
+
+1. the fonts attached to the subtitle file;
+2. the Project's fonts;
+3. your own [Fonts folder](/en/docs/typesetting/fonts#your-fonts-folder);
+4. the fonts installed on your computer.
+
+So a Project font wins over an installed one, or one in your Fonts folder, of the same name and style. A closer match elsewhere still wins, such as an installed bold face for bold text.
+
+A font folder that can't be opened gives a warning in the Log, and the other folders still load. In a Project's window, the [Font collector](/en/docs/typesetting/fonts#the-font-collector)'s **Save to** starts at the Project's first font folder.
+
+For now, the font picker's list is the same in every window, and the Font collector doesn't take fonts from a Project's folders.
+
+#### The Project tab
+
+While a window has a Project open, **File › Settings** in that window has two tabs. **Yours** holds your own settings, as in any window. **Project** holds the values in the Project's `project.toml`, on three pages: **Spelling and grammar**, **Script properties** and **Translation**.
+
+- Each row on the Project tab says where its value comes from: *Uses yours*, *Set in this project*, or *Set in project.local.toml*. A row set in `project.local.toml` can't be changed here.
+- **Use yours** takes the setting out of `project.toml`, so the window uses your own value again.
+- **Apply** writes only the settings you changed, and only to `project.toml`. They apply in the window at once.
+- On the **Yours** tab, a setting the Project sets says *Overridden in this project*.
+
+#### Trusting a Project folder
+
+When a Project's `.hikari` folder holds scripts, in `.hikari/automation`, or its `project.toml` has plugin settings, a `[plugins]` table, a bar across the top of the window says *This project has its own scripts or plugin settings. Trust "My Show" to run them.* **Trust folder** adds the Project's folder to your [trusted folders](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names). **Not now** hides the bar in that window, and isn't remembered. HikariSub doesn't run a Project's own scripts or plugin settings yet, trusted or not.
 
 ### Closing a Project
 
