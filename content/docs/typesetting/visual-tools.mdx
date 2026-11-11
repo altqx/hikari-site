@@ -174,6 +174,26 @@ When a gradient can't be made, the video says why:
 - *Gradients do not work on an inverse clip*
 - *No characters on the line*
 
+## Blur and glow layers
+
+**Subtitles › Blur and glow layers…** builds layers under the selected lines: glows, the border on a layer of its own, and a 3D shadow of stacked copies. It does natively what ua.BlurAndGlow, lyger's BorderSplit and NecrosCopy's 3D shadow do. It is also in the Grid's right-click menu and the Line editor's. The window can stay open while you work. While it is open, the video shows the selected lines with their layers, and **Preview on video** turns that off.
+
+Tick the parts you want:
+
+- **Glow:** blurred copies under each line. Each glow has its **Blur**, a **Border** added to the line's, a **Colour**, which is the line's border colour at first, and an **Alpha** in hex. **Add a glow layer** adds another, up to 8.
+- **Border:** the border on its own layer, blurred apart from the fill.
+  - **Under the border:** **Border colour**, or **Transparent**, where a thin fill-coloured border closes the gap under the blur.
+  - **Border blur** is the line's blur at first. The fill keeps the line's blur.
+  - **Hide the fill under the border during fades**, over the number of milliseconds you give it.
+  - **Second border** adds a wider border under the first, in its own width and colour. The colour is the line's fill colour at first.
+- **Shadow:** a 3D shadow of stacked copies. **Steps** is **Auto** at first, one a pixel of each line's shadow offset, and can be up to 64. The nearest and farthest copies have a colour, the line's shadow colour at first, and an alpha in hex. The copies between them go from one to the other.
+
+**Blur where a line has none** gives the built layers a blur, 0.6 at first, when a line has no `\blur` or `\be`. A line without a border skips Border, and a line whose shadow is under 1 px skips Shadow: the window says how many lines skip them.
+
+**Build layers** builds them all as one undo step, *Blur and glow layers*. The new lines go just above each line in the Grid, on the layers under it. The line itself moves up by the number of lines built under it, and other lines' layers don't change. The clip, the position, the move, the fade, drawings and the text stay on every layer. One build can make up to 20,000 lines.
+
+**Subtitles › Build layers with the last values**, also in the Grid's right-click menu, builds again on the selected lines with the values you last built with, without the window. Neither command has a key at first: give them one in **File › Settings › Shortcuts**.
+
 ## Zoom
 
 <kbd>Ctrl</kbd>+wheel zooms the video around the pointer, and <kbd>Shift</kbd>+wheel or a middle-button drag pans it. A tool that uses the wheel or the middle button keeps it: Hydra keeps the wheel and <kbd>Shift</kbd>+wheel, Vector clipping and Vector drawing keep the wheel, and Text X / Y rotation and Text scaling keep the middle button. A middle click that doesn't move still reaches the tool, so the Position pointer still puts `\pos` there. **Video › Reset zoom and pan**, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> over the video, goes back to the whole picture. The tools follow the zoom and the pan.
