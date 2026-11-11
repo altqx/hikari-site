@@ -5,7 +5,7 @@ description: Ask HikariSub's AI agent to work on your subtitles in threads, choo
 
 The **Agent** panel is where you work with HikariSub's AI agent. You ask in a thread, a conversation of its own, and the agent reads your subtitles and changes them. Every change it makes to your subtitles waits in the [Review panel](/en/docs/ai/review) until you keep or undo it.
 
-HikariSub has no AI server of its own. The agent runs on a provider you add, with your API key, a ChatGPT or OpenRouter sign-in, or a model on this computer. A thread can also run on an agent you have installed, such as [Claude Code](#agents-on-this-computer).
+HikariSub has no AI server of its own. The agent runs on a provider you add, with your API key, a ChatGPT or OpenRouter sign-in, or a model on this computer. A thread can also run on an agent you have installed, [Claude Code or Codex](#agents-on-this-computer).
 
 ## Opening the panel
 
@@ -20,7 +20,7 @@ Two commands have no key at first; give them one in **File › Settings › Shor
 
 With **Turn off all AI features** ticked in **File › Settings › AI**, the panel and both commands are gone.
 
-Until you add a provider with a chat model, the panel says *Add a provider to use the agent*, with **Open Settings › AI**. Nothing is sent or downloaded until you add one. The agent uses the **Chat** model in **File › Settings › AI › Models**.
+Until you add a provider with a chat model, or install Claude Code or Codex, the panel says *Add a provider to use the agent*, with **Open Settings › AI**. Nothing is sent or downloaded until then. The agent uses the **Chat** model in **File › Settings › AI › Models**. With no Chat model, a new thread runs on an [agent on this computer](#agents-on-this-computer) instead: Claude Code if you have it, otherwise Codex.
 
 ## Asking
 
@@ -90,16 +90,25 @@ Only `http` and `https` links open, always in your browser. What a search sends,
 
 ## Agents on this computer
 
-A thread can run on an AI agent you have installed instead of on a provider. For now, that agent is Claude Code.
+A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex. When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it. You don't need a provider for either.
 
-When `claude` is on your `PATH`, the model menu lists **Claude Code** first. A thread on it runs on your own `claude`, with its sign-in and its default model:
+### Claude Code
+
+A thread on Claude Code runs on your own `claude`, with its sign-in and its default model:
 
 - **Only HikariSub's tools.** It works through the same tools as any thread. Claude Code's own tools, such as running commands or editing files, are off, and your Claude Code settings and MCP servers aren't loaded.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 - **Costs.** The cost Claude Code reports for each turn counts toward the thread's and the day's [cost caps](#cost-caps).
-- **A provider still.** The panel needs a provider with a Chat model before it shows the box, even for a Claude Code thread.
 
 The first time you use Claude Code, HikariSub downloads the Claude Agent SDK, which it uses to talk to `claude`. See [What is sent](/en/docs/help/what-is-sent#ai).
+
+### Codex
+
+A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatGPT sign-in: **Sign in with ChatGPT…** in **File › Settings › AI › External agents**. HikariSub keeps it apart from the sign-in in `~/.codex`, so neither signs the other out. Without it, Codex doesn't start. Codex is on Linux only for now; Windows will follow.
+
+- **Only HikariSub's tools.** It works through the same tools as any thread. HikariSub turns down Codex's own commands, file changes and requests for permission, and Codex doesn't use your `~/.codex` settings.
+- **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
+- **Costs.** Codex reports the tokens it used but not a cost, so a Codex thread says *cost not reported* in place of a cost, and doesn't count toward your [cost caps](#cost-caps). Your ChatGPT plan's limits apply instead.
 
 To let Claude Code you start yourself edit your files instead, see [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent).
 
@@ -133,7 +142,7 @@ A card says what you chose, or *No longer needed* when the turn stopped first.
 
 ### Proposals
 
-In Manual mode, the agent's subtitle edits come to you as a proposal in the thread. Nothing in your subtitles changes until you press **Apply**. This goes for Claude Code threads too.
+In Manual mode, the agent's subtitle edits come to you as a proposal in the thread. Nothing in your subtitles changes until you press **Apply**. This goes for Claude Code and Codex threads too: a proposal can wait up to a day, and the agent keeps waiting for your answer.
 
 A proposal card, *Proposed:* and the change's name, has one row for each edit: the line's old text struck through and its new text, or *Inserted*, *Deleted* or *Moved*. The first five rows show, and **Show all** shows the rest. Clicking a row selects its line and applies nothing.
 
