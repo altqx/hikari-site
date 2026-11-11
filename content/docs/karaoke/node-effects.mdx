@@ -110,6 +110,13 @@ Three nodes under **Units** in **Add node** give each unit, such as a line or a 
 
 With no audio open, or while the audio is still opening, Audio peaks gives 0, and the graph shows a problem at the node. As with any problem, Apply writes nothing, and the preview keeps the last run that worked. Opening another audio file runs the graph again.
 
+## Highlights and inline-fx
+
+Two nodes under **Units** in **Add node** work like the templater's `multi` and `fx` modifiers:
+
+- **Highlights** gives each syllable once for each of its highlights, as `multi` does. A syllable whose text starts with `#`, as in `{\k20}空{\k20}#`, is another highlight of the syllable before it. For each highlight, the other nodes see that highlight's start, end and duration. A character has its syllable's highlights, and a furigana or line unit has one, its own. At first it leaves out highlights with no duration, as `multi noblank` does.
+- **Inline-fx** keeps only the units marked with the inline-fx name you give it, as `fx` does. A `{\-name}` in a line marks the syllables from there to the next one. Characters have their syllable's inline-fx, and a line unit has none. With the name empty, it keeps the units with no inline-fx.
+
 ## Presets
 
 **From a preset** adds one of the ten [presets](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
@@ -127,12 +134,16 @@ With no audio open, or while the audio is still opening, Audio peaks gives 0, an
 
 Each graph writes the same lines as its template, byte for byte, and none of them uses Lua. Colour sweep, Glow and Echo have two **Emit** nodes, one for each layer of the template.
 
-After the presets come four examples, which no template can do. Three use the [strips, copies and particles](#strips-copies-and-particles) nodes, and one uses [Audio peaks](#audio-peaks):
+After the presets come six examples, one for each of the newer nodes: the [strips, copies and particles](#strips-copies-and-particles) nodes, [Audio peaks](#audio-peaks), and [Highlights and Inline-fx](#highlights-and-inline-fx):
 
 - **Gradient strips**: each line cut into eight strips, coloured from pink to blue.
 - **Ring of copies**: eight copies of each syllable on a circle around it, each turned to its place, while it is sung.
 - **Particle burst**: twelve copies of each syllable fly out to random places around it and fade.
 - **Audio pulse**: each syllable grows with how loud the audio is while it is sung. It needs audio open.
+- **Highlight flashes**: an outline flashes on each syllable once for every highlight, as the templater's `multi` does.
+- **Paint and cloud**: syllables marked `{\-paint}` fill from red to white, those marked `{\-cloud}` rise and blur, and the rest stay in place.
+
+Highlight flashes and Paint and cloud also [export as template lines](#exporting-as-template-lines). The other four use nodes no template can express.
 
 ## The library
 
@@ -142,7 +153,9 @@ After the presets come four examples, which no template can do. Three use the [s
 
 **Export as template lines** adds template lines after the graph line that make the same lines in the [karaoke templater](/en/docs/karaoke/templater), so the effect also runs in Aegisub. The graph line stays, and the export is one undo step, *Export as template lines*. All ten [presets](#presets) export.
 
-A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, a condition on an Emit, and the Clip gradient, Array and Audio peaks nodes. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
+Highlights exports as `multi`, and Inline-fx as `fx` and its name. An Inline-fx with an empty name exports as an `fxgroup`, which a code line sets for the units with no inline-fx.
+
+A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, a condition on an Emit, the Clip gradient, Array and Audio peaks nodes, and Highlights on whole lines. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
 
 ## Lua nodes
 
