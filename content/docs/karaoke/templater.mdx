@@ -104,7 +104,7 @@ Text without marks or joined emoji splits as it always did.
 
 ## karaOK templates
 
-The templater also runs karaOK, an extended Karaoke Templater, whose templates add more classes and variables. A file uses karaOK when its `[Script Info]` has the line `Karaoke Templater: karaOK`. `Karaoke Templater: Aegisub 3.2.2` keeps it on Aegisub 3.2.2's templater. **Script properties** has no field for this line, so add it in a text editor.
+The templater also runs karaOK, an extended Karaoke Templater, whose templates add more classes and variables. A file uses karaOK when its `[Script Info]` has the line `Karaoke Templater: karaOK`. `Karaoke Templater: Aegisub 3.2.2` keeps it on Aegisub 3.2.2's templater. The [Template editor](/en/docs/karaoke/template-editor#the-template-language)'s **Template language** writes it for you, and so does exporting a node effect as [karaOK templates](/en/docs/karaoke/node-effects#exporting-as-template-lines).
 
 Without the line, a file uses karaOK when a template or code line uses something only karaOK has:
 
@@ -130,11 +130,13 @@ karaOK adds:
 | --- | --- |
 | `style X` | Applies to the karaoke lines whose style name contains X |
 
-`style` also works in files that run on Aegisub 3.2.2's rules, where 3.2.2 itself reported it as an unknown modifier.
+In a file set to Aegisub 3.2.2, karaOK's additions work too, where 3.2.2 itself reported them as unknown or failed: the `style` modifier, the `lsyl`, `lword`, `lchar`, `word` and `furichar` templates, `code word`, `code char` and `code furichar`, `k_retime`, and Lua's `table`, `pairs`, `ipairs`, `tonumber`, `tostring` and `type`. Only `$ci`, `$slen`, `$llen` and `$len` stay karaOK's: in a 3.2.2 file they stay as text, and the run reports *Unknown variable name*, as 3.2.2 did.
 
 `code word`, `code char` and `code furichar` run once per word, character or furigana character. `$ci` is where the current syllable or character starts in the line, counted in characters; `$slen` is the syllable's length and `$llen` the line's. `$len` is the length of the syllable, or of the line in a line template. `k_retime` retimes the line as `retime` does, and moves the syllable's times the other way, so it is still sung at the same moment.
 
 As in karaOK, positions are rounded to 0.1 px rather than to whole pixels, and a loop writes no line once `j` is past `maxloop`.
+
+`furigana_styles = false` in a `code once` line keeps the run from adding *-furigana* styles to the file.
 
 ### Where it differs from karaOK
 
