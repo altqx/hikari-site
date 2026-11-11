@@ -132,7 +132,7 @@ The window lists every tag that changes, with its value on the first and last li
 
 - **Acceleration** is 1 for even steps. Above 1 starts slow and ends fast; below 1 starts fast and ends slow.
 - **Rotate the shortest way** takes the shorter way round the circle. From `\frz350` to `\frz10`, the middle line gets `\frz180` without it and `\frz0` with it.
-- **Cascade transforms** runs each line's `\t` tags one after another over the line. On a one-second line, `{\t(\fscx200)\t(0,5,2,\frz30)}` becomes `{\t(0,500,\fscx200)\t(500,1000,2,\frz30)}`.
+- **Cascade transforms** runs each line's `\t` tags one after another over the line. On a one-second line, `{\t(\fscx200)\t(0,5,2,\frz30)}` becomes `{\t(0,500,\fscx200)\t(500,1000,2,\frz30)}`. It re-times the first and last lines' `\t` tags too.
 - **Result** shows each line's new text.
 
 While the window is open, the video shows the result, and choosing other lines works it out again. **Apply** or <kbd>Enter</kbd> makes the change as one undo step; **Cancel** or <kbd>Esc</kbd> changes nothing. It has no key at first: <kbd>Shift</kbd>+click it in the menu to give it one.
