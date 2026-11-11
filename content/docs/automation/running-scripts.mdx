@@ -19,6 +19,7 @@ Scripts see Aegisub 3.5.1's Lua API, with the additions of arch1t3cht's Aegisub 
 - A video frame gives its pixels' colours with `getPixel`, and all its pixel data at once for scripts that use FFI.
 - `frame_from_ms` and `ms_from_frame` round as Aegisub does, so frame-based scripts land on the same frames.
 - Each line's extradata is there for scripts, and what they change in it is saved.
+- ILL's scripts, such as ILL.SplitText, ILL.ChangeAlign and ILL.Shapery, load on Linux and Windows, and so do the scripts built on ILL: phos.RemoveTags and the other phos.AssfPlus users, aka.99PercentTags and autoclip. HikariSub ships the native Clipper2 library ILL needs. Install ILL itself as before, with [DependencyControl](/en/docs/automation/dependencycontrol#installing-a-script) or by hand.
 
 The few differences that remain are in [Coming from Aegisub](/en/docs/automation/writing-scripts#coming-from-aegisub).
 

@@ -249,7 +249,7 @@ When a script fails to load, its row in the Automation panel says so, with **Sho
 
 From 0.1.0-beta.3, the modules and include files that ship with HikariSub, such as `karaskel`, `util` and `moonscript`, always load from HikariSub's own `automation/Include`. A file of the same name in the script's folder or in your `include` folder doesn't replace them, but a module with a new name still loads from there. The packages DependencyControl manages (`l0`, `a-mo`, `BM`, `DM`, `PT`, `requireffi`, `SubInspector`, `json`, `Yutils` and `lyger`) keep the order above, so DependencyControl's updates still take their place.
 
-HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unicode`, `re`, `lfs`, `json`, `Yutils`, `aegisub.clipboard`, `aegisub.util` and more, plus DependencyControl and the libraries its scripts use.
+HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unicode`, `re`, `lfs`, `json`, `Yutils`, `aegisub.clipboard`, `aegisub.util` and more, plus DependencyControl and the libraries its scripts use. It also ships the native library behind ILL's `clipper2` module, in `automation/Include/clipper2/clipper2/`, where `requireffi` looks for it. ILL's own modules still load from your `automation/include`, so install ILL as before.
 
 ## How scripts run
 
