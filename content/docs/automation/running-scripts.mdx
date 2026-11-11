@@ -98,6 +98,8 @@ While the macro runs, its subtitle file is read-only. Your other open files can 
 
 A script can check that a macro may run on the lines you selected. That check runs each time you run the macro; the menu doesn't grey out macros. If the check says no, the run ends with "Its validation did not let it run; nothing was changed."
 
+A macro can run on a subtitle file of up to about 64 MB. On a larger file the macro doesn't run, and nothing changes. A message box titled *Automation* says "*…* can't run on this document: it needs … MB, and a macro can use at most 64 MB.", with "Run the macro on a smaller file, for example a copy with only the lines it needs." A macro whose changes come to more than 64 MB fails, and the log says why.
+
 When the macro ends, its changes go into the file as **one undo step**, named *Automation: * and the macro's name. A macro that fails or is cancelled changes nothing. Nor does one whose file was changed, reloaded or closed while it ran: the card says "nothing was changed".
 
 Some scripts need the file's script resolution. If the file has none, HikariSub asks for it. **File › Settings › Video › Set a missing script resolution from the video without asking** takes the video's size instead.

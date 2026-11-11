@@ -23,7 +23,7 @@ There is no ARM build yet.
 Download `HikariSub-<version>-windows-x64-setup.exe` and run it. Windows may warn that the publisher is unknown, because the setup is not signed.
 
 1. **Install for:** choose **Just me** to install in your user folder (`%LOCALAPPDATA%\Programs\HikariSub`), with no administrator rights, or **All users** to install in Program Files for everyone on the computer. All users asks for administrator approval once.
-2. **Components:** **Associate subtitle files (.ass, .ssa, .srt, .sub)** is on by default, and **Desktop shortcut** is off. HikariSub becomes the default app only for file types no other app has claimed.
+2. **Components:** **Associate subtitle files (.ass, .ssa, .srt, .sub) and folders** is on by default, and **Desktop shortcut** is off. HikariSub becomes the default app only for file types no other app has claimed. The same component adds **Open with HikariSub** when you right-click a folder, or the empty space in an open folder, which opens that folder as a [Project](/en/docs/basics/files-and-formats#projects). On Windows 11 it is under **Show more options**.
 3. Choose the folder, install, and tick **Start HikariSub** on the last page if you want it to start straight away.
 
 The setup adds HikariSub to the Start menu. If HikariSub is already installed, the setup updates it where it is. Close HikariSub first; the setup waits until it is closed.
@@ -86,7 +86,7 @@ sudo zypper install ./hikarisub-<version>-linux-x86_64.rpm
 
 The packages are not GPG-signed. If dnf refuses the file for that reason, add `--nogpgcheck`. zypper needs `--allow-unsigned-rpm`.
 
-The deb and rpm install HikariSub in `/opt/hikarisub`, with the command `hikarisub`, a menu entry, icons and file types for `.ass`, `.ssa`, `.srt` and `.sub`, and for `.hksession` sessions.
+The deb and rpm install HikariSub in `/opt/hikarisub`, with the command `hikarisub`, a menu entry, icons and file types for `.ass`, `.ssa`, `.srt` and `.sub`, and for `.hksession` sessions. The menu entry has **Open Folder…** in the menu your launcher shows for HikariSub, such as on a right-click. It shows the picker for opening a folder as a [Project](/en/docs/basics/files-and-formats#projects).
 
 ### Portable tar.gz
 
@@ -98,7 +98,7 @@ To add it to your applications menu, with its icons and file types, `.hksession`
 ./install-desktop-integration.sh
 ```
 
-The menu entry points at this folder, so run the script again if you move the folder. `./install-desktop-integration.sh --uninstall` removes the entry again.
+The menu entry, with **Open Folder…** as for the deb and rpm, points at this folder, so run the script again if you move the folder. `./install-desktop-integration.sh --uninstall` removes the entry again.
 
 ## Checking a download
 
