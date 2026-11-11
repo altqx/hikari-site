@@ -43,6 +43,36 @@ Below the box, the model button picks the thread's model from your providers' mo
 - **Questions** for you, and notices, such as *The turn failed* with **Retry the turn**.
 - **Searches,** citations and sources, when the agent [searched the web](#searching-the-web).
 
+## Skills
+
+Skills are instructions for kinds of work, which the agent reads when your request matches one. Three come with HikariSub: **typesetting**, **translation** and **karaoke-templater**. Each thread sees every skill's name and description. It reads a skill's instructions when the work calls for it, and the skill's other files only when it needs them.
+
+Skills are text only. They run nothing and give the agent no permission: what it does after reading one asks you as anything else would, by the thread's [mode](#modes). With **Turn off all AI features** ticked, nothing reads them.
+
+### Adding your own
+
+Put a folder with a `SKILL.md` in `ai/skills` in your [user folder](/en/docs/automation/user-folder#whats-in-it). Skills use the [Agent Skills format](https://agentskills.io/specification), so a skill written for another agent works here too.
+
+```md
+---
+name: sign-colours
+description: Matching sign colours to the video. Use it when the user asks to colour a sign like the one on screen.
+---
+
+# Sign colours
+
+1. Take the colour from the frame under the sign.
+2. …
+```
+
+- **The name** is the folder's name: lowercase letters and digits, in words joined by hyphens, up to 64 characters.
+- **The description** says what the skill is for and when to use it, in up to 1,024 characters. The agent picks skills by their descriptions alone.
+- **Other files** in the folder, such as `references/terms.md`, are read when the agent needs them. They are read as text: nothing in a skill runs.
+
+A skill of yours with a built-in skill's name replaces it. A new or changed skill shows in the next thread. HikariSub reads up to 100 skills, 100 files in each, four folders deep and 256 KiB a file, and skips hidden files and symbolic links. A skill that breaks the format, such as one without a description, is left out.
+
+Skills are for threads on a provider. A thread on [Claude Code](#agents-on-this-computer) and agents connected through MCP don't get them.
+
 ## Searching the web
 
 With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
