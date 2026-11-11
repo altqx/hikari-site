@@ -41,6 +41,21 @@ Below the box, the model button picks the thread's model from your providers' mo
 - **Each change it made,** with **Review**, which opens the Review panel. In Auto mode, a change the judge approved says *judge approved*.
 - **Its plan,** for longer work: a list it ticks off as it goes.
 - **Questions** for you, and notices, such as *The turn failed* with **Retry the turn**.
+- **Searches,** citations and sources, when the agent [searched the web](#searching-the-web).
+
+## Searching the web
+
+With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
+
+When the thread's provider can't search on its own and no search service is chosen, the globe is dimmed. Its hover says *This provider can't search the web on its own. Choose a search service in Settings › AI › Web search.* With **Let AI search the web** off, the globe is hidden.
+
+- **Search rows.** Each search shows in the thread as *Searched the web*, *Searched with Google* or *Searched with* and the service, such as *Searched with Brave Search*, followed by what it searched for. A page the agent read shows as *Read* and the site. Expand a row to see the full addresses.
+- **Citations.** Numbered chips follow the text they back up. Hover one for the page's title, its site and, when the provider sends one, the quoted passage, with **Open in browser**.
+- **Sources.** Under an answer that cites pages, **Sources** lists them, each title a link with its site. After five, the rest fold behind **Show 2 more**.
+- **Google's suggestions.** Under a Gemini answer that searched, Google's search suggestions show as Google draws them. Click one to search for it in your browser.
+- **A search service that stops.** When the search service's plan is used up, the thread says so, such as *Brave Search has no searches left*. When it refuses the key, it says *Brave Search refused HikariSub's key*. Under either, it gives the service's answer, such as *The search service answered 429. The answer goes on without searching the web.* **Open Settings › AI** opens the settings.
+
+Only `http` and `https` links open, always in your browser. What a search sends, and what the thread keeps, is in [What is sent](/en/docs/help/what-is-sent#ai).
 
 ## Agents on this computer
 
