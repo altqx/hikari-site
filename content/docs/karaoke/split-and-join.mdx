@@ -141,7 +141,7 @@ These keys work while the Audio panel has the keyboard. In Karaoke mode the play
 | <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>D</kbd> | Play 500 ms before or after, the first or the last 500 ms, of the current syllable |
 | <kbd>C</kbd> | Add lead-in, as a lead syllable |
 | <kbd>B</kbd> | Brings the current syllable into view |
-| <kbd>Enter</kbd> or <kbd>G</kbd> | Commits the times |
+| <kbd>Enter</kbd> or <kbd>G</kbd> | Applies the changes |
 
 **Split syllable at the cursor** splits the syllable under the pointer before the letter you point at. Otherwise it splits the syllable under the waveform's cursor, the pointer's line or the playing position, at that time. Otherwise it splits the current syllable in the middle. The view stays where it is.
 
@@ -167,6 +167,6 @@ When several lines are selected, a change made with the mouse writes the active 
 
 ## Undo
 
-With **Auto-commit** on, as it is by default in the Commit button's menu, every split, join, boundary drag and <kbd>K</kbd> or <kbd>Shift</kbd>+<kbd>K</kbd> is applied at once, as one step named *Changing time on audio spectrum*. **Edit › Undo**, <kbd>Ctrl</kbd>+<kbd>Z</kbd>, takes it back.
+With **Apply changes automatically** on, as it is by default in the **Apply changes** button's menu, every split, join, boundary drag and <kbd>K</kbd> or <kbd>Shift</kbd>+<kbd>K</kbd> is applied at once, as one step named *Changing time on audio spectrum*. **Edit › Undo**, <kbd>Ctrl</kbd>+<kbd>Z</kbd>, takes it back.
 
-With it off, the new text waits in the Line editor with the times, and nothing changes in the subtitles until you commit, with <kbd>Enter</kbd> in the Audio panel or from the Line editor.
+With it off, the new text waits in the Line editor with the times, and nothing changes in the subtitles until you apply them, with <kbd>Enter</kbd> in the Audio panel or from the Line editor.
