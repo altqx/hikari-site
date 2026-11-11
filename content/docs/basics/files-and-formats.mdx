@@ -15,7 +15,7 @@ HikariSub works on ASS subtitles, and opens and saves the common simpler formats
 **File › Open…** (<kbd>Ctrl</kbd>+<kbd>O</kbd>) opens a subtitle file. The picker opens in the folder you last used and lists:
 
 - **Subtitles:** ASS, SSA, SRT, SUB, TXT and MPL files.
-- **Word-timed lyrics:** LRC and TTML files, which open as a new ASS file named after them.
+- **Word-timed lyrics:** LRC, TTML and decoded KRC and QRC files, which open as a new ASS file named after them. To add lyrics to the open file instead, or to choose the encoding, use [Import lyrics](#importing-lyrics).
 - **YouTube timed text:** `.ytt` and `.srv3` files, which open as a new ASS file too. See [Opening srv3 files](/en/docs/basics/export#opening-srv3-files).
 - **Videos with embedded subtitles:** an MKV file's subtitle track opens as subtitles, also one stored compressed. **File › Import subtitles from MKV…** does the same.
 
@@ -30,6 +30,22 @@ If the file can't be opened, nothing changes: the tab keeps what it had, and the
 </Callout>
 
 When the subtitles name a video, audio or keyframes file, a bar offers to load them. If the video's size differs from the subtitles' resolution, HikariSub asks whether to [resample](#resolution) them.
+
+### Importing lyrics
+
+**File › Import lyrics…** turns a lyrics file into lines, with one `\k` syllable for each timed word. It has no key at first: give it one in **File › Settings › Shortcuts**. It reads:
+
+- **LRC** (`.lrc`): line times, several on one line for repeated lyrics, and word times;
+- **TTML** (`.ttml`): Apple Music's word and line timing;
+- **Kugou KRC** (`.krc`) and **QQ Music QRC** (`.qrc`), once they are decoded to text. As Kugou and QQ Music ship them they are encrypted, and HikariSub doesn't decrypt them. The window then says *This Kugou lyrics file is encrypted, so HikariSub can't read it.*, or the same for QQ Music: decode the file with your own tool first, then import that.
+
+After you choose the file, the **Import lyrics** window shows its format, how many lines it has and a preview of the first ones.
+
+- **Encoding** is the one HikariSub detected, marked *detected*: UTF-8, UTF-16 with a byte order mark, GB18030 (which also reads GBK and GB2312), Big5, Shift_JIS or EUC-KR. Pick another one, and the preview changes at once.
+- **Add the lines to:** **After the last line of the open file**, the choice when an ASS file is open, or **A new file**. In the open file, each line gets the **Style** you choose, the current line's at first. The import is one undo step, *Import lyrics*, and the new lines are selected afterwards. A new file takes the song's title as its Title.
+- **End times** are for lines whose end the file leaves open, such as a plain LRC line. **Each line ends when the next one starts**, or **Leave a gap before the next line**, 0.20 s at first. **Last line lasts (s)** gives the last line its length, 5 s at first. HikariSub keeps these choices for next time.
+
+**File › Open…** opens the same files straight into a new file, with the encoding detected and the end times at their defaults: each line ends when the next one starts, and the last one lasts 5 s.
 
 ## Saving
 
