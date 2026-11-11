@@ -104,6 +104,12 @@ Three nodes under **Units** in **Add node** give each unit, such as a line or a 
 - **Array** places copies around the unit: on a grid centred on it, on a circle around it, or evenly along a drawing wired into its path. Each copy gives its offset, its position and an angle in degrees, as `\frz` takes it. An Array on a path with no drawing wired in is a problem.
 - **Particles** spreads copies at random over a rectangle or an ellipse centred on the unit. They draw from the graph's seed and the node's own seed, so the same graph seed, node seed and line give the same particles on every run, on Linux and Windows alike.
 
+## Audio peaks
+
+**Audio peaks**, under **Audio** in **Add node**, gives the level of the file's audio over each syllable, or over any span you give it in milliseconds, so an effect can follow the music. Its **level** output goes from 0 to 1 with the loudest sample. **low** and **high** give the lowest and highest samples, from -1 to 1.
+
+With no audio open, or while the audio is still opening, Audio peaks gives 0, and the graph shows a problem at the node. As with any problem, Apply writes nothing, and the preview keeps the last run that worked. Opening another audio file runs the graph again.
+
 ## Presets
 
 **From a preset** adds one of the ten [presets](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
@@ -121,11 +127,12 @@ Three nodes under **Units** in **Add node** give each unit, such as a line or a 
 
 Each graph writes the same lines as its template, byte for byte, and none of them uses Lua. Colour sweep, Glow and Echo have two **Emit** nodes, one for each layer of the template.
 
-After the presets come three examples of the [strips, copies and particles](#strips-copies-and-particles) nodes, which no template can do:
+After the presets come four examples, which no template can do. Three use the [strips, copies and particles](#strips-copies-and-particles) nodes, and one uses [Audio peaks](#audio-peaks):
 
 - **Gradient strips**: each line cut into eight strips, coloured from pink to blue.
 - **Ring of copies**: eight copies of each syllable on a circle around it, each turned to its place, while it is sung.
 - **Particle burst**: twelve copies of each syllable fly out to random places around it and fade.
+- **Audio pulse**: each syllable grows with how loud the audio is while it is sung. It needs audio open.
 
 ## The library
 
@@ -135,7 +142,7 @@ After the presets come three examples of the [strips, copies and particles](#str
 
 **Export as template lines** adds template lines after the graph line that make the same lines in the [karaoke templater](/en/docs/karaoke/templater), so the effect also runs in Aegisub. The graph line stays, and the export is one undo step, *Export as template lines*. All ten [presets](#presets) export.
 
-A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, a condition on an Emit, and the Clip gradient and Array nodes. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
+A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, a condition on an Emit, and the Clip gradient, Array and Audio peaks nodes. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
 
 ## Lua nodes
 
