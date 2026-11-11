@@ -226,6 +226,7 @@ A report goes straight away to the same address, through the same proxy, with th
 | `note` | What you typed in the report window, up to 4,000 characters. Left out when you typed nothing |
 | `log` | The Log's last 200 lines, with file names, quoted text, font names and folders replaced |
 | `settings` | The settings summary: ids and plain values from a fixed list, never a folder, font or name |
+| `windows` | The windows that were open, in the order they opened: each one's number of tabs, not counting Home, and whether it was the active one, such as `[{"tabs": 3, "active": false}, {"tabs": 1, "active": true}]`. Only the counts and that mark, never file names, paths, tab titles or text |
 | `version`, `channel`, `$os`, `$os_version`, `arch`, `package`, `qt_version` | As in `app_started` |
 
 [What a report holds](/en/docs/help/reporting-problems#what-a-report-holds) lists the settings in the summary and how the Log lines are changed. HikariSub still offers your last session after a crash; see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
