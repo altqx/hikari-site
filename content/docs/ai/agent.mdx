@@ -123,7 +123,7 @@ Each thread has a mode, which decides what the agent may change without asking. 
 | --- | --- |
 | **Manual** | You approve each [subtitle edit](#proposals) before it's made, and every other change. Reading never asks. |
 | **Auto** | The judge model approves each change, or asks you, with its reason |
-| **Full access** | Nothing, except the [always-ask list](#the-always-ask-list) |
+| **Full access** | Nothing, except the [always-ask list](#the-always-ask-list) and [Lua scripts](#lua-scripts) |
 
 New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads…**, at the foot of the mode menu, opens it.
 
@@ -171,6 +171,21 @@ Some actions ask in every mode, Full access included. Their card has a red edge,
 - **Changing AI settings,** such as permissions, keys and budgets.
 
 Saving, exporting and the other commands that ask for a file name aren't on the list: you choose the file yourself.
+
+### Lua scripts
+
+The agent can write an [Automation](/en/docs/automation/running-scripts) script in Lua and run it as a macro. Every run asks first, in every mode, Full access included. The card has a red edge, asks *Run this Lua script?* and says *asks in every mode*. It shows:
+
+- the script's name, the macro it runs if the agent named one, and the tab it runs on;
+- the script, with line numbers. The first 12 lines show, and **Show all … lines** shows the rest;
+- each [DependencyControl](/en/docs/automation/dependencycontrol) module the script needs, with its version when it is installed. A missing one is marked: *… isn't installed, so the script will stop when it loads.*
+
+**Run** runs it, and **Don't run** doesn't. **Don't run and tell the agent…** adds a message: *What should it do instead?* There is no **Allow in this thread**, and running the same script again asks again.
+
+An approved script runs like any macro, on the active tab's selection: it runs the macro the agent named, or the script's first one. It is one undo step, named *Automation:* and the macro's name, and **Force stop** on the card ends it while it runs. Another macro running, or no open file, stops it before it starts.
+
+HikariSub saves the script in `ai/scripts` in your [user folder](/en/docs/automation/user-folder), under the name the agent gave it, and replaces an earlier one of that name. **Open**, on the card, opens the file. The script is never added to `autoload`, so it doesn't load at start.
+
 
 ## Threads
 
