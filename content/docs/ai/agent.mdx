@@ -40,6 +40,7 @@ Below the box, the model button picks the thread's model from your providers' mo
 - **Each tool the agent used,** such as reading lines. Click one to see what it asked for and what it got.
 - **Each change it made,** with **Review**, which opens the Review panel. In Auto mode, a change the judge approved says *judge approved*.
 - **Its plan,** for longer work: a list it ticks off as it goes.
+- **Proposals,** in Manual mode: the subtitle edits the agent wants to make, for you to apply or decline. See [Proposals](#proposals).
 - **Questions** for you, and notices, such as *The turn failed* with **Retry the turn**.
 - **Searches,** citations and sources, when the agent [searched the web](#searching-the-web).
 
@@ -108,7 +109,7 @@ Each thread has a mode, which decides what the agent may change without asking. 
 
 | Mode | What asks you |
 | --- | --- |
-| **Manual** | Subtitle edits go into the review, where you keep or undo them. Every other change, such as running a command or changing a setting, asks you first. |
+| **Manual** | You approve each [subtitle edit](#proposals) before it's made, and every other change. Reading never asks. |
 | **Auto** | The judge model approves each change, or asks you, with its reason |
 | **Full access** | Nothing, except the [always-ask list](#the-always-ask-list) |
 
@@ -129,6 +130,23 @@ When the agent needs your yes, the thread shows a card, such as *Run commands_ru
 - **Deny** refuses it, and the agent is told not to try again. **Deny and tell the agent…** adds a message: *What should it do instead?*
 
 A card says what you chose, or *No longer needed* when the turn stopped first.
+
+### Proposals
+
+In Manual mode, the agent's subtitle edits come to you as a proposal in the thread. Nothing in your subtitles changes until you press **Apply**. This goes for Claude Code threads too.
+
+A proposal card, *Proposed:* and the change's name, has one row for each edit: the line's old text struck through and its new text, or *Inserted*, *Deleted* or *Moved*. The first five rows show, and **Show all** shows the rest. Clicking a row selects its line and applies nothing.
+
+- **Apply** makes the whole change, as one undoable step in the [Review panel](/en/docs/ai/review), where you can still keep or undo it.
+- **Decline** writes nothing, and the agent is told not to propose it again unless you ask. **Decline and tell the agent…** adds a message: *What should it do instead?*
+
+A proposal is applied or declined as a whole, never one line at a time, and it has no **Allow in this thread**.
+
+If your subtitles change while a proposal waits, it goes *out of date*: *The subtitles changed after the agent read them.* **Apply** is off. **Ask again** makes the agent read the subtitles again and propose again, or **Decline** drops it.
+
+A new proposal puts the focus on **Apply** only when you are in the Agent panel but not typing in its box, so <kbd>Enter</kbd> in the box never applies one. Stopping the turn, a [cost cap](#cost-caps) or deleting the thread drops a waiting proposal, and nothing is written.
+
+Agents you [connect over MCP](/en/docs/ai/connect-an-agent), plugins and the other AI features don't make proposals: their edits go straight into the review.
 
 ### The always-ask list
 
