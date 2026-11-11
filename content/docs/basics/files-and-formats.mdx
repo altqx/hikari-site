@@ -90,6 +90,36 @@ To write a copy in another format and leave the file as it is, use [Export](/en/
 
 **Save** writes only what you changed, as one undo step.
 
+### Filling in the credits on save
+
+HikariSub can write the same credits into each ASS file you save, as HikariSub legacy and Aegisub can. Each credit has a value and a switch, in the `scriptProperties` table of your settings. The switches are off at first.
+
+| Credit | Value | Switch |
+| --- | --- | --- |
+| **Title** | `title` | `titleOn` |
+| **Author** (Original Script) | `script` | `scriptOn` |
+| **Translator** (Original Translation) | `translation` | `translationOn` |
+| **Proofreading** (Original Editing) | `editing` | `editingOn` |
+| **Timer** (Original Timing) | `timing` | `timingOn` |
+| **Editing** (Script Updated By) | `update` | `updateOn` |
+
+Every save except an autosave writes the switched-on credits that differ from the file, as one undo step, *Changing the subtitle header*. Other formats are left alone.
+
+**File › Settings** doesn't show these yet. Set them in [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept), or for everyone in a Project, in its [Project settings](#project-settings). The [legacy settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
+
+```toml
+[scriptProperties]
+translation = "Your name"
+translationOn = true
+askForChange = true
+```
+
+With `askForChange` on, the save asks first: *Saving "Episode 01.ass" changes these script properties.* It lists each credit that would change, the old value and the new, each with a box, all ticked at first. Save, Save as, Save all, saving a tab in the background and saving as you close all ask.
+
+- **OK** writes the ticked credits, for this save only. Your settings don't change.
+- **Skip** saves without them, and asks again next time.
+- **Cancel** stops the save.
+
 ## Resolution
 
 A subtitle file's positions, sizes and margins are written for its resolution. **Subtitles › Resample subtitles** scales all of them to another one, for example when the subtitles were made for a 1280 × 720 video and the release is 1920 × 1080.
@@ -190,6 +220,7 @@ A Project can set only these:
 | [Spelling](/en/docs/checking/spelling#dictionaries): **Check spelling** and **Primary language** | `editor.spellchecker`, `editor.dictionaryLanguage` |
 | The [grammar check](/en/docs/checking/grammar): its language, from 0 for **Off** to 4 for **English (Australia)**, and the **Rule groups** | `grammar.language`, `grammar.group.*` |
 | [Tags from original](/en/docs/translation/translation-mode#tags-from-original) in Translation mode | `translation.autoMoveTagsFromOriginal` |
+| [Credits written on save](#filling-in-the-credits-on-save), and whether to ask first | `scriptProperties.*` |
 
 Any other setting in the files is ignored, and a notice names it. A file that can't be read is renamed with `.broken` at the end, a notice says so, and its settings don't apply.
 
