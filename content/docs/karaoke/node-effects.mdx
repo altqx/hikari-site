@@ -31,6 +31,7 @@ The mode bar picks the graph you work on, from the graphs in the file. Its menu 
 - **Rename…**;
 - **Duplicate**;
 - **Save to the library**;
+- **Export as template lines**, which turns the graph into [template lines](#exporting-as-template-lines);
 - **Delete graph**, which removes the graph and the lines it wrote. Undo brings them back.
 
 A graph name can't be empty, start or end with a space, end with a dot, or hold `karaoke`. Two graphs in a file can't have the same name.
@@ -129,6 +130,12 @@ After the presets come three examples of the [strips, copies and particles](#str
 ## The library
 
 **Save to the library** keeps a copy of the graph in the `node-effects` folder of your [user folder](/en/docs/automation/user-folder#whats-in-it), one file per graph. **From the library…** adds one of them to the file you are working on, so you can reuse a graph in other files.
+
+## Exporting as template lines
+
+**Export as template lines** adds template lines after the graph line that make the same lines in the [karaoke templater](/en/docs/karaoke/templater), so the effect also runs in Aegisub. The graph line stays, and the export is one undo step, *Export as template lines*. All ten [presets](#presets) export.
+
+A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, a condition on an Emit, and the Clip gradient and Array nodes. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
 
 ## Lua nodes
 
