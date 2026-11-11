@@ -137,6 +137,7 @@ Each event also has its name and the time it happened, in UTC, to the second.
 | `screens` | `1`, `2` or `3+` |
 | `scale` | The window's display scale: `1x`, `1.25x`, `1.5x`, `2x` or `3x+` |
 | `startup_time` | How long the window took to show, as a time bucket |
+| `ai_component_version`, `ai_runtime_version`, `ai_anthropic_version`, `ai_openai_version`, `ai_google_version` | Only with AI features on and the [AI component](#ai) installed: the version of the AI component, of its Bun runtime, and of the Anthropic, OpenAI and Google Gen AI libraries in it |
 
 `app_closed` has:
 
@@ -179,6 +180,7 @@ How often:
 | --- | --- | --- |
 | `automation_error` | When a macro fails, its script's process is lost or force-stopped, or a script doesn't load | `kind`, `script` |
 | `$exception` | At the start after HikariSub crashed or was closed while frozen, and when it comes back from a freeze | `$exception_list`, `$debug_images`, `$exception_level`, `crashed_version`, `report_id`, `freeze_seconds` |
+| `ai_component_rolled_back` | When a new AI component failed to start, or crashed twice within 10 minutes, and HikariSub went back to the one before | `ai_failed_version`, `ai_failure`, and the AI versions of the component that runs now, as in `app_started` |
 
 - `kind`: `failed`, `lost`, `stopped` or `load_failed`.
 - `script`: the file name of a script that comes with HikariSub, such as `strip-tags.lua`, with spaces turned into `_` (`skew_gradient.lua`). It counts as one only while its contents match the copy HikariSub came with, in the program's folder or copied to your user folder. Any other script is `user script`, and its name is not sent. A macro whose check declines to run on your selection is not an error and sends nothing.
@@ -192,6 +194,8 @@ How often:
 - `crashed_version`: the version that crashed or froze.
 - `report_id`: a random UUID made for the report, the same as its [`crash_report`](#crash-and-freeze-reports)'s.
 - `freeze_seconds`: for a freeze, how many seconds the window didn't respond.
+- `ai_failed_version`: the version of the AI component that failed.
+- `ai_failure`: `initialize` when it failed to start, or `crashed`.
 
 ### Opening video and audio
 
@@ -222,14 +226,19 @@ A report goes straight away to the same address, through the same proxy, with th
 | Property | Value |
 | --- | --- |
 | `report_id` | The same random UUID as its `$exception`'s |
-| `kind` | `crash` or `freeze` |
+| `kind` | `crash`, `freeze`, or `ai_component` for an [AI component HikariSub went back from](#ai-component-reports) |
 | `note` | What you typed in the report window, up to 4,000 characters. Left out when you typed nothing |
 | `log` | The Log's last 200 lines, with file names, quoted text, font names and folders replaced |
 | `settings` | The settings summary: ids and plain values from a fixed list, never a folder, font or name |
 | `windows` | The windows that were open, in the order they opened: each one's number of tabs, not counting Home, and whether it was the active one, such as `[{"tabs": 3, "active": false}, {"tabs": 1, "active": true}]`. Only the counts and that mark, never file names, paths, tab titles or text |
-| `version`, `channel`, `$os`, `$os_version`, `arch`, `package`, `qt_version` | As in `app_started` |
+| `version`, `channel`, `$os`, `$os_version`, `arch`, `package`, `qt_version`, and the AI versions | As in `app_started` |
+| `ai_failed_version`, `ai_failure` | As in `ai_component_rolled_back`. Only in an `ai_component` report |
 
 [What a report holds](/en/docs/help/reporting-problems#what-a-report-holds) lists the settings in the summary and how the Log lines are changed. HikariSub still offers your last session after a crash; see [After a crash](/en/docs/help/troubleshooting#after-a-crash).
+
+### AI component reports
+
+When a new AI component fails to start, or crashes twice within 10 minutes, HikariSub goes back to the one before. With **Always send crash reports** on, it then sends a `crash_report` of kind `ai_component` at once: the system, the settings summary, the windows, the AI versions now running, `ai_failed_version` and `ai_failure`. It has no Log lines and no note, and no window opens. **File › Settings › AI › AI components** says *A crash report was sent.* With the setting off, no report goes.
 
 ## Discord presence
 
