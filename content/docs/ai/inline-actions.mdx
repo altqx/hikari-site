@@ -1,0 +1,62 @@
+---
+title: Inline actions
+description: Rewrite, shorten, fix or translate the lines you choose with one AI request per line, from the Grid's or the Line editor's menu.
+---
+
+Inline actions run one AI task on the lines you choose, such as a rewrite or a translation, without an [Agent panel](/en/docs/ai/agent) thread. Each line goes to the model in a request of its own, and every action changes only the line's text. Inline actions don't show in the Agent panel.
+
+## Where they are
+
+- **AI** in the Grid's right-click menu, after **Paste special**, runs an action on the selected lines.
+- **AI** in the right-click menu of the [Line editor](/en/docs/basics/line-editor)'s text, and the AI button at the end of its strip of tag buttons, run one on the active line. With text selected in the box, only that text changes, and the rest of the line goes as context.
+
+Two commands have no key at first. Give them one in **File › Settings › Shortcuts**:
+
+- **AI actions…** opens the AI menu at the active line, or at the Line editor's AI button when you're typing in it.
+- **Repeat last AI action** runs the last action again on the lines you have chosen now.
+
+With **Turn off all AI features** ticked in **File › Settings › AI**, the menus and commands are hidden. An action is on when its role has a model in **File › Settings › AI › Models**, or when Chat has one, since a role without its own model uses the Chat model. An agent such as Claude Code doesn't count. With no model at all, the menu's last item is **Add a model in Settings › AI…**; with one, it is **Edit actions…**.
+
+## The actions
+
+| Action | Model | Asks |
+| --- | --- | --- |
+| **Rewrite…** | Chat | How to rewrite it, such as *less formal, fewer words*. Your last five instructions are there to pick again |
+| **Shorten to 15 CPS** | Chat | Nothing. It sends only the lines over 15 characters per second, the limit the Grid and Line editor show |
+| **Fix spelling and grammar** | Reviewer | Nothing |
+| **Translate to English** | Translator | Nothing. The language is **Translate to** in [Settings](#settings) |
+| **Translate to…** | Translator | A language |
+| Your own actions | The one you chose | Nothing, or their instruction when **Ask each time** is on |
+
+Each model is the one you chose for that role in **File › Settings › AI › Models**. A role without a model uses the Chat model.
+
+Comment lines, empty lines, lines of tags only, drawings and karaoke lines aren't sent, and HikariSub says how many it left out. Override tags stay where they are: each tag block goes as a numbered marker, and the answer must give every marker back once, in order. If it doesn't, the line is left as it is, with *Not changed, because the answer dropped a tag*. An answer the same as the line isn't a change.
+
+## Applying the results
+
+Inline actions follow **File › Settings › AI › Agent › Mode for new threads**:
+
+- **Auto and Full access:** when the run ends, all its changes go into the file together, as one turn in the [review](/en/docs/ai/review) and one step in the undo history, such as *AI: Rewrite (10 lines)*. Each changed line waits for **Keep** or **Undo** like the Agent panel's edits.
+- **Manual:** the results wait in a list over the Grid, one row per line, each ticked. Click a row to select its line in the Grid. **Apply 3** (the number of ticked lines) makes those changes, the same way. **Discard** makes none. A line you edit after it was sent is marked *Out of date* and can't be applied.
+
+## Running
+
+One action runs at a time. The bar over the Grid shows how far it has got, such as *4 of 10 done*, and the cost so far. **Stop**, or <kbd>Esc</kbd>, keeps the lines that are done and drops the rest. Editing a line while it is out drops it from the run.
+
+An action on more than 50 lines asks first. It says how many requests it will send, to which provider and model, about what they will cost, and how much is left of today's cost cap. Inline actions count toward the [daily cost cap](/en/docs/ai/agent#cost-caps), but not a thread's. Reaching the daily cap stops the run as **Stop** does.
+
+A line that fails shows under the run with the reason. **Retry** runs the failed lines again.
+
+## Settings
+
+**File › Settings › AI › Inline actions** has:
+
+| Setting | At first | Does |
+| --- | --- | --- |
+| Your actions | None | **Add an action** gives it a **Name**, an **Instruction**, a **Model** (Chat, Translator or Reviewer) and **Ask each time, starting from this instruction**. **Move up**, **Move down**, **Edit** and **Delete** manage the list. Your actions show in the AI menus |
+| **Translate to** | English | The language of the **Translate to** action |
+| **Lines of context** | 2 | How many lines before and after each line go with it, 0 to 5. 0 sends none |
+
+Your actions save at once. The other two settings save with **OK** or **Apply**.
+
+[What is sent](/en/docs/help/what-is-sent#ai) lists everything a request carries.
