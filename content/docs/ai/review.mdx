@@ -5,6 +5,8 @@ description: See every edit an AI agent made, in the Grid, the Line editor and t
 
 An edit an AI agent makes goes into the file at once, but HikariSub marks it until you look at it. Each one waits until you **Keep** it or **Undo** it. These edits come from HikariSub's own [Agent panel](/en/docs/ai/agent), whose turns are named *AI*, and from an agent you [connect over MCP](/en/docs/ai/connect-an-agent), such as Claude Code. Plugins' edits aren't reviewed: they go into the history as ordinary steps.
 
+In [Manual mode](/en/docs/ai/agent#modes), the Agent panel's edits come first as [proposals](/en/docs/ai/agent#proposals), and go into the file only when you apply them.
+
 ## Seeing what changed
 
 - **In the Grid,** a line with a waiting change has a stripe at the left of its **#** column, in the accent colour. It turns to the warning colour once you edit the line yourself. The words the AI added are tinted and underlined in green.
