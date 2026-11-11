@@ -254,3 +254,10 @@ When nothing is drawn, it says *No subtitles on this frame*. Counting the lines 
 ## Not in HikariSub
 
 HikariSub has no export filters, so the templater's *Karaoke template* export filter isn't there. Apply templates with the macros or the Template editor.
+
+A few things work differently from Aegisub 3.2.2's templater:
+
+- **No `f` or `err` globals.** Working out an `!expression!` no longer sets them, so a template or code line can't read the last expression's function or error.
+- **No level 5 trace lines.** Lines such as *Applying template to one syllable with text: …* aren't written, even at **Lua trace level** 5. Problems are still logged.
+- **Text that can't be measured counts as 0 wide.** The run logs *could not measure text in the Style …* as a problem and goes on, where 3.2.2 stopped with a Lua error.
+- **The layout uses the styles as they are when the run starts.** A code line that changes `line.styleref` or the `styles` table, or replaces `aegisub.text_extents`, no longer moves later lines' syllables. `char` templates still measure each character with `aegisub.text_extents`.
