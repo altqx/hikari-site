@@ -92,6 +92,8 @@ Only `http` and `https` links open, always in your browser. What a search sends,
 
 A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex. When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it. You don't need a provider for either.
 
+If you installed Claude Code or Codex with mise or asdf, the `claude` or `codex` on your `PATH` is the version manager's shim. HikariSub looks past it to the real program: one further down your `PATH`, or else the one mise or asdf says it runs. If it can't find one, the agent counts as not installed. Start HikariSub from a terminal to see why: it prints that it found a shim it couldn't resolve.
+
 ### Claude Code
 
 A thread on Claude Code runs on your own `claude`, with its sign-in and its default model:
@@ -99,6 +101,7 @@ A thread on Claude Code runs on your own `claude`, with its sign-in and its defa
 - **Only HikariSub's tools.** It works through the same tools as any thread. Claude Code's own tools, such as running commands or editing files, are off, and your Claude Code settings and MCP servers aren't loaded.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 - **Costs.** The cost Claude Code reports for each turn counts toward the thread's and the day's [cost caps](#cost-caps).
+- **When it fails.** If a turn fails, its error ends with what `claude` printed, after *Claude said:*.
 
 The first time you use Claude Code, HikariSub downloads the Claude Agent SDK, which it uses to talk to `claude`. See [What is sent](/en/docs/help/what-is-sent#ai).
 
