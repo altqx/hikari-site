@@ -57,7 +57,7 @@ The first line says when it happened, such as "HikariSub crashed today at 14:32.
 ### What a report holds
 
 - **The record**: the error, the version, and up to 32 stack frames, each a module and an offset. The error is the signal on Linux, such as `SIGSEGV`, the exception on Windows, such as `EXCEPTION_ACCESS_VIOLATION`, or for a freeze how many seconds the window didn't respond. A module is named only when it is one of HikariSub's files or the system's; any other module is `other`. The record is not a crash dump: it holds no memory, no file names and no text.
-- **The system**: the HikariSub version, channel and package, your system and its version, the architecture, the Qt version, the screens and their scale, and the layout.
+- **The system**: the HikariSub version, channel and package, your system and its version, the architecture, the Qt version, the screens and their scale, the layout, and the windows: how many tabs each had and which was active, such as *2 windows · window 1: 3 tabs · window 2 (active): 1 tab*.
 - **The settings**, from a fixed list: theme, whether it follows the system, title bar, language, subtitle renderer, video player, audio output, spellchecker and its language, grammar check, autosave, usage data and **Always send crash reports**. Never a folder, a font or a name.
 - **The Log**: its last 200 lines, from the run that crashed or froze.
 
