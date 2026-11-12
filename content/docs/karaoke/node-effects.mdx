@@ -38,7 +38,7 @@ A graph name can't be empty, start or end with a space, end with a dot, or hold 
 
 Also on the bar:
 
-- **Style** picks the style of the karaoke lines the graph runs on, or **All styles**.
+- **Style** picks the style of the karaoke lines the graph runs on, or **All styles**. A [typesetting graph](#typesetting-graphs) shows **Target: selected lines** in its place.
 - **Seed** sets the graph's seed, which every Random node draws from. **New seed** picks another.
 - The problem count, such as **2 problems**, opens the list of problems. Picking one selects its node and brings it into view.
 - **Apply** writes the graph's lines for every karaoke line. The arrow next to it has **Apply to every karaoke line** and **Apply to the selected lines**, which regenerates only the lines selected in **Source lines**. The others keep their output.
@@ -54,7 +54,7 @@ Also on the bar:
   - its values on the current source line, from the last run;
   - its timing;
   - its problems.
-- **Source lines** lists the karaoke lines the graph runs on. The one you pick is the line the preview runs on.
+- **Source lines** lists the karaoke lines the graph runs on, or a [typesetting graph](#typesetting-graphs)'s lines. The one you pick is the line the preview runs on.
 
 ## Wiring
 
@@ -153,6 +153,33 @@ After the presets come eight examples, one for each of the newer nodes: the [str
 - **Striped letters**: each syllable's letters are cut into thin horizontal stripes, which fade in as it is sung.
 
 Highlight flashes and Paint and cloud also [export as template lines](#exporting-as-template-lines). The other six use nodes no template can express.
+
+Last, under *For selected lines*, come the ten [typesetting graphs](#typesetting-graphs).
+
+## Typesetting graphs
+
+Node effects run on ordinary lines too, of any style, with or without karaoke tags. Select the lines in the Grid and choose **Subtitles › Typesetting graph…**, which is also in the Grid's right-click menu. The mode opens with those lines in **Source lines**, and the mode bar says **Target: selected lines** in place of **Style**. With no lines selected, HikariSub says *Select the lines a typesetting graph should run on.*
+
+**From a preset** has ten ready-made graphs for them, under *For selected lines*:
+
+- Shake;
+- Typewriter;
+- Fade by letter;
+- Wobble;
+- Bounce;
+- Focus lines;
+- Grain, which needs the Grain font;
+- Chromatic aberration;
+- Random move;
+- Karaoke to alpha.
+
+Each graph's knobs, such as Shake's `amplitude`, are value nodes: select one and change it in the **Node** panel.
+
+**Apply** writes the graph's lines for the lines you select in **Source lines**. The new lines go right after each original, and the original becomes a comment that keeps its Effect. Applying again replaces the lines it wrote before.
+
+- **Placing.** A line is placed at its first `\pos`, or at the start of its first `\move`, and aligned by its first `\an`, or else by its style.
+- **No karaoke tags.** A line without them is one syllable that spans the whole line.
+- **Not sources.** Graph lines, template and code lines, and the lines a graph or template wrote never count.
 
 ## The library
 
