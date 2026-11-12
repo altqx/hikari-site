@@ -151,11 +151,20 @@ Highlight flashes and Paint and cloud also [export as template lines](#exporting
 
 ## Exporting as template lines
 
-**Export as template lines** adds template lines after the graph line that make the same lines in the [karaoke templater](/en/docs/karaoke/templater), so the effect also runs in Aegisub. The graph line stays, and the export is one undo step, *Export as template lines*. All ten [presets](#presets) export.
+**Export as template lines** adds template lines after the graph line that make the same lines in the [karaoke templater](/en/docs/karaoke/templater), so the effect also runs in Aegisub. Its submenu has two formats:
+
+- **karaOK templates**, marked with an (i), writes [karaOK](/en/docs/karaoke/templater#karaok-templates) templates and sets the file to karaOK. They run in HikariSub; in Aegisub they need the karaOK templater.
+- **Aegisub 3.2.2 templates** writes templates that Aegisub's own templater runs.
+
+The **Classic fill** preset, for example, becomes a `line` and an `lsyl` template as karaOK, or a `pre-line` and a `line` template for Aegisub 3.2.2. The menu ticks the format you used last, karaOK at first. The graph line stays, and the export, the karaOK line included, is one undo step, *Export as template lines*. All ten [presets](#presets) export.
 
 Highlights exports as `multi`, and Inline-fx as `fx` and its name. An Inline-fx with an empty name exports as an `fxgroup`, which a code line sets for the units with no inline-fx.
 
 A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, [nodes from plugins](#nodes-from-plugins), a condition on an Emit, the Clip gradient, Array and Audio peaks nodes, and Highlights on whole lines. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
+
+### karaOK files
+
+Node effects follow the file's [template language](/en/docs/karaoke/template-editor#the-template-language). In a karaOK file, places are rounded to 0.1 px, and a syllable with no length isn't blank, so it still gets its lines, as in karaOK. In an Aegisub 3.2.2 file, places are whole pixels and such a syllable is blank.
 
 ## Lua nodes
 
