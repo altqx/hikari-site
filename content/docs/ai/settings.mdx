@@ -1,0 +1,83 @@
+---
+title: AI settings
+description: Add AI providers and their keys, choose a model for each role, keep the AI component and your agents up to date, or turn AI off, in File › Settings › AI.
+---
+
+**File › Settings › AI** holds your AI providers and their keys, the models each feature uses, and the AI component that talks to the providers. It sits between **Shortcuts** and **Updates and privacy**. Its sections are:
+
+- **AI features**, with **Turn off all AI features**: see [Turning AI off](#turning-ai-off);
+- **Providers** and **Models**: see [Providers](#providers) and [Models](#models);
+- **Web search**: see [Searching the web](/en/docs/ai/agent#searching-the-web);
+- **External agents**, for Claude Code, Codex and, on Linux, ACP agents: see [Agents on this computer](/en/docs/ai/agent#agents-on-this-computer) and [Updating Claude Code and Codex](#updating-claude-code-and-codex);
+- **MCP**: see [Connect an agent](/en/docs/ai/connect-an-agent) and [MCP servers](/en/docs/ai/agent#mcp-servers);
+- **Agent**: see the agent's [Settings](/en/docs/ai/agent#settings);
+- **Skills**: see [Skills in Settings](/en/docs/ai/skills#in-settings);
+- **Inline actions**: see the inline actions' [Settings](/en/docs/ai/inline-actions#settings);
+- **AI components**: see [AI components](#ai-components);
+- **Privacy**, with **Use prompt caching** and **What is sent to providers**: see [What is sent](/en/docs/help/what-is-sent#ai).
+
+Changes to providers and their keys apply at once, and so do your inline actions and MCP servers. Everything else saves with **OK** or **Apply**.
+
+## Providers
+
+HikariSub sends nothing to an AI provider until you add one. **Add provider** offers **OpenAI**, **Anthropic**, **Google Gemini**, **OpenRouter** and **Custom endpoint…**, and the form opens under the list:
+
+- **Name** is the name the lists show.
+- **Id** is the provider's id, which you can select and copy but not change: `openrouter`, `openai`, `anthropic`, `gemini` or `custom`, then `-2`, `-3` and so on for more of one kind. A new provider's form shows the id it will get. A Project names your providers by it, in its [translator and reviewer models](/en/docs/ai/inline-actions#a-projects-models) and its [AI keys](/en/docs/basics/files-and-formats#project-ai-keys).
+- **The key** is hidden as you type it, with **Show key**. For **Google Gemini** it is a **Gemini API key**, with **Get a key in Google AI Studio**. Vertex AI and Google Cloud sign-in aren't supported.
+- **Sign in with OpenRouter…**, for OpenRouter, sits beside the key field. It opens openrouter.ai in your browser, which makes a key for HikariSub. The key goes to the keychain like a pasted one, and the provider is added and tested at once.
+- **Base URL** and **API**, **Chat Completions** or **Responses**, are for a custom endpoint. Its key is optional: a local server such as Ollama or LM Studio needs none. A key is sent only over HTTPS, to this computer or to a Tailscale peer.
+- **Test connection** asks the provider for its models with the key you typed, and saves nothing. **Add** saves the provider.
+
+The first provider you add downloads the [AI component](#ai-components), and the form says how big it is first. A provider is saved only once its key is in your system's keychain. With no keychain, or when you refuse access, it isn't added, and HikariSub says *No system keychain is available* or *Access to the keychain was refused*.
+
+Each provider's row shows its last test, such as *Connected*, with how many models it has, and whether its key is in the keychain, with **Test connection**, **Edit** and **Delete**:
+
+- **Edit** leaves the key field empty, which keeps the stored key. A key you type replaces it. A stored key is never shown again. When the provider refuses a key, the row says *Replace the key with Edit*.
+- **Sign out**, in an OpenRouter provider's **Edit**, deletes its key from this computer. The key stays in your OpenRouter keys until you delete it there.
+- **Delete** asks first, and removes the provider's key from the keychain. Roles that used its models go back to the chat model.
+
+## Models
+
+**Models** picks a model from your providers for each role:
+
+| Role | For |
+| --- | --- |
+| **Chat** | The [agent](/en/docs/ai/agent), and the [inline actions](/en/docs/ai/inline-actions) other than Translate and Fix spelling and grammar |
+| **Translator** | Translate |
+| **Reviewer** | Fix spelling and grammar |
+| **Vision** | A model that reads images. Its list shows only those |
+| **Judge** | [The judge](/en/docs/ai/agent#the-judge), which checks the agent's changes in Auto mode |
+
+Every role but **Chat** can be **Same as chat**, and a role without its own model uses the chat model. **Refresh models** asks every provider for its list of models again. Your first provider's models fill **Chat** while it is empty.
+
+## AI components
+
+The AI component is the part of HikariSub that talks to your providers. It isn't in HikariSub's download: your first provider, or turning on the MCP server, downloads it. **AI components** shows:
+
+- **AI component**, its version, **Runs on**, the version of Bun it runs on, and **Provider libraries**, the Anthropic, OpenAI and Google Gen AI libraries' versions;
+- **Status**: *Up to date*, with when HikariSub last checked, *Checking…*, a new version with its size and **Update now**, its download with **Cancel**, or the new version *is ready · starts once AI has been idle for 2 minutes*;
+- **Check now**, which checks at once, and **What's new**, which opens the AI component's release notes.
+
+When a check fails, the status says *Couldn't check: no connection*, with when the last check worked, or *Couldn't check: bad signature*, and HikariSub keeps the version it has and installs nothing from that list. *Newest this HikariSub runs*, with *Update HikariSub to get newer AI features.*, means a newer AI component needs a newer HikariSub.
+
+**Update AI components automatically** is on at first. HikariSub checks every hour while AI is on, and a new version downloads in the background and starts once AI has been idle for 2 minutes. With it off, HikariSub still checks every hour, and downloads only when you press **Update now**. When an administrator has turned automatic updates off for the computer, the section says *Your administrator turned automatic updates off on this computer.*, and **Check now** and **Update now** still work. See [What is sent](/en/docs/help/what-is-sent#ai) for what a check sends.
+
+If a new version stops working, HikariSub goes back to the one before, and the section says so, such as *AI component 1.5.0 stopped working, so HikariSub went back to 1.4.0 and won't install 1.5.0 again.* With **Always send crash reports** on, a report goes out, and the notice adds *A crash report was sent.* The notice stays until you press **Dismiss**.
+
+## Updating Claude Code and Codex
+
+Under **External agents**, Claude Code and Codex each show the version found on your `PATH`, with the latest version and how it was installed, and a badge: **Up to date**, **Update available**, **Unsupported version** or **Known broken version**. HikariSub asks where each was installed from for the latest version, at most once a day, and only while the page is open.
+
+- **Update now** shows when the badge isn't **Up to date**. It runs the official update for how the agent was installed, such as `claude update` or `codex update`, or the package manager's. A thread on that agent keeps running on the old version, and while one runs the row says *Update now waits until it ends*.
+- **Update didn't take** shows when the version is the same afterwards, with the command to run in a terminal to see why.
+- **A command to copy** shows in place of **Update now** where HikariSub doesn't run the update itself, such as an agent installed with WinGet or Chocolatey. An agent installed in a way HikariSub doesn't know says to update it as you installed it.
+
+## Turning AI off
+
+Tick **Turn off all AI features**, then press **OK** or **Apply**. The rest of the page folds away, and lists what is kept and what is hidden:
+
+- **Kept:** your providers and their keys in the keychain, your agent threads and the downloaded AI component.
+- **Hidden:** the Agent panel, the inline AI actions and the AI rows in every menu; the AI commands in command search, with their shortcuts and toolbar buttons; AI in Getting started and What's new. The MCP server stops listening.
+
+With AI off, nothing AI-related shows, downloads, starts or reads your keychain, and no restart is needed. Clear the box and press **OK** or **Apply** to turn AI back on.
