@@ -89,6 +89,25 @@ Before anything changes, each line is drawn alone on its frame, and where its in
 
 Placing the lines asks as other changes do in the thread's [mode](#modes). In Manual mode it is a [question](#questions), not a proposal, and in Auto the judge decides. Typesetting needs an open video.
 
+## Timing karaoke
+
+Ask the agent to time karaoke or apply a karaoke template, and it follows the built-in **karaoke-templater** skill. It uses HikariSub's own karaoke code:
+
+- **Splitting:** it [splits](/en/docs/karaoke/split-and-join) lines into syllables with your language rules, as the Audio panel's karaoke mode does.
+- **Timing:** it sets each syllable's length, and [snaps](/en/docs/karaoke/onset-snap) the boundaries inside a line to the nearest point where singing starts, within 100 ms, keeping each syllable at least 10 ms long.
+- **The [Kanji timer](/en/docs/karaoke/kanji-timer):** it copies a timed romaji line's syllables onto its kanji line.
+- **Checking:** it reads the [reading dictionary](/en/docs/karaoke/furigana#the-reading-dictionary)'s suggestions and runs the [Karaoke check](/en/docs/karaoke/karaoke-check).
+
+These give the agent the new text and change nothing. It then writes the text into the lines, which asks as other changes do in the thread's [mode](#modes).
+
+For a [template](/en/docs/karaoke/templater), the agent previews what it makes from one line, without changing anything. Then it runs the karaoke templater on every karaoke line, or on the lines you name. This replaces what the templater made last time, and goes in as one undo step that waits in the [review](/en/docs/ai/review) for **Keep** or **Undo**. Applying asks as other changes do.
+
+### WhisperX and the Montreal Forced Aligner
+
+If you've installed WhisperX or the Montreal Forced Aligner, so that `whisperx` or `mfa` is on your `PATH`, the agent can run it on the song to find when each word is sung. Nothing is bundled. Without the program, the agent is told it isn't installed.
+
+Every run asks you, in every mode, Full access included, like the [always-ask list](#the-always-ask-list). HikariSub writes the audio under the lines, and their words, to a folder of its own in your temporary folder, runs the program there, reads each word's start and end, and deletes the folder. The audio is never sent anywhere, and the agent gets only the times. Nothing is applied: the agent writes the times into the lines as any other change.
+
 ## Searching the web
 
 With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
@@ -213,7 +232,7 @@ Agents you [connect over MCP](/en/docs/ai/connect-an-agent), plugins and the oth
 Some actions ask in every mode, Full access included. Their card has a red edge, asks *Allow …?* and says *asks in every mode*, and offers only **Allow once** and **Deny**:
 
 - **Deleting or overwriting files** outside your subtitles' folders and your [user folder](/en/docs/automation/user-folder), such as the command that deletes temporary files.
-- **Running external programs,** such as loading or rerunning an Automation script, plugin commands, and the settings for the script editor and installing updates.
+- **Running external programs,** such as loading or rerunning an Automation script, plugin commands, the settings for the script editor and installing updates, and running [WhisperX or the Montreal Forced Aligner](#whisperx-and-the-montreal-forced-aligner).
 - **Installing plugins or trusting them:** the settings for plugin updates, plugin network access and trusted folders.
 - **Sending local files to the network:** every privacy setting, such as crash reports and usage data.
 - **Changing AI settings,** such as permissions, keys and budgets.
