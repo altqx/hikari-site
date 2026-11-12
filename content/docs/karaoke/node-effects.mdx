@@ -175,6 +175,10 @@ A graph that uses something a template can't express isn't exported. That includ
 
 Node effects follow the file's [template language](/en/docs/karaoke/template-editor#the-template-language). In a karaOK file, places are rounded to 0.1 px, and a syllable with no length isn't blank, so it still gets its lines, as in karaOK. In an Aegisub 3.2.2 file, places are whole pixels and such a syllable is blank.
 
+## Built by the agent
+
+The [Agent panel](/en/docs/ai/agent#building-node-effects)'s agent can build node effects too. It builds or changes a graph step by step, previews the lines it would write, then saves the graph or applies it, each as one undo step. Saving and applying ask as any of its changes do.
+
 ## Lua nodes
 
 The **Lua** node runs a short piece of Lua code once per line, for all its units. Its inputs are globals, and the code sets its outputs as globals. They can be Number, Text, Colour, Alpha, Time, Point, Yes or no, or Tags.
@@ -184,7 +188,7 @@ The **Lua** node runs a short piece of Lua code once per line, for all its units
 - **Deterministic.** The same graph and lines always give the same output. There is no `math.random`: use the **Random** node, which draws from the graph's seed. Nothing a row of code sets carries over to the next unit or line.
 - **Ten seconds.** If a line's Lua takes longer than 10 seconds, it is stopped, and Apply writes nothing.
 
-Lua nodes need the same trust as [templates](/en/docs/karaoke/template-editor#trusting-a-file). When a graph has a Lua node, the mode says *This file's node effects run Lua code with your rights. Preview them if you trust the file.* Press **Preview** to trust the file. It is one choice per open file: trusting it here or in the Template editor covers both. A graph without a Lua node never asks.
+Lua nodes need the same trust as [templates](/en/docs/karaoke/template-editor#trusting-a-file). When a graph has a Lua node, the mode says *This file's node effects run Lua code with your rights. Preview them if you trust the file.* Press **Preview** to trust the file. It is one choice per open file: trusting it here or in the Template editor covers both. A graph without a Lua node never asks. A graph with a Lua node runs only here: through the [agent](#built-by-the-agent), its preview and Apply write nothing.
 
 ## Nodes from plugins
 

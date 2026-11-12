@@ -93,6 +93,16 @@ If you've installed WhisperX or the Montreal Forced Aligner, so that `whisperx` 
 
 Every run asks you, in every mode, Full access included, like the [always-ask list](#the-always-ask-list). HikariSub writes the audio under the lines, and their words, to a folder of its own in your temporary folder, runs the program there, reads each word's start and end, and deletes the folder. The audio is never sent anywhere, and the agent gets only the times. Nothing is applied: the agent writes the times into the lines as any other change.
 
+## Building node effects
+
+Ask for a karaoke effect, and the agent can build it as a [node effect](/en/docs/karaoke/node-effects). It reads the file's graphs and the nodes it can use, builds a graph or changes one step by step, and previews the lines it would write, without changing anything. Then it saves the graph as a graph line, or applies it, writing its lines as the mode bar's **Apply** does. Each is one undo step.
+
+Saving and applying ask as other changes do: in Manual mode it asks you, in Auto the judge checks it, and in Full access it goes ahead.
+
+A graph with a Lua node, whether the agent built it or you did, never runs through the agent: its preview and its Apply write nothing. Open it in [node effects](/en/docs/karaoke/node-effects#lua-nodes) to run it, where a Lua node asks for the file's trust as always.
+
+Agents connected through MCP can read and preview graphs, but saving and applying are refused.
+
 ## Searching the web
 
 With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
