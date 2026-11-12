@@ -186,7 +186,7 @@ On Linux, a thread can also run on an agent that speaks the Agent Client Protoco
 They work like Claude Code and Codex:
 
 - **Only HikariSub's tools.** The agent gets HikariSub's tools and nothing else from HikariSub: no files and no terminal.
-- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too.
+- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: the Project and the rest of your home folder are out of its reach, so it reaches your files only through HikariSub's tools. Where the system can't provide the sandbox, the agent isn't confined.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 
 With neither Claude Code nor Codex installed and no provider, a new thread uses the first ACP agent found. Windows lists no ACP agents yet.
