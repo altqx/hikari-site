@@ -153,6 +153,76 @@ The built-in gives the same lines as karaOK, byte for byte, apart from fixes to 
 
 karaOK itself is a separate script with two macros of its own. The built-in keeps **Apply karaoke template** and **Apply karaoke template to selected lines** for both versions.
 
+## The ln.kara library
+
+HikariSub comes with `ln.kara`, karaOK's template library, by logarithm with petzku. Load it from a `code once` line:
+
+```
+ln = _G.require "ln.kara"; ln.init(tenv)
+```
+
+It works in both template languages, karaOK and Aegisub 3.2.2, apart from `ln.tag.kanjipos`, which needs karaOK. `require "ln.kara"` loads HikariSub's copy, even if you have put upstream's in your [user folder](/en/docs/automation/user-folder)'s `automation/include`. Upstream states no licence; HikariSub's changes to it are under the MIT licence.
+
+`ln.init(tenv)` adds these shorthands, and clears the library's random values and lead-in cache:
+
+| Shorthand | Same as |
+| --- | --- |
+| `st(p)`, `sd(p)` | `ln.syltime(p)`, `ln.syldur(p)` |
+| `gc(n)`, `ga(n)` | `ln.line.c(n)`, `ln.line.a(n)` |
+| `rgb`, `hsl`, `hsy` | `ln.color.byRGB`, `ln.color.byHSL`, `ln.color.lumaHSL` |
+| `rnd`, `rset`, `clamp`, `fl` | `ln.math.random`, `ln.randomize`, `ln.math.clamp`, `math.floor` |
+| `set(name, value)` | Sets a template variable, and gives nothing |
+
+So a `syl` template can write `{\an5\pos($x,$y)\t(!st(0.5)!,!st(1)!,\fscx120)\1c!rgb(255,128,0)!}`.
+
+### ln.kara reference
+
+| Function | Gives |
+| --- | --- |
+| `ln.syltime(p)` | The unit's start plus `p` of its length, from the line's start, in ms. `p` is 0 if left out |
+| `ln.syldur(p)` | `p` of the unit's length, in ms. `p` is 1 if left out |
+| `ln.randomize(name, min, max, override)` | Sets the template variable `name` to a random whole number from `min` to `max`, unless it is set already and `override` is false. Gives nothing |
+| `ln.line.tag(tags, defaults)` | The first of each tag named in `tags` in the karaoke line, joined. `tags` is a name or a list of names, without `\`; `defaults` is a string for one tag, such as `ln.line.tag("bord", "\\bord3")`, or a table by name or by place |
+| `ln.line.tags(tags, defaults, as_list)` | Every one of each named tag, joined, or as a list when `as_list` is true |
+| `ln.line.c(n)`, `ln.line.a(n)` | The karaoke line's `\Nc` or `\Na`, or else its style's colour or alpha N |
+| `ln.line.style_c(n)`, `ln.line.style_a(n)` | The style's colour or alpha N |
+| `ln.line.buffers(min_start, min_end, min_fad_in, min_fad_out)` | The lead-in and lead-out in ms: the line's `\fad`, or the length of an empty first and last syllable, at least the minimums given |
+| `ln.line.len_stripped()`, `ln.line.len()`, `ln.line.len_raw()` | How many characters the karaoke line's text has without tags, with tags, and as written |
+| `ln.syl.tag`, `ln.syl.tags`, `ln.syl.c`, `ln.syl.a`, `ln.syl.len_stripped`, `ln.syl.len` | As the `ln.line` ones, on the current unit's text |
+| `ln.tag.pos(an, anchor, dx, dy, once)` | `\anN\pos(x,y)` at the unit's anchor point, or the line's outside a unit, moved by `dx` and `dy`. `an` and `anchor` are the style's alignment if left out. With `once`, only the first call in each line it makes writes it. A table with `alignment`, `anchorpoint`, `offset_x`, `offset_y` and `line_kara_mode` works too |
+| `ln.tag.move(x0, y0, x1, y1, t0, t1, an, anchor, once)` | `\anN\move(…)` from offsets of the anchor point, with `t0` and `t1` when both are given. Offsets left out are 0, so `ln.tag.move(nil, nil, 10, 20, 0, 300, 5)` starts at the anchor. A table with `x0` or `x_start`, `y0`, `x1`, `y1`, `t0` or `time_start`, `t1`, `alignment`, `anchorpoint` and `lsyl_mode` works too |
+| `ln.tag.kanjipos(dx, dy, once)` | Kanji set upright for vertical text: `\fn@font\frz-90\an5\pos(x,y)`. karaOK only |
+| `ln.tag.t(t0, t1, accel, tags)` | `\t(…)` with whole-millisecond times. `ln.tag.t(tags)`, `ln.tag.t(accel, tags)` and `ln.tag.t(t0, t1, tags)` work too |
+| `ln.tag.parse_transform(s)`, `ln.tag.parse_move(s)` | A `\t` or `\move` read into a table |
+| `ln.tag.mod_transform(s, t0, t1, accel, tags)` | `s`'s `\t`, with each part changed by `"+N"`, `"-N"` or `"=N"`, and its tags by `"+tags"`, `"-tags"` or `"=tags"` |
+| `ln.wave.new(form, wavelength, amplitude, phase)` | A wave: `sine`, `square`, `triangle`, `sawtooth` or `noise`. `addWave`, `addFunction`, `addConstant`, `clear`, `setWave`, `setFunction`, `setConstant` and `getValue(t)` build and read it. `noise` reseeds Lua's random numbers |
+| `ln.wave.transform(wave, tags, t0, t1, delay, framestep)` | `\t` steps every `framestep` frames, at 23.976 fps, that follow the wave on `tags` |
+| `ln.color.byRGB(r, g, b)`, `ln.color.byHSL(h, s, l)`, `ln.color.lumaHSL(h, s, y)` | `&HBBGGRR&` from values of 0 to 255. `lumaHSL` keeps the Rec. 709 luma. `ln.color.rgb.get` and `add`, and `ln.color.hsl.get` and `add`, read a colour and add to it |
+| `ln.math.clamp`, `modloop`, `modbounce`, `log(base, n)` | As named |
+| `ln.math.sgn(n)` | -1 for a negative `n`, else 1 |
+| `ln.math.round(n, places)`, `ln.math.round_fast(n)` | `n` rounded, a half to the even side |
+| `ln.math.random()`, `random(max)`, `random(min, max)` | A random number to 4 decimals: from 0 to 1, to `max`, or from `min` to `max` |
+| `ln.math.lerp(t, a, b)`, `ln.math.xerp(t, a, b, accel)` | The value `t` of the way between two numbers, `&H…&` colours or alphas. `xerp` raises `t` to `accel` first |
+| `ln.shapes.shift(drawing, x, y)` | The drawing, moved |
+| `ln.shapes.rectangle`, `roundedRectangle`, `circle(r, segments)`, `triangle`, `polygon(sides, r)`, `gear` | Drawings for `\p1`. A negative `segments` turns a circle the other way |
+| `ln.shapes.star`, `heart`, `twinkle1` to `twinkle3`, `snowflake`, `stolengleam` | Ready-made drawings |
+| `ln.debug.prog(p)` | Sets the progress bar to `p`, from 0 to 1. Gives nothing |
+
+The [Template editor](/en/docs/karaoke/template-editor#editing-a-template) offers `ln.` and its functions as you type.
+
+### What HikariSub's copy fixes
+
+HikariSub's `ln.kara` fixes eight bugs in upstream's:
+
+- **`gc`, `ga`, `ln.line.tags` and `ln.syl.tags` read the line's own tags.** Upstream always gave the defaults, or the style's colour.
+- **A string default works,** as in `ln.line.tag("bord", "\\bord3")`. Upstream stopped with an error.
+- **The table forms of `ln.tag.pos` and `ln.tag.kanjipos` work.** Upstream stopped with an error.
+- **`ln.tag.move` with its start offsets left out starts at the anchor.** Upstream stopped with an error.
+- **`ln.syldur()` and `sd()` with nothing in the brackets give the whole length,** as karaOK's own guide says. Upstream gave 0.
+- **`ln.shapes.shift` and `ln.shapes.circle` write whole coordinates without decimals.** Upstream wrote two decimals for most of them.
+- **`ln.math.lerp` and `xerp` between a string and a number are an error,** *lerp between mismatched variable types*. Upstream read a string of digits as a number.
+- **`ln.tag.kanjipos` in an Aegisub 3.2.2 file is a problem,** *ln.tag.kanjipos works only in karaOK mode*, on its template line. Upstream stopped with an error.
+
 ## Karaoke lines
 
 The templater reads the syllables from `\k`, `\kf`, `\ko` and `\K` tags. **Syllable 0** is the text before the first tag, usually empty and of no length. A `syl` template makes a line for it too, unless it has `noblank`.
