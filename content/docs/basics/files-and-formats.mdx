@@ -240,6 +240,7 @@ A Project can set only these:
 | [Tags from original](/en/docs/translation/translation-mode#tags-from-original) in Translation mode | `translation.autoMoveTagsFromOriginal` |
 | The [Translate](/en/docs/ai/inline-actions#a-projects-models) action's models, and the folder of its glossary | `translation.translator`, `translation.reviewer`, `translation.glossary` |
 | [Credits written on save](#filling-in-the-credits-on-save), and whether to ask first | `scriptProperties.*` |
+| Which of your plugins are on, and their settings, in a trusted folder | The `[plugins]` table: see [Project plugins](#project-plugins) |
 
 Any other setting in the files is ignored, and a notice names it. A file that can't be read is renamed with `.broken` at the end, a notice says so, and its settings don't apply.
 
@@ -278,7 +279,39 @@ While a window has a Project open, **File › Settings** in that window has two 
 
 #### Trusting a Project folder
 
-When a Project's `.hikari` folder holds scripts, in `.hikari/automation`, or its `project.toml` has plugin settings, a `[plugins]` table, a bar across the top of the window says *This project has its own scripts or plugin settings. Trust "My Show" to run them.* **Trust folder** adds the Project's folder to your [trusted folders](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names). **Not now** hides the bar in that window, and isn't remembered. HikariSub doesn't run a Project's own scripts or plugin settings yet, trusted or not.
+When a Project's `.hikari` folder holds scripts, in `.hikari/automation`, or its `project.toml` has plugin settings, a `[plugins]` table, a bar across the top of the window says *This project has its own scripts or plugin settings. Trust "My Show" to run them.* **Trust folder** adds the Project's folder to your [trusted folders](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names). **Not now** hides the bar in that window, and isn't remembered. A Project's own scripts and plugin settings apply only once you trust its folder. A trusted Project also trusts the folders inside it, so the scripts its subtitle files name stop asking.
+
+#### Project scripts
+
+A Project can bring its own Automation scripts:
+
+- **Autoload scripts** go in `.hikari/automation/autoload/`, such as `.hikari/automation/autoload/fx.lua`. They load after HikariSub's and yours, and the Automation menu and [Automation panel](/en/docs/automation/automation-panel) of the Project's window list them beside yours. A Project script replaces your script of the same file name, but only in that Project's window.
+- **Shared modules** go in `.hikari/automation/include/`. The scripts inside the Project's folder look there first, then in your `include` folder, then in HikariSub's own. Other scripts never see it. A module HikariSub ships, such as `ln.kara`, always loads from HikariSub's own copy, so a copy in the Project can't replace it. The [DependencyControl](/en/docs/automation/dependencycontrol) packages can be replaced, as in your own `include` folder.
+- **A script a subtitle file names**, kept in `.hikari/automation/`, is written to the file's `Automation Scripts` line from the subtitle file's folder, with `~` in front, such as `~../.hikari/automation/fx.lua`, so Aegisub finds it too.
+
+In a Project you haven't trusted, the Automation panel lists its scripts under *This project* with a lock, and doesn't load them. **Trust this folder to use them** trusts the folder.
+
+#### Project plugins
+
+Plugins are still installed by you, for you. A Project's `project.toml` can turn your installed plugins on or off in its window, and change their settings:
+
+```toml
+version = 1
+
+[plugins]
+enabled = ["kf"]
+disabled = ["qc"]
+
+[plugins."kf"]
+size = 12
+```
+
+- **`enabled` and `disabled`** take plugin ids, and win over your own **On** switch in that Project's window. A [revoked](/en/docs/plugins/using-plugins#trust) plugin stays off. The lists in `project.local.toml` replace the ones in `project.toml`.
+- **`[plugins."<id>"]`** sets that plugin's settings, key by key over yours. `project.local.toml`'s go over `project.toml`'s.
+- **Across windows,** a plugin runs while it is on in at least one window. Its commands, panels and events show only in the windows where it is on.
+- **A plugin you don't have:** when the Project turns on a plugin that isn't installed, the plugin manager says *This project uses kf, which isn't installed.*, with **Install from the marketplace**, which opens the Marketplace on that id.
+
+None of `[plugins]` applies until you trust the folder. Until then, the plugin manager shows a lock with *This project turns plugins on or off, or changes their settings.* and **Trust this folder to use them**.
 
 ### Closing a Project
 
