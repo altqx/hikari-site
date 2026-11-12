@@ -72,7 +72,7 @@ When a line has no `\pos`, the handles start where the line would show, from its
 - **Text Z rotation:** drag around the origin cross to turn the line; drag the cross to move `\org`. **Set angle from 2 points** takes the angle from two points you click along something in the picture.
 - **Text X / Y rotation:** left-drag turns about the vertical axis (`\fry`), right-drag about the horizontal axis (`\frx`), middle-drag both.
 - **Rectangle clipping:** drag a rectangle, then drag its edges, corners or inside. **Invert clip** switches between `\clip` and `\iclip`.
-- **Vector clipping and Vector drawing:** the bar's modes are **Move points**, **Add line**, **Add Bézier curve**, **Add B-spline**, **Add separate point** and **Delete point**; the wheel steps through them. Ctrl+click selects several points, and Alt while dragging snaps to another point's x or y. Vector drawing's **Shape** list draws a ready-made shape into a rectangle you drag; **Edit shapes…** adds your own. Vector clip points keep two decimals. The vector clip modes and its **Invert clip** can take keys in **File › Settings › Shortcuts**.
+- **Vector clipping and Vector drawing:** the bar's modes are **Move points**, **Add line**, **Add Bézier curve**, **Add B-spline**, **Add separate point** and **Delete point**; the wheel steps through them. Ctrl+click selects several points, and Alt while dragging snaps to another point's x or y. Vector drawing's **Shape** list draws a ready-made shape into a rectangle you drag; **Edit shapes…** adds your own. Vector drawing can also combine and grow drawings: see [Combining and offsetting drawings](#combining-and-offsetting-drawings). Vector clip points keep two decimals. The vector clip modes and its **Invert clip** can take keys in **File › Settings › Shortcuts**.
 - **Position shifter:** drag to move everything the **Move** toggles choose (positions, `\move` start or end points, clips, drawings, `\org`) by the same amount in every line.
 - **Hydra:** pick a tag, then drag sideways on the video or turn the wheel to change its value. **Set**, **Add**, **Multiply** and **Gradient** decide how the value is applied across characters or lines.
 - **Gradient:** the button before Text on path on the rail. Choose a mode, drag across the sign from where the gradient starts to where it ends, check the preview and press **Apply gradient (Enter)**. See [Gradients](#gradients).
@@ -175,6 +175,21 @@ When a gradient can't be made, the video says why:
 - *Strips along the clip need a clip on the line*
 - *Gradients do not work on an inverse clip*
 - *No characters on the line*
+
+## Combining and offsetting drawings
+
+While you draw points yourself in Vector drawing, not a ready-made shape, two more tools follow the **Shape** list on its bar.
+
+**Pathfinder** combines the drawing with a second shape: **Unite**, **Subtract**, **Intersect** or **Exclude**.
+
+- **The second shape** is the line's vector clip, `\clip` or `\iclip`, and the clip comes out once it's used.
+- **Without a clip**, it is the drawings of the other [picked lines](#which-lines-a-tool-edits), each at its own `\pos`. They go into the active line one after another, in Grid order, and the other lines stay as they were.
+- **Preview:** holding the pointer over an entry, or moving to it with the keys, previews its result on the video as a filled outline.
+- **Choosing an entry** writes the result as one step in the history. If nothing would be left, the video says *Nothing would be left of the drawing* and nothing changes. With neither a clip nor another picked drawing, **Pathfinder** is off.
+
+**Offset**, on the bar, grows the filled drawing by that many script pixels, or shrinks it when negative. **Offset corners** chooses **Miter**, **Round** or **Square** corners, **Round** at first. While **Offset** isn't 0, the result previews on the video. **Apply offset** writes it as one step and sets **Offset** back to 0.
+
+Both fill the drawing as libass does, and write it back as straight lines, with curves turned into short lines. The line's `\pos`, `\an`, scale and `\frz` stay.
 
 ## Text on path
 
