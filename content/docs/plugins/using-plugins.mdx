@@ -241,4 +241,6 @@ A plugin with full trust runs outside the sandbox, with the same access as Hikar
 
 ## Writing plugins
 
+The [agent](/en/docs/ai/agent#plugins) can write a plugin for you. Installing one it wrote always asks first, in every mode, with the same details as installing from a file, and the plugin's code. Running a plugin's command from the agent asks too.
+
 [Write your first plugin](/en/docs/plugins/write-your-first-plugin) makes a small plugin step by step, and the [Hikari API reference](/en/docs/plugins/api-reference) lists every operation and event. The full plugin format, the manifest, signing and the `hikari` API for plugin authors are in [docs/plugins.md](https://github.com/altqx/hikari/blob/main/docs/plugins.md) in HikariSub's repository. Its [Panels and dialogs](https://github.com/altqx/hikari/blob/main/docs/plugins.md#panels-and-dialogs) section covers panels, their widgets and dialogs, with a sample plugin, and [QML panels](https://github.com/altqx/hikari/blob/main/docs/plugins.md#qml-panels) the panels a full trust plugin draws itself.

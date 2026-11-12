@@ -209,7 +209,7 @@ Each thread has a mode, which decides what the agent may change without asking. 
 | --- | --- |
 | **Manual** | You approve each [subtitle edit](#proposals) before it's made, and every other change. Reading never asks. |
 | **Auto** | The judge model approves each change, or asks you, with its reason |
-| **Full access** | Nothing, except the [always-ask list](#the-always-ask-list) and [Lua scripts](#lua-scripts) |
+| **Full access** | Nothing, except the [always-ask list](#the-always-ask-list), [Lua scripts](#lua-scripts) and [installing plugins](#plugins) |
 
 New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads…**, at the foot of the mode menu, opens it.
 
@@ -272,6 +272,26 @@ An approved script runs like any macro, on the active tab's selection: it runs t
 
 HikariSub saves the script in `ai/scripts` in your [user folder](/en/docs/automation/user-folder), under the name the agent gave it, and replaces an earlier one of that name. **Open**, on the card, opens the file. The script is never added to `autoload`, so it doesn't load at start.
 
+
+### Plugins
+
+The agent can write a [plugin](/en/docs/plugins/write-your-first-plugin) and ask to install it. It writes the plugin's `hikari-plugin.json` and `main.lua` to `ai/plugins/<id>` in your [user folder](/en/docs/automation/user-folder), and packs them as `<id>.hikariplugin` beside them. Writing it asks as other changes do, and installs nothing. The agent can also list your installed plugins and read their manifests.
+
+Every install asks first, in every mode, Full access included, and the judge never decides it. The card, *Install this plugin?*, says *asks in every mode*, and shows what [installing from a file](/en/docs/plugins/using-plugins#from-a-file) would ask:
+
+- the plugin's tier: *Restricted: it runs in the sandbox.*, or *Full trust: it runs outside the sandbox and gets full access to your computer.*;
+- whether it is signed: [Unverified](/en/docs/plugins/using-plugins#trust), with the key that signed it if one did;
+- the permissions it asks for, and the commands it adds;
+- the first 12 lines of its `main.lua`, and **Show all … files** for the rest.
+
+**Install** installs it, and **Don't install** doesn't. **Don't install and tell the agent…** adds a message: *What should it do instead?* A full-trust plugin turns the card red, *Install with full access?*, and its button says **Install with full access**, which is never the default. A package signed by another key than the copy you have shows the key warning, with **Trust and install**.
+
+- **Only what you saw installs.** If the package changes after the card shows, it isn't installed.
+- **Only its own or yours.** The agent can install a plugin it wrote, or a `.hikariplugin` you attached or gave it, never one from the marketplace, and never a package over 1 MiB.
+- **As from a file.** An installed plugin turns on, and **Automation › Plugins…** can turn it off or uninstall it. The thread keeps a row, such as *Installed … · restricted* with **Open in Plugins**, or *Didn't install …* with your message.
+- **Running its commands.** The agent running a plugin's command is on the [always-ask list](#the-always-ask-list).
+
+Agents you [connect over MCP](/en/docs/ai/connect-an-agent) can't write, install or run plugins.
 
 ## Threads
 
