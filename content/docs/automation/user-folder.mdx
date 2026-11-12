@@ -65,10 +65,12 @@ catalogs/               style catalogues (.sty) and fonts.toml, your font catalo
 presets/                layouts.json, your saved layouts
 node-effects/           your node effects library: one file per graph, from Save to the library
 recovery/               autosaved copies of your files
+automation-backup-<date>/  your old automation and config folders, from the automation folder reset
 config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
 log/  temp/  autosave/  folders scripts write to
 .bundled-files          which bundled version each copied file came from
 .old-folders            hidden: the earlier folders were moved in, so it isn't done again
+.automation-reset       hidden: the automation folder reset ran, so it isn't done again
 ```
 
 Some files appear only once you use what they belong to. If you used a HikariSub version from before these files, the old ones are there too, with `.old` added: `hikari.ini.old`, `ShapesSettings.txt.old` and so on.
@@ -153,6 +155,18 @@ The first time HikariSub starts with a user folder that has no settings (no `set
 - Empty folders are removed. What stays behind is not used any more: once you have checked it, delete it. On Windows the old data folder is inside the new user folder, so a `HikariSub` folder there can hold what stayed behind.
 
 A portable copy, or a start with `HIKARISUB_USER_DIR`, moves nothing. HikariSub 0.0.x's folders are never moved or changed: bring its settings over with **Settings › General › Import legacy settings…**, as [Moving from legacy](/en/docs/get-started/moving-from-legacy) explains.
+
+## The automation folder reset
+
+HikariSub 0.1.0-beta.4 resets your automation folder once. The karaoke templater and several scripts are now built in, and old copies could replace or break them.
+
+- **What moves.** The first time 0.1.0-beta.4 or a later version starts, your old `automation` and `config` folders move to `automation-backup-<date>` in your user folder, with `-2`, `-3` and so on after it if that name is taken. Nothing is deleted. An empty `automation` folder takes their place, and HikariSub puts its own scripts back in it. The rest of your user folder stays as it is.
+- **Only HikariSub's scripts.** If your automation folder only has the scripts HikariSub put there, they're refreshed quietly, with no backup and no popup.
+- **The popup.** *Automation folder reset* lists what moved, under **Moved**, and the backup's place, under **Backup**, with **Open backup folder** and **OK**.
+- **Reinstalling.** **Reinstall**, with the number of scripts, installs the scripts DependencyControl had installed again, at their current versions, with the libraries they need. Each one shows its progress, and one that fails says why, with **Try again**. Without any, the button isn't there.
+- **Now built in.** Scripts that HikariSub now does natively are listed under **Now built in**, with the command to use instead, and aren't reinstalled.
+- **By hand.** Scripts you copied in by hand aren't reinstalled. They stay in the backup: copy back the ones you still want.
+- **Once only.** `.automation-reset` in your user folder records that it ran, so a reinstall or a settings reset doesn't repeat it. If the folders can't be moved, nothing is moved or deleted, the popup says *Automation folder not reset* and why, and HikariSub tries again at the next start.
 
 ## Backing up and moving to another computer
 
