@@ -63,7 +63,7 @@ Right-click the row of column names for the list of columns: tick or untick one 
 | <kbd>Ctrl</kbd>+<kbd>Up</kbd> <kbd>Ctrl</kbd>+<kbd>Down</kbd> | Previous or next line, from anywhere |
 | <kbd>F2</kbd> | Selects the line at the video's time |
 
-The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Playback › Move video to the selected line**. **Edit › Select lines** selects lines by their text, style or other fields.
+The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Playback › Move video to the selected line**. **Edit › Select lines** selects lines by their text, style or other fields, or the lines that [overlap](/en/docs/basics/find-and-replace#selecting-lines) an earlier one.
 
 Most commands act on the selected lines.
 
@@ -75,7 +75,7 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 - **Duplicate**, [Blur and glow layers…](/en/docs/typesetting/visual-tools#blur-and-glow-layers) and **Build layers with the last values**, **Cut**, **Copy** and **Paste**.
 - **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last.
-- **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words or By wraps.
+- **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds).
 - [Remove tags…](#removing-tags).
 - [Interpolate across lines…](#interpolating-across-lines), for three or more lines.
 - **Swap lines**, **Make times continuous ›** with the previous or the next line, **Make line group** and [Convert Aegisub folds to line groups](#aegisub-folds).
@@ -100,7 +100,9 @@ The sections below explain each of them.
 
 Lines between the selected ones that you didn't select are left alone.
 
-**Split lines** cuts a line at the video's time, or into one line per frame, character, word or wrapped line. A split into characters, words or wraps gives each piece its own position, so it stays where it was on the video.
+**Split lines** cuts a line at the video's time, or into one line per frame, character, word, wrapped line or tag block. A split into characters, words, wraps or tag blocks gives each piece its own position, so it stays where it was on the video. If the line is turned, with `\frx`, `\fry`, `\frz` or its style's angle, and has no `\org`, each piece also gets `\org` at the line's position, so the pieces turn about the same point and the sign doesn't jump.
+
+**Split › At tag blocks** makes one line for each piece of text and the tag block before it. Each piece keeps the tags in effect for it, so `{\b1}ab{\i1}cd` becomes `{\pos(310,470)\an2\b1}ab` and `{\pos(330,470)\an2\b1\i1}cd`. A `\r` drops the tags before it, and the `\k` syllables before a piece become one `\k` delay at its start. A line without tag blocks stays as it is.
 
 A split into characters keeps each character together with its marks: Thai vowel and tone marks, combining accents and emoji sequences stay with the character they belong to. So `กินน้ำ` splits into `กิ`, `น` and `น้ำ`, an `é` typed as `e` and an accent stays whole, and an emoji, even one made of several joined emoji, is one line. Thai support is by Jibrill.
 
@@ -113,6 +115,14 @@ A split into characters keeps each character together with its marks: Thai vowel
 - `\move` becomes the `\pos` for that frame.
 
 Untick **Bake animations** for the split from before: every frame keeps its `\t`, `\fad` and `\fade` tags, and only `\move` becomes `\pos`. The menu item and **File › Settings › Grid › Splitting › Bake animations when splitting into frames** are the same setting. Either way, the whole split is one undo step.
+
+### Splitting every N frames or seconds
+
+**Split › Every N frames or seconds…** cuts each selected line into pieces of the length in **Every**, in **Frames** or **Seconds**. Frames need a video, and the pieces are cut on frame starts; with a video open, seconds go to the next frame start too. The first piece keeps the line's start and the last its end.
+
+Each piece's `\move`, `\t`, `\fad` and `\fade` times move back by where the piece starts, so the pieces play as the line did. A 5-second line `{\move(0,0,100,0)\t(\frz90)}a` split every 2 seconds gives, as its second piece, `{\move(0,0,100,0,-2000,3000)\t(-2000,3000,\frz90)}a`. The split is one undo step, *Splitting lines*.
+
+Neither **At tag blocks** nor **Every N frames or seconds…** has a key at first: <kbd>Shift</kbd>+click it in the menu, or give it one in **File › Settings › Shortcuts**.
 
 ## Interpolating across lines
 

@@ -1,6 +1,6 @@
 ---
 title: Presets
-description: Start a karaoke effect from one of ten built-in presets, inserted as template lines you can preview, edit and apply.
+description: Start a karaoke effect from one of twenty built-in presets, inserted as template lines you can preview, edit and apply.
 ---
 
 import menuLight from './images/template-presets-light.webp';
@@ -8,15 +8,19 @@ import menuDark from './images/template-presets-dark.webp';
 import lettersLight from './images/template-preset-letters-light.webp';
 import lettersDark from './images/template-preset-letters-dark.webp';
 
-HikariSub comes with ten karaoke effects, ready to use. A preset is a set of template and code lines. The [Template editor](/en/docs/karaoke/template-editor) inserts them into your file, and from then on they are ordinary templates: you preview, edit and apply them like your own.
+HikariSub comes with twenty karaoke effects, ready to use. A preset is a set of template and code lines. The [Template editor](/en/docs/karaoke/template-editor) inserts them into your file, and from then on they are ordinary templates: you preview, edit and apply them like your own.
 
-The presets are stock Karaoke Templater syntax, with no extra libraries, so a file that uses them gives the same lines in Aegisub 3.2.2. All of them were written for HikariSub.
+The first ten are stock Karaoke Templater syntax, with no extra libraries, so a file that uses them gives the same lines in Aegisub 3.2.2. The other ten are written in [karaOK](/en/docs/karaoke/templater#karaok-templates)'s template language, and three of them load [ln.kara](/en/docs/karaoke/templater#the-lnkara-library); in Aegisub, they need the karaOK templater. All of them were written for HikariSub.
 
 ## Inserting a preset
 
 In the Template editor, press **New**, then **From a preset**. The presets are listed by name; hover one to read what it does, in a tooltip and in the status bar. Click it to insert it.
 
-The same ten presets are in [Node effects](/en/docs/karaoke/node-effects#presets) as graphs, under **From a preset** on the mode bar.
+The karaOK presets are marked with an (i). In a file whose templates follow Aegisub 3.2.2, they are turned off, with the reason: *Uses karaOK template syntax. Switch Template language to karaOK to use it.* See [The template language](/en/docs/karaoke/template-editor#the-template-language). In a file with no templates and no `Karaoke Templater` line yet, a karaOK preset goes in with `Karaoke Templater: karaOK`, in the same undo step.
+
+In a karaOK file, the first ten are put in karaOK's words as they go in: `pre-line` becomes `line`, `line` becomes `lsyl`, and `syl` with `char` becomes `char`, so Falling letters' `template syl noblank char` goes in as `template char noblank`. Code lines stay as they are.
+
+The first ten are also in [Node effects](/en/docs/karaoke/node-effects#presets) as graphs, under **From a preset** on the mode bar.
 
 <figure>
   <ThemedImage
@@ -68,6 +72,23 @@ A preset is added to the templates already in the file; it replaces nothing. The
 | **Colour per line** | `code once`, `template pre-line palette`, `template line palette` | Like Classic fill, but the lines take turns through a palette of four fill colours, orange, blue, green and pink, by their place in the file. |
 
 The colours are written in the template text as `\1c` and `\3c` tags, and Colour per line keeps its palette in the `code once` line. Change them there.
+
+### karaOK presets
+
+| Preset | Lines it adds | What it does |
+| --- | --- | --- |
+| **Word pop** | `template word noblank` | Each word swells as it starts and settles back while it is sung. |
+| **Word wipe** | `template line wipe`, `template lword wipe`, and `template word noblank` on layer 1 | The line shows whole, and a second colour wipes across each word while it is sung. |
+| **Letter cascade** | `template line cascade`, `template lchar cascade` | Letters appear one after another along the line before it is sung, timed by `$ci`. |
+| **Letter shimmer** | `template char noblank` | Each letter tilts and brightens as it is sung, then straightens. |
+| **Furigana rise** | `template syl noblank`, `template furichar` | Furigana rises into place over each syllable as it is sung. It needs [readings](/en/docs/karaoke/furigana) such as `漢\|かん`. |
+| **Early lead-in** | `template syl noblank` | Each syllable lights up a moment before it is sung, with `k_retime`. |
+| **Wave bounce** | Two `code once`, `template syl noblank` | Each syllable bobs up and down on a sine wave while it is sung, with `ln.wave`. |
+| **Shape burst** | `code once`, `template syl noblank`, and `template syl noblank notext loop 6` on layer 1 | Six stars burst out of each syllable as it is sung. The stars are `ln.shapes.star` drawings. |
+| **Line gradient** | `code once`, `template line gradient`, `template lchar gradient` | The line's letters run through a band of colours from left to right, with `ln.color.byHSL` and `$llen`. |
+| **Thai fade** | `template char noblank` | Each character cluster fades in as it is sung, so Thai vowels and tone marks stay on their letters. Thai support is by Jibrill. |
+
+Wave bounce, Shape burst and Line gradient load ln.kara in their `code once` lines.
 
 The presets use no random values, and nothing in them carries over from one karaoke line to the next. So the preview of any line shows what **Apply** writes for it, and **Apply to the selected lines** can regenerate one line on its own.
 

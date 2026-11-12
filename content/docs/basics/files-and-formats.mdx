@@ -108,7 +108,7 @@ To write a copy in another format and leave the file as it is, use [Export](/en/
 
 ### Filling in the credits on save
 
-HikariSub can write the same credits into each ASS file you save, as HikariSub legacy and Aegisub can. Each credit has a value and a switch, in the `scriptProperties` table of your settings. The switches are off at first.
+HikariSub can write the same credits into each ASS file you save, as HikariSub legacy and Aegisub can. Set them in **File › Settings › Script properties**, under **Credits**: tick a credit and type its value. The ticks are off at first. In [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept), each credit is a value and a switch in the `scriptProperties` table:
 
 | Credit | Value | Switch |
 | --- | --- | --- |
@@ -121,7 +121,7 @@ HikariSub can write the same credits into each ASS file you save, as HikariSub l
 
 Every save except an autosave writes the switched-on credits that differ from the file, as one undo step, *Changing the subtitle header*. Other formats are left alone.
 
-Your own aren't in **File › Settings** yet: set them in [`settings.toml`](/en/docs/customize/settings#where-settings-are-kept). For everyone in a Project, set them on the [Project tab](#the-project-tab) under **Script properties**, or in its [Project settings](#project-settings) file. The [legacy settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
+In a Project's window, your own are on the **Yours** tab, where a credit the Project sets says *Overridden in this project*. For everyone in a Project, set them on the [Project tab](#the-project-tab) under **Script properties**, or in its [Project settings](#project-settings) file. The [legacy settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
 
 ```toml
 [scriptProperties]
@@ -130,7 +130,7 @@ translationOn = true
 askForChange = true
 ```
 
-With `askForChange` on, the save asks first: *Saving "Episode 01.ass" changes these script properties.* It lists each credit that would change, the old value and the new, each with a box, all ticked at first. Save, Save as, Save all, saving a tab in the background and saving as you close all ask.
+With **Ask before changing them on save** ticked (`askForChange` in `settings.toml`), the save asks first: *Saving "Episode 01.ass" changes these script properties.* It lists each credit that would change, the old value and the new, each with a box, all ticked at first. Save, Save as, Save all, saving a tab in the background and saving as you close all ask.
 
 - **OK** writes the ticked credits, for this save only. Your settings don't change.
 - **Skip** saves without them, and asks again next time.
@@ -264,9 +264,7 @@ When two fonts have the same name and style, HikariSub takes the first of:
 
 So a Project font wins over an installed one, or one in your Fonts folder, of the same name and style. A closer match elsewhere still wins, such as an installed bold face for bold text.
 
-A font folder that can't be opened gives a warning in the Log, and the other folders still load. In a Project's window, the [Font collector](/en/docs/typesetting/fonts#the-font-collector)'s **Save to** starts at the Project's first font folder.
-
-For now, the font picker's list is the same in every window, and the Font collector doesn't take fonts from a Project's folders.
+A font folder that can't be opened gives a warning in the Log, and the other folders still load. In a Project's window, the [font picker](/en/docs/typesetting/fonts#the-font-picker) and the Style manager's font list include the Project's fonts. The [Font collector](/en/docs/typesetting/fonts#the-font-collector) finds and copies fonts from the Project's folders, in the order above, and its **Save to** starts at the Project's first font folder.
 
 #### The Project tab
 

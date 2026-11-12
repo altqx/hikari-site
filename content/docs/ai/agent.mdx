@@ -74,6 +74,21 @@ A skill of yours with a built-in skill's name replaces it. A new or changed skil
 
 Skills are for threads on a provider. A thread on [Claude Code](#agents-on-this-computer) and agents connected through MCP don't get them.
 
+## Typesetting signs
+
+Ask the agent to typeset a sign, and it follows the built-in **typesetting** skill. It looks at the sign's frame without subtitles, takes the sign's colours, and reads where its corners are. It doesn't work out the placement tags itself: HikariSub's own [visual tools](/en/docs/typesetting/visual-tools) write them.
+
+- **Perspective** puts a line on the sign's four corners, with `\pos`, `\org`, the rotations, `\fax` and the scales.
+- The clip and drawing tools write a rectangle or vector clip, or put a shape.
+- The **Position shifter** moves positions, `\move` points, clips and `\org` together, for a sign that moved.
+- **Hydra** sets, adds to, multiplies or runs a gradient of one tag across lines, from its own list of tags.
+
+The agent writes the other tags, such as the font, colours and borders.
+
+Before anything changes, each line is drawn alone on its frame, and where its ink lands is compared with where the sign is. A line passes when every edge is within 4 video pixels. The agent places up to 100 lines at a time, and only when every one passes: if one misses, none of them is applied, and the agent is told which. Lines that pass go in as one undo step, and wait in the [review](/en/docs/ai/review) for **Keep** or **Undo**.
+
+Placing the lines asks as other changes do in the thread's [mode](#modes). In Manual mode it is a [question](#questions), not a proposal, and in Auto the judge decides. Typesetting needs an open video.
+
 ## Searching the web
 
 With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
@@ -87,6 +102,39 @@ When the thread's provider can't search on its own and no search service is chos
 - **A search service that stops.** When the search service's plan is used up, the thread says so, such as *Brave Search has no searches left*. When it refuses the key, it says *Brave Search refused HikariSub's key*. Under either, it gives the service's answer, such as *The search service answered 429. The answer goes on without searching the web.* **Open Settings › AI** opens the settings.
 
 Only `http` and `https` links open, always in your browser. What a search sends, and what the thread keeps, is in [What is sent](/en/docs/help/what-is-sent#ai).
+
+## MCP servers
+
+The agent can also use tools from MCP servers you add, in **File › Settings › AI**, under **MCP servers** in the **MCP** section. It's the other way round from [connecting an agent](/en/docs/ai/connect-an-agent), where an agent outside HikariSub uses HikariSub's tools. Only threads on a provider get these tools: threads on Claude Code or Codex don't, and neither do agents connected over MCP.
+
+Until you add one, the row says *No MCP servers yet. Add one to give the agent its tools.* **Add server…** opens a form:
+
+- **Name**.
+- **Runs as**: *A command on this computer* or *A URL (streamable HTTP)*.
+- For a command, **Command**, split into words as a shell would, and **Environment**, one `NAME=value` per line.
+- For a URL, **URL**, `http` or `https`, and an optional **Bearer token**. A token goes over plain `http` only to this computer or to a Tailscale peer.
+- **Trust what this server says about its tools**, off at first. See [What asks](#what-asks).
+
+The environment and the token go to your system's keychain, never to the settings file, and aren't shown again. When you edit a server, leave them empty to keep them. **Delete** removes the server and its secrets. Changes apply at once, with no **OK** needed.
+
+A server that runs as a command runs as you, outside the AI component's sandbox, with your own environment and its variables, in your home folder. It stops when the AI component does.
+
+Nothing starts until a thread needs it. Each server's row shows its command or URL and its state: *Starts when the agent needs it*, *Starting…*, *Connected · 3 tools*, or *Failed:* and why. A thread waits up to 5 seconds for the servers when it starts. A slower server adds its tools once it's ready, and one that failed is tried again the next time a thread starts.
+
+### What asks
+
+What a tool may do without asking depends on its server's hints, which say whether it only reads and whether it may destroy anything. The hints count only when you trust the server, with the check box in its row or form. Without trust, every one of its tools asks in every mode.
+
+| Tool | What happens |
+| --- | --- |
+| Only reads | Runs, and never asks |
+| May destroy something, or its server doesn't say | Asks in every mode, Full access included, with **Allow once** and **Deny** only |
+| Changes things but destroys nothing | Asks as any change does, by the thread's [mode](#modes). **Allow in this thread** covers that one tool |
+| The same, with **Run … without asking** ticked in its server's row | Runs |
+
+Once a server has run, its row lists its tools: a **Run … without asking** box, with the tool's name, for the ones that change things but destroy nothing, and *only reads, never asks* or *asks every time* for the others. A card for a tool names the server and the tool, and one that asks in every mode says *Its MCP server doesn't promise that it only reads or changes nothing it can't undo.* After the turn has stopped, only the tools that only read still run.
+
+What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 
 ## Agents on this computer
 
@@ -224,5 +272,7 @@ The meter above the box shows how much of the model's context the thread uses, s
 | **Show the cost meter** | On | Shows the meter above the box |
 
 Changes to the caps don't touch threads you already have, except the day's cap, which counts for every thread.
+
+The MCP servers the agent uses are in **File › Settings › AI › MCP › MCP servers**: see [MCP servers](#mcp-servers).
 
 What HikariSub sends to providers is in [What is sent](/en/docs/help/what-is-sent#ai).
