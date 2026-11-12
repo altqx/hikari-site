@@ -103,6 +103,39 @@ When the thread's provider can't search on its own and no search service is chos
 
 Only `http` and `https` links open, always in your browser. What a search sends, and what the thread keeps, is in [What is sent](/en/docs/help/what-is-sent#ai).
 
+## MCP servers
+
+The agent can also use tools from MCP servers you add, in **File › Settings › AI**, under **MCP servers** in the **MCP** section. It's the other way round from [connecting an agent](/en/docs/ai/connect-an-agent), where an agent outside HikariSub uses HikariSub's tools. Only threads on a provider get these tools: threads on Claude Code or Codex don't, and neither do agents connected over MCP.
+
+Until you add one, the row says *No MCP servers yet. Add one to give the agent its tools.* **Add server…** opens a form:
+
+- **Name**.
+- **Runs as**: *A command on this computer* or *A URL (streamable HTTP)*.
+- For a command, **Command**, split into words as a shell would, and **Environment**, one `NAME=value` per line.
+- For a URL, **URL**, `http` or `https`, and an optional **Bearer token**. A token goes over plain `http` only to this computer or to a Tailscale peer.
+- **Trust what this server says about its tools**, off at first. See [What asks](#what-asks).
+
+The environment and the token go to your system's keychain, never to the settings file, and aren't shown again. When you edit a server, leave them empty to keep them. **Delete** removes the server and its secrets. Changes apply at once, with no **OK** needed.
+
+A server that runs as a command runs as you, outside the AI component's sandbox, with your own environment and its variables, in your home folder. It stops when the AI component does.
+
+Nothing starts until a thread needs it. Each server's row shows its command or URL and its state: *Starts when the agent needs it*, *Starting…*, *Connected · 3 tools*, or *Failed:* and why. A thread waits up to 5 seconds for the servers when it starts. A slower server adds its tools once it's ready, and one that failed is tried again the next time a thread starts.
+
+### What asks
+
+What a tool may do without asking depends on its server's hints, which say whether it only reads and whether it may destroy anything. The hints count only when you trust the server, with the check box in its row or form. Without trust, every one of its tools asks in every mode.
+
+| Tool | What happens |
+| --- | --- |
+| Only reads | Runs, and never asks |
+| May destroy something, or its server doesn't say | Asks in every mode, Full access included, with **Allow once** and **Deny** only |
+| Changes things but destroys nothing | Asks as any change does, by the thread's [mode](#modes). **Allow in this thread** covers that one tool |
+| The same, with **Run … without asking** ticked in its server's row | Runs |
+
+Once a server has run, its row lists its tools: a **Run … without asking** box, with the tool's name, for the ones that change things but destroy nothing, and *only reads, never asks* or *asks every time* for the others. A card for a tool names the server and the tool, and one that asks in every mode says *Its MCP server doesn't promise that it only reads or changes nothing it can't undo.* After the turn has stopped, only the tools that only read still run.
+
+What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
+
 ## Agents on this computer
 
 A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex. When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it. You don't need a provider for either.
@@ -239,5 +272,7 @@ The meter above the box shows how much of the model's context the thread uses, s
 | **Show the cost meter** | On | Shows the meter above the box |
 
 Changes to the caps don't touch threads you already have, except the day's cap, which counts for every thread.
+
+The MCP servers the agent uses are in **File › Settings › AI › MCP › MCP servers**: see [MCP servers](#mcp-servers).
 
 What HikariSub sends to providers is in [What is sent](/en/docs/help/what-is-sent#ai).
