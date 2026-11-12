@@ -100,7 +100,7 @@ A `char` unit is a character as it is drawn, as in the templater's [Characters](
 
 Three nodes under **Units** in **Add node** give each unit, such as a line or a syllable, once for each strip, copy or particle, with its number and how many there are:
 
-- **Clip gradient** cuts the unit's box into strips, side by side or stacked, with padding around the box if you want it. Each strip gives its own `\clip` rectangle and a colour from a gradient of `#RRGGBB` stops. The edges are whole pixels, and neighbouring strips share theirs, so the strips leave no gaps.
+- **Clip gradient** cuts the unit's box into strips, side by side or stacked, with padding around the box if you want it. Each strip gives its own `\clip` rectangle and a colour from a gradient of `#RRGGBB` stops. The edges are whole pixels, and neighbouring strips share theirs, so the strips leave no gaps. To clip the strips to a drawing, intersect a drawing of each strip's rectangle with the shape in [Combine drawings](#text-and-drawings), and wire the result into a `\clip` tag.
 - **Array** places copies around the unit: on a grid centred on it, on a circle around it, or evenly along a drawing wired into its path. Each copy gives its offset, its position and an angle in degrees, as `\frz` takes it. An Array on a path with no drawing wired in is a problem.
 - **Particles** spreads copies at random over a rectangle or an ellipse centred on the unit. They draw from the graph's seed and the node's own seed, so the same graph seed, node seed and line give the same particles on every run, on Linux and Windows alike.
 
@@ -116,6 +116,13 @@ Two nodes under **Units** in **Add node** work like the templater's `multi` and 
 
 - **Highlights** gives each syllable once for each of its highlights, as `multi` does. A syllable whose text starts with `#`, as in `{\k20}空{\k20}#`, is another highlight of the syllable before it. For each highlight, the other nodes see that highlight's start, end and duration. A character has its syllable's highlights, and a furigana or line unit has one, its own. At first it leaves out highlights with no duration, as `multi noblank` does.
 - **Inline-fx** keeps only the units marked with the inline-fx name you give it, as `fx` does. A `{\-name}` in a line marks the syllables from there to the next one. Characters have their syllable's inline-fx, and a line unit has none. With the name empty, it keeps the units with no inline-fx.
+
+## Text and drawings
+
+Two nodes under **Drawings** in **Add node** make vector drawings, which an **Emit** writes as its line's drawing:
+
+- **Text to drawing** draws each unit's text, without its tags, in the font of its line's style: the font, size, bold, italic, underline, strike-out, scale and spacing. Wire a text into it to draw that instead. The drawing is at `\p1` and starts at the text's top left, as Yutils' `text_to_shape` gives it, so `\an7` and a `\pos` at the unit's left and top put it over the unit. Its **width** and **height** are the text's. It uses the fonts the video finds. When it can't read the style's font, it gives an empty drawing, and the graph shows a problem at the node, such as *can't read the Style's font "Missing", so it gives an empty drawing*.
+- **Combine drawings** takes two drawings, **a** and **b**. It unites them (what either covers), subtracts **b** from **a**, intersects them (what both cover) or excludes them (what only one covers). Each drawing is filled as libass fills it and keeps its own `\p` scale. The result is at `\p1`.
 
 ## Presets
 
@@ -134,7 +141,7 @@ Two nodes under **Units** in **Add node** work like the templater's `multi` and 
 
 Each graph writes the same lines as its template, byte for byte, and none of them uses Lua. Colour sweep, Glow and Echo have two **Emit** nodes, one for each layer of the template.
 
-After the presets come six examples, one for each of the newer nodes: the [strips, copies and particles](#strips-copies-and-particles) nodes, [Audio peaks](#audio-peaks), and [Highlights and Inline-fx](#highlights-and-inline-fx):
+After the presets come eight examples, one for each of the newer nodes: the [strips, copies and particles](#strips-copies-and-particles) nodes, [Audio peaks](#audio-peaks), [Highlights and Inline-fx](#highlights-and-inline-fx), and [Text to drawing and Combine drawings](#text-and-drawings):
 
 - **Gradient strips**: each line cut into eight strips, coloured from pink to blue.
 - **Ring of copies**: eight copies of each syllable on a circle around it, each turned to its place, while it is sung.
@@ -142,8 +149,10 @@ After the presets come six examples, one for each of the newer nodes: the [strip
 - **Audio pulse**: each syllable grows with how loud the audio is while it is sung. It needs audio open.
 - **Highlight flashes**: an outline flashes on each syllable once for every highlight, as the templater's `multi` does.
 - **Paint and cloud**: syllables marked `{\-paint}` fill from red to white, those marked `{\-cloud}` rise and blur, and the rest stay in place.
+- **Text outlines**: each syllable is drawn as a hollow drawing in its style's font, and its outline thickens while it is sung.
+- **Striped letters**: each syllable's letters are cut into thin horizontal stripes, which fade in as it is sung.
 
-Highlight flashes and Paint and cloud also [export as template lines](#exporting-as-template-lines). The other four use nodes no template can express.
+Highlight flashes and Paint and cloud also [export as template lines](#exporting-as-template-lines). The other six use nodes no template can express.
 
 ## The library
 
@@ -160,7 +169,7 @@ The **Classic fill** preset, for example, becomes a `line` and an `lsyl` templat
 
 Highlights exports as `multi`, and Inline-fx as `fx` and its name. An Inline-fx with an empty name exports as an `fxgroup`, which a code line sets for the units with no inline-fx.
 
-A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, [nodes from plugins](#nodes-from-plugins), a condition on an Emit, the Clip gradient, Array and Audio peaks nodes, and Highlights on whole lines. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
+A graph that uses something a template can't express isn't exported. That includes random numbers, among them the Particles node, Lua nodes, [nodes from plugins](#nodes-from-plugins), a condition on an Emit, the Clip gradient, Array, Audio peaks, Text to drawing and Combine drawings nodes, and Highlights on whole lines. A popup says *These nodes have no form in a karaoke template, so the graph can't be exported:* and lists each node that blocks it with the reason, such as **dice:** draws numbers the templater can't draw again. Choosing one selects it.
 
 ### karaOK files
 
