@@ -116,6 +116,8 @@ Without the line, a file uses karaOK when a template or code line uses something
 
 `template char` and the `style` modifier on their own don't choose karaOK. A file with none of these runs as it did before.
 
+A new file, from **File › New**, starts in karaOK mode instead, and node effects treat it as karaOK too. The first template that goes in from the Template editor, a new line or a preset, writes `Karaoke Templater: karaOK` in the same undo step. Saving the file on its own writes nothing, and a file you open with no templates and no `Karaoke Templater` line runs as before.
+
 karaOK adds:
 
 | Word | Template runs |
