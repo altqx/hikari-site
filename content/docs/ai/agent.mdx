@@ -162,7 +162,7 @@ If you installed Claude Code or Codex with mise or asdf, the `claude` or `codex`
 
 A thread on Claude Code runs on your own `claude`, with its sign-in and its default model:
 
-- **Only HikariSub's tools.** It works through the same tools as any thread. Claude Code's own tools, such as running commands or editing files, are off, and your Claude Code settings and MCP servers aren't loaded.
+- **Only HikariSub's tools.** It works through the same tools as any thread. Claude Code's own tools, such as running commands, editing files or starting its own sub-agents, are off, and your Claude Code settings and MCP servers aren't loaded.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 - **Costs.** The cost Claude Code reports for each turn counts toward the thread's and the day's [cost caps](#cost-caps).
 - **When it fails.** If a turn fails, its error ends with what `claude` printed, after *Claude said:*.
@@ -173,7 +173,7 @@ The first time you use Claude Code, HikariSub downloads the Claude Agent SDK, wh
 
 A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatGPT sign-in: **Sign in with ChatGPT…** in **File › Settings › AI › External agents**. HikariSub keeps it apart from the sign-in in `~/.codex`, so neither signs the other out. Without it, Codex doesn't start. Codex is on Linux only for now; Windows will follow.
 
-- **Only HikariSub's tools.** It works through the same tools as any thread. HikariSub turns down Codex's own commands, file changes and requests for permission, and Codex doesn't use your `~/.codex` settings.
+- **Only HikariSub's tools.** It works through the same tools as any thread. HikariSub turns down Codex's own commands, file changes and requests for permission, turns off its own sub-agents, and Codex doesn't use your `~/.codex` settings.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 - **Costs.** Codex reports the tokens it used but not a cost, so a Codex thread says *cost not reported* in place of a cost, and doesn't count toward your [cost caps](#cost-caps). Your ChatGPT plan's limits apply instead.
 
@@ -287,6 +287,23 @@ The thread menu, beside **+**, has:
 Threads are kept in `ai/threads` in your user folder, so they are still there after a restart, with their mode, model, cost and what you allowed. Images the agent looked at aren't kept.
 
 If the AI component stops during a turn, the thread says *The AI component stopped*. Changes the turn made stay in the review, and the turn doesn't run again by itself: **Retry the turn** sends your message again, and **Show the log** opens the Log.
+
+## Sub-agents
+
+A thread can split its work across sub-agents. The agent gives each one a task and the lines to work on, and each runs as a thread of its own, on a provider's chat model, Claude Code, Codex or an ACP agent. When the agent names none, a sub-agent runs on its parent's model or agent.
+
+- **Only its own lines.** A sub-agent changes only the lines it was given, in the file the thread edits or one attached to it, and the lines it inserts. It can't change styles or Script Info. Two sub-agents running at once never share lines.
+- **The review as usual.** Its changes wait in the [Review panel](/en/docs/ai/review), under the parent's turn, each sub-agent's as a change set of its own, labelled *Sub-agent* and its title. History and Undo name it too. A tab's badge, when you hover it, splits its count by sub-agent.
+- **Its questions come to you.** A sub-agent's questions, proposals and Lua scripts show in the parent's timeline as well, as *… asks you* with its title, and only you can answer them: *Only you can answer; the parent agent can't.*
+- **Its mode** is the parent's or a narrower one, never a broader one. Narrowing the parent's mode narrows its running sub-agents at once.
+- **Limits.** Only a thread you started can have sub-agents: a sub-agent can't have its own. At most 4 run at once for each thread, and the agent's request for another is refused, not queued.
+- **Cost.** A sub-agent's cost, its judge's included, counts in the parent's meter and toward the parent's cap and the day's. At a cap, the parent and its sub-agents stop.
+
+In the parent's timeline, a card such as *3 sub-agents · 2 running · 1 needs you* has **Stop all**, and a row for each sub-agent, with its state, **Open** and **Stop**. **Open** shows the sub-agent's thread, read-only, with *Sub-agent of* and the parent's title, and *Read-only; talk to it through the parent.* It has no message box: its footer shows its mode, *capped by the parent*, the lines it works on and **Stop**. <kbd>Esc</kbd> or **Back to the parent thread** goes back.
+
+Before a turn's third sub-agent starts, the timeline shows an estimate once, such as *Estimate for 3 sub-agents*, with about how many tokens they take and what they cost. **Run** lets the third start. **Cancel** refuses it, and no more sub-agents start in that turn: *Cancelled. No more sub-agents start this turn.*
+
+When a sub-agent finishes, its result goes back to the parent, which goes on with it. Sub-agents are saved with their parent, and aren't listed in **Threads**. Deleting the parent deletes them. One that was running when HikariSub quit comes back interrupted, and doesn't run again. Its changes stay in the review.
 
 ## Cost caps
 
