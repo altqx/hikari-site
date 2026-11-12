@@ -3,7 +3,7 @@ title: Inline actions
 description: Rewrite, shorten, fix or translate the lines you choose with one AI request per line, from the Grid's or the Line editor's menu.
 ---
 
-Inline actions run one AI task on the lines you choose, such as a rewrite or a translation, without an [Agent panel](/en/docs/ai/agent) thread. Each line goes to the model in a request of its own, and every action changes only the line's text. Inline actions don't show in the Agent panel.
+Inline actions run one AI task on the lines you choose, such as a rewrite or a translation, without an [Agent panel](/en/docs/ai/agent) thread. Each line goes to the model in a request of its own, apart from [Translate](#translating), and every action changes only the line's text. Inline actions don't show in the Agent panel.
 
 ## Where they are
 
@@ -24,13 +24,59 @@ With **Turn off all AI features** ticked in **File › Settings › AI**, the me
 | **Rewrite…** | Chat | How to rewrite it, such as *less formal, fewer words*. Your last five instructions are there to pick again |
 | **Shorten to 15 CPS** | Chat | Nothing. It sends only the lines over 15 characters per second, the limit the Grid and Line editor show |
 | **Fix spelling and grammar** | Reviewer | Nothing |
-| **Translate to English** | Translator | Nothing. The language is **Translate to** in [Settings](#settings) |
-| **Translate to…** | Translator | A language |
+| **Translate to English** | Translator, then Reviewer | Nothing. The language is **Translate to** in [Settings](#settings) |
+| **Translate to…** | Translator, then Reviewer | A language |
 | Your own actions | The one you chose | Nothing, or their instruction when **Ask each time** is on |
 
 Each model is the one you chose for that role in **File › Settings › AI › Models**. A role without a model uses the Chat model.
 
 Comment lines, empty lines, lines of tags only, drawings and karaoke lines aren't sent, and HikariSub says how many it left out. Override tags stay where they are: each tag block goes as a numbered marker, and the answer must give every marker back once, in order. If it doesn't, the line is left as it is, with *Not changed, because the answer dropped a tag*. An answer the same as the line isn't a change.
+
+## Translating
+
+Translate runs a translator and a reviewer over your lines, and keeps names and terms from Honya's `GLOSSARY.md` and `CHARACTERS.md`. Both **Translate to** actions work this way, on one line or many.
+
+- **In chunks.** The lines go in Grid order, in chunks of about 1,000 tokens, and a line is never split. Each chunk goes with the glossary terms and characters it mentions, the style notes, and the last five lines translated.
+- **Checked.** HikariSub checks each answer first: every line answered, every tag marker back once and in order, and the glossary's fixed terms kept. Then the reviewer approves the chunk, or sends it back with what to fix, up to three times. When the tries run out, the best one is kept, and its lines need review.
+- **Across chunks.** With more than one chunk, the reviewer then reads the whole run for names, honorifics or terms written two ways.
+- **The glossary grows.** An approved chunk adds the new terms and characters it used. An entry that is already there is never changed.
+
+The **Translator** model translates, and the **Reviewer** model reviews, or the Translator's if Reviewer has none. Translate sends no lines of context; it sends each line's actor instead. Its estimate counts three passes over the lines, and retries cost more.
+
+### The result
+
+- **In [Translation mode](/en/docs/translation/translation-mode)** it fills the Translated text, and the Original text stays as it is. A line the reviewer didn't approve is marked **Unconfirmed**, and the bar says so: *The reviewer didn't approve line 4, so it's marked Unconfirmed.*
+- **Otherwise** it replaces the text, as the other actions do, and the bar lists the lines the reviewer didn't approve: *Check it before you use it.*
+- **In Manual**, each result the reviewer didn't approve says *Not approved by the reviewer:* and why.
+
+The glossary files change only after the lines are written: when the run ends, or on **Apply** in Manual.
+
+### The glossary
+
+The glossary, the characters and the style are Honya's project files, `PROJECT.md`, `GLOSSARY.md`, `CHARACTERS.md` and `STYLE.md`, so Honya and HikariSub share them. HikariSub keeps everything in them it doesn't use. They are in:
+
+- a Project's folder, or the folder inside it that `glossary` names in the `[translation]` table of `.hikari/project.toml`, which can't lead outside the Project;
+- outside a Project, the folder that the file's `Honya Project` line in `[Script Info]` names, from the subtitle file's folder, such as `Honya Project: ../honya`.
+
+Without either, Translate works with no glossary, and the terms it finds aren't saved.
+
+### A Project's models
+
+A Project can name its translator and reviewer models in `.hikari/project.toml`, as `"<provider id>/<model>"`, but never a key:
+
+```toml
+version = 1
+
+[translation]
+glossary = "honya"
+translator = "or/google/gemini-3-flash"
+```
+
+Here `or` is the id of a provider you added, and `glossary` puts the glossary files in the Project's `honya` folder. `reviewer` takes the same form.
+
+- The provider must be one you added in **File › Settings › AI**; otherwise your own model runs.
+- They apply only once you trust the Project's folder. Until then, your own models run, and the bar says *This project's translator and reviewer models are used once you trust its folder; your own ran instead.*
+- An entry whose name looks like a key, token, password, URL or endpoint, or a value that holds an address or a key, is never read, and the Log warns about it. Keys stay in your keychain.
 
 ## Applying the results
 
@@ -55,7 +101,7 @@ A line that fails shows under the run with the reason. **Retry** runs the failed
 | --- | --- | --- |
 | Your actions | None | **Add an action** gives it a **Name**, an **Instruction**, a **Model** (Chat, Translator or Reviewer) and **Ask each time, starting from this instruction**. **Move up**, **Move down**, **Edit** and **Delete** manage the list. Your actions show in the AI menus |
 | **Translate to** | English | The language of the **Translate to** action |
-| **Lines of context** | 2 | How many lines before and after each line go with it, 0 to 5. 0 sends none |
+| **Lines of context** | 2 | How many lines before and after each line go with it, 0 to 5. 0 sends none. Translate sends none |
 
 Your actions save at once. The other two settings save with **OK** or **Apply**.
 

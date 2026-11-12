@@ -238,11 +238,12 @@ A Project can set only these:
 | [Spelling](/en/docs/checking/spelling#dictionaries): **Check spelling** and **Primary language** | `editor.spellchecker`, `editor.dictionaryLanguage` |
 | The [grammar check](/en/docs/checking/grammar): its language, from 0 for **Off** to 4 for **English (Australia)**, and the **Rule groups** | `grammar.language`, `grammar.group.*` |
 | [Tags from original](/en/docs/translation/translation-mode#tags-from-original) in Translation mode | `translation.autoMoveTagsFromOriginal` |
+| The [Translate](/en/docs/ai/inline-actions#a-projects-models) action's models, and the folder of its glossary | `translation.translator`, `translation.reviewer`, `translation.glossary` |
 | [Credits written on save](#filling-in-the-credits-on-save), and whether to ask first | `scriptProperties.*` |
 
 Any other setting in the files is ignored, and a notice names it. A file that can't be read is renamed with `.broken` at the end, a notice says so, and its settings don't apply.
 
-A Project's settings win over yours in the Project's window only, whether or not its folder is trusted. Spelling in each window follows that window's Project, and the grammar check follows the window you're working in. While a Project sets a setting, changing it on the **Yours** tab changes yours, which apply in the other windows. HikariSub reads the files when the window opens the Project: after editing them by hand, close the Project and open it again.
+A Project's settings win over yours in the Project's window only, whether or not its folder is trusted, apart from Translate's models, which wait until you trust it. Spelling in each window follows that window's Project, and the grammar check follows the window you're working in. While a Project sets a setting, changing it on the **Yours** tab changes yours, which apply in the other windows. HikariSub reads the files when the window opens the Project: after editing them by hand, close the Project and open it again.
 
 #### Project fonts
 
