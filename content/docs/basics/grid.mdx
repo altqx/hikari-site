@@ -80,6 +80,7 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 - [Interpolate across lines…](#interpolating-across-lines), for three or more lines.
 - **Swap lines**, **Make times continuous ›** with the previous or the next line, **Make line group** and [Convert Aegisub folds to line groups](#aegisub-folds).
 - [Line breaks ›, Change case › and Swap dialogue alternatives](#line-breaks-case-and-dialogue-alternatives).
+- [Change alignment, keep position ›, Align and distribute ›, Position to margins and Margins to position](#position-and-alignment).
 - **Select lines visible on video**, **Show subtitles preview** and [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation).
 - **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
 
@@ -170,11 +171,37 @@ While the window is open, the video shows the result, and choosing other lines w
 
 None of them has a key at first: <kbd>Shift</kbd>+click one in the menu, or give it one in **File › Settings › Shortcuts**.
 
+## Position and alignment
+
+These commands move signs without moving them by hand. Each works on the selected lines, apart from hidden ones, and is one step in the history that changes only the lines it moves.
+
+- **Change alignment, keep position ›** sets `\an` to one of the nine alignments, from **Top left (\an7)** to **Bottom right (\an3)**, and leaves the line where it shows on the video. `\pos`, both `\move` points, `\org` and the clip move with it, to two decimal places. A line with no `\pos` gets one. A rotated line without `\org` gets one at its old position, so it turns about the same point.
+- **Align and distribute ›** lines up the lines' boxes. The box is the text's outline, without the border and shadow. **Relative to** chooses what they line up with, **Active line** or **Video frame**, and HikariSub remembers it. **Align left edges**, **Align centres** and **Align right edges** line them up across, **Align top edges**, **Align middles** and **Align bottom edges** down. `\pos`, `\move`, `\org` and the clips move together.
+- **Distribute horizontally** and **Distribute vertically**, in the same menu, take three or more lines. The two outermost stay, and the others are spaced evenly between them, by their centres.
+- **Position to margins** turns each line's `\pos` into its margins and takes the `\pos` out. Lines with `\move` or without `\pos` are skipped.
+- **Margins to position** does the opposite: it puts a `\pos` in whole pixels, from the margins and alignment, in front of each line that has neither `\pos` nor `\move`.
+
+The Line editor has two more: [Phantom](/en/docs/basics/line-editor#phantom), and the Cycle commands, which have no menu.
+
+### Cycling tags
+
+The Cycle commands step one tag in the start block of the selected lines to the next value of a list: **Cycle \blur**, **Cycle \bord**, **Cycle \shad**, **Cycle \alpha**, **Cycle \an** and **Cycle \fsp**. Each has a **back** command, such as **Cycle \blur back**, which steps the other way. A line without the tag gets the first value. A value that isn't on the list goes to the next larger one, or the next smaller one going back. **Cycle \an** changes the alignment without keeping the position.
+
+They have no menu and no key at first: give them keys on the Shortcuts page. The lists are on **File › Settings › Editing › Cycle values**, one row for each tag, with the values in order and commas between them.
+
 ## Copying and pasting
 
 <kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste whole lines. Pasted lines go before the first selected line.
 
 **Copy columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>) copies only the fields you tick, such as the times or the text without tags. **Paste columns** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes them into the same fields of the selected lines, in order. Use them to copy the timing of one set of lines onto another.
+
+The **Tags** group copies tags without the text. It works while no text row, such as **Text**, is ticked:
+
+- **Start tag block** copies the whole first `{…}` block. A line without one copies `{}`, so the lines stay in step.
+- **Clip (\clip or \iclip)** copies the clip.
+- **Only these tags** copies the tags you name in the field beside it.
+
+Paste puts each tag into the start block, replacing the same tag. A pasted start block replaces the whole block, and a pasted clip keeps the kind the line had, `\clip` or `\iclip`.
 
 ## Removing tags
 
