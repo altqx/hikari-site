@@ -1,9 +1,9 @@
 ---
 title: Project tiers
-description: Keep a Project's own style catalogues in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
+description: Keep a Project's own style catalogues and presets in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
 ---
 
-While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. So far, style catalogues have both tiers.
+While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. So far, style catalogues and the presets of script dialogs, Shift times and the Timing postprocessor have both tiers.
 
 Skills: `.hikari/skills`, shown with **Project** and **Mine** chips; they have no Copy or Move. See [Skills](/en/docs/ai/skills).
 
@@ -17,7 +17,7 @@ How the two tiers combine depends on what they hold:
 - **Merged.** Both tiers apply together.
 - **Per key.** The Project's value replaces yours, one key at a time.
 
-Style catalogues are hidden by name.
+Style catalogues and presets are hidden by name.
 
 ## In the lists
 
@@ -37,6 +37,14 @@ The Project's [style catalogues](/en/docs/basics/styles#catalogues) are `.hikari
 - Your **Default** catalogue can't be deleted or moved, only copied. The Project's **Default** can be deleted, and yours shows again, as with any catalogue the Project's hid.
 
 Three things name a catalogue: the file's `Last Style Storage` line in `[Script Info]`, the catalogue the Style manager had open last, and **File › Settings › Conversion › Style › Catalogue**. With a Project open, each finds the Project's catalogue of that name first.
+
+## Presets
+
+A Project's presets for [script dialogs](/en/docs/automation/running-scripts#answers-and-presets), [Shift times and the Timing postprocessor](/en/docs/basics/timing#presets) are all in `.hikari/presets.toml` in its folder. A Project preset hides only yours of the same name in the same list, and for a script dialog, in the same dialog.
+
+- **Script dialog presets.** The dialog's **⋯** › **Presets** marks each preset **Project** or **Mine**, and a preset of yours that the Project's hides is greyed out. **Copy to project**, **Copy to mine**, **Move to project** and **Move to mine** are under **Delete preset**.
+- **Shift times presets and profiles**, and **Postprocessor presets.** The **Preset** box groups them under *This project* and *Mine*, and its **⋯** menu copies or moves the preset shown. A preset of yours that the Project's hides still applies, but can't be renamed or deleted. The [Timing layout](/en/docs/customize/layouts#the-built-in-layouts)'s preset is looked up in the Project first.
+- **Save as preset** saves to the Project at first while one is open, with **Save to mine** on its arrow, and HikariSub remembers the choice for each list.
 
 ## What stays yours
 
