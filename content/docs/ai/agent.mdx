@@ -55,7 +55,7 @@ The agent follows instructions you write in an `AGENTS.md` file:
 - **Yours,** `AGENTS.md` in your [user folder](/en/docs/automation/user-folder#whats-in-it), for every thread.
 - **A Project's,** `AGENTS.md` at the root of the [Project](/en/docs/basics/files-and-formats#projects)'s folder, for the threads started in its window. A thread keeps that Project, even when you open it in another window.
 
-A thread gets HikariSub's own instructions first, then yours, then the Project's. Each file is read up to 32 KiB, and an empty or missing one is left out. A Project's `AGENTS.md` is read whether or not you trust its folder: it is text, and gives the agent no permission. Threads on Claude Code, Codex and ACP agents get the same instructions.
+A thread gets HikariSub's own instructions first, then yours, then the Project's. Each file is read up to 32 KiB, and an empty or missing one is left out. A Project's `AGENTS.md` is read whether or not you trust its folder: it is text, and gives the agent no permission. Threads on Claude Code, Codex and [ACP agents](#acp-agents) get the same instructions, and their own instruction files never load. Claude Code and Codex get them again, as they are then, when a thread resumes. An ACP agent gets them before its first message and again in a new session; when it reloads its session, it already has them.
 
 While the open thread's Project has an `AGENTS.md` with something in it, a bar above the thread says *This project's AGENTS.md instructions are on*. **Open** opens the file in your editor.
 
@@ -154,6 +154,8 @@ What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 
 A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex and [ACP agents](#acp-agents). When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it, and the ACP agents follow. You don't need a provider for any of them.
 
+Each of them gets your [AGENTS.md](#agentsmd-instructions) and the Project's, and again when it resumes. Their own file tools stay off, so every file they read or change goes through HikariSub's tools.
+
 If you installed Claude Code or Codex with mise or asdf, the `claude` or `codex` on your `PATH` is the version manager's shim. HikariSub looks past it to the real program: one further down your `PATH`, or else the one mise or asdf says it runs. If it can't find one, the agent counts as not installed, and its row in **File › Settings › AI › External agents** says why and names the shim, as in *Found a mise shim that mise couldn't resolve:* and its path.
 
 ### Claude Code
@@ -185,8 +187,8 @@ On Linux, a thread can also run on an agent that speaks the Agent Client Protoco
 
 They work like Claude Code and Codex:
 
-- **Only HikariSub's tools.** The agent gets HikariSub's tools and nothing else from HikariSub: no files and no terminal.
-- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: the Project and the rest of your home folder are out of its reach, so it reaches your files only through HikariSub's tools. Where the system can't provide the sandbox, the agent isn't confined.
+- **Only HikariSub's tools.** The agent gets HikariSub's tools and nothing else from HikariSub: no files and no terminal. Every file it reads or changes goes through HikariSub's tools.
+- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: never a Project or other files of yours, so it reaches your files only through HikariSub's tools. Where the system can't provide the sandbox, the agent isn't confined.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 
 With neither Claude Code nor Codex installed and no provider, a new thread uses the first ACP agent found. Windows lists no ACP agents yet.
