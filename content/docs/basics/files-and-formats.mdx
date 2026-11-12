@@ -318,6 +318,8 @@ None of `[plugins]` applies until you trust the folder. Until then, the plugin m
 
 A Project can bring its own keys for your AI providers, so that its windows, and the agent threads started in them, use them in place of yours. The **AI** page of the [Project tab](#the-project-tab) lists your providers. For each one, give an **Environment variable**, a **Credentials entry**, or both, and press **Apply**. **Key used** says where the key comes from: the variable, *From the credentials file*, or yours.
 
+In `project.toml`, these go in the `[ai.keys]` table, under each provider's id: the **Id** under **Name** in the provider's form in **File › Settings › AI**.
+
 - **The environment comes first,** then the credentials file. When neither has the key, the window uses yours.
 - **The credentials file** is `.hikari/credentials.toml`. **Create credentials file** makes it, with an empty entry for each name you gave, and a `.hikari/.gitignore` that keeps it and `project.local.toml` out of git. An existing `.gitignore` there only gains the lines it lacks. Then **Open file** opens it, to put the keys in.
 - **Agent threads** keep the keys of the Project they were started in, even when you open them in another window. A thread started in a window without a Project uses yours.
