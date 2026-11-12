@@ -55,7 +55,7 @@ The agent follows instructions you write in an `AGENTS.md` file:
 - **Yours,** `AGENTS.md` in your [user folder](/en/docs/automation/user-folder#whats-in-it), for every thread.
 - **A Project's,** `AGENTS.md` at the root of the [Project](/en/docs/basics/files-and-formats#projects)'s folder, for the threads started in its window. A thread keeps that Project, even when you open it in another window.
 
-A thread gets HikariSub's own instructions first, then yours, then the Project's. Each file is read up to 32 KiB, and an empty or missing one is left out. A Project's `AGENTS.md` is read whether or not you trust its folder: it is text, and gives the agent no permission. Threads on Claude Code and Codex get the same instructions.
+A thread gets HikariSub's own instructions first, then yours, then the Project's. Each file is read up to 32 KiB, and an empty or missing one is left out. A Project's `AGENTS.md` is read whether or not you trust its folder: it is text, and gives the agent no permission. Threads on Claude Code, Codex and ACP agents get the same instructions.
 
 While the open thread's Project has an `AGENTS.md` with something in it, a bar above the thread says *This project's AGENTS.md instructions are on*. **Open** opens the file in your editor.
 
@@ -119,7 +119,7 @@ Only `http` and `https` links open, always in your browser. What a search sends,
 
 ## MCP servers
 
-The agent can also use tools from MCP servers you add, in **File › Settings › AI**, under **MCP servers** in the **MCP** section. It's the other way round from [connecting an agent](/en/docs/ai/connect-an-agent), where an agent outside HikariSub uses HikariSub's tools. Only threads on a provider get these tools: threads on Claude Code or Codex don't, and neither do agents connected over MCP.
+The agent can also use tools from MCP servers you add, in **File › Settings › AI**, under **MCP servers** in the **MCP** section. It's the other way round from [connecting an agent](/en/docs/ai/connect-an-agent), where an agent outside HikariSub uses HikariSub's tools. Only threads on a provider get these tools: threads on Claude Code, Codex or an ACP agent don't, and neither do agents connected over MCP.
 
 Until you add one, the row says *No MCP servers yet. Add one to give the agent its tools.* **Add server…** opens a form:
 
@@ -152,9 +152,9 @@ What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 
 ## Agents on this computer
 
-A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex. When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it. You don't need a provider for either.
+A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex and [ACP agents](#acp-agents). When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it, and the ACP agents follow. You don't need a provider for any of them.
 
-If you installed Claude Code or Codex with mise or asdf, the `claude` or `codex` on your `PATH` is the version manager's shim. HikariSub looks past it to the real program: one further down your `PATH`, or else the one mise or asdf says it runs. If it can't find one, the agent counts as not installed. Start HikariSub from a terminal to see why: it prints that it found a shim it couldn't resolve.
+If you installed Claude Code or Codex with mise or asdf, the `claude` or `codex` on your `PATH` is the version manager's shim. HikariSub looks past it to the real program: one further down your `PATH`, or else the one mise or asdf says it runs. If it can't find one, the agent counts as not installed, and its row in **File › Settings › AI › External agents** says why and names the shim, as in *Found a mise shim that mise couldn't resolve:* and its path.
 
 ### Claude Code
 
@@ -174,6 +174,28 @@ A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatG
 - **Only HikariSub's tools.** It works through the same tools as any thread. HikariSub turns down Codex's own commands, file changes and requests for permission, and Codex doesn't use your `~/.codex` settings.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 - **Costs.** Codex reports the tokens it used but not a cost, so a Codex thread says *cost not reported* in place of a cost, and doesn't count toward your [cost caps](#cost-caps). Your ChatGPT plan's limits apply instead.
+
+### ACP agents
+
+On Linux, a thread can also run on an agent that speaks the Agent Client Protocol (ACP). **File › Settings › AI › External agents** lists them:
+
+- **OpenCode,** when `opencode` is on your `PATH`. HikariSub runs `opencode acp`.
+- **Antigravity,** when `agy` is on your `PATH`, version 1.5.0 or later. HikariSub runs `agy acp`. With an older one, its row says it's older than the oldest HikariSub supports, and gives the command to update it, `agy update`.
+- **Your own,** with **Add agent**: any agent that speaks ACP over stdio. Give it a **Name**, a **Command** and its **Arguments**, and **Save**. Each row says where its command was found, with **Edit** and **Delete**.
+
+They work like Claude Code and Codex:
+
+- **Only HikariSub's tools.** The agent gets HikariSub's tools and nothing else from HikariSub: no files and no terminal.
+- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too.
+- **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
+
+With neither Claude Code nor Codex installed and no provider, a new thread uses the first ACP agent found. Windows lists no ACP agents yet.
+
+#### Signing in to Antigravity
+
+Antigravity needs a Google sign-in of its own. Press **Sign in with Google…** on its row: Google's sign-in page opens in your browser. Sign in there, paste the code the page shows into **Code from Google's page**, and press **Continue**. The row says *Checking the code…*, then *Signed in with Google*. **Sign out** removes the sign-in.
+
+HikariSub keeps that sign-in in your keychain and never reads `~/.gemini`, so it doesn't touch the sign-in Antigravity uses outside HikariSub.
 
 To let Claude Code you start yourself edit your files instead, see [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent).
 
