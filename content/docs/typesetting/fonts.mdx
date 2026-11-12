@@ -26,7 +26,7 @@ A line's font comes from its style, or from a `\fn` tag in its text. HikariSub s
   <figcaption>The font picker, showing the fonts of catalogue A.</figcaption>
 </figure>
 
-**Choose font…**, the **F** button in the Line editor's tag strip, opens the picker on the font at the cursor. It has no key at first; give it one in **File › Settings › Shortcuts**.
+**Choose font…**, the **F** button in the Line editor's tag strip, opens the picker on the font at the cursor. It has no key at first; give it one in **File › Settings › Shortcuts**. In a Project's window, the list includes the [Project's fonts](/en/docs/basics/files-and-formats#project-fonts).
 
 - **Search fonts** narrows the list as you type. <kbd>Up</kbd> and <kbd>Down</kbd> move in it, <kbd>Enter</kbd> is OK, and <kbd>Ctrl</kbd>+<kbd>F</kbd> goes back to the search.
 - Each font is drawn in its own face, with the catalogues that hold it at the end of its row.
@@ -118,6 +118,8 @@ HikariSub notices when you add or remove a font there, after a second. Problems 
 **Write beside the subtitles, in a “Fonts” folder** saves next to the file instead of in **Save to**. **Take the fonts from the loaded MKV file** takes them from the video's attachments.
 
 **Start** works on the current tab, **Start on all tabs** on every open tab.
+
+It looks for each font where the video does, in this order: the fonts attached to the file, a [Project's fonts](/en/docs/basics/files-and-formats#project-fonts) in a Project's window, your [Fonts folder](#your-fonts-folder), then the fonts installed on your computer. So it copies a font from a Project or your Fonts folder as readily as an installed one.
 
 The check is done by the subtitle renderer: it draws the file and notes which font file answered each name, not just whether a font of that name exists. The log lists each font, the styles and lines that use it, and what is wrong:
 
