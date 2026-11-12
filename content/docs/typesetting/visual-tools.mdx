@@ -51,6 +51,7 @@ The tools sit in the rail on the left of the Video panel. Click one, or press it
 | Position shifter | <kbd>A</kbd> | Moves the positions, `\move` points, clips, drawings and `\org` already in the lines |
 | Hydra | <kbd>H</kbd> | Any tag from its list |
 | Gradient | <kbd>W</kbd> | Copies of the line in `\clip` strips, each with its own values; a `\p` mask drawing; or tags for each character or line |
+| Text on path | None at first | A line for each letter, with `\an2`, `\pos` and `\frz`, along a path |
 
 The [ASS override tags](/en/docs/reference/ass-tags) reference explains each tag.
 
@@ -74,7 +75,8 @@ When a line has no `\pos`, the handles start where the line would show, from its
 - **Vector clipping and Vector drawing:** the bar's modes are **Move points**, **Add line**, **Add Bézier curve**, **Add B-spline**, **Add separate point** and **Delete point**; the wheel steps through them. Ctrl+click selects several points, and Alt while dragging snaps to another point's x or y. Vector drawing's **Shape** list draws a ready-made shape into a rectangle you drag; **Edit shapes…** adds your own. Vector clip points keep two decimals. The vector clip modes and its **Invert clip** can take keys in **File › Settings › Shortcuts**.
 - **Position shifter:** drag to move everything the **Move** toggles choose (positions, `\move` start or end points, clips, drawings, `\org`) by the same amount in every line.
 - **Hydra:** pick a tag, then drag sideways on the video or turn the wheel to change its value. **Set**, **Add**, **Multiply** and **Gradient** decide how the value is applied across characters or lines.
-- **Gradient:** the last button on the rail. Choose a mode, drag across the sign from where the gradient starts to where it ends, check the preview and press **Apply gradient (Enter)**. See [Gradients](#gradients).
+- **Gradient:** the button before Text on path on the rail. Choose a mode, drag across the sign from where the gradient starts to where it ends, check the preview and press **Apply gradient (Enter)**. See [Gradients](#gradients).
+- **Text on path:** the last button on the rail. Give the line a vector clip, or draw a path, and press **Apply**. See [Text on path](#text-on-path).
 
 The tools work only on ASS files.
 
@@ -173,6 +175,21 @@ When a gradient can't be made, the video says why:
 - *Strips along the clip need a clip on the line*
 - *Gradients do not work on an inverse clip*
 - *No characters on the line*
+
+## Text on path
+
+Text on path lays the active line's text out along a path: one new line for each letter, standing on the path at its bottom centre and turned with it. A letter keeps its marks, so Thai vowels and tone marks stay on it. Text on path has no key at first; give it one in **File › Settings › Shortcuts**.
+
+The path is the line's vector clip, with all its lines and curves, or one you draw on the video with the point modes of Vector clipping: **Move points**, **Add line**, **Add Bézier curve** and **Delete point**. With neither, the video says *Draw a path, or give the line a vector clip*.
+
+- **Layout:** **Left**, **Centre**, **Right**, or **Spread**, which widens the gaps to fill the path. **Offset** moves the text along it, in pixels.
+- **Reverse** runs the path the other way.
+- **Rotate**, on at first, turns each letter with the path. Off, the letters keep the line's own `\frz`.
+- **Slide** moves the text along the path, from its start to where the text's end meets the path's end, or the other way with **Reverse**. It moves on every **Frames a step** frames, 1 at first, and each step's lines take the times of its frames. While Slide is on, the layout buttons are off. Slide needs an open video: without one, the video says *Slide needs the video's frames*.
+
+Each new line carries the line's earlier override tags, except its position, alignment, origin and clips, and its rotation while **Rotate** is on. Spaces and line breaks only move the next letter on. **Lines** counts the lines that **Apply** will make. Text longer than the path goes straight on past its end, the video says *The text is longer than the path*, and **Past the end** gives how far, in pixels.
+
+The new lines preview over the video, with the original hidden. **Apply**, or <kbd>Enter</kbd> over the video, writes them as one step named **Text on path** in the history: the original line is kept as a comment, and the new lines follow it, selected. <kbd>Esc</kbd> drops the preview and the path, and nothing is written.
 
 ## Blur and glow layers
 
