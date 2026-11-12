@@ -253,6 +253,8 @@ HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unico
 
 In the `Yutils` that comes with HikariSub, `Yutils.shape.bounding`, `flatten`, `move`, `transform`, `to_outline` and `to_pixels` run natively, and give the same results as the Lua, number for number. Anything they don't handle the same way runs in the Lua, with its own errors. A `Yutils` you installed yourself, such as the one DependencyControl puts in your `include` folder, runs as it is.
 
+In the `karaskel` that comes with HikariSub, `karaskel.collect_head` and `karaskel.preproc_line` run natively. So do `extract_color`, `trim` and `headtail` in `aegisub.util` when given a string, and `HSL_to_RGB` when given three numbers. The helpers built on them, such as `interpolate_color` and `words`, gain too. Karaoke scripts that use karaskel, and scripts that use these colour and text helpers, run faster, and get the same results as before: the same tables, in the same order, and the same errors. Anything the native code wouldn't handle the same way, such as a style table with a missing field, runs in the Lua.
+
 ## How scripts run
 
 Each loaded script runs in a process of its own. This has a few consequences:
