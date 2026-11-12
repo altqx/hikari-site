@@ -48,6 +48,17 @@ Below the box, the model button picks the thread's model from your providers' mo
 
 Skills are instructions for kinds of work, which the agent reads when your request matches one. Three come with HikariSub: **typesetting**, **translation** and **karaoke-templater**. You can add your own in your user folder, and a Project can bring its own in `.hikari/skills`. Skills are text only and give the agent no permission. See [Skills](/en/docs/ai/skills) for how to write one, which one wins, and **File › Settings › AI › Skills**.
 
+## AGENTS.md instructions
+
+The agent follows instructions you write in an `AGENTS.md` file:
+
+- **Yours,** `AGENTS.md` in your [user folder](/en/docs/automation/user-folder#whats-in-it), for every thread.
+- **A Project's,** `AGENTS.md` at the root of the [Project](/en/docs/basics/files-and-formats#projects)'s folder, for the threads started in its window. A thread keeps that Project, even when you open it in another window.
+
+A thread gets HikariSub's own instructions first, then yours, then the Project's. Each file is read up to 32 KiB, and an empty or missing one is left out. A Project's `AGENTS.md` is read whether or not you trust its folder: it is text, and gives the agent no permission. Threads on Claude Code and Codex get the same instructions.
+
+While the open thread's Project has an `AGENTS.md` with something in it, a bar above the thread says *This project's AGENTS.md instructions are on*. **Open** opens the file in your editor.
+
 ## Typesetting signs
 
 Ask the agent to typeset a sign, and it follows the built-in **typesetting** skill. It looks at the sign's frame without subtitles, takes the sign's colours, and reads where its corners are. It doesn't work out the placement tags itself: HikariSub's own [visual tools](/en/docs/typesetting/visual-tools) write them.
@@ -240,7 +251,7 @@ HikariSub saves the script in `ai/scripts` in your [user folder](/en/docs/automa
 
 ## Threads
 
-**Threads**, at the top left, lists your threads by day, with each one's files, model and cost. *running*, *at cap* or *Full access* marks a thread. **Search threads** finds them by title or file name. Click one to open it, and **+** starts a new one.
+**Threads**, at the top left, lists your threads by day, with each one's files, model and cost. In a Project's window, that Project's threads come first, under *This project*. *running*, *at cap* or *Full access* marks a thread. **Search threads** finds them by title or file name. Click one to open it, and **+** starts a new one.
 
 The thread menu, beside **+**, has:
 
