@@ -27,7 +27,7 @@ Until you add a provider with a chat model, or install Claude Code or Codex, the
 Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**. <kbd>Shift</kbd>+<kbd>Enter</kbd> starts a new line.
 
 - **What the agent sees.** The chip above the box names the active tab, as in *Episode 01.ass · active tab*. The agent reads that tab, and the tabs you attach. Type `@`, or press **Attach**, to attach another open tab; click its chip to take it off again. For a tab you haven't attached, the agent asks you to attach it.
-- **Commands.** Type `/` for the list: `/new` starts a new thread, and `/mode` opens the mode menu.
+- **Commands.** Type `/` for the list: `/new` starts a new thread, `/mode` opens the mode menu, and `/compact` [compacts the conversation](#long-conversations).
 - **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
 - **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
 
@@ -102,6 +102,39 @@ When the thread's provider can't search on its own and no search service is chos
 - **A search service that stops.** When the search service's plan is used up, the thread says so, such as *Brave Search has no searches left*. When it refuses the key, it says *Brave Search refused HikariSub's key*. Under either, it gives the service's answer, such as *The search service answered 429. The answer goes on without searching the web.* **Open Settings › AI** opens the settings.
 
 Only `http` and `https` links open, always in your browser. What a search sends, and what the thread keeps, is in [What is sent](/en/docs/help/what-is-sent#ai).
+
+## MCP servers
+
+The agent can also use tools from MCP servers you add, in **File › Settings › AI**, under **MCP servers** in the **MCP** section. It's the other way round from [connecting an agent](/en/docs/ai/connect-an-agent), where an agent outside HikariSub uses HikariSub's tools. Only threads on a provider get these tools: threads on Claude Code or Codex don't, and neither do agents connected over MCP.
+
+Until you add one, the row says *No MCP servers yet. Add one to give the agent its tools.* **Add server…** opens a form:
+
+- **Name**.
+- **Runs as**: *A command on this computer* or *A URL (streamable HTTP)*.
+- For a command, **Command**, split into words as a shell would, and **Environment**, one `NAME=value` per line.
+- For a URL, **URL**, `http` or `https`, and an optional **Bearer token**. A token goes over plain `http` only to this computer or to a Tailscale peer.
+- **Trust what this server says about its tools**, off at first. See [What asks](#what-asks).
+
+The environment and the token go to your system's keychain, never to the settings file, and aren't shown again. When you edit a server, leave them empty to keep them. **Delete** removes the server and its secrets. Changes apply at once, with no **OK** needed.
+
+A server that runs as a command runs as you, outside the AI component's sandbox, with your own environment and its variables, in your home folder. It stops when the AI component does.
+
+Nothing starts until a thread needs it. Each server's row shows its command or URL and its state: *Starts when the agent needs it*, *Starting…*, *Connected · 3 tools*, or *Failed:* and why. A thread waits up to 5 seconds for the servers when it starts. A slower server adds its tools once it's ready, and one that failed is tried again the next time a thread starts.
+
+### What asks
+
+What a tool may do without asking depends on its server's hints, which say whether it only reads and whether it may destroy anything. The hints count only when you trust the server, with the check box in its row or form. Without trust, every one of its tools asks in every mode.
+
+| Tool | What happens |
+| --- | --- |
+| Only reads | Runs, and never asks |
+| May destroy something, or its server doesn't say | Asks in every mode, Full access included, with **Allow once** and **Deny** only |
+| Changes things but destroys nothing | Asks as any change does, by the thread's [mode](#modes). **Allow in this thread** covers that one tool |
+| The same, with **Run … without asking** ticked in its server's row | Runs |
+
+Once a server has run, its row lists its tools: a **Run … without asking** box, with the tool's name, for the ones that change things but destroy nothing, and *only reads, never asks* or *asks every time* for the others. A card for a tool names the server and the tool, and one that asks in every mode says *Its MCP server doesn't promise that it only reads or changes nothing it can't undo.* After the turn has stopped, only the tools that only read still run.
+
+What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 
 ## Agents on this computer
 
@@ -208,6 +241,7 @@ HikariSub saves the script in `ai/scripts` in your [user folder](/en/docs/automa
 
 The thread menu, beside **+**, has:
 
+- **Compact conversation** and **New thread from summary**: see [Long conversations](#long-conversations).
 - **Rename thread…**
 - **Export as Markdown…**, which saves the conversation as a `.md` file.
 - **Delete thread**, which asks first: *The conversation goes. Changes it made stay in your subtitles and in the review.*
@@ -225,7 +259,21 @@ Each thread has a cost cap, $2.00 at first, and so does each day, $10.00, counte
 
 The agent never raises a cap; only you can. A model that reports no cost and has no price shows *cost not reported*, and doesn't count toward a cap.
 
-The meter above the box shows how much of the model's context the thread uses, such as *12.4K of 200K tokens*, and its cost against its cap, such as *$0.42 of $2.00*, in red once it's reached.
+The meter above the box shows how much of the model's context the thread uses, such as *12.4K of 200K tokens*, and its cost against its cap, such as *$0.42 of $2.00*, in red once it's reached. At 90% of the context, it turns amber, with a warning sign.
+
+## Long conversations
+
+The Agent panel compacts long conversations, so a thread can go on past the model's context window. At 90% of the window, before the agent's next request, it first clears old tool results: the agent can call the tool again if it needs them. If that isn't enough, the thread's model summarises the older turns, and the summary takes their place in what the model sees. Your first message, your last two and everything after them stay word for word. When a running turn passes 90%, the meter says *compacts at the next tool call*.
+
+A divider marks each compaction, such as *Context compacted 313K → 21.2K tokens*. When older turns were summarised, open it to see the summary the model now sees. The full history stays in the panel, above it.
+
+- **By hand.** `/compact`, or **Compact conversation** in the thread menu, compacts the thread now. Type an instruction for the summary after `/compact`, and it is added to the request. While a turn runs, it waits until the turn ends.
+- **New thread from summary**, in the thread menu, starts a new thread with the same title, mode and model, carried on from a summary of the whole thread. Its first item says *Carried on from the summary of* and the earlier thread's title.
+- **When it fails.** A summary request that fails is tried once more. If it fails again, the thread says *Couldn't compact the conversation*, with **Retry** and **New thread from summary**, and nothing is removed. An automatic compaction that fails also stops the turn.
+
+Each summary request costs what any request to that model costs, and counts toward the thread's cap and the day's. Threads on Claude Code or Codex compact on their own, so they have none of this.
+
+With **Compact long conversations automatically** off, nothing compacts on its own. At 97% the panel shows *This conversation is nearly full*, with **Compact conversation** and **New thread from summary**.
 
 ## Settings
 
@@ -237,7 +285,10 @@ The meter above the box shows how much of the model's context the thread uses, s
 | **Cost cap per thread** | $2.00 | A new thread's cap, in steps of $0.50. 0 is *No cap* |
 | **Cost cap per day** | $10.00 | The cap for every thread together, each day. 0 is *No cap* |
 | **Show the cost meter** | On | Shows the meter above the box |
+| **Compact long conversations automatically** | On | Compacts a thread at 90% of the model's context window: see [Long conversations](#long-conversations) |
 
 Changes to the caps don't touch threads you already have, except the day's cap, which counts for every thread.
+
+The MCP servers the agent uses are in **File › Settings › AI › MCP › MCP servers**: see [MCP servers](#mcp-servers).
 
 What HikariSub sends to providers is in [What is sent](/en/docs/help/what-is-sent#ai).

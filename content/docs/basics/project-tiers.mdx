@@ -1,0 +1,47 @@
+---
+title: Project tiers
+description: Keep a Project's own style catalogues in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
+---
+
+While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. So far, style catalogues have both tiers.
+
+Without a Project, nothing changes: only your own copy is listed, with no chips.
+
+## The three rules
+
+How the two tiers combine depends on what they hold:
+
+- **Hidden by name.** The Project's item hides yours of the same name. Both files stay on disk. Yours is still listed, muted, and its tooltip says *Hidden by the project's copy*. Choosing it opens it read-only: you can copy or move it, but not change it. Wherever HikariSub looks an item up by name, it finds the Project's first.
+- **Merged.** Both tiers apply together.
+- **Per key.** The Project's value replaces yours, one key at a time.
+
+Style catalogues are hidden by name.
+
+## In the lists
+
+- **Chips and groups.** Each row has a **Project** or a **Mine** chip, and the list shows *This project* first, then *Mine*. A chip beside the list shows the tier of the one you chose.
+- **Copy and Move.** **Copy to project** or **Copy to mine** puts a copy in the other tier and keeps this one. **Move to project** or **Move to mine** moves it there. If the other tier has one with the same name, a window says so, such as *The project already has a catalogue named* and the name, and offers **Replace**, **Rename** or **Skip**. **Rename** suggests a free name, with *(2)*, *(3)* and so on after it.
+- **Where new ones go.** While a Project is open, the button that makes a new one is split. Its face says **Save to project** at first. Its arrow, *Where to save*, switches it to **Save to mine** or back, and HikariSub remembers the choice for each list. Without a Project, the button saves to your user folder, as before.
+- **Nothing is written early.** Opening a Project adds no files. A folder such as `.hikari/catalogs` is made the first time something is saved into it.
+
+## Style catalogues
+
+The Project's [style catalogues](/en/docs/basics/styles#catalogues) are `.hikari/catalogs/<name>.sty` in its folder. Yours stay in `catalogs` in your user folder. In the Style manager:
+
+- **Catalogue** lists both tiers, with their chips.
+- **New catalogue** has the split button in place of **Create**. A name the Project already has is taken, in either tier.
+- **Catalogue tiers**, the **⋯** button beside **Delete catalogue**, copies or moves the catalogue shown. It shows only while a Project is open.
+- A catalogue of yours that the Project's hides opens read-only, with *Hidden by the project's copy. Copy it to the project to use it there.* Its styles can't be changed, and nothing is written to it.
+- Your **Default** catalogue can't be deleted or moved, only copied. The Project's **Default** can be deleted, and yours shows again, as with any catalogue the Project's hid.
+
+Three things name a catalogue: the file's `Last Style Storage` line in `[Script Info]`, the catalogue the Style manager had open last, and **File › Settings › Conversion › Style › Catalogue**. With a Project open, each finds the Project's catalogue of that name first.
+
+## What stays yours
+
+These have no Project tier, and HikariSub never reads them from a Project folder:
+
+- your shortcuts;
+- AI providers, keys and budgets;
+- Agent panel threads;
+- recent files and window state;
+- Hunspell dictionaries, the `.dic` and `.aff` files.
