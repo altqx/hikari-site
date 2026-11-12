@@ -45,6 +45,10 @@ From the top, the panel has:
 
 Two buttons sit at the right of the panel's tab. **Preview on the video** (the eye) turns the preview on the video on or off. **Loop the line** plays the karaoke line over and over while you edit; pausing, stopping or seeking ends the loop.
 
+## The template language
+
+**Template language**, beside **New**, shows which templater rules the file's templates follow: **karaOK** or **Aegisub 3.2.2**, as the [templater](/en/docs/karaoke/templater#karaok-templates) picks them. Choose one to set it in the file. HikariSub writes `Karaoke Templater: karaOK` or `Karaoke Templater: Aegisub 3.2.2` in `[Script Info]`, as one undo step, *Set template mode*. Its tooltip says whether the file already sets the language, or the templates' own choice is showing.
+
 ## Adding a template
 
 **New** adds a template or code line:
@@ -63,7 +67,9 @@ Two buttons sit at the right of the panel's tab. **Preview on the video** (the e
 
 The new line is an empty comment, placed above the first karaoke line with that line's style, and it becomes the current template. The furigana kinds run for the readings written as `漢|かん`: see [Furigana](/en/docs/karaoke/furigana#furigana-templates).
 
-**From a preset**, at the bottom of the menu, inserts one of the ten built-in effects instead, as template lines you can edit: see [Presets](/en/docs/karaoke/presets).
+In a karaOK file, the menu shows and writes karaOK's words: **Template for each line** writes `template lsyl`, and **Template before each line** `template line`. The other items are the same in both. **Runs for each** in the Effect picker writes karaOK's words too. In a new file with no templates yet, the first new line goes in with `Karaoke Templater: karaOK`, in the same undo step.
+
+**From a preset**, at the bottom of the menu, inserts one of the twenty built-in effects instead, as template lines you can edit: see [Presets](/en/docs/karaoke/presets).
 
 ## Editing a template
 
@@ -85,7 +91,7 @@ The picker only writes the Effect text; you can type the same words yourself, in
 
 **Style** and **Layer** set the template's style and layer; the layer can be negative.
 
-The text box colours the template as the Line editor does. Type `$` for a list of the variables, each with its value on the first syllable of the previewed line, or `!` inside an expression for the template functions, such as `retime` and `relayer`. Use <kbd>↑</kbd> <kbd>↓</kbd> to choose, <kbd>Enter</kbd> or <kbd>Tab</kbd> to insert, and <kbd>Esc</kbd> to close the list.
+The text box colours the template as the Line editor does. Type `$` for a list of the variables, each with its value on the first syllable of the previewed line, or `!` inside an expression for the template functions, such as `retime` and `relayer`. After `ln.`, the list holds the parts of [ln.kara](/en/docs/karaoke/templater#the-lnkara-library), and after `ln.tag.` and the like their functions, each with example arguments. `ln` itself is in the list once a code line loads ln.kara, and its shorthands, such as `st` and `sd`, once one calls `ln.init(tenv)`. Use <kbd>↑</kbd> <kbd>↓</kbd> to choose, <kbd>Enter</kbd> or <kbd>Tab</kbd> to insert, and <kbd>Esc</kbd> to close the list.
 
 <figure>
   <ThemedImage
