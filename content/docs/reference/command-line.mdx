@@ -41,7 +41,8 @@ What a file opens as depends on its extension:
 | Extension | Opens as |
 | --- | --- |
 | `.ass` `.ssa` `.srt` `.sub` `.txt` | Subtitles |
-| `.lrc` `.ttml` | Lyrics, as a new ASS file |
+| `.lrc` `.ttml` `.krc` `.qrc` | [Lyrics](/en/docs/basics/files-and-formats#opening), as a new ASS file. KRC and QRC files must be decoded to text |
+| `.ytt` `.srv3` | [YouTube timed text](/en/docs/basics/export#opening-srv3-files), as a new ASS file |
 | `.lua` `.moon` | An Automation script, loaded |
 | `.pass` `.stats` `.log`, or a name ending `_keyframes.txt` | Keyframes, when it is the only file |
 | `.hksession` `.kls` | A [session](/en/docs/basics/files-and-formats#sessions), loaded as **Load session from file** loads it, when it is the only file; refused with other files |
@@ -49,7 +50,7 @@ What a file opens as depends on its extension:
 | a folder | A [Project](/en/docs/basics/files-and-formats#projects) |
 | anything else | A video, whose audio opens with it |
 
-Relative paths are taken from the current folder.
+Relative paths are taken from the current folder. Files dropped on the window open the same way.
 
 - **One subtitles file** opens in the first tab. If a video or audio file goes with it, HikariSub offers to open it.
 - **One video** opens in a tab of its own. With **File › Settings › Video › Open video from the context menu in full screen** on, it plays full screen at once.
