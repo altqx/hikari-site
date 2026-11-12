@@ -241,6 +241,7 @@ A Project can set only these:
 | The [Translate](/en/docs/ai/inline-actions#a-projects-models) action's models, and the folder of its glossary | `translation.translator`, `translation.reviewer`, `translation.glossary` |
 | [Credits written on save](#filling-in-the-credits-on-save), and whether to ask first | `scriptProperties.*` |
 | Which of your plugins are on, and their settings, in a trusted folder | The `[plugins]` table: see [Project plugins](#project-plugins) |
+| Where the AI keys come from, in a trusted folder | The `[ai.keys]` table: see [Project AI keys](#project-ai-keys) |
 
 Any other setting in the files is ignored, and a notice names it. A file that can't be read is renamed with `.broken` at the end, a notice says so, and its settings don't apply.
 
@@ -270,7 +271,7 @@ A font folder that can't be opened gives a warning in the Log, and the other fol
 
 #### The Project tab
 
-While a window has a Project open, **File › Settings** in that window has two tabs. **Yours** holds your own settings, as in any window. **Project** holds the values in the Project's `project.toml`, on three pages: **Spelling and grammar**, **Script properties** and **Translation**.
+While a window has a Project open, **File › Settings** in that window has two tabs. **Yours** holds your own settings, as in any window. **Project** holds the values in the Project's `project.toml`, on four pages: **Spelling and grammar**, **Script properties**, **Translation** and **AI**.
 
 - Each row on the Project tab says where its value comes from: *Uses yours*, *Set in this project*, or *Set in project.local.toml*. A row set in `project.local.toml` can't be changed here.
 - **Use yours** takes the setting out of `project.toml`, so the window uses your own value again.
@@ -279,7 +280,7 @@ While a window has a Project open, **File › Settings** in that window has two 
 
 #### Trusting a Project folder
 
-When a Project's `.hikari` folder holds scripts, in `.hikari/automation`, or its `project.toml` has plugin settings, a `[plugins]` table, a bar across the top of the window says *This project has its own scripts or plugin settings. Trust "My Show" to run them.* **Trust folder** adds the Project's folder to your [trusted folders](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names). **Not now** hides the bar in that window, and isn't remembered. A Project's own scripts and plugin settings apply only once you trust its folder. A trusted Project also trusts the folders inside it, so the scripts its subtitle files name stop asking.
+When a Project's `.hikari` folder holds scripts, in `.hikari/automation`, or its `project.toml` has plugin settings, a `[plugins]` table, a bar across the top of the window says *This project has its own scripts or plugin settings. Trust "My Show" to run them.* When the Project's AI keys are found, it says *This project has its own AI keys. Trust "My Show" to use them; until then Hikari AI uses yours.* **Trust folder** adds the Project's folder to your [trusted folders](/en/docs/automation/running-scripts#scripts-a-subtitle-file-names). **Not now** hides the bar in that window, and isn't remembered. A Project's own scripts and plugin settings apply only once you trust its folder. A trusted Project also trusts the folders inside it, so the scripts its subtitle files name stop asking.
 
 #### Project scripts
 
@@ -312,6 +313,17 @@ size = 12
 - **A plugin you don't have:** when the Project turns on a plugin that isn't installed, the plugin manager says *This project uses kf, which isn't installed.*, with **Install from the marketplace**, which opens the Marketplace on that id.
 
 None of `[plugins]` applies until you trust the folder. Until then, the plugin manager shows a lock with *This project turns plugins on or off, or changes their settings.* and **Trust this folder to use them**.
+
+#### Project AI keys
+
+A Project can bring its own keys for your AI providers, so that its windows use them in place of yours. The **AI** page of the [Project tab](#the-project-tab) lists your providers. For each one, give an **Environment variable**, a **Credentials entry**, or both, and press **Apply**. **Key used** says where the key comes from: the variable, *From the credentials file*, or yours.
+
+- **The environment comes first,** then the credentials file. When neither has the key, the window uses yours.
+- **The credentials file** is `.hikari/credentials.toml`. **Create credentials file** makes it, with an empty entry for each name you gave, and a `.hikari/.gitignore` that keeps it and `project.local.toml` out of git. An existing `.gitignore` there only gains the lines it lacks. Then **Open file** opens it, to put the keys in.
+- **Only the keys.** Base URLs, budgets and turning providers on or off stay yours.
+- **Trust.** A Project's keys are used only once you trust its folder. Until then, the page says *"My Show" isn't trusted, so its keys aren't used. Hikari AI uses yours in this window.*, with **Trust folder**.
+- **Not in project.toml.** A key written in `project.toml` itself is ignored, and a bar in the window says so, with **Project settings…**. On the AI page, **Move to credentials file** moves it there. If `project.toml` was committed or shared, replace the key at the provider too.
+- **Environment variables** are read from HikariSub's own environment. Started from the desktop, HikariSub doesn't see a variable set only in a shell profile, and a changed variable needs a restart.
 
 ### Instructions for the agent
 
