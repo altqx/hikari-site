@@ -9,7 +9,7 @@ Each thread sees every skill's name and description. It reads a skill's instruct
 
 Skills are text only. They run nothing and give the agent no permission: what it does after reading one asks you as anything else would, by the thread's [mode](/en/docs/ai/agent#modes). With **Turn off all AI features** ticked, nothing reads them.
 
-Skills are for threads on a provider. A thread on [Claude Code, Codex or an ACP agent](/en/docs/ai/agent#agents-on-this-computer), and agents connected through MCP, don't get them.
+Threads on [Claude Code, Codex or an ACP agent](/en/docs/ai/agent#agents-on-this-computer) see the same skills as threads on a provider, the Project's included. Agents connected through MCP get them only while you let them: see [Agents outside HikariSub](#agents-outside-hikarisub).
 
 ## Adding your own
 
@@ -61,6 +61,10 @@ When two skills have the same name, the Project's comes first, then yours, then 
 - **Open folder** opens your `ai/skills`, and makes it first if it isn't there. **Open project folder**, in a Project's window, does the same for the Project's `.hikari/skills`. Only you write there, never the AI.
 - **Read the folders again** updates the list. It is read when the page opens.
 - **About skills** opens this page.
+
+## Agents outside HikariSub
+
+An agent you [connect through MCP](/en/docs/ai/connect-an-agent) gets no skills at first. Tick **File › Settings › AI › MCP › Let them read your skills** to let it list and read them: yours, the built-in ones, and those of the Project in the active window, as it is when the agent asks. The check shows once **Let agents outside HikariSub edit through MCP** is ticked, and it is off at first. As in a thread, a skill gives such an agent no permission.
 
 ## Limits
 
