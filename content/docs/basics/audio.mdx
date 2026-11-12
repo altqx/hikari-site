@@ -83,6 +83,8 @@ Audio plays on the system default output unless you pick a device, in the speake
 
 From 0.1.0-beta.3, playback doesn't stop if the device it plays on goes away, for example when you unplug headphones or USB speakers. It moves to the system default and keeps playing. If you had picked that device, a warning says so once, such as "USB Headset is not connected. Audio plays through Speakers." When the device is plugged back in, HikariSub plays on it again. If no output is left at all, the warning says no output device is available.
 
+HikariSub starts without loading its video and audio backend. It loads the first time you open video or audio, or show a list of output devices, in the speaker button's menu or **File › Settings**, so that first action can take about a second longer. Until then, holding the pointer over the speaker button shows the device you saved, or *System default*, and the warning about a device that isn't connected comes once video or audio is open. On the very first run, the [Getting started window](/en/docs/get-started/getting-started-window#video-and-audio) shows the output list, so the backend loads then.
+
 ## Timing with the mouse
 
 | Mouse | Does |
