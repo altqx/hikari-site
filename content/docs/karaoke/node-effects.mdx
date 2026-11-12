@@ -100,7 +100,7 @@ A `char` unit is a character as it is drawn, as in the templater's [Characters](
 
 Three nodes under **Units** in **Add node** give each unit, such as a line or a syllable, once for each strip, copy or particle, with its number and how many there are:
 
-- **Clip gradient** cuts the unit's box into strips, side by side or stacked, with padding around the box if you want it. Each strip gives its own `\clip` rectangle and a colour from a gradient of `#RRGGBB` stops. The edges are whole pixels, and neighbouring strips share theirs, so the strips leave no gaps. To clip the strips to a drawing, intersect a drawing of each strip's rectangle with the shape in [Combine drawings](#text-and-drawings), and wire the result into a `\clip` tag.
+- **Clip gradient** cuts the unit's box into strips, side by side or stacked, with padding around the box if you want it. Each strip gives its own `\clip` rectangle and a colour from a gradient of `#RRGGBB` stops. The edges are whole pixels, and neighbouring strips share theirs, so the strips leave no gaps.
 - **Array** places copies around the unit: on a grid centred on it, on a circle around it, or evenly along a drawing wired into its path. Each copy gives its offset, its position and an angle in degrees, as `\frz` takes it. An Array on a path with no drawing wired in is a problem.
 - **Particles** spreads copies at random over a rectangle or an ellipse centred on the unit. They draw from the graph's seed and the node's own seed, so the same graph seed, node seed and line give the same particles on every run, on Linux and Windows alike.
 
