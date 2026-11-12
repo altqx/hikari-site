@@ -1,9 +1,9 @@
 ---
 title: Project tiers
-description: Keep a Project's own style catalogues and presets in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
+description: Keep a Project's own catalogues, layouts, shapes, tags and presets in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
 ---
 
-While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. So far, style catalogues and the presets of script dialogs, Shift times and the Timing postprocessor have both tiers.
+While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. So far, these have both tiers: style and font catalogues, saved layouts, drawing shapes, tags, and the presets of script dialogs, Shift times and the Timing postprocessor.
 
 Skills: `.hikari/skills`, shown with **Project** and **Mine** chips; they have no Copy or Move. See [Skills](/en/docs/ai/skills).
 
@@ -17,7 +17,7 @@ How the two tiers combine depends on what they hold:
 - **Merged.** Both tiers apply together.
 - **Per key.** The Project's value replaces yours, one key at a time.
 
-Style catalogues and presets are hidden by name.
+Everything with a Project tier so far is hidden by name.
 
 ## In the lists
 
@@ -45,6 +45,24 @@ A Project's presets for [script dialogs](/en/docs/automation/running-scripts#ans
 - **Script dialog presets.** The dialog's **⋯** › **Presets** marks each preset **Project** or **Mine**, and a preset of yours that the Project's hides is greyed out. **Copy to project**, **Copy to mine**, **Move to project** and **Move to mine** are under **Delete preset**.
 - **Shift times presets and profiles**, and **Postprocessor presets.** The **Preset** box groups them under *This project* and *Mine*, and its **⋯** menu copies or moves the preset shown. A preset of yours that the Project's hides still applies, but can't be renamed or deleted. The [Timing layout](/en/docs/customize/layouts#the-built-in-layouts)'s preset is looked up in the Project first.
 - **Save as preset** saves to the Project at first while one is open, with **Save to mine** on its arrow, and HikariSub remembers the choice for each list.
+
+## Font catalogues, layouts, shapes and tags
+
+| List | Where you see it | The Project's copy |
+| --- | --- | --- |
+| [Font catalogues](/en/docs/typesetting/fonts#font-catalogues) | **Manage font catalogues**, and every font list that shows a catalogue | `.hikari/catalogs/fonts.toml` |
+| [Saved layouts](/en/docs/customize/layouts#saving-your-own) | **Save layout as…**, **Manage layouts…** and the layout menu | `.hikari/layouts.json` |
+| [Shapes](/en/docs/typesetting/shapes-and-tags-editors#edit-shapes) | **Edit shapes**, and Vector drawing's **Shape** list | `.hikari/shapes.toml` |
+| [Tags](/en/docs/typesetting/shapes-and-tags-editors#edit-tags) | **Edit tags**, and Hydra's **Tag** list | `.hikari/tags.toml` |
+
+Each file is made the first time something is saved into it, in the same format as yours. A Project's item hides yours of the same name, whatever its case.
+
+- **The lists** show *This project* first, then *Mine*. **Edit tags** shows *This project* first, and your own tags keep their **Common**, **More** and **Your tags** sections.
+- **Copy and Move** are in each list's menu, such as **Layout tiers** in Manage layouts, and on a row's right-click menu too. An item of yours that the Project's hides is read-only, but you can still copy, move or delete it.
+- **New catalogue**, **New shape** and **New tag** have the split button. **Save layout as…** has a **Save to** row instead, which shows **This project** or **Mine**: click it for **Save to project** or **Save to mine**. HikariSub remembers the choice for each list.
+- **The layout menu** lists the Project's layouts first. A layout of yours that the Project's hides is greyed out, with *Hidden by the project's copy*. Applying a layout writes nothing to either file.
+- **Vector drawing's Shape list and Hydra's Tag list** offer the Project's first, and never one it hides.
+- **Yours only.** **Load from a file**, in Manage font catalogues, loads into your own catalogues, and the font catalogues' autosave copies stay in your user folder. **Restore default shapes** and **Restore default tags** replace only yours.
 
 ## What stays yours
 
