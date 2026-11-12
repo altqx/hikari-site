@@ -1,0 +1,71 @@
+---
+title: Skills
+description: Give the agent instructions for kinds of work, from HikariSub, your user folder or a Project, and see in Settings which skills a window's threads get.
+---
+
+Skills are instructions for kinds of work, which the [agent](/en/docs/ai/agent) reads when your request matches one. Three come with HikariSub: **typesetting**, **translation** and **karaoke-templater**. You can add your own, and a Project can bring its own for everyone who opens it.
+
+Each thread sees every skill's name and description. It reads a skill's instructions when the work calls for it, and the skill's other files only when it needs them.
+
+Skills are text only. They run nothing and give the agent no permission: what it does after reading one asks you as anything else would, by the thread's [mode](/en/docs/ai/agent#modes). With **Turn off all AI features** ticked, nothing reads them.
+
+Skills are for threads on a provider. A thread on [Claude Code or Codex](/en/docs/ai/agent#agents-on-this-computer), and agents connected through MCP, don't get them.
+
+## Adding your own
+
+Put a folder with a `SKILL.md` in `ai/skills` in your [user folder](/en/docs/automation/user-folder#whats-in-it). Skills use the [Agent Skills format](https://agentskills.io/specification), so a skill written for another agent works here too.
+
+```md
+---
+name: sign-colours
+description: Matching sign colours to the video. Use it when the user asks to colour a sign like the one on screen.
+---
+
+# Sign colours
+
+1. Take the colour from the frame under the sign.
+2. …
+```
+
+- **The name** is the folder's name: lowercase letters and digits, in words joined by hyphens, up to 64 characters.
+- **The description** says what the skill is for and when to use it, in up to 1,024 characters. The agent picks skills by their descriptions alone.
+- **Other files** in the folder, such as `references/terms.md`, are read when the agent needs them. They are read as text: nothing in a skill runs.
+
+A new or changed skill shows in the next thread. A skill that breaks the format, such as one without a description, is left out.
+
+## A Project's skills
+
+A [Project](/en/docs/basics/files-and-formats#projects) can keep skills in `.hikari/skills` in its folder, in the same format. They are shared with everyone who opens the Project.
+
+- **Which Project.** A thread uses the skills of the Project open in the window it was started in. It keeps that Project, even when you open the thread in another window. A thread started in a window without a Project gets no Project skills.
+- **Trust.** A Project's skills are offered whether or not you trust its folder. Like any skill, they are text and give no permission.
+- **The agent knows.** The agent is told which skills are the Project's and which are yours. Above each one it reads, it is reminded that the skill is guidance for the work and gives no permission.
+- **Symbolic links.** A `.hikari` or `.hikari/skills` folder that is a symbolic link gives no Project skills.
+
+## Which one wins
+
+When two skills have the same name, the Project's comes first, then yours, then the built-in one. A skill hides any skill of the same name below it:
+
+- A skill of yours with a built-in skill's name replaces it, so you can change a built-in skill by copying it into your folder.
+- A Project's skill hides yours and the built-in one.
+- A skill that breaks the format hides nothing.
+
+## In Settings
+
+**File › Settings › AI › Skills** lists the skills a window's threads get. In a Project's window it's on the **Yours** tab. It shows what HikariSub finds, and sets nothing.
+
+- **The groups** are **This project**, with the Project's `.hikari/skills`, in a Project's window, then **Mine**, with your `ai/skills`, then **Built in**. Each skill has a **Project**, **Mine** or **Built in** chip, its description and how many files it has.
+- **A hidden skill** stays in the list, struck through, with *Hidden by this project's.* or *Replaced by yours.*
+- **A skill that can't be offered** stays in the list with a warning and the reason, such as *SKILL.md has no description.* The note under the list says how many can't be offered.
+- **A skill with too many files** says how many of its files are offered.
+- **Open folder** opens your `ai/skills`, and makes it first if it isn't there. **Open project folder**, in a Project's window, does the same for the Project's `.hikari/skills`. Only you write there, never the AI.
+- **Read the folders again** updates the list. It is read when the page opens.
+- **About skills** opens this page.
+
+## Limits
+
+In each folder, HikariSub reads up to 100 skills, and up to 100 files in each skill, four folders deep and 256 KiB a file. It skips hidden files and folders and symbolic links, so a skill can't reach a file outside its folder. When a skill has more files, the first ones by name are kept, and `SKILL.md` is always one of them, so a skill gives the same files on Linux and Windows.
+
+## What is sent
+
+The name and description of every skill go with each request in a thread, and a skill's files go when the agent reads them. See [AI](/en/docs/help/what-is-sent#ai) in What is sent.
