@@ -251,6 +251,8 @@ From 0.1.0-beta.3, the modules and include files that ship with HikariSub, such 
 
 HikariSub comes with the usual modules: `karaskel`, `utils`, `cleantags`, `unicode`, `re`, `lfs`, `json`, `Yutils`, `aegisub.clipboard`, `aegisub.util` and more, plus DependencyControl and the libraries its scripts use. It also ships the native library behind ILL's `clipper2` module, in `automation/Include/clipper2/clipper2/`, where `requireffi` looks for it. ILL's own modules still load from your `automation/include`, so install ILL as before.
 
+In the `Yutils` that comes with HikariSub, `Yutils.shape.bounding`, `flatten`, `move`, `transform`, `to_outline` and `to_pixels` run natively, and give the same results as the Lua, number for number. Anything they don't handle the same way runs in the Lua, with its own errors. A `Yutils` you installed yourself, such as the one DependencyControl puts in your `include` folder, runs as it is.
+
 ## How scripts run
 
 Each loaded script runs in a process of its own. This has a few consequences:
