@@ -303,17 +303,17 @@ Plugins are still installed by you, for you. A Project's `project.toml` can turn
 version = 1
 
 [plugins]
-enabled = ["kf"]
-disabled = ["qc"]
+enabled = ["com.example.keyframe-generator"]
+disabled = ["qc-pack"]
 
-[plugins."kf"]
-size = 12
+[plugins."com.example.keyframe-generator"]
+threshold = 0.4
 ```
 
 - **`enabled` and `disabled`** take plugin ids, and win over your own **On** switch in that Project's window. A [revoked](/en/docs/plugins/using-plugins#trust) plugin stays off. The lists in `project.local.toml` replace the ones in `project.toml`.
 - **`[plugins."<id>"]`** sets that plugin's settings, key by key over yours. `project.local.toml`'s go over `project.toml`'s.
 - **Across windows,** a plugin runs while it is on in at least one window. Its commands, panels and events show only in the windows where it is on.
-- **A plugin you don't have:** when the Project turns on a plugin that isn't installed, the plugin manager says *This project uses kf, which isn't installed.*, with **Install from the marketplace**, which opens the Marketplace on that id.
+- **A plugin you don't have:** when the Project turns on a plugin that isn't installed, the plugin manager says *This project uses com.example.keyframe-generator, which isn't installed.*, with **Install from the marketplace**, which opens the Marketplace on that id.
 
 None of `[plugins]` applies until you trust the folder. Until then, the plugin manager shows a lock with *This project turns plugins on or off, or changes their settings.* and **Trust this folder to use them**.
 
