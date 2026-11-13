@@ -183,6 +183,7 @@ Not published yet. These changes are in HikariSub's code and come with the next 
 
 ### Fixed
 
+- **Keyboard navigation in menus no longer jumps to the row under a mouse pointer that hasn't moved.**
 - **Claude Code and Codex installed with mise or asdf now work in the Agent panel.** HikariSub finds the real program behind the version manager's shim, where before it ran the version manager itself and the agent didn't start. A Claude Code turn that fails now says what `claude` printed. See [Agents on this computer](/en/docs/ai/agent#agents-on-this-computer).
 - **Resample subtitles' Stretch makes text taller, not wider, when the height grows more than the width.** It used to widen the text either way. See [Resolution](/en/docs/basics/files-and-formats#resolution).
 - **Subtitle tracks stored compressed in an MKV file now import as text.** They used to come through as unreadable bytes.
