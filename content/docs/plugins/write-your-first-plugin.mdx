@@ -189,6 +189,7 @@ A plugin gets only what its manifest asks for. The user sees each request in the
 - **The active document.** Every plugin can read and edit the subtitle file that's active. `documents.all` lets it see the other tabs too.
 - **Files.** A plugin has its own data and cache folders, and the `project` place: the folder of the [Project](/en/docs/basics/files-and-formats#projects) the user works in, once the user trusts it. Until then, opening it fails with `not_found`. `hikari.project.info()` gives the Project's `name` and whether it is `trusted`, or `hikari.null`, and the `project.changed` event comes when that changes, such as when the user moves to another window. It can open files that the user picks or drops on its panel, and folders that it names in `permissions.files`, after the user chooses them. It gets handles, never paths. See [Files](https://github.com/altqx/hikari/blob/main/docs/plugins.md#files).
 - **Network.** HikariSub makes each request for the plugin, over HTTPS, and only to the hosts in `permissions.network`. See [Network](https://github.com/altqx/hikari/blob/main/docs/plugins.md#network).
+- **Git.** `"vcs.read": "<reason>"` lets the plugin read the git repository holding the user's subtitle files, read-only, through `hikari.vcs.refs` and `hikari.vcs.show`. See [Git](#git).
 - **Restricted, the default tier.** The plugin's Lua has no `io`, `os`, `ffi` or `debug`. Its helper runs in the operating system's sandbox where one is available.
 - **Full trust.** `"tier": "unrestricted"` gives the full LuaJIT libraries, no sandbox, and [QML panels](https://github.com/altqx/hikari/blob/main/docs/plugins.md#qml-panels). The user must agree to give the plugin full access to the computer. Ask for it only when the restricted tier can't do the job.
 
@@ -236,6 +237,31 @@ Any plugin can use these through `hikari.call`; none needs a permission.
 - **`automation.macros` and `automation.run_macro`.** The Automation macros the user loaded, and a run of one on the active tab's selection, as the menu runs it, as one undo step. Set the selection first with `hikari.selection.set`. `answers` fills the macro's dialogs: one `{key, values, button}` per dialog, as the [`macro.ran`](/en/docs/plugins/api-reference#macroran) event gives them after the user runs a macro. A dialog whose key matches is answered without showing it, unless `show = "prefilled"`; a question and a dialog that changed are always shown. AI callers can't run installed macros.
 - **`video.set_keyframes`.** Replaces the video's keyframes as **Video › Open keyframes** does, or with `file` (a writable handle from `hikari.files.pick`) writes an Aegisub keyframes file there first and opens it.
 - **`video.frames`.** Up to 256 frames at once, every `stride`-th, scaled down to `maxEdge` (16 to 512, 64 by default), as one byte of luma per pixel or as BGRA, in base64.
+
+## Git
+
+A plugin can't run programs, so HikariSub runs git for it, read-only. The manifest asks with `"vcs.read": "<reason>"`, and the install question, the plugin manager and the marketplace show it as *Read the branches, tags and history of the git repository holding your subtitle files:* and the reason. Every plugin that asks gets it on the same terms; AI and MCP callers never do.
+
+```lua
+local refs = hikari.vcs.refs({ limit = 20 })
+for _, tag in ipairs(refs.tags) do
+    local text, shown = hikari.vcs.show(tag.name)
+    if text then
+        print(tag.name, shown.commit, #text)
+    end
+end
+```
+
+- **`hikari.vcs.refs(options)`** (`vcs.refs`) gives the repository holding the active file, or `options.document`: `{root, path, head, branches, tags, commits}`. `path` is the file's path in the repository; `head` is `{ref, commit}`, with `ref` null when detached, and null before the first commit. Branches and tags (at most 500 each) come newest first, each with its `commit`; `commits` are the newest `limit` (50 by default, at most 200) from HEAD, each `{commit, summary, author, time}`. A file that was never saved gives the Project's repository, with `path` null.
+- **`hikari.vcs.show(ref, document)`** (`vcs.show`) gives the subtitle file itself as `ref` has it, as UTF-8 text, and `{ref, commit, path, text}` second. `ref` is a branch, tag, commit or revision such as `HEAD~2`; it can't start with `-` or hold `:` or spaces.
+
+HikariSub runs the git on the user's `PATH` (Git for Windows on Windows) without the system config, with no pager, hooks, fsmonitor, signature checks, filters, textconv or external diff, and with every transport off, so nothing is fetched. The user's own git config still counts, for `safe.directory`. Each git run has 10 seconds, and a file at most 16 MiB.
+
+The errors carry a `reason`:
+
+- `unavailable` with `no_git` (git isn't installed or on `PATH`), `timed_out` or `failed`;
+- `not_found` with `no_repository`, `no_ref`, `no_file` (the file isn't in that ref, as after a rename) or `no_path` (the file was never saved);
+- `refused` with `unsafe_repository` (git distrusts a repository another user owns; add it to `safe.directory`), `too_large` or `not_text`.
 
 ## Sign it
 
