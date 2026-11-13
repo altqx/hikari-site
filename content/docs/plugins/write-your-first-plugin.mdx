@@ -106,7 +106,9 @@ hikari.events.on("document.changed", draw)
 - **`hikari.panels.on`** gets the panel's events. The first one, `show`, comes when the user opens the panel.
 - **`hikari.events.on`** listens to a Hikari API event. [`document.changed`](/en/docs/plugins/api-reference#documentchanged) comes after every edit, undo and redo.
 
-The events are `document.changed`, `selection.changed`, `documents.changed`, `panel.changed`, `command.ran`, `project.changed` and [`macro.ran`](/en/docs/plugins/api-reference#macroran). An unknown name is refused.
+The events are `document.changed`, [`document.saved`](/en/docs/plugins/api-reference#documentsaved), `selection.changed`, `documents.changed`, `panel.changed`, `command.ran`, `project.changed` and [`macro.ran`](/en/docs/plugins/api-reference#macroran). An unknown name is refused.
+
+`document.saved`, since API version 1, comes after a file is written by Save, Save as, Save all or Save translation, with the path and the revision written. Nothing comes for a cancelled or failed save. `command.ran` reports a trigger, not an outcome: a Save that opens a dialog fires `command.ran` even when the dialog is then cancelled. A plugin that reacts to saves should listen to `document.saved`.
 
 A plugin panel stays closed until the user opens it from **View › Panels**. Then it docks in the manifest's `area` and behaves like HikariSub's own panels. [Widgets](https://github.com/altqx/hikari/blob/main/docs/plugins.md#widgets) lists every kind of widget.
 
