@@ -77,7 +77,7 @@ A Project's dictionary words are in `.hikari/dictionary.txt`, one word per line.
 These take the Project's value over yours, one setting at a time:
 
 - **Export format**, on the **Export** page of the [Project tab](/en/docs/basics/files-and-formats#the-project-tab): *Used for files that haven't been exported yet.* **Not set** leaves yours. The `[export]` table in `project.toml` can also hold the **Export as** window's options. A file's own last export still comes first, then the Project's, then your last export. Exporting never changes `project.toml`.
-- **Target language**, on the Project tab's **Translation** page, is the language of [Translate to](/en/docs/ai/inline-actions#the-actions) in the Project's windows. Left empty, yours applies. **Source language** sits beside it, and shows *Detect* when empty.
+- **Target language**, on the Project tab's **Translation** page, is the language of [Translate to](/en/docs/ai/inline-actions#the-actions) in the Project's windows. Left empty, yours applies. **Source language** sits beside it, and both **Translate to** actions send it with the lines. Left empty, it shows *Detect*, and the models detect the language from the lines.
 
 ## What stays yours
 

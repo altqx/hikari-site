@@ -41,7 +41,7 @@ Translate runs a translator and a reviewer over your lines, and keeps names and 
 - **Across chunks.** With more than one chunk, the reviewer then reads the whole run for names, honorifics or terms written two ways.
 - **The glossary grows.** An approved chunk adds the new terms and characters it used. An entry that is already there is never changed.
 
-The **Translator** model translates, and the **Reviewer** model reviews, or the Translator's if Reviewer has none. Translate sends no lines of context; it sends each line's actor instead. Its estimate counts three passes over the lines, and retries cost more.
+The **Translator** model translates, and the **Reviewer** model reviews, or the Translator's if Reviewer has none. Translate sends no lines of context; it sends each line's actor instead. A Project's [source language](/en/docs/basics/project-tiers#export-format-and-translation-languages) goes with the lines; without one, the models detect the language. Its estimate counts three passes over the lines, and retries cost more.
 
 ### The result
 
