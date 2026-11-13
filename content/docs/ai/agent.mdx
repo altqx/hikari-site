@@ -109,6 +109,12 @@ A graph with a Lua node, whether the agent built it or you did, never runs throu
 
 Agents connected through MCP can read and preview graphs, but saving and applying are refused.
 
+## Keyframes and macros
+
+The agent can replace the video's keyframes, as **Video › Open keyframes** does. It's a change like any other, so it asks as the thread's [mode](#modes) says. It can also list the Automation macros you loaded, but it can't run them: only plugins can. Its own [Lua scripts](#lua-scripts) ask every time, in every mode.
+
+Grid row marks, git and batches of raw video frames are for [plugins](/en/docs/plugins/write-your-first-plugin#grid-row-marks) only. The agent looks at the video through frame images.
+
 ## Searching the web
 
 With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
