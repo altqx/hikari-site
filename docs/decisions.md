@@ -64,7 +64,11 @@ The owner (altqx) settled these in a grilling session on 2026-10-27. Change them
 
 ## Media
 
-- **Example subtitle:** "[Jibrill] Chou Kaguya-hime! - ray MV v2" (owner's local file). It appears **only in app screenshots and muted clips**, credited "Subtitles: Jibrill". The MKV, the full `.ass` and its fonts are never published. Of its fonts only K2D is OFL; Commie Sans (Linotype Finnegan), MN Chaeo Hon, the FC fonts, Arial and Leelawadee are not redistributable.
+- **Footage** (owner, Q485, Q489 and Q490, 2026-11-13):
+  - **Karaoke:** the example subtitle "[Jibrill] Chou Kaguya-hime! - ray MV v2" (owner's local file) appears **only in karaoke screenshots and muted karaoke clips**, credited "Subtitles: Jibrill" (Q489). The MKV, the full `.ass` and its fonts are never published. Of its fonts only K2D is OFL; Commie Sans (Linotype Finnegan), MN Chaeo Hon, the FC fonts, Arial and Leelawadee are not redistributable.
+  - **Everything else** uses *Sprite Fright* (Blender Studio, 2021, CC BY 4.0), credited "Sprite Fright, © Blender Foundation | studio.blender.org" (Q489). The video is read from outside the repo and never committed.
+  - **Its subtitles:** where a shot shows lines from the film's Wikimedia Commons TimedText tracks, the page, README or release notes adds one line: "Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0", linked to the track's page. There's no notice on each image (Q485).
+  - **Until the beta.4 recapture:** the pictures already published with ray MV frames stay up. At the recapture, the non-karaoke ones move to Sprite Fright (Q490).
 - **Screenshots:** reuse the non-mockup `evidence/*` branches of altqx/hikari (since wave 6 closed, tags of the same name, with the files in `archive/wave6`) and the shots in card evidence comments. Mockup branches are never used. Check each against current hikari `main`; recapture changed surfaces from a `main` build under the private X server (`/home/altq/Work/hikari-wt/bin/vx11`), never on the owner's desktop. Stored as WebP beside the guide, light and dark pairs, with `screenshots.json` recording each image's source branch and commit or "recaptured at main <sha>" (entries before the rename say "at qt <sha>"; the SHAs are the same).
 - **Clips:** loops of 10 s or less, muted, AV1 MP4 with an H.264 fallback, each under 5 MB, served from static assets; autoplay in view, paused with reduced motion; captured under vx11.
 
