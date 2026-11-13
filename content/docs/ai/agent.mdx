@@ -59,6 +59,12 @@ A thread gets HikariSub's own instructions first, then yours, then the Project's
 
 While the open thread's Project has an `AGENTS.md` with something in it, a bar above the thread says *This project's AGENTS.md instructions are on*. **Open** opens the file in your editor.
 
+## Project files
+
+In a window with a [Project](/en/docs/basics/files-and-formats#projects), the agent can read the files in the Project folder, and change and add files there. What it writes waits in the [Review panel](/en/docs/ai/review#project-files) and reaches the disk only when you press **Keep**, whether or not you trust the Project. Until then, the agent reads its own version. A file that's open in a tab isn't written this way: the agent changes its lines instead, as for any open file.
+
+A write into the Project's `.hikari` folder, which holds the Project's settings, always asks first, in every mode: see [The always-ask list](#the-always-ask-list). [What is sent](/en/docs/help/what-is-sent#ai) lists the files the agent never gets.
+
 ## Typesetting signs
 
 Ask the agent to typeset a sign, and it follows the built-in **typesetting** skill. It looks at the sign's frame without subtitles, takes the sign's colours, and reads where its corners are. It doesn't work out the placement tags itself: HikariSub's own [visual tools](/en/docs/typesetting/visual-tools) write them.
@@ -260,7 +266,8 @@ Agents you [connect over MCP](/en/docs/ai/connect-an-agent), plugins and the oth
 
 Some actions ask in every mode, Full access included. Their card has a red edge, asks *Allow …?* and says *asks in every mode*, and offers only **Allow once** and **Deny**:
 
-- **Deleting or overwriting files** outside your subtitles' folders and your [user folder](/en/docs/automation/user-folder), such as the command that deletes temporary files.
+- **Deleting or overwriting files** outside your subtitles' folders, the open Project's folder and your [user folder](/en/docs/automation/user-folder), such as the command that deletes temporary files.
+- **Changing the Project's `.hikari` folder,** which holds the Project's settings. The change still waits for **Keep** in the [Review panel](/en/docs/ai/review#project-files).
 - **Running external programs,** such as loading or rerunning an Automation script, plugin commands, the settings for the script editor and installing updates, and running [WhisperX or the Montreal Forced Aligner](#whisperx-and-the-montreal-forced-aligner).
 - **Installing plugins or trusting them:** the settings for plugin updates, plugin network access and trusted folders.
 - **Sending local files to the network:** every privacy setting, such as crash reports and usage data.
