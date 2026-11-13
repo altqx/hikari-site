@@ -359,6 +359,8 @@ A session is the set of open tabs, with their videos, audio and positions. **Fil
 - **Load session from file** or **Save session to file**, as a `.hksession` file.
 - Ask whether to load the last session when HikariSub starts, or load it without asking.
 
+Quitting from the Home page before you open or restore a file keeps the last session for the Home page's **Restore**, even after a crash whose offer to restore you turned down; closing your last tab empties it.
+
 If a file the session names has moved, a bar offers to **Retry**, **Relink…** it, or **Remove** it.
 
 A session also keeps your windows. Loading one, at start, from **File › Last session** or a file, or after a crash, opens each window where it was, at its size and maximised or not, with its tabs in order and the same tab in front. A window last on a monitor you have since unplugged comes back on your main screen. On Wayland the desktop chooses where windows go, so only the size and whether it was maximised come back. Each window's [Project](#projects) comes back too, unless its folder is gone. See [Windows in a session](/en/docs/customize/layouts#windows-in-a-session).
