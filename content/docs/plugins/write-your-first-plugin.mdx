@@ -106,6 +106,8 @@ hikari.events.on("document.changed", draw)
 - **`hikari.panels.on`** gets the panel's events. The first one, `show`, comes when the user opens the panel.
 - **`hikari.events.on`** listens to a Hikari API event. [`document.changed`](/en/docs/plugins/api-reference#documentchanged) comes after every edit, undo and redo.
 
+The events are `document.changed`, `selection.changed`, `documents.changed`, `panel.changed`, `command.ran`, `project.changed` and [`macro.ran`](/en/docs/plugins/api-reference#macroran). An unknown name is refused.
+
 A plugin panel stays closed until the user opens it from **View › Panels**. Then it docks in the manifest's `area` and behaves like HikariSub's own panels. [Widgets](https://github.com/altqx/hikari/blob/main/docs/plugins.md#widgets) lists every kind of widget.
 
 ## Step 3: an edit
@@ -191,6 +193,49 @@ A plugin gets only what its manifest asks for. The user sees each request in the
 - **Full trust.** `"tier": "unrestricted"` gives the full LuaJIT libraries, no sandbox, and [QML panels](https://github.com/altqx/hikari/blob/main/docs/plugins.md#qml-panels). The user must agree to give the plugin full access to the computer. Ask for it only when the restricted tier can't do the job.
 
 A call that needs a permission the plugin doesn't have fails with the error `not_granted`. [The Hikari API](https://github.com/altqx/hikari/blob/main/docs/api.md#calls-callers-and-errors) lists every error code.
+
+## Long jobs
+
+A command that takes longer than 10 seconds, such as scanning a video, calls `hikari.job.begin` first:
+
+```lua
+hikari.commands.register("scan", function()
+    hikari.job.begin{title = "Finding keyframes"}
+    for i = first, last, 64 do
+        if hikari.job.cancelled() then
+            return
+        end
+        hikari.job.progress((i - first) / (last - first), "Frame " .. i)
+        local batch = hikari.call("video.frames", {from = i, to = math.min(i + 63, last)})
+        -- …
+    end
+end)
+```
+
+From `begin` until the command returns, it has no time limit, and a card above the status bar shows the plugin's name, the title, the progress and **Cancel**. `hikari.job.progress(nil, text)` shows a bar that moves without a fraction. **Cancel** only makes `hikari.job.cancelled()` answer `true`, so check it often. When the plugin hasn't stopped 5 seconds later, the card says so and offers **Stop**, which force stops it; work it hasn't applied is lost. Only a command can become a job, once; outside one, the job calls answer `nil` and an error. Several plugins' jobs stack, the newest first.
+
+## Grid row marks
+
+A plugin can mark Grid rows with a coloured bar at the right of the row number, for example the lines a git ref changed:
+
+```lua
+hikari.marks.set({
+    {line = 12, colour = "warning", tooltip = "Changed since v1.0"},
+    {line = 15, colour = "danger", tooltip = "Removed in the next ref"},
+})
+```
+
+`colour` is a theme role: `accent`, `warning`, `danger`, `success` or `muted`. `tooltip` (1 to 200 characters) shows on hover after the plugin's name, and screen readers read the row as "marked by" the plugin, then the tooltip. Setting a line again replaces the plugin's own mark there. When several plugins mark one line, the bar splits. A plugin marks at most 20000 lines of a file. `hikari.marks.clear(lines)` removes some marks, `hikari.marks.clear()` all of them, and `hikari.marks.list()` gives them back. Each call takes the file as an optional last argument.
+
+Marks are never saved and aren't undo steps. They go when the plugin stops or is turned off, and when the file closes. The plugin manager's details list them per file, as *Marks 3 lines in ep01.ass*, with **Clear marks**.
+
+## Macros, keyframes and frames
+
+Any plugin can use these through `hikari.call`; none needs a permission.
+
+- **`automation.macros` and `automation.run_macro`.** The Automation macros the user loaded, and a run of one on the active tab's selection, as the menu runs it, as one undo step. Set the selection first with `hikari.selection.set`. `answers` fills the macro's dialogs: one `{key, values, button}` per dialog, as the [`macro.ran`](/en/docs/plugins/api-reference#macroran) event gives them after the user runs a macro. A dialog whose key matches is answered without showing it, unless `show = "prefilled"`; a question and a dialog that changed are always shown. AI callers can't run installed macros.
+- **`video.set_keyframes`.** Replaces the video's keyframes as **Video › Open keyframes** does, or with `file` (a writable handle from `hikari.files.pick`) writes an Aegisub keyframes file there first and opens it.
+- **`video.frames`.** Up to 256 frames at once, every `stride`-th, scaled down to `maxEdge` (16 to 512, 64 by default), as one byte of luma per pixel or as BGRA, in base64.
 
 ## Sign it
 
