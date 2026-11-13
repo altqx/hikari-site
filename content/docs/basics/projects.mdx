@@ -1,0 +1,57 @@
+---
+title: Projects
+description: See a Project's folder in the Explorer panel, open its files, and rename, trash or add subtitle files there.
+---
+
+A Project is a folder you open in a window, such as the folder of a whole show or of one episode. How to open one, and the settings it can share, are in [Files and formats](/en/docs/basics/files-and-formats#projects). What it can keep beside your own copies is in [Project tiers](/en/docs/basics/project-tiers). This page is about the **Explorer**, the panel that shows the Project's folder.
+
+## The Explorer
+
+**View › Explorer** shows a tree of the Project's folder. In the **Editing** layout it opens by itself, left of the Grid, when a Project opens, unless the [layout is locked](/en/docs/customize/layouts#locking-the-layout). It closes when the Project closes. **View › Panels** lists it too. **Explorer panel** in **File › Settings › Shortcuts** has no key at first. In a window without a Project, the panel says *Open a folder as a project to see its files here.*, with **Open folder…**.
+
+The panel's header has **New subtitle file**, **Group by name**, **Show all files** and **Refresh**. **Group by name** and **Show all files** are your own: they apply in every window and every Project.
+
+### What it lists
+
+Folders come first, then files, in name order, with numbers taken by value, so `ep02.ass` comes before `ep10.ass`. At first, the Explorer lists only the files HikariSub uses: subtitle files, video, audio, keyframes, timecodes, chapters and fonts. **Show all files** lists the rest too. Hidden files, and names that start with a dot, are never listed.
+
+The Project's `.hikari` folder is the first row, **Project settings**, which opens the **Project** tab of **File › Settings**.
+
+### Hiding files
+
+`[explorer] exclude` in the Project's `.hikari/project.toml` lists the files and folders to hide, even with **Show all files** on. At first the list is `*.lwi` and `*.ffindex`, the index files a video can leave beside it. The Project's list replaces those two, so keep them in it to go on hiding them:
+
+```toml
+[explorer]
+exclude = ["*.lwi", "*.ffindex", "*.md", "raws"]
+```
+
+`*` and `?` match within one name, and `**` across folders. A pattern without a `/`, such as `*.md` or `raws`, matches a name anywhere in the folder. One with a `/`, such as `fonts/*.ttf`, matches the path from the Project's folder. A folder that matches is hidden with everything in it.
+
+### Grouping by name
+
+**Group by name** gathers each episode's files under its subtitle file. The files named like it, such as `ep01.mkv` beside `ep01.ass`, go in the group, along with keyframes, timecodes and chapters named with an underscore, such as `ep01_keyframes.txt` and `ep01_tc.txt`. A subtitle file leads its group, or the video when there is no subtitle file. A file with nothing to group stays on its own row.
+
+### Opening files
+
+Double-click a row, or press <kbd>Enter</kbd>:
+
+- **A subtitle file** opens in a new tab, or in an untouched **Untitled** tab. A file that is already open brings its tab to the front.
+- **A video, audio, keyframes or timecodes file** opens in the current tab, as its video, audio, keyframes or timecodes.
+- **A folder** opens or closes.
+- **Project settings** opens the **Project** tab of **File › Settings**.
+
+### The right-click menu
+
+- **Open in a new tab**, for a subtitle file.
+- **Open in this tab** opens a subtitle file in place of the current tab's file, asking first about its unsaved changes. Video, audio, keyframes or timecodes open in the current tab, as a double-click does.
+- **New subtitle file here** makes a new ASS file in that folder: type its name, `untitled.ass` at first, and press <kbd>Enter</kbd>. It opens in a new tab. The header's **New subtitle file** does the same in the selected row's folder, or in the Project's folder.
+- **Rename**, or <kbd>F2</kbd>, renames the file or folder in place. A name that is already taken is refused.
+- **Move to the trash**, or <kbd>Del</kbd>, asks first. A folder goes with everything in it.
+- **Show in folder** shows the file in your file manager, and **Copy path** copies its full path.
+
+**Project settings** can't be renamed or moved to the trash.
+
+### Changes on disk
+
+The tree follows the folder: a file you add, rename or delete in another program shows at once. **Refresh** reads the folder again.

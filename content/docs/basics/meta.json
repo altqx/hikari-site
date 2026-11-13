@@ -3,6 +3,7 @@
   "defaultOpen": true,
   "pages": [
     "files-and-formats",
+    "projects",
     "project-tiers",
     "export",
     "grid",

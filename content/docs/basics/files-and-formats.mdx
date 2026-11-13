@@ -188,7 +188,7 @@ A file opens in the current tab when the tab is empty and unchanged. **File › 
 
 ## Projects
 
-A Project is a folder you open in a window, such as the folder of a whole show or of one episode. Each window can have one Project. Its name shows in the title bar, as in *Episode 01.ass - My Show - HikariSub*, and on the window's Home page. The window's tabs can still hold files from outside the folder. Opening it writes nothing into the folder. A Project can keep its own style catalogues, beside yours: see [Project tiers](/en/docs/basics/project-tiers).
+A Project is a folder you open in a window, such as the folder of a whole show or of one episode. Each window can have one Project. Its name shows in the title bar, as in *Episode 01.ass - My Show - HikariSub*, and on the window's Home page. The window's tabs can still hold files from outside the folder. Opening it writes nothing into the folder. A Project can keep its own style catalogues, beside yours: see [Project tiers](/en/docs/basics/project-tiers). The **Explorer** panel shows the folder's files: see [Projects](/en/docs/basics/projects).
 
 ### Opening a folder
 
@@ -241,6 +241,7 @@ A Project can set only these:
 | The [Translate](/en/docs/ai/inline-actions#a-projects-models) action's models, and the folder of its glossary | `translation.translator`, `translation.reviewer`, `translation.glossary` |
 | The [Translate to](/en/docs/ai/inline-actions#the-actions) language, and the source language | `translation.targetLanguage`, `translation.sourceLanguage` |
 | The [export](/en/docs/basics/export) format and options of a file not exported yet | The `[export]` table: `format`, and the **Export as** window's options |
+| The files the [Explorer](/en/docs/basics/projects#hiding-files) hides | `explorer.exclude` |
 | [Credits written on save](#filling-in-the-credits-on-save), and whether to ask first | `scriptProperties.*` |
 | Which of your plugins are on, and their settings, in a trusted folder | The `[plugins]` table: see [Project plugins](#project-plugins) |
 | Where the AI keys come from, in a trusted folder | The `[ai.keys]` table: see [Project AI keys](#project-ai-keys) |
