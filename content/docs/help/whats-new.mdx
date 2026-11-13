@@ -11,6 +11,7 @@ Not published yet. These changes are in HikariSub's code and come with the next 
 
 ### New and improved
 
+- **Title-bar menus are built when you first open them:** HikariSub builds each title-bar menu the first time you open it, so less of the window is created at start. Shortcuts and commands work as before, even before any menu has been opened.
 - **Every Line editor field at small sizes:** as the Line editor gets narrower, its fields wrap onto more rows instead of the panel scrolling, and every field stays visible down to the panel's smallest width. A text box scrolls on its own when the text is longer than the space it has. See [The fields](/en/docs/basics/line-editor#the-fields).
 - **A Project's dictionary, export format and languages:** a Project can keep its own dictionary words in `.hikari/dictionary.txt`, which spelling and the grammar check accept only in that Project's windows. **Add to dictionary** lets you choose the Project's dictionary or your own, and remembers the choice. The Project tab's new **Export** page sets the format for files not exported yet, and its **Translation** page sets the source and target languages that **Translate to** uses. See [Project tiers](/en/docs/basics/project-tiers#dictionary-words).
 - **Skills for every agent:** Claude Code, Codex and ACP agent threads in the Agent panel now see the same [skills](/en/docs/ai/skills) as the built-in agent, the Project's included. Agents outside HikariSub can read them too once you tick **File › Settings › AI › MCP › Let them read your skills**, which is off at first.
