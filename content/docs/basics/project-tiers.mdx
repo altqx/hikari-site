@@ -3,7 +3,7 @@ title: Project tiers
 description: Keep a Project's own catalogues, layouts, shapes, tags and presets in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
 ---
 
-While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. So far, these have both tiers: style and font catalogues, saved layouts, drawing shapes, tags, and the presets of script dialogs, Shift times and the Timing postprocessor.
+While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. These have both tiers: style and font catalogues, saved layouts, drawing shapes, tags, the presets of script dialogs, Shift times and the Timing postprocessor, dictionary words, the export format and the translation languages.
 
 Skills: `.hikari/skills`, shown with **Project** and **Mine** chips; they have no Copy or Move. See [Skills](/en/docs/ai/skills).
 
@@ -17,7 +17,7 @@ How the two tiers combine depends on what they hold:
 - **Merged.** Both tiers apply together.
 - **Per key.** The Project's value replaces yours, one key at a time.
 
-Everything with a Project tier so far is hidden by name.
+Catalogues, layouts, shapes, tags and presets are hidden by name. [Dictionary words](#dictionary-words) are merged. The [export format and translation languages](#export-format-and-translation-languages) are per key.
 
 ## In the lists
 
@@ -63,6 +63,21 @@ Each file is made the first time something is saved into it, in the same format 
 - **The layout menu** lists the Project's layouts first. A layout of yours that the Project's hides is greyed out, with *Hidden by the project's copy*. Applying a layout writes nothing to either file.
 - **Vector drawing's Shape list and Hydra's Tag list** offer the Project's first, and never one it hides.
 - **Yours only.** **Load from a file**, in Manage font catalogues, loads into your own catalogues, and the font catalogues' autosave copies stay in your user folder. **Restore default shapes** and **Restore default tags** replace only yours.
+
+## Dictionary words
+
+A Project's dictionary words are in `.hikari/dictionary.txt`, one word per line. They are merged with your [personal dictionary](/en/docs/checking/spelling#your-personal-dictionary): in the Project's windows, spelling and the [grammar check](/en/docs/checking/grammar) accept the words of both, and other windows never accept the Project's.
+
+- **The Line editor's menu.** **Add "…" to dictionary** shows where it adds, *This project* or *Mine*. While a Project is open, a second item, **Add to project dictionary** or **Add to my dictionary**, adds to the other one and remembers that choice.
+- **The Spellchecker panel.** The button says **Add to project dictionary** or **Add to my dictionary**. Its arrow, *Where to add*, switches it, and HikariSub remembers the choice.
+- **At first** words go to the Project's dictionary. The file is made the first time a word is added to it.
+
+## Export format and translation languages
+
+These take the Project's value over yours, one setting at a time:
+
+- **Export format**, on the **Export** page of the [Project tab](/en/docs/basics/files-and-formats#the-project-tab): *Used for files that haven't been exported yet.* **Not set** leaves yours. The `[export]` table in `project.toml` can also hold the **Export as** window's options. A file's own last export still comes first, then the Project's, then your last export. Exporting never changes `project.toml`.
+- **Target language**, on the Project tab's **Translation** page, is the language of [Translate to](/en/docs/ai/inline-actions#the-actions) in the Project's windows. Left empty, yours applies. **Source language** sits beside it, and shows *Detect* when empty.
 
 ## What stays yours
 
