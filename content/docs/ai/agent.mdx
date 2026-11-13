@@ -173,7 +173,7 @@ The first time you use Claude Code, HikariSub downloads the Claude Agent SDK, wh
 
 ### Codex
 
-A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatGPT sign-in: **Sign in with ChatGPT…** in **File › Settings › AI › External agents**. HikariSub keeps it apart from the sign-in in `~/.codex`, so neither signs the other out. Without it, Codex doesn't start. Codex is on Linux only for now; Windows will follow.
+A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatGPT sign-in: **Sign in with ChatGPT…** in **File › Settings › AI › External agents**. HikariSub keeps it apart from the sign-in in `~/.codex`, so neither signs the other out. Without it, Codex doesn't start. Codex is on Linux only for now; Windows will follow. It's offered only where the system's sandbox can keep it to its own folders: see [When an agent isn't offered](#when-an-agent-isnt-offered).
 
 - **Only HikariSub's tools.** It works through the same tools as any thread. HikariSub turns down Codex's own commands, file changes and requests for permission, turns off its own sub-agents, and Codex doesn't use your `~/.codex` settings.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
@@ -190,7 +190,7 @@ On Linux, a thread can also run on an agent that speaks the Agent Client Protoco
 They work like Claude Code and Codex:
 
 - **Only HikariSub's tools.** The agent gets HikariSub's tools and nothing else from HikariSub: no files and no terminal. Every file it reads or changes goes through HikariSub's tools.
-- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: never a Project or other files of yours, so it reaches your files only through HikariSub's tools. Where the system can't provide the sandbox, the agent isn't confined.
+- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: never a Project or other files of yours, so it reaches your files only through HikariSub's tools. Where the system can't provide the sandbox, the agent isn't offered: see [When an agent isn't offered](#when-an-agent-isnt-offered).
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 
 With neither Claude Code nor Codex installed and no provider, a new thread uses the first ACP agent found. Windows lists no ACP agents yet.
@@ -202,6 +202,14 @@ Antigravity needs a Google sign-in of its own. Press **Sign in with Google…** 
 HikariSub keeps that sign-in in your keychain and never reads `~/.gemini`, so it doesn't touch the sign-in Antigravity uses outside HikariSub.
 
 To let Claude Code you start yourself edit your files instead, see [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent).
+
+### When an agent isn't offered
+
+Codex and ACP agents need the system's sandbox to keep them to their own folders. Where it can't, for example on a Linux kernel without Landlock, they aren't offered. The model menu doesn't list them, a new thread doesn't fall back to one, and their rows in **File › Settings › AI › External agents** say *Not offered: this system can't keep it to its own folders.* Claude Code is still offered, because all its own tools are off.
+
+A thread already set to one of them doesn't start it. Its turn ends in a card, *This agent can't start here*, that says why, with **Open Settings › AI**.
+
+One of your own ACP agents whose command lies inside an open Project isn't offered either, because it could read the Project's folder. Its row says *Not offered: its command is inside an open project, which it could read.*
 
 ## Modes
 
