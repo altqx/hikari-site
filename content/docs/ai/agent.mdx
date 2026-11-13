@@ -135,6 +135,8 @@ A server that runs as a command runs as you, outside the AI component's sandbox,
 
 Nothing starts until a thread needs it. Each server's row shows its command or URL and its state: *Starts when the agent needs it*, *Starting…*, *Connected · 3 tools*, or *Failed:* and why. A thread waits up to 5 seconds for the servers when it starts. A slower server adds its tools once it's ready, and one that failed is tried again the next time a thread starts.
 
+A thread doesn't get every server's tools up front. The agent sees each server you added by name, the first 40 characters of it, and looks for the tools it needs with its `search_tools` tool. A server's tools join the thread only once that search finds them.
+
 ### What asks
 
 What a tool may do without asking depends on its server's hints, which say whether it only reads and whether it may destroy anything. The hints count only when you trust the server, with the check box in its row or form. Without trust, every one of its tools asks in every mode.
