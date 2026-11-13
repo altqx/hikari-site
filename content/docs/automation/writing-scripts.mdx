@@ -228,7 +228,7 @@ When a script fails to load, its row in the Automation panel says so, with **Sho
 | `aegisub.get_frame(frame [, with_subtitles])` | A video frame, with `:width()`, `:height()`, `:getPixel(x, y)` (`r, g, b`), `:getPixelFormatted(x, y)` (`&HBBGGRR&`) and `:data()`: the BGRA pixels for FFI, the pitch in bytes and `false` (not flipped), valid while the frame is. |
 | `aegisub.parse_karaoke_data(line)` | The line's karaoke syllables, from index 0, each with `duration`, `start_time`, `end_time`, `tag`, `text` and `text_stripped`. |
 | `aegisub.file_name()` | The subtitle file's name, or `nil`. |
-| `aegisub.project_properties()` | The video, audio and keyframes files, the video position, and `video_zoom`: the Video panel's zoom (1 without video). `timecodes_file` is empty. |
+| `aegisub.project_properties()` | The video, audio and keyframes files, the video position, and `video_zoom`: the Video panel's zoom (1 without video). `timecodes_file` is the path of the loaded timecodes file, or empty when none is loaded. |
 | `aegisub.decode_path(path)` | The path with a `?` prefix expanded (below). |
 | `aegisub.gettext(text)` | The text translated, for scripts that ship translations. |
 | `aegisub.set_status_text(text)` | HikariSub only: sets the status bar text. |

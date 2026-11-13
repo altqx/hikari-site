@@ -85,7 +85,7 @@ const features: (Feature & { icon: LucideIcon; wide?: boolean })[] = [
   {
     icon: CheckCheck,
     title: 'Checking',
-    text: 'Spelling, minor-error fixes and side-by-side comparison of two files.',
+    text: 'Spelling and side-by-side comparison of two files.',
     guide: 'checking/spelling',
     more: 'Checking',
   },

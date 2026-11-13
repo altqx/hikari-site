@@ -68,9 +68,9 @@ HikariSub runs Automation 4 scripts on LuaJIT, in Lua or MoonScript. DependencyC
 
 No. HikariSub has no export filters, and a script's `register_filter` does nothing. [Export](/en/docs/basics/export) writes a copy in another format without running any.
 
-### Why aren't my macros in submenus?
+### Can macros go in submenus?
 
-The Automation menu lists every macro in one flat list. A `/` in a macro's name doesn't make a submenu.
+Yes. A `/` in a macro's name makes a submenu: a macro named `Timing/Shift by frame` shows **Shift by frame** under **Automation › Timing**. See [Writing scripts](/en/docs/automation/writing-scripts#registering-macros).
 
 ### Can two macros run at the same time?
 
