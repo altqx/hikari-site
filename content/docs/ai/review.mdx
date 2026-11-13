@@ -58,6 +58,19 @@ Each turn starts with a checkpoint: the files as they were before its first chan
 
 **Restore checkpoint**, on a turn in the Review panel, goes back to before it. The question says what it will undo in each tab: *Every AI change from this turn on is undone, kept ones too, in every tab it touched, as one history step per tab.* Lines you edited after the agent stay as they are, unless you tick **Also undo my edits to 2 lines I changed after the AI**. Your other edits stay. Press **Restore**; Undo brings the agent's changes back.
 
+## Project files
+
+In a window with a [Project](/en/docs/basics/files-and-formats#projects), the [agent](/en/docs/ai/agent#project-files) can change and add files in the Project folder. Nothing reaches the disk until you keep it, in every Project, trusted or not.
+
+Each file waits under the turn that wrote it, with its path and *New file* or *Changed* and its line count, such as *New file, 12 lines* or *Changed, +3 −1 lines*. Click a file to see what changed.
+
+- **Keep** writes the AI's version to the disk. If the file changed on disk after the AI wrote its version, Keep asks first, and **Keep anyway** replaces it with the AI's version. A file that can't be written keeps waiting.
+- **Undo** drops the AI's version. The disk isn't touched.
+- **Keep all** and **Undo all** take in the waiting files too. Keep all leaves a file that changed on disk waiting.
+- **Restore checkpoint** drops the turn's waiting files and puts the ones you kept back as they were before the turn: a new file is removed. A kept file you changed since stays as it is, unless you tick **Also put back 2 files changed on disk after they were kept**.
+
+Quitting while files still wait asks *Keep the AI's file changes?*, with **Keep all**, **Discard all** and **Cancel**. Files Keep all can't write stay in the Review panel, and HikariSub stays open.
+
 ## Saving, closing and turning AI off
 
 - Saving writes the file with the agent's edits in it. They keep waiting in the review.
