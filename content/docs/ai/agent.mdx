@@ -217,7 +217,7 @@ To let Claude Code you start yourself edit your files instead, see [Connect Clau
 
 ### On Windows
 
-On Windows, Codex and ACP agents (OpenCode, Antigravity and your own) run with low rights instead of in an app container. They can read your files and other apps' saved passwords, but write only their own folders, can't read HikariSub's keys, and change your subtitles only through HikariSub's tools. In **File › Settings › AI › External agents**, each of their rows says so: *On Windows this agent runs with low rights. It can read your files and other apps' saved passwords, but not HikariSub's keys.*
+On Windows, Codex and ACP agents (OpenCode, Antigravity and your own) run with low rights instead of in an app container. They can read your files and other apps' saved passwords, but write only their own folders, can't read HikariSub's keys, and change your subtitles only through HikariSub's tools. Agents that run with low rights at the same time can reach each other's folders. In **File › Settings › AI › External agents**, each of their rows says so: *On Windows this agent runs with low rights. It can read your files and other apps' saved passwords, but not HikariSub's keys.*
 
 Claude Code is unchanged: it still runs in its app container, and its row has no warning.
 
