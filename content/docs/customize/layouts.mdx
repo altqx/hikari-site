@@ -16,7 +16,7 @@ import karaokeLight from './images/karaoke-layout-light.webp';
 import karaokeDark from './images/karaoke-layout-dark.webp';
 import manageDark from './images/manage-layouts-dark.webp';
 
-The window is made of panels: Video, Audio, the Line editor, the Grid and others. You can move them, stack them as tabs, float them in windows of their own, or close them. A layout is one arrangement of them.
+The window is made of panels: Video, Audio, the Line editor, the Grid and others. You can move them, stack them as tabs, float them in windows of their own, or close them. A layout is one arrangement of them. On each edge of the window, outside the layout, is a [side bar](#side-bars) for the AI and tool panels.
 
 Each tab has its own layout, so a file you translate and a file you time can be set up differently side by side. Moving panels never changes your subtitles and adds no undo step.
 
@@ -33,12 +33,12 @@ Each tab has its own layout, so a file you translate and a file you time can be 
 <small>Subtitles: Jibrill.</small>
 
 - **Editing**, the default: Video and Audio side by side, the Line editor under the Audio, and the Grid along the bottom.
-- **Timing:** Editing without the Video, with the [Timing postprocessor](/en/docs/basics/timing#timing-postprocessor) beside the Audio.
+- **Timing:** Editing without the Video.
 - **Translation:** Editing without the Audio. Choosing it asks whether to turn on Translation mode for the file.
-- **Typesetting:** a large Video with the Styles panel beside it, and the Line editor beside a short Grid below.
+- **Typesetting:** a large Video, and the Line editor beside a short Grid below.
 - **Karaoke:** the Video with the [Template editor](/en/docs/karaoke/template-editor) beside it, the Line editor as the tab behind it. The Audio panel spans the window's whole width under them, so a line's syllables get the whole waveform, and a short Grid sits at the bottom. Choosing it turns on Karaoke mode and folds the generated lines in the Grid.
 
-Choosing a layout keeps the window's size and changes only the current tab.
+Choosing a layout keeps the window's size and changes only the current tab. It never changes the [side bars](#side-bars). The [Timing postprocessor](/en/docs/basics/timing#timing-postprocessor) and Styles start in the tools side bar; if you move them out of it, Timing puts the Timing postprocessor beside the Audio, and Typesetting puts Styles beside the Video.
 
 ### Karaoke mode and folding
 
@@ -147,24 +147,58 @@ Closing a panel only hides it. **View › Panels** lists every panel, each with 
 
 ### Locking the layout
 
-**View › Layout › Lock layout**, also in the layout switcher's menu and each panel's **⋯** menu, keeps every panel where it is. Nothing can be dragged, floated, docked elsewhere or moved among tabs, though you can still resize panels by their edges. The presets, saved layouts and **Reset this layout** are greyed out until you unlock, and so are the panel menu's moving rows and **Close**.
+**View › Layout › Lock layout**, also in the layout switcher's menu and each panel's **⋯** menu, keeps every panel where it is. Nothing can be dragged, floated, docked elsewhere or moved among tabs, though you can still resize panels by their edges. The presets, saved layouts, **Reset this layout** and **View › Reset side bars** are greyed out until you unlock, and so are the panel menu's moving rows, the side bar moves among them, and **Close**.
 
 Dock any floating panel first: the row is greyed out while one floats. The first time a drag is refused, a notice says *The layout is locked*, with **Unlock**. A command that shows a panel, such as Find, still shows it in its place, docked. The lock is kept with the tab, the session, the subtitle file's layout and saved layouts.
 
 ### Where a panel opens
 
-A panel you open comes back where it was last in this tab's layout. A panel that has no place in the layout opens where you can find it, never in an old hidden spot or as a floating window:
+A panel in a [side bar](#side-bars) opens there, and shows the side bar if it was hidden. Any other panel you open comes back where it was last in this tab's layout. A panel that has no place in the layout opens where you can find it, never in an old hidden spot or as a floating window:
 
 - **The Log, Spellchecker, Styles, Template editor, Original text and Timing postprocessor** each have a place of their own, and open there. The Timing postprocessor's is beside the Audio.
 - **Shift times, Find and Automation** open in a column to the right of the Grid. The first one makes the column, and panels opened after it join the column as tabs. The Grid keeps its left edge and gives up width first. With the Grid closed or floating, the column goes along the right edge of the window.
 
-The built-in layouts have no place for Shift times, Find and Automation, so **Reset this layout** closes them again. Layouts you saved earlier are unchanged.
+Shift times and Find start in the tools side bar, so they open in the column only once you move them out of it. The built-in layouts have no place for Shift times, Find and Automation, so **Reset this layout** closes them again. Layouts you saved earlier are unchanged.
 
 ### From the keyboard
 
-**View › Move panel…** opens a window for the panel you are in. Choose where it goes (**Tab with**, **Left of**, **Above**, **Right of**, **Below** or **Float**), next to which panel, and press **Move**. **Resize** sets its width and height in pixels. The window stays open, so you can move several panels in turn.
+**View › Move panel…** opens a window for the panel you are in. Choose where it goes (**Tab with**, **Left of**, **Above**, **Right of**, **Below**, **Float**, **Left side bar** or **Right side bar**), next to which panel, and press **Move**. **Resize** sets its width and height in pixels. The window stays open, so you can move several panels in turn.
 
-<kbd>F6</kbd> and <kbd>Shift</kbd>+<kbd>F6</kbd> move to the next or previous panel.
+<kbd>F6</kbd> and <kbd>Shift</kbd>+<kbd>F6</kbd> move to the next or previous panel, from the left side bar's panel through the middle of the window to the right side bar's.
+
+## Side bars
+
+Each window has a side bar on its left edge and one on its right, outside the layout:
+
+- **The AI side bar,** on the left, holds the [Agent](/en/docs/ai/agent) and [Review](/en/docs/ai/review#the-review-panel) panels.
+- **The tools side bar,** on the right, holds the [Explorer](/en/docs/basics/projects#the-explorer), Find, Shift times, the Timing postprocessor, Styles and [QC notes](/en/docs/checking/qc-notes). In a window without a Project, it starts on Find.
+
+A side bar shows one panel at a time, under a row of the panels' icons. Hover over an icon for the panel's name, and click it to show that panel. Clicking the icon of the panel that's showing hides the side bar.
+
+- **Show or hide a side bar** with its button in the title bar, or with **View › Toggle left side bar** and **View › Toggle right side bar**. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> toggles the left one; the right one has no key at first. Opening a panel that's in a hidden side bar shows the side bar too.
+- **Resize a side bar** by dragging its inner edge. It starts about 320 px wide. Drag it narrower than 240 px and it hides, keeping the width it had.
+- **View › Swap side bars** switches their edges, with their panels and widths. **File › Settings › Appearance › AI side bar** sets the same thing: **Left** or **Right** for the AI side bar, the other side bar holding the tools. In a right-to-left language both are mirrored, so the AI side bar starts on the right.
+- **View › Reset side bars** puts both side bars back to the panels and widths they started with.
+
+**Toggle left side bar**, **Toggle right side bar** and **Swap side bars** are in **File › Settings › Shortcuts** too. <kbd>Ctrl</kbd>+<kbd>B</kbd> stays **Bold**.
+
+### Moving panels into a side bar
+
+Any panel except the Grid, Video, Audio and the Line editor can go in either side bar, the AI panels and [plugin panels](/en/docs/plugins/using-plugins#plugin-panels) included.
+
+- A panel's **⋯** menu has **Move to the left side bar** and **Move to the right side bar**. In a side bar, it has **Move out of the side bar**, which puts the panel back in the layout, and **Move left** and **Move right**, which move its icon along the row.
+- **Move panel…** has **Left side bar** and **Right side bar** among its places.
+- Drag an icon along its row to reorder it, or onto the other side bar's row to move the panel there. A panel can't yet be dragged between a side bar and the middle of the window.
+- **Float** takes a panel out of its side bar into a window of its own, and **Dock** puts it back in the side bar.
+- **Close** takes the panel's icon off the row, so the next time you open the panel it opens in the layout.
+
+A side bar with no panels says *Drag a panel here*. With **Turn off all AI features** ticked in **File › Settings › AI**, an AI side bar left with no panels hides, and its toggle is greyed out.
+
+### Side bars belong to the window
+
+Each window has its own side bars, which stay the same whichever tab is showing. Choosing a layout, a saved layout or **Reset this layout** doesn't change them either; a panel that a layout opens shows in its side bar. HikariSub saves each window's side bars as soon as you change them, in the [session](/en/docs/basics/files-and-formats#sessions), and a new window starts with the side bars you changed last.
+
+The first time you start this version, panels you had docked in the column to the right of the Grid move into the side bars, once: the AI panels to the left and the others to the right. The rest of your saved layouts stay as they were. On that first start, both side bars show only in a window at least 2140 px wide; a narrower window starts with the tools side bar alone. On a screen too narrow for both side bars beside the middle of the window, showing one hides the other.
 
 ## Windows
 
@@ -186,7 +220,7 @@ A window also opens for a [Project](/en/docs/basics/files-and-formats#projects) 
 
 ### What each window has
 
-- **Its own:** tabs and the current tab, its [Project](/en/docs/basics/files-and-formats#projects), the menu bar, the panels and the layout, the Line editor, the status bar, and its video and audio, which go [full screen](/en/docs/basics/video#full-screen) on their own. **Styles**, the **Template editor**, **Find**, the **Spellchecker**, **Shift times**, the **Timing postprocessor** and the **Kanji timer** work on that window's current tab. Switching windows keeps where each of them was.
+- **Its own:** tabs and the current tab, its [Project](/en/docs/basics/files-and-formats#projects), the menu bar, the panels and the layout, the [side bars](#side-bars), the Line editor, the status bar, and its video and audio, which go [full screen](/en/docs/basics/video#full-screen) on their own. **Styles**, the **Template editor**, **Find**, the **Spellchecker**, **Shift times**, the **Timing postprocessor** and the **Kanji timer** work on that window's current tab. Switching windows keeps where each of them was.
 - **Shared by every window:** settings and shortcuts, saved layouts, recent files, Automation, the Log, the Style manager and the comparison reference.
 
 Each window plays its current tab's video and audio, and keeps its frame while you work in another window. Only one window plays at a time: playing in one window, from the video, the audio or the Line editor, pauses the video and stops the audio in every other window, and they keep their frames. Closing a window stops its video and audio.

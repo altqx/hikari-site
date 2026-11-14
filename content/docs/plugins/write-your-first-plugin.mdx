@@ -110,7 +110,7 @@ The events are `document.changed`, [`document.saved`](/en/docs/plugins/api-refer
 
 `document.saved`, since API version 1, comes after a file is written by Save, Save as, Save all or Save translation, with the path and the revision written. Nothing comes for a cancelled or failed save. `command.ran` reports a trigger, not an outcome: a Save that opens a dialog fires `command.ran` even when the dialog is then cancelled. A plugin that reacts to saves should listen to `document.saved`.
 
-A plugin panel stays closed until the user opens it from **View › Panels**. Then it docks in the manifest's `area` and behaves like HikariSub's own panels. [Widgets](https://github.com/altqx/hikari/blob/main/docs/plugins.md#widgets) lists every kind of widget.
+A plugin panel stays closed until the user opens it from **View › Panels**. Then it opens where the manifest's `area` says: `left` and `right` put it in the side bar on that edge of the window, and `bottom` docks it along the bottom. After that it behaves like HikariSub's own panels. [Widgets](https://github.com/altqx/hikari/blob/main/docs/plugins.md#widgets) lists every kind of widget.
 
 ## Step 3: an edit
 
