@@ -8,7 +8,7 @@ description: Add AI providers and their keys, choose a model for each role, keep
 - **AI features**, with **Turn off all AI features**: see [Turning AI off](#turning-ai-off);
 - **Providers** and **Models**: see [Providers](#providers) and [Models](#models);
 - **Web search**: see [Searching the web](/en/docs/ai/agent#searching-the-web);
-- **External agents**, for Claude Code, Codex and, on Linux, ACP agents: see [Agents on this computer](/en/docs/ai/agent#agents-on-this-computer) and [Updating Claude Code and Codex](#updating-claude-code-and-codex);
+- **External agents**, for Claude Code, Codex and ACP agents: see [Agents on this computer](/en/docs/ai/agent#agents-on-this-computer) and [Updating Claude Code and Codex](#updating-claude-code-and-codex);
 - **MCP**: see [Connect an agent](/en/docs/ai/connect-an-agent) and [MCP servers](/en/docs/ai/agent#mcp-servers). Its **Let them read your skills** check, off at first, lets agents connected through MCP list and read your skills: see [Agents outside HikariSub](/en/docs/ai/skills#agents-outside-hikarisub);
 - **Agent**: see the agent's [Settings](/en/docs/ai/agent#settings);
 - **Skills**: see [Skills in Settings](/en/docs/ai/skills#in-settings);
@@ -36,6 +36,10 @@ Each provider's row shows its last test, such as *Connected*, with how many mode
 - **Edit** leaves the key field empty, which keeps the stored key. A key you type replaces it. A stored key is never shown again. When the provider refuses a key, the row says *Replace the key with Edit*.
 - **Sign out**, in an OpenRouter provider's **Edit**, deletes its key from this computer. The key stays in your OpenRouter keys until you delete it there.
 - **Delete** asks first, and removes the provider's key from the keychain. Roles that used its models go back to the chat model.
+
+### Keys on Windows
+
+On Windows, HikariSub keeps your AI keys and sign-ins in a private folder instead of Windows Credential Manager: `ai/secrets` in your user folder. Each key or sign-in is a file of its own, encrypted for your Windows account. The folder is kept for you alone, and agents that run with low rights can neither read it nor list it. If the folder can't be made private to you, for example on a FAT32 or exFAT drive, nothing is saved, and Settings says *Nothing was saved because HikariSub's keys folder can't be made private to you, for example on a FAT32 or exFAT drive.* On Linux, keys stay in your system's keychain.
 
 ## Models
 

@@ -185,7 +185,7 @@ The first time you use Claude Code, HikariSub downloads the Claude Agent SDK, wh
 
 ### Codex
 
-A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatGPT sign-in: **Sign in with ChatGPT…** in **File › Settings › AI › External agents**. HikariSub keeps it apart from the sign-in in `~/.codex`, so neither signs the other out. Without it, Codex doesn't start. Codex is on Linux only for now; Windows will follow. It's offered only where the system's sandbox can keep it to its own folders: see [When an agent isn't offered](#when-an-agent-isnt-offered).
+A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatGPT sign-in: **Sign in with ChatGPT…** in **File › Settings › AI › External agents**. HikariSub keeps it apart from the sign-in in `~/.codex`, so neither signs the other out. Without it, Codex doesn't start. On Windows it runs with low rights: see [On Windows](#on-windows). It's offered only where the system's sandbox can keep it to its own folders: see [When an agent isn't offered](#when-an-agent-isnt-offered).
 
 - **Only HikariSub's tools.** It works through the same tools as any thread. HikariSub turns down Codex's own commands, file changes and requests for permission, turns off its own sub-agents, and Codex doesn't use your `~/.codex` settings.
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
@@ -193,7 +193,7 @@ A thread on Codex runs on your own `codex`, signed in with HikariSub's own ChatG
 
 ### ACP agents
 
-On Linux, a thread can also run on an agent that speaks the Agent Client Protocol (ACP). **File › Settings › AI › External agents** lists them:
+A thread can also run on an agent that speaks the Agent Client Protocol (ACP). **File › Settings › AI › External agents** lists them:
 
 - **OpenCode,** when `opencode` is on your `PATH`. HikariSub runs `opencode acp`.
 - **Antigravity,** when `agy` is on your `PATH`, version 1.5.0 or later. HikariSub runs `agy acp`. With an older one, its row says it's older than the oldest HikariSub supports, and gives the command to update it, `agy update`.
@@ -202,10 +202,10 @@ On Linux, a thread can also run on an agent that speaks the Agent Client Protoco
 They work like Claude Code and Codex:
 
 - **Only HikariSub's tools.** The agent gets HikariSub's tools and nothing else from HikariSub: no files and no terminal. Every file it reads or changes goes through HikariSub's tools.
-- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: never a Project or other files of yours, so it reaches your files only through HikariSub's tools. Where the system can't provide the sandbox, the agent isn't offered: see [When an agent isn't offered](#when-an-agent-isnt-offered).
+- **A folder of its own.** Each agent has the network, but it can write only to its own folders. OpenCode writes to its own `opencode` folders in your home folder, and Antigravity and your own agents to a folder of their own under `ai/agents` in your user folder, which is their home folder too. On Linux with Landlock, it can also read only its own folders and the system's libraries: never a Project or other files of yours, so it reaches your files only through HikariSub's tools. On Windows it can read your files: see [On Windows](#on-windows). Where the system can't provide the sandbox, the agent isn't offered: see [When an agent isn't offered](#when-an-agent-isnt-offered).
 - **The review as usual.** Its edits wait in the [Review panel](/en/docs/ai/review) until you keep or undo them.
 
-With neither Claude Code nor Codex installed and no provider, a new thread uses the first ACP agent found. Windows lists no ACP agents yet.
+With neither Claude Code nor Codex installed and no provider, a new thread uses the first ACP agent found.
 
 #### Signing in to Antigravity
 
@@ -215,9 +215,17 @@ HikariSub keeps that sign-in in your keychain and never reads `~/.gemini`, so it
 
 To let Claude Code you start yourself edit your files instead, see [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent).
 
+### On Windows
+
+On Windows, Codex and ACP agents (OpenCode, Antigravity and your own) run with low rights instead of in an app container. They can read your files and other apps' saved passwords, but write only their own folders, can't read HikariSub's keys, and change your subtitles only through HikariSub's tools. Agents that run with low rights at the same time can reach each other's folders. In **File › Settings › AI › External agents**, each of their rows says so: *On Windows this agent runs with low rights. It can read your files and other apps' saved passwords, but not HikariSub's keys.*
+
+Claude Code is unchanged: it still runs in its app container, and its row has no warning.
+
+On Windows, HikariSub keeps your AI keys and sign-ins in a private folder instead of Windows Credential Manager: see [Keys on Windows](/en/docs/ai/settings#keys-on-windows).
+
 ### When an agent isn't offered
 
-Codex and ACP agents need the system's sandbox to keep them to their own folders. Where it can't, for example on a Linux kernel without Landlock, they aren't offered. The model menu doesn't list them, a new thread doesn't fall back to one, and their rows in **File › Settings › AI › External agents** say *Not offered: this system can't keep it to its own folders.* Claude Code is still offered, because all its own tools are off.
+Codex and ACP agents need the system's sandbox to keep them to their own folders. Where it can't, for example on a Linux kernel without Landlock, they aren't offered. The model menu doesn't list them, a new thread doesn't fall back to one, and their rows in **File › Settings › AI › External agents** say *Not offered: this system can't keep it to its own folders.* Where HikariSub can't open a private tools channel for them, they aren't offered either, and their rows say *Not offered: HikariSub can't open a private tools channel for it on this system.* Claude Code is still offered, because all its own tools are off.
 
 A thread already set to one of them doesn't start it. Its turn ends in a card, *This agent can't start here*, that says why, with **Open Settings › AI**.
 
