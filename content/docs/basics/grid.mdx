@@ -69,20 +69,19 @@ Most commands act on the selected lines.
 
 ## The right-click menu
 
-Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>, for the Grid's menu:
+Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>, for the Grid's menu. Its rows are in seven groups, and no submenu has another inside it:
 
-- **Insert ›** Before or After, also at the video's time or frame time.
-- **Duplicate**, [Blur and glow layers…](/en/docs/typesetting/visual-tools#blur-and-glow-layers) and **Build layers with the last values**, [Typesetting graph…](/en/docs/karaoke/node-effects#typesetting-graphs), **Cut**, **Copy** and **Paste**.
-- **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
-- **Join ›** Join, Keep first or Keep last.
-- **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds).
-- [Remove tags…](#removing-tags).
-- [Interpolate across lines…](#interpolating-across-lines), for three or more lines.
-- **Swap lines**, **Make times continuous ›** with the previous or the next line, **Make line group** and [Convert Aegisub folds to line groups](#aegisub-folds).
-- [Line breaks ›, Change case › and Swap dialogue alternatives](#line-breaks-case-and-dialogue-alternatives).
-- [Change alignment, keep position ›, Align and distribute ›, Position to margins and Margins to position](#position-and-alignment).
-- **Select lines visible on video**, **Show subtitles preview** and [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation).
+- **Insert ›** Before or After, also at the video's time or frame time. **Duplicate**, **Cut**, **Copy** and **Paste**. **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
+- **Join ›** Join, Keep first or Keep last. **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds). **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**. [Convert Aegisub folds to line groups](#aegisub-folds) shows here only when the file has Aegisub folds.
+- [Line breaks ›, Change case ›, Swap dialogue alternatives](#line-breaks-case-and-dialogue-alternatives) and [Remove tags…](#removing-tags).
+- **Typesetting ›** [Blur and glow layers…](/en/docs/typesetting/visual-tools#blur-and-glow-layers) and **Build layers with the last values**, [Typesetting graph…](/en/docs/karaoke/node-effects#typesetting-graphs), [Interpolate across lines…](#interpolating-across-lines), and [Position to margins and Margins to position](#position-and-alignment). Then [Change alignment, keep position › and Align and distribute ›](#position-and-alignment).
+- [AI actions ›](/en/docs/ai/inline-actions).
+- **Select lines visible on video**, **Show subtitles preview**, [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation) and [Add QC note…](/en/docs/checking/qc-notes).
 - **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
+
+On a line whose AI change is [waiting in Review](/en/docs/ai/review), the menu starts with **Keep AI change** and the other Review rows.
+
+A row you can't use at the moment is greyed out, with a line under it that says why. **Interpolate across lines…** asks you to select at least three lines, and **Typesetting graph…** says when the layout is locked.
 
 The sections below explain each of them.
 
@@ -127,7 +126,7 @@ Neither **At tag blocks** nor **Every N frames or seconds…** has a key at firs
 
 ## Interpolating across lines
 
-**Interpolate across lines…** fills the lines between the first and the last selected line with the tag values between theirs, so a sign can move, turn or change colour from one line to the next. It needs at least three selected lines, such as the lines **Split › Into frames** makes. Lines you didn't select, and hidden lines, aren't part of the run.
+**Typesetting › Interpolate across lines…**, in the Grid's right-click menu, fills the lines between the first and the last selected line with the tag values between theirs, so a sign can move, turn or change colour from one line to the next. It needs at least three selected lines, such as the lines **Split › Into frames** makes. Lines you didn't select, and hidden lines, aren't part of the run.
 
 Each middle line gets values by its place in the run. With `{\pos(0,0)}` on the first of three lines and `{\pos(100,50)}` on the last, the middle line gets `{\pos(50,25)}`. It works on:
 
@@ -176,9 +175,9 @@ None of them has a key at first: <kbd>Shift</kbd>+click one in the menu, or give
 These commands move signs without moving them by hand. Each works on the selected lines, apart from hidden ones, and is one step in the history that changes only the lines it moves.
 
 - **Change alignment, keep position ›** sets `\an` to one of the nine alignments, from **Top left (\an7)** to **Bottom right (\an3)**, and leaves the line where it shows on the video. `\pos`, both `\move` points, `\org` and the clip move with it, to two decimal places. A line with no `\pos` gets one. A rotated line without `\org` gets one at its old position, so it turns about the same point.
-- **Align and distribute ›** lines up the lines' boxes. The box is the text's outline, without the border and shadow. **Relative to** chooses what they line up with, **Active line** or **Video frame**, and HikariSub remembers it. **Align left edges**, **Align centres** and **Align right edges** line them up across, **Align top edges**, **Align middles** and **Align bottom edges** down. `\pos`, `\move`, `\org` and the clips move together.
-- **Distribute horizontally** and **Distribute vertically**, in the same menu, take three or more lines. The two outermost stay, and the others are spaced evenly between them, by their centres.
-- **Position to margins** turns each line's `\pos` into its margins and takes the `\pos` out. Lines with `\move` or without `\pos` are skipped.
+- **Align and distribute ›** lines up the lines' boxes. The box is the text's outline, without the border and shadow. **Relative to** chooses what they line up with, **Active line** or **Video frame**, and HikariSub remembers it. Under **Align**, **Left edges**, **Centres** and **Right edges** line them up across, and **Top edges**, **Middles** and **Bottom edges** down. `\pos`, `\move`, `\org` and the clips move together.
+- Under **Distribute** in the same menu, **Horizontally** and **Vertically** take three or more lines. The two outermost stay, and the others are spaced evenly between them, by their centres.
+- **Typesetting › Position to margins** turns each line's `\pos` into its margins and takes the `\pos` out. Lines with `\move` or without `\pos` are skipped.
 - **Margins to position** does the opposite: it puts a `\pos` in whole pixels, from the margins and alignment, in front of each line that has neither `\pos` nor `\move`.
 
 The Line editor has two more: [Phantom](/en/docs/basics/line-editor#phantom), and the Cycle commands, which have no menu.
@@ -245,7 +244,7 @@ The filters are under **Filtering**, in the menu of the **⋯** button on the Gr
 
 ## Line groups
 
-**Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…**, **Convert Aegisub folds to line groups** and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
+**Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…**, **Convert Aegisub folds to line groups** when the file has Aegisub folds, and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
 
 ### Groups inside groups
 
@@ -264,7 +263,7 @@ In the file, a line keeps one `[tree_opened]` or `[tree_closed]` marker in its A
 
 ### Aegisub folds
 
-Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups** in the Grid's right-click menu does the same at any time; it has no key at first.
+Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups**, in **Subtitles** and in the Grid's right-click menu, does the same at any time while the file has folds; it has no key at first.
 
 - Each fold becomes a line group, and folds inside folds become groups inside groups. A collapsed fold becomes a closed group.
 - Before each group, a comment line holds the fold's first line without its tags, as the group's description.

@@ -7,15 +7,15 @@ Inline actions run one AI task on the lines you choose, such as a rewrite or a t
 
 ## Where they are
 
-- **AI** in the Grid's right-click menu, after **Paste special**, runs an action on the selected lines.
-- **AI** in the right-click menu of the [Line editor](/en/docs/basics/line-editor)'s text, and the AI button at the end of its strip of tag buttons, run one on the active line. With text selected in the box, only that text changes, and the rest of the line goes as context.
+- **AI actions ›** in the Grid's right-click menu, in a group of its own before **Select lines visible on video**, runs an action on the selected lines.
+- **AI actions ›** in the right-click menu of the [Line editor](/en/docs/basics/line-editor)'s text, and the AI button at the end of its strip of tag buttons, run one on the active line. With text selected in the box, only that text changes, and the rest of the line goes as context.
 
 Two commands have no key at first. Give them one in **File › Settings › Shortcuts**:
 
-- **AI actions…** opens the AI menu at the active line, or at the Line editor's AI button when you're typing in it.
+- **AI actions** opens the AI actions menu at the active line, or at the Line editor's AI button when you're typing in it.
 - **Repeat last AI action** runs the last action again on the lines you have chosen now.
 
-With **Turn off all AI features** ticked in **File › Settings › AI**, the menus and commands are hidden. An action is on when its role has a model in **File › Settings › AI › Models**, or when Chat has one, since a role without its own model uses the Chat model. An agent such as Claude Code doesn't count. With no model at all, the menu's last item is **Add a model in Settings › AI…**; with one, it is **Edit actions…**.
+With **Turn off all AI features** ticked in **File › Settings › AI**, the menus and commands are hidden. An action is on when its role has a model in **File › Settings › AI › Models**, or when Chat has one, since a role without its own model uses the Chat model. An agent such as Claude Code doesn't count. With no model at all, the menu's last item is **Add a model in Settings › AI**; with one, it is **Edit actions**. Both open **File › Settings › AI**.
 
 ## The actions
 
@@ -26,7 +26,7 @@ With **Turn off all AI features** ticked in **File › Settings › AI**, the me
 | **Fix spelling and grammar** | Reviewer | Nothing |
 | **Translate to English** | Translator, then Reviewer | Nothing. The language is **Translate to** in [Settings](#settings) |
 | **Translate to…** | Translator, then Reviewer | A language |
-| Your own actions | The one you chose | Nothing, or their instruction when **Ask each time** is on |
+| Your own actions | The one you chose | Nothing, or their instruction when **Ask each time** is on. They come after the built-in ones, below a line, and one that asks ends in **…** |
 
 Each model is the one you chose for that role in **File › Settings › AI › Models**. A role without a model uses the Chat model.
 
