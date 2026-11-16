@@ -1,10 +1,48 @@
 ---
 title: HikariSub guides
-description: How to install HikariSub and use it, from quick fixes to full typesetting.
+description: How to do everything in HikariSub, from a quick timing fix to a full typeset episode, and where it differs from Aegisub.
 ---
 
-These guides cover HikariSub 0.1. They are being written now, and pages appear in the sidebar as each one is finished.
-
-Where a guide shows an ASS line, it renders live with AkariSub, which uses libass as HikariSub does. Edit the line to see the change, and use Copy line to paste it into a script.
+These guides cover HikariSub 0.1 (beta.4). Where a guide shows an ASS line, it renders live with AkariSub, which uses libass as HikariSub does. Edit the line to see the change, and use Copy line to paste it into a script.
 
 <AssPreview line="{\an5\pos(640,360)\t(0,1500,\frz-6\fscx115\fscy115)}Ready when you are" duration={3000} time={1500} />
+
+## Start here
+
+- [Install](/en/docs/get-started/install): Windows and Linux packages, portable copies, and updates.
+- [Getting started window](/en/docs/get-started/getting-started-window): your first start: theme, legacy settings, and what is sent.
+- [Tour](/en/docs/get-started/tour): the window, its panels and layouts, in one picture.
+- [Coming from Aegisub](/en/docs/get-started/coming-from-aegisub) <span className="ms-1 rounded-full bg-fd-primary px-2 py-px align-[1px] text-xs font-semibold text-fd-primary-foreground">New</span>: what's the same, what's better, and what isn't here yet.
+- [Moving from legacy](/en/docs/get-started/moving-from-legacy): from HikariSub 0.0.x, what carries over and how to go back.
+
+<ShotPlaceholder shows="The Editing layout with its areas labelled: Explorer, Grid, Line editor, video, Audio panel and side bars." caption="The Editing layout, with each area named." />
+
+## If you know Aegisub
+
+- **Files:** your ASS files open and save as they are, and lines other programs added are kept.
+- **Styles:** the same styles; Aegisub's storages are catalogues here.
+- **Tags:** the same ASS tags, drawn with libass.
+- **Timing keys:** play, commit and next line work in the Audio panel and the Grid.
+- **Scripts:** your Lua and MoonScript macros and DependencyControl run.
+
+[Coming from Aegisub](/en/docs/get-started/coming-from-aegisub) has the full table, including the <ParityNotYet /> features that aren't there yet.
+
+## What HikariSub adds
+
+- [Projects and the Explorer](/en/docs/basics/projects)
+- [Side bars and layouts](/en/docs/customize/layouts#side-bars)
+- [Several windows](/en/docs/customize/layouts#windows)
+- Hikari AI: [the Agent](/en/docs/ai/agent), [Review](/en/docs/ai/review) and [inline actions](/en/docs/ai/inline-actions)
+- [Node effects](/en/docs/karaoke/node-effects)
+- Native tools: [motion tracking](/en/docs/typesetting/motion-tracking), [Perspective](/en/docs/typesetting/perspective), [Gradient](/en/docs/typesetting/visual-tools#gradients) and [Text on path](/en/docs/typesetting/visual-tools#text-on-path)
+- [Plugins](/en/docs/plugins/using-plugins)
+- [Thai and translation](/en/docs/translation/translation-mode)
+
+## By task
+
+- **Time a show:** [Video](/en/docs/basics/video), [Audio](/en/docs/basics/audio), [Timing](/en/docs/basics/timing), [Shift times](/en/docs/basics/timing#shift-times)
+- **Typeset signs:** [Visual tools](/en/docs/typesetting/visual-tools), [Perspective](/en/docs/typesetting/perspective), [Motion tracking](/en/docs/typesetting/motion-tracking), [Fonts](/en/docs/typesetting/fonts)
+- **Make karaoke:** [Split and join](/en/docs/karaoke/split-and-join), [Tap to time](/en/docs/karaoke/tap-to-time), [Templater](/en/docs/karaoke/templater), [Node effects](/en/docs/karaoke/node-effects)
+- **Translate:** [Translation mode](/en/docs/translation/translation-mode), [Line matching](/en/docs/translation/line-matching), [Inline actions](/en/docs/ai/inline-actions)
+- **Check before release:** [Spelling](/en/docs/checking/spelling), [Grammar](/en/docs/checking/grammar), [QC notes](/en/docs/checking/qc-notes), [Font collector](/en/docs/typesetting/fonts#the-font-collector)
+- **Automate:** [Running scripts](/en/docs/automation/running-scripts), [DependencyControl](/en/docs/automation/dependencycontrol), [Using plugins](/en/docs/plugins/using-plugins)
