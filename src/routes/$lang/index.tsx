@@ -12,16 +12,29 @@ import {
   Music,
   Type,
 } from 'lucide-react';
+import aiReviewDark from '@/assets/home/ai-review-dark.webp';
+import aiReviewLight from '@/assets/home/ai-review-light.webp';
+import checkingDark from '@/assets/home/checking-dark.webp';
+import checkingLight from '@/assets/home/checking-light.webp';
 import heroDark from '@/assets/home/hero-dark.webp';
 import heroLight from '@/assets/home/hero-light.webp';
+import motionTrackingDark from '@/assets/home/motion-tracking-dark.webp';
+import motionTrackingLight from '@/assets/home/motion-tracking-light.webp';
+import nodeEffectsDark from '@/assets/home/node-effects-dark.webp';
+import nodeEffectsLight from '@/assets/home/node-effects-light.webp';
+import pluginsDark from '@/assets/home/plugins-dark.webp';
+import pluginsLight from '@/assets/home/plugins-light.webp';
+import projectsDark from '@/assets/home/projects-dark.webp';
+import projectsLight from '@/assets/home/projects-light.webp';
 import typesettingDark from '@/assets/home/typesetting-dark.webp';
 import typesettingLight from '@/assets/home/typesetting-light.webp';
+import windowsDark from '@/assets/home/windows-dark.webp';
+import windowsLight from '@/assets/home/windows-light.webp';
 import { parityCounts } from '@/components/aegisub-parity';
 import { AssPreview } from '@/components/ass-preview';
 import { DownloadButton } from '@/components/download-button';
 import { GuideLink } from '@/components/guide-link';
 import { PageCredits } from '@/components/page-credits';
-import { ShotPlaceholder } from '@/components/shot-placeholder';
 import { ThemedImage } from '@/components/themed-image';
 import { baseOptions } from '@/lib/layout.shared';
 import { pageHead, siteDescription } from '@/lib/seo';
@@ -105,46 +118,65 @@ const aegisubTiles: (Tile & { icon: LucideIcon; extra?: string })[] = [
 ];
 
 /** What Aegisub doesn't have: the eight Q488 tiles, in order. */
-const plusTiles: (Tile & { shows: string; image?: { light: string; dark: string; alt: string } })[] = [
+const plusTiles: (Tile & { image: { light: string; dark: string; alt: string } })[] = [
   {
     title: 'Projects and the Explorer',
     text: 'Open a folder as a Project: an Explorer for its files, with catalogues, fonts, scripts and settings that travel with it.',
-    shows: 'The Explorer with an episode group open.',
+    image: {
+      light: projectsLight,
+      dark: projectsDark,
+      alt: "The Explorer beside the Grid on a Sprite Fright frame: the Project's settings, its fonts folder and two subtitle files, with Sprite Fright.ass open to show its video and keyframes.",
+    },
     guide: 'basics/projects',
     more: 'Projects and the Explorer',
   },
   {
     title: 'Several windows',
     text: 'Move a tab to another window. Each window plays its own video, and a session brings every window back.',
-    shows: 'Two windows on one desktop, each with its own video.',
+    image: {
+      light: windowsLight,
+      dark: windowsDark,
+      alt: 'Two HikariSub windows on one desktop: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout, each playing its own frame of the video.',
+    },
     guide: 'customize/layouts#windows',
     more: 'Several windows',
   },
   {
     title: 'Hikari AI with every edit in review',
     text: 'The Agent and inline actions suggest edits, and each one waits in Review until you keep or undo it. One box turns all AI off.',
-    shows: 'An Agent panel thread, with Review showing a kept and an undone line.',
+    image: {
+      light: aiReviewLight,
+      dark: aiReviewDark,
+      alt: "An Agent thread asked to shorten the long lines around 1:15: line 3's edit is kept, line 4's is undone, and line 5's still waits in the Review panel.",
+    },
     guide: 'ai/agent',
     more: 'Hikari AI with every edit in review',
   },
   {
     title: 'Node effects',
     text: 'Build karaoke and typesetting effects as a graph of nodes, previewed on the video, written as template lines.',
-    shows: 'The node graph with its preview.',
+    image: {
+      light: nodeEffectsLight,
+      dark: nodeEffectsDark,
+      alt: 'Node effects with the Falling letters preset on a karaoke line: its graph of 19 nodes and 29 wires, the preview on the video, and the template lines it writes below.',
+    },
     guide: 'karaoke/node-effects',
     more: 'Node effects',
   },
   {
     title: 'Motion and perspective tracking',
     text: 'Apply motion data and Power-Pin tracks so a sign follows the object it sits on.',
-    shows: 'Motion data applied: a sign tracking a moving object.',
+    image: {
+      light: motionTrackingLight,
+      dark: motionTrackingDark,
+      alt: 'A Sprite Fright frame with the sign "Sporeling" placed above a walking mushroom, with the visual typesetting tools down the left.',
+    },
     guide: 'typesetting/motion-tracking',
     more: 'Motion and perspective tracking',
   },
   {
     title: 'Typesetting tools',
     text: 'Perspective, Gradient and Text on path on the video, with blur and glow layers.',
-    shows: 'The Perspective tool on a sign.',
     image: {
       light: typesettingLight,
       dark: typesettingDark,
@@ -156,14 +188,22 @@ const plusTiles: (Tile & { shows: string; image?: { light: string; dark: string;
   {
     title: 'Checking',
     text: 'A grammar check, every installed dictionary at once for mixed-language lines, and QC notes kept in the file.',
-    shows: 'The Spellchecker panel with grammar flags.',
+    image: {
+      light: checkingLight,
+      dark: checkingDark,
+      alt: 'The Spellchecker panel on its Grammar tab: finding 1 of 6 says to use "have" rather than "of" in "We should of brought more marshmallows.", with "should have" to replace it.',
+    },
     guide: 'checking/grammar',
     more: 'Checking',
   },
   {
     title: 'Plugins',
     text: 'Add commands, panels and nodes from the marketplace. Each plugin is signed and asks before it reads folders or the network.',
-    shows: 'The plugin manager with the Marketplace.',
+    image: {
+      light: pluginsLight,
+      dark: pluginsDark,
+      alt: "The plugin manager's Marketplace tab with Macro chains selected: By HikariSub, its permissions, and the Needs, Licence, Updated and Source rows, with an Install button.",
+    },
     guide: 'plugins/using-plugins',
     more: 'Plugins',
   },
@@ -293,19 +333,15 @@ function Home() {
                 {(published) => (
                   <div className={tileClass}>
                     <div className="-mx-1.5 -mt-1.5 mb-1 overflow-hidden rounded-md">
-                      {tile.image ? (
-                        <ThemedImage
-                          light={tile.image.light}
-                          dark={tile.image.dark}
-                          alt={tile.image.alt}
-                          width={1200}
-                          height={502}
-                          loading="lazy"
-                          className="aspect-[1200/502] w-full object-cover"
-                        />
-                      ) : (
-                        <ShotPlaceholder shows={tile.shows} aspect="1200 / 502" className="my-0" />
-                      )}
+                      <ThemedImage
+                        light={tile.image.light}
+                        dark={tile.image.dark}
+                        alt={tile.image.alt}
+                        width={1200}
+                        height={502}
+                        loading="lazy"
+                        className="aspect-[1200/502] w-full object-cover"
+                      />
                     </div>
                     <h3 className="font-semibold">{tile.title}</h3>
                     <p className="text-sm text-fd-muted-foreground">{tile.text}</p>
@@ -354,7 +390,7 @@ function Home() {
       </main>
 
       <footer className="mx-auto flex w-full max-w-[1120px] flex-col gap-2 border-t px-6 py-6 text-sm text-fd-muted-foreground">
-        <PageCredits commons />
+        <PageCredits commons jibrill="node effects" />
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <span>HikariSub is free software under the GNU GPL v3.</span>
           <span className="flex-1" />
