@@ -23,11 +23,11 @@ The mode has its own layout. Video and **Source lines** are on the left, and **G
 
 ## The mode bar
 
-The mode bar picks the graph you work on, from the graphs in the file. Its menu has:
+The mode bar picks the graph you work on, from the graphs in the file. Its **⋯** menu, **More options**, has:
 
 - **New graph**;
-- **From a preset**, which adds one of the [presets](#presets);
-- **From the library…**, which adds a graph from [your library](#the-library);
+- **From a preset ›**, which adds one of the [presets](#presets), under *For karaoke lines* and *For selected lines*;
+- **From the library**, which adds a graph from [your library](#the-library);
 - **Rename…**;
 - **Duplicate**;
 - **Save to the library**;
@@ -126,7 +126,7 @@ Two nodes under **Drawings** in **Add node** make vector drawings, which an **Em
 
 ## Presets
 
-**From a preset** adds one of the ten [presets](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor:
+**From a preset ›** adds one of the ten [presets](/en/docs/karaoke/presets) as a graph, under the same name as in the Template editor. They come first, under *For karaoke lines*:
 
 - Classic fill;
 - Staggered fade;
@@ -178,21 +178,21 @@ Each graph's knobs, such as Shake's `amplitude`, are value nodes: select one and
 **Apply** writes the graph's lines for the lines you select in **Source lines**. The new lines go right after each original, and the original becomes a comment that keeps its Effect. Applying again replaces the lines it wrote before.
 
 - **Placing.** A line is placed at its first `\pos`, or at the start of its first `\move`, and aligned by its first `\an`, or else by its style.
-- **No karaoke tags.** A line without them is one syllable that spans the whole line.
+- **No karaoke tags.** A line without them is one syllable that spans the whole line, timed from the line's own start, so what the graph writes keeps the line's timing.
 - **Not sources.** Graph lines, template and code lines, and the lines a graph or template wrote never count.
 
 ## The library
 
-**Save to the library** keeps a copy of the graph in the `node-effects` folder of your [user folder](/en/docs/automation/user-folder#whats-in-it), one file per graph. **From the library…** adds one of them to the file you are working on, so you can reuse a graph in other files.
+**Save to the library** keeps a copy of the graph in the `node-effects` folder of your [user folder](/en/docs/automation/user-folder#whats-in-it), one file per graph. **From the library** adds one of them to the file you are working on, so you can reuse a graph in other files.
 
 ## Exporting as template lines
 
 **Export as template lines** adds template lines after the graph line that make the same lines in the [karaoke templater](/en/docs/karaoke/templater), so the effect also runs in Aegisub. Its submenu has two formats:
 
-- **karaOK templates**, marked with an (i), writes [karaOK](/en/docs/karaoke/templater#karaok-templates) templates and sets the file to karaOK. They run in HikariSub; in Aegisub they need the karaOK templater.
+- **karaOK templates** writes [karaOK](/en/docs/karaoke/templater#karaok-templates) templates and sets the file to karaOK. They run in HikariSub; in Aegisub they need the karaOK templater.
 - **Aegisub 3.2.2 templates** writes templates that Aegisub's own templater runs.
 
-The **Classic fill** preset, for example, becomes a `line` and an `lsyl` template as karaOK, or a `pre-line` and a `line` template for Aegisub 3.2.2. The menu ticks the format you used last, karaOK at first. The graph line stays, and the export, the karaOK line included, is one undo step, *Export as template lines*. All ten [presets](#presets) export.
+The **Classic fill** preset, for example, becomes a `line` and an `lsyl` template as karaOK, or a `pre-line` and a `line` template for Aegisub 3.2.2. Each row exports at once. The graph line stays, and the export, the karaOK line included, is one undo step, *Export as template lines*. All ten [presets](#presets) export.
 
 Highlights exports as `multi`, and Inline-fx as `fx` and its name. An Inline-fx with an empty name exports as an `fxgroup`, which a code line sets for the units with no inline-fx.
 
