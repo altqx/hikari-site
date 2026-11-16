@@ -43,7 +43,7 @@ A **plugin** adds commands, panels and dialogs to HikariSub itself, through the 
   <ThemedImage
     light={marketplaceLight}
     dark={marketplaceDark}
-    alt="The plugin manager's Marketplace view: on the left, Search plugins, All categories and the list with Glossary, Looks words up in an online dictionary, chosen; Hello, Says hello, with Update; and Native Tools, Tracks signs with a native library, with a Full trust badge. On the right, Glossary by Ana Fansubs, 2.0.0, with Install; its summary and a screenshot; Permissions: Connect to api.example.com: Looks words up, and Every plugin can read and edit the document you're working on, as one undo step.; then Needs HikariSub 0.1.0 or later, Licence MIT, Updated 2026-11-01 and Source github.com/ana/glossary"
+    alt="The plugin manager's Marketplace view: on the left, Search plugins, All categories and the list with Glossary, Looks words up in an online dictionary, chosen; Hello, Says hello, with Update; and Native Tools, Tracks signs with a native library, with a Full trust badge. On the right, Glossary by Ana Fansubs, 2.0.0, with Install; its summary and a screenshot; Permissions: Connect to api.example.com: Looks words up, and Every plugin can read and edit the document you're working on, as one undo step.; then Licence MIT, Updated 2026-11-01 and Source github.com/ana/glossary"
     width={796}
     height={662}
     className="rounded-lg border"
@@ -51,7 +51,7 @@ A **plugin** adds commands, panels and dialogs to HikariSub itself, through the 
   <figcaption>The Marketplace view, with Glossary chosen. Each plugin shows its icon, and its details show its screenshots.</figcaption>
 </figure>
 
-The question says the plugin is *Signed by* its author *and checked against the marketplace*, and lists what it asks for. A plugin with full trust asks you to install it only if you trust its author, because *it gets full access to your computer*, and its button reads **Install with full access**. A plugin that needs a newer HikariSub says so instead of **Install**.
+The question says the plugin is *Signed by* its author *and checked against the marketplace*, and lists what it asks for. A plugin with full trust asks you to install it only if you trust its author, because *it gets full access to your computer*, and its button reads **Install with full access**. A plugin made for a newer HikariSub says so, and can't be installed until you update HikariSub.
 
 If the marketplace can't be reached, the view says why, with **Try again**.
 
@@ -62,7 +62,7 @@ A plugin's page on the marketplace website, [marketplace.hikarisub.org](https://
 1. HikariSub downloads its own signed list of plugins again, and looks the plugin up in it. The link names only the plugin, and HikariSub trusts the list, not the website.
 2. It downloads the plugin, checks it, and asks the install question, as **Install** does.
 
-If you already have the newest version, it only shows the plugin. A plugin the list doesn't have, or one that needs a newer HikariSub, gets *isn't in the marketplace for this HikariSub*.
+If you already have the newest version, it only shows the plugin. A plugin the list doesn't have, or one made for a newer HikariSub, gets *isn't in the marketplace for this HikariSub*.
 
 If **Check for plugin updates** is off, HikariSub asks first, because it needs the list to check the plugin. **Turn on plugin updates** turns it on and carries on; **Close** installs nothing, and nothing is downloaded.
 
