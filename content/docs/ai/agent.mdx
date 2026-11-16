@@ -31,7 +31,9 @@ Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**
 - **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
 - **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
 
-Below the box, the model button picks the thread's model from your providers' models, each with its provider beside it, or an [agent on this computer](#agents-on-this-computer), and the mode button its [mode](#modes). Each menu marks the one chosen.
+Below the box, the model button names the model your next message uses, or says *Choose a model* when there is none yet. It picks the thread's model from your providers' models, each with its provider beside it, or an [agent on this computer](#agents-on-this-computer), and the mode button picks its [mode](#modes). Each menu marks the one chosen.
+
+The `/` and `@` lists open above the box when there's no room below it, as at the bottom of the screen in a floating panel.
 
 ## What the thread shows
 
@@ -117,9 +119,7 @@ Grid row marks, git and batches of raw video frames are for [plugins](/en/docs/p
 
 ## Searching the web
 
-With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
-
-When the thread's provider can't search on its own and no search service is chosen, the globe is dimmed. Its hover says *This provider can't search the web on its own. Choose a search service in Settings › AI › Web search.* With **Let AI search the web** off, the globe is hidden.
+Every thread follows **File › Settings › AI › Let AI search the web**. With it on, the agent can search the web; turn it on or off, and each thread follows from its next message.
 
 - **Search rows.** Each search shows in the thread as *Searched the web*, *Searched with Google* or *Searched with* and the service, such as *Searched with Brave Search*, followed by what it searched for. A page the agent read shows as *Read* and the site. Expand a row to see the full addresses.
 - **Citations.** Numbered chips follow the text they back up. Hover one for the page's title, its site and, when the provider sends one, the quoted passage, with **Open in browser**.
@@ -167,6 +167,8 @@ What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 ## Agents on this computer
 
 A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex and [ACP agents](#acp-agents). When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it, and the ACP agents follow. You don't need a provider for any of them.
+
+Each agent has its own list of models in the model menu. **Agent default** leaves the choice to the agent; below it are the agent's own models. The list loads from the agent the first time you open it, with *Loading models…* meanwhile, and HikariSub remembers it for the next session. You can switch to another of the agent's models partway through a thread, and the conversation carries on.
 
 Each of them gets your [AGENTS.md](#agentsmd-instructions) and the Project's, and again when it resumes. Their own file tools stay off, so every file they read or change goes through HikariSub's tools.
 
