@@ -31,7 +31,7 @@ Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**
 - **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
 - **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
 
-Below the box, the model button picks the thread's model from your providers' models, or an [agent on this computer](#agents-on-this-computer), and the mode button its [mode](#modes).
+Below the box, the model button picks the thread's model from your providers' models, each with its provider beside it, or an [agent on this computer](#agents-on-this-computer), and the mode button its [mode](#modes). Each menu marks the one chosen.
 
 ## What the thread shows
 
@@ -241,7 +241,7 @@ Each thread has a mode, which decides what the agent may change without asking. 
 | **Auto** | The judge model approves each change, or asks you, with its reason |
 | **Full access** | Nothing, except the [always-ask list](#the-always-ask-list), [Lua scripts](#lua-scripts) and [installing plugins](#plugins) |
 
-New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads…**, at the foot of the mode menu, opens it.
+New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads**, at the foot of the mode menu, opens it.
 
 **Full access** shows in red, and the thread's title gets a *Full access* badge. The first time you choose it, HikariSub asks *Turn on Full access?*, and lists what still asks. **Don't warn me again** stops the question.
 
@@ -328,12 +328,13 @@ Agents you [connect over MCP](/en/docs/ai/connect-an-agent) can't write, install
 
 **Threads**, at the top left, lists your threads by day, with each one's files, model and cost. In a Project's window, that Project's threads come first, under *This project*. *running*, *at cap* or *Full access* marks a thread. **Search threads** finds them by title or file name. Click one to open it, and **+** starts a new one.
 
-The thread menu, beside **+**, has:
+The thread menu is the **⋯** button at the top of the thread, beside **+**. Right-click a thread in **Threads**, or select it and press <kbd>Menu</kbd>, for the same menu for that thread. It has:
 
-- **Compact conversation** and **New thread from summary**: see [Long conversations](#long-conversations).
-- **Rename thread…**
-- **Export as Markdown…**, which saves the conversation as a `.md` file.
-- **Delete thread**, which asks first: *The conversation goes. Changes it made stay in your subtitles and in the review.*
+- **Rename thread…** and **Export as Markdown…**, which saves the conversation as a `.md` file.
+- **Compact thread** and **New thread from summary**: see [Long conversations](#long-conversations).
+- **Delete thread…**, at the end, which asks first: *The conversation goes. Changes it made stay in your subtitles and in the review.*
+
+Right-click an answer to **Copy** it or **Select all** of it.
 
 Threads are kept in `ai/threads` in your user folder, so they are still there after a restart, with their mode, model, cost and what you allowed. Images the agent looked at aren't kept.
 
@@ -373,13 +374,13 @@ The Agent panel compacts long conversations, so a thread can go on past the mode
 
 A divider marks each compaction, such as *Context compacted 313K → 21.2K tokens*. When older turns were summarised, open it to see the summary the model now sees. The full history stays in the panel, above it.
 
-- **By hand.** `/compact`, or **Compact conversation** in the thread menu, compacts the thread now. Type an instruction for the summary after `/compact`, and it is added to the request. While a turn runs, it waits until the turn ends.
+- **By hand.** `/compact`, or **Compact thread** in the thread menu, compacts the thread now. Type an instruction for the summary after `/compact`, and it is added to the request. While a turn runs, it waits until the turn ends.
 - **New thread from summary**, in the thread menu, starts a new thread with the same title, mode and model, carried on from a summary of the whole thread. Its first item says *Carried on from the summary of* and the earlier thread's title.
 - **When it fails.** A summary request that fails is tried once more. If it fails again, the thread says *Couldn't compact the conversation*, with **Retry** and **New thread from summary**, and nothing is removed. An automatic compaction that fails also stops the turn.
 
 Each summary request costs what any request to that model costs, and counts toward the thread's cap and the day's. Threads on Claude Code or Codex compact on their own, so they have none of this.
 
-With **Compact long conversations automatically** off, nothing compacts on its own. At 97% the panel shows *This conversation is nearly full*, with **Compact conversation** and **New thread from summary**.
+With **Compact long conversations automatically** off, nothing compacts on its own. At 97% the panel shows *This conversation is nearly full*, with **Compact thread** and **New thread from summary**.
 
 ## Settings
 
