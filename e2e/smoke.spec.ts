@@ -46,8 +46,8 @@ test('search finds a guide', async ({ page }) => {
     .first()
     .click();
   const dialog = page.getByRole('dialog');
-  await dialog.getByRole('combobox', { name: 'Search' }).fill('typesetting');
-  await expect(dialog.getByText('HikariSub guides')).toBeVisible();
+  await dialog.getByRole('combobox', { name: 'Search' }).fill('Aegisub');
+  await expect(dialog.getByText('Coming from Aegisub').first()).toBeVisible();
 });
 
 test('the theme toggle switches between light and dark', async ({ page }) => {
