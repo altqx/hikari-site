@@ -33,7 +33,7 @@ Syllables with furigana that follow each other form one group. Their readings ar
 
 The templater reads the readings out of each karaoke line. In `syl`, `line` and `char` templates, a syllable's text is its base only.
 
-A `furi` template runs once for each furigana part, and a `code furi` line too. There, `syl` is the furigana part, its text the reading, and `basesyl` the syllable it belongs to. Each part has the times of its syllable, or of its `#` highlight. Its position variables, such as `$x` and `$y`, place it just above the line. Its new lines get the line's furigana style: a run adds one for every style that has none, such as *Default-furigana*, at half the size.
+A `furi` template runs once for each furigana part, and a `code furi` line too. There, `syl` is the furigana part, its text the reading, and `basesyl` the syllable it belongs to. Each part has the times of its syllable, or of its `#` highlight. Its position variables, such as `$x` and `$y`, place it just above the line. A [karaOK](/en/docs/karaoke/templater#karaok-templates) `furichar` template runs once for each character of a reading, and its position variables place that character above its kanji in the same way. Their new lines get the line's furigana style: a run adds one for every style that has none, such as *Default-furigana*, at half the size.
 
 These two templates show the line and its furigana:
 

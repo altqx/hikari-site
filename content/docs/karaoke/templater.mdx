@@ -150,6 +150,7 @@ The built-in gives the same lines as karaOK, byte for byte, apart from fixes to 
 - **`k_retime` moves one loop's syllable.** In karaOK, every later loop and every later template on that syllable saw the times already moved.
 - **`style X` is plain text.** karaOK read X as a Lua pattern, so `.`, `-` or `(` in it matched more styles than written.
 - **Each furigana character takes its own syllable's tags.** With `{\k40\1c&H0000FF&}漢|かん{\k30\b1}字|じ`, a `furichar` template with `keeptags` gives `{\1c&H0000FF&}か`, `{\1c&H0000FF&}ん` and `{\b1}じ`. karaOK gave the first character of each furigana part the line's first tags, whichever syllable it belonged to, and the others none.
+- **Furigana characters sit above their kanji.** In a `furichar` template, `$top`, `$middle`, `$bottom` and `$y` come from the line's top, as they do in a `furi` template, so each reading character sits above its kanji. karaOK gave them the line's own positions, so each reading landed on its kanji.
 - **No `textbuffer` or `w` globals.** karaOK left them set while it built lines and words.
 - **Characters as they are drawn.** `char`, `lchar`, `$ci`, `$slen`, `$llen` and `$len` count characters as [`char` templates](#characters) split them, so Thai vowel and tone marks stay on their letters. `graphemes = false` in a `code once` line counts code points again, as karaOK did. Thai support is by Jibrill.
 
