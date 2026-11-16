@@ -32,23 +32,23 @@
       "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/windows-light.webp": {
-      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeWindows, two window grabs composed on a backdrop, 1200x502",
-      "surface": "Two windows: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout, each with its own video",
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeWindows retake (hk-cx7-r1), two window grabs composed on a backdrop after the audio finished loading, 1200x502",
+      "surface": "Two windows: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout with our own sign \"Brambleden Woods\", each with its own video",
       "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/windows-dark.webp": {
-      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeWindows, two window grabs composed on a backdrop, 1200x502",
-      "surface": "Two windows: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout, each with its own video",
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeWindows retake (hk-cx7-r1), two window grabs composed on a backdrop after the audio finished loading, 1200x502",
+      "surface": "Two windows: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout with our own sign \"Brambleden Woods\", each with its own video",
       "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/ai-review-light.webp": {
-      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeAiReview with the stand-in AI (Manual mode), 1920x1080 cropped to 1200x502",
-      "surface": "Agent thread and Review panel on Sprite Fright: our own lines, line 3 kept, line 4 undone, line 5 waiting in Review",
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeAiReview retake (hk-cx7-a7) with the English catalog and the stand-in AI (Manual mode), 1920x1080 cropped to 1200x502",
+      "surface": "Agent thread and Review panel on Sprite Fright: our own lines, line 3 kept, line 4 undone, line 5 waiting in Review (\"1 change to review\")",
       "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "src/assets/home/ai-review-dark.webp": {
-      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeAiReview with the stand-in AI (Manual mode), 1920x1080 cropped to 1200x502",
-      "surface": "Agent thread and Review panel on Sprite Fright: our own lines, line 3 kept, line 4 undone, line 5 waiting in Review",
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeAiReview retake (hk-cx7-a7) with the English catalog and the stand-in AI (Manual mode), 1920x1080 cropped to 1200x502",
+      "surface": "Agent thread and Review panel on Sprite Fright: our own lines, line 3 kept, line 4 undone, line 5 waiting in Review (\"1 change to review\")",
       "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "src/assets/home/node-effects-light.webp": {
@@ -82,12 +82,12 @@
       "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "src/assets/home/plugins-light.webp": {
-      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: shell_tests pluginOfficialBadgeScreenshots (QT_SCALE_FACTOR 1.3216), cropped to 1200x502",
-      "surface": "Plugin manager Marketplace tab on a test fixture listing, Macro chains selected with its By HikariSub badge"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homePlugins retake (hk-cx7-r1), the live marketplace index (serial 9) from a read-only copy, QT_SCALE_FACTOR 1.3216, cropped to 1200x502",
+      "surface": "Plugin manager Marketplace tab on the live index: Git line marks, Keyframe generator and Macro chains, with Macro chains 1.0.1 selected"
     },
     "src/assets/home/plugins-dark.webp": {
-      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: shell_tests pluginOfficialBadgeScreenshots (QT_SCALE_FACTOR 1.3216), cropped to 1200x502",
-      "surface": "Plugin manager Marketplace tab on a test fixture listing, Macro chains selected with its By HikariSub badge"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homePlugins retake (hk-cx7-r1), the live marketplace index (serial 9) from a read-only copy, QT_SCALE_FACTOR 1.3216, cropped to 1200x502",
+      "surface": "Plugin manager Marketplace tab on the live index: Git line marks, Keyframe generator and Macro chains, with Macro chains 1.0.1 selected"
     },
     "content/docs/get-started/images/window-light.webp": {
       "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority (the same capture as the homepage hero)",

@@ -136,7 +136,7 @@ const plusTiles: (Tile & { image: { light: string; dark: string; alt: string } }
     image: {
       light: windowsLight,
       dark: windowsDark,
-      alt: 'Two HikariSub windows on one desktop: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout, each playing its own frame of the video.',
+      alt: 'Two HikariSub windows on one desktop: Sprite Fright.ass in the Editing layout, and Sprite Fright signs.ass in the Typesetting layout with its sign "Brambleden Woods", each on its own frame of the video.',
     },
     guide: 'customize/layouts#windows',
     more: 'Several windows',
@@ -202,7 +202,7 @@ const plusTiles: (Tile & { image: { light: string; dark: string; alt: string } }
     image: {
       light: pluginsLight,
       dark: pluginsDark,
-      alt: "The plugin manager's Marketplace tab with Macro chains selected: By HikariSub, its permissions, and the Needs, Licence, Updated and Source rows, with an Install button.",
+      alt: "The plugin manager's Marketplace tab listing Git line marks, Keyframe generator and Macro chains. Macro chains 1.0.1 is selected: By HikariSub, what it does, its permissions, what's new, and the Needs, Licence and Updated rows, with an Install button.",
     },
     guide: 'plugins/using-plugins',
     more: 'Plugins',
