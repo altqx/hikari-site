@@ -2,44 +2,34 @@
   "_doc": "Where each app image comes from (decisions.md, Media). Captures under vx11 from the coordinator's qt build tree; the example subtitles are credited \"Subtitles: Jibrill\".",
   "images": {
     "src/assets/home/hero-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV at 1:15.75",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/hero-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV at 1:15.75",
-      "credit": "Subtitles: Jibrill"
-    },
-    "src/assets/home/karaoke-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "crop of hero-light: the Audio panel's karaoke syllables",
-      "credit": "Subtitles: Jibrill"
-    },
-    "src/assets/home/karaoke-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "crop of hero-dark: the Audio panel's karaoke syllables",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/typesetting-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "Perspective tool on a Thai line (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Perspective tool on a Sprite Fright frame (1440), our own sign line \"Brambleden Woods\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "src/assets/home/typesetting-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "Perspective tool on a Thai line (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Perspective tool on a Sprite Fright frame (1440), our own sign line \"Brambleden Woods\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "content/docs/get-started/images/window-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV (the README hero)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority (the same capture as the homepage hero)",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "content/docs/get-started/images/window-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV (the README hero)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority (the same capture as the homepage hero)",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "content/docs/get-started/images/typesetting-light.webp": {
       "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting from the title-bar layout button, 1600x960 window scaled to 1000x600",

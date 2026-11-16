@@ -3,6 +3,9 @@ title: HikariSub guides
 description: How to do everything in HikariSub, from a quick timing fix to a full typeset episode, and where it differs from Aegisub.
 ---
 
+import windowLight from './get-started/images/window-light.webp';
+import windowDark from './get-started/images/window-dark.webp';
+
 These guides cover HikariSub 0.1, with the changes that come with the next beta. Where a guide shows an ASS line, it renders live with AkariSub, which uses libass as HikariSub does. Edit the line to see the change, and use Copy line to paste it into a script.
 
 <AssPreview line="{\an5\pos(640,360)\t(0,1500,\frz-6\fscx115\fscy115)}Ready when you are" duration={3000} time={1500} />
@@ -15,7 +18,17 @@ These guides cover HikariSub 0.1, with the changes that come with the next beta.
 - [Coming from Aegisub](/en/docs/get-started/coming-from-aegisub) <span className="ms-1 rounded-full bg-fd-primary px-2 py-px align-[1px] text-xs font-semibold text-fd-primary-foreground">New</span>: what's the same, what's better, and what isn't here yet.
 - [Moving from legacy](/en/docs/get-started/moving-from-legacy): from HikariSub 0.0.x, what carries over and how to go back.
 
-<ShotPlaceholder shows="The Editing layout with its areas labelled: Explorer, Grid, Line editor, video, Audio panel and side bars." caption="The Editing layout, with each area named." />
+<figure>
+  <ThemedImage
+    light={windowLight}
+    dark={windowDark}
+    alt="HikariSub in the Editing layout on a Sprite Fright frame: the video on the left, the audio waveform and the Line editor on the right, and the Grid along the bottom"
+    width={1600}
+    height={960}
+    className="rounded-lg border"
+  />
+  <figcaption>The Editing layout. The [Tour](/en/docs/get-started/tour) names each part.</figcaption>
+</figure>
 
 ## If you know Aegisub
 
@@ -46,3 +59,5 @@ These guides cover HikariSub 0.1, with the changes that come with the next beta.
 - **Translate:** [Translation mode](/en/docs/translation/translation-mode), [Line matching](/en/docs/translation/line-matching), [Inline actions](/en/docs/ai/inline-actions)
 - **Check before release:** [Spelling](/en/docs/checking/spelling), [Grammar](/en/docs/checking/grammar), [QC notes](/en/docs/checking/qc-notes), [Font collector](/en/docs/typesetting/fonts#the-font-collector)
 - **Automate:** [Running scripts](/en/docs/automation/running-scripts), [DependencyControl](/en/docs/automation/dependencycontrol), [Using plugins](/en/docs/plugins/using-plugins)
+
+<PageCredits commons />

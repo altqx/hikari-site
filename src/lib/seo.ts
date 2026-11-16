@@ -3,7 +3,7 @@ import { appName, siteUrl } from './shared';
 export const siteDescription =
   'A subtitle editor and player for everything from quick fixes to full typesetting. ASS, SRT and other formats, with frame-accurate video, for Windows and Linux.';
 
-// public/og-image.jpg: the homepage hero (light), with its "Subtitles: Jibrill" credit in the image.
+// public/og-image.jpg: the top of the homepage hero (dark), Sprite Fright with the Commons en track (CX7, altqx/hikari#810).
 export const siteImage = {
   url: `${siteUrl}/og-image.jpg`,
   width: 1200,

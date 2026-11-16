@@ -4,6 +4,7 @@ import { ParityCheckedAt, ParityCount, ParityNotYet, ParitySummary, ParityTable 
 import { AnnotatedImage } from './annotated-image';
 import { AssPreview } from './ass-preview';
 import { DownloadTable, ReleaseStatus } from './download-table';
+import { PageCredits } from './page-credits';
 import { ShotPlaceholder } from './shot-placeholder';
 import { ThemedClip } from './themed-clip';
 import { ThemedImage } from './themed-image';
@@ -20,6 +21,7 @@ export function getMDXComponents(components?: MDXComponents) {
     ParitySummary,
     ParityTable,
     ReleaseStatus,
+    PageCredits,
     ShotPlaceholder,
     ThemedClip,
     ThemedImage,

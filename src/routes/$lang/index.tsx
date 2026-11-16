@@ -12,11 +12,17 @@ import {
   Music,
   Type,
 } from 'lucide-react';
+import heroDark from '@/assets/home/hero-dark.webp';
+import heroLight from '@/assets/home/hero-light.webp';
+import typesettingDark from '@/assets/home/typesetting-dark.webp';
+import typesettingLight from '@/assets/home/typesetting-light.webp';
 import { parityCounts } from '@/components/aegisub-parity';
 import { AssPreview } from '@/components/ass-preview';
 import { DownloadButton } from '@/components/download-button';
 import { GuideLink } from '@/components/guide-link';
+import { PageCredits } from '@/components/page-credits';
 import { ShotPlaceholder } from '@/components/shot-placeholder';
+import { ThemedImage } from '@/components/themed-image';
 import { baseOptions } from '@/lib/layout.shared';
 import { pageHead, siteDescription } from '@/lib/seo';
 import { appName, appRepoUrl, gitConfig } from '@/lib/shared';
@@ -99,7 +105,7 @@ const aegisubTiles: (Tile & { icon: LucideIcon; extra?: string })[] = [
 ];
 
 /** What Aegisub doesn't have: the eight Q488 tiles, in order. */
-const plusTiles: (Tile & { shows: string })[] = [
+const plusTiles: (Tile & { shows: string; image?: { light: string; dark: string; alt: string } })[] = [
   {
     title: 'Projects and the Explorer',
     text: 'Open a folder as a Project: an Explorer for its files, with catalogues, fonts, scripts and settings that travel with it.',
@@ -139,6 +145,11 @@ const plusTiles: (Tile & { shows: string })[] = [
     title: 'Typesetting tools',
     text: 'Perspective, Gradient and Text on path on the video, with blur and glow layers.',
     shows: 'The Perspective tool on a sign.',
+    image: {
+      light: typesettingLight,
+      dark: typesettingDark,
+      alt: 'The Perspective tool on a Sprite Fright frame: the sign line "Brambleden Woods" turned in 3D inside the tool\'s quad, with its Plane, Origin and Rotation options below the video.',
+    },
     guide: 'typesetting/visual-tools',
     more: 'Typesetting tools',
   },
@@ -212,11 +223,19 @@ function Home() {
               }
             </GuideLink>
           </div>
-          <ShotPlaceholder
-            shows="The Editing layout with a Project open: the Explorer, Grid, Line editor, the video with a typeset sign, and the audio waveform."
-            caption="Editing a Project in the Editing layout."
-            aspect="5 / 3"
-          />
+          <figure>
+            <div className="overflow-hidden rounded-xl border bg-fd-card shadow-[0_1px_2px_rgb(0_0_0/0.04),0_8px_24px_rgb(0_0_0/0.06)]">
+              <ThemedImage
+                light={heroLight}
+                dark={heroDark}
+                width={1600}
+                height={960}
+                className="h-auto w-full"
+                alt="HikariSub in the Editing layout on a Sprite Fright frame: the video with the line Finally! Time to get that barbecue burning., the audio waveform and the Line editor on the right, and the Grid along the bottom with that line selected."
+              />
+            </div>
+            <figcaption className="mt-2.5 text-xs text-fd-muted-foreground">The Editing layout.</figcaption>
+          </figure>
         </section>
 
         <section>
@@ -273,8 +292,20 @@ function Home() {
               >
                 {(published) => (
                   <div className={tileClass}>
-                    <div className="-mx-1.5 -mt-1.5 mb-1">
-                      <ShotPlaceholder shows={tile.shows} aspect="16 / 7" className="my-0" />
+                    <div className="-mx-1.5 -mt-1.5 mb-1 overflow-hidden rounded-md">
+                      {tile.image ? (
+                        <ThemedImage
+                          light={tile.image.light}
+                          dark={tile.image.dark}
+                          alt={tile.image.alt}
+                          width={1200}
+                          height={502}
+                          loading="lazy"
+                          className="aspect-[1200/502] w-full object-cover"
+                        />
+                      ) : (
+                        <ShotPlaceholder shows={tile.shows} aspect="1200 / 502" className="my-0" />
+                      )}
                     </div>
                     <h3 className="font-semibold">{tile.title}</h3>
                     <p className="text-sm text-fd-muted-foreground">{tile.text}</p>
@@ -323,7 +354,7 @@ function Home() {
       </main>
 
       <footer className="mx-auto flex w-full max-w-[1120px] flex-col gap-2 border-t px-6 py-6 text-sm text-fd-muted-foreground">
-        <p className="text-xs">Sprite Fright, © Blender Foundation | studio.blender.org</p>
+        <PageCredits commons />
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <span>HikariSub is free software under the GNU GPL v3.</span>
           <span className="flex-1" />
