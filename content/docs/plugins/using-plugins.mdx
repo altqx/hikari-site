@@ -86,6 +86,8 @@ Plugins need a [user folder](/en/docs/automation/user-folder). A copy without on
 
 A plugin installed from the marketplace shows **From the marketplace**: the marketplace's signed list vouches for its author's key, and each update must come from the same author.
 
+The plugin manager and the marketplace website mark HikariSub's [own plugins](#hikarisubs-own-plugins) **By HikariSub**. Only plugins under the `hikarisub` handle signed with HikariSub's author key get it. It shows as an icon in the list, named when you hover, and as a badge beside the name in the details and on the website.
+
 Every plugin installed from a file shows as **Unverified**, because HikariSub can't check where the file came from:
 
 - **Unverified, unsigned:** the package isn't signed, so HikariSub can't tell who made it.
@@ -239,6 +241,30 @@ A plugin with full trust runs outside the sandbox, with the same access as Hikar
 - When a command fails, a notice shows its error. Its details say more.
 - When a plugin fails to start, a notice says it didn't start, and its details hold the error.
 - Errors in a plugin's background handlers go to the [Log panel](/en/docs/help/troubleshooting#the-log-panel).
+
+## HikariSub's own plugins
+
+These plugins come from HikariSub itself. They are on the marketplace, marked **By HikariSub**, and install like any other plugin.
+
+### Macro chains
+
+[Macro chains](https://marketplace.hikarisub.org/plugins/hikarisub.macro-chains) records a chain of HikariSub commands and Automation macros, with the answers you gave their dialogs, and runs it again as one undo step. It was inspired by [AegisubChain](https://github.com/arch1t3cht/AegisubChain) by arch1t3cht.
+
+- **Recording:** in the **Macro chains** panel (**View › Panels**), choose **Record a chain**, or run the *Record a chain* command, and work as usual. Each macro and command that applies becomes a step, with what you answered in its dialogs. Undo while recording takes the last step back. Name the chain and choose **Stop and save**.
+- **Editing:** **Edit** sets, for each step, the selection after it (the macro's own, the one from before, or the lines it changed), whether its dialogs show every time, and each dialog field as **Constant**, **Ask** or **Exclude**. Steps move up and down and can be removed. A chain can take one of five slots, *Run chain slot 1* to *5*, which take keys in **File › Settings › Shortcuts**.
+- **Running:** **Run**, or the chain's slot command, asks every Ask field in one dialog first, then runs the chain as one undo step. If a step fails, the chain stops there, and **Undo the chain** takes back the steps that ran.
+- **Importing AegisubChain chains:** **Import AegisubChain chains…** reads AegisubChain's configuration file, `arch.AegisubChain.json` in Aegisub's DependencyControl config folder, or a file of exported chains, and shows what it found before adding anything. An imported chain shows each of its dialogs once, filled in, the first time it runs, and learns them. A step whose macro isn't loaded stays until its script is.
+- **Where chains are kept:** in `chains.json`, in the plugin's own data folder. It asks for no permissions.
+
+### Keyframe generator
+
+[Keyframe generator](https://marketplace.hikarisub.org/plugins/hikarisub.keyframe-generator) finds the scene changes in the open video and makes keyframes from them. Open its panel from **View › Panels › Keyframe generator**, or run **Find keyframes** from its submenu under **Automation**. **Sensitivity** (0 to 100, from *Fewer cuts* to *More cuts*) and **Minimum gap** (frames) set what counts as a cut. **Find keyframes** reads every frame of the video as a background job, with a card above the status bar and **Cancel**; the keyframes you have stay until you set the new ones. Then **Set keyframes** makes them the video's keyframes, and **Save as keyframes file…** saves an Aegisub keyframes file. It asks for no permissions.
+
+### Git line marks
+
+[Git line marks](https://marketplace.hikarisub.org/plugins/hikarisub.git-line-marks) shows what changed in a subtitle file since a git branch, tag or commit, right in the Grid. In its panel (**View › Panels › Git line marks**), pick a branch, tag or recent commit, or type a revision such as `HEAD~2`. Lines added since then get a green mark, changed, moved or retimed ones an amber mark, and a red mark shows where lines were removed. Hovering a mark names the change, and the panel lists every marked line; double-click one to select it in the Grid. The marks refresh after each save while **Refresh when I save** is on, which it is at first. They are never written into the file. **Automation › Git line marks** has **Refresh git line marks** and **Clear git line marks**.
+
+It works on ASS files saved in a git repository, with git on your `PATH` (Git for Windows on Windows). Its install question asks to *Read the branches, tags and history of the git repository holding your subtitle files: Compares your subtitle file with the branch, tag or commit you pick, to mark the Lines that changed since then.* HikariSub runs git for it, read-only.
 
 ## Writing plugins
 
