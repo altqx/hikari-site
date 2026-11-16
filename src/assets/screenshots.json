@@ -2,54 +2,112 @@
   "_doc": "Where each app image comes from (decisions.md, Media). Captures under vx11 from the coordinator's qt build tree; the example subtitles are credited \"Subtitles: Jibrill\".",
   "images": {
     "src/assets/home/hero-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV at 1:15.75",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/hero-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV at 1:15.75",
-      "credit": "Subtitles: Jibrill"
-    },
-    "src/assets/home/karaoke-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "crop of hero-light: the Audio panel's karaoke syllables",
-      "credit": "Subtitles: Jibrill"
-    },
-    "src/assets/home/karaoke-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "crop of hero-dark: the Audio panel's karaoke syllables",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "src/assets/home/typesetting-light.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "Perspective tool on a Thai line (last frame of the corner drag)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Perspective tool on a Sprite Fright frame (1440), our own sign line \"Brambleden Woods\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "src/assets/home/typesetting-dark.webp": {
-      "source": "recaptured at qt 6c0d80daa905ceef36e3f1947190d440e1774344 (surface unchanged at qt d24047335)",
-      "surface": "Perspective tool on a Thai line (last frame of the corner drag)",
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority",
+      "surface": "Perspective tool on a Sprite Fright frame (1440), our own sign line \"Brambleden Woods\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/projects-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeProjects, cropped to 1200x502",
+      "surface": "Explorer beside the Grid on Sprite Fright frame 1812: Project settings, fonts, two subtitle files, Sprite Fright.ass open to its video and keyframes",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
+    },
+    "src/assets/home/projects-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeProjects, cropped to 1200x502",
+      "surface": "Explorer beside the Grid on Sprite Fright frame 1812: Project settings, fonts, two subtitle files, Sprite Fright.ass open to its video and keyframes",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
+    },
+    "src/assets/home/windows-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeWindows retake (hk-cx7-r1), two window grabs composed on a backdrop after the audio finished loading, 1200x502",
+      "surface": "Two windows: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout with our own sign \"Brambleden Woods\", each with its own video",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
+    },
+    "src/assets/home/windows-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeWindows retake (hk-cx7-r1), two window grabs composed on a backdrop after the audio finished loading, 1200x502",
+      "surface": "Two windows: Sprite Fright.ass in the Editing layout and Sprite Fright signs.ass in the Typesetting layout with our own sign \"Brambleden Woods\", each with its own video",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
+    },
+    "src/assets/home/ai-review-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeAiReview retake (hk-cx7-a7) with the English catalog and the stand-in AI (Manual mode), 1920x1080 cropped to 1200x502",
+      "surface": "Agent thread and Review panel on Sprite Fright: our own lines, line 3 kept, line 4 undone, line 5 waiting in Review (\"1 change to review\")",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/ai-review-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homeAiReview retake (hk-cx7-a7) with the English catalog and the stand-in AI (Manual mode), 1920x1080 cropped to 1200x502",
+      "surface": "Agent thread and Review panel on Sprite Fright: our own lines, line 3 kept, line 4 undone, line 5 waiting in Review (\"1 change to review\")",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/node-effects-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeNodeEffectsOnRayMv, frame 165, cropped to 1200x502",
+      "surface": "Node effects, Falling letters preset on a Ray MV karaoke line: graph, video preview and source-line preview",
       "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/node-effects-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeNodeEffectsOnRayMv, frame 165, cropped to 1200x502",
+      "surface": "Node effects, Falling letters preset on a Ray MV karaoke line: graph, video preview and source-line preview",
+      "credit": "Subtitles: Jibrill"
+    },
+    "src/assets/home/motion-tracking-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeMotionTracking, 1200x502",
+      "surface": "Video panel on Sprite Fright frame 3294 with our own sign \"Sporeling\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/motion-tracking-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeMotionTracking, 1200x502",
+      "surface": "Video panel on Sprite Fright frame 3294 with our own sign \"Sporeling\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/checking-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeChecking, 1200x502",
+      "surface": "Spellchecker panel, Grammar tab, on our own lines over Sprite Fright",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/checking-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: homeChecking, 1200x502",
+      "surface": "Spellchecker panel, Grammar tab, on our own lines over Sprite Fright",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
+    },
+    "src/assets/home/plugins-light.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homePlugins retake (hk-cx7-r1), the live marketplace index (serial 9) from a read-only copy, QT_SCALE_FACTOR 1.3216, cropped to 1200x502",
+      "surface": "Plugin manager Marketplace tab on the live index: Git line marks, Keyframe generator and Macro chains, with Macro chains 1.0.1 selected"
+    },
+    "src/assets/home/plugins-dark.webp": {
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 c68710aea, cx7/site-244: homePlugins retake (hk-cx7-r1), the live marketplace index (serial 9) from a read-only copy, QT_SCALE_FACTOR 1.3216, cropped to 1200x502",
+      "surface": "Plugin manager Marketplace tab on the live index: Git line marks, Keyframe generator and Macro chains, with Macro chains 1.0.1 selected"
     },
     "content/docs/get-started/images/window-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV (the README hero)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority (the same capture as the homepage hero)",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "content/docs/get-started/images/window-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), 1600x960 window, uncropped",
-      "surface": "Editing layout, ray MV (the README hero)",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173, head e32a23aeb) under xvfb at 1600x960, fresh profile; evidence/w8-cx7 cc6c30276, cx7/shots/priority (the same capture as the homepage hero)",
+      "surface": "Editing layout on Sprite Fright, frame 1812; Grid rows 8-21 of the Commons en track, row 18 selected",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org; Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
     },
     "content/docs/get-started/images/typesetting-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting from the title-bar layout button, 1600x960 window scaled to 1000x600",
-      "surface": "Typesetting layout",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: getStartedTour, 1600x960",
+      "surface": "Typesetting layout on Sprite Fright frame 1440, Sprite Fright signs.ass with our own sign line \"Brambleden Woods\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "content/docs/get-started/images/typesetting-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikarisub (deb copy) under vx11, fresh profile, Jibrill ray MV at 1:15.75 on line 34, Editing layout from the title-bar layout button, the Audio panel's Karaoke mode turned on and its view set to 2.5x from 1:09 (Reset zoom, Shift+wheel, Back to line, scrollbar nudge), then Typesetting from the title-bar layout button, 1600x960 window scaled to 1000x600",
-      "surface": "Typesetting layout",
-      "credit": "Subtitles: Jibrill"
+      "source": "recaptured at main 8dbf88f41 with CX7's release screenshot harness (altqx/hikari#1173) under xvfb, fresh profile; evidence/w8-cx7 35a39491f, cx7/site-244: getStartedTour, 1600x960",
+      "surface": "Typesetting layout on Sprite Fright frame 1440, Sprite Fright signs.ass with our own sign line \"Brambleden Woods\"",
+      "credit": "Sprite Fright, © Blender Foundation | studio.blender.org"
     },
     "content/docs/karaoke/images/kanji-timer-light.webp": {
       "source": "recaptured at qt 98396e53a: coord2 hikari_ui_shell_tests kanjiTimerScreenshots under vx11 (offscreen, 1920x1080 screen), ka8-multi-light.png, 920x521 uncropped",

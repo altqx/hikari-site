@@ -17,9 +17,11 @@ export function GuideLink({
   className?: string;
   children: (published: boolean) => ReactNode;
 }) {
-  if (!source.getPage(guide.split('/'), lang)) return <div className={className}>{children(false)}</div>;
+  // "customize/layouts#windows" links to a heading on the guide.
+  const [path, hash] = guide.split('#');
+  if (!source.getPage(path.split('/'), lang)) return <div className={className}>{children(false)}</div>;
   return (
-    <Link to="/$lang/docs/$" params={{ lang, _splat: guide }} className={className}>
+    <Link to="/$lang/docs/$" params={{ lang, _splat: path }} hash={hash} className={className}>
       {children(true)}
     </Link>
   );

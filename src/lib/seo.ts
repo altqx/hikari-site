@@ -3,12 +3,14 @@ import { appName, siteUrl } from './shared';
 export const siteDescription =
   'A subtitle editor and player for everything from quick fixes to full typesetting. ASS, SRT and other formats, with frame-accurate video, for Windows and Linux.';
 
-// public/og-image.jpg: the homepage hero (light), with its "Subtitles: Jibrill" credit in the image.
+// public/og-image.jpg: the top of the homepage hero (dark), Sprite Fright with the Commons en track, and its credit
+// drawn in: "Sprite Fright, © Blender Foundation · Subtitles: Wikimedia Commons TimedText contributors, CC BY-SA 4.0"
+// (CX7, altqx/hikari#810).
 export const siteImage = {
   url: `${siteUrl}/og-image.jpg`,
   width: 1200,
   height: 630,
-  alt: 'HikariSub in the Editing layout: the video with karaoke subtitles, the Audio panel, the Line editor and the Grid',
+  alt: 'HikariSub in the Editing layout on a Sprite Fright frame: the video, the Audio panel, the Line editor and the Grid',
 };
 
 export function canonicalUrl(path: string): string {

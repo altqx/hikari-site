@@ -1,0 +1,1137 @@
+{
+  "checkedAt": "8dbf88f41",
+  "areas": [
+    {
+      "name": "Files and formats",
+      "slug": "files-and-formats",
+      "rows": [
+        {
+          "feature": "New, open, save, save as, close subtitles",
+          "status": "better",
+          "text": "A failed save never leaves half a file, and lines other programs added are kept byte for byte.",
+          "where": "File › Open…, Save, Save as…, Close"
+        },
+        {
+          "feature": "Recent subtitles, video, audio, keyframes, timecodes",
+          "status": "same",
+          "text": "",
+          "where": "File › Recently opened subtitles; Video › Recently opened videos, keyframes, timecodes; Audio › Recently opened audio"
+        },
+        {
+          "feature": "Open SRT, MicroDVD, SSA, plain text",
+          "status": "better",
+          "text": "Also opens MPL2, TMPlayer, LRC, TTML, KRC/QRC lyrics and YouTube srv3, and reads the format from the content, not the extension.",
+          "where": "File › Open…; File › Import lyrics…"
+        },
+        {
+          "feature": "Open MPEG-4 Streaming Text (TTXT)",
+          "status": "not-yet",
+          "text": "TTXT files don't open.",
+          "where": ""
+        },
+        {
+          "feature": "Plain text import options (actor separator, comment starter, blank lines)",
+          "status": "not-yet",
+          "text": "Plain text opens one line per row, with no options.",
+          "where": ""
+        },
+        {
+          "feature": "Open subtitles from the video (MKV tracks), compressed tracks included",
+          "status": "same",
+          "text": "",
+          "where": "File › Import subtitles from MKV…"
+        },
+        {
+          "feature": "Open with a chosen charset, and legacy charsets",
+          "status": "not-yet",
+          "text": "Subtitles open as UTF-8 only, and bytes that aren't UTF-8 are kept as they are; only Import lyrics and Paste translation detect other charsets.",
+          "where": ""
+        },
+        {
+          "feature": "Script properties (credits, resolution, LayoutRes, YCbCr matrix, wrap style, scale border)",
+          "status": "better",
+          "text": "Also sets colliding lines, and can write your credits into every file on save.",
+          "where": "Subtitles › Script properties"
+        },
+        {
+          "feature": "Script properties: Synch point and Update details fields",
+          "status": "not-yet",
+          "text": "The window has no Synch point or Update details field.",
+          "where": ""
+        },
+        {
+          "feature": "Attachments manager (attach and extract fonts and graphics)",
+          "status": "not-yet",
+          "text": "There's no window to attach or extract files; attached fonts are only read for drawing.",
+          "where": ""
+        },
+        {
+          "feature": "Prompt before loading scripts a subtitle file names",
+          "status": "same",
+          "text": "",
+          "where": "A bar asks before loading the file's scripts"
+        },
+        {
+          "feature": "Linked media: load associated files, report missing ones",
+          "status": "same",
+          "text": "",
+          "where": "The association bar: \"Linked files not found:\""
+        },
+        {
+          "feature": "Save UI state in the subtitle file",
+          "status": "same",
+          "text": "",
+          "where": "The `[Hikari]` section of the file"
+        },
+        {
+          "feature": "Keep `[Aegisub Extradata]` (folds, perspective plane) through load and save",
+          "status": "same",
+          "text": "",
+          "where": "Automatic"
+        }
+      ]
+    },
+    {
+      "name": "Subtitle grid",
+      "slug": "subtitle-grid",
+      "rows": [
+        {
+          "feature": "Columns, CPS, show or hide columns",
+          "status": "better",
+          "text": "Empty columns hide themselves, and a Wraps column.",
+          "where": "Grid header right-click; Grid ⋯ › Columns"
+        },
+        {
+          "feature": "CPS warning and line-length thresholds you can set",
+          "status": "not-yet",
+          "text": "The CPS warning is fixed at 15, and there's no line-length threshold.",
+          "where": ""
+        },
+        {
+          "feature": "Next and previous line, next line creating one at the end",
+          "status": "same",
+          "text": "",
+          "where": "Line editor and Grid keys"
+        },
+        {
+          "feature": "Select all, select lines visible on the video",
+          "status": "same",
+          "text": "",
+          "where": "Ctrl+A in the Grid; Grid › Select lines visible on video"
+        },
+        {
+          "feature": "Insert before or after, also at video time",
+          "status": "better",
+          "text": "Also at the video frame's time.",
+          "where": "Grid › Insert › Before, After, at video time, at video frame time"
+        },
+        {
+          "feature": "Copy, cut, paste, delete, duplicate lines",
+          "status": "same",
+          "text": "",
+          "where": "Grid › Cut, Copy, Paste, Duplicate, Delete"
+        },
+        {
+          "feature": "Paste lines over (choose which fields)",
+          "status": "same",
+          "text": "",
+          "where": "Grid › Paste special › Copy columns, Paste columns"
+        },
+        {
+          "feature": "Swap two lines",
+          "status": "same",
+          "text": "",
+          "where": "Grid › Swap lines"
+        },
+        {
+          "feature": "Move lines up or down one row",
+          "status": "not-yet",
+          "text": "There's no command to move lines up or down a row.",
+          "where": ""
+        },
+        {
+          "feature": "Sort all or selected lines by start, end, style, actor, effect, layer",
+          "status": "better",
+          "text": "Also by text and by text without tags (from the fork, FA1 §2a).",
+          "where": "Edit › Sort all lines, Sort selected lines"
+        },
+        {
+          "feature": "Tag hiding: show, hide, simplify, cycle",
+          "status": "not-yet",
+          "text": "There's no command that cycles between the modes; View › Hide tags swaps each block for ☀, and tags vanish only if that replacement is set to nothing in Settings.",
+          "where": "View › Hide tags"
+        },
+        {
+          "feature": "Grid highlights the lines on the current frame",
+          "status": "not-yet",
+          "text": "The Grid doesn't mark the lines shown at the video frame.",
+          "where": ""
+        },
+        {
+          "feature": "Line folding (arch1t3cht's fork)",
+          "status": "better",
+          "text": "Folds convert to line groups, which nest, and plain folds are kept on save.",
+          "where": "Grid › Convert Aegisub folds to line groups"
+        },
+        {
+          "feature": "Smooth touchpad scrolling",
+          "status": "same",
+          "text": "",
+          "where": "The Grid"
+        }
+      ]
+    },
+    {
+      "name": "Editing",
+      "slug": "editing",
+      "rows": [
+        {
+          "feature": "Bold, italic, underline, strikeout, font, the four colours",
+          "status": "better",
+          "text": "Works on the selected text and restores the style after it; up to 20 tag buttons of your own.",
+          "where": "Line editor tag buttons"
+        },
+        {
+          "feature": "Colour picker with screen dropper, RGB, HSL, HSV, recent colours",
+          "status": "same",
+          "text": "",
+          "where": "Line editor colour buttons"
+        },
+        {
+          "feature": "Syntax highlighting, tag help while typing",
+          "status": "same",
+          "text": "",
+          "where": "Line editor; type `\\` for the tag list"
+        },
+        {
+          "feature": "Drawing and clip coordinates in alternating colours; mixin lines as templates",
+          "status": "same",
+          "text": "",
+          "where": "Line editor"
+        },
+        {
+          "feature": "Insert hard space `\\h`; Shift+Enter inserts `\\n` (setting)",
+          "status": "same",
+          "text": "",
+          "where": "Edit › Insert hard space; Settings › Editing"
+        },
+        {
+          "feature": "Times past 10 hours",
+          "status": "same",
+          "text": "",
+          "where": "Time fields go to 99:59:59.99"
+        },
+        {
+          "feature": "Show times or frames in the fields",
+          "status": "same",
+          "text": "",
+          "where": "Line editor time fields"
+        },
+        {
+          "feature": "Split lines before or after the current frame",
+          "status": "same",
+          "text": "",
+          "where": "Grid › Split › At video time"
+        },
+        {
+          "feature": "Split at the text cursor (estimate times, keep times, at the video frame)",
+          "status": "not-yet",
+          "text": "Nothing splits a line at the text cursor.",
+          "where": ""
+        },
+        {
+          "feature": "Join lines: concatenate, keep first",
+          "status": "better",
+          "text": "Also keep last, and F4/F5 join with the line before or after.",
+          "where": "Grid › Join › Join, Keep first, Keep last"
+        },
+        {
+          "feature": "Join lines as karaoke",
+          "status": "not-yet",
+          "text": "There's no join that turns each line into a `\\k` syllable.",
+          "where": ""
+        },
+        {
+          "feature": "Split lines by karaoke syllables",
+          "status": "not-yet",
+          "text": "No split by syllable; Split › At tag blocks folds `\\k` syllables into one delay instead.",
+          "where": ""
+        },
+        {
+          "feature": "Recombine lines that were split and merged",
+          "status": "not-yet",
+          "text": "There's no recombine command.",
+          "where": ""
+        },
+        {
+          "feature": "Show Original pane, Revert, Insert Original",
+          "status": "not-yet",
+          "text": "Esc drops an unapplied draft, but there's no pane with the line as it was and no Insert Original.",
+          "where": ""
+        },
+        {
+          "feature": "Clear text, or clear text but keep the tags",
+          "status": "not-yet",
+          "text": "Delete text empties the whole text; nothing keeps the tags.",
+          "where": "Grid › Delete text"
+        },
+        {
+          "feature": "Undo and redo",
+          "status": "better",
+          "text": "A History window jumps to any step, and Undo to last save.",
+          "where": "Edit › Undo, Redo, Undo to last save, History"
+        },
+        {
+          "feature": "Thesaurus in the text's right-click menu",
+          "status": "not-yet",
+          "text": "Right-click offers spelling and grammar only.",
+          "where": ""
+        }
+      ]
+    },
+    {
+      "name": "Timing and audio",
+      "slug": "timing-and-audio",
+      "rows": [
+        {
+          "feature": "Open audio, from video, close; audio track choice",
+          "status": "better",
+          "text": "Reload audio keeps the place and track; decoded audio is cached on disk.",
+          "where": "Audio › Open audio, Open audio from video, Close audio, Reload audio"
+        },
+        {
+          "feature": "Blank or noise audio for testing",
+          "status": "not-yet",
+          "text": "There's no noise audio and no standalone blank audio; a dummy video brings silence.",
+          "where": ""
+        },
+        {
+          "feature": "Waveform and spectrum display",
+          "status": "better",
+          "text": "A Speech spectrum mode.",
+          "where": "Audio panel buttons: Spectrum mode, Speech"
+        },
+        {
+          "feature": "Spectrum with log power and log frequency mapping",
+          "status": "not-yet",
+          "text": "Speech mode maps frequency non-linearly, but power stays linear and there's no choice of curve.",
+          "where": "Audio panel › Speech"
+        },
+        {
+          "feature": "Play selection, line, toggle, stop; 500 ms before, after, first, last; to the end",
+          "status": "better",
+          "text": "Also play around a marker, and slower playback at 25 to 75% with the pitch kept.",
+          "where": "Audio keys and panel"
+        },
+        {
+          "feature": "Commit, commit and next, commit and stay; auto commit, auto next",
+          "status": "same",
+          "text": "",
+          "where": "Audio keys; Settings › Audio"
+        },
+        {
+          "feature": "Commit and reset the next line to the default timing",
+          "status": "not-yet",
+          "text": "There's no commit that resets the next line's times.",
+          "where": ""
+        },
+        {
+          "feature": "Go to selection, its start, its end; scroll left and right; auto scroll",
+          "status": "same",
+          "text": "",
+          "where": "Audio keys; panel Auto-scroll"
+        },
+        {
+          "feature": "Horizontal and vertical zoom, volume",
+          "status": "same",
+          "text": "",
+          "where": "Audio panel sliders; Ctrl+wheel"
+        },
+        {
+          "feature": "Link vertical zoom and volume sliders",
+          "status": "same",
+          "text": "",
+          "where": "Audio panel: Link the volume and stretch sliders"
+        },
+        {
+          "feature": "Save an audio clip of the line",
+          "status": "not-yet",
+          "text": "Audio can't be saved to a file.",
+          "where": ""
+        },
+        {
+          "feature": "Video position marker in the audio, snapping to frame middles",
+          "status": "same",
+          "text": "",
+          "where": "Audio panel"
+        },
+        {
+          "feature": "Audio display shows inactive lines (none, previous, previous and next, all)",
+          "status": "same",
+          "text": "",
+          "where": "Settings › Audio"
+        },
+        {
+          "feature": "Mono playback",
+          "status": "different",
+          "text": "Play in mono covers the audio panel and editing playback, not general video playback.",
+          "where": "Settings › Audio › Playback › Play in mono",
+          "why": "https://github.com/altqx/hikari/blob/main/docs/compatibility-decisions.md#fa19-mono-scope"
+        },
+        {
+          "feature": "Audio player and device choice",
+          "status": "better",
+          "text": "Playback moves to the default device when yours is unplugged, and back when it returns.",
+          "where": "Settings › Audio › Output device"
+        },
+        {
+          "feature": "Snap to keyframes and other lines while dragging",
+          "status": "same",
+          "text": "",
+          "where": "Audio panel"
+        },
+        {
+          "feature": "Medusa mode: a toggle that makes the timing keys work anywhere",
+          "status": "not-yet",
+          "text": "There's no toggle; audio keys work over the Audio panel and the Grid, and numpad keys in text fields are a setting.",
+          "where": "Settings › Editing › numpad shortcuts"
+        },
+        {
+          "feature": "Lead-in, lead-out, both, for selected lines",
+          "status": "better",
+          "text": "Remove lead-in and lead-out too, and adding stops at the neighbour.",
+          "where": "Subtitles › Timing helpers › Add lead-in, Remove lead-in, Add lead-out, Remove lead-out"
+        },
+        {
+          "feature": "Lengthen or shorten the line or syllable by keys, and shift what follows",
+          "status": "not-yet",
+          "text": "Only one-frame start and end moves (with a video) and right-drag of syllables.",
+          "where": "Subtitles › Timing helpers › Start/End one frame earlier/later"
+        },
+        {
+          "feature": "Next or previous line or syllable",
+          "status": "same",
+          "text": "",
+          "where": "Audio keys"
+        },
+        {
+          "feature": "Make times continuous (change start or end)",
+          "status": "same",
+          "text": "",
+          "where": "Grid › Make times continuous"
+        },
+        {
+          "feature": "Snap start or end to the video frame",
+          "status": "better",
+          "text": "A joined neighbour stays joined.",
+          "where": "Video › Insert start time from video, Insert end time from video"
+        },
+        {
+          "feature": "Shift the selection so the active line starts at the current frame",
+          "status": "better",
+          "text": "Also end at video, and all following lines.",
+          "where": "Video › Shift by frames to video"
+        },
+        {
+          "feature": "Snap to scene: start and end to the keyframes around the current frame",
+          "status": "not-yet",
+          "text": "Keyframe snaps move one edge at a time; nothing sets both from the video frame.",
+          "where": "Subtitles › Timing helpers (one edge)"
+        },
+        {
+          "feature": "Shift times by time or frames, forward or back, chosen lines and times",
+          "status": "better",
+          "text": "Live preview, shift to the video or an audio mark, move tag times, centre within frames, presets.",
+          "where": "Subtitles › Shift times…"
+        },
+        {
+          "feature": "Shift times history (Load from history)",
+          "status": "not-yet",
+          "text": "Presets and \"last used\" replace the history list.",
+          "where": "Shift times › presets"
+        },
+        {
+          "feature": "Timing post-processor: lead-in, lead-out, continuity, keyframe snapping, styles",
+          "status": "better",
+          "text": "Live preview, and a line-by-line assistant that says why each edge moved.",
+          "where": "Subtitles › Timing postprocessor…; Timing helpers › Timing assistant"
+        },
+        {
+          "feature": "Post-processor closes small overlaps (Max overlap)",
+          "status": "not-yet",
+          "text": "Close small gaps acts on gaps only.",
+          "where": ""
+        },
+        {
+          "feature": "Keyframes: open",
+          "status": "same",
+          "text": "",
+          "where": "Video › Open keyframes"
+        },
+        {
+          "feature": "Keyframes: save, or close and go back to the video's own",
+          "status": "not-yet",
+          "text": "Keyframes can be opened, not saved or closed.",
+          "where": ""
+        },
+        {
+          "feature": "Timecodes: open, save, close",
+          "status": "better",
+          "text": "Also reads mkvmerge's v4 and `timestamp` headers.",
+          "where": "Video › Open timecodes, Save timecodes, Close timecodes"
+        },
+        {
+          "feature": "Kanji timer",
+          "status": "better",
+          "text": "Every pair in one window, and it can write furigana readings and `#` multi-highlight syllables.",
+          "where": "Subtitles › Kanji timer"
+        },
+        {
+          "feature": "Karaoke mode in the audio display",
+          "status": "better",
+          "text": "Auto split, tap to time, onset snap, `\\k`/`\\kf` switch.",
+          "where": "Audio panel karaoke mode"
+        },
+        {
+          "feature": "Centre times within frames (arch1t3cht's script)",
+          "status": "same",
+          "text": "",
+          "where": "Video › Centre times within frames"
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "slug": "video",
+      "rows": [
+        {
+          "feature": "Open, close video; open audio with it",
+          "status": "better",
+          "text": "Indexing runs in a strip with Cancel while the window stays usable; Reload video keeps the frame.",
+          "where": "Video › Open video…, Unload video, Reload video"
+        },
+        {
+          "feature": "Play, play line, stop",
+          "status": "same",
+          "text": "",
+          "where": "Video › Play or pause; video right-click › Play, Stop"
+        },
+        {
+          "feature": "Step frames, keyframes, fast jumps",
+          "status": "same",
+          "text": "",
+          "where": "Video › Previous frame, Next frame, Go to previous/next keyframe"
+        },
+        {
+          "feature": "Next or previous subtitle boundary",
+          "status": "not-yet",
+          "text": "No command steps the video to the next line start or end.",
+          "where": ""
+        },
+        {
+          "feature": "Jump to a frame or time",
+          "status": "not-yet",
+          "text": "There's no Jump to window or typed seek.",
+          "where": ""
+        },
+        {
+          "feature": "Jump to the line's start or end",
+          "status": "same",
+          "text": "",
+          "where": "Video › Go to start time of line, Go to end time of line"
+        },
+        {
+          "feature": "Video follows the selected line",
+          "status": "better",
+          "text": "Chooses when to move and what to play after moving.",
+          "where": "Settings › Video"
+        },
+        {
+          "feature": "Toggle focus to the video slider",
+          "status": "not-yet",
+          "text": "No command moves the keyboard to the seek bar.",
+          "where": ""
+        },
+        {
+          "feature": "Zoom and pan as in 3.5 (wheel zoom, middle-drag and Shift+wheel pan, pinch, reset)",
+          "status": "different",
+          "text": "The plain wheel doesn't resize the video box, because the video fills its panel; each wheel's action is a setting and the legacy crop zoom is kept.",
+          "where": "Video › Zoom video, Reset zoom and pan; Settings › Video › View › Zoom and pan",
+          "why": "https://github.com/altqx/hikari/blob/main/docs/compatibility-decisions.md#fa12-wheel-resize"
+        },
+        {
+          "feature": "Zoom to 50, 100 or 200%, zoom in and out by command",
+          "status": "not-yet",
+          "text": "Only Zoom video and Reset zoom and pan.",
+          "where": "Video › Zoom video"
+        },
+        {
+          "feature": "Aspect ratio: default, 4:3, 16:9, 2.35, custom",
+          "status": "not-yet",
+          "text": "A Taller–Wider stretch and Reset; no fixed ratios and no typed ratio.",
+          "where": "Video right-click › Change aspect ratio"
+        },
+        {
+          "feature": "Overscan mask",
+          "status": "not-yet",
+          "text": "There's no overscan or safe-area mask.",
+          "where": ""
+        },
+        {
+          "feature": "Copy the pointer's coordinates",
+          "status": "same",
+          "text": "",
+          "where": "Video right-click › Copy video position"
+        },
+        {
+          "feature": "Save or copy the frame: with subtitles, without, subtitles only on transparent",
+          "status": "same",
+          "text": "",
+          "where": "Video right-click › Export frame"
+        },
+        {
+          "feature": "Detach video into its own window",
+          "status": "better",
+          "text": "Every panel can float, and tabs can move to other windows, each with its own video.",
+          "where": "Panel ⋯ › Float; Document tab › Move tab to new window"
+        },
+        {
+          "feature": "Video details (with colour space and matrix)",
+          "status": "same",
+          "text": "",
+          "where": "Video › Video details…"
+        },
+        {
+          "feature": "Choose or cycle the subtitles renderer",
+          "status": "same",
+          "text": "",
+          "where": "Settings › Video: libass, or VSFilterMod on Windows"
+        },
+        {
+          "feature": "Dummy video",
+          "status": "better",
+          "text": "Sides up to 100000 px, an exact fraction frame rate, a 1080x1920 preset.",
+          "where": "Video › Open dummy video"
+        },
+        {
+          "feature": "Resolution, LayoutRes and YCbCr matrix prompts on open; HDR and untagged warnings",
+          "status": "same",
+          "text": "",
+          "where": "Prompts on opening video; each a row in Settings › Video"
+        },
+        {
+          "feature": "Subtitles drawn with the file's YCbCr matrix",
+          "status": "same",
+          "text": "",
+          "where": "Automatic"
+        },
+        {
+          "feature": "AV1 video (dav1d)",
+          "status": "same",
+          "text": "",
+          "where": "Video › Open video…"
+        },
+        {
+          "feature": "YUV4MPEG (`.y4m`) video",
+          "status": "unverified",
+          "text": "`.y4m` isn't in the Open video filter (only through All files), and whether the indexer opens it wasn't checked.",
+          "where": ""
+        },
+        {
+          "feature": "AviSynth scripts as video (Windows)",
+          "status": "not-yet",
+          "text": "Video opens through FFMS2 only.",
+          "where": ""
+        },
+        {
+          "feature": "VapourSynth and BestSource providers (fork)",
+          "status": "not-yet",
+          "text": "Video opens through FFMS2 only.",
+          "where": ""
+        },
+        {
+          "feature": "Keyframe generation (fork, VapourSynth)",
+          "status": "same",
+          "text": "With the official **Keyframe generator** plugin (separate install).",
+          "where": "",
+          "plugin": true
+        }
+      ]
+    },
+    {
+      "name": "Visual typesetting tools",
+      "slug": "visual-typesetting-tools",
+      "rows": [
+        {
+          "feature": "Standard (crosshair) tool",
+          "status": "same",
+          "text": "",
+          "where": "Video tool strip: Position pointer, Text positioning"
+        },
+        {
+          "feature": "Drag (`\\move`)",
+          "status": "better",
+          "text": "A move from one point on two frames.",
+          "where": "Video tool strip: Text moving"
+        },
+        {
+          "feature": "Rotate Z, rotate XY",
+          "status": "better",
+          "text": "Set angle from 2 points.",
+          "where": "Video tool strip"
+        },
+        {
+          "feature": "Scale",
+          "status": "better",
+          "text": "Set scale by rectangle.",
+          "where": "Video tool strip"
+        },
+        {
+          "feature": "Rectangular clip",
+          "status": "same",
+          "text": "",
+          "where": "Video tool strip"
+        },
+        {
+          "feature": "Vector clip: drag, line, Bézier, remove; modes on keys",
+          "status": "better",
+          "text": "B-splines and separate points too, and a Vector drawing tool with shapes.",
+          "where": "Video tool strip; each mode bindable"
+        },
+        {
+          "feature": "Vector clip: freehand, freehand smooth, convert a segment, insert a point",
+          "status": "not-yet",
+          "text": "No freehand or convert mode; a point is inserted by right-click in the Line, Bézier and B-spline modes.",
+          "where": "Vector clip, right-click"
+        },
+        {
+          "feature": "Vector clip coordinates with two decimals",
+          "status": "same",
+          "text": "",
+          "where": "Automatic"
+        },
+        {
+          "feature": "Handle size setting",
+          "status": "same",
+          "text": "",
+          "where": "Settings › Video"
+        },
+        {
+          "feature": "Perspective tool (fork)",
+          "status": "better",
+          "text": "Perspective tracking from Power-Pin data.",
+          "where": "Video tool strip: Perspective; Video › Tracking › Perspective tracking…"
+        },
+        {
+          "feature": "Align to video (fork `time/align`)",
+          "status": "different",
+          "text": "Checks every frame, where Aegisub steps two.",
+          "where": "Video › Align to video…",
+          "why": "https://github.com/altqx/hikari/blob/main/docs/compatibility-decisions.md#fa14-search-step"
+        },
+        {
+          "feature": "Visual typesetting help page",
+          "status": "same",
+          "text": "",
+          "where": "F1 over the video opens the guide's page"
+        }
+      ]
+    },
+    {
+      "name": "Styles and fonts",
+      "slug": "styles-and-fonts",
+      "rows": [
+        {
+          "feature": "Styles manager: storages (catalogues), copy both ways, import from a script, sort, move",
+          "status": "better",
+          "text": "Edit several styles at once, Add to all open files, Delete unused styles, and a Styles panel.",
+          "where": "Subtitles › Style manager; Styles panel"
+        },
+        {
+          "feature": "Style editor with preview",
+          "status": "same",
+          "text": "",
+          "where": "Style manager › Edit"
+        },
+        {
+          "feature": "Border style 4 (opaque box per line)",
+          "status": "better",
+          "text": "A three-way Border type that says which choice is libass-only.",
+          "where": "Style editor › Border type"
+        },
+        {
+          "feature": "Encoding -1 (detect text direction)",
+          "status": "same",
+          "text": "",
+          "where": "Style editor › Text encoding"
+        },
+        {
+          "feature": "Styling assistant",
+          "status": "not-yet",
+          "text": "There's no window that steps through lines applying styles.",
+          "where": "Styles panel (apply to selected lines)"
+        },
+        {
+          "feature": "Fonts collector: check, copy to a folder or the subtitle's folder, zip",
+          "status": "better",
+          "text": "The renderer checks which font answered each name, missing faces and glyphs; runs on all tabs; takes fonts from the MKV.",
+          "where": "Subtitles › Font collector"
+        },
+        {
+          "feature": "Fonts collector: symlink fonts to a folder",
+          "status": "not-yet",
+          "text": "The actions are Check, Copy to a folder and Zip.",
+          "where": ""
+        },
+        {
+          "feature": "Reload the renderer's fonts (fork `video/subtitles_provider/reload`)",
+          "status": "same",
+          "text": "Fonts reload by themselves when the catalogue changes.",
+          "where": "Automatic"
+        },
+        {
+          "feature": "Resample resolution, from video, LayoutRes kept",
+          "status": "better",
+          "text": "Adjust 3D rotations keeps rotated signs in shape.",
+          "where": "Subtitles › Resample subtitles"
+        },
+        {
+          "feature": "Resample: margin offsets, add or remove borders, manual aspect",
+          "status": "not-yet",
+          "text": "The aspect ratio is Keep it or Stretch, with no margin offsets or borders.",
+          "where": "Resample subtitles › Aspect ratio"
+        },
+        {
+          "feature": "Resample: change the YCbCr matrix",
+          "status": "not-yet",
+          "text": "The Resample window has no matrix choice.",
+          "where": ""
+        },
+        {
+          "feature": "Default style catalogue for new files",
+          "status": "not-yet",
+          "text": "File › New always starts with the built-in Default style; the catalogue setting covers conversions only.",
+          "where": ""
+        }
+      ]
+    },
+    {
+      "name": "Translation",
+      "slug": "translation",
+      "rows": [
+        {
+          "feature": "Translation assistant (original shown, next, previous, insert original)",
+          "status": "better",
+          "text": "Translation mode keeps original and translation side by side in the file, with an Original text panel, Paste all and Paste the selected text.",
+          "where": "Subtitles › Translation mode; View › Panels › Original text"
+        }
+      ]
+    },
+    {
+      "name": "Karaoke",
+      "slug": "karaoke",
+      "rows": [
+        {
+          "feature": "Karaoke templater (kara-templater.lua, Karaoke template export filter)",
+          "status": "better",
+          "text": "Built in, with a Template editor and live preview; the export filter is gone, run Apply karaoke template instead.",
+          "where": "Automation › Apply karaoke template; View › Panels › Template editor"
+        },
+        {
+          "feature": "Automatic karaoke lead-in macro",
+          "status": "same",
+          "text": "",
+          "where": "Automation menu"
+        }
+      ]
+    },
+    {
+      "name": "Find, replace and checks",
+      "slug": "find-replace-and-checks",
+      "rows": [
+        {
+          "feature": "Find, find next",
+          "status": "better",
+          "text": "Find previous, a live match count, Find all.",
+          "where": "Edit › Find…, Find next, Find previous"
+        },
+        {
+          "feature": "Find and replace (fields, selected lines, regex, case)",
+          "status": "better",
+          "text": "Across open tabs or a folder on disk, inside or outside tags, Replace N checked.",
+          "where": "Edit › Replace…"
+        },
+        {
+          "feature": "Select lines: by field, regex, case, dialogue or comments, set, add, subtract",
+          "status": "better",
+          "text": "Then copy, cut, delete, move or comment them, in all tabs, and an Overlapping lines search.",
+          "where": "Edit › Select lines"
+        },
+        {
+          "feature": "Select lines: intersect with the selection, exact match",
+          "status": "not-yet",
+          "text": "The modes are Select, Add to selection and Deselect, and matching is \"with\" or \"without\" the text.",
+          "where": "Edit › Select lines"
+        },
+        {
+          "feature": "Spell checker (replace, ignore, add, language, skip comments and capitals)",
+          "status": "better",
+          "text": "Several dictionaries at once for mixed-language lines, and a grammar check beside it.",
+          "where": "Subtitles › Check spelling"
+        }
+      ]
+    },
+    {
+      "name": "Automation",
+      "slug": "automation",
+      "rows": [
+        {
+          "feature": "Automation manager, reload scripts, reload autoload",
+          "status": "better",
+          "text": "Each script runs in its own process, so a crash stops only that script; Repeat last run.",
+          "where": "Automation › Show panel, Refresh autoload scripts, Repeat last run"
+        },
+        {
+          "feature": "Macros in the Automation menu, submenus from `/`",
+          "status": "same",
+          "text": "",
+          "where": "Automation menu"
+        },
+        {
+          "feature": "Lua and MoonScript Automation 4 API, as in 3.5.1",
+          "status": "same",
+          "text": "",
+          "where": ""
+        },
+        {
+          "feature": "`project_properties().timecodes_file`",
+          "status": "same",
+          "text": "",
+          "where": ""
+        },
+        {
+          "feature": "Fork API: `gui.*`, `get_frame` with `getPixel` and `data()`, `get_audio_selection`, `set_status_text`, `line.extra`",
+          "status": "same",
+          "text": "",
+          "where": ""
+        },
+        {
+          "feature": "Export filters from scripts (`register_filter`)",
+          "status": "not-yet",
+          "text": "`register_filter` is accepted and does nothing.",
+          "where": ""
+        },
+        {
+          "feature": "Macro descriptions, log levels 4 and 5",
+          "status": "same",
+          "text": "",
+          "where": "Automation panel tooltips; Settings › Automation › Lua trace level (0–5)"
+        },
+        {
+          "feature": "Greyed-out invalid macros and their own undo points",
+          "status": "not-yet",
+          "text": "A macro's validation runs only when you choose it, and `set_undo_point` does nothing.",
+          "where": ""
+        },
+        {
+          "feature": "MoonScript 0.7.0",
+          "status": "not-yet",
+          "text": "MoonScript 0.5.0 is bundled.",
+          "where": ""
+        },
+        {
+          "feature": "3.5 library fixes: `lfs.dir` raises the message, `include()` reports the real error",
+          "status": "same",
+          "text": "",
+          "where": ""
+        },
+        {
+          "feature": "Built-in modules always load from the installation",
+          "status": "same",
+          "text": "",
+          "where": ""
+        },
+        {
+          "feature": "Bundled macros: Clean Tags, Strip Tags, Add edgeblur, Make text fullwidth, Select overlaps",
+          "status": "same",
+          "text": "",
+          "where": "Automation menu"
+        },
+        {
+          "feature": "DependencyControl",
+          "status": "better",
+          "text": "Bundled with its Toolbox and the usual libraries.",
+          "where": "Automation menu"
+        }
+      ]
+    },
+    {
+      "name": "Settings, hotkeys and shell",
+      "slug": "settings-hotkeys-and-shell",
+      "rows": [
+        {
+          "feature": "Options window",
+          "status": "same",
+          "text": "",
+          "where": "File › Settings"
+        },
+        {
+          "feature": "Hotkeys editor",
+          "status": "better",
+          "text": "Shift+click any menu item to give it a key; conflicts shown as you press.",
+          "where": "File › Settings › Shortcuts; Shift+click"
+        },
+        {
+          "feature": "Interface colours for each element (audio, grid, syntax, visual tools)",
+          "status": "not-yet",
+          "text": "Themes, accent colours and high-contrast colours only.",
+          "where": "File › Settings › Appearance"
+        },
+        {
+          "feature": "Interface language",
+          "status": "not-yet",
+          "text": "5 languages (English, Korean, Polish, Tamil, Thai) against Aegisub's 33.",
+          "where": "File › Settings › Interface language"
+        },
+        {
+          "feature": "Display modes: full, video+subs, audio+subs, subs only",
+          "status": "better",
+          "text": "Layouts (Editing, Timing, Translation, Typesetting, Karaoke) plus your own, floating panels.",
+          "where": "View › Layout"
+        },
+        {
+          "feature": "New window",
+          "status": "better",
+          "text": "Move a tab to another window; each window keeps its own video and comes back with the session.",
+          "where": "Document tab › Move tab to new window"
+        },
+        {
+          "feature": "Main toolbar",
+          "status": "different",
+          "text": "No main toolbar, by owner decision.",
+          "where": ""
+        },
+        {
+          "feature": "Log window",
+          "status": "same",
+          "text": "",
+          "where": "View › Log"
+        },
+        {
+          "feature": "Check for updates",
+          "status": "better",
+          "text": "Signed updates that can install themselves.",
+          "where": "Help › Check for updates"
+        },
+        {
+          "feature": "About, exit",
+          "status": "same",
+          "text": "",
+          "where": "Help › About; File › Exit"
+        },
+        {
+          "feature": "Help: contents, website, bug tracker",
+          "status": "better",
+          "text": "Report an issue is a form inside the app.",
+          "where": "Help › User guide, Report an issue"
+        },
+        {
+          "feature": "IRC channel link",
+          "status": "not-yet",
+          "text": "The Help menu has no chat link.",
+          "where": ""
+        }
+      ]
+    },
+    {
+      "name": "Export and conversion",
+      "slug": "export-and-conversion",
+      "rows": [
+        {
+          "feature": "Export a copy in another format",
+          "status": "better",
+          "text": "WebVTT, SBV, TTML, DFXP, srv3, MPL2 and TMPlayer, a report of what each line lost, lines by All, Selected or Shown.",
+          "where": "File › Export as…"
+        },
+        {
+          "feature": "Export or save as SSA",
+          "status": "not-yet",
+          "text": "SSA opens but is never written as SSA.",
+          "where": ""
+        },
+        {
+          "feature": "Export to Adobe Encore, TranStation, MPEG-4 TTXT, EBU STL",
+          "status": "not-yet",
+          "text": "None of these is an export format.",
+          "where": ""
+        },
+        {
+          "feature": "Export filters: Transform framerate, Fix styles, Clean tags, Karaoke template",
+          "status": "not-yet",
+          "text": "There are no export filters; nearby are Subtitles › Set FPS, Remove tags… and Apply karaoke template.",
+          "where": "Subtitles › Set FPS; Grid › Remove tags…"
+        },
+        {
+          "feature": "Export text encoding choice",
+          "status": "not-yet",
+          "text": "Every format is written as UTF-8.",
+          "where": ""
+        },
+        {
+          "feature": "MicroDVD and SRT import settings (frame rate)",
+          "status": "same",
+          "text": "",
+          "where": "Settings › Conversion"
+        }
+      ]
+    },
+    {
+      "name": "Recovery and history",
+      "slug": "recovery-and-history",
+      "rows": [
+        {
+          "feature": "Autosave and Open autosaved subtitles",
+          "status": "better",
+          "text": "The Home page offers the copies after a crash; a copy opens as a new \"(recovered)\" file.",
+          "where": "File › Open autosave…"
+        },
+        {
+          "feature": "Autosave interval you can set",
+          "status": "not-yet",
+          "text": "Autosave runs 20 seconds after a change; only the number of copies kept is a setting.",
+          "where": "Settings › Recovery"
+        },
+        {
+          "feature": "Automatic backup copy on save",
+          "status": "not-yet",
+          "text": "Saving keeps no backup copy (only Find's folder replace does).",
+          "where": ""
+        }
+      ]
+    },
+    {
+      "name": "Platforms",
+      "slug": "platforms",
+      "rows": [
+        {
+          "feature": "Windows",
+          "status": "same",
+          "text": "Windows 10 1809+ and 11, x64.",
+          "where": "Setup and portable zip"
+        },
+        {
+          "feature": "Linux",
+          "status": "same",
+          "text": "x86_64, X11 and Wayland.",
+          "where": "AppImage, deb, rpm, tar.gz"
+        },
+        {
+          "feature": "Runs on macOS (and its window menu commands)",
+          "status": "not-yet",
+          "text": "No macOS build; the policy keeps the port possible.",
+          "where": ""
+        }
+      ]
+    }
+  ]
+}

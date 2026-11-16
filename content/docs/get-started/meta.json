@@ -1,5 +1,5 @@
 {
   "title": "Get started",
   "defaultOpen": true,
-  "pages": ["install", "getting-started-window", "moving-from-legacy", "tour"]
+  "pages": ["install", "getting-started-window", "tour", "coming-from-aegisub", "moving-from-legacy"]
 }
