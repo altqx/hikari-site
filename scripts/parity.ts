@@ -11,6 +11,7 @@ const decisionsUrl = 'https://github.com/altqx/hikari/blob/main/docs/compatibili
 const statuses: [string, ParityStatus][] = [
   ['different on purpose', 'different'],
   ['not yet', 'not-yet'],
+  ['not planned', 'not-planned'],
   ['unverified', 'unverified'],
   ['better', 'better'],
   ['same', 'same'],

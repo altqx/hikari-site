@@ -14,7 +14,12 @@ describe('Coming from Aegisub data', () => {
   test('every row has a status, and every gap says what is missing', () => {
     for (const row of rows) {
       expect(row.feature.length).toBeGreaterThan(0);
-      if (row.status === 'not-yet' || row.status === 'better' || row.status === 'different')
+      if (
+        row.status === 'not-yet' ||
+        row.status === 'not-planned' ||
+        row.status === 'better' ||
+        row.status === 'different'
+      )
         expect(row.text.length).toBeGreaterThan(0);
       expect(`${row.feature} ${row.text} ${row.where}`).not.toMatch(/\]\(|\[\^/);
     }
