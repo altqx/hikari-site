@@ -11,8 +11,6 @@ import panelLight from './images/plugin-panel-light.webp';
 import panelDark from './images/plugin-panel-dark.webp';
 import panelOffLight from './images/plugin-panel-off-light.webp';
 import panelOffDark from './images/plugin-panel-off-dark.webp';
-import automationMenuLight from './images/automation-menu-light.webp';
-import automationMenuDark from './images/automation-menu-dark.webp';
 
 A **plugin** adds commands, panels and dialogs to HikariSub itself, through the Hikari API. It comes from the HikariSub marketplace, or as a single `.hikariplugin` file. Plugins are separate from [Automation scripts](/en/docs/automation/running-scripts), which work as before.
 
@@ -147,18 +145,6 @@ A plugin you installed from a file gets no updates from the marketplace. When th
 ## Running a plugin's commands
 
 While a plugin runs, its commands sit in the **Automation** menu after **Plugins**, in a submenu named after the plugin.
-
-<figure>
-  <ThemedImage
-    light={automationMenuLight}
-    dark={automationMenuDark}
-    alt="The Automation menu open: Load script…, Refresh autoload scripts, Run the last loaded script, Rerun last macro, Repeat last run, Show panel and Plugins…, then the Line tools submenu (highlighted) with Sort by start time, Join selected lines and Remove empty lines, followed by the macros of the loaded scripts"
-    width={740}
-    height={608}
-    className="rounded-lg border"
-  />
-  <figcaption>A plugin's commands in its submenu under Automation.</figcaption>
-</figure>
 
 To give one a shortcut, open **File › Settings › Shortcuts** and choose the **Plugin shortcuts** filter. A plugin command's shortcut works everywhere. A shortcut for a plugin that is uninstalled or turned off stays listed with a note, ready for when the plugin comes back.
 
