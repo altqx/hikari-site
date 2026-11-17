@@ -984,7 +984,7 @@
         {
           "feature": "Interface colours for each element (audio, grid, syntax, visual tools)",
           "status": "not-planned",
-          "text": "Themes, accent colours and high-contrast colours only, with no colour for each element.",
+          "text": "Themes, accent colours and high-contrast colours only; theme plugins are planned to cover it.",
           "where": "File › Settings › Appearance"
         },
         {
