@@ -7,7 +7,7 @@ HikariSub 0.1 runs on 64-bit Windows and Linux. Each release comes in seven pack
 
 <DownloadTable />
 
-Every release also carries `SHA256SUMS`, the SHA-256 checksum of each package. The packages themselves are not code-signed. From the release after 0.1.0-beta.3, `SHA256SUMS` is signed with HikariSub's release key; see [Checking a download](#checking-a-download).
+Every release also carries `SHA256SUMS`, the SHA-256 checksum of each package. The packages themselves are not code-signed. From 0.1.0-beta.4, `SHA256SUMS` is signed with HikariSub's release key; see [Checking a download](#checking-a-download).
 
 ## What you need
 
@@ -102,7 +102,7 @@ The menu entry, with **Open Folder…** as for the deb and rpm, points at this f
 
 ## Checking a download
 
-Releases after 0.1.0-beta.3 carry two signatures made with HikariSub's release key, using [minisign](https://jedisct1.github.io/minisign/): `SHA256SUMS.minisig` for `SHA256SUMS`, and `hikarisub-update.json.minisig` for the file the update check reads.
+Releases from 0.1.0-beta.4 on carry two signatures made with HikariSub's release key, using [minisign](https://jedisct1.github.io/minisign/): `SHA256SUMS.minisig` for `SHA256SUMS`, and `hikarisub-update.json.minisig` for the file the update check reads.
 
 The release key, with key id A97C7A20EFD98999:
 
@@ -135,7 +135,7 @@ How the update is installed depends on the package:
 | deb, rpm | Downloads the package and asks for your password to install it. |
 | Portable zip, tar.gz | Opens the download page. |
 
-Each download is checked against its SHA-256 before it is installed. From the version after 0.1.0-beta.3, HikariSub also installs an update only from a release signed with the release key. It skips a release whose signature is missing or wrong, and only announces a release without the update file, with a link to its page. To see which version and package you have, open **Help › About**.
+Each download is checked against its SHA-256 before it is installed. From 0.1.0-beta.4, HikariSub also installs an update only from a release signed with the release key. It skips a release whose signature is missing or wrong, and only announces a release without the update file, with a link to its page. To see which version and package you have, open **Help › About**.
 
 The same Settings page, **Updates and privacy**, holds **Send anonymous usage data**, which is on by default. See [What is sent](/en/docs/help/what-is-sent).
 
