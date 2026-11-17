@@ -134,12 +134,12 @@ Each drag, double-click, held arrow key or typed value is one step, named *Visua
 
 ## Perspective tracking
 
-**Video › Tracking › Perspective tracking…** applies After Effects Power-Pin tracking data to the selected lines, as arch1t3cht's Perspective-Motion script does. Each line becomes one line per frame, fitted to the tracked plane on that frame.
+**Video › Tracking › Apply Power-Pin data…** applies After Effects Power-Pin tracking data to the selected lines, as arch1t3cht's Perspective-Motion script does. Each line becomes one line per frame, fitted to the tracked plane on that frame.
 
 The command needs an open video, since tracking data is per frame, and is greyed out without one. It has no shortcut at first; give it one in **File › Settings › Shortcuts**.
 
 1. Typeset the lines on one frame of the sign, and select them.
-2. Choose **Video › Tracking › Perspective tracking…**.
+2. Choose **Video › Tracking › Apply Power-Pin data…**.
 3. Put the Power-Pin data exported from After Effects or Blender in **Power-Pin data**: paste it into the box, press **Paste**, or **Open file…** to load a `.txt` file. HikariSub reads its four CC Power Pin corners. If the clipboard already holds data with the right number of frames, the box is filled in when the window opens.
 4. In **Relative to frame**, choose the frame the lines were typeset on. It counts from the first frame of the selection, and the video frame number shows beside it. It starts at the video's current frame, when that frame is in the selection.
 5. Press **Apply**.
@@ -169,4 +169,4 @@ If a line can't be tracked after all, because its text can't be measured or the 
 
 ### After tracking
 
-The whole change is one undo step, named *Perspective tracking*, and the new lines stay selected. Each new line saves its frame's plane, as the Perspective tool does (see [The surrounding plane](#the-surrounding-plane)), so the Perspective tool shows it. **Video › Tracking › Copy Power-Pin track from lines** copies the planes back out as Power-Pin data, as arch1t3cht's Derive Perspective Track script does. See [Copying tracking out of lines](/en/docs/typesetting/motion-tracking#copying-tracking-out-of-lines).
+The whole change is one undo step, named *Perspective tracking*, and the new lines stay selected. Each new line saves its frame's plane, as the Perspective tool does (see [The surrounding plane](#the-surrounding-plane)), so the Perspective tool shows it. **Video › Tracking › Copy Power-Pin data from lines** copies the planes back out as Power-Pin data, as arch1t3cht's Derive Perspective Track script does. See [Copying tracking out of lines](/en/docs/typesetting/motion-tracking#copying-tracking-out-of-lines).

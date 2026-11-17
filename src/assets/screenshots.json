@@ -200,7 +200,7 @@
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-light.png, top-left 640x312",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: saved_layouts_tests surfaceScreenshots (switcher-menu), CX7 crop 700x400 leaving out a toast with a temporary path",
       "surface": "Layout menu open under the title-bar switcher, five built-in layouts and two saved layouts",
       "credit": ""
     },
@@ -230,7 +230,7 @@
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/customize/images/layout-menu-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_saved_layouts_tests surfaceScreenshots under vx11, switcher-menu-dark.png, top-left 640x312",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: saved_layouts_tests surfaceScreenshots (switcher-menu), CX7 crop 700x400 leaving out a toast with a temporary path",
       "surface": "Layout menu open under the title-bar switcher, five built-in layouts and two saved layouts",
       "credit": ""
     },
@@ -265,8 +265,8 @@
       "credit": ""
     },
     "content/docs/basics/images/audio-commit-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-light.png, top 640x300 (surface unchanged at qt d24047335)",
-      "surface": "Audio panel with the Commit options menu open",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests audioPanelScreenshots (audio-panel-commit), top 639x300",
+      "surface": "Audio panel with the Apply changes options menu open",
       "credit": ""
     },
     "content/docs/basics/images/file-properties-light.webp": {
@@ -295,8 +295,8 @@
       "credit": ""
     },
     "content/docs/basics/images/audio-commit-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_shell_tests audioPanelScreenshots under vx11, audio-panel-commit-dark.png, top 640x300 (surface unchanged at qt d24047335)",
-      "surface": "Audio panel with the Commit options menu open",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests audioPanelScreenshots (audio-panel-commit), top 639x300",
+      "surface": "Audio panel with the Apply changes options menu open",
       "credit": ""
     },
     "content/docs/basics/images/file-properties-dark.webp": {
@@ -555,13 +555,13 @@
       "credit": ""
     },
     "content/docs/automation/images/script-dialog-menu-light.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-light.png, crop 506x297+8+8 (surface unchanged at qt d24047335)",
-      "surface": "Script dialog with the Answers and presets menu open on Presets",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: automation_dialog_tests screenshots",
+      "surface": "A script's dialog with its ⋯ menu open on Presets, three presets",
       "credit": ""
     },
     "content/docs/automation/images/script-dialog-menu-dark.webp": {
-      "source": "recaptured at qt 6cee588a836cb4d5b3195810a09db40f0dafce67: coord2 hikari_ui_automation_dialog_tests screenshots under vx11 (QT_QPA_PLATFORM=xcb), script-dialog-more-menu-dark.png, crop 506x297+8+8 (surface unchanged at qt d24047335)",
-      "surface": "Script dialog with the Answers and presets menu open on Presets",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: automation_dialog_tests screenshots",
+      "surface": "A script's dialog with its ⋯ menu open on Presets, three presets",
       "credit": ""
     },
     "content/docs/get-started/images/getting-started-look-light.webp": {
@@ -635,12 +635,12 @@
       "credit": "Subtitles: Jibrill"
     },
     "content/docs/automation/images/help-open-user-folder-light.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_shell_tests userFolderScreenshots under vx11, ud1-help-menu-light.png, crop 590x262+0+0, leaving out the move notice and its path",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests userFolderScreenshots (ud1-help-menu), CX7 crop 640x290 leaving out the notice and its path",
       "surface": "Help menu open, Open user folder highlighted, over the Home page",
       "credit": ""
     },
     "content/docs/automation/images/help-open-user-folder-dark.webp": {
-      "source": "recaptured at main 22045f46cc95feca35ea7ec9e946fcc3b2c800ee: coord2 hikari_ui_shell_tests userFolderScreenshots under vx11, ud1-help-menu-dark.png, crop 590x262+0+0, leaving out the move notice and its path",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests userFolderScreenshots (ud1-help-menu), CX7 crop 640x290 leaving out the notice and its path",
       "surface": "Help menu open, Open user folder highlighted, over the Home page",
       "credit": ""
     },
@@ -675,13 +675,13 @@
       "credit": ""
     },
     "content/docs/checking/images/grammar-menu-light.webp": {
-      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-menu-light.png, crop 640x276+640+340",
-      "surface": "Line editor text with grammar underlines and the right-click menu on a finding (test fixture shots.ass)",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: grammar_tests screenshots (gr1-menu), crop 600x545+640+255",
+      "surface": "Line editor grammar finding with its right-click menu",
       "credit": ""
     },
     "content/docs/checking/images/grammar-menu-dark.webp": {
-      "source": "recaptured at main 7bfbd74d7b0842f79d9de9c42698dc1f700c1886: coord2 hikari_ui_grammar_tests screenshots under vx11 (offscreen, 1920x1080 screen), gr1-menu-dark.png, crop 640x276+640+272",
-      "surface": "Line editor text with grammar underlines and the right-click menu on a finding (test fixture shots.ass)",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: grammar_tests screenshots (gr1-menu), crop 600x545+640+255",
+      "surface": "Line editor grammar finding with its right-click menu",
       "credit": ""
     },
     "content/docs/checking/images/grammar-panel-light.webp": {
@@ -799,16 +799,6 @@
       "surface": "Open Graph / social card image: the homepage hero, light",
       "credit": "Subtitles: Jibrill (drawn into the image, bottom right)"
     },
-    "content/docs/plugins/images/automation-menu-light.webp": {
-      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/automation-menu-light.png, 740x608",
-      "surface": "Automation menu with the Line tools plugin submenu",
-      "credit": ""
-    },
-    "content/docs/plugins/images/automation-menu-dark.webp": {
-      "source": "recaptured at main 9350e418b: the plugins thread's build under vx11, fresh profile, fixture plugin Line tools 1.2.0, wave8/shots/pl2/automation-menu-dark.png, 740x608",
-      "surface": "Automation menu with the Line tools plugin submenu",
-      "credit": ""
-    },
     "content/docs/basics/images/shift-times-light.webp": {
       "source": "recaptured at main 26c8c3c6fe0fd3843793b576f12a6aea4292b79f: hikari-wt/site-shots hikari_ui_shell_tests shiftTimesScreenshots under vx11 (offscreen), shift-times-shift-light.png",
       "surface": "Shift times panel, floating, 340x800",
@@ -850,13 +840,13 @@
       "credit": ""
     },
     "content/docs/basics/images/audio-more-menu-light.webp": {
-      "source": "recaptured at main b2c55499cc34f48becebdfd7b7e9829078216de2: hikari-wt/site-shots hikari_ui_shell_tests videoAndAudioMenuScreenshots under vx11 (offscreen), menu-audio-more-light.png, 451x560",
-      "surface": "Audio panel » menu, floating 440x560, Karaoke mode, folded",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests videoAndAudioMenuScreenshots (menu-audio-more)",
+      "surface": "» menu of a narrow Audio panel in Karaoke mode",
       "credit": ""
     },
     "content/docs/basics/images/audio-more-menu-dark.webp": {
-      "source": "recaptured at main b2c55499cc34f48becebdfd7b7e9829078216de2: hikari-wt/site-shots hikari_ui_shell_tests videoAndAudioMenuScreenshots under vx11 (offscreen), menu-audio-more-dark.png, 451x560",
-      "surface": "Audio panel » menu, floating 440x560, Karaoke mode, folded",
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests videoAndAudioMenuScreenshots (menu-audio-more)",
+      "surface": "» menu of a narrow Audio panel in Karaoke mode",
       "credit": ""
     },
     "content/docs/plugins/images/plugin-manager-installed-light.webp": {
@@ -878,6 +868,116 @@
       "source": "captured at main 54d1af7ab (PL6c #805): the plugins thread's build, hikari_ui_shell_tests pluginMarketplaceScreenshots under vx11, the test marketplace's fixture plugins (Hello, Native Tools, Glossary), wave8/shots/pl6c/plugins-marketplace-dark.png, 796x662",
       "surface": "Plugin manager, Marketplace view, Glossary chosen with its icon and screenshot, Native Tools with the Full trust badge",
       "credit": ""
+    },
+    "content/docs/automation/images/automation-menu-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: automation_submenus_tests screenshots (as1-menu), CX7 crop 860x480 then top 860x448, leaving out a fixture submenu with an empty name",
+      "surface": "Automation menu open with Run the last macro again, Repeat last run and Plugins, and test macros in submenus",
+      "credit": ""
+    },
+    "content/docs/automation/images/automation-menu-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: automation_submenus_tests screenshots (as1-menu), CX7 crop 860x480 then top 860x448, leaving out a fixture submenu with an empty name",
+      "surface": "Automation menu open with Run the last macro again, Repeat last run and Plugins, and test macros in submenus",
+      "credit": ""
+    },
+    "content/docs/automation/images/repeat-menu-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: automation_repeat_tests screenshots (ad2-menu), CX7 crop 700x330 leaving out toasts",
+      "surface": "Automation menu with Repeat last run highlighted, naming its macro Two dialogs",
+      "credit": ""
+    },
+    "content/docs/automation/images/repeat-menu-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: automation_repeat_tests screenshots (ad2-menu), CX7 crop 700x330 leaving out toasts",
+      "surface": "Automation menu with Repeat last run highlighted, naming its macro Two dialogs",
+      "credit": ""
+    },
+    "content/docs/basics/images/grid-menu-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests contextMenuScreenshots (menu-grid), crop 720x725+0+135; test lines, no video (the Sprite Fright variant needs a gated test)",
+      "surface": "Grid right-click menu on two selected test lines",
+      "credit": ""
+    },
+    "content/docs/basics/images/grid-menu-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests contextMenuScreenshots (menu-grid), crop 720x725+0+135; test lines, no video (the Sprite Fright variant needs a gated test)",
+      "surface": "Grid right-click menu on two selected test lines",
+      "credit": ""
+    },
+    "content/docs/basics/images/line-groups-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests contextMenuScreenshots (menu-grid-group), crop 720x241+0+519 leaving out a More options tooltip; test lines, no video",
+      "surface": "Right-click menu of a line group's description row",
+      "credit": ""
+    },
+    "content/docs/basics/images/line-groups-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests contextMenuScreenshots (menu-grid-group), crop 720x241+0+519 leaving out a More options tooltip; test lines, no video",
+      "surface": "Right-click menu of a line group's description row",
+      "credit": ""
+    },
+    "content/docs/basics/images/video-menu-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests videoAndAudioMenuScreenshots (menu-video), crop 700x455+0+60 to the Video panel; black test fixture video",
+      "surface": "Video panel right-click menu",
+      "credit": ""
+    },
+    "content/docs/basics/images/video-menu-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests videoAndAudioMenuScreenshots (menu-video), crop 700x455+0+60 to the Video panel; black test fixture video",
+      "surface": "Video panel right-click menu",
+      "credit": ""
+    },
+    "content/docs/customize/images/reset-all-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests settingsWindowScreenshots (pf1-reset-all)",
+      "surface": "The Reset all settings question",
+      "credit": ""
+    },
+    "content/docs/customize/images/reset-all-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests settingsWindowScreenshots (pf1-reset-all)",
+      "surface": "The Reset all settings question",
+      "credit": ""
+    },
+    "content/docs/customize/images/view-menu-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: saved_layouts_tests surfaceScreenshots (view-menu), menu crop",
+      "surface": "View menu with the side bar, Explorer, Log and Hide tags check items",
+      "credit": ""
+    },
+    "content/docs/customize/images/view-menu-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: saved_layouts_tests surfaceScreenshots (view-menu), menu crop",
+      "surface": "View menu with the side bar, Explorer, Log and Hide tags check items",
+      "credit": ""
+    },
+    "content/docs/get-started/images/text-field-menu-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests contextMenuScreenshots (menu-text-field), crop 700x300+700+290 leaving out a More options tooltip",
+      "surface": "Shared text-field right-click menu in the Styles panel's field",
+      "credit": ""
+    },
+    "content/docs/get-started/images/text-field-menu-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests contextMenuScreenshots (menu-text-field), crop 700x300+700+290 leaving out a More options tooltip",
+      "surface": "Shared text-field right-click menu in the Styles panel's field",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/ne-add-node-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests ne2Screenshots (ne2-add-node), crop 702x417+698+98 to the Graph panel",
+      "surface": "Node effects Add node menu by category",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/ne-add-node-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests ne2Screenshots (ne2-add-node), crop 702x417+698+98 to the Graph panel",
+      "surface": "Node effects Add node menu by category",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/tool-vector-drawing-light.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests visualDrawingScreenshots (drawing-shape-menu), menu crop",
+      "surface": "Vector drawing's Shape list open",
+      "credit": ""
+    },
+    "content/docs/typesetting/images/tool-vector-drawing-dark.webp": {
+      "source": "recaptured at main 2ac50e272 (after altqx/hikari#1210) by CX7 under xvfb on akari-rvm, fresh profile, English catalog; cx7-to-site/shots-menus: shell_tests visualDrawingScreenshots (drawing-shape-menu), menu crop",
+      "surface": "Vector drawing's Shape list open",
+      "credit": ""
+    },
+    "content/docs/karaoke/images/furigana-video-light.webp": {
+      "source": "taken at main a9efa7682 with altqx/hikari#1180 by CX7: release_screenshots_tests karaokeFuriganaOnRayMv (hk-cx7-k9b); cx7-to-site/shots-menus",
+      "surface": "Ray MV karaoke line 3 in the Video panel preview, furigana readings above their kanji",
+      "credit": "Subtitles: Jibrill"
+    },
+    "content/docs/karaoke/images/furigana-video-dark.webp": {
+      "source": "taken at main a9efa7682 with altqx/hikari#1180 by CX7: release_screenshots_tests karaokeFuriganaOnRayMv (hk-cx7-k9b); cx7-to-site/shots-menus",
+      "surface": "Ray MV karaoke line 3 in the Video panel preview, furigana readings above their kanji",
+      "credit": "Subtitles: Jibrill"
     }
   }
 }

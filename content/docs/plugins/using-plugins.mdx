@@ -11,12 +11,10 @@ import panelLight from './images/plugin-panel-light.webp';
 import panelDark from './images/plugin-panel-dark.webp';
 import panelOffLight from './images/plugin-panel-off-light.webp';
 import panelOffDark from './images/plugin-panel-off-dark.webp';
-import automationMenuLight from './images/automation-menu-light.webp';
-import automationMenuDark from './images/automation-menu-dark.webp';
 
 A **plugin** adds commands, panels and dialogs to HikariSub itself, through the Hikari API. It comes from the HikariSub marketplace, or as a single `.hikariplugin` file. Plugins are separate from [Automation scripts](/en/docs/automation/running-scripts), which work as before.
 
-**Automation › Plugins…** opens the plugin manager, where you find, install, update, turn on or off, set up and uninstall plugins. Its **Installed** view lists your plugins, and its **Marketplace** view the plugins you can add.
+**Automation › Plugins** opens the plugin manager, where you find, install, update, turn on or off, set up and uninstall plugins. Its **Installed** view lists your plugins, and its **Marketplace** view the plugins you can add.
 
 <figure>
   <ThemedImage
@@ -34,7 +32,7 @@ A **plugin** adds commands, panels and dialogs to HikariSub itself, through the 
 
 ### From the marketplace
 
-1. Choose **Automation › Plugins…**, then **Marketplace**.
+1. Choose **Automation › Plugins**, then **Marketplace**.
 2. Find a plugin with **Search plugins**, which matches the name, the summary and the author, or choose a category. Searching happens on your computer: see [What is sent](/en/docs/help/what-is-sent#plugins).
 3. Choose a plugin to see what it does, its permissions, **What's new** in its latest version, the HikariSub version it needs, when it was last updated and its source.
 4. Press **Install**. HikariSub downloads the plugin, checks it against the marketplace, and asks first, as below.
@@ -70,7 +68,7 @@ The button works where HikariSub registered `hikarisub://` links: the Windows in
 
 ### From a file
 
-1. Choose **Automation › Plugins…**, then **Install from file…**.
+1. Choose **Automation › Plugins**, then **Install from file…**.
 2. Pick the `.hikariplugin` file.
 3. HikariSub checks the package and asks, for example, *Install “Line tools” 1.2.0?* It shows:
    - who signed it, if anyone (see [Trust](#trust));
@@ -146,19 +144,7 @@ A plugin you installed from a file gets no updates from the marketplace. When th
 
 ## Running a plugin's commands
 
-While a plugin runs, its commands sit in the **Automation** menu after **Plugins…**, in a submenu named after the plugin.
-
-<figure>
-  <ThemedImage
-    light={automationMenuLight}
-    dark={automationMenuDark}
-    alt="The Automation menu open: Load script…, Refresh autoload scripts, Run the last loaded script, Rerun last macro, Repeat last run, Show panel and Plugins…, then the Line tools submenu (highlighted) with Sort by start time, Join selected lines and Remove empty lines, followed by the macros of the loaded scripts"
-    width={740}
-    height={608}
-    className="rounded-lg border"
-  />
-  <figcaption>A plugin's commands in its submenu under Automation.</figcaption>
-</figure>
+While a plugin runs, its commands sit in the **Automation** menu after **Plugins**, in a submenu named after the plugin.
 
 To give one a shortcut, open **File › Settings › Shortcuts** and choose the **Plugin shortcuts** filter. A plugin command's shortcut works everywhere. A shortcut for a plugin that is uninstalled or turned off stays listed with a note, ready for when the plugin comes back.
 

@@ -7,6 +7,10 @@ import gridLight from './images/grid-light.webp';
 import gridDark from './images/grid-dark.webp';
 import foldedLight from './images/grid-folded-light.webp';
 import foldedDark from './images/grid-folded-dark.webp';
+import gridMenuLight from './images/grid-menu-light.webp';
+import gridMenuDark from './images/grid-menu-dark.webp';
+import groupMenuLight from './images/line-groups-light.webp';
+import groupMenuDark from './images/line-groups-dark.webp';
 
 The Grid lists every line of the file, one row each, in file order. The line you click becomes the active line, which the [Line editor](/en/docs/basics/line-editor), the video and the audio follow.
 
@@ -63,13 +67,25 @@ Right-click the row of column names for the list of columns: tick or untick one 
 | <kbd>Ctrl</kbd>+<kbd>Up</kbd> <kbd>Ctrl</kbd>+<kbd>Down</kbd> | Previous or next line, from anywhere |
 | <kbd>F2</kbd> | Selects the line at the video's time |
 
-The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Playback › Move video to the selected line**. **Edit › Select lines** selects lines by their text, style or other fields, or the lines that [overlap](/en/docs/basics/find-and-replace#selecting-lines) an earlier one.
+The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Playback › Move video to the selected line**. **Edit › Select lines…** selects lines by their text, style or other fields, or the lines that [overlap](/en/docs/basics/find-and-replace#selecting-lines) an earlier one.
 
 Most commands act on the selected lines.
 
 ## The right-click menu
 
 Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>, for the Grid's menu. Its rows are in seven groups, and no submenu has another inside it:
+
+<figure>
+  <ThemedImage
+    light={gridMenuLight}
+    dark={gridMenuDark}
+    alt="The Grid's right-click menu on two selected lines: Insert, Duplicate 2 lines, Cut, Copy, Paste and Paste special; Join, Split, Swap lines, Make times continuous and Make line group; Line breaks, Change case, Swap dialogue alternatives and Remove tags…; Typesetting, Change alignment, keep position and Align and distribute; AI actions; Select lines visible on video, Show subtitles preview and Translation matching… (both greyed out) and Add QC note…; then Delete text and Delete 2 lines"
+    width={720}
+    height={725}
+    className="rounded-lg border"
+  />
+  <figcaption>The Grid's right-click menu on two selected lines.</figcaption>
+</figure>
 
 - **Insert ›** Before or After, also at the video's time or frame time. **Duplicate**, **Cut**, **Copy** and **Paste**. **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last. **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds). **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**. [Convert Aegisub folds to line groups](#aegisub-folds) shows here only when the file has Aegisub folds.
@@ -240,11 +256,23 @@ The filters are under **Filtering**, in the menu of the **⋯** button on the Gr
 - The marks at the left edge show where hidden lines are. Click one to open or close that run.
 - **Ignore filtering in some actions**, in the same **⋯** menu, lets Replace all and Shift times reach hidden lines too.
 
-**View › Hide tags** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Grid › ASS tag replacement** sets the character.
+**View › Hide tags in the Grid** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Grid › ASS tag replacement** sets the character.
 
 ## Line groups
 
 **Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…**, **Convert Aegisub folds to line groups** when the file has Aegisub folds, and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
+
+<figure>
+  <ThemedImage
+    light={groupMenuLight}
+    dark={groupMenuDark}
+    alt="A line group's description row, Signs, with its right-click menu: Select the group's lines, Add selected line, Copy line group, Change description… and, apart, Ungroup"
+    width={720}
+    height={241}
+    className="rounded-lg border"
+  />
+  <figcaption>The menu of a line group's description row.</figcaption>
+</figure>
 
 ### Groups inside groups
 
@@ -263,7 +291,7 @@ In the file, a line keeps one `[tree_opened]` or `[tree_closed]` marker in its A
 
 ### Aegisub folds
 
-Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups**, in **Subtitles** and in the Grid's right-click menu, does the same at any time while the file has folds; it has no key at first.
+Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups**, in **Subtitles** and in the Grid's right-click menu, does the same at any time while the file has folds; it has no key at first. In **Subtitles**, after **Set FPS ›**, it is greyed out when the file has none, with *No Aegisub folds in this file*.
 
 - Each fold becomes a line group, and folds inside folds become groups inside groups. A collapsed fold becomes a closed group.
 - Before each group, a comment line holds the fold's first line without its tags, as the group's description.

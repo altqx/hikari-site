@@ -24,6 +24,12 @@ function servesFile(path: string) {
   return [clean, `${clean}.html`, `${clean}/index.html`].some((p) => p && existsSync(join(root, p)));
 }
 
+// The HTML file a page path is served from, if it is one.
+function servedFile(path: string) {
+  const clean = path.replace(/\/$/, '');
+  return [`${clean}.html`, `${clean}/index.html`].map((p) => join(root, p)).find((p) => existsSync(p));
+}
+
 function resolves(path: string, depth = 0): boolean {
   if (servesFile(path) || (path === '/' && existsSync(join(root, 'index.html')))) return true;
   if (depth > 3) return false;
@@ -52,7 +58,8 @@ for await (const file of glob('**/*.html', { cwd: root })) {
 
 // The pages the app's User guide (F1, the ? buttons) opens, from its docs export
 // (scripts/fetch-docs.ts). A path with no guide at all fails. A guide that is still a
-// draft is left out of production builds; those are listed, as pages still to write.
+// draft is left out of production builds; those are listed, as pages still to write. A path
+// with a #section needs a heading with that id on its page.
 const guideLinksFile = 'src/generated/docs-export/guide-links.json';
 const drafts: string[] = [];
 let guidePaths = 0;
@@ -61,13 +68,20 @@ if (existsSync(guideLinksFile)) {
     home: string;
     links: { kind: string; id: string; path: string }[];
   };
-  for (const { kind, id, path } of [{ kind: 'home', id: 'home', path: map.home }, ...map.links]) {
+  for (const { kind, id, path: target } of [{ kind: 'home', id: 'home', path: map.home }, ...map.links]) {
     guidePaths++;
-    if (resolves(path)) continue;
+    const [path, section] = target.split('#');
+    if (resolves(path)) {
+      const page = servedFile(path);
+      if (section && page && !readFileSync(page, 'utf8').includes(`id="${section}"`)) {
+        broken.push(`guide-links.json (${kind} ${id}): ${target} has no such section`);
+      }
+      continue;
+    }
     const source = join('content/docs', `${path.replace(/^\/en\/docs\/?/, '') || 'index'}.mdx`);
     const isDraft =
       existsSync(source) && /^draft:\s*true\s*$/m.test(readFileSync(source, 'utf8').split(/^---$/m)[1] ?? '');
-    (isDraft ? drafts : broken).push(`guide-links.json (${kind} ${id}): ${path}`);
+    (isDraft ? drafts : broken).push(`guide-links.json (${kind} ${id}): ${target}`);
   }
 }
 

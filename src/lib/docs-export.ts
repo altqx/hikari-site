@@ -78,6 +78,7 @@ export const settingsPages = [
   'general',
   'appearance',
   'lineEditor',
+  'editing',
   'spelling',
   'grid',
   'video',
@@ -86,6 +87,7 @@ export const settingsPages = [
   'subtitleProperties',
   'automation',
   'hotkeys',
+  'ai',
   'updates',
 ] as const;
 

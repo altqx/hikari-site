@@ -15,6 +15,8 @@ import manageLight from './images/manage-layouts-light.webp';
 import karaokeLight from './images/karaoke-layout-light.webp';
 import karaokeDark from './images/karaoke-layout-dark.webp';
 import manageDark from './images/manage-layouts-dark.webp';
+import viewMenuLight from './images/view-menu-light.webp';
+import viewMenuDark from './images/view-menu-dark.webp';
 
 The window is made of panels: Video, Audio, the Line editor, the Grid and others. You can move them, stack them as tabs, float them in windows of their own, or close them. A layout is one arrangement of them. On each edge of the window, outside the layout, is a [side bar](#side-bars) for the AI and tool panels.
 
@@ -81,9 +83,9 @@ The layout button in the title bar, after the menus, shows the tab's layout. Cli
   <ThemedImage
     light={menuLight}
     dark={menuDark}
-    alt="The layout menu open under the title bar button: Editing, Timing, Translation, Typesetting and Karaoke, two saved layouts named Subtitles only and Review with video, then Save layout as, Reset this layout and Manage layouts"
-    width={640}
-    height={312}
+    alt="The layout menu open under the title bar button, which reads Review with video: Editing, Timing, Translation, Typesetting and Karaoke, two saved layouts named Subtitles only and Review with video (chosen), then Save layout as…, Reset this layout, Restore the previous layout, Manage layouts and Lock layout"
+    width={700}
+    height={400}
     className="rounded-lg border"
   />
   <figcaption>The layout menu, with two saved layouts.</figcaption>
@@ -178,12 +180,24 @@ Each window has a side bar on its left edge and one on its right, outside the la
 
 A side bar shows one panel at a time, under a row of the panels' icons. Hover over an icon for the panel's name, and click it to show that panel. Clicking the icon of the panel that's showing hides the side bar.
 
-- **Show or hide a side bar** with its button in the title bar, or with **View › Toggle left side bar** and **View › Toggle right side bar**. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> toggles the left one; the right one has no key at first. Opening a panel that's in a hidden side bar shows the side bar too.
+- **Show or hide a side bar** with its button in the title bar, or with **View › Left side bar** and **View › Right side bar**, which are ticked while their side bar shows. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> toggles the left one; the right one has no key at first. Opening a panel that's in a hidden side bar shows the side bar too.
 - **Resize a side bar** by dragging its inner edge. It starts about 320 px wide. Drag it narrower than 240 px and it hides, keeping the width it had.
 - **View › Swap side bars** switches their edges, with their panels and widths. **File › Settings › Appearance › AI side bar** sets the same thing: **Left** or **Right** for the AI side bar, the other side bar holding the tools. In a right-to-left language both are mirrored, so the AI side bar starts on the right.
 - **View › Reset side bars** puts both side bars back to the panels and widths they started with.
 
-**Toggle left side bar**, **Toggle right side bar** and **Swap side bars** are in **File › Settings › Shortcuts** too. <kbd>Ctrl</kbd>+<kbd>B</kbd> stays **Bold**.
+**Left side bar**, **Right side bar** and **Swap side bars** are in **File › Settings › Shortcuts** too. <kbd>Ctrl</kbd>+<kbd>B</kbd> stays **Bold**.
+
+<figure>
+  <ThemedImage
+    light={viewMenuLight}
+    dark={viewMenuDark}
+    alt="The View menu: Layout; Left side bar (Ctrl+Alt+B) and Right side bar, both unticked, Swap side bars and Reset side bars; Panels and Move panel…; Explorer, Log and Node effects, unticked; then Hide tags in the Grid and Hide tags in the line editor, unticked"
+    width={220}
+    height={354}
+    className="rounded-lg border"
+  />
+  <figcaption>The View menu, with both side bars hidden.</figcaption>
+</figure>
 
 ### Moving panels into a side bar
 
@@ -256,4 +270,4 @@ A new tab starts with a copy of the current tab's layout, or with Translation fo
 
 ## If a layout can't be restored
 
-HikariSub saves the window's layout as you work. If it can't be restored at start, for example after an update, a bar shows the Editing layout instead and keeps the old file. **View › Restore the previous layout** goes back to the layout saved before the last one.
+HikariSub saves the window's layout as you work. If it can't be restored at start, for example after an update, a bar shows the Editing layout instead and keeps the old file. **View › Layout › Restore the previous layout** goes back to the layout saved before the last one.

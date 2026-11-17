@@ -9,7 +9,7 @@
           "feature": "New, open, save, save as, close subtitles",
           "status": "better",
           "text": "A failed save never leaves half a file, and lines other programs added are kept byte for byte.",
-          "where": "File › Open…, Save, Save as…, Close"
+          "where": "File › Open subtitles…, Save, Save as…, Close tab"
         },
         {
           "feature": "Recent subtitles, video, audio, keyframes, timecodes",
@@ -21,12 +21,12 @@
           "feature": "Open SRT, MicroDVD, SSA, plain text",
           "status": "better",
           "text": "Also opens MPL2, TMPlayer, LRC, TTML, KRC/QRC lyrics and YouTube srv3, and reads the format from the content, not the extension.",
-          "where": "File › Open…; File › Import lyrics…"
+          "where": "File › Open subtitles…; File › Import lyrics…"
         },
         {
           "feature": "Open MPEG-4 Streaming Text (TTXT)",
-          "status": "not-yet",
-          "text": "TTXT files don't open.",
+          "status": "not-planned",
+          "text": "TTXT files don't open; convert them with MP4Box or ffmpeg first.",
           "where": ""
         },
         {
@@ -158,8 +158,8 @@
         {
           "feature": "Tag hiding: show, hide, simplify, cycle",
           "status": "not-yet",
-          "text": "There's no command that cycles between the modes; View › Hide tags swaps each block for ☀, and tags vanish only if that replacement is set to nothing in Settings.",
-          "where": "View › Hide tags"
+          "text": "There's no command that cycles between the modes; View › Hide tags in the Grid swaps each block for ☀, and tags vanish only if that replacement is set to nothing in Settings.",
+          "where": "View › Hide tags in the Grid"
         },
         {
           "feature": "Grid highlights the lines on the current frame",
@@ -259,8 +259,8 @@
         },
         {
           "feature": "Recombine lines that were split and merged",
-          "status": "not-yet",
-          "text": "There's no recombine command.",
+          "status": "not-planned",
+          "text": "There's no recombine command; it's an old workflow, and a Lua script can do it.",
           "where": ""
         },
         {
@@ -284,7 +284,7 @@
         {
           "feature": "Thesaurus in the text's right-click menu",
           "status": "not-yet",
-          "text": "Right-click offers spelling and grammar only.",
+          "text": "Right-click offers spelling and grammar only; a Suggest synonyms AI action is planned.",
           "where": ""
         }
       ]
@@ -297,12 +297,12 @@
           "feature": "Open audio, from video, close; audio track choice",
           "status": "better",
           "text": "Reload audio keeps the place and track; decoded audio is cached on disk.",
-          "where": "Audio › Open audio, Open audio from video, Close audio, Reload audio"
+          "where": "Audio › Open audio…, Open audio from video, Close audio, Reload audio"
         },
         {
           "feature": "Blank or noise audio for testing",
-          "status": "not-yet",
-          "text": "There's no noise audio and no standalone blank audio; a dummy video brings silence.",
+          "status": "not-planned",
+          "text": "There's no noise audio and no standalone blank audio; a dummy video brings silent audio.",
           "where": ""
         },
         {
@@ -406,7 +406,7 @@
           "feature": "Lengthen or shorten the line or syllable by keys, and shift what follows",
           "status": "not-yet",
           "text": "Only one-frame start and end moves (with a video) and right-drag of syllables.",
-          "where": "Subtitles › Timing helpers › Start/End one frame earlier/later"
+          "where": "Subtitles › Timing helpers › Move start/end one frame earlier/later"
         },
         {
           "feature": "Next or previous line or syllable",
@@ -424,7 +424,7 @@
           "feature": "Snap start or end to the video frame",
           "status": "better",
           "text": "A joined neighbour stays joined.",
-          "where": "Video › Insert start time from video, Insert end time from video"
+          "where": "Video › Set start time from video, Set end time from video"
         },
         {
           "feature": "Shift the selection so the active line starts at the current frame",
@@ -446,8 +446,8 @@
         },
         {
           "feature": "Shift times history (Load from history)",
-          "status": "not-yet",
-          "text": "Presets and \"last used\" replace the history list.",
+          "status": "not-planned",
+          "text": "Presets and \"last used\" cover it.",
           "where": "Shift times › presets"
         },
         {
@@ -466,7 +466,7 @@
           "feature": "Keyframes: open",
           "status": "same",
           "text": "",
-          "where": "Video › Open keyframes"
+          "where": "Video › Open keyframes…"
         },
         {
           "feature": "Keyframes: save, or close and go back to the video's own",
@@ -478,7 +478,7 @@
           "feature": "Timecodes: open, save, close",
           "status": "better",
           "text": "Also reads mkvmerge's v4 and `timestamp` headers.",
-          "where": "Video › Open timecodes, Save timecodes, Close timecodes"
+          "where": "Video › Open timecodes…, Save timecodes…, Close timecodes"
         },
         {
           "feature": "Kanji timer",
@@ -520,7 +520,7 @@
           "feature": "Step frames, keyframes, fast jumps",
           "status": "same",
           "text": "",
-          "where": "Video › Previous frame, Next frame, Go to previous/next keyframe"
+          "where": "Video › Go to previous frame, Go to next frame, Go to previous/next keyframe"
         },
         {
           "feature": "Next or previous subtitle boundary",
@@ -548,8 +548,8 @@
         },
         {
           "feature": "Toggle focus to the video slider",
-          "status": "not-yet",
-          "text": "No command moves the keyboard to the seek bar.",
+          "status": "not-planned",
+          "text": "No command moves the keyboard to the seek bar; step with the frame and keyframe commands in the Video menu instead.",
           "where": ""
         },
         {
@@ -569,11 +569,11 @@
           "feature": "Aspect ratio: default, 4:3, 16:9, 2.35, custom",
           "status": "not-yet",
           "text": "A Taller–Wider stretch and Reset; no fixed ratios and no typed ratio.",
-          "where": "Video right-click › Change aspect ratio"
+          "where": "Video › Change aspect ratio…"
         },
         {
           "feature": "Overscan mask",
-          "status": "not-yet",
+          "status": "not-planned",
           "text": "There's no overscan or safe-area mask.",
           "where": ""
         },
@@ -599,7 +599,7 @@
           "feature": "Video details (with colour space and matrix)",
           "status": "same",
           "text": "",
-          "where": "Video › Video details…"
+          "where": "Video › Video details"
         },
         {
           "feature": "Choose or cycle the subtitles renderer",
@@ -611,7 +611,7 @@
           "feature": "Dummy video",
           "status": "better",
           "text": "Sides up to 100000 px, an exact fraction frame rate, a 1080x1920 preset.",
-          "where": "Video › Open dummy video"
+          "where": "Video › Open dummy video…"
         },
         {
           "feature": "Resolution, LayoutRes and YCbCr matrix prompts on open; HDR and untagged warnings",
@@ -633,20 +633,20 @@
         },
         {
           "feature": "YUV4MPEG (`.y4m`) video",
-          "status": "unverified",
-          "text": "`.y4m` isn't in the Open video filter (only through All files), and whether the indexer opens it wasn't checked.",
-          "where": ""
+          "status": "same",
+          "text": "`.y4m` files open through FFMS2; pick All files in Open video, as its filter doesn't list them.",
+          "where": "Video › Open video… (All files)"
         },
         {
           "feature": "AviSynth scripts as video (Windows)",
-          "status": "not-yet",
-          "text": "Video opens through FFMS2 only.",
+          "status": "not-planned",
+          "text": "Video opens through FFMS2 only; render the script to a lossless file first, and open that.",
           "where": ""
         },
         {
           "feature": "VapourSynth and BestSource providers (fork)",
-          "status": "not-yet",
-          "text": "Video opens through FFMS2 only.",
+          "status": "not-planned",
+          "text": "Video opens through FFMS2 only, which covers seeking, and the official Keyframe generator plugin makes keyframes.",
           "where": ""
         },
         {
@@ -720,7 +720,7 @@
           "feature": "Perspective tool (fork)",
           "status": "better",
           "text": "Perspective tracking from Power-Pin data.",
-          "where": "Video tool strip: Perspective; Video › Tracking › Perspective tracking…"
+          "where": "Video tool strip: Perspective; Video › Tracking › Apply Power-Pin data…"
         },
         {
           "feature": "Align to video (fork `time/align`)",
@@ -793,7 +793,7 @@
           "feature": "Resample resolution, from video, LayoutRes kept",
           "status": "better",
           "text": "Adjust 3D rotations keeps rotated signs in shape.",
-          "where": "Subtitles › Resample subtitles"
+          "where": "Subtitles › Resample subtitles…"
         },
         {
           "feature": "Resample: margin offsets, add or remove borders, manual aspect",
@@ -865,13 +865,13 @@
           "feature": "Select lines: by field, regex, case, dialogue or comments, set, add, subtract",
           "status": "better",
           "text": "Then copy, cut, delete, move or comment them, in all tabs, and an Overlapping lines search.",
-          "where": "Edit › Select lines"
+          "where": "Edit › Select lines…"
         },
         {
           "feature": "Select lines: intersect with the selection, exact match",
           "status": "not-yet",
           "text": "The modes are Select, Add to selection and Deselect, and matching is \"with\" or \"without\" the text.",
-          "where": "Edit › Select lines"
+          "where": "Edit › Select lines…"
         },
         {
           "feature": "Spell checker (replace, ignore, add, language, skip comments and capitals)",
@@ -983,14 +983,14 @@
         },
         {
           "feature": "Interface colours for each element (audio, grid, syntax, visual tools)",
-          "status": "not-yet",
-          "text": "Themes, accent colours and high-contrast colours only.",
+          "status": "not-planned",
+          "text": "Themes, accent colours and high-contrast colours only; theme plugins are planned to cover it.",
           "where": "File › Settings › Appearance"
         },
         {
           "feature": "Interface language",
           "status": "not-yet",
-          "text": "5 languages (English, Korean, Polish, Tamil, Thai) against Aegisub's 33.",
+          "text": "5 languages today (English, Korean, Polish, Tamil, Thai). More will come through community translation on HikariSub's own translation platform.",
           "where": "File › Settings › Interface language"
         },
         {
@@ -1033,11 +1033,11 @@
           "feature": "Help: contents, website, bug tracker",
           "status": "better",
           "text": "Report an issue is a form inside the app.",
-          "where": "Help › User guide, Report an issue"
+          "where": "Help › User guide, Report an issue…"
         },
         {
           "feature": "IRC channel link",
-          "status": "not-yet",
+          "status": "not-planned",
           "text": "The Help menu has no chat link.",
           "where": ""
         }
@@ -1055,14 +1055,20 @@
         },
         {
           "feature": "Export or save as SSA",
-          "status": "not-yet",
-          "text": "SSA opens but is never written as SSA.",
+          "status": "not-planned",
+          "text": "SSA opens but is never written as SSA; every current player reads ASS.",
           "where": ""
         },
         {
-          "feature": "Export to Adobe Encore, TranStation, MPEG-4 TTXT, EBU STL",
+          "feature": "Export to Adobe Encore, TranStation, MPEG-4 TTXT",
+          "status": "not-planned",
+          "text": "These formats are obsolete, so none is an export format.",
+          "where": ""
+        },
+        {
+          "feature": "Export to EBU STL",
           "status": "not-yet",
-          "text": "None of these is an export format.",
+          "text": "EBU STL isn't an export format; it's planned as a plugin.",
           "where": ""
         },
         {
@@ -1127,8 +1133,8 @@
         },
         {
           "feature": "Runs on macOS (and its window menu commands)",
-          "status": "not-yet",
-          "text": "No macOS build; the policy keeps the port possible.",
+          "status": "not-planned",
+          "text": "There's no macOS build, and none is planned for now.",
           "where": ""
         }
       ]

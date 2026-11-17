@@ -43,6 +43,8 @@
   --parity-different-fg: #2c3d8f;
   --parity-not-yet: #fdecc8;
   --parity-not-yet-fg: #7a4a00;
+  --parity-not-planned: #f3e3ea;
+  --parity-not-planned-fg: #6e2a47;
   --parity-unverified-fg: #555555;
 }
 
@@ -55,6 +57,8 @@
   --parity-different-fg: #aebcf5;
   --parity-not-yet: #3a2a08;
   --parity-not-yet-fg: #f5c46a;
+  --parity-not-planned: #3a1d29;
+  --parity-not-planned-fg: #eab3c8;
   --parity-unverified-fg: #bbbbbb;
 }
 
@@ -83,6 +87,10 @@
 .parity-not-yet {
   background: var(--parity-not-yet);
   color: var(--parity-not-yet-fg);
+}
+.parity-not-planned {
+  background: var(--parity-not-planned);
+  color: var(--parity-not-planned-fg);
 }
 .parity-unverified {
   color: var(--parity-unverified-fg);

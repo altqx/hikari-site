@@ -24,14 +24,18 @@ Until you add a provider with a chat model, or install Claude Code or Codex, the
 
 ## Asking
 
-Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**. <kbd>Shift</kbd>+<kbd>Enter</kbd> starts a new line.
+Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**. <kbd>Shift</kbd>+<kbd>Enter</kbd> starts a new line. The box grows as you type, up to six lines, and then scrolls.
 
-- **What the agent sees.** The chip above the box names the active tab, as in *Episode 01.ass · active tab*. The agent reads that tab, and the tabs you attach. Type `@`, or press **Attach**, to attach another open tab; click its chip to take it off again. For a tab you haven't attached, the agent asks you to attach it.
+- **What the agent sees.** The chip above the box names the active tab, marked *active tab*. The agent reads that tab, and the tabs you attach. For a tab you haven't attached, the agent asks you to attach it.
+- **Attaching.** The paperclip below the box, **Attach a file**, opens a menu of your open tabs, with a check by the active tab and by each tab you attached. Choose a tab to attach it, or choose an attached one to take it off again. Typing `@` opens the same menu, with the first tab you can attach already chosen. An attached tab's chip has its own **×** to take it off.
+- **Many files.** Three chips show, the active tab's among them, and one more chip, such as **+2 more**, stands for the rest and opens the attach menu. In a short panel, the chips share rows.
 - **Commands.** Type `/` for the list: `/new` starts a new thread, `/mode` opens the mode menu, and `/compact` [compacts the conversation](#long-conversations).
 - **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
 - **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
 
-Below the box, the model button picks the thread's model from your providers' models, or an [agent on this computer](#agents-on-this-computer), and the mode button its [mode](#modes).
+Below the box, the model button names the model your next message uses, or says *Choose a model* when there is none yet. It picks the thread's model from your providers' models, each with its provider beside it, or an [agent on this computer](#agents-on-this-computer), and the mode button picks its [mode](#modes). Each menu marks the one chosen.
+
+The `/` and `@` menus open above the box, and the model and mode menus above their buttons, always inside the panel.
 
 ## What the thread shows
 
@@ -111,18 +115,16 @@ Agents connected through MCP can read and preview graphs, but saving and applyin
 
 ## Keyframes and macros
 
-The agent can replace the video's keyframes, as **Video › Open keyframes** does. It's a change like any other, so it asks as the thread's [mode](#modes) says. It can also list the Automation macros you loaded, but it can't run them: only plugins can. Its own [Lua scripts](#lua-scripts) ask every time, in every mode.
+The agent can replace the video's keyframes, as **Video › Open keyframes…** does. It's a change like any other, so it asks as the thread's [mode](#modes) says. It can also list the Automation macros you loaded, but it can't run them: only plugins can. Its own [Lua scripts](#lua-scripts) ask every time, in every mode.
 
 Grid row marks, git and batches of raw video frames are for [plugins](/en/docs/plugins/write-your-first-plugin#grid-row-marks) only. The agent looks at the video through frame images.
 
 ## Searching the web
 
-With **File › Settings › AI › Let AI search the web** on, the globe beside **Attach** turns web search on or off for the thread. It starts on, and the thread keeps your choice. Its hover says *Search the web: on for this thread* or *off for this thread*. On Anthropic, it adds that changing it partway through a thread costs one cache miss.
-
-When the thread's provider can't search on its own and no search service is chosen, the globe is dimmed. Its hover says *This provider can't search the web on its own. Choose a search service in Settings › AI › Web search.* With **Let AI search the web** off, the globe is hidden.
+Every thread follows **File › Settings › AI › Let AI search the web**. With it on, the agent can search the web; turn it on or off, and each thread follows from its next message.
 
 - **Search rows.** Each search shows in the thread as *Searched the web*, *Searched with Google* or *Searched with* and the service, such as *Searched with Brave Search*, followed by what it searched for. A page the agent read shows as *Read* and the site. Expand a row to see the full addresses.
-- **Citations.** Numbered chips follow the text they back up. Hover one for the page's title, its site and, when the provider sends one, the quoted passage, with **Open in browser**.
+- **Citations.** Numbered chips follow the text they back up. Hover one for a card with the page's title, its site and, when the provider sends one, the quoted passage, with **Open in browser**. The card opens at the chip, and stays open while you move the pointer onto it.
 - **Sources.** Under an answer that cites pages, **Sources** lists them, each title a link with its site. After five, the rest fold behind **Show 2 more**.
 - **Google's suggestions.** Under a Gemini answer that searched, Google's search suggestions show as Google draws them. Click one to search for it in your browser.
 - **A search service that stops.** When the search service's plan is used up, the thread says so, such as *Brave Search has no searches left*. When it refuses the key, it says *Brave Search refused HikariSub's key*. Under either, it gives the service's answer, such as *The search service answered 429. The answer goes on without searching the web.* **Open Settings › AI** opens the settings.
@@ -167,6 +169,8 @@ What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 ## Agents on this computer
 
 A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex and [ACP agents](#acp-agents). When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it, and the ACP agents follow. You don't need a provider for any of them.
+
+Each agent has its own list of models in the model menu. **Agent default** leaves the choice to the agent; below it are the agent's own models. The list loads from the agent the first time you open it, with *Loading models…* meanwhile, and HikariSub remembers it for the next session. You can switch to another of the agent's models partway through a thread, and the conversation carries on.
 
 Each of them gets your [AGENTS.md](#agentsmd-instructions) and the Project's, and again when it resumes. Their own file tools stay off, so every file they read or change goes through HikariSub's tools.
 
@@ -241,7 +245,7 @@ Each thread has a mode, which decides what the agent may change without asking. 
 | **Auto** | The judge model approves each change, or asks you, with its reason |
 | **Full access** | Nothing, except the [always-ask list](#the-always-ask-list), [Lua scripts](#lua-scripts) and [installing plugins](#plugins) |
 
-New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads…**, at the foot of the mode menu, opens it.
+New threads start in **Auto**. Change a thread's mode with the mode button, or `/mode`. **File › Settings › AI › Agent › Mode for new threads** sets the mode new threads start in; **Default for new threads**, at the foot of the mode menu, opens it.
 
 **Full access** shows in red, and the thread's title gets a *Full access* badge. The first time you choose it, HikariSub asks *Turn on Full access?*, and lists what still asks. **Don't warn me again** stops the question.
 
@@ -251,11 +255,14 @@ In Auto mode, a model checks each change before it is made: the **Judge** model 
 
 ### Questions
 
-When the agent needs your yes, the thread shows a card, such as *Run commands_run?*, with what it wants to do. A card from the judge says *The judge asks you*.
+When the agent needs your yes, the thread shows a card that says in plain words what it wants to do: *Change the subtitles?*, *Use a plugin?*, *Use* and an MCP tool, or *Allow this action?*. A change to one line says what the line becomes, such as *Change line 1 to “Shorter.”*, and a change to several lines lists them. A setting is named as in **File › Settings**, such as *Turn off “Check spelling”*. A setting with no name there shows *Change a setting*, with its id and new value in small type under it, such as `audio.autoScroll → false`. **Details** shows what the agent asked for, word for word.
 
-- **Allow once** lets this one action through.
+A card from the judge gives the judge's reason, after *Why:*.
+
+- **Allow once**, or **Allow** on a card from the judge, lets this one action through.
 - **Allow in this thread** lets the same action through for the rest of the thread without asking. For a command, it covers that one command.
-- **Deny** refuses it, and the agent is told not to try again. **Deny and tell the agent…** adds a message: *What should it do instead?*
+- **Deny** refuses it, and the agent is told not to try again.
+- **Tell the agent instead…** puts the keyboard in a box, *What should it do instead?* <kbd>Enter</kbd>, or **Deny** beside the box, refuses with your message, and <kbd>Esc</kbd> goes back to the buttons. Cards from the [always-ask list](#the-always-ask-list) don't have it.
 
 A card says what you chose, or *No longer needed* when the turn stopped first.
 
@@ -266,7 +273,7 @@ In Manual mode, the agent's subtitle edits come to you as a proposal in the thre
 A proposal card, *Proposed:* and the change's name, has one row for each edit: the line's old text struck through and its new text, or *Inserted*, *Deleted* or *Moved*. The first five rows show, and **Show all** shows the rest. Clicking a row selects its line and applies nothing.
 
 - **Apply** makes the whole change, as one undoable step in the [Review panel](/en/docs/ai/review), where you can still keep or undo it.
-- **Decline** writes nothing, and the agent is told not to propose it again unless you ask. **Decline and tell the agent…** adds a message: *What should it do instead?*
+- **Decline** writes nothing, and the agent is told not to propose it again unless you ask. **Tell the agent instead…** declines with your message, as on a [question](#questions).
 
 A proposal is applied or declined as a whole, never one line at a time, and it has no **Allow in this thread**.
 
@@ -278,7 +285,7 @@ Agents you [connect over MCP](/en/docs/ai/connect-an-agent), plugins and the oth
 
 ### The always-ask list
 
-Some actions ask in every mode, Full access included. Their card has a red edge, asks *Allow …?* and says *asks in every mode*, and offers only **Allow once** and **Deny**:
+Some actions ask in every mode, Full access included. Their card has a red edge and says *asks in every mode*, and offers only **Allow once** and **Deny**:
 
 - **Deleting or overwriting files** outside your subtitles' folders, the open Project's folder and your [user folder](/en/docs/automation/user-folder), such as the command that deletes temporary files.
 - **Changing the Project's `.hikari` folder,** which holds the Project's settings. The change still waits for **Keep** in the [Review panel](/en/docs/ai/review#project-files).
@@ -297,7 +304,7 @@ The agent can write an [Automation](/en/docs/automation/running-scripts) script 
 - the script, with line numbers. The first 12 lines show, and **Show all … lines** shows the rest;
 - each [DependencyControl](/en/docs/automation/dependencycontrol) module the script needs, with its version when it is installed. A missing one is marked: *… isn't installed, so the script will stop when it loads.*
 
-**Run** runs it, and **Don't run** doesn't. **Don't run and tell the agent…** adds a message: *What should it do instead?* There is no **Allow in this thread**, and running the same script again asks again.
+**Run** runs it, and **Don't run** doesn't. **Tell the agent instead…** doesn't run it, and sends your message, as on a [question](#questions). There is no **Allow in this thread**, and running the same script again asks again.
 
 An approved script runs like any macro, on the active tab's selection: it runs the macro the agent named, or the script's first one. It is one undo step, named *Automation:* and the macro's name, and **Force stop** on the card ends it while it runs. Another macro running, or no open file, stops it before it starts.
 
@@ -315,25 +322,26 @@ Every install asks first, in every mode, Full access included, and the judge nev
 - the permissions it asks for, and the commands it adds;
 - the first 12 lines of its `main.lua`, and **Show all … files** for the rest.
 
-**Install** installs it, and **Don't install** doesn't. **Don't install and tell the agent…** adds a message: *What should it do instead?* A full-trust plugin turns the card red, *Install with full access?*, and its button says **Install with full access**, which is never the default. A package signed by another key than the copy you have shows the key warning, with **Trust and install**.
+**Install** installs it, and **Don't install** doesn't. **Tell the agent instead…** doesn't install it, and sends your message, as on a [question](#questions). A full-trust plugin turns the card red, *Install with full access?*, and its button says **Install with full access**, which is never the default. A package signed by another key than the copy you have shows the key warning, with **Trust and install**.
 
 - **Only what you saw installs.** If the package changes after the card shows, it isn't installed.
 - **Only its own or yours.** The agent can install a plugin it wrote, or a `.hikariplugin` you attached or gave it, never one from the marketplace, and never a package over 1 MiB.
-- **As from a file.** An installed plugin turns on, and **Automation › Plugins…** can turn it off or uninstall it. The thread keeps a row, such as *Installed … · restricted* with **Open in Plugins**, or *Didn't install …* with your message.
+- **As from a file.** An installed plugin turns on, and **Automation › Plugins** can turn it off or uninstall it. The thread keeps a row, such as *Installed … · restricted* with **Open in Plugins**, or *Didn't install …* with your message.
 - **Running its commands.** The agent running a plugin's command is on the [always-ask list](#the-always-ask-list).
 
 Agents you [connect over MCP](/en/docs/ai/connect-an-agent) can't write, install or run plugins.
 
 ## Threads
 
-**Threads**, at the top left, lists your threads by day, with each one's files, model and cost. In a Project's window, that Project's threads come first, under *This project*. *running*, *at cap* or *Full access* marks a thread. **Search threads** finds them by title or file name. Click one to open it, and **+** starts a new one.
+**Threads**, at the top left, lists your threads by day, with each one's files, model and cost. In a Project's window, that Project's threads come first, under *This project*. *running*, *at cap* or *Full access* marks a thread. **Search threads** finds them by title or file name, or says *No threads match* and what you typed. Click one to open it, and **+** starts a new one. <kbd>Esc</kbd> leaves the list, after clearing the search if there is one.
 
-The thread menu, beside **+**, has:
+The thread menu is the **⋯** button at the top of the thread, beside **+**. Right-click a thread in **Threads**, or select it and press <kbd>Menu</kbd>, for the same menu for that thread. It has:
 
-- **Compact conversation** and **New thread from summary**: see [Long conversations](#long-conversations).
-- **Rename thread…**
-- **Export as Markdown…**, which saves the conversation as a `.md` file.
-- **Delete thread**, which asks first: *The conversation goes. Changes it made stay in your subtitles and in the review.*
+- **Rename thread…**, whose **Rename** stays off until the name is new and not empty, and **Export as Markdown…**, which saves the conversation as a `.md` file.
+- **Compact thread** and **New thread from summary**: see [Long conversations](#long-conversations).
+- **Delete thread…**, at the end, which asks first, naming the thread, as in *Delete “Honorifics pass”?*: *Its messages are deleted. Changes it made stay in your subtitles and in the review.*
+
+Right-click an answer to **Copy** it or **Select all** of it.
 
 Threads are kept in `ai/threads` in your user folder, so they are still there after a restart, with their mode, model, cost and what you allowed. Images the agent looked at aren't kept.
 
@@ -373,13 +381,13 @@ The Agent panel compacts long conversations, so a thread can go on past the mode
 
 A divider marks each compaction, such as *Context compacted 313K → 21.2K tokens*. When older turns were summarised, open it to see the summary the model now sees. The full history stays in the panel, above it.
 
-- **By hand.** `/compact`, or **Compact conversation** in the thread menu, compacts the thread now. Type an instruction for the summary after `/compact`, and it is added to the request. While a turn runs, it waits until the turn ends.
+- **By hand.** `/compact`, or **Compact thread** in the thread menu, compacts the thread now. Type an instruction for the summary after `/compact`, and it is added to the request. While a turn runs, it waits until the turn ends.
 - **New thread from summary**, in the thread menu, starts a new thread with the same title, mode and model, carried on from a summary of the whole thread. Its first item says *Carried on from the summary of* and the earlier thread's title.
 - **When it fails.** A summary request that fails is tried once more. If it fails again, the thread says *Couldn't compact the conversation*, with **Retry** and **New thread from summary**, and nothing is removed. An automatic compaction that fails also stops the turn.
 
 Each summary request costs what any request to that model costs, and counts toward the thread's cap and the day's. Threads on Claude Code or Codex compact on their own, so they have none of this.
 
-With **Compact long conversations automatically** off, nothing compacts on its own. At 97% the panel shows *This conversation is nearly full*, with **Compact conversation** and **New thread from summary**.
+With **Compact long conversations automatically** off, nothing compacts on its own. At 97% the panel shows *This conversation is nearly full*, with **Compact thread** and **New thread from summary**.
 
 ## Settings
 

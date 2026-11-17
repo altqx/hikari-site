@@ -2,7 +2,7 @@
 // the homepage count. src/assets/aegisub-parity.json is written by scripts/parity.ts from
 // CX7's parity.md (altqx/hikari#810).
 
-export type ParityStatus = 'same' | 'better' | 'different' | 'not-yet' | 'unverified';
+export type ParityStatus = 'same' | 'better' | 'different' | 'not-yet' | 'not-planned' | 'unverified';
 
 export interface ParityRow {
   /** The Aegisub feature, with `code` and **bold** marks. */
@@ -30,13 +30,21 @@ export interface ParityData {
   areas: ParityArea[];
 }
 
-export const statusOrder: ParityStatus[] = ['same', 'better', 'different', 'not-yet', 'unverified'];
+export const statusOrder: ParityStatus[] = [
+  'same',
+  'better',
+  'different',
+  'not-yet',
+  'not-planned',
+  'unverified',
+];
 
 export const statusLabel: Record<ParityStatus, string> = {
   same: 'Same',
   better: 'Better',
   different: 'Different on purpose',
   'not-yet': 'Not yet',
+  'not-planned': 'Not planned',
   unverified: 'Not checked yet',
 };
 
@@ -45,6 +53,7 @@ export const statusMeaning: Record<ParityStatus, string> = {
   better: 'The same, plus something you can check, named in the row.',
   different: 'We chose to do it another way. The row links to why.',
   'not-yet': 'Missing, or only partly there. The row says what is missing.',
+  'not-planned': "Missing, and we don't plan to add it. The row says what to use instead.",
   unverified: "We haven't checked it yet.",
 };
 
@@ -63,6 +72,7 @@ export function countRows(rows: ParityRow[]): Record<ParityStatus, number> {
     better: 0,
     different: 0,
     'not-yet': 0,
+    'not-planned': 0,
     unverified: 0,
   };
   for (const row of rows) counts[row.status] += 1;

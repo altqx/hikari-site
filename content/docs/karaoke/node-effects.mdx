@@ -2,6 +2,8 @@
 title: Node effects
 description: Build karaoke effects as a graph of nodes on a canvas, preview them on the video line by line, and apply them to the file.
 ---
+import addNodeLight from './images/ne-add-node-light.webp';
+import addNodeDark from './images/ne-add-node-dark.webp';
 
 A node effect is a graph of nodes, wired together on a canvas, that turns karaoke lines into new lines. It does the job of [templates](/en/docs/karaoke/templater) without writing template syntax. Each node does one thing: picks the syllables, works out a time, writes a tag or outputs the lines.
 
@@ -67,6 +69,18 @@ A node has its inputs on the left and its outputs on the right. Drag from an out
 - **Dropping a wire on empty space** opens **Add node**, showing only the nodes that can take that output.
 
 **Add node** also opens from the Graph header or a double-click on the canvas. It lists the nodes by category, with Lua last, and searches their names and what they do. **Recently added** at the top holds the nodes you added last.
+
+<figure>
+  <ThemedImage
+    light={addNodeLight}
+    dark={addNodeDark}
+    alt="Add node open on the graph: a Search nodes box, then the categories Units (highlighted), Values, Math, Time, Tags, Colours, Audio, Drawings, Text, Output and Groups, each with how many nodes it holds"
+    width={702}
+    height={417}
+    className="rounded-lg border"
+  />
+  <figcaption>Add node, by category.</figcaption>
+</figure>
 
 To group nodes, select them and press <kbd>Ctrl</kbd>+<kbd>G</kbd>. A group is one node on the canvas, and you rename it like any other node. **Unit info**, which gives the current unit's values, shows only its wired outputs and folds the rest: **3 more outputs** unfolds them.
 
