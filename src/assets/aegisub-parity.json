@@ -633,9 +633,9 @@
         },
         {
           "feature": "YUV4MPEG (`.y4m`) video",
-          "status": "unverified",
-          "text": "`.y4m` isn't in the Open video filter (only through All files), and whether the indexer opens it wasn't checked.",
-          "where": ""
+          "status": "same",
+          "text": "`.y4m` files open through FFMS2; pick All files in Open video, as its filter doesn't list them.",
+          "where": "Video › Open video… (All files)"
         },
         {
           "feature": "AviSynth scripts as video (Windows)",
