@@ -5,6 +5,8 @@ description: Write the reading of each kanji into a karaoke line, let the Kanji 
 
 import furiganaLight from './images/furigana-kanji-timer-light.webp';
 import furiganaDark from './images/furigana-kanji-timer-dark.webp';
+import videoFuriganaLight from './images/furigana-video-light.webp';
+import videoFuriganaDark from './images/furigana-video-dark.webp';
 
 Furigana are small kana set over kanji to show how they are read. In a karaoke file, a syllable carries its reading after a bar: `{\k40}君|きみ`. The [templater](/en/docs/karaoke/templater) leaves the bar and the reading out of the syllable's text, and its `furi` templates set each reading over its kanji, in a smaller furigana style.
 
@@ -28,6 +30,18 @@ The full-width `｜`, `＃`, `！` and `＜` work the same.
 ```
 
 Syllables with furigana that follow each other form one group. Their readings are set side by side, centred over their bases together. A syllable without furigana ends the group, and so does a `!` or `<`. A reading wider than its bases spills to the right; after `<`, it stays centred and spills both ways.
+
+<figure>
+  <ThemedImage
+    light={videoFuriganaLight}
+    dark={videoFuriganaDark}
+    alt="A karaoke line on the video, 夜空の星を見る, with the readings よぞら over 夜空 and ほし over 星, in the Video panel's preview of line 3"
+    width={800}
+    height={478}
+    className="rounded-lg border"
+  />
+  <figcaption>Readings set over their kanji. Subtitles: Jibrill.</figcaption>
+</figure>
 
 ## Furigana templates
 

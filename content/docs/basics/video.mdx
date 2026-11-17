@@ -5,6 +5,8 @@ description: Open a video, play and step through it, follow your lines on it, lo
 
 import fullscreenLight from './images/fullscreen-light.webp';
 import fullscreenDark from './images/fullscreen-dark.webp';
+import videoMenuLight from './images/video-menu-light.webp';
+import videoMenuDark from './images/video-menu-dark.webp';
 
 The Video panel shows the frame your subtitles are timed against, with the subtitles drawn on it as they will look. Each tab keeps its own video, audio, keyframes and position.
 
@@ -135,6 +137,18 @@ With **As in Aegisub 3.5**, three rows below choose what each wheel does: **Whee
 ## The right-click menu
 
 With the Position pointer on, right-click the picture, or press <kbd>Menu</kbd> over it, for:
+
+<figure>
+  <ThemedImage
+    light={videoMenuLight}
+    dark={videoMenuDark}
+    alt="The Video panel's right-click menu over a black test video: Copy video position, Play, Stop (greyed out) and Full screen; Export frame, Audio track and Chapters; Render cost, Change aspect ratio… and Reset zoom and pan (greyed out); then Unload video"
+    width={700}
+    height={455}
+    className="rounded-lg border"
+  />
+  <figcaption>The video's right-click menu.</figcaption>
+</figure>
 
 - **Copy video position**, **Play** or **Pause**, **Stop** and **Full screen**. With more than one monitor, **Full screen on ›** lists them all, from **Monitor 1**, the main one. In full screen it marks the monitor you're on.
 - **Export frame ›**: see [Saving a frame](#saving-a-frame).

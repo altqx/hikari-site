@@ -5,6 +5,8 @@ description: How the Settings window works, when changes apply, resetting, and w
 
 import generalLight from './images/settings-general-light.webp';
 import generalDark from './images/settings-general-dark.webp';
+import resetAllLight from './images/reset-all-light.webp';
+import resetAllDark from './images/reset-all-dark.webp';
 
 **File › Settings** opens the Settings window. It reopens on the page you used last. The [Settings reference](/en/docs/reference/settings) lists every setting with its default; this page is about the window itself.
 
@@ -67,6 +69,18 @@ Changes take effect at once, without restarting, the interface language too. The
 - Its arrow offers **Reset all settings…**, which does every page after asking. It leaves your shortcuts and the appearance alone: reset them on their own pages.
 
 Both wait for **OK** or **Apply** like any other change, so **Cancel** undoes them.
+
+<figure>
+  <ThemedImage
+    light={resetAllLight}
+    dark={resetAllDark}
+    alt="The Reset all settings question: Reset all settings to their defaults? Every page goes back to its defaults when you press OK or Apply; Cancel keeps your settings. Shortcuts and the appearance stay as they are: reset them on their own pages. Buttons: Reset all and Cancel"
+    width={468}
+    height={202}
+    className="rounded-lg border"
+  />
+  <figcaption>Reset all settings asks first.</figcaption>
+</figure>
 
 ## Keyboard
 

@@ -7,6 +7,10 @@ import gridLight from './images/grid-light.webp';
 import gridDark from './images/grid-dark.webp';
 import foldedLight from './images/grid-folded-light.webp';
 import foldedDark from './images/grid-folded-dark.webp';
+import gridMenuLight from './images/grid-menu-light.webp';
+import gridMenuDark from './images/grid-menu-dark.webp';
+import groupMenuLight from './images/line-groups-light.webp';
+import groupMenuDark from './images/line-groups-dark.webp';
 
 The Grid lists every line of the file, one row each, in file order. The line you click becomes the active line, which the [Line editor](/en/docs/basics/line-editor), the video and the audio follow.
 
@@ -70,6 +74,18 @@ Most commands act on the selected lines.
 ## The right-click menu
 
 Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>, for the Grid's menu. Its rows are in seven groups, and no submenu has another inside it:
+
+<figure>
+  <ThemedImage
+    light={gridMenuLight}
+    dark={gridMenuDark}
+    alt="The Grid's right-click menu on two selected lines: Insert, Duplicate 2 lines, Cut, Copy, Paste and Paste special; Join, Split, Swap lines, Make times continuous and Make line group; Line breaks, Change case, Swap dialogue alternatives and Remove tags…; Typesetting, Change alignment, keep position and Align and distribute; AI actions; Select lines visible on video, Show subtitles preview and Translation matching… (both greyed out) and Add QC note…; then Delete text and Delete 2 lines"
+    width={720}
+    height={725}
+    className="rounded-lg border"
+  />
+  <figcaption>The Grid's right-click menu on two selected lines.</figcaption>
+</figure>
 
 - **Insert ›** Before or After, also at the video's time or frame time. **Duplicate**, **Cut**, **Copy** and **Paste**. **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
 - **Join ›** Join, Keep first or Keep last. **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds). **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**. [Convert Aegisub folds to line groups](#aegisub-folds) shows here only when the file has Aegisub folds.
@@ -245,6 +261,18 @@ The filters are under **Filtering**, in the menu of the **⋯** button on the Gr
 ## Line groups
 
 **Make line group** groups the selected lines under a description row that opens and closes them like a folder. Right-click the description row, or press <kbd>Menu</kbd> on it, for **Select the group's lines**, **Add 3 selected lines** (naming how many are selected), **Copy line group**, **Change description…**, **Convert Aegisub folds to line groups** when the file has Aegisub folds, and, apart, **Ungroup**. An edit that would split a group's lines apart asks first, or is refused.
+
+<figure>
+  <ThemedImage
+    light={groupMenuLight}
+    dark={groupMenuDark}
+    alt="A line group's description row, Signs, with its right-click menu: Select the group's lines, Add selected line, Copy line group, Change description… and, apart, Ungroup"
+    width={720}
+    height={241}
+    className="rounded-lg border"
+  />
+  <figcaption>The menu of a line group's description row.</figcaption>
+</figure>
 
 ### Groups inside groups
 

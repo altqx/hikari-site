@@ -7,6 +7,10 @@ import cardLight from './images/automation-card-light.webp';
 import cardDark from './images/automation-card-dark.webp';
 import dialogLight from './images/script-dialog-menu-light.webp';
 import dialogDark from './images/script-dialog-menu-dark.webp';
+import automationMenuLight from './images/automation-menu-light.webp';
+import automationMenuDark from './images/automation-menu-dark.webp';
+import repeatMenuLight from './images/repeat-menu-light.webp';
+import repeatMenuDark from './images/repeat-menu-dark.webp';
 
 Automation scripts are Lua or MoonScript files that add **macros**: commands that change the subtitles, such as adding a gradient or retiming karaoke. HikariSub runs the Automation 4 scripts written for Aegisub, and comes with a set of its own. This page is about using scripts; to write one, see [Writing scripts](/en/docs/automation/writing-scripts).
 
@@ -37,6 +41,18 @@ The few differences that remain are in [Coming from Aegisub](/en/docs/automation
 | **Plugins** | Opens the plugin manager: see [Using plugins](/en/docs/plugins/using-plugins) |
 
 Below these come the commands of each running plugin, in a submenu named after it, then the macros of every loaded script, in the order they were loaded. A `/` in a macro's name makes submenus: *Typesetting/Move* shows as **Typesetting › Move**, and macros whose names start the same share a submenu. The Automation panel, shortcuts and **Settings › Shortcuts** keep the full name. The macros are greyed out while a macro runs. <kbd>Shift</kbd>+click a macro to give it a shortcut instead of running it.
+
+<figure>
+  <ThemedImage
+    light={automationMenuLight}
+    dark={automationMenuDark}
+    alt="The Automation menu open: Load script…, Refresh autoload scripts, Run the last loaded script, Run the last macro again and Repeat last run (both greyed out), Show panel and Plugins, then the macros of the loaded scripts, where Group › Sub › Deep shows submenus made from the macros' names"
+    width={860}
+    height={448}
+    className="rounded-lg border"
+  />
+  <figcaption>A <code>/</code> in a macro's name makes a submenu.</figcaption>
+</figure>
 
 None of the items has a key at first. **Load script…**, **Refresh autoload scripts**, **Run the last loaded script**, **Run the last macro again** and **Repeat last run** can have one: see [Shortcuts](/en/docs/customize/hotkeys).
 
@@ -139,6 +155,18 @@ The card never takes the keyboard by itself. <kbd>F6</kbd> reaches it, and <kbd>
 
 Repeat last run remembers the last run that ended without a dialog cancelled, until you quit. In the Automation menu, the macro's name shows beside **Repeat last run**. In the Automation panel, the button's tooltip names the macro and the button you pressed, such as *Repeat last run: Gradient, as Apply with the same answers*. If the script was unloaded, the macro can't be repeated.
 
+<figure>
+  <ThemedImage
+    light={repeatMenuLight}
+    dark={repeatMenuDark}
+    alt="The Automation menu with Repeat last run highlighted and the macro it repeats, Two dialogs, shown beside it; Run the last macro again is above it"
+    width={700}
+    height={330}
+    className="rounded-lg border"
+  />
+  <figcaption>Repeat last run names the macro it repeats.</figcaption>
+</figure>
+
 **Run the last loaded script** runs the first macro of the last script added to this file, reloading it first if its file changed. If the file names no scripts, it says "This subtitle file does not have any scripts added". If the script failed to load, a notice says "*name* did not load. Its error is in Details.", with the error in **Details**, and the script opens in your editor. If it loaded but has no macros, as a library has none, a notice says "*name* has no macros to run". Asked for by its key while another macro runs, it waits for that one to end.
 
 ## A script's dialog
@@ -149,9 +177,9 @@ Many macros ask for settings first in a dialog of their own. Its title is the ma
   <ThemedImage
     light={dialogLight}
     dark={dialogDark}
-    alt="A script's dialog with fields for Tags, Start and End colours, Strip width, Accel and Mode. The ⋯ menu at the bottom left is open on Presets, listing Soft pink fade, Blue to clear and Karaoke glow, then Save as preset… and Delete preset"
-    width={506}
-    height={297}
+    alt="A script's dialog with fields for Tags, Start and End colours, Strip width, Accel and Mode. The ⋯ menu at the bottom left has Last used, Presets and Reset to the script's values; Presets is open, listing Soft pink fade, Blue to clear and Karaoke glow, then Save as preset… and, last, Delete preset"
+    width={522}
+    height={325}
     className="rounded-lg border"
   />
   <figcaption>The ⋯ menu of a script's dialog, with three presets.</figcaption>

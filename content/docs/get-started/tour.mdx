@@ -7,6 +7,8 @@ import windowLight from './images/window-light.webp';
 import windowDark from './images/window-dark.webp';
 import typesettingLight from './images/typesetting-light.webp';
 import typesettingDark from './images/typesetting-dark.webp';
+import textMenuLight from './images/text-field-menu-light.webp';
+import textMenuDark from './images/text-field-menu-dark.webp';
 
 <figure>
   <ThemedImage
@@ -107,6 +109,18 @@ Menus show each command's key on the right: the key it has now, so a key you cha
 Every text field, time and number fields included, has the same right-click menu, and so do the drop-down lists you can type in, such as the Line editor's **Actor** and **Effect**: **Undo**, **Redo**, **Cut**, **Copy**, **Paste**, **Delete** and **Select all**. Each row does what its key does in that field. In the Line editor, **Undo** undoes the subtitles' last change, as <kbd>Ctrl</kbd>+<kbd>Z</kbd> does there. In a time field, **Paste** fits what you paste into the time, as typing does.
 
 The Line editor's menu also has the spelling and grammar rows for the word under it; see [The text](/en/docs/basics/line-editor#the-text).
+
+<figure>
+  <ThemedImage
+    light={textMenuLight}
+    dark={textMenuDark}
+    alt="The right-click menu of the Styles panel's text field, with Default selected in it: Undo and Redo (greyed out), Cut, Copy, Paste (greyed out) and Delete, then Select all, each with its key"
+    width={700}
+    height={300}
+    className="rounded-lg border"
+  />
+  <figcaption>The menu every text field shares.</figcaption>
+</figure>
 
 ## The keys you need first
 
