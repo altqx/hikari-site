@@ -115,7 +115,7 @@ Agents connected through MCP can read and preview graphs, but saving and applyin
 
 ## Keyframes and macros
 
-The agent can replace the video's keyframes, as **Video › Open keyframes** does. It's a change like any other, so it asks as the thread's [mode](#modes) says. It can also list the Automation macros you loaded, but it can't run them: only plugins can. Its own [Lua scripts](#lua-scripts) ask every time, in every mode.
+The agent can replace the video's keyframes, as **Video › Open keyframes…** does. It's a change like any other, so it asks as the thread's [mode](#modes) says. It can also list the Automation macros you loaded, but it can't run them: only plugins can. Its own [Lua scripts](#lua-scripts) ask every time, in every mode.
 
 Grid row marks, git and batches of raw video frames are for [plugins](/en/docs/plugins/write-your-first-plugin#grid-row-marks) only. The agent looks at the video through frame images.
 
@@ -326,7 +326,7 @@ Every install asks first, in every mode, Full access included, and the judge nev
 
 - **Only what you saw installs.** If the package changes after the card shows, it isn't installed.
 - **Only its own or yours.** The agent can install a plugin it wrote, or a `.hikariplugin` you attached or gave it, never one from the marketplace, and never a package over 1 MiB.
-- **As from a file.** An installed plugin turns on, and **Automation › Plugins…** can turn it off or uninstall it. The thread keeps a row, such as *Installed … · restricted* with **Open in Plugins**, or *Didn't install …* with your message.
+- **As from a file.** An installed plugin turns on, and **Automation › Plugins** can turn it off or uninstall it. The thread keeps a row, such as *Installed … · restricted* with **Open in Plugins**, or *Didn't install …* with your message.
 - **Running its commands.** The agent running a plugin's command is on the [always-ask list](#the-always-ask-list).
 
 Agents you [connect over MCP](/en/docs/ai/connect-an-agent) can't write, install or run plugins.

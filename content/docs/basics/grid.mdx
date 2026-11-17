@@ -63,7 +63,7 @@ Right-click the row of column names for the list of columns: tick or untick one 
 | <kbd>Ctrl</kbd>+<kbd>Up</kbd> <kbd>Ctrl</kbd>+<kbd>Down</kbd> | Previous or next line, from anywhere |
 | <kbd>F2</kbd> | Selects the line at the video's time |
 
-The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Playback › Move video to the selected line**. **Edit › Select lines** selects lines by their text, style or other fields, or the lines that [overlap](/en/docs/basics/find-and-replace#selecting-lines) an earlier one.
+The Grid's keys work while the pointer is over it, without clicking it first. To make a single click move the video too, change **File › Settings › Video › Playback › Move video to the selected line**. **Edit › Select lines…** selects lines by their text, style or other fields, or the lines that [overlap](/en/docs/basics/find-and-replace#selecting-lines) an earlier one.
 
 Most commands act on the selected lines.
 
@@ -240,7 +240,7 @@ The filters are under **Filtering**, in the menu of the **⋯** button on the Gr
 - The marks at the left edge show where hidden lines are. Click one to open or close that run.
 - **Ignore filtering in some actions**, in the same **⋯** menu, lets Replace all and Shift times reach hidden lines too.
 
-**View › Hide tags** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Grid › ASS tag replacement** sets the character.
+**View › Hide tags in the Grid** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Grid › ASS tag replacement** sets the character.
 
 ## Line groups
 
@@ -263,7 +263,7 @@ In the file, a line keeps one `[tree_opened]` or `[tree_closed]` marker in its A
 
 ### Aegisub folds
 
-Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups**, in **Subtitles** and in the Grid's right-click menu, does the same at any time while the file has folds; it has no key at first.
+Folds made in arch1t3cht's Aegisub can become line groups. Opening a file that has them shows *This file has 3 Aegisub folds.*, with **Convert to line groups**. **Convert Aegisub folds to line groups**, in **Subtitles** and in the Grid's right-click menu, does the same at any time while the file has folds; it has no key at first. In **Subtitles**, after **Set FPS ›**, it is greyed out when the file has none, with *No Aegisub folds in this file*.
 
 - Each fold becomes a line group, and folds inside folds become groups inside groups. A collapsed fold becomes a closed group.
 - Before each group, a comment line holds the fold's first line without its tags, as the group's description.

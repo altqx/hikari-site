@@ -30,15 +30,15 @@ The few differences that remain are in [Coming from Aegisub](/en/docs/automation
 | **Load script…** | Loads a `.lua` or `.moon` file for the current subtitle file |
 | **Refresh autoload scripts** | Reloads the autoload scripts, and loads any new ones |
 | **Run the last loaded script** | Runs the first macro of the last script added to this subtitle file |
-| **Rerun last macro** | Runs the last macro again, with its dialogs |
-| **Repeat last run** | Runs the last macro again with the same answers, without its dialogs when they are unchanged |
+| **Run the last macro again** | Runs the last macro again, with its dialogs |
+| **Repeat last run** | Runs the last macro again with the same answers, without its dialogs when they are unchanged. The macro's name shows beside it |
 | **Cancel macro** | Shown only while a macro runs |
 | **Show panel** | Opens the Automation panel |
-| **Plugins…** | Opens the plugin manager: see [Using plugins](/en/docs/plugins/using-plugins) |
+| **Plugins** | Opens the plugin manager: see [Using plugins](/en/docs/plugins/using-plugins) |
 
 Below these come the commands of each running plugin, in a submenu named after it, then the macros of every loaded script, in the order they were loaded. A `/` in a macro's name makes submenus: *Typesetting/Move* shows as **Typesetting › Move**, and macros whose names start the same share a submenu. The Automation panel, shortcuts and **Settings › Shortcuts** keep the full name. The macros are greyed out while a macro runs. <kbd>Shift</kbd>+click a macro to give it a shortcut instead of running it.
 
-None of the items has a key at first. **Load script**, **Refresh autoload scripts**, **Run the last loaded script** and **Repeat last run** can have one: see [Shortcuts](/en/docs/customize/hotkeys).
+None of the items has a key at first. **Load script…**, **Refresh autoload scripts**, **Run the last loaded script**, **Run the last macro again** and **Repeat last run** can have one: see [Shortcuts](/en/docs/customize/hotkeys).
 
 Opening the menu also loads the scripts the current file names, after [asking you](#scripts-a-subtitle-file-names), and reloads any loaded script whose file changed on disk.
 
@@ -134,10 +134,10 @@ The card never takes the keyboard by itself. <kbd>F6</kbd> reaches it, and <kbd>
 
 ### Running a macro again
 
-- **Rerun last macro** runs the last macro again on the lines selected now, as if you had chosen it from the menu. Its dialogs show as usual.
+- **Run the last macro again** runs the last macro again on the lines selected now, as if you had chosen it from the menu. Its dialogs show as usual.
 - **Repeat last run** runs it again with the same answers. Each dialog that is the same as last time is answered for you, without showing. A dialog that changed is shown, filled with your last answers, with a note saying why. Questions, which have only buttons, are asked again.
 
-Repeat last run remembers the last run that ended without a dialog cancelled, until you quit. The menu item names the macro and the button you pressed, such as **Repeat last run: Gradient, as Apply with the same answers**. If the script was unloaded, the macro can't be repeated.
+Repeat last run remembers the last run that ended without a dialog cancelled, until you quit. In the Automation menu, the macro's name shows beside **Repeat last run**. In the Automation panel, the button's tooltip names the macro and the button you pressed, such as *Repeat last run: Gradient, as Apply with the same answers*. If the script was unloaded, the macro can't be repeated.
 
 **Run the last loaded script** runs the first macro of the last script added to this file, reloading it first if its file changed. If the file names no scripts, it says "This subtitle file does not have any scripts added". If the script failed to load, a notice says "*name* did not load. Its error is in Details.", with the error in **Details**, and the script opens in your editor. If it loaded but has no macros, as a library has none, a notice says "*name* has no macros to run". Asked for by its key while another macro runs, it waits for that one to end.
 

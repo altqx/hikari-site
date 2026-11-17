@@ -8,10 +8,10 @@ description: Make a sign follow the video with After Effects motion data from Mo
 | Command | Does |
 | --- | --- |
 | **Apply motion data…** | Moves the selected lines with After Effects motion data, one line a frame |
-| **Perspective tracking…** | Fits the selected lines to a tracked plane with Power-Pin data. See [Perspective tracking](/en/docs/typesetting/perspective#perspective-tracking) |
+| **Apply Power-Pin data…** | Fits the selected lines to a tracked plane with Power-Pin data. See [Perspective tracking](/en/docs/typesetting/perspective#perspective-tracking) |
 | **Revert motion data** | Puts tracked lines back as the line they were made from |
 | **Copy motion data from lines** | Copies frame-by-frame lines' motion as motion data |
-| **Copy Power-Pin track from lines** | Copies lines' perspective planes as Power-Pin data |
+| **Copy Power-Pin data from lines** | Copies lines' perspective planes as Power-Pin data |
 | **Extend tracked lines…** | Carries tracked lines on for more frames, before or after |
 | **Extrapolate \move to the line** | Runs a timed `\move` at the same speed over the whole line |
 
@@ -66,7 +66,7 @@ Without it, data shorter or longer than the lines can't be applied, and the wind
 These two commands copy data to the clipboard, and a notice says how many frames they copied.
 
 - **Copy motion data from lines** reads the selected frame-by-frame lines of one sign, each following on from the one before with the same text and layer. It copies their `\pos` (or `\move`), `\fscx`, `\fscy` and `\frz` as After Effects keyframe data, at the video's frame rate. Applying that data to the first line again gives back the same lines.
-- **Copy Power-Pin track from lines** copies the selected lines' perspective planes as Power-Pin data, for [Perspective tracking](/en/docs/typesetting/perspective#perspective-tracking). A line without a saved plane gives its text's quad. Lines that overlap, and lines with `\move`, can't be copied: copy one sign at a time.
+- **Copy Power-Pin data from lines** copies the selected lines' perspective planes as Power-Pin data, for [Perspective tracking](/en/docs/typesetting/perspective#perspective-tracking). A line without a saved plane gives its text's quad. Lines that overlap, and lines with `\move`, can't be copied: copy one sign at a time.
 
 ## Extending tracked lines
 
