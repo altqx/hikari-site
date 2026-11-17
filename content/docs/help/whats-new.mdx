@@ -5,9 +5,9 @@ description: What changed in each HikariSub 0.1 beta, newest first, with the sec
 
 The newest release comes first. Each release's notes on GitHub also list its downloads. [Install](/en/docs/get-started/install) has the current version.
 
-## Next release
+## 0.1.0-beta.4
 
-Not published yet. These changes are in HikariSub's code and come with the next beta.
+Published 2026-11-17. [Release notes](https://github.com/altqx/hikari/releases/tag/v0.1.0-beta.4)
 
 ### Introducing
 
@@ -27,12 +27,12 @@ Not published yet. These changes are in HikariSub's code and come with the next 
 
 #### Hikari AI and agents
 
-- **The Agent panel and the Review panel:** ask HikariSub's AI agent to work on your subtitles in threads, on a provider you add or on Claude Code, Codex or an ACP agent such as OpenCode or Antigravity already on your computer. Every edit waits in the **Review panel**, and in the Grid and the Line editor, until you **Keep** or **Undo** it. Each thread has a mode, Manual, Auto or Full access, risky actions ask in every mode, and each thread and each day have a cost cap. See [The Agent panel](/en/docs/ai/agent) and [Reviewing AI changes](/en/docs/ai/review).
+- **The Agent panel and the Review panel:** ask HikariSub's AI agent to work on your subtitles in threads, on a provider you add or on Claude Code, Codex or an ACP agent such as OpenCode or Antigravity already on your computer. Every edit waits in the **Review panel**, and in the Grid and the Line editor, until you **Keep** or **Undo** it. Each thread has a mode, Manual, Auto or Full access, risky actions ask in every mode, and each thread and each day have a cost cap. The model button names the model the next message uses, and its menu also offers the models of Claude Code, Codex and ACP agents. See [The Agent panel](/en/docs/ai/agent) and [Reviewing AI changes](/en/docs/ai/review).
 - **What the agent can do:** it can time karaoke, typeset signs with HikariSub's own tools, build node effects, set keyframes, write and run Lua scripts and plugins, search the web, use MCP servers' tools, and split work across sub-agents. Running a script or installing a plugin always asks first, in every mode. In a Project, it reads the Project's files and `AGENTS.md`, and its file changes wait for your **Keep** too. See [The Agent panel](/en/docs/ai/agent).
 - **Skills:** skills are instructions for kinds of work that the agent reads when your request matches one. Three come with HikariSub, typesetting, translation and karaoke-templater, and you and a Project can add your own. See [Skills](/en/docs/ai/skills).
 - **AI inline actions and Translate:** **AI actions ›** in the Grid's and the Line editor's right-click menus runs one task on the lines you choose, with no Agent panel thread: **Rewrite…**, **Shorten to 15 CPS**, **Fix spelling and grammar**, **Translate to** and your own actions. Translate runs a translator and a reviewer, keeps names and terms from Honya's `GLOSSARY.md` and `CHARACTERS.md`, and in Translation mode marks the Lines the reviewer didn't approve Unconfirmed. See [Inline actions](/en/docs/ai/inline-actions) and [Translating](/en/docs/ai/inline-actions#translating).
 - **Connect your own agent:** **File › Settings › AI › MCP › Let agents outside HikariSub edit through MCP** lets Claude Code, Codex or another agent you run yourself read and edit your open files, and its edits wait in the Review panel too. **Copy setup** copies what the agent needs. See [Connect Claude Code or Codex](/en/docs/ai/connect-an-agent).
-- **AI settings and privacy:** **File › Settings › AI** holds your providers, external agents, MCP servers, skills and inline actions, and keeps the AI component up to date. AI never sees your recent files or your privacy settings, and the Agent panel is translated into Korean, Polish, Tamil and Thai. See [AI settings](/en/docs/ai/settings) and [What is sent](/en/docs/help/what-is-sent#ai).
+- **AI settings and privacy:** **File › Settings › AI** holds your providers, external agents, MCP servers, skills and inline actions, and keeps the AI component up to date; if the component is missing, **Get the AI component** in the Agent panel downloads it, with its progress. AI never sees your recent files or your privacy settings, and the Agent panel is translated into Korean, Polish, Tamil and Thai. See [AI settings](/en/docs/ai/settings) and [What is sent](/en/docs/help/what-is-sent#ai).
 
 #### Node effects
 
