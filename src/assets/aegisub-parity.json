@@ -989,8 +989,8 @@
         },
         {
           "feature": "Interface language",
-          "status": "not-planned",
-          "text": "5 languages (English, Korean, Polish, Tamil, Thai) against Aegisub's 33, and no others are planned.",
+          "status": "not-yet",
+          "text": "5 languages today (English, Korean, Polish, Tamil, Thai). More will come through community translation on HikariSub's own translation platform.",
           "where": "File › Settings › Interface language"
         },
         {
