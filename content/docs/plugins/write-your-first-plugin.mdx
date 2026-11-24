@@ -68,7 +68,7 @@ To try it:
 2. In HikariSub, choose **Automation › Plugins**, then **Install from file…**, and choose the package.
 3. Open a subtitle file, then choose **Automation › First plugin › Count lines**.
 
-After a change, raise `version` and choose **Update from file…** in the plugin's details. If the plugin fails to start, its details show the error, with the file and line inside the package.
+After a change, raise `version` and choose **Update from file…** in the plugin's details, or skip the packing and [work on it in place](#work-on-it-in-place). If the plugin fails to start, its details show the error, with the file and line inside the package.
 
 ## Step 2: a panel
 
@@ -172,6 +172,23 @@ end)
 ```
 
 Every widget that sends events needs an `id`. Each event says which widget sent it, in `event.widget`.
+
+## Work on it in place
+
+Packing a zip after every change is slow. Instead, load the folder as a dev plugin:
+
+1. Choose **Automation › Plugins**, then **Install dev plugin…** at the top of the plugin manager, and pick the `first-plugin` folder.
+2. Answer the question, *Load “First plugin” 0.1.0 from its folder?* The plugin runs from the folder, unsigned, with a **Dev** badge.
+3. Edit a file and save. 300 ms after a change, HikariSub checks the files again and restarts the plugin.
+
+- **Its own data.** A dev plugin keeps its own data, settings and folders, apart from an installed copy of the same plugin, and a reload keeps them.
+- **The installed copy.** While the dev plugin is loaded, it stands in for an installed copy of the same id, whose details say *The installed 0.1.0 is overridden by a dev plugin until you unload it.* **Unload…** in the dev plugin's details takes it out, and can remove its data. Your folder stays as it is, and the installed copy runs again.
+- **A broken change.** If the new files break a rule, HikariSub keeps the last good ones running, and says why in the plugin's details and the Log panel.
+- **More permissions.** If the new manifest asks for more than you said yes to, the change waits until you choose **Review…** in its details.
+- **What a reload picks up.** Everything in the folder: the code, the manifest, its completion and hover providers, and its colour themes and icons. A theme or icon you remove from the manifest goes.
+- **What's skipped.** Files and folders whose names start with `.`, so a `.git` folder doesn't count. A symbolic link is refused.
+
+A dev plugin never updates by itself, and the marketplace leaves it alone. See [Developer tools](https://github.com/altqx/hikari/blob/main/docs/plugins.md#developer-tools).
 
 ## The manifest
 
@@ -464,11 +481,13 @@ With `permissions.presence`, `hikari.presence.set_text(text)` puts a short text 
 
 ## Data-only packages
 
-A package without `main` and without programs runs no code. It may hold only content: `styles`, `karaokePresets`, `graphs`, `dictionaries`, `layouts`, `nodes`, and the looks below. It can't be `unrestricted` and has no `permissions` or `settings`. Its install question shows what it adds and who signed it.
+A package without `main` and without programs runs no code. It may hold only content: `styles`, `karaokePresets`, `graphs`, `dictionaries`, `layouts`, `nodes`, and the looks below. It can't be `unrestricted` and has no `permissions` or `settings`. Its install question shows what it adds and who signed it, with no permission list. Any plugin can ship the looks too, beside its code.
 
-- **`contributes.themes`.** Colour themes, `{id, title, type, path}`. Each file follows the theme schema, and must pass the same contrast check as HikariSub's built-in themes.
-- **`contributes.iconThemes`.** `{id, title, path}`, a folder with one `<role>.svg` for every icon role.
-- **`contributes.icons`.** The plugin's own icons, `{id, path}`, named as `own:<id>` wherever a command, panel or status item takes an `icon`.
+- **`contributes.themes`.** Colour themes, `{id, title, type, path}`. Each file follows the theme schema, and must pass the same contrast check as HikariSub's built-in themes. Users pick one in **File › Settings › Appearance**, after the built-in themes. Its id there is `plugin:<plugin id>/<theme id>`.
+- **`contributes.iconThemes`.** `{id, title, path}`, where `path` is a folder with one `<role>.svg` for every icon role in [`src/ui/icons/manifest.json`](https://github.com/altqx/hikari/blob/main/src/ui/icons/manifest.json); a missing one refuses the package. Once a turned-on plugin has one, **File › Settings › Appearance** shows an **Icons** section, whose row lists **HikariSub** and each theme with its plugin, such as *Round — Looks* for the theme Round from a plugin named Looks. The choice is kept as `appearance.iconTheme`. A role that a later HikariSub adds shows HikariSub's own icon until the theme covers it.
+- **`contributes.icons`.** The plugin's own icons, `{id, path}`. Name one as `own:<id>` in a command's or status item's `icon`, and it shows there, tinted like every other interface icon. Two plugins' `own:` icons of the same id never collide.
+
+When the plugin is turned off, uninstalled or revoked, a window showing one of its colour themes falls back to the built-in theme of the same type, and `appearance.iconTheme` goes back to `hikarisub`.
 
 Each SVG has a `viewBox` of `0 0 16 16` and draws in `currentColor` only, so it follows the theme; a `<style>` element is refused. HikariSub checks these at install, and the marketplace's checks are the same. See [Themes and icons](https://github.com/altqx/hikari/blob/main/docs/plugins.md#themes-and-icons).
 
