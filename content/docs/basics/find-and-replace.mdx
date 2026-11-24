@@ -99,4 +99,7 @@ A pattern with a mistake shows the error under the find field, in red. Until you
 
 **Edit › Select lines…** selects lines by their text in a window of its own, without replacing anything.
 
-Choose **Overlapping lines** in the Select lines window's **In** list to select the dialogue lines that start while an earlier dialogue line is still on. It looks at every line the Grid shows, whatever is selected, and doesn't look at text, so **Find**, **Match case** and **Regular expressions** are off. Comment lines are never counted. To look only among some lines, combine it with **Add to selection** or **Deselect**.
+- **Match** chooses how the text is compared: **Contains**, **Exact match**, where the whole field must be the text, or **Regular expressions**. **Match case** works with each.
+- **Selection** chooses what happens to the lines found: **Select**, **Add to selection**, **Deselect**, or **Intersect with selection**, which keeps the selected lines that match, as Aegisub does.
+
+Choose **Overlapping lines** in the Select lines window's **In** list to select the dialogue lines that start while an earlier dialogue line is still on. It looks at every line the Grid shows, whatever is selected, and doesn't look at text, so **Find**, **Match** and **Match case** are off. Comment lines are never counted. To look only among some lines, combine it with **Add to selection** or **Deselect**.
