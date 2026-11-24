@@ -408,6 +408,14 @@ HikariSub keeps copies of changed files as you work, 20 seconds after a change a
 
 **File › Settings › General › Saving › Autosave every** sets how soon after a change a copy is made, from 5 seconds to 1 hour. **Autosave files kept** sets how many copies of each file are kept, from 2 to 1000000, 3 at first. Copies older than 30 days are deleted, and so are a file's copies once you save and close it.
 
+### Earlier saves
+
+Each time a save replaces a file, HikariSub keeps the file as it was in its recovery folder, in case you want the earlier version back. This covers **Save**, **Save as…** over a file that exists, and saving over a change made in another program. A save that writes the same contents, or that creates a new file, keeps nothing.
+
+**File › Open autosave…** lists them as **Earlier save** rows, one per file, with its copies newest first. **Open copy** opens one as a new, unsaved tab named after the file, such as *backup.ass (earlier save)*; the file on disk doesn't change. **Delete** removes that file's earlier saves. **Delete older than…** clears autosaves only.
+
+**File › Settings › General › Saving › Backup copies kept** sets how many earlier saves each file keeps, from 0 to 100, 3 at first. With 0, no new copies are kept. Earlier saves aren't deleted by age, and a lower number applies at the file's next save.
+
 ## Sessions
 
 A session is the set of open tabs, with their videos, audio and positions. **File › Last session** can:
