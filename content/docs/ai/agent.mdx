@@ -18,9 +18,9 @@ Two commands have no key at first; give them one in **File › Settings › Shor
 | **Agent panel** | Shows the panel |
 | **New agent thread** | Shows the panel with a new thread, as its **+** does |
 
-With **Turn off all AI features** ticked in **File › Settings › AI**, the panel and both commands are gone.
+AI is off when you first install HikariSub. While it is off, the panel shows only *AI is off* and **Turn on AI**, and both commands are gone. **Edit › Turn on AI…** shows the panel. **Turn on AI** turns AI on at once. If the AI component isn't on this computer yet, it downloads, with its progress in a strip at the top of the panel, and **Retry** there if the download fails. See [Turning AI on](/en/docs/ai/settings#turning-ai-on).
 
-Until you add a provider with a chat model, or install Claude Code or Codex, the panel says *Add a provider to use the agent*, with **Open Settings › AI**. Nothing is sent or downloaded until then. The agent uses the **Chat** model in **File › Settings › AI › Models**. With no Chat model, a new thread runs on an [agent on this computer](#agents-on-this-computer) instead: Claude Code if you have it, otherwise Codex.
+Until you add a provider with a chat model, or install Claude Code or Codex, the panel says *Add a provider to use the agent*, with **Open Settings › AI**. Nothing is sent until then. The agent uses the **Chat** model in **File › Settings › AI › Models**. With no Chat model, a new thread runs on an [agent on this computer](#agents-on-this-computer) instead: Claude Code if you have it, otherwise Codex.
 
 ## Asking
 
@@ -33,9 +33,25 @@ Type in the box at the foot of the panel and press <kbd>Enter</kbd>, or **Send**
 - **Stopping.** While the agent works, <kbd>Esc</kbd> in the box, or **Stop**, stops the turn. A tool already running finishes first. The thread says *You stopped the turn.*
 - **Sending while it works.** A message you send while the agent works waits in a strip above the box, *Queued ·* and your message, and is sent when the turn ends. **Steer now** gives it to the agent at once, after its next step, and marks it *steered*. **Edit** puts it back in the box, and **Remove** drops it.
 
-Below the box, the model button names the model your next message uses, or says *Choose a model* when there is none yet. It picks the thread's model from your providers' models, each with its provider beside it, or an [agent on this computer](#agents-on-this-computer), and the mode button picks its [mode](#modes). Each menu marks the one chosen.
+Below the box, the model button names the model your next message uses, such as *Claude Code · Opus*, or says *Choose a model* when there is none yet. It opens the [model picker](#choosing-a-model). The mode button picks the thread's [mode](#modes), and its menu marks the one chosen.
 
-The `/` and `@` menus open above the box, and the model and mode menus above their buttons, always inside the panel.
+The `/` and `@` menus open above the box, and the mode menu above its button, always inside the panel.
+
+## Choosing a model
+
+The model button opens the model picker, a list of every model the thread can use, which you can search. It opens above the button when there is more room above, and below it otherwise, always inside the panel. From the top:
+
+- **Recent:** the last five models you chose in any thread, newest first, each with its provider or agent beside it. A model that is no longer offered drops out.
+- **Each [agent on this computer](#agents-on-this-computer):** Claude Code, then Codex, then each ACP agent. Each starts with **Agent default**, then the agent's own models.
+- **Each provider,** in the order of **File › Settings › AI**, under its name. A model's id shows beside its name when the two differ.
+- **Settings › AI…**, last, opens **File › Settings › AI**.
+
+The current model is marked, in **Recent** and in its group. **File › Settings › AI › Models** uses the same picker for each role.
+
+- **Searching.** Type to find a model by its name, its id, or its provider's or agent's name. The groups stay, and **Recent** hides while you type. With nothing found, it says *No matching models*.
+- **Keys.** <kbd>Up</kbd> and <kbd>Down</kbd> move through the models, and <kbd>Enter</kbd> picks one, or the top match while you type. <kbd>Esc</kbd> closes the picker and changes nothing. The next message uses the model you picked.
+- **Models you can't use yet.** A provider whose key was refused, or that you signed out of, shows one row in place of its models: *Add a key for* and its name, or for OpenRouter, *Sign in with OpenRouter…*. Codex without HikariSub's ChatGPT sign-in shows *Sign in with ChatGPT…*. Each opens **File › Settings › AI**.
+- **New providers.** A provider you add, sign in to or remove changes the list at once, even while the picker is open.
 
 ## What the thread shows
 
@@ -121,7 +137,7 @@ Grid row marks, git and batches of raw video frames are for [plugins](/en/docs/p
 
 ## Searching the web
 
-Every thread follows **File › Settings › AI › Let AI search the web**. With it on, the agent can search the web; turn it on or off, and each thread follows from its next message.
+Every thread follows **File › Settings › AI › Web search › Let AI search the web**. With it on, the agent can search the web; turn it on or off, and each thread follows from its next message.
 
 - **Search rows.** Each search shows in the thread as *Searched the web*, *Searched with Google* or *Searched with* and the service, such as *Searched with Brave Search*, followed by what it searched for. A page the agent read shows as *Read* and the site. Expand a row to see the full addresses.
 - **Citations.** Numbered chips follow the text they back up. Hover one for a card with the page's title, its site and, when the provider sends one, the quoted passage, with **Open in browser**. The card opens at the chip, and stays open while you move the pointer onto it.
@@ -143,13 +159,21 @@ Until you add one, the row says *No MCP servers yet. Add one to give the agent i
 - For a URL, **URL**, `http` or `https`, and an optional **Bearer token**. A token goes over plain `http` only to this computer or to a Tailscale peer.
 - **Trust what this server says about its tools**, off at first. See [What asks](#what-asks).
 
-The environment and the token go to your system's keychain, never to the settings file, and aren't shown again. When you edit a server, leave them empty to keep them. **Delete** removes the server and its secrets. Changes apply at once, with no **OK** needed.
+The environment and the token go to your system's keychain, never to the settings file, and aren't shown again. When you edit a server, leave them empty to keep them. **Delete** removes the server and its secrets. Changes apply at once.
 
-A server that runs as a command runs as you, outside the AI component's sandbox, with your own environment and its variables, in your home folder. It stops when the AI component does.
+A server you add that runs as a command runs as you, outside the AI component's sandbox, with your own environment and its variables, in your home folder. It stops when the AI component does.
 
 Nothing starts until a thread needs it. Each server's row shows its command or URL and its state: *Starts when the agent needs it*, *Starting…*, *Connected · 3 tools*, or *Failed:* and why. A thread waits up to 5 seconds for the servers when it starts. A slower server adds its tools once it's ready, and one that failed is tried again the next time a thread starts.
 
 A thread doesn't get every server's tools up front. The agent sees each server you added by name, the first 40 characters of it, and looks for the tools it needs with its `search_tools` tool. A server's tools join the thread only once that search finds them.
+
+### MCP servers from plugins
+
+A [plugin](/en/docs/plugins/using-plugins) can bring MCP servers of its own. While the plugin is on, each shows in the **MCP servers** list under its title, with the plugin's name in brackets and *From a plugin, in its sandbox*. It has a switch in place of **Edit** and **Delete**:
+
+- **Off until you turn it on.** Nothing of it starts until you turn its switch on. Its state, its trust check box and its tools then show as for your own servers.
+- **In the plugin's sandbox.** It runs inside the sandbox the plugin's programs get, with only its own environment, never as you. It starts only when that sandbox applies in full. When it can't start, for example because its program isn't downloaded yet, its row says *Failed:* and why.
+- **With its plugin.** Turning the plugin off takes its servers out of every thread. Uninstalling it also forgets whether you turned them on.
 
 ### What asks
 
@@ -168,9 +192,9 @@ What MCP servers get is in [What is sent](/en/docs/help/what-is-sent#ai).
 
 ## Agents on this computer
 
-A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex and [ACP agents](#acp-agents). When `claude` is on your `PATH`, the model menu lists **Claude Code** first. When `codex` is, it lists **Codex** after it, and the ACP agents follow. You don't need a provider for any of them.
+A thread can run on an AI agent you have installed instead of on a provider: Claude Code, or on Linux, Codex and [ACP agents](#acp-agents). When `claude` is on your `PATH`, the [model picker](#choosing-a-model) lists **Claude Code** first. When `codex` is, it lists **Codex** after it, and the ACP agents follow. You don't need a provider for any of them.
 
-Each agent has its own list of models in the model menu. **Agent default** leaves the choice to the agent; below it are the agent's own models. The list loads from the agent the first time you open it, with *Loading models…* meanwhile, and HikariSub remembers it for the next session. You can switch to another of the agent's models partway through a thread, and the conversation carries on.
+Each agent has its own group in the model picker. **Agent default** leaves the choice to the agent; below it are the agent's own models. The list loads from the agent the first time you open the picker after HikariSub starts, with *Loading models…* meanwhile, and HikariSub remembers it for the next session. If it can't load, the group keeps the last list and says *Couldn't load models*, with why, such as *It took longer than 30 seconds.*, and **Try again** loads it again. You can switch to another of the agent's models partway through a thread, and the conversation carries on.
 
 Each of them gets your [AGENTS.md](#agentsmd-instructions) and the Project's, and again when it resumes. Their own file tools stay off, so every file they read or change goes through HikariSub's tools.
 
@@ -229,7 +253,7 @@ On Windows, HikariSub keeps your AI keys and sign-ins in a private folder instea
 
 ### When an agent isn't offered
 
-Codex and ACP agents need the system's sandbox to keep them to their own folders. Where it can't, for example on a Linux kernel without Landlock, they aren't offered. The model menu doesn't list them, a new thread doesn't fall back to one, and their rows in **File › Settings › AI › External agents** say *Not offered: this system can't keep it to its own folders.* Where HikariSub can't open a private tools channel for them, they aren't offered either, and their rows say *Not offered: HikariSub can't open a private tools channel for it on this system.* Claude Code is still offered, because all its own tools are off.
+Codex and ACP agents need the system's sandbox to keep them to their own folders. Where it can't, for example on a Linux kernel without Landlock, they aren't offered. The model picker doesn't list them, a new thread doesn't fall back to one, and their rows in **File › Settings › AI › External agents** say *Not offered: this system can't keep it to its own folders.* Where HikariSub can't open a private tools channel for them, they aren't offered either, and their rows say *Not offered: HikariSub can't open a private tools channel for it on this system.* Claude Code is still offered, because all its own tools are off.
 
 A thread already set to one of them doesn't start it. Its turn ends in a card, *This agent can't start here*, that says why, with **Open Settings › AI**.
 

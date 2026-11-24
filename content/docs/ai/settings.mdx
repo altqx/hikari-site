@@ -1,22 +1,33 @@
 ---
 title: AI settings
-description: Add AI providers and their keys, choose a model for each role, keep the AI component and your agents up to date, or turn AI off, in File › Settings › AI.
+description: Turn AI on, add AI providers and their keys, choose a model for each role, keep the AI component and your agents up to date, or turn AI off, in File › Settings › AI.
 ---
 
 **File › Settings › AI** holds your AI providers and their keys, the models each feature uses, and the AI component that talks to the providers. It sits between **Shortcuts** and **Updates and privacy**. Its sections are:
 
-- **AI features**, with **Turn off all AI features**: see [Turning AI off](#turning-ai-off);
+- **AI features**, with **Turn off all AI features**: see [Turning AI on](#turning-ai-on) and [Turning AI off](#turning-ai-off);
 - **Providers** and **Models**: see [Providers](#providers) and [Models](#models);
 - **Web search**: see [Searching the web](/en/docs/ai/agent#searching-the-web);
 - **External agents**, for Claude Code, Codex and ACP agents: see [Agents on this computer](/en/docs/ai/agent#agents-on-this-computer) and [Updating Claude Code and Codex](#updating-claude-code-and-codex);
-- **MCP**: see [Connect an agent](/en/docs/ai/connect-an-agent) and [MCP servers](/en/docs/ai/agent#mcp-servers). Its **Let them read your skills** check, off at first, lets agents connected through MCP list and read your skills: see [Agents outside HikariSub](/en/docs/ai/skills#agents-outside-hikarisub);
+- **MCP**: see [Connect an agent](/en/docs/ai/connect-an-agent), and [MCP servers](/en/docs/ai/agent#mcp-servers) for yours and those from plugins. Its **Let them read your skills** check, off at first, lets agents connected through MCP list and read your skills: see [Agents outside HikariSub](/en/docs/ai/skills#agents-outside-hikarisub);
 - **Agent**: see the agent's [Settings](/en/docs/ai/agent#settings);
 - **Skills**: see [Skills in Settings](/en/docs/ai/skills#in-settings);
 - **Inline actions**: see the inline actions' [Settings](/en/docs/ai/inline-actions#settings);
 - **AI components**: see [AI components](#ai-components);
-- **Privacy**, with **Use prompt caching** and **What is sent to providers**: see [What is sent](/en/docs/help/what-is-sent#ai).
+- **Privacy**, with **Never send to AI**, **Use prompt caching** and **What is sent to providers**: see [What is sent](/en/docs/help/what-is-sent#ai). **Never send to AI** shows the paths you added to those the agent never gets, with **Open settings file** to change them.
 
-Changes to providers and their keys apply at once, and so do your inline actions and MCP servers. Everything else saves with **OK** or **Apply**.
+Every change on the page applies at once.
+
+## Turning AI on
+
+AI is off when you first install HikariSub, and nothing AI-related downloads or starts until you turn it on. If you set up a provider or downloaded the AI component in an earlier HikariSub, AI stays on.
+
+Turn it on in any of these ways:
+
+- **Turn on AI** in the [Agent panel](/en/docs/ai/agent#opening-the-panel), which shows only that button while AI is off. **Edit › Turn on AI…** shows the panel.
+- Clear **Turn off all AI features** in **File › Settings › AI**.
+
+AI turns on at once, with no restart. If the [AI component](#ai-components) isn't on this computer yet, HikariSub downloads it at once, whatever **Update AI components automatically** says. **AI components** and a strip at the top of the Agent panel show how far it has got. If the download fails, the strip says *The AI component didn't download. Check your connection and try again.*, and **Retry** in either place tries again.
 
 ## Providers
 
@@ -29,7 +40,7 @@ HikariSub sends nothing to an AI provider until you add one. **Add provider** of
 - **Base URL** and **API**, **Chat Completions** or **Responses**, are for a custom endpoint. Its key is optional: a local server such as Ollama or LM Studio needs none. A key is sent only over HTTPS, to this computer or to a Tailscale peer.
 - **Test connection** asks the provider for its models with the key you typed, and saves nothing. **Add** saves the provider.
 
-The first provider you add downloads the [AI component](#ai-components), and the form says how big it is first. A provider is saved only once its key is in your system's keychain. With no keychain, or when you refuse access, it isn't added, and HikariSub says *No system keychain is available* or *Access to the keychain was refused*.
+If the [AI component](#ai-components) isn't on this computer yet, for example because its download failed, the first provider you add downloads it, and the form says how big it is first. A provider is saved only once its key is in your system's keychain. With no keychain, or when you refuse access, it isn't added, and HikariSub says *No system keychain is available* or *Access to the keychain was refused*.
 
 Each provider's row shows its last test, such as *Connected*, with how many models it has, and whether its key is in the keychain, with **Test connection**, **Edit** and **Delete**:
 
@@ -53,15 +64,17 @@ On Windows, HikariSub keeps your AI keys and sign-ins in a private folder instea
 | **Vision** | A model that reads images. Its list shows only those |
 | **Judge** | [The judge](/en/docs/ai/agent#the-judge), which checks the agent's changes in Auto mode |
 
-Every role but **Chat** can be **Same as chat**, and a role without its own model uses the chat model. **Refresh models** asks every provider for its list of models again. Your first provider's models fill **Chat** while it is empty.
+Each role's button shows its model and the model's provider. It opens the same searchable [model picker](/en/docs/ai/agent#choosing-a-model) as the Agent panel, with only your providers' models, grouped by provider, and no **Recent** group or agents. Type to search by the model's name, its id or the provider's name.
+
+Every role but **Chat** can be **Same as chat**, the first row of its picker, and a role without its own model uses the chat model. **Refresh models** asks every provider for its list of models again. Your first provider's models fill **Chat** while it is empty. A provider you add or sign in to shows its models at once, here and in the Agent panel.
 
 ## AI components
 
-The AI component is the part of HikariSub that talks to your providers. It isn't in HikariSub's download: your first provider, or turning on the MCP server, downloads it. **AI components** shows:
+The AI component is the part of HikariSub that talks to your providers. It isn't in HikariSub's download: [turning AI on](#turning-ai-on) downloads it. **AI components** shows:
 
 - **AI component**, its version, **Runs on**, the version of Bun it runs on, and **Provider libraries**, the Anthropic, OpenAI and Google Gen AI libraries' versions;
-- **Status**: *Up to date*, with when HikariSub last checked, *Checking…*, a new version with its size and **Update now**, its download with **Cancel**, or the new version *is ready · starts once AI has been idle for 2 minutes*;
-- **Check now**, which checks at once, and **What's new**, which opens the AI component's release notes.
+- **Status**: *Not installed*, with **Install**, while the AI component isn't on this computer; *Downloading the AI component*, with how far it has got and **Cancel**; or, if the download failed, why, with **Retry**. Once it is installed: *Installed*, until the first check; *Up to date*, with when HikariSub last checked, *Checking…*, a new version with its size and **Update now**, its download with **Cancel**, or the new version *is ready · starts once AI has been idle for 2 minutes*;
+- **Check now**, which checks at once, once the AI component is installed, and **What's new**, which opens the AI component's release notes.
 
 When a check fails, the status says *Couldn't check: no connection*, with when the last check worked, or *Couldn't check: bad signature*, and HikariSub keeps the version it has and installs nothing from that list. *Newest this HikariSub runs*, with *Update HikariSub to get newer AI features.*, means a newer AI component needs a newer HikariSub.
 
@@ -79,9 +92,11 @@ Under **External agents**, Claude Code and Codex each show the version found on 
 
 ## Turning AI off
 
-Tick **Turn off all AI features**, then press **OK** or **Apply**. The rest of the page folds away, and lists what is kept and what is hidden:
+Tick **Turn off all AI features**. AI turns off at once, with no restart, and the rest of the page folds away. It lists what is kept and what is hidden:
 
 - **Kept:** your providers and their keys in the keychain, your agent threads and the downloaded AI component.
-- **Hidden:** the Agent panel, the inline AI actions and the AI rows in every menu; the AI commands in command search, with their shortcuts and toolbar buttons; AI in Getting started and What's new. The MCP server stops listening.
+- **Hidden:** the inline AI actions and the AI rows in every menu; the AI commands in command search, with their shortcuts and toolbar buttons; AI in Getting started and What's new. The Agent panel shows only **Turn on AI**. The MCP server stops listening.
 
-With AI off, nothing AI-related shows, downloads, starts or reads your keychain, and no restart is needed. Clear the box and press **OK** or **Apply** to turn AI back on.
+With AI off, nothing AI-related downloads, starts or reads your keychain. Clear the box to turn AI back on: see [Turning AI on](#turning-ai-on).
+
+**Reset page…** on this page and **Reset all…** turn AI off too, since off is where AI starts. At the next start, AI comes back on if you still have a provider or the AI component.
