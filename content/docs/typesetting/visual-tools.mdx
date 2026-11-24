@@ -76,7 +76,7 @@ When a line has no `\pos`, the handles start where the line would show, from its
 - **Text Z rotation:** drag around the origin cross to turn the line; drag the cross to move `\org`. **Set angle from 2 points** takes the angle from two points you click along something in the picture.
 - **Text X / Y rotation:** left-drag turns about the vertical axis (`\fry`), right-drag about the horizontal axis (`\frx`), middle-drag both.
 - **Rectangle clipping:** drag a rectangle, then drag its edges, corners or inside. **Invert clip** switches between `\clip` and `\iclip`.
-- **Vector clipping and Vector drawing:** the bar's modes are **Move points**, **Add line**, **Add Bézier curve**, **Add B-spline**, **Add separate point** and **Delete point**; the wheel steps through them. Ctrl+click selects several points, and Alt while dragging snaps to another point's x or y. Vector drawing's **Shape** list draws a ready-made shape into a rectangle you drag; **Edit shapes…** adds your own. Vector drawing can also combine and grow drawings: see [Combining and offsetting drawings](#combining-and-offsetting-drawings). Vector clip points keep two decimals. The vector clip modes and its **Invert clip** can take keys in **File › Settings › Shortcuts**.
+- **Vector clipping and Vector drawing:** the bar's modes are **Move points**, **Add line**, **Add Bézier curve**, **Add B-spline**, **Freehand**, **Add separate point** and **Delete point**; the wheel steps through them, except **Freehand**. See [Freehand and segments](#freehand-and-segments). Ctrl+click selects several points, and Alt while dragging snaps to another point's x or y. Vector drawing's **Shape** list draws a ready-made shape into a rectangle you drag; **Edit shapes…** adds your own. Vector drawing can also combine and grow drawings: see [Combining and offsetting drawings](#combining-and-offsetting-drawings). Vector clip points keep two decimals. The vector clip modes and its **Invert clip** can take keys in **File › Settings › Shortcuts**.
 - **Position shifter:** drag to move everything the **Move** toggles choose (positions, `\move` start or end points, clips, drawings, `\org`) by the same amount in every line. Or type an amount in the bar's **X** and **Y** fields: each <kbd>Enter</kbd> shifts the lines by that much, as one step.
 - **Hydra:** pick a tag, then drag sideways on the video or turn the wheel to change its value. **Set**, **Add**, **Multiply** and **Gradient** decide how the value is applied across characters or lines.
 - **Gradient:** the button before Text on path on the rail. Choose a mode, drag across the sign from where the gradient starts to where it ends, check the preview and press **Apply gradient (Enter)**. See [Gradients](#gradients).
@@ -179,6 +179,23 @@ When a gradient can't be made, the video says why:
 - *Strips along the clip need a clip on the line*
 - *Gradients do not work on an inverse clip*
 - *No characters on the line*
+
+## Freehand and segments
+
+Vector clipping and Vector drawing can draw by hand. Choose **Freehand** in the bar, after **Add B-spline**, or give the command **Vector clip: freehand** a key in **File › Settings › Shortcuts**; it has none at first. In Vector drawing it needs the **Shape** list on **Free drawing**, as the other modes do.
+
+Hold the left button and draw. When you let go, the stroke becomes a new shape of Bézier curves (`b`), as one undo step. **Smoothing**, in the bar while Freehand is on, sets how closely the curves follow the stroke, from 0 to 100: lower keeps closer to it with more points, higher gives fewer, rounder curves. It starts at 45, and each tool remembers its own. After a stroke, **Points** and **Curves** beside it count what the stroke became.
+
+Changing **Smoothing** fits the last stroke again, in the same undo step, until anything else changes the line: another stroke, a click, <kbd>Delete</kbd>, a nudge or an undo.
+
+Right-click a segment of a clip or drawing, away from its points, for:
+
+- **Make curve:** turns a straight segment into a curve, with its control points at a third and two thirds of the way.
+- **Make straight:** turns a curve into a straight segment.
+- **Insert point here:** adds a point where you clicked. On a curve, it splits the curve there and keeps its shape.
+- **Delete segment:** opens the shape there. A point left on its own is dropped.
+
+Each is one undo step. A right-click anywhere else adds a point, as before.
 
 ## Combining and offsetting drawings
 
