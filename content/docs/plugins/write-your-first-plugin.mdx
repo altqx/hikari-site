@@ -9,7 +9,7 @@ This guide makes a small plugin in three steps: a command, then a panel, then an
 
 ## Before you start
 
-- **Software.** You need HikariSub, a text editor and a zip tool. Plugins are written in Lua 5.1 and run on LuaJIT.
+- **Software.** You need HikariSub, a text editor and a zip tool. This guide's plugin is written in Lua 5.1 and runs on LuaJIT. A plugin can also be a program in any language: see [Program plugins](#program-plugins).
 - **Folders.** A plugin is a folder with two files: `hikari-plugin.json`, the manifest, and the Lua file that the manifest names as `main`.
 - **Packages.** To install it, you zip the folder's contents into a `.hikariplugin` file.
 
@@ -179,7 +179,11 @@ Every widget that sends events needs an `id`. Each event says which widget sent 
 
 - **`description`, `homepage`.** Shown in the plugin manager.
 - **`contributes.settings`.** Settings that the user changes in the plugin manager and that the plugin reads with `hikari.settings.get`.
+- **`contributes.commands`, grown.** A command may add a `description`, an `icon` and `when`, a list of conditions that must all hold for it to run, such as `["selection", "!video"]`. Its handler is called as `fn(args, context)`, where `context.via` says what ran it: `menu`, `key`, `palette`, `status`, `api` or `ai`. See [Menus, status items and shortcuts](#menus-status-items-and-shortcuts).
 - **`contributes.nodes`.** Lua nodes for [node effects](/en/docs/karaoke/node-effects#nodes-from-plugins). Each names its `file`, its `inputs` and `outputs`, and the node joins the **Add node** list under your plugin's name. Its code runs in the node sandbox, not in your plugin's helper, so it can't call `hikari`. See [Nodes](https://github.com/altqx/hikari/blob/main/docs/plugins.md#nodes) and the [Zigzag](https://github.com/altqx/hikari/tree/main/docs/examples/zigzag) example.
+- **`contributes.styles`, `karaokePresets`, `graphs`, `dictionaries` and `layouts`.** Files that HikariSub reads itself. See [Content packs](#content-packs).
+- **`contributes.formats`.** Subtitle formats the plugin reads or writes. See [Formats](#formats).
+- **`contributes.programs` and `mcpServers`.** Programs that come with the plugin, and MCP servers they run. See [Programs](#programs).
 - **`permissions`.** What the plugin asks for, each with a reason that the install question shows. See below.
 - **`summary`, `icon`, `screenshots`.** What the marketplace shows. A `README.md` in the package is its page.
 - **Translations.** `i18n/<locale>.json` files are read by `hikari.i18n.t`.
@@ -193,6 +197,9 @@ A plugin gets only what its manifest asks for. The user sees each request in the
 - **Network.** HikariSub makes each request for the plugin, over HTTPS, and only to the hosts in `permissions.network`. See [Network](https://github.com/altqx/hikari/blob/main/docs/plugins.md#network).
 - **Git.** `"vcs.read": "<reason>"` lets the plugin read the git repository holding the user's subtitle files, read-only, through `hikari.vcs.refs` and `hikari.vcs.show`. See [Git](#git).
 - **Restricted, the default tier.** The plugin's Lua has no `io`, `os`, `ffi` or `debug`. Its helper runs in the operating system's sandbox where one is available.
+- **Background.** `"background": "<reason>"` lets the plugin start with HikariSub and use `hikari.timer.after`, `hikari.timer.every` and `hikari.timer.cancel`. The install question shows *Works in the background while HikariSub is open:* and the reason. Without it, the timer calls answer `not_granted`.
+- **Programs.** `"programs": "<reason>"` is needed when `contributes.programs` isn't empty. See [Programs](#programs).
+- **Discord status.** `"presence": "<reason>"` lets the plugin set a short text in the user's Discord status. See [Discord status text](#discord-status-text).
 - **Full trust.** `"tier": "unrestricted"` gives the full LuaJIT libraries, no sandbox, and [QML panels](https://github.com/altqx/hikari/blob/main/docs/plugins.md#qml-panels). The user must agree to give the plugin full access to the computer. Ask for it only when the restricted tier can't do the job.
 
 A call that needs a permission the plugin doesn't have fails with the error `not_granted`. [The Hikari API](https://github.com/altqx/hikari/blob/main/docs/api.md#calls-callers-and-errors) lists every error code.
@@ -215,7 +222,7 @@ hikari.commands.register("scan", function()
 end)
 ```
 
-From `begin` until the command or the click's handler returns, it has no time limit, and a card above the status bar shows the plugin's name, the title, the progress and **Cancel**. `hikari.job.progress(nil, text)` shows a bar that moves without a fraction. **Cancel** only makes `hikari.job.cancelled()` answer `true`, so check it often. When the plugin hasn't stopped 5 seconds later, the card says so and offers **Stop**, which force stops it; work it hasn't applied is lost. Only a command, or a `click` in the plugin's own panel or dialog (a dialog's `button` press too), can become a job, once. Anywhere else, such as other events, or a panel's `change` or `show`, the job calls answer `nil` and an error. Every plugin can do this, since API version 1. A panel's button can so start a scan with the card and **Cancel**:
+From `begin` until the command or the click's handler returns, a card above the status bar shows the plugin's name, the title, the progress and **Cancel**. `hikari.job.progress(nil, text)` shows a bar that moves without a fraction. **Cancel** only makes `hikari.job.cancelled()` answer `true`, so check it often. When the plugin hasn't stopped 5 seconds later, the card says so and offers **Stop**, which force stops it; work it hasn't applied is lost. Only a command, a background plugin's timer callback, or a `click` in the plugin's own panel or dialog (a dialog's `button` press too), can become a job, once. Anywhere else, such as other events, or a panel's `change` or `show`, the job calls answer `nil` and an error. Every plugin can do this, since API version 1. A panel's button can so start a scan with the card and **Cancel**:
 
 ```lua
 hikari.panels.on("scan", function(e)
@@ -227,6 +234,8 @@ end)
 ```
 
 While the job runs, the plugin's other events and commands wait behind it. Several plugins' jobs stack, the newest first.
+
+Nothing a plugin runs is stopped after 10 seconds any more. A load, command, event or timer callback that runs longer, and isn't a job, shows a card that says, for example, *First plugin is still working*, with **Stop**. A plugin may hold up to 2 GB of memory.
 
 ## Grid row marks
 
@@ -260,7 +269,7 @@ A group also ends when the command or event handler returns, when the plugin sto
 
 ## Git
 
-A plugin can't run programs, so HikariSub runs git for it, read-only. The manifest asks with `"vcs.read": "<reason>"`, and the install question, the plugin manager and the marketplace show it as *Read the branches, tags and history of the git repository holding your subtitle files:* and the reason. Every plugin that asks gets it on the same terms; AI and MCP callers never do.
+A plugin can't run the programs installed on the user's computer, so HikariSub runs git for it, read-only. The manifest asks with `"vcs.read": "<reason>"`, and the install question, the plugin manager and the marketplace show it as *Read the branches, tags and history of the git repository holding your subtitle files:* and the reason. Every plugin that asks gets it on the same terms; AI and MCP callers never do.
 
 ```lua
 local refs = hikari.vcs.refs({ limit = 20 })
@@ -282,6 +291,149 @@ The errors carry a `reason`:
 - `unavailable` with `no_git` (git isn't installed or on `PATH`), `timed_out` or `failed`;
 - `not_found` with `no_repository`, `no_ref`, `no_file` (the file isn't in that ref, as after a rename) or `no_path` (the file was never saved);
 - `refused` with `unsafe_repository` (git distrusts a repository another user owns; add it to `safe.directory`), `too_large` or `not_text`.
+
+## Menus, status items and shortcuts
+
+A plugin can place its commands in HikariSub's menus, show items in the status bar, and come with default shortcuts:
+
+```json
+"contributes": {
+  "commands": [
+    {"id": "greet", "title": "Say hello", "icon": "plugins", "when": ["selection", "!video"]},
+    {"id": "spin", "title": "Spin"}
+  ],
+  "menus": [
+    {"command": "greet", "location": "grid.context", "group": "a"},
+    {"command": "spin", "location": "menuBar"}
+  ],
+  "statusItems": [{"id": "count", "title": "Count", "text": "0", "tooltip": "Lines", "command": "spin"}],
+  "keybindings": [{"command": "greet", "key": "Ctrl+Alt+K"}]
+}
+```
+
+- **Menus.** `location` is `grid.context`, the Grid's right-click menu; `lineEditor.context`, the right-click menu of the Line editor's text; or `menuBar`, the **Automation** menu after **Plugins**. Items keep manifest order, and a separator parts groups and plugins. Every command also stays in the plugin's submenu of **Automation**.
+- **Conditions.** `when` takes `document`, `selection`, `multipleLines`, `video`, `audio`, `karaoke` and `translation`, each negated by a `!` in front. A command whose conditions fail is greyed out in every menu with the reason, such as *Needs a selection*, and its keys do nothing.
+- **Status items.** At most 4 per plugin, at the end of the status bar, with `text`, an `icon` or both. `command` makes the item a button. `hikari.status.set("count", {text, icon, tooltip, tone, visible})` changes it, where `tone` is `normal`, `warning` or `danger`. The user can hide any item from the status bar's right-click menu, which lists it by `title`. Items go when the plugin stops.
+- **Default shortcuts.** One key per entry, written as Qt writes it, with modifiers in the order Ctrl, Alt, Shift, Meta. A key needs Ctrl or Alt, or is F1 to F24. A default applies while the plugin runs, unless the user bound or cleared that command's shortcut, or the key is taken by the user, HikariSub or a plugin installed earlier. A taken default is dropped, and the plugin's details say, for example, *Ctrl+Alt+K is taken by* and the owner. A default the user clears stays cleared.
+
+A reference to a command that `contributes.commands` doesn't declare, a key bound twice, or a command placed twice in one location is refused at install. See [Menus, status items and shortcuts](https://github.com/altqx/hikari/blob/main/docs/plugins.md#menus-status-items-and-shortcuts).
+
+## Quick picks and input boxes
+
+A plugin can open HikariSub's own list and text box, the popups the command palette uses:
+
+```lua
+local picked = hikari.quick_pick.ask{
+    title = "Apply a style",
+    placeholder = "Style name",
+    items = {
+        {id = "main", label = "Main", description = "Default dialogue"},
+        {kind = "separator", label = "Signs"},
+        {id = "sign", label = "Sign", detail = "Top, 48 px", icon = "style"},
+    },
+}
+if picked then print(picked[1]) end
+```
+
+- **`hikari.quick_pick.ask(spec)`** waits for the user and returns the picked ids, or `nil` when the user cancels. `many = true` shows a check box per item. `step = {current, total}` and `back = true` make a flow of several steps, and Back answers `nil, "back"`.
+- **`hikari.input_box.ask(spec)`** returns the text, or `nil`. `password = true` shows dots, and `validation = {pattern, message, min_length, max_length}` is checked as the user types.
+- **Live popups.** `hikari.quick_pick.open` and `hikari.input_box.open` return an id at once and send events to `hikari.quick_pick.on` and `hikari.input_box.on`, for a list the plugin fills as the user types, or a value it checks itself. They stay open after `accept` until the plugin closes them.
+
+**Only in answer to the user.** A plugin may open a popup only while it answers something the user did: a command run from a menu, a key, the palette or a status item; a `click` or `button` in its own panel or dialog; an `accept`, `button` or `back` of its own live popup; or a job one of those began. Anywhere else, such as a timer, an event or `plugins.run`, the call answers `refused` with reason `not_user_initiated`. AI and MCP callers get `not_granted`. One popup shows at a time, and the title row always shows the plugin's name. See [Quick picks and input boxes](https://github.com/altqx/hikari/blob/main/docs/plugins.md#quick-picks-and-input-boxes).
+
+## Content packs
+
+A plugin can ship files that HikariSub reads itself, with no code. Each lands beside its built-in counterpart with the plugin's name, is read-only, and goes when the plugin is turned off or uninstalled.
+
+| Key | Each entry | Shows in |
+| --- | --- | --- |
+| `styles` | `{id, title, path}`, a `.sty` catalogue of `Style:` lines | The Style manager's catalogues, under *From plugins*, as `<title> (<plugin>)`. **Copy to my catalogues** makes an editable copy. |
+| `karaokePresets` | `{id, path}`, one preset `.ass` with a Title and a Description | The Template editor's **New › From a preset**, after the built-in presets. |
+| `graphs` | `{id, title, path}`, a node-effects graph `.json` | Node effects' **From the library**, in a submenu named after the plugin. |
+| `dictionaries` | `{language, title, aff, dic}`, a Hunspell pair such as `en_US` | The spell checker's languages, as `<title> (<plugin>)`, after the user's and the bundled ones. It never replaces a language the user already has. |
+| `layouts` | `{id, title, path}`, a `.json` holding one panel arrangement | **View › Layout**, the layout switcher and **Manage layouts**, as `<title> (<plugin>)`. A saved layout of the same name wins. |
+
+A file that isn't in the package, or that fails the reader its built-in counterpart uses, refuses the package at install, and the message names the file. See [Content packs](https://github.com/altqx/hikari/blob/main/docs/plugins.md#content-packs).
+
+## Formats
+
+A plugin can add subtitle formats. Each `contributes.formats` entry is `{id, title, extensions, import, export}`, with `import`, `export` or both:
+
+```lua
+hikari.formats.exporter("my-format", function(doc, options)
+    -- doc is a hikari.document.read snapshot; options = {frameRate, video, path}
+    return text
+end)
+hikari.formats.importer("my-format", function(data, name)
+    -- data is the file's bytes in base64
+    return {lines = {...}, styles = {...}, info = {...}}
+end)
+```
+
+- **Export.** The format shows in **File › Export as…** and in Save as, as `<title> (<plugin>)`. The exporter returns the file as UTF-8 text, or as base64 with `"base64"` as its second result, and HikariSub writes it. In Export as, the snapshot holds the lines the window's choice names.
+- **Import.** The format opens with **File › Open subtitles…** and by drag and drop. Built-in formats of the same extension are tried first, then plugins' formats in the order their plugins were installed. Lines come back in the shape of `document.apply`'s `insert_line` fields, styles as `set_style` fields, and Script Info as text by key. A result that breaks those shapes fails the open, naming the plugin and the place, such as `/lines/3/start`.
+- **Saving.** A file opened through a plugin's format saves back through it when the format has `export`.
+- **Limits.** Files of at most 48 MiB each way. Format calls have no time limit, and may begin a job.
+
+In `formats.list` and in `documents.list`'s `format`, a plugin's format is `plugin:<plugin id>/<format id>`. See [Formats](https://github.com/altqx/hikari/blob/main/docs/plugins.md#formats).
+
+## Programs
+
+A plugin can declare programs in `contributes.programs`, with `permissions.programs` giving the reason. Each names a file for each platform it supports, `linux-x64`, `windows-x64` and so on, either bundled in the package (`path`) or downloaded (`download`, with `url`, `sha256` and `size`, and `archive` with `entry` for a zip or tar.gz):
+
+- **Downloads** are fetched over HTTPS when the plugin starts without them, checked against `size` (at most 1 GiB) and `sha256`, and unpacked with the package path rules and no links. Nothing is fetched while "Let plugins connect to the internet" is off; the plugin manager then shows the program as not downloaded, with **Download now**. The install question lists each download's host and size.
+- **A missing platform.** A program with no entry for this computer is unavailable, and so is what needs it: the plugin manager says *isn't available for this computer*.
+- **Per-platform packages.** A marketplace listing can ship one package per platform, with the same signed manifest. A listing with no package for the user's computer shows *Not available for this computer*.
+- **The sandbox.** Every program runs in `hikari_sandbox` with a profile of its own, for Full trust plugins too. It reads and runs its own folder, reads and writes the plugin's data and cache folders, and gets the files handed to it. It has the network only with `"network": true`. On Windows it runs in an AppContainer, or at low integrity with `"confinement": "lowIntegrity"`, for runtimes an AppContainer stops. Where the sandbox can't apply, the program doesn't start; it never runs unconfined.
+- **From Lua.** `hikari.programs.run`, `start`, `send` and `stop`, with `program.output` events.
+
+See [Programs](https://github.com/altqx/hikari/blob/main/docs/plugins.md#programs).
+
+### Program plugins
+
+A plugin whose `main` is `{"program": "<id>"}` is that program, declared with `"api": true`. It speaks JSON-RPC 2.0 with HikariSub on its stdin and stdout, one message per line, and gets the same operations, events, panels, dialogs, files, network, jobs, settings, quick picks and input boxes as a Lua plugin, with the same permissions and limits.
+
+- HikariSub calls `initialize`, then `command`, `event`, `panel`, `dialog`, `quick_pick`, `input_box`, `export` and `import` as they happen. The program has 30 seconds to answer `initialize`.
+- The program calls every Hikari API operation by its name, such as `lines.list`, and `hikari/notify`, `hikari/settings.get`, `hikari/subscribe` and the other `hikari/` methods.
+- Anything on stdout that isn't JSON-RPC stops the program, as a crash does. stderr goes to the Log panel.
+- Turning the plugin off, updating or removing it sends `shutdown` and `exit`, and ends the program 5 seconds later.
+
+A program plugin is never Full trust. A package with no `main` starts no plugin, and runs only the programs it declares, such as an MCP server. See [Program plugins](https://github.com/altqx/hikari/blob/main/docs/plugins.md#program-plugins).
+
+### MCP servers
+
+`contributes.mcpServers` entries, `{id, title, description, program}`, name a declared program without `"api": true`. Each shows in **File › Settings › AI › MCP › MCP servers** as `<title> (<plugin>)`, off until the user turns it on, and runs in the program's sandbox. Its environment comes from the plugin's settings, through `${setting:<id>}`, and its tools are untrusted until the user trusts them. A new server in an update asks the user again. See [AI tools and MCP servers](https://github.com/altqx/hikari/blob/main/docs/plugins.md#ai-tools-and-mcp-servers).
+
+## Discord status text
+
+With `permissions.presence`, `hikari.presence.set_text(text)` puts a short text in the user's Discord status. It shows only where the user's own presence text has `{plugin}`, and only from the one plugin they pick under **Text from plugin**. The text is plain, at most 64 characters, with no line breaks; empty text or `nil` clears it. It stays until the plugin changes it or is turned off, and isn't kept when HikariSub quits. HikariSub sends presence at most once every 4 seconds, so calling more often isn't an error. See [Discord status text](https://github.com/altqx/hikari/blob/main/docs/plugins.md#discord-status-text).
+
+## Data-only packages
+
+A package without `main` and without programs runs no code. It may hold only content: `styles`, `karaokePresets`, `graphs`, `dictionaries`, `layouts`, `nodes`, and the looks below. It can't be `unrestricted` and has no `permissions` or `settings`. Its install question shows what it adds and who signed it.
+
+- **`contributes.themes`.** Colour themes, `{id, title, type, path}`. Each file follows the theme schema, and must pass the same contrast check as HikariSub's built-in themes.
+- **`contributes.iconThemes`.** `{id, title, path}`, a folder with one `<role>.svg` for every icon role.
+- **`contributes.icons`.** The plugin's own icons, `{id, path}`, named as `own:<id>` wherever a command, panel or status item takes an `icon`.
+
+Each SVG has a `viewBox` of `0 0 16 16` and draws in `currentColor` only, so it follows the theme; a `<style>` element is refused. HikariSub checks these at install, and the marketplace's checks are the same. See [Themes and icons](https://github.com/altqx/hikari/blob/main/docs/plugins.md#themes-and-icons).
+
+## Type hints
+
+Your editor can check your calls and complete them. [`docs/types/`](https://github.com/altqx/hikari/tree/main/docs/types) in HikariSub's repository has two files, generated from the Hikari API of this version. `hikarisub --export-docs <folder>` writes them too.
+
+- **Lua.** Put [`hikari.lua`](https://github.com/altqx/hikari/blob/main/docs/types/hikari.lua) where [LuaLS](https://luals.github.io/) finds it, such as `Lua.workspace.library` in your workspace settings. `hikari.call("lines.list", {})` then gives you `hikari.LinesListResult`, and `hikari.events.on("document.changed", fn)` gives `fn` its data's type.
+- **TypeScript.** A [program plugin](#program-plugins) can be written in TypeScript and compiled into one program with `bun build --compile`. Import the types from [`hikari.d.ts`](https://github.com/altqx/hikari/blob/main/docs/types/hikari.d.ts): `ProgramCalls` gives each method's params and result, and `HostRequest` is what HikariSub asks.
+
+The [Word count](https://github.com/altqx/hikari/tree/main/docs/examples/word-count) sample is a program plugin in TypeScript. It answers `initialize` and its `count` command, and calls `lines.list` and `hikari/notify`:
+
+```ts
+const { lines } = await call("lines.list", { fields: ["text"] });
+```
+
+```sh
+bun build --compile src/main.ts --outfile bin/word-count
+```
 
 ## Sign it
 
@@ -319,3 +471,4 @@ The marketplace lists plugins from [altqx/hikari-plugins](https://github.com/alt
 - **[Hikari API reference](/en/docs/plugins/api-reference).** Every operation, event and type, with its parameters and results. It is generated from HikariSub itself, so it matches the API version that HikariSub reports in `hikari.api_version`.
 - **[Line tools](https://github.com/altqx/hikari/tree/main/docs/examples/line-tools).** A larger example with a chart, a list, a menu and a dialog.
 - **[Zigzag](https://github.com/altqx/hikari/tree/main/docs/examples/zigzag).** A plugin that adds one node-effects node.
+- **[Word count](https://github.com/altqx/hikari/tree/main/docs/examples/word-count).** A program plugin in TypeScript.

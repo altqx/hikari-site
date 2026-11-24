@@ -73,6 +73,9 @@ The button works where HikariSub registered `hikarisub://` links: the Windows in
 3. HikariSub checks the package and asks, for example, *Install “Line tools” 1.2.0?* It shows:
    - who signed it, if anyone (see [Trust](#trust));
    - what the plugin asks for: reading and editing every open subtitle file, connecting to network hosts, or a folder to read or to read and write, each with the plugin's reason. A plugin that asks for none of these works only on the active subtitle file.
+   - *Runs programs that come with it*, with their names and the plugin's reason, and each program HikariSub would download for it, with its host and size. See [Programs](#programs).
+   - *Set text in your Discord status*, with the plugin's reason. See [Discord status](#discord-status).
+   - *Offers MCP servers in Settings › AI, off until you turn them on*, with their names. See [MCP servers](#mcp-servers).
    - **Full trust: it may run native code outside HikariSub's limits**, for an unrestricted plugin. Install one only if you trust its author completely.
 4. Press **Install plugin**, or **Trust and install** when the signature needs your trust.
 
@@ -98,8 +101,9 @@ When an update is signed by a different key, or comes unsigned over a signed ins
 The plugin manager is one window, which you can resize. The installed plugins are on the left, and the chosen plugin's details are on the right.
 
 - **The list** shows each plugin's icon, name, version and signer. It also shows a state when the plugin isn't simply running: **Turned off**, **Didn't start**, **Stopped**, **Revoked**, an update that waits for you, such as **1.3.0 waits for you**, or **Full trust**. The Marketplace marks a plugin with full trust **Full trust** too. **Filter** matches the name, the author and the description. <kbd>Space</kbd> turns the chosen plugin on or off, and <kbd>Del</kbd> asks to uninstall it.
-- **The details** say what the plugin does and who made it, its trust, the **Permissions** it asks for with each reason, and **What it adds**: its commands and panels. The **On** switch turns it on or off. A plugin that is off doesn't run, its commands leave the menu, and its panels show a [placeholder](#when-the-plugin-isnt-running).
-- **Settings**, for a plugin that has them, is a form of check boxes, fields and drop-down lists. A change is kept at once, and a running plugin uses it straight away.
+- **The details** say what the plugin does and who made it, its trust, the **Permissions** it asks for with each reason, and **What it adds**: its commands, panels, status bar items and [default shortcuts](#shortcuts). The **On** switch turns it on or off. A plugin that is off doesn't run, its commands leave the menu, and its panels show a [placeholder](#when-the-plugin-isnt-running).
+- **Open in Settings…**, for a plugin that has settings, opens its page under **File › Settings › Plugins**. A change applies at once, and a running plugin uses it straight away.
+- **Programs**, for a plugin that comes with programs, shows each one's state, with **Download now** when one is missing. See [Programs](#programs).
 - When a plugin didn't start, crashed or ran over its time limit, the details show the error and where it happened, with **Start again** and **Copy**.
 - **Update from file…** updates the chosen plugin from a newer package. A package for a different plugin is refused.
 - **Open data folder** opens the folder where the plugin keeps its data.
@@ -123,7 +127,7 @@ To stop the daily check, clear **Check for plugin updates** under **Plugin updat
 
 #### An update that asks for more
 
-An update never gives a plugin more access by itself. When a new version moves to full trust, asks for every open subtitle file, adds a network host, or adds a folder or wants to write to one, it waits for you. The list says, for example, **1.3.0 waits for you**, and the details say *1.3.0 asks for more than 1.2.0 does, so it waits for you.*, with **Review…**.
+An update never gives a plugin more access by itself. When a new version moves to full trust, asks for every open subtitle file, adds a network host, or adds a folder or wants to write to one, it waits for you. So does one that adds a program, lets a program connect to the internet, adds an MCP server or asks to set text in your Discord status. The list says, for example, **1.3.0 waits for you**, and the details say *1.3.0 asks for more than 1.2.0 does, so it waits for you.*, with **Review…**.
 
 **Review…** asks first, as an install does. Each permission is marked **New** or **allowed now**, and the question shows the changes in the new version. Choose **Update plugin**, **Keep 1.2.0**, which passes over this version from then on, or **Cancel**.
 
@@ -146,7 +150,33 @@ A plugin you installed from a file gets no updates from the marketplace. When th
 
 While a plugin runs, its commands sit in the **Automation** menu after **Plugins**, in a submenu named after the plugin.
 
-To give one a shortcut, open **File › Settings › Shortcuts** and choose the **Plugin shortcuts** filter. A plugin command's shortcut works everywhere. A shortcut for a plugin that is uninstalled or turned off stays listed with a note, ready for when the plugin comes back.
+A plugin can also put its commands in other menus: the Grid's right-click menu, the right-click menu of the Line editor's text, and the **Automation** menu itself, right after **Plugins**. Its rows come after HikariSub's own, with a separator between plugins, and hovering one names its plugin in the status bar. A command that can't run yet is greyed out, with the reason under it, such as *Needs a selection* or *Needs an open video*. Its key does nothing until then either.
+
+### Status bar items
+
+A plugin can show up to four items at the end of the status bar, as text, an icon or both, such as a count it keeps up to date. Hovering one shows the plugin's name with what the item is. Clicking an item that has a command runs it.
+
+To hide an item, right-click the status bar and clear its row. The menu lists every plugin item by name, and ticking the row shows the item again. A plugin's items go when it stops.
+
+### Shortcuts
+
+To give a plugin command a shortcut, open **File › Settings › Shortcuts** and choose the **Plugin shortcuts** filter. A plugin command's shortcut works everywhere. A shortcut for a plugin that is uninstalled or turned off stays listed with a note, ready for when the plugin comes back.
+
+A plugin can come with default shortcuts. Each works while the plugin runs, unless:
+
+- you gave that command a shortcut of your own, or cleared its shortcut. A default you clear stays cleared.
+- the key is taken, by a shortcut of yours, by HikariSub or by a plugin you installed earlier. The key stays theirs, and the plugin's details in the plugin manager say who has it, such as *Ctrl+Alt+K is taken by* and the name of the command or plugin that has it.
+
+### Lists and questions
+
+A plugin can ask you to pick from a list or to type a value, in a popup of HikariSub's own. Its title row always names the plugin, so you can tell it from HikariSub's questions.
+
+- **A list** filters as you type. Where you can pick several, each row has a check box, the popup counts them, such as *2 picked*, and **OK** takes them.
+- **A text box** can say what's wrong with what you typed before you press <kbd>Enter</kbd>. For a password it shows dots, with **Show** and **Hide**.
+- **Several steps** can have **Back**, or <kbd>Alt</kbd>+<kbd>←</kbd>, to go to the step before.
+- <kbd>Esc</kbd>, or a click outside, cancels.
+
+A plugin can open one only in answer to something you did, such as a command you ran or a click in its own panel or dialog. So a popup never takes the focus by itself. Only one shows at a time: opening another closes the one that was showing. A plugin's popup also closes when the plugin stops.
 
 ## Plugin panels
 
@@ -199,6 +229,30 @@ Such a panel runs inside HikariSub, so a fault in it can close or freeze HikariS
 
 When the plugin is back, its panel fills the place again. To forget the place, close the panel of a plugin that isn't installed, or choose **Remove from the layout** under the panel in **View › Panels**.
 
+## Styles, presets and more from plugins
+
+A plugin can also bring things that work without its code: style catalogues, karaoke presets, node-effect graphs, spelling dictionaries and layouts. Each shows beside HikariSub's own, with the plugin's name, and is read-only. They go when you turn the plugin off or uninstall it.
+
+| A plugin's | Shows in |
+| --- | --- |
+| Style catalogues | The [Style manager](/en/docs/basics/styles#catalogues)'s **Catalogue** list, under *From plugins*. **Copy to my catalogues** makes a copy you can change. |
+| Karaoke presets | The Template editor's **New › From a preset**, after the built-in presets: see [Presets from plugins](/en/docs/karaoke/presets#presets-from-plugins). |
+| Node-effect graphs | **From the library** in node effects, in a submenu named after the plugin: see [The library](/en/docs/karaoke/node-effects#the-library). |
+| Spelling dictionaries | The spell checker's languages, such as **Primary language**: see [Dictionaries](/en/docs/checking/spelling#dictionaries). |
+| Layouts | **View › Layout**, the layout button and **Manage layouts**: see [Layouts from plugins](/en/docs/customize/layouts#layouts-from-plugins). |
+
+A package whose content HikariSub can't read isn't installed, and the message names the file.
+
+## Subtitle formats from plugins
+
+A plugin can add subtitle formats of its own.
+
+- **Writing.** A format the plugin can write shows in **File › Export as…**, after the built-in formats, and in the file types of **File › Save as…**, as its title with the plugin's name in brackets. The plugin makes the file, and HikariSub writes it.
+- **Opening.** A format it can read opens with **File › Open subtitles…** and by dragging the file onto the window, as an ASS file. HikariSub tries its own formats first, then the plugins' formats, in the order you installed the plugins, and the first that reads the file wins. Choosing a plugin's format in the open window's file types tries only that one.
+- **Saving.** A file opened through a plugin saves back through it when the plugin can also write the format. Otherwise, use **Save as…**.
+
+A plugin's format reads and writes files of up to 48 MiB. While the plugin isn't running, its formats can't open or save, and a notice says so.
+
 ## Folders and files
 
 A plugin works on your subtitles through HikariSub, and keeps its own data in a folder of its own. For anything else on your computer, it asks:
@@ -212,11 +266,48 @@ A plugin works on your subtitles through HikariSub, and keeps its own data in a 
 
 A plugin can connect only to the hosts it listed, which the install question and its permissions show, and only over HTTPS. HikariSub makes each request for it. **File › Settings › Updates and privacy › Privacy › Let plugins connect to the internet**, on by default, turns this off for every plugin at once. A plugin with full trust isn't held to these limits. [What is sent](/en/docs/help/what-is-sent#plugins) has the details, and what the marketplace downloads.
 
+## Programs
+
+Some plugins come with programs of their own, or are a program, written in any language. The install question then says *Runs programs that come with it*, with their names and the plugin's reason.
+
+A program comes inside the plugin's package, or HikariSub downloads it for the plugin:
+
+- **When.** The first time the plugin starts without it: after you install or update the plugin, or after a download that failed.
+- **What is checked.** HikariSub downloads only over HTTPS, and checks the file's size and SHA-256 against the ones the plugin's signed package names before it unpacks anything. An archive is unpacked with strict limits, and never with links.
+- **The install question** lists each download, such as *Downloads* and the program's name, *from* its host, with its size.
+- **Where it goes.** Into `plugin-programs` in your [user folder](/en/docs/automation/user-folder). HikariSub keeps the copies the installed version and the version kept for [rolling back](#rolling-back) need, and removes a plugin's programs when you uninstall it.
+- **The internet switch.** Nothing is downloaded while **File › Settings › Updates and privacy › Privacy › Let plugins connect to the internet** is off.
+
+The plugin's details list its **Programs**, each with its state: *isn't downloaded*, *Downloading…*, or why a download failed. **Download now** tries again, for example after you turn **Let plugins connect to the internet** back on.
+
+A program may be made only for some computers. One with no version for yours shows *isn't available for this computer*, and what needs it doesn't work there. A plugin that is itself such a program doesn't install there. In the **Marketplace**, a plugin with no package for your computer says **Not available for this computer**, and has no **Install**.
+
+### How programs run
+
+- **Their own sandbox.** Each program runs in an operating-system sandbox of its own, even for a plugin with full trust. It reads its own files, keeps its data in the plugin's own folders, and works on the files you hand it.
+- **Windows.** A program runs in an AppContainer. A plugin may ask for low integrity instead, for programs that can't run in one. Its install question then adds *Can read your files*.
+- **The internet.** A program has none, unless the plugin asks for it, and the install question then says *Connects to the internet*. While **Let plugins connect to the internet** is off, such a program starts without it, and one that runs at low integrity doesn't start at all.
+- **Never unconfined.** Where the sandbox can't apply, the program doesn't start, and the plugin's details say why.
+- **Stopping.** A program ends when its plugin stops, is turned off, updated or uninstalled. What it writes as errors goes to the [Log panel](/en/docs/help/troubleshooting#the-log-panel) under the plugin's name.
+
+## MCP servers
+
+A plugin can bring [MCP servers](/en/docs/ai/agent#mcp-servers), which give the agent more tools. Its install question says *Offers MCP servers in Settings › AI, off until you turn them on*, with their names.
+
+Each one shows in **File › Settings › AI › MCP › MCP servers** as its name with the plugin's name in brackets, and *From a plugin, in its sandbox*. It has an **On** switch in place of **Edit** and **Delete**, and stays off until you turn it on. Its tools follow the same rules as those of a server you add, and what it says about its tools isn't trusted at first. It runs as one of the plugin's [programs](#how-programs-run), in its sandbox.
+
+Turning the plugin off takes the server out of every thread. Uninstalling the plugin also forgets that you turned the server on.
+
+## Discord status
+
+A plugin can ask to *Set text in your Discord status*, with its reason, such as the episode your team's tracker knows. Its text shows only where you put `{plugin}` in your own presence text, and only from the one plugin you choose in **File › Settings › Updates and privacy › Discord › Text from plugin**. It is plain text of at most 64 characters, and shows only while Discord presence is on. See [Discord presence](/en/docs/help/what-is-sent#discord-presence).
+
 ## Safety and limits
 
 - Each plugin runs in a process of its own, so a plugin that crashes ends only itself. HikariSub and your other plugins keep running. The plugin's next command starts it again.
-- A command that runs longer than 10 seconds is stopped, and a notice says so. The plugin's next command starts it again. A long job, such as scanning a video, instead shows a card above the status bar with its progress and **Cancel**. If the plugin hasn't stopped 5 seconds after **Cancel**, the card offers **Stop**, which ends it; work it hasn't applied is lost.
-- A plugin may use up to 256 MB of memory. A command that needs more fails, and the plugin keeps running.
+- A command that runs longer than 10 seconds isn't stopped. A card above the status bar says, for example, *Line tools is still working*, with **Stop**, which ends the plugin; its next command starts it again. A long job, such as scanning a video, instead shows a card with its progress and **Cancel**. If the plugin hasn't stopped 5 seconds after **Cancel**, the card offers **Stop**, which ends it; work it hasn't applied is lost.
+- A plugin whose install question says *Works in the background while HikariSub is open*, with its reason, starts with HikariSub and can do things on a timer. While one works, the status bar shows how many plugins are working, such as *1 plugin working*. Click it for the list, with **Stop** for each. A plugin stopped there stays stopped until **Start again** in its details, or the next time HikariSub starts.
+- A plugin may use up to 2 GB of memory. A command that needs more fails, and the plugin keeps running.
 - An ordinary (restricted) plugin can't load native libraries or compiled Lua bytecode, and has no access to files, programs or the system beyond what HikariSub gives it.
 - On Linux and Windows, an ordinary plugin runs in an operating-system sandbox. It reaches only its own package and has no network of its own: HikariSub opens the files you give it and makes its requests. Where the system can't provide the sandbox, the plugin still runs under these limits, and its details say *HikariSub keeps it to these permissions, but it isn't sandboxed on this system.*
 

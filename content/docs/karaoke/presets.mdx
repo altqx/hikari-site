@@ -96,7 +96,15 @@ The presets use no random values, and nothing in them carries over from one kara
 
 Once inserted, a preset's lines are yours: change the tags, the timings or the Effect in the panel, and the preview follows.
 
-The list itself is built into HikariSub. You can't add your own presets to it, or change or remove the ones in it. To reuse templates in another file, copy their lines in the [Grid](/en/docs/basics/grid#copying-and-pasting) and paste them there.
+The built-in list can't be changed: you can't add your own presets to it, or change or remove the ones in it. [Plugins](#presets-from-plugins) can add more. To reuse templates in another file, copy their lines in the [Grid](/en/docs/basics/grid#copying-and-pasting) and paste them there.
+
+## Presets from plugins
+
+A [plugin](/en/docs/plugins/using-plugins#styles-presets-and-more-from-plugins) can bring presets of its own. In **New › From a preset**, they come after the built-in ones, each named with its plugin in brackets, such as *Classic fill (Kit)* for a preset titled Classic fill from a plugin named Kit. Hover one to read its description, as for the built-in ones.
+
+They insert like any preset, as template lines you can edit, in one undo step. A plugin's karaOK presets are marked and turned off in the same way in a file that follows Aegisub 3.2.2.
+
+The menu reads the plugins' presets again each time it opens. They leave it when you turn the plugin off or uninstall it; the lines you already inserted stay.
 
 ## What to check
 

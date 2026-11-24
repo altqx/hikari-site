@@ -91,7 +91,7 @@ The layout button in the title bar, after the menus, shows the tab's layout. Cli
   <figcaption>The layout menu, with two saved layouts.</figcaption>
 </figure>
 
-- The built-in layouts, then your saved layouts.
+- The built-in layouts, then your saved layouts, then [layouts from plugins](#layouts-from-plugins).
 - **Save layout as…** saves the tab's arrangement under a name.
 - **Reset this layout** puts the tab back the way its layout had it, undoing the moves you made since.
 - **Manage layouts** renames and deletes saved layouts.
@@ -119,6 +119,15 @@ While a folder is open as a Project, it can have saved layouts of its own, liste
 </figure>
 
 In **Manage layouts**, the pencil, <kbd>F2</kbd> or a double-click renames a layout; <kbd>Enter</kbd> keeps the new name and <kbd>Esc</kbd> puts the old one back. The bin or <kbd>Delete</kbd> deletes it, after asking. Tabs using a deleted layout keep their arrangement.
+
+### Layouts from plugins
+
+A [plugin](/en/docs/plugins/using-plugins#styles-presets-and-more-from-plugins) can bring layouts. They show in **View › Layout**, the layout button's menu and **Manage layouts** after your own, each named with its plugin in brackets and marked with the plugins icon. **Manage layouts** lists them under a heading for each plugin.
+
+- **Choosing one** works like choosing a saved layout, and **Reset this layout** goes back to it.
+- **They're read-only.** You can't rename or delete one, or copy or move it to a Project. In **Manage layouts** it says *Comes with a plugin, so it can't be changed here. Save layout as… keeps your own copy.* **Save layout as…** makes a copy you can change.
+- **Your own come first.** If you have a saved layout of the same name, yours is used.
+- **When the plugin goes.** Turning the plugin off or uninstalling it takes its layouts out of the lists.
 
 ## Moving panels
 
@@ -182,7 +191,7 @@ A side bar shows one panel at a time, under a row of the panels' icons. Hover ov
 
 - **Show or hide a side bar** with its button in the title bar, or with **View › Left side bar** and **View › Right side bar**, which are ticked while their side bar shows. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> toggles the left one; the right one has no key at first. Opening a panel that's in a hidden side bar shows the side bar too.
 - **Resize a side bar** by dragging its inner edge. It starts about 320 px wide. Drag it narrower than 240 px and it hides, keeping the width it had.
-- **View › Swap side bars** switches their edges, with their panels and widths. **File › Settings › Appearance › AI side bar** sets the same thing: **Left** or **Right** for the AI side bar, the other side bar holding the tools. In a right-to-left language both are mirrored, so the AI side bar starts on the right.
+- **View › Swap side bars** switches their edges, with their panels and widths. **File › Settings › Appearance › Window › AI side bar** sets the same thing: **Left** or **Right** for the AI side bar, the other side bar holding the tools. In a right-to-left language both are mirrored, so the AI side bar starts on the right.
 - **View › Reset side bars** puts both side bars back to the panels and widths they started with.
 
 **Left side bar**, **Right side bar** and **Swap side bars** are in **File › Settings › Shortcuts** too. <kbd>Ctrl</kbd>+<kbd>B</kbd> stays **Bold**.
@@ -209,7 +218,7 @@ Any panel except the Grid, Video, Audio and the Line editor can go in either sid
 - **Float** takes a panel out of its side bar into a window of its own, and **Dock** puts it back in the side bar.
 - **Close** takes the panel's icon off the row, so the next time you open the panel it opens in the layout.
 
-A side bar with no panels says *Drag a panel here*. With **Turn off all AI features** ticked in **File › Settings › AI**, an AI side bar left with no panels hides, and its toggle is greyed out.
+A side bar with no panels says *Drag a panel here*. With **File › Settings › AI › AI features › Turn off all AI features** ticked, an AI side bar left with no panels hides, and its toggle is greyed out.
 
 ### Side bars belong to the window
 
