@@ -377,6 +377,12 @@ Unless it has [full trust](#full-trust-plugins), a plugin can't connect on its o
 
 Usage data has no event for plugins. It never records that a plugin connected, where, or what it sent. A plugin's own commands aren't in the list of commands it reports. Opening the plugin manager counts as one command, **Plugins**, like any other.
 
+### Programs that plugins download
+
+A plugin can name programs that HikariSub downloads for it. HikariSub fetches each one from the address in the plugin's signed package, only over HTTPS and without cookies, when the plugin starts and the program isn't there yet. It checks the size and SHA-256 before using the file. The install question shows each download's host and size. Nothing is downloaded while **Let plugins connect to the internet** is off.
+
+A program whose install question says *Connects to the internet* connects on its own from its sandbox, to any host. While **Let plugins connect to the internet** is off, it starts without the network. On Windows, a program whose install question says *Can read your files* doesn't start at all until you turn it back on.
+
 ### Full trust plugins
 
 A plugin marked **Full trust**, in the plugin manager's list or the Marketplace, isn't limited this way. Its install question says it gets full access to your computer, and its button reads **Install with full access**. It runs outside the sandbox, with the same access as HikariSub itself, so it can connect to the internet without asking HikariSub, whatever **Let plugins connect to the internet** says. Install one only from someone you trust.
