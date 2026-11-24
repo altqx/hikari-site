@@ -121,7 +121,7 @@ HikariSub can write the same credits into each ASS file you save, as HikariSub l
 
 Every save except an autosave writes the switched-on credits that differ from the file, as one undo step, *Changing the subtitle header*. Other formats are left alone.
 
-In a Project's window, your own are on the **Yours** tab, where a credit the Project sets says *Overridden in this project*. For everyone in a Project, set them on the [Project tab](#the-project-tab) under **Script properties**, or in its [Project settings](#project-settings) file. The [legacy settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
+In a Project's window, your own are on the **Yours** tab, where a credit the Project sets says *Set in this project*. For everyone in a Project, set them on the [Project tab](#the-project-tab) under **Script properties › Credits**, or in its [Project settings](#project-settings) file. The [settings import](/en/docs/get-started/moving-from-legacy) brings them over from HikariSub legacy.
 
 ```toml
 [scriptProperties]
@@ -274,12 +274,23 @@ A font folder that can't be opened gives a warning in the Log, and the other fol
 
 #### The Project tab
 
-While a window has a Project open, **File › Settings** in that window has two tabs. **Yours** holds your own settings, as in any window. **Project** holds the values in the Project's `project.toml`, on five pages: **Spelling and grammar**, **Script properties**, **Translation**, **Export** and **AI**.
+While a window has a Project open, **File › Settings** in that window has two tabs. **Yours** holds your own settings, as in any window. **Project**, named after the folder, holds the values in the Project's `project.toml`. It shows only what a Project can set, in the same pages as Yours:
 
-- Each row on the Project tab says where its value comes from: *Uses yours*, *Set in this project*, or *Set in project.local.toml*. A row set in `project.local.toml` can't be changed here.
+- **Line editor › Translation mode**: the source and target language, the glossary, and tags from original.
+- **Spelling and grammar**: spelling, the grammar check and its rule groups.
+- **Conversion › Export**: the export format.
+- **Script properties › Credits**.
+- **AI**: the Translate models, the paths never sent to AI, and the Project's [AI keys](#project-ai-keys).
+- **Updates and privacy › Discord**: what your [Discord presence](/en/docs/help/what-is-sent#discord-presence) shows while this Project is open.
+
+Each row on the Project tab says where its value comes from: *Uses yours*, *Set in this project*, or *Set in project.local.toml*. A row set in `project.local.toml` can't be changed here.
+
+- A change applies in the window at once, and is written only to `project.toml`.
 - **Use yours** takes the setting out of `project.toml`, so the window uses your own value again.
-- **Apply** writes only the settings you changed, and only to `project.toml`. They apply in the window at once.
-- On the **Yours** tab, a setting the Project sets says *Overridden in this project*.
+- On the **Yours** tab, a setting the Project sets says *Set in this project*, with a link to it.
+- **Open settings file** on this tab opens `.hikari/project.toml`.
+
+See [Settings](/en/docs/customize/settings#yours-and-project) for the rest of the window.
 
 #### Trusting a Project folder
 
@@ -319,7 +330,7 @@ None of `[plugins]` applies until you trust the folder. Until then, the plugin m
 
 #### Project AI keys
 
-A Project can bring its own keys for your AI providers, so that its windows, and the agent threads started in them, use them in place of yours. The **AI** page of the [Project tab](#the-project-tab) lists your providers. For each one, give an **Environment variable**, a **Credentials entry**, or both, and press **Apply**. **Key used** says where the key comes from: the variable, *From the credentials file*, or yours.
+A Project can bring its own keys for your AI providers, so that its windows, and the agent threads started in them, use them in place of yours. The **AI** page of the [Project tab](#the-project-tab) lists your providers. For each one, give an **Environment variable**, a **Credentials entry**, or both. **Key used** says where the key comes from: the variable, *From the credentials file*, or yours.
 
 In `project.toml`, these go in the `[ai.keys]` table, under each provider's id: the **Id** under **Name** in the provider's form in **File › Settings › AI**.
 

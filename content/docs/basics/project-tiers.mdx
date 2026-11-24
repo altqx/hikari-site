@@ -3,9 +3,9 @@ title: Project tiers
 description: Keep a Project's own catalogues, layouts, shapes, tags and presets in its folder beside yours, see which copy is in use, and copy or move them between the Project and your user folder.
 ---
 
-While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Mine**, the copy in your user folder. These have both tiers: style and font catalogues, saved layouts, drawing shapes, tags, the presets of script dialogs, Shift times and the Timing postprocessor, dictionary words, the export format and the translation languages.
+While a folder is open as a [Project](/en/docs/basics/files-and-formats#projects), some of what you keep in your [user folder](/en/docs/automation/user-folder) can also have a copy in the Project's `.hikari` folder. Each place is a tier: **Project**, the copy in the folder, which everyone who opens the Project gets, and **Yours**, the copy in your user folder. These have both tiers: style and font catalogues, saved layouts, drawing shapes, tags, the presets of script dialogs, Shift times and the Timing postprocessor, dictionary words, the export format and the translation languages.
 
-Skills: `.hikari/skills`, shown with **Project** and **Mine** chips; they have no Copy or Move. See [Skills](/en/docs/ai/skills).
+Skills: `.hikari/skills`, shown with **Project** and **Yours** chips; they have no Copy or Move. See [Skills](/en/docs/ai/skills).
 
 Without a Project, nothing changes: only your own copy is listed, with no chips.
 
@@ -21,9 +21,9 @@ Catalogues, layouts, shapes, tags and presets are hidden by name. [Dictionary wo
 
 ## In the lists
 
-- **Chips and groups.** Each row has a **Project** or a **Mine** chip, and the list shows *This project* first, then *Mine*. A chip beside the list shows the tier of the one you chose.
-- **Copy and Move.** **Copy to project** or **Copy to mine** puts a copy in the other tier and keeps this one. **Move to project** or **Move to mine** moves it there. If the other tier has one with the same name, a window says so, such as *The project already has a catalogue named* and the name, and offers **Replace**, **Rename** or **Skip**. **Rename** suggests a free name, with *(2)*, *(3)* and so on after it.
-- **Where new ones go.** While a Project is open, the button that makes a new one is split. Its face says **Save to project** at first. Its arrow, *Where to save*, switches it to **Save to mine** or back, and HikariSub remembers the choice for each list. Without a Project, the button saves to your user folder, as before.
+- **Chips and groups.** Each row has a **Project** or a **Yours** chip, and the list shows *This project* first, then *Yours*. A chip beside the list shows the tier of the one you chose.
+- **Copy and Move.** **Copy to project** or **Copy to yours** puts a copy in the other tier and keeps this one. **Move to project** or **Move to yours** moves it there. If the other tier has one with the same name, a window says so, such as *The project already has a catalogue named* and the name, and offers **Replace**, **Rename** or **Skip**. **Rename** suggests a free name, with *(2)*, *(3)* and so on after it.
+- **Where new ones go.** While a Project is open, the button that makes a new one is split. Its face says **Save to project** at first. Its arrow, *Where to save*, switches it to **Save to yours** or back, and HikariSub remembers the choice for each list. Without a Project, the button saves to your user folder, as before.
 - **Nothing is written early.** Opening a Project adds no files. A folder such as `.hikari/catalogs` is made the first time something is saved into it.
 
 ## Style catalogues
@@ -42,9 +42,9 @@ Three things name a catalogue: the file's `Last Style Storage` line in `[Script 
 
 A Project's presets for [script dialogs](/en/docs/automation/running-scripts#answers-and-presets), [Shift times and the Timing postprocessor](/en/docs/basics/timing#presets) are all in `.hikari/presets.toml` in its folder. A Project preset hides only yours of the same name in the same list, and for a script dialog, in the same dialog.
 
-- **Script dialog presets.** The dialog's **⋯** › **Presets** marks each preset **Project** or **Mine**, and a preset of yours that the Project's hides is greyed out. **Copy to project**, **Copy to mine**, **Move to project** and **Move to mine** are under **Delete preset**.
-- **Shift times presets and profiles**, and **Postprocessor presets.** The **Preset** box groups them under *This project* and *Mine*, and its **⋯** menu copies or moves the preset shown. A preset of yours that the Project's hides still applies, but can't be renamed or deleted. The [Timing layout](/en/docs/customize/layouts#the-built-in-layouts)'s preset is looked up in the Project first.
-- **Save as preset** saves to the Project at first while one is open, with **Save to mine** on its arrow, and HikariSub remembers the choice for each list.
+- **Script dialog presets.** The dialog's **⋯** › **Presets** marks each preset **Project** or **Yours**, and a preset of yours that the Project's hides is greyed out. **Copy to project**, **Copy to yours**, **Move to project** and **Move to yours** are under **Delete preset**.
+- **Shift times presets and profiles**, and **Postprocessor presets.** The **Preset** box groups them under *This project* and *Yours*, and its **⋯** menu copies or moves the preset shown. A preset of yours that the Project's hides still applies, but can't be renamed or deleted. The [Timing layout](/en/docs/customize/layouts#the-built-in-layouts)'s preset is looked up in the Project first.
+- **Save as preset** saves to the Project at first while one is open, with **Save to yours** on its arrow, and HikariSub remembers the choice for each list.
 
 ## Font catalogues, layouts, shapes and tags
 
@@ -57,9 +57,9 @@ A Project's presets for [script dialogs](/en/docs/automation/running-scripts#ans
 
 Each file is made the first time something is saved into it, in the same format as yours. A Project's item hides yours of the same name, whatever its case.
 
-- **The lists** show *This project* first, then *Mine*. **Edit tags** shows *This project* first, and your own tags keep their **Common**, **More** and **Your tags** sections.
+- **The lists** show *This project* first, then *Yours*. **Edit tags** shows *This project* first, and your own tags keep their **Common**, **More** and **Your tags** sections.
 - **Copy and Move** are in each list's menu, such as **Layout tiers** in Manage layouts, and on a row's right-click menu too. An item of yours that the Project's hides is read-only, but you can still copy, move or delete it.
-- **New catalogue**, **New shape** and **New tag** have the split button. **Save layout as…** has a **Save to** row instead, which shows **This project** or **Mine**: click it for **Save to project** or **Save to mine**. HikariSub remembers the choice for each list.
+- **New catalogue**, **New shape** and **New tag** have the split button. **Save layout as…** has a **Save to** row instead, which shows **This project** or **Yours**: click it for **Save to project** or **Save to yours**. HikariSub remembers the choice for each list.
 - **The layout menu** lists the Project's layouts first. A layout of yours that the Project's hides is greyed out, with *Hidden by the project's copy*. Applying a layout writes nothing to either file.
 - **Vector drawing's Shape list and Hydra's Tag list** offer the Project's first, and never one it hides.
 - **Yours only.** **Load from a file**, in Manage font catalogues, loads into your own catalogues, and the font catalogues' autosave copies stay in your user folder. **Restore default shapes** and **Restore default tags** replace only yours.
@@ -76,8 +76,8 @@ A Project's dictionary words are in `.hikari/dictionary.txt`, one word per line.
 
 These take the Project's value over yours, one setting at a time:
 
-- **Export format**, on the **Export** page of the [Project tab](/en/docs/basics/files-and-formats#the-project-tab): *Used for files that haven't been exported yet.* **Not set** leaves yours. The `[export]` table in `project.toml` can also hold the **Export as** window's options. A file's own last export still comes first, then the Project's, then your last export. Exporting never changes `project.toml`.
-- **Target language**, on the Project tab's **Translation** page, is the language of [Translate to](/en/docs/ai/inline-actions#the-actions) in the Project's windows. Left empty, yours applies. **Source language** sits beside it, and both **Translate to** actions send it with the lines. Left empty, it shows *Detect*, and the models detect the language from the lines.
+- **Export format**, under **Conversion › Export** on the [Project tab](/en/docs/basics/files-and-formats#the-project-tab): *Used for files that haven't been exported yet.* **Not set** leaves yours. The `[export]` table in `project.toml` can also hold the **Export as** window's options. A file's own last export still comes first, then the Project's, then your last export. Exporting never changes `project.toml`.
+- **Target language**, under **Line editor › Translation mode** on the Project tab, is the language of [Translate to](/en/docs/ai/inline-actions#the-actions) in the Project's windows. Left empty, yours applies. **Source language** sits beside it, and both **Translate to** actions send it with the lines. Left empty, it shows *Detect*, and the models detect the language from the lines.
 
 ## What stays yours
 
