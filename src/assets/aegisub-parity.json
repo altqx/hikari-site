@@ -767,9 +767,9 @@
         },
         {
           "feature": "Styling assistant",
-          "status": "not-yet",
-          "text": "There's no window that steps through lines applying styles.",
-          "where": "Styles panel (apply to selected lines)"
+          "status": "same",
+          "text": "Step through lines gives the active line a style and goes to the next, as the Styling assistant does.",
+          "where": "Styles panel; the style button in full-screen typesetting"
         },
         {
           "feature": "Fonts collector: check, copy to a folder or the subtitle's folder, zip",
