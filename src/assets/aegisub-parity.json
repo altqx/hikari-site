@@ -145,9 +145,9 @@
         },
         {
           "feature": "Move lines up or down one row",
-          "status": "not-yet",
-          "text": "There's no command to move lines up or down a row.",
-          "where": ""
+          "status": "same",
+          "text": "",
+          "where": "Grid › Move lines up, Move lines down (Alt+Up, Alt+Down)"
         },
         {
           "feature": "Sort all or selected lines by start, end, style, actor, effect, layer",
@@ -157,15 +157,15 @@
         },
         {
           "feature": "Tag hiding: show, hide, simplify, cycle",
-          "status": "not-yet",
-          "text": "There's no command that cycles between the modes; View › Hide tags in the Grid swaps each block for ☀, and tags vanish only if that replacement is set to nothing in Settings.",
-          "where": "View › Hide tags in the Grid"
+          "status": "same",
+          "text": "",
+          "where": "View › Tags in the Grid; Cycle tags in the Grid (shortcut)"
         },
         {
           "feature": "Grid highlights the lines on the current frame",
-          "status": "not-yet",
-          "text": "The Grid doesn't mark the lines shown at the video frame.",
-          "where": ""
+          "status": "same",
+          "text": "",
+          "where": "View › Mark lines on the current frame"
         },
         {
           "feature": "Line folding (arch1t3cht's fork)",
@@ -271,9 +271,9 @@
         },
         {
           "feature": "Clear text, or clear text but keep the tags",
-          "status": "not-yet",
-          "text": "Delete text empties the whole text; nothing keeps the tags.",
-          "where": "Grid › Delete text"
+          "status": "same",
+          "text": "",
+          "where": "Grid › Delete text; Delete text, keep tags"
         },
         {
           "feature": "Undo and redo",
@@ -634,8 +634,8 @@
         {
           "feature": "YUV4MPEG (`.y4m`) video",
           "status": "same",
-          "text": "`.y4m` files open through FFMS2; pick All files in Open video, as its filter doesn't list them.",
-          "where": "Video › Open video… (All files)"
+          "text": "",
+          "where": "Video › Open video…"
         },
         {
           "feature": "AviSynth scripts as video (Windows)",
@@ -869,9 +869,9 @@
         },
         {
           "feature": "Select lines: intersect with the selection, exact match",
-          "status": "not-yet",
-          "text": "The modes are Select, Add to selection and Deselect, and matching is \"with\" or \"without\" the text.",
-          "where": "Edit › Select lines…"
+          "status": "same",
+          "text": "",
+          "where": "Edit › Select lines… › Selection, Match"
         },
         {
           "feature": "Spell checker (replace, ignore, add, language, skip comments and capitals)",
