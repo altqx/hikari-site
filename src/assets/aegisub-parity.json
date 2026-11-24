@@ -700,9 +700,9 @@
         },
         {
           "feature": "Vector clip: freehand, freehand smooth, convert a segment, insert a point",
-          "status": "not-yet",
-          "text": "No freehand or convert mode; a point is inserted by right-click in the Line, Bézier and B-spline modes.",
-          "where": "Vector clip, right-click"
+          "status": "better",
+          "text": "Freehand has a Smoothing setting and works in Vector drawing too; a segment's right-click menu makes it a curve or straight, inserts a point or deletes it.",
+          "where": "Vector clip and Vector drawing › Freehand; right-click a segment"
         },
         {
           "feature": "Vector clip coordinates with two decimals",
