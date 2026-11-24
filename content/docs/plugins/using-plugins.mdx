@@ -178,6 +178,25 @@ A plugin can ask you to pick from a list or to type a value, in a popup of Hikar
 
 A plugin can open one only in answer to something you did, such as a command you ran or a click in its own panel or dialog. So a popup never takes the focus by itself. Only one shows at a time: opening another closes the one that was showing. A plugin's popup also closes when the plugin stops.
 
+## Help as you type
+
+A plugin can help in the [Line editor](/en/docs/basics/line-editor)'s text, and in the translation in translation mode:
+
+- **Suggestions.** They join HikariSub's tag list in one popup, after the tags, each with what it is and the plugin's name. The popup opens when you type `\` or a character the plugin listens for, or with **Trigger completion**, <kbd>Ctrl</kbd>+<kbd>Space</kbd>. <kbd>Enter</kbd> or a click puts the suggestion in. With no plugin answering, the tag list is the same as before.
+- **Hovers.** Rest the pointer on the text, and what a plugin says about it shows as a tooltip, followed by `·` and the plugin's name.
+
+A plugin that takes longer than a second to answer is left out of that popup or tooltip, and keeps running.
+
+## Problems from plugins
+
+A plugin can point out problems in your lines, each an error, a warning, a note or a hint, sometimes with quick fixes. They show in three places:
+
+- **The [Problems](/en/docs/checking/qc-notes) panel**, which also holds the QC notes, groups them by line. Choosing one selects its line and seeks the video to it. A problem's quick fixes are in its menu.
+- **The Line editor** underlines each one with a wavy line in its severity's colour, or a dotted line for a hint. Hovering it shows the message and where it comes from. **Quick fix**, <kbd>Alt</kbd>+<kbd>Enter</kbd>, offers the fixes for the problem at the caret.
+- **The Grid** marks a row that has problems, in the colour of the worst one, and its tooltip counts them.
+
+A quick fix is one undo step, named after where the problem comes from and the fix. Problems aren't saved in the file. A plugin's problems on a line go when you change that line's text, until the plugin checks it again, and all of them go when the plugin stops.
+
 ## Plugin panels
 
 A plugin can add panels of its own, such as a list of lines to check or a chart. They work like HikariSub's panels: they dock, tab and float, and keep their place in your [layouts](/en/docs/customize/layouts).

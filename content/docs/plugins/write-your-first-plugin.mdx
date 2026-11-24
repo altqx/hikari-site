@@ -182,6 +182,7 @@ Every widget that sends events needs an `id`. Each event says which widget sent 
 - **`contributes.commands`, grown.** A command may add a `description`, an `icon` and `when`, a list of conditions that must all hold for it to run, such as `["selection", "!video"]`. Its handler is called as `fn(args, context)`, where `context.via` says what ran it: `menu`, `key`, `palette`, `status`, `api` or `ai`. See [Menus, status items and shortcuts](#menus-status-items-and-shortcuts).
 - **`contributes.nodes`.** Lua nodes for [node effects](/en/docs/karaoke/node-effects#nodes-from-plugins). Each names its `file`, its `inputs` and `outputs`, and the node joins the **Add node** list under your plugin's name. Its code runs in the node sandbox, not in your plugin's helper, so it can't call `hikari`. See [Nodes](https://github.com/altqx/hikari/blob/main/docs/plugins.md#nodes) and the [Zigzag](https://github.com/altqx/hikari/tree/main/docs/examples/zigzag) example.
 - **`contributes.styles`, `karaokePresets`, `graphs`, `dictionaries` and `layouts`.** Files that HikariSub reads itself. See [Content packs](#content-packs).
+- **`contributes.providers`.** Completions and hovers for the Line editor. See [Completions, hovers and problems](#completions-hovers-and-problems).
 - **`contributes.formats`.** Subtitle formats the plugin reads or writes. See [Formats](#formats).
 - **`contributes.programs` and `mcpServers`.** Programs that come with the plugin, and MCP servers they run. See [Programs](#programs).
 - **`permissions`.** What the plugin asks for, each with a reason that the install question shows. See below.
@@ -341,6 +342,59 @@ if picked then print(picked[1]) end
 
 **Only in answer to the user.** A plugin may open a popup only while it answers something the user did: a command run from a menu, a key, the palette or a status item; a `click` or `button` in its own panel or dialog; an `accept`, `button` or `back` of its own live popup; or a job one of those began. Anywhere else, such as a timer, an event or `plugins.run`, the call answers `refused` with reason `not_user_initiated`. AI and MCP callers get `not_granted`. One popup shows at a time, and the title row always shows the plugin's name. See [Quick picks and input boxes](https://github.com/altqx/hikari/blob/main/docs/plugins.md#quick-picks-and-input-boxes).
 
+## Completions, hovers and problems
+
+A plugin can help in the [Line editor](/en/docs/basics/line-editor)'s text and translation fields.
+
+**Completions and hovers.** Declare the providers in the manifest:
+
+```json
+"contributes": {
+  "providers": {
+    "completion": {"triggers": ["\\"], "fields": ["text", "translation"]},
+    "hover": {"fields": ["text"]}
+  }
+}
+```
+
+`triggers` are the characters that open the popup, besides <kbd>Ctrl</kbd>+<kbd>Space</kbd> (**Trigger completion**). `fields` is `text`, `translation` or both, and `text` when left out. Then answer them:
+
+```lua
+hikari.providers.completion(function(r)
+    -- r = {document, line, field, text, offset, trigger}
+    return items -- at most 200 of {label, insert, detail, from, to, snippet}
+end)
+hikari.providers.hover(function(r)
+    -- r = {document, line, field, text, offset}
+    return nil -- or {text, from, to}
+end)
+```
+
+- **Completion.** Each item shows its `label` and `detail`, with the plugin's name, after the built-in tag list. Choosing it replaces `from` to `to`, in UTF-16 offsets, with `insert`, or with `label` when there's no `insert`. At most 200 items count, and an item that breaks the contract, such as one with `from` but no `to`, is dropped.
+- **Snippets.** `snippet = true` fills each `${n:default}` in `insert` with its default and puts the caret at `$1`, else `$0`, else the end. There are no tab stops to move between.
+- **Hover.** Asked when the pointer rests on the text for 500 ms. The first answer, in the order the plugins were installed, shows as a tooltip, *text · plugin*.
+- **Time.** Each answer gets 1 second. A later one is dropped, and the plugin keeps running. A newer request replaces one still waiting.
+- **Program plugins** answer the JSON-RPC methods `complete` and `hover` with the same items or hover.
+
+A handler must be registered for each provider the manifest declares, and only those.
+
+**Problems.** A plugin sets problems on Lines, which show in the Problems panel, as squiggles in the Line editor and as Grid marks:
+
+```lua
+local doc = hikari.call("documents.get", {})
+hikari.problems.set({
+    {line = id, from = 2, to = 5, severity = "error", message = "Wrong verb",
+     fixes = {{title = "Use “have”", edits = {{from = 2, to = 5, insert = "have"}}}}},
+}, {revision = doc.revision, set = "grammar"})
+```
+
+- **A problem** names its `line`, a `field` (`text` when left out), an optional `from`–`to` range in UTF-16 offsets (the whole Line when left out), a `severity` (`error`, `warning`, `info` or `hint`), a `message`, an optional `code` and up to 8 quick `fixes`. Each fix is a `title` and the `edits` it makes in that Line's field.
+- **`hikari.problems.set(problems, {revision, set, document})`** replaces the plugin's problems under `set` on that file. `revision` is the one the offsets were measured on, and a stale one answers `stale_revision`. A plugin holds at most 20000 problems per file.
+- **`hikari.problems.clear({document, set})`** removes them, **`hikari.problems.list(options)`** reads every source's problems, and **`hikari.problems.fix(problem, fix)`** applies a fix as one undo step named after the source and the fix. The `problems.changed` event says when they changed.
+- **When they go.** Problems are never saved and aren't undo steps. When a Line's field changes, the problems on it go until the plugin sets them again, so a plugin usually sets them again on `document.changed`. All of a plugin's problems go when it stops.
+
+`problems.set` and `problems.clear` are for plugins only. See [Language features and problems](https://github.com/altqx/hikari/blob/main/docs/plugins.md#language-features-and-problems) and [`problems.set`](/en/docs/plugins/api-reference#problemsset).
+
 ## Content packs
 
 A plugin can ship files that HikariSub reads itself, with no code. Each lands beside its built-in counterpart with the plugin's name, is read-only, and goes when the plugin is turned off or uninstalled.
@@ -393,7 +447,7 @@ See [Programs](https://github.com/altqx/hikari/blob/main/docs/plugins.md#program
 
 A plugin whose `main` is `{"program": "<id>"}` is that program, declared with `"api": true`. It speaks JSON-RPC 2.0 with HikariSub on its stdin and stdout, one message per line, and gets the same operations, events, panels, dialogs, files, network, jobs, settings, quick picks and input boxes as a Lua plugin, with the same permissions and limits.
 
-- HikariSub calls `initialize`, then `command`, `event`, `panel`, `dialog`, `quick_pick`, `input_box`, `export` and `import` as they happen. The program has 30 seconds to answer `initialize`.
+- HikariSub calls `initialize`, then `command`, `event`, `panel`, `dialog`, `quick_pick`, `input_box`, `complete`, `hover`, `export` and `import` as they happen. The program has 30 seconds to answer `initialize`.
 - The program calls every Hikari API operation by its name, such as `lines.list`, and `hikari/notify`, `hikari/settings.get`, `hikari/subscribe` and the other `hikari/` methods.
 - Anything on stdout that isn't JSON-RPC stops the program, as a crash does. stderr goes to the Log panel.
 - Turning the plugin off, updating or removing it sends `shutdown` and `exit`, and ends the program 5 seconds later.
