@@ -25,11 +25,23 @@ HikariSub reads what the file holds rather than trusting its name. A `.txt` or `
 
 If the file can't be opened, nothing changes: the tab keeps what it had, and the Log says why.
 
-<Callout type="warn">
-  Subtitles must be UTF-8. Convert a UTF-16 or legacy-charset file to UTF-8 in a text editor before you open it.
-</Callout>
-
 When the subtitles name a video, audio or keyframes file, a bar offers to load them. If the video's size differs from the subtitles' resolution, HikariSub asks whether to [resample](#resolution) them.
+
+### Files that aren't UTF-8
+
+A subtitle file opens as it is: HikariSub never converts it without asking. When the file looks like another encoding, such as Shift-JIS, Windows-1251 or UTF-16, a bar says so: "episode01.srt looks like Shift-JIS, not UTF-8." A file in plain ASCII or UTF-8 never shows it.
+
+- **Reopen as** and the encoding reads the file again in it.
+- **Other encoding…** opens the list of encodings.
+- Closing the bar hides it for that file.
+- With changes you haven't saved, the bar says that reopening drops them.
+
+**File › Reopen with encoding…** reads the open file again in the encoding you choose, with the one HikariSub found first, marked *Detected*. It offers UTF-8, UTF-16 LE and BE, Shift-JIS, GB18030, Big5, EUC-KR, Windows-1250, 1251, 1252, 1253, 1254 and 1257, ISO-8859-1, 2 and 15, and KOI8-R. It needs a file that is saved on disk.
+
+- If the file isn't text in that encoding, nothing changes: "The file is not text in that encoding; nothing was changed."
+- Otherwise the file is read as that encoding and marked as changed, so the next save writes it as UTF-8.
+
+To write a copy in another encoding, such as an SRT for an old player, use [Export as](/en/docs/basics/export#encoding).
 
 ### Importing lyrics
 
@@ -46,6 +58,19 @@ After you choose the file, the **Import lyrics** window shows its format, how ma
 - **End times** are for lines whose end the file leaves open, such as a plain LRC line. **Each line ends when the next one starts**, or **Leave a gap before the next line**, 0.20 s at first. **Last line lasts (s)** gives the last line its length, 5 s at first. HikariSub keeps these choices for next time.
 
 **File › Open subtitles…** opens the same files straight into a new file, with the encoding detected and the end times at their defaults: each line ends when the next one starts, and the last one lasts 5 s.
+
+### Importing text
+
+**File › Import text…** turns a plain text script into lines without times, as Aegisub does when it opens a `.txt`. Each line of the text becomes one line, starting and ending at 0:00:00.00. After you choose the file, the **Import text** window shows a preview of the first 20 lines as they will come in, and changes as you change the options:
+
+- **Actor separator**, `:` at first. The text before the first one is the line's actor, so `Ana: Hello` gives the actor `Ana` and the text `Hello`. A line that starts with a space or a tab never takes an actor. Leave it empty to read no actors.
+- **Comment starter**, `#` at first. A line that starts with it becomes a comment line, without the starter. Leave it empty to read no comments.
+- **Keep blank lines as comment lines**, off at first, so blank lines are skipped.
+- **A line without an actor keeps the last one**, on at first, as in Aegisub.
+- **Encoding** starts at the one the file's bytes suggest, from the same list as [Reopen with encoding](#files-that-arent-utf-8). If the file doesn't read in it, the window says so, and **Import** stays off until you choose another.
+- **Add the lines to:** **After the last line of the open file**, the choice when an ASS file is open, or **A new file**. In the open file, each line gets the **Style** you choose, the current line's at first. The import is one undo step, *Import text*, and the new lines are selected afterwards.
+
+HikariSub keeps these choices for next time. The file can be up to 8 MB. **File › Open subtitles…** on a `.txt` still opens it as plain text lines.
 
 ## Saving
 
@@ -66,6 +91,14 @@ When a save fails, an error notice and the status bar say **Save failed; the fil
 If the file changed on disk since you opened it, Save stops and a bar offers to **Reload** it, **Compare** the two, or **Keep mine**. A read-only file offers **Save as…** instead.
 
 **Edit › Undo to last save** goes back to the saved version, and **Edit › History** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>) to any step before or after it.
+
+An ASS save also writes what Aegisub keeps in its `[Aegisub Project Garbage]` section, with Aegisub's names, so the file opens with the same media and view in Aegisub:
+
+- the video, audio, timecodes and keyframes files, relative to the subtitle file;
+- the video's aspect ratio, zoom and frame, the Grid's scroll position and the active line;
+- the Automation scripts the file names.
+
+Opening a file reads these keys too, and brings back the video's aspect ratio and frame when the video loads. Keys HikariSub doesn't know stay as they were. Each save starts the file's Script Info with `; Script generated by HikariSub` and the version, and the website's address, in place of another program's or an older HikariSub's line.
 
 ASS files also keep the tab's arrangement of panels in a `[Hikari]` section that other programs ignore. Opening the file again brings the panels back the way you left them. To leave it out, turn off **File › Settings › Script properties › Save the panel layout in subtitle files**.
 
@@ -103,6 +136,8 @@ To write a copy in another format and leave the file as it is, use [Export](/en/
 - **Credits:** the title, and who wrote, translated, checked, timed and edited it.
 - **Resolution:** the size the lines are written for, and the layout size. **From video** takes the open video's. **YCbCr matrix** tells players which colours the video uses, so that subtitle colours match it.
 - **Rendering:** how long lines wrap, which way colliding lines stack, and whether borders and shadows scale with the video.
+- **Reading limits:** **Use my settings** is ticked at first, so the file follows your limits in [File › Settings › Grid › Counting](/en/docs/basics/grid#reading-limits). Untick it to give this file its own **CPS warning**, **CPS error**, **Characters per line** and **Lines**, saved in its Script Info. Tick it again to take them out.
+- **More**, folded at first: **Synch point** and **Update details**, as Aegisub writes them. It opens by itself when the file has either.
 
 **Save** writes only what you changed, as one undo step.
 
@@ -152,11 +187,22 @@ A subtitle file's positions, sizes and margins are written for its resolution. *
   <figcaption>Resampling to another aspect ratio.</figcaption>
 </figure>
 
-Set **Target**, or take it **From video**. When the aspect ratio changes, choose to **Keep it**, or **Stretch** the lines to the new shape: text and drawings grow wider when the width grew more, and taller when the height did. **Resample** scales the styles' sizes, outlines, shadows and margins, the lines' margins, and position, clip, border, shadow and size tags and drawings, in one undo step.
+Set **Target**, or take it **From video**. When the aspect ratio changes, **Aspect ratio** offers four choices:
+
+- **Keep it**: text keeps its proportions, and positions follow the new picture.
+- **Stretch**: text and drawings stretch with the picture, wider when the width grew more, and taller when the height did.
+- **Letterbox**: the video adds bars around the picture the subtitles were made for. Signs stay on what they mark.
+- **Crop**: the video cuts off the edges of the picture the subtitles were made for. Signs stay on what they mark.
+
+**Edges**, folded at first, shows how much Letterbox or Crop adds to (+) or cuts from (−) each edge before scaling, such as *Left 240 · Right 240*. Unfold it to type the **Left**, **Right**, **Top** and **Bottom** edges in pixels; **Same on both sides** is ticked at first. Typing an edge makes them custom edges, and text keeps its proportions. The edges move positions, `\move`, `\org`, clips and margins before they are scaled, as Aegisub's resampler does; drawings don't move.
+
+**YCbCr matrix** can change the file's matrix in the same step: **Keep** and the file's matrix, the video's matrix marked *(video)*, or another. Choosing one converts the colours so that they look the same under the new matrix, as [the matrix question](/en/docs/basics/video) does when a video opens. When the subtitles have no matrix to convert from, it says so and can't be changed.
+
+**Resample** scales the styles' sizes, outlines, shadows and margins, the lines' margins, and position, clip, border, shadow and size tags and drawings, in one undo step, *Changing subtitles resolution*, with the colours too when the matrix changes.
 
 **Adjust 3D rotations**, ticked at first, keeps lines turned in 3D with `\frx` or `\fry` looking the same on screen, as arch1t3cht's Resample Perspective script does. HikariSub works out each such line's corners on the new frame, then sets its position, origin, rotations, shearing, scaling, outline and shadow again to match them. When the aspect ratio changes, this also covers lines turned about their own `\org`, and with **Stretch**, any turned or sheared line. Lines that look the same after plain scaling keep their tags. Lines that move with `\move`, change shape over time or can't be measured are only scaled, and one notice in the [Log panel](/en/docs/help/troubleshooting#the-log-panel) lists them by line number.
 
-Resampling keeps the file's `LayoutResY`, and changes `LayoutResX` by as much as the aspect ratio changes, when the file has both.
+When the file has `LayoutResX` and `LayoutResY`, `LayoutResY` grows with the top and bottom edges and otherwise stays, and `LayoutResX` follows it and the change of shape, as in Aegisub 3.5.1.
 
 When you open a video of another size, the same choice comes up: **Resample**, which adjusts 3D rotations too, **Change resolution only**, which sets the new size without scaling anything and leaves `LayoutResX` and `LayoutResY` alone, or **Keep as is**.
 
@@ -356,11 +402,11 @@ HikariSub keeps the tabs a Project had when you closed it, or when you closed it
 
 ## Autosave and recovery
 
-HikariSub keeps copies of changed files as you work, 20 seconds after a change. If it closes without warning, the Home page says so the next time and offers them.
+HikariSub keeps copies of changed files as you work, 20 seconds after a change at first. If it closes without warning, the Home page says so the next time and offers them.
 
 **File › Open autosave…** lists the copies by file and time. **Open copy** opens one as a new, unsaved file, named "(recovered)": your original file is not touched. **Delete older than…** clears old ones. The autosaves of HikariSub 0.0.x are listed too, read only: see [Moving from legacy](/en/docs/get-started/moving-from-legacy#what-does-not).
 
-**File › Settings › General › Saving › Autosave files kept** sets how many copies of each file are kept, from 2 to 1000000, 3 at first. Copies older than 30 days are deleted, and so are a file's copies once you save and close it.
+**File › Settings › General › Saving › Autosave every** sets how soon after a change a copy is made, from 5 seconds to 1 hour. **Autosave files kept** sets how many copies of each file are kept, from 2 to 1000000, 3 at first. Copies older than 30 days are deleted, and so are a file's copies once you save and close it.
 
 ## Sessions
 

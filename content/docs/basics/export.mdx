@@ -1,6 +1,6 @@
 ---
 title: Export
-description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2, TMPlayer, TTML, DFXP or YouTube timed text (srv3), open srv3 files, and see what each format couldn't keep.
+description: Write a copy of your subtitles as SRT, WebVTT, YouTube SBV, plain text, MicroDVD, MPL2, TMPlayer, TTML, DFXP or YouTube timed text (srv3), run steps such as karaoke templates first, choose the text encoding, open srv3 files, and see what each format couldn't keep.
 ---
 
 **File › Export as…** writes a copy of the file in another format. The file you are editing doesn't change: it stays ASS, with the same undo history, and nothing is marked as changed. The one exception is changed [srv3 style options](#style-options), which are saved in the file. Text you have typed in the Line editor but not yet applied goes into the copy too.
@@ -13,6 +13,8 @@ To turn the file itself into ASS, use [Saving as ASS](/en/docs/basics/files-and-
 - **Lines:** **All**, **Selected** (the lines selected in the Grid) or **Shown** (the rows the Grid shows, after [filtering](/en/docs/basics/grid#hiding-lines) and [folding](/en/docs/basics/grid#folding-generated-lines)). Each choice shows how many lines it holds.
 - **Save to:** starts with the file's own name and folder, and the format's extension. Changing the format changes the extension. **Browse…** picks another place.
 - **Options:** only those for the chosen format show.
+- **Before export:** steps that change the copy before it is written. See [Before export](#before-export).
+- **Encoding**, for the text formats: see [Encoding](#encoding).
 
 **Export** writes the file. If a file with that name exists, HikariSub asks before replacing it.
 
@@ -41,7 +43,36 @@ HikariSub remembers the format and options for each file, so the next export of 
 - **Netflix timed-text style** follows the stricter rules of Netflix's timed-text requirements: times in frames, white text in the default font and size, centred at the top or the bottom of the picture, and only italics. The report lists the colours, bold, underline, strikeout and positions it drops or moves.
 - **TMPlayer** has no end times, so overlapping lines are always merged, and an empty subtitle clears the screen when no line follows straight away.
 
-Every format is written as UTF-8.
+Plugins can add formats of their own. Each shows after the built-in ones, as its title with the plugin's name in brackets, and the plugin writes the file.
+
+## Encoding
+
+**Encoding**, for SRT, YouTube SBV, plain text, MicroDVD, MPL2 and TMPlayer, writes the file in another encoding. It starts at UTF-8 and offers the same encodings as [Reopen with encoding](/en/docs/basics/files-and-formats#files-that-arent-utf-8), such as Shift-JIS or Windows-1252. WebVTT, TTML, DFXP and srv3 are always written as UTF-8, and so is saving as ASS.
+
+- A UTF-16 file starts with a byte order mark.
+- When the encoding can't hold some of the file's characters, nothing is written yet. HikariSub asks first, such as "Shift-JIS can't hold every character of this file", and lists up to 40 of them. **Write anyway** writes each as the encoding's substitute character; **Cancel** writes nothing.
+- The encoding is remembered with the file's other export choices.
+
+## Before export
+
+**Before export** runs steps on a copy of the file before it is written, as Aegisub's export filters do. The file you are editing doesn't change.
+
+| Step | Does | Aegisub's filter |
+| --- | --- | --- |
+| **Apply karaoke template** | Runs the file's [karaoke templates](/en/docs/karaoke/templater) | Karaoke template |
+| **Transform frame rate** | Moves every time from the **Input frame rate**'s frames to the **Output frame rate**'s. Each is **Constant**, or **Variable**, from the video's or the timecodes' frames. **Reverse the transformation** swaps them | Transform Framerate |
+| **Remove tags** | Removes the kinds of tags you choose | Clean Tags |
+| **Set unknown styles to Default** | Gives lines whose style is missing the Default style | Fix Styles |
+
+A loaded script's own export filters are steps too, with their settings.
+
+- **The row's menu** offers **No steps**, your recipes and the Project's, **From this file (Aegisub)**, **Save recipe…** and **Manage recipes…**. **Add steps** starts a new list with every step off.
+- **Each step** has a check box to turn it on, and its settings open under it. **Move up**, **Move down** and **Move to top** change the order.
+- **From this file (Aegisub)** uses the list of export filters that Aegisub keeps in the file. After an export that ran steps, the next save writes the steps that were on back into the file, by Aegisub's names, so Aegisub reads the same list.
+- **A recipe** is a named list of steps with their settings, without the format. **Save recipe…** keeps the steps you have, as yours or, in a Project, the [Project's](/en/docs/basics/project-tiers).
+- **Selected** and **Shown** keep the lines the steps made, such as a template's.
+
+A step that fails stops the export: nothing is written, and the file is unchanged. **Turn it off and export** exports without it. A script's step whose script isn't loaded is skipped, and the export goes on; a script's step can't start while a macro runs. The report lists the steps that ran. Formats that plugins add don't run steps.
 
 ## YouTube timed text (srv3)
 
