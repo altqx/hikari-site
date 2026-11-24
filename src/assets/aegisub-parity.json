@@ -1109,9 +1109,9 @@
         },
         {
           "feature": "Automatic backup copy on save",
-          "status": "not-yet",
-          "text": "Saving keeps no backup copy (only Find's folder replace does).",
-          "where": ""
+          "status": "better",
+          "text": "Each save keeps the file as it was in the recovery folder, up to 100 copies per file, and Open autosave… opens any of them as an unsaved copy.",
+          "where": "File › Settings › General › Saving › Backup copies kept; File › Open autosave…"
         }
       ]
     },
