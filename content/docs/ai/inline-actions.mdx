@@ -15,7 +15,7 @@ Two commands have no key at first. Give them one in **File › Settings › Shor
 - **AI actions** opens the AI actions menu at the active line, or at the Line editor's AI button when you're typing in it.
 - **Repeat last AI action** runs the last action again on the lines you have chosen now.
 
-With **Turn off all AI features** ticked in **File › Settings › AI**, the menus and commands are hidden. An action is on when its role has a model in **File › Settings › AI › Models**, or when Chat has one, since a role without its own model uses the Chat model. An agent such as Claude Code doesn't count. With no model at all, the menu's last item is **Add a model in Settings › AI**; with one, it is **Edit actions**. Both open **File › Settings › AI**.
+While AI is off, the menus and commands are hidden. AI is off when you first install HikariSub: see [Turning AI on](/en/docs/ai/settings#turning-ai-on). An action is on when its role has a model in **File › Settings › AI › Models**, or when Chat has one, since a role without its own model uses the Chat model. An agent such as Claude Code doesn't count. With no model at all, the menu's last item is **Add a model in Settings › AI**; with one, it is **Edit actions**. Both open **File › Settings › AI**.
 
 ## The actions
 
@@ -24,6 +24,7 @@ With **Turn off all AI features** ticked in **File › Settings › AI**, the me
 | **Rewrite…** | Chat | How to rewrite it, such as *less formal, fewer words*. Your last five instructions are there to pick again |
 | **Shorten to 15 CPS** | Chat | Nothing. It sends only the lines over 15 characters per second, the limit the Grid and Line editor show |
 | **Fix spelling and grammar** | Reviewer | Nothing |
+| **Suggest synonyms ›** | Chat | Nothing. Only in the Line editor, for one word: see [Suggesting synonyms](#suggesting-synonyms) |
 | **Translate to English** | Translator, then Reviewer | Nothing. The language is **Translate to** in [Settings](#settings) |
 | **Translate to…** | Translator, then Reviewer | A language |
 | Your own actions | The one you chose | Nothing, or their instruction when **Ask each time** is on. They come after the built-in ones, below a line, and one that asks ends in **…** |
@@ -31,6 +32,16 @@ With **Turn off all AI features** ticked in **File › Settings › AI**, the me
 Each model is the one you chose for that role in **File › Settings › AI › Models**. A role without a model uses the Chat model.
 
 Comment lines, empty lines, lines of tags only, drawings and karaoke lines aren't sent, and HikariSub says how many it left out. Override tags stay where they are: each tag block goes as a numbered marker, and the answer must give every marker back once, in order. If it doesn't, the line is left as it is, with *Not changed, because the answer dropped a tag*. An answer the same as the line isn't a change.
+
+## Suggesting synonyms
+
+**Suggest synonyms ›**, in the Line editor's **AI actions** menu, offers other words for one word of the active line. It sits between **Fix spelling and grammar** and the **Translate to** actions, and shows when the caret is on a word, or when you have selected one whole word, outside override blocks. The Grid's menu doesn't offer it.
+
+Opening it sends the word to the **Chat** model, with its line without the tags and the usual lines of context. The submenu says *Finding synonyms…*, then lists up to 8 words, or says *No synonyms for* and the word.
+
+- **Picking one** replaces only that word. It is one step in the undo history, *AI: Synonym*, and waits in the [review](/en/docs/ai/review) like other AI changes. This is the same in every mode, Manual included, because you picked the word yourself.
+- **A line that changed** while the words came is left as it is.
+- **The cost** counts toward the [daily cost cap](/en/docs/ai/agent#cost-caps). At the cap, the submenu says *Today's cost cap is reached.*
 
 ## Translating
 
@@ -103,6 +114,6 @@ A line that fails shows under the run with the reason. **Retry** runs the failed
 | **Translate to** | English | The language of the **Translate to** action. A Project's [target language](/en/docs/basics/project-tiers#export-format-and-translation-languages) comes first in its windows |
 | **Lines of context** | 2 | How many lines before and after each line go with it, 0 to 5. 0 sends none. Translate sends none |
 
-Your actions save at once. The other two settings save with **OK** or **Apply**.
+Changes here apply at once.
 
 [What is sent](/en/docs/help/what-is-sent#ai) lists everything a request carries.
