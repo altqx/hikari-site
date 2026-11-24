@@ -809,9 +809,9 @@
         },
         {
           "feature": "Default style catalogue for new files",
-          "status": "not-yet",
-          "text": "File › New always starts with the built-in Default style; the catalogue setting covers conversions only.",
-          "where": ""
+          "status": "better",
+          "text": "A Project can choose its own, so new files in a show's folder start with its styles.",
+          "where": "File › Settings › Script properties › Files › Styles for new files"
         }
       ]
     },

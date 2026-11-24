@@ -49,7 +49,8 @@ Published 2026-MM-DD. [Release notes](https://github.com/altqx/hikari/releases/t
 - **Subtitle formats from plugins:** a plugin's formats show in **Export as** and **Save as**, and its readers open files the built-in ones can't. See [Subtitle formats from plugins](/en/docs/plugins/using-plugins#subtitle-formats-from-plugins).
 - **Programs:** a plugin can be a program in any language, in its own sandbox, and can have HikariSub download programs for it, checked against the size and SHA-256 the plugin names. Nothing is downloaded while **Let plugins connect to the internet** is off. See [Programs](/en/docs/plugins/using-plugins#programs).
 - **MCP servers from plugins** show in **File › Settings › AI**, marked with the plugin, and are off until you turn them on. See [MCP servers](/en/docs/plugins/using-plugins#mcp-servers).
-- **For plugin authors:** plugins can suggest text, explain it and report problems in the Line editor, and there are type hints for Lua and TypeScript, with a TypeScript sample. See [Write your first plugin](/en/docs/plugins/write-your-first-plugin).
+- **Themes and icons from plugins:** a plugin's colour themes join **File › Settings › Appearance**, and an icon theme adds an **Icons** section there. A plugin's own icons can show on its commands and status bar items. See [Themes and icons from plugins](/en/docs/plugins/using-plugins#themes-and-icons-from-plugins).
+- **For plugin authors:** load a plugin straight from its folder with **Install dev plugin…**. It reloads whenever its files change, and keeps its own data. See [Work on it in place](/en/docs/plugins/write-your-first-plugin#work-on-it-in-place). Plugins can also suggest text, explain it and report problems in the Line editor, and there are type hints for Lua and TypeScript, with a TypeScript sample.
 
 ### New and improved
 
@@ -74,6 +75,7 @@ Published 2026-MM-DD. [Release notes](https://github.com/altqx/hikari/releases/t
 - **Link fonts to a folder:** **Collect fonts** can link each font file into a folder instead of copying it, so a show's font folder doesn't hold the same fonts twice. See [Linking fonts](/en/docs/typesetting/fonts#linking-fonts).
 - **What Aegisub keeps in the file:** saving an ASS file keeps the video, audio, timecodes and keyframes files, the zoom, the frame and the active line, as Aegisub does, so the file opens with the same media in Aegisub. See [Saving](/en/docs/basics/files-and-formats#saving).
 - **More in Script properties:** **Reading limits**, and **More** with **Synch point** and **Update details**. See [The file's properties](/en/docs/basics/files-and-formats#the-files-properties).
+- **Styles for new files:** **File › Settings › Script properties › Files › Styles for new files** chooses the style catalogue **File › New** starts with, and a Project can choose its own. See [Catalogues](/en/docs/basics/styles#catalogues).
 - **Autosave every** sets how soon after a change the autosave runs, from 5 seconds to 1 hour. **File › Open video…** opens `.y4m` files.
 
 #### Shortcuts and Discord
