@@ -190,6 +190,41 @@ Packing a zip after every change is slow. Instead, load the folder as a dev plug
 
 A dev plugin never updates by itself, and the marketplace leaves it alone. See [Developer tools](https://github.com/altqx/hikari/blob/main/docs/plugins.md#developer-tools).
 
+## Test it
+
+`hikarisub --test-plugin` runs your plugin against a subtitle file with no window, and says which steps failed. Put a test subtitle file and a `tests.jsonl` beside the `first-plugin` folder, one step on each line. This one checks Step 3's command on a two-line file whose first line has a `\N`:
+
+```json title="tests.jsonl"
+{"call": "documents.get", "params": {}, "expect": {"lineCount": 2}}
+{"call": "selection.set", "params": {"selected": [1]}}
+{"run": "unbreak"}
+{"expectDocument": "unbroken.ass"}
+```
+
+```sh
+hikarisub --test-plugin first-plugin tests.jsonl --document episode.ass
+```
+
+- **The run.** It loads your folder as a dev plugin in a throwaway user folder, removed when it ends, so your own settings, plugins and keychain are never touched. It gives the plugin every permission the manifest asks for, without asking, and lists them first.
+- **The steps.** `run` runs one of your commands, `call` calls a [Hikari API](/en/docs/plugins/api-reference) operation as your plugin, and `expectDocument` compares the file, saved as ASS, with the one you name. There are steps for events, completions and hovers, exports, and the answers to the plugin's questions too.
+- **What a command returns** is checked with `expect`: a command whose handler returns `{hello = "Ana"}` passes `{"run": "greet", "expect": {"hello": "Ana"}}`. An object matches by the keys it names.
+- **Questions.** A command that asks the user gets its answer from the `answer` step before it, such as `{"answer": {"text": "Bo"}}` for an input box or `{"answer": {"pick": ["blue"]}}` for a list. A question with no answer waiting fails its step.
+- **The result.** It prints a line for each failed step, with its line in `tests.jsonl`, what came back and what was expected. It exits with 0 when every step passed, 1 when one failed, and 2 when the tests couldn't run, for example when the plugin doesn't load. `--json` prints a report for other tools instead.
+- **A stuck step.** Each step has 10 seconds, or `--timeout <ms>`. A step that takes longer fails, and the plugin is stopped and starts again for the next step.
+
+[The test harness](https://github.com/altqx/hikari/blob/main/docs/plugins.md#developer-tools) lists every step.
+
+### In your CI
+
+The tests need no display, so they run on any Linux or Windows runner with HikariSub installed. On Linux, run the command as above, from the AppImage or the installed package.
+
+On Windows, [install HikariSub silently](/en/docs/get-started/install#setup-recommended) with `/S /CURRENTUSER`. `hikarisub.exe` is a windowed program, so pipe what it prints, which makes PowerShell wait for it and keep its exit code:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\HikariSub\hikarisub.exe" --test-plugin first-plugin tests.jsonl --document episode.ass | Write-Output
+exit $LASTEXITCODE
+```
+
 ## The manifest
 
 [The manifest](https://github.com/altqx/hikari/blob/main/docs/plugins.md#the-manifest) lists every field. Besides the fields above:
