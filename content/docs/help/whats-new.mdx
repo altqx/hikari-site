@@ -5,6 +5,97 @@ description: What changed in each HikariSub 0.1 beta, newest first, with the sec
 
 The newest release comes first. Each release's notes on GitHub also list its downloads. [Install](/en/docs/get-started/install) has the current version.
 
+## 0.1.0-beta.6
+
+{/* TODO at release: the date, and check that the release link opens. */}
+
+Published 2026-MM-DD. [Release notes](https://github.com/altqx/hikari/releases/tag/v0.1.0-beta.6)
+
+### Introducing
+
+#### One Settings window
+
+- **Settings is one window, and every change applies at once:** there's no OK, Cancel or Apply. Search finds a setting by its name, its note or its id, and **Filter** narrows the list to the settings you changed or a plugin's. Every row has a dot when it's changed, a reset button and a **⋯** menu with **Copy link**, and **Reset page…** and **Reset all…** ask first. See [Settings](/en/docs/customize/settings).
+- **Yours and the Project's:** the **Yours** tab holds your settings, and in a Project the **Project** tab holds what the Project sets, with the same pages. A row the Project sets says so on Yours. The "Mine" tier is now called "Yours" everywhere. See [Yours and Project](/en/docs/customize/settings#yours-and-project).
+- **Your settings file:** **Open settings file** opens `settings.toml`, and what you change there shows in the window at once. `hikarisub://settings/…` links open the window at a setting. See [Setting links](/en/docs/customize/settings#setting-links).
+- **Plugin settings** are under **File › Settings › Plugins**, one page for each plugin. See [Plugin settings](/en/docs/customize/settings#plugin-settings).
+
+#### Typesetting in full screen
+
+- **Simple full screen:** the picture sits above a black strip, so nothing covers the frame. The strip has the time, a seek bar with the keyframes marked, the current line, and the frame, play and stop buttons. It hides 2 seconds after you stop moving the pointer while the video plays, and its right-click menu and **File › Settings › Video › Full screen** choose where it sits and when it shows. A frame that can't be decoded says so on the picture. See [Full screen](/en/docs/basics/video#full-screen).
+- **Full-screen typesetting:** **Typeset** on the strip, or **View › Full screen typesetting**, puts the visual tools beside the picture: the tools by name on the left, the tool's fields on the right, and the active line under the picture, where you can edit it. Edit shapes and Edit tags open beside the picture, and each tool's **?** opens its guide. See [Full-screen typesetting](/en/docs/basics/video#full-screen-typesetting).
+- **Step through lines:** in the Styles panel and in full-screen typesetting, <kbd>Enter</kbd> gives the active line a style and goes to the next line, as Aegisub's Styling Assistant does. See [Choosing a style](/en/docs/basics/video#choosing-a-style).
+
+#### The command palette
+
+- **The command palette and Quick Open:** run any command by its name, open a recent or Project file, or jump to a line, a time, a style or a panel, from one box at the top of the window. Macros that can't run on the selection are greyed out with the reason, as in the Automation menu. See [Command palette and Quick Open](/en/docs/basics/command-palette).
+- **The same box elsewhere:** choosing an MKV's audio or subtitle track, and renaming an agent thread or a node, use the same box: type to filter, <kbd>Esc</kbd> to cancel. See [The same box elsewhere](/en/docs/basics/command-palette#the-same-box-elsewhere).
+
+#### Before export
+
+- **Steps before export:** **File › Export as…** can run steps on a copy before it writes, as Aegisub's export filters do: apply karaoke templates, transform the frame rate, remove tags, set unknown styles to Default, or run a script's own filters. Save a list of steps as a recipe, for you or the Project, or use the list Aegisub keeps in the file. A step that fails stops the export, and nothing is written. See [Before export](/en/docs/basics/export#before-export).
+
+#### Files in other encodings
+
+- **Files that aren't UTF-8:** a bar names the encoding HikariSub found, and **File › Reopen with encoding…** reads the file in any of 17 encodings. Saving writes UTF-8. See [Files that aren't UTF-8](/en/docs/basics/files-and-formats#files-that-arent-utf-8).
+- **Export in another encoding:** SRT, YouTube SBV, plain text, MicroDVD, MPL2 and TMPlayer can be written in another encoding, and HikariSub asks first when some characters don't fit. See [Encoding](/en/docs/basics/export#encoding).
+- **Import text:** **File › Import text…** turns a plain-text script, one line each, such as `Ana: Hello`, into untimed lines, after the last line of the open file or in a new file, with a preview as you change the options. See [Importing text](/en/docs/basics/files-and-formats#importing-text).
+
+#### Plugins
+
+- **Menus, the status bar and shortcuts:** plugins can add rows to HikariSub's menus, items to the status bar and default keyboard shortcuts. Right-click the status bar to hide an item. A default you clear stays cleared. See [Running a plugin's commands](/en/docs/plugins/using-plugins#running-a-plugins-commands).
+- **Lists and questions:** a plugin can ask you to pick from a list or type a value, in the same box as the command palette, but only in answer to something you did. See [Lists and questions](/en/docs/plugins/using-plugins#lists-and-questions).
+- **Styles, presets and more from plugins:** plugins can bring style catalogues, karaoke presets, node-effect graphs, spelling dictionaries and layouts, with no code. They're read-only, you can copy them to change them, and they go when the plugin is turned off. See [Styles, presets and more from plugins](/en/docs/plugins/using-plugins#styles-presets-and-more-from-plugins).
+- **Subtitle formats from plugins:** a plugin's formats show in **Export as** and **Save as**, and its readers open files the built-in ones can't. See [Subtitle formats from plugins](/en/docs/plugins/using-plugins#subtitle-formats-from-plugins).
+- **Programs:** a plugin can be a program in any language, in its own sandbox, and can have HikariSub download programs for it, checked against the size and SHA-256 the plugin names. Nothing is downloaded while **Let plugins connect to the internet** is off. See [Programs](/en/docs/plugins/using-plugins#programs).
+- **MCP servers from plugins** show in **File › Settings › AI**, marked with the plugin, and are off until you turn them on. See [MCP servers](/en/docs/plugins/using-plugins#mcp-servers).
+- **For plugin authors:** plugins can suggest text, explain it and report problems in the Line editor, and there are type hints for Lua and TypeScript, with a TypeScript sample. See [Write your first plugin](/en/docs/plugins/write-your-first-plugin).
+
+### New and improved
+
+#### AI
+
+- **AI is off when you first install HikariSub,** and nothing for it downloads or starts until you turn it on. Turning it on installs the AI component at once. If you had a provider or the AI component, AI stays on. See [Turning AI on](/en/docs/ai/settings#turning-ai-on).
+- **The model picker:** the Agent panel's model button opens a list you can search, grouped by agent and provider, with your recent models first, and **File › Settings › AI** uses the same list. A model you can't use yet says why. A provider's models show as soon as you add it or sign in. See [Choosing a model](/en/docs/ai/agent#choosing-a-model).
+- **The AI component's state** shows in **File › Settings › AI**, with **Install** and **Retry**. See [AI components](/en/docs/ai/settings#ai-components).
+- **Suggest synonyms:** **AI actions › Suggest synonyms** in the Line editor offers up to 8 words for the word at the cursor, and picking one replaces only that word. See [Suggesting synonyms](/en/docs/ai/inline-actions#suggesting-synonyms).
+
+#### Grid and Line editor
+
+- **Reading limits:** set a CPS warning and a CPS error level, the characters per line and the number of lines in **File › Settings › Grid › Counting**. The Grid's CPS cell shades from warning to error, as in Aegisub, and a file can keep its own limits in **Subtitles › Script properties**. See [Reading limits](/en/docs/basics/grid#reading-limits).
+- **Problems:** the QC notes panel is now **Problems**, and lists the lines past your reading limits and what plugins find, beside your QC notes. Filter by how serious they are or where they come from, and run a quick fix from the row's menu or with **Quick fix** (<kbd>Alt</kbd>+<kbd>Enter</kbd>). In the Line editor, a wavy line marks where a plugin's problem is. See [Problems](/en/docs/checking/qc-notes#problems).
+- **Suggestions as you type:** plugins' suggestions join the tag list in one list, which opens on `\`, a plugin's own character, or **Trigger completion** (<kbd>Ctrl</kbd>+<kbd>Space</kbd>). Pointing at text shows what a plugin says about it. See [The Line editor](/en/docs/basics/line-editor).
+- **Filter the Grid as you type:** the Grid's header has a filter field. It shows only the lines whose text, actor, effect or style has what you typed, and changes nothing in the file. See [Hiding lines](/en/docs/basics/grid#hiding-lines).
+
+#### Files and fonts
+
+- **Resample letterboxed and cropped video:** **Subtitles › Resample subtitles…** has **Letterbox** and **Crop**, or edges you type, so signs stay on what they mark. It can also change the YCbCr matrix, converting the colours so they look the same. See [Resolution](/en/docs/basics/files-and-formats#resolution).
+- **A different matrix on open:** when a video's YCbCr matrix differs from the subtitles', the question also offers to convert the colours, as one undo step. See [Resolution](/en/docs/basics/files-and-formats#resolution).
+- **Link fonts to a folder:** **Collect fonts** can link each font file into a folder instead of copying it, so a show's font folder doesn't hold the same fonts twice. See [Linking fonts](/en/docs/typesetting/fonts#linking-fonts).
+- **What Aegisub keeps in the file:** saving an ASS file keeps the video, audio, timecodes and keyframes files, the zoom, the frame and the active line, as Aegisub does, so the file opens with the same media in Aegisub. See [Saving](/en/docs/basics/files-and-formats#saving).
+- **More in Script properties:** **Reading limits**, and **More** with **Synch point** and **Update details**. See [The file's properties](/en/docs/basics/files-and-formats#the-files-properties).
+- **Autosave every** sets how soon after a change the autosave runs, from 5 seconds to 1 hour. **File › Open video…** opens `.y4m` files.
+
+#### Shortcuts and Discord
+
+- **Aegisub shortcuts:** **Import settings…** brings over the keyboard shortcuts of Aegisub 3.1 and later, and lists any Aegisub command HikariSub doesn't have yet. See [Shortcuts from Aegisub](/en/docs/get-started/moving-from-legacy#shortcuts-from-aegisub).
+- **Discord presence your way:** choose what shows, write your own two lines with placeholders, go idle or clear after a while, and choose what a Project shows, in **File › Settings › Updates and privacy › Discord**. See [Discord presence](/en/docs/help/what-is-sent#discord-presence).
+
+#### Automation
+
+- **Macros that can't run are greyed out** when the Automation menu opens, with the reason under the row, and macros that report themselves active get a check mark, as in Aegisub. See [Macros that can't run here](/en/docs/automation/running-scripts#macros-that-cant-run-here).
+- **Undo points:** macros that call `aegisub.set_undo_point` get one undo step for each point, as in Aegisub. See [Undo points](/en/docs/automation/writing-scripts#undo-points).
+- **MoonScript 0.7.0 and Aegisub-Motion 1.1.2** come with HikariSub.
+
+#### Faster start
+
+- **HikariSub starts faster on Windows:** menu rows are made the first time their menu opens.
+
+### Fixed
+
+- **HikariSub no longer freezes while it saves the panel layout or autosaves** on a busy disk.
+- **Dragging a side bar's inner edge keeps the new width** when you let go; it used to snap back.
+
 ## 0.1.0-beta.5
 
 Published 2026-11-17. [Release notes](https://github.com/altqx/hikari/releases/tag/v0.1.0-beta.5)
