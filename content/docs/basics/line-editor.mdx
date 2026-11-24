@@ -43,9 +43,21 @@ If the end is before the start, or a margin is outside 0 to 9999, nothing is app
 
 The text shows ASS tags in colour: the braces, tag names and their values each have their own. A comment line whose Effect starts with `template`, `mixin` or `code` is coloured as [template](/en/docs/karaoke/template-editor) code instead. In a drawing, and in a `\clip` or `\iclip` drawn with points, the X and Y coordinates take turns between two colours, starting again after each command letter.
 
-Type `\` inside a `{…}` block to get a list of tags. <kbd>Up</kbd> and <kbd>Down</kbd> choose, <kbd>Enter</kbd> puts the tag in, and <kbd>Esc</kbd> closes the list. The **⋯** button in the list's header, **Tag list options**, has **Show description**, **Show all tags** and **Show VSFilterMod tags**. A right-click on the list opens them too, and so does <kbd>Menu</kbd> while the list is open. The [ASS tags reference](/en/docs/reference/ass-tags) explains them all.
+Type `\` inside a `{…}` block to get a list of tags, or press <kbd>Ctrl</kbd>+<kbd>Space</kbd>, **Trigger completion**, with the text cursor just after a tag. <kbd>Up</kbd> and <kbd>Down</kbd> choose, <kbd>Enter</kbd> puts the tag in, and <kbd>Esc</kbd> closes the list. The **⋯** button in the list's header, **Tag list options**, has **Show description**, **Show all tags** and **Show VSFilterMod tags**. A right-click on the list opens them too, and so does <kbd>Menu</kbd> while the list is open. The [ASS tags reference](/en/docs/reference/ass-tags) explains them all.
+
+A [plugin](/en/docs/plugins/using-plugins) can suggest words of its own. Its suggestions join the same list, below the tags, each with the plugin's name, and a plugin can open the list on a character of its own. Resting the pointer on the text for half a second shows what a plugin says about it, as *text · plugin*. Without plugins, the list holds only the tags.
 
 Misspelled words get a coloured background. Right-click one for suggestions or to add it to your dictionary, or put the text cursor in it and press the <kbd>Menu</kbd> key or <kbd>Shift</kbd>+<kbd>F10</kbd>. Every installed dictionary checks the words of its script, so lines that mix languages work. With the [grammar check](/en/docs/checking/grammar) on, grammar findings get a blue wavy underline, and their right-click menu shows Harper's message and suggestions. Comments aren't checked. **Check spelling as you type**, at the end of the text's right-click menu, turns spell checking on or off.
+
+### Problems
+
+A plugin can mark problems in the text. Each gets a wavy underline in its severity's colour, and holding the pointer over it shows the message and the plugin that found it. <kbd>Alt</kbd>+<kbd>Enter</kbd>, **Quick fix**, applies the fix for the problem at the text cursor, or lists the fixes when there are several, each with its source. A fix is one undo step. When nothing at the cursor has a fix, a notice says *No problem at the caret has a quick fix.*
+
+The **Problems** panel, the panel that also holds the [QC notes](/en/docs/checking/qc-notes), lists every problem by line, in the order of the file, with the QC notes. Filter it by severity and by source with **All** and **All sources**. Choosing a row selects its line and moves the video to the line's start, and <kbd>Alt</kbd>+<kbd>Enter</kbd> there offers that row's fixes.
+
+HikariSub finds problems of its own too, under the source **Reading**: lines that read faster than your CPS warning or error level, such as *Reads at 22 CPS; the limit is 15.*, text lines longer than the characters per line, and lines with more lines of text than the limit. They are about the whole line, so they show in the Problems panel, not as underlines. Comment lines are skipped. Turn them off with **Show reading-limit problems** in **File › Settings › Grid › Counting**; see [Reading limits](/en/docs/basics/grid#reading-limits).
+
+### More in the right-click menu
 
 Right-click the text for [Remove tags…](/en/docs/basics/grid#removing-tags), after **Swap dialogue alternatives**, which removes the tags you choose from the selected lines or the whole file.
 
@@ -85,7 +97,9 @@ Every button can have a key: <kbd>Shift</kbd>+click it to set one.
 
 ## Counters
 
-At the end of the strip, **Wraps** shows how many characters each line of the text has, against the limit of 43, and **CPS** the characters per second, against 15. Over a limit they turn the warning colour. Tags and drawings don't count.
+At the end of the strip, **Wraps** shows how many characters each line of the text has, against your characters per line, and **CPS** the characters per second, against your CPS warning level. **Wraps** turns the warning colour when a line is too long or there are too many lines. **CPS** turns the warning colour past the warning level, and the danger colour at the error level. Tags and drawings don't count.
+
+The limits start at 43 characters per line, 2 lines, a CPS warning of 15 and a CPS error of 30. Change them in **File › Settings › Grid › Counting**. A file can have its own, set in **Script properties › Reading limits**, and they replace yours. See [Reading limits](/en/docs/basics/grid#reading-limits).
 
 ## The fields
 

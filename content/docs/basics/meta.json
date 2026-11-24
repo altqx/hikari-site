@@ -12,6 +12,7 @@
     "video",
     "audio",
     "timing",
-    "find-and-replace"
+    "find-and-replace",
+    "command-palette"
   ]
 }
