@@ -48,9 +48,17 @@ A VP9 video with transparency shows its colours, and the transparency is ignored
 
 ## The panel
 
-Below the picture are the visual tools' bar, the seek bar, the times field and the transport buttons: **Previous file**, **Play**, **Play line**, **Stop**, **Next file**, the frame buttons and the volume.
+Below the picture are the visual tools' bar, the seek bar and one row of controls:
 
-The times field shows the frame's time and number. With an active line, it adds how many frames and milliseconds the frame is from the line's start and end. It turns the warning colour on a keyframe.
+- **Previous frame**, **Play** and **Next frame**, then **Play line** and **Stop**.
+- **The time** of the frame shown. On a keyframe it turns the warning colour, with a keyframe mark after it. Point at it to see how many frames and milliseconds the frame is from the active line's start and end. Click it to [jump to a time or frame](#jumping-to-a-time-or-frame).
+- The frame, as *frame 5146 / 15116*, and with the Position pointer on, the pointer's position.
+- **The zoom**, *Fit* or a percentage. Click it for the [zoom levels](#zoom-and-pan).
+- The volume.
+
+**Previous file** and **Next file** are in the Video menu and the picture's right-click menu, and on <kbd>,</kbd> and <kbd>.</kbd>.
+
+The seek bar takes the keyboard with <kbd>Tab</kbd>. Then <kbd>Left</kbd> and <kbd>Right</kbd> step a frame, <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go to the previous or next keyframe, and <kbd>Home</kbd> and <kbd>End</kbd> go to the start and the end.
 
 The panel's **⋯** menu sets how the video follows the Grid: **Move video to the selected line** (for example *Every line change*) and **After moving, play** (for example *Video and audio to the line end time*). **File › Settings › Video › Playback** has the same two rows.
 
@@ -68,6 +76,21 @@ The tools on the left of the picture are the [visual tools](/en/docs/typesetting
 | <kbd>,</kbd> <kbd>.</kbd> | Previous or next video in the folder, after asking |
 
 The keys without <kbd>Alt</kbd> work while the Video panel has the keyboard. The [Shortcuts reference](/en/docs/reference/hotkeys#video) lists them all, including the commands without a default key, such as **Go to next keyframe**.
+
+**Video › Previous subtitle boundary** and **Next subtitle boundary** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Left</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Right</kbd>) step the video to the active line's start, then its end, then the next line's start, as in Aegisub. In the Line editor, the same keys still select a word.
+
+### Jumping to a time or frame
+
+Click the time, or choose **Video › Jump to** (<kbd>Ctrl</kbd>+<kbd>G</kbd>), and type where to go:
+
+| Type | Goes to |
+| --- | --- |
+| `3:40`, `0:03:40.50` or `220.5` | That time |
+| `5200` | That frame |
+| `+5s`, `-1.5s` or `+1:00` | That far forward or back |
+| `+12f` or `-12f` | That many frames forward or back |
+
+A number alone is a frame, and a number with a point or a colon is a time. <kbd>Enter</kbd> goes there. <kbd>Esc</kbd>, or leaving the field, puts the time back without moving. A place past the end goes to the last frame. If HikariSub can't read what you typed, such as `3:99`, the field stays open, a line under the controls says why, and the video doesn't move.
 
 **Play line** plays the active line from its start to its end. The seek bar can be clicked or dragged, and the wheel below the picture sets the volume. **Video › Audio track** chooses the audio track, and **Video › Chapters** jumps to a chapter, with each chapter's time beside it. Each marks the current one.
 
@@ -120,6 +143,8 @@ The video zooms and pans as in Aegisub 3.5:
 
 The plain wheel does nothing on the video. In Aegisub 3.5 it resizes the video box, but HikariSub's video fills a docked panel whose size the layout sets. A [visual tool](/en/docs/typesetting/visual-tools) that uses the wheel or the middle button keeps it: Hydra keeps the wheel and <kbd>Shift</kbd>+wheel, Vector clipping and Vector drawing keep the wheel, and Text X / Y rotation and Text scaling keep the middle button.
 
+**The zoom** in the controls row shows *Fit* while the whole frame fits the panel, or the zoom as a percentage. Click it, or open **Video › Zoom level ›**, for **Fit to panel**, **Zoom 50 %**, **Zoom 100 %**, **Zoom 200 %**, **1:1 device pixels**, **Zoom in** (<kbd>Ctrl</kbd>+<kbd>Num +</kbd>) and **Zoom out** (<kbd>Ctrl</kbd>+<kbd>Num −</kbd>). Each level is a real scale of the picture.
+
 **Video › Zoom video** zooms in to the **Start zoom** (200% unless you set one), or shows the whole frame again when the video is zoomed or panned. **Video › Reset zoom and pan**, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> over the video, shows the whole frame again, unpanned. It can also take a shortcut in **File › Settings › Shortcuts**.
 
 ### Choosing how zoom works
@@ -151,11 +176,11 @@ With the Position pointer on, right-click the picture, or press <kbd>Menu</kbd> 
   <figcaption>The video's right-click menu.</figcaption>
 </figure>
 
-- **Copy video position**, **Play** or **Pause**, **Stop** and **Full screen**. With more than one monitor, **Full screen on ›** lists them all, from **Monitor 1**, the main one. In full screen it marks the monitor you're on.
+- **Copy video position**, **Play** or **Pause**, **Stop**, **Previous file**, **Next file**, **Jump to** and **Full screen**. With more than one monitor, **Full screen on ›** lists them all, from **Monitor 1**, the main one. In full screen it marks the monitor you're on.
 - **Export frame ›**: see [Saving a frame](#saving-a-frame).
 - **Audio track ›** and **Chapters ›**, with each chapter's time, when the video has them.
 - **Render cost**, as in the Video menu.
-- **Change aspect ratio…** and **Reset zoom and pan**.
+- **Change aspect ratio…**, **Reset zoom and pan** and **Zoom level ›**.
 - **Unload video**.
 
 In full screen the menu also has **Open editor**, **Open video…**, **Open subtitles…**, **Recently opened ›** with your subtitles and videos (hidden when there are none), **Progress bar** and **Full screen bar ›**, with the strip's **Bar position ›**, **Show bar ›** and **Full-screen settings…**.
@@ -184,8 +209,8 @@ In Simple mode, a black strip under the picture holds the controls, so nothing c
 
 - **Along the top:** the time of the frame shown, the seek bar and the video's length. With keyframes loaded, the seek bar marks them with faint ticks.
 - **On the left:** the line at the video's time, with its number, or *No line at this time*.
-- **In the middle:** **Previous frame**, **Play**, **Next frame**, **Play the current line**, **Stop** and the time.
-- **On the right:** **Typeset**, the speaker and the volume, and **Leave full screen**.
+- **In the middle:** **Previous frame**, **Play**, **Next frame**, **Play the current line**, **Stop** and the time, which you can click to [jump](#jumping-to-a-time-or-frame), as in the window.
+- **On the right:** the zoom, **Typeset**, the speaker and the volume, and **Leave full screen**.
 
 **Typeset** switches to Typesetting mode in place, and the frame keeps its place. Click the speaker to mute, turn the wheel over it for the volume, and right-click it for the output device. **Previous file** and **Next file** are not on the strip: they stay in the menus and on <kbd>,</kbd> and <kbd>.</kbd>.
 
@@ -223,11 +248,11 @@ A seek that takes longer than a moment dims the last frame and shows *Seeking…
 
 **View › Full screen typesetting**, the button at the right of the Video panel's header, or **Typeset** on the strip opens full screen with the [visual tools](/en/docs/typesetting/visual-tools) beside the picture. The command has no key at first; give it one in **File › Settings › Shortcuts**. The picture is always letterboxed, and nothing lies over it:
 
-- **The top bar:** **Simple** and **Typesetting**, to switch modes in place, the file's name, and **Leave full screen**.
+- **The top bar:** **Simple** and **Typesetting**, to switch modes in place, the file's name, the zoom, and **Leave full screen**.
 - **The rail**, on the left: the tools by name. <kbd>Up</kbd> and <kbd>Down</kbd> move between them, and <kbd>Enter</kbd> or <kbd>Space</kbd> chooses one.
 - **The inspector**, on the right: the tool's name, a line on what dragging does, its fields one under another, **On the frame** with the name of each handle it draws, and **Apply to**: **This line** or **Picked lines (N)**, as **Pick selected lines** does in the window.
 - **The line box**, under the picture: the active line, which you can edit.
-- **The status row**, along the bottom: **Previous frame**, **Play**, **Next frame**, the time, the frame, *Line 46 of 412* and the video's size.
+- **The status row**, along the bottom: **Previous frame**, **Play**, **Next frame**, the time, which you can click to jump, the frame, *Line 46 of 412* and the video's size.
 
 <kbd>F6</kbd> and <kbd>Shift</kbd>+<kbd>F6</kbd> move the keyboard between the top bar, the rail, the picture, the inspector, the line box and the status row. <kbd>Esc</kbd> in one of them takes the keyboard back to the picture, and <kbd>Esc</kbd> on the picture leaves full screen.
 
