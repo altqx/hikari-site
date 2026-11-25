@@ -1,6 +1,6 @@
 ---
 title: Command line
-description: Opening files and folders from a terminal or a script, the switches such as -n, --version and --export-docs, and what happens when HikariSub is already running.
+description: Opening files and folders from a terminal or a script, the switches such as -n, --version, --export-docs and --test-plugin, and what happens when HikariSub is already running.
 ---
 
 HikariSub's command line is a list of files and folders to open, and a few switches.
@@ -21,6 +21,7 @@ hikarisub episode.ass episode.mkv
 | --- | --- |
 | `--version` | Prints the version and the package kind, such as `0.1.0 (deb)`, and exits. No window opens |
 | `--export-docs <folder>` | Writes the commands, settings and guide links as JSON into the folder, and exits |
+| `--test-plugin <folder> <tests.jsonl>` | Runs a plugin's tests with no window, and exits. `--document <file.ass>` opens a test file first, `--timeout <ms>` gives each step longer than 10 seconds, and `--json` prints a report. See [Test it](/en/docs/plugins/write-your-first-plugin#test-it) |
 | `-n`, `--new-window` | Opens the files or folders in a new window |
 | `-r`, `--reuse-window` | Opens a folder in the current window, even when that window is in use |
 | `--open-folder` | Shows the **Open folder** picker, to open a folder as a [Project](/en/docs/basics/files-and-formats#projects) |
@@ -85,6 +86,6 @@ On Windows, a HikariSub run as administrator is separate from one that isn't, an
 
 | Code | When |
 | --- | --- |
-| 0 | A normal quit, `--version`, a successful `--export-docs`, or files handed to the running HikariSub |
-| 1 | `--export-docs` couldn't write the files. The reason is printed |
-| 2 | `--export-docs` was given no folder, or the window couldn't be created |
+| 0 | A normal quit, `--version`, a successful `--export-docs`, every `--test-plugin` step passing, or files handed to the running HikariSub |
+| 1 | `--export-docs` couldn't write the files. The reason is printed. Or a `--test-plugin` step failed |
+| 2 | `--export-docs` was given no folder, the window couldn't be created, or `--test-plugin`'s tests couldn't run |

@@ -218,10 +218,10 @@ hikarisub --test-plugin first-plugin tests.jsonl --document episode.ass
 
 The tests need no display, so they run on any Linux or Windows runner with HikariSub installed. On Linux, run the command as above, from the AppImage or the installed package.
 
-On Windows, [install HikariSub silently](/en/docs/get-started/install#setup-recommended) with `/S /CURRENTUSER`. `hikarisub.exe` is a windowed program, so pipe what it prints, which makes PowerShell wait for it and keep its exit code:
+On Windows, [install HikariSub silently](/en/docs/get-started/install#setup-recommended) with `/S /CURRENTUSER`. `HikariSub.exe` is a windowed program, so pipe what it prints, which makes PowerShell wait for it and keep its exit code:
 
 ```powershell
-& "$env:LOCALAPPDATA\Programs\HikariSub\hikarisub.exe" --test-plugin first-plugin tests.jsonl --document episode.ass | Write-Output
+& "$env:LOCALAPPDATA\Programs\HikariSub\HikariSub.exe" --test-plugin first-plugin tests.jsonl --document episode.ass | Write-Output
 exit $LASTEXITCODE
 ```
 
@@ -523,6 +523,11 @@ A package without `main` and without programs runs no code. It may hold only con
 - **`contributes.icons`.** The plugin's own icons, `{id, path}`. Name one as `own:<id>` in a command's or status item's `icon`, and it shows there, tinted like every other interface icon. Two plugins' `own:` icons of the same id never collide.
 
 When the plugin is turned off, uninstalled or revoked, a window showing one of its colour themes falls back to the built-in theme of the same type, and `appearance.iconTheme` goes back to `hikarisub`.
+
+**Start from a theme you like.** **Save a copy as a theme plugin…**, beside **Install dev plugin…** at the top of the plugin manager, writes the colour theme being shown as a new plugin, in a folder you choose. After the usual question it loads as a dev plugin, so you can [work on it in place](#work-on-it-in-place).
+
+- **The folder**, `<theme>-copy`, holds `hikari-plugin.json`, with the id `local.<theme>-copy`, version `1.0.0`, no `main` and one theme titled `<title> copy`, and `themes/<theme>.json`. If the folder or the id is taken, the copy is `<theme>-copy-2`, and so on.
+- **The theme file** has every key set, the worked-out colours included, so it looks the same as the theme you copied. Colours worked out from the accent choice, or from a colour you set yourself, are left out, so they keep following your choice.
 
 Each SVG has a `viewBox` of `0 0 16 16` and draws in `currentColor` only, so it follows the theme; a `<style>` element is refused. HikariSub checks these at install, and the marketplace's checks are the same. See [Themes and icons](https://github.com/altqx/hikari/blob/main/docs/plugins.md#themes-and-icons).
 
