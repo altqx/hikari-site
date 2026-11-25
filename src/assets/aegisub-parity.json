@@ -31,9 +31,9 @@
         },
         {
           "feature": "Plain text import options (actor separator, comment starter, blank lines)",
-          "status": "not-yet",
-          "text": "Plain text opens one line per row, with no options.",
-          "where": ""
+          "status": "better",
+          "text": "Also keeps blank lines as comment lines if you like, previews the lines as you change the options, and adds them to the open file or a new one.",
+          "where": "File › Import text…"
         },
         {
           "feature": "Open subtitles from the video (MKV tracks), compressed tracks included",
@@ -43,9 +43,9 @@
         },
         {
           "feature": "Open with a chosen charset, and legacy charsets",
-          "status": "not-yet",
-          "text": "Subtitles open as UTF-8 only, and bytes that aren't UTF-8 are kept as they are; only Import lyrics and Paste translation detect other charsets.",
-          "where": ""
+          "status": "same",
+          "text": "A banner names the encoding HikariSub found in a file that isn't UTF-8, and Reopen with encoding… reads it in any of 17 encodings; it saves as UTF-8.",
+          "where": "File › Reopen with encoding…"
         },
         {
           "feature": "Script properties (credits, resolution, LayoutRes, YCbCr matrix, wrap style, scale border)",
@@ -103,9 +103,9 @@
         },
         {
           "feature": "CPS warning and line-length thresholds you can set",
-          "status": "not-yet",
-          "text": "The CPS warning is fixed at 15, and there's no line-length threshold.",
-          "where": ""
+          "status": "better",
+          "text": "Also a limit on the number of lines, and a file can keep its own limits.",
+          "where": "File › Settings › Grid › Counting; Subtitles › Script properties › Reading limits"
         },
         {
           "feature": "Next and previous line, next line creating one at the end",
@@ -145,9 +145,9 @@
         },
         {
           "feature": "Move lines up or down one row",
-          "status": "not-yet",
-          "text": "There's no command to move lines up or down a row.",
-          "where": ""
+          "status": "same",
+          "text": "",
+          "where": "Grid › Move lines up, Move lines down (Alt+Up, Alt+Down)"
         },
         {
           "feature": "Sort all or selected lines by start, end, style, actor, effect, layer",
@@ -157,15 +157,15 @@
         },
         {
           "feature": "Tag hiding: show, hide, simplify, cycle",
-          "status": "not-yet",
-          "text": "There's no command that cycles between the modes; View › Hide tags in the Grid swaps each block for ☀, and tags vanish only if that replacement is set to nothing in Settings.",
-          "where": "View › Hide tags in the Grid"
+          "status": "same",
+          "text": "",
+          "where": "View › Tags in the Grid; Cycle tags in the Grid (shortcut)"
         },
         {
           "feature": "Grid highlights the lines on the current frame",
-          "status": "not-yet",
-          "text": "The Grid doesn't mark the lines shown at the video frame.",
-          "where": ""
+          "status": "same",
+          "text": "",
+          "where": "View › Mark lines on the current frame"
         },
         {
           "feature": "Line folding (arch1t3cht's fork)",
@@ -271,9 +271,9 @@
         },
         {
           "feature": "Clear text, or clear text but keep the tags",
-          "status": "not-yet",
-          "text": "Delete text empties the whole text; nothing keeps the tags.",
-          "where": "Grid › Delete text"
+          "status": "same",
+          "text": "",
+          "where": "Grid › Delete text; Delete text, keep tags"
         },
         {
           "feature": "Undo and redo",
@@ -524,15 +524,15 @@
         },
         {
           "feature": "Next or previous subtitle boundary",
-          "status": "not-yet",
-          "text": "No command steps the video to the next line start or end.",
-          "where": ""
+          "status": "same",
+          "text": "On Ctrl+Shift+Left and Ctrl+Shift+Right, as Ctrl+Left and Ctrl+Right set the line's times from the video.",
+          "where": "Video › Previous subtitle boundary, Next subtitle boundary"
         },
         {
           "feature": "Jump to a frame or time",
-          "status": "not-yet",
-          "text": "There's no Jump to window or typed seek.",
-          "where": ""
+          "status": "better",
+          "text": "Type in the time under the video itself, and steps such as +5s or -12f work too.",
+          "where": "Video › Jump to (Ctrl+G); click the time"
         },
         {
           "feature": "Jump to the line's start or end",
@@ -549,8 +549,8 @@
         {
           "feature": "Toggle focus to the video slider",
           "status": "not-planned",
-          "text": "No command moves the keyboard to the seek bar; step with the frame and keyframe commands in the Video menu instead.",
-          "where": ""
+          "text": "No command moves the keyboard to the seek bar, but Tab reaches it, and then the arrow keys step frames.",
+          "where": "Seek bar (Tab)"
         },
         {
           "feature": "Zoom and pan as in 3.5 (wheel zoom, middle-drag and Shift+wheel pan, pinch, reset)",
@@ -561,9 +561,9 @@
         },
         {
           "feature": "Zoom to 50, 100 or 200%, zoom in and out by command",
-          "status": "not-yet",
-          "text": "Only Zoom video and Reset zoom and pan.",
-          "where": "Video › Zoom video"
+          "status": "better",
+          "text": "Also Fit to panel and 1:1 device pixels, and the zoom shows under the video.",
+          "where": "Video › Zoom level; the zoom under the video"
         },
         {
           "feature": "Aspect ratio: default, 4:3, 16:9, 2.35, custom",
@@ -634,8 +634,8 @@
         {
           "feature": "YUV4MPEG (`.y4m`) video",
           "status": "same",
-          "text": "`.y4m` files open through FFMS2; pick All files in Open video, as its filter doesn't list them.",
-          "where": "Video › Open video… (All files)"
+          "text": "",
+          "where": "Video › Open video…"
         },
         {
           "feature": "AviSynth scripts as video (Windows)",
@@ -700,9 +700,9 @@
         },
         {
           "feature": "Vector clip: freehand, freehand smooth, convert a segment, insert a point",
-          "status": "not-yet",
-          "text": "No freehand or convert mode; a point is inserted by right-click in the Line, Bézier and B-spline modes.",
-          "where": "Vector clip, right-click"
+          "status": "better",
+          "text": "Freehand has a Smoothing setting and works in Vector drawing too; a segment's right-click menu makes it a curve or straight, inserts a point or deletes it.",
+          "where": "Vector clip and Vector drawing › Freehand; right-click a segment"
         },
         {
           "feature": "Vector clip coordinates with two decimals",
@@ -767,9 +767,9 @@
         },
         {
           "feature": "Styling assistant",
-          "status": "not-yet",
-          "text": "There's no window that steps through lines applying styles.",
-          "where": "Styles panel (apply to selected lines)"
+          "status": "same",
+          "text": "Step through lines gives the active line a style and goes to the next, as the Styling assistant does.",
+          "where": "Styles panel; the style button in full-screen typesetting"
         },
         {
           "feature": "Fonts collector: check, copy to a folder or the subtitle's folder, zip",
@@ -779,9 +779,9 @@
         },
         {
           "feature": "Fonts collector: symlink fonts to a folder",
-          "status": "not-yet",
-          "text": "The actions are Check, Copy to a folder and Zip.",
-          "where": ""
+          "status": "same",
+          "text": "Fonts attached to an MKV have no file, so they're copied; on Windows a link needs Developer Mode or a folder on the font's drive.",
+          "where": "Collect fonts › Link to a folder"
         },
         {
           "feature": "Reload the renderer's fonts (fork `video/subtitles_provider/reload`)",
@@ -803,15 +803,15 @@
         },
         {
           "feature": "Resample: change the YCbCr matrix",
-          "status": "not-yet",
-          "text": "The Resample window has no matrix choice.",
-          "where": ""
+          "status": "better",
+          "text": "Also offered when a video with another matrix opens, converting the colours of styles and colour tags.",
+          "where": "Subtitles › Resample subtitles…"
         },
         {
           "feature": "Default style catalogue for new files",
-          "status": "not-yet",
-          "text": "File › New always starts with the built-in Default style; the catalogue setting covers conversions only.",
-          "where": ""
+          "status": "better",
+          "text": "A Project can choose its own, so new files in a show's folder start with its styles.",
+          "where": "File › Settings › Script properties › Files › Styles for new files"
         }
       ]
     },
@@ -834,7 +834,7 @@
         {
           "feature": "Karaoke templater (kara-templater.lua, Karaoke template export filter)",
           "status": "better",
-          "text": "Built in, with a Template editor and live preview; the export filter is gone, run Apply karaoke template instead.",
+          "text": "Built in, with a Template editor and live preview; the export filter is a Before export step in Export as.",
           "where": "Automation › Apply karaoke template; View › Panels › Template editor"
         },
         {
@@ -869,9 +869,9 @@
         },
         {
           "feature": "Select lines: intersect with the selection, exact match",
-          "status": "not-yet",
-          "text": "The modes are Select, Add to selection and Deselect, and matching is \"with\" or \"without\" the text.",
-          "where": "Edit › Select lines…"
+          "status": "same",
+          "text": "",
+          "where": "Edit › Select lines… › Selection, Match"
         },
         {
           "feature": "Spell checker (replace, ignore, add, language, skip comments and capitals)",
@@ -917,9 +917,9 @@
         },
         {
           "feature": "Export filters from scripts (`register_filter`)",
-          "status": "not-yet",
-          "text": "`register_filter` is accepted and does nothing.",
-          "where": ""
+          "status": "same",
+          "text": "A loaded script's filters are steps in Before export.",
+          "where": "File › Export as… › Before export"
         },
         {
           "feature": "Macro descriptions, log levels 4 and 5",
@@ -929,9 +929,9 @@
         },
         {
           "feature": "Greyed-out invalid macros and their own undo points",
-          "status": "not-yet",
-          "text": "A macro's validation runs only when you choose it, and `set_undo_point` does nothing.",
-          "where": ""
+          "status": "same",
+          "text": "The reason shows under the greyed-out row and in the command palette, and macros that report themselves active get a check mark.",
+          "where": "Automation menu"
         },
         {
           "feature": "MoonScript 0.7.0",
@@ -978,14 +978,14 @@
         {
           "feature": "Hotkeys editor",
           "status": "better",
-          "text": "Shift+click any menu item to give it a key; conflicts shown as you press.",
+          "text": "Shift+click any menu item to give it a key; conflicts shown as you press; Import settings… brings over Aegisub's hotkey.json.",
           "where": "File › Settings › Shortcuts; Shift+click"
         },
         {
           "feature": "Interface colours for each element (audio, grid, syntax, visual tools)",
           "status": "not-planned",
-          "text": "Themes, accent colours and high-contrast colours only; theme plugins are planned to cover it.",
-          "where": "File › Settings › Appearance"
+          "text": "Themes, accent colours and high-contrast colours only. A colour theme plugin sets the theme's colours, and Save a copy as a theme plugin… starts one from the theme shown.",
+          "where": "File › Settings › Appearance; plugin manager › Save a copy as a theme plugin…"
         },
         {
           "feature": "Interface language",
@@ -1073,15 +1073,15 @@
         },
         {
           "feature": "Export filters: Transform framerate, Fix styles, Clean tags, Karaoke template",
-          "status": "not-yet",
-          "text": "There are no export filters; nearby are Subtitles › Set FPS, Remove tags… and Apply karaoke template.",
-          "where": "Subtitles › Set FPS; Grid › Remove tags…"
+          "status": "better",
+          "text": "Also saves a list of steps as a recipe, for you or a Project, and reads the list Aegisub keeps in the file.",
+          "where": "File › Export as… › Before export"
         },
         {
           "feature": "Export text encoding choice",
-          "status": "not-yet",
-          "text": "Every format is written as UTF-8.",
-          "where": ""
+          "status": "same",
+          "text": "Offered for SRT, SBV, plain text, MicroDVD, MPL2 and TMPlayer, with a warning listing characters the encoding can't hold; WebVTT, TTML and srv3 stay UTF-8.",
+          "where": "File › Export as… › Encoding"
         },
         {
           "feature": "MicroDVD and SRT import settings (frame rate)",
@@ -1109,9 +1109,9 @@
         },
         {
           "feature": "Automatic backup copy on save",
-          "status": "not-yet",
-          "text": "Saving keeps no backup copy (only Find's folder replace does).",
-          "where": ""
+          "status": "better",
+          "text": "Each save keeps the file as it was in the recovery folder, up to 100 copies per file, and Open autosave… opens any of them as an unsaved copy.",
+          "where": "File › Settings › General › Saving › Backup copies kept; File › Open autosave…"
         }
       ]
     },
