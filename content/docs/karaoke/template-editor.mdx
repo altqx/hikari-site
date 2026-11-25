@@ -69,7 +69,7 @@ The new line is an empty comment, placed above the first karaoke line with that 
 
 In a karaOK file, the menu shows and writes karaOK's words: **Template for each line** writes `template lsyl`, and **Template before each line** `template line`. The other items are the same in both. **Runs for each** in the Effect picker writes karaOK's words too. In a new file with no templates yet, the first new line goes in with `Karaoke Templater: karaOK`, in the same undo step.
 
-**From a preset**, at the bottom of the menu, inserts one of the twenty built-in effects instead, as template lines you can edit: see [Presets](/en/docs/karaoke/presets).
+**From a preset**, at the bottom of the menu, inserts one of the twenty built-in effects instead, or one a plugin brings, as template lines you can edit: see [Presets](/en/docs/karaoke/presets).
 
 ## Editing a template
 
@@ -171,7 +171,7 @@ The preview keeps the last run that worked, dimmed and marked *Kept from the las
 
 **Apply** runs **Apply karaoke template**, the same macro as in the Automation menu, on every karaoke line. It replaces the lines generated earlier, and turns each karaoke line it used into a comment with the Effect `karaoke`. The arrow beside it offers **Apply to the selected lines**, which regenerates only the karaoke lines selected in the Grid and leaves the others' lines as they are.
 
-Afterwards the panel says how many lines came from how many karaoke lines. Each Apply is one undo step, so **Edit › Undo** takes all the generated lines back at once.
+Afterwards the panel says how many lines came from how many karaoke lines. Each Apply is one undo step, *Automation: apply karaoke template*, so **Edit › Undo** takes all the generated lines back at once.
 
 When you change a template after applying, the panel says the generated lines are older, until the next Apply to every karaoke line.
 
