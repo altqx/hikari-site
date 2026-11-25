@@ -115,6 +115,7 @@ HikariSub notices when you add or remove a font there, after a second. Problems 
 | --- | --- |
 | **Check fonts** | Lists the fonts the subtitles use and whether this computer has each one |
 | **Copy to a folder** | Copies each font file the subtitles use into the folder in **Save to** |
+| **Link to a folder** | Links each font file the subtitles use into the folder, without copying it. See [Linking fonts](#linking-fonts) |
 | **Zip archive** | Puts each font file into a zip archive |
 
 **Write beside the subtitles, in a “Fonts” folder** saves next to the file instead of in **Save to**. **Take the fonts from the loaded MKV file** takes them from the video's attachments.
@@ -139,3 +140,11 @@ Double-click a line number in the log to go to that line, or a style's name to o
 When you copy to a folder that already has some of the fonts, from subtitles or from an MKV, HikariSub asks first, naming up to 10 of them: **Replace** them, **Keep existing**, which skips them and notes each one in the log, or **Cancel**.
 
 **Stop** ends a run part way. It leaves no archive, and labels a folder incomplete. An archive that already exists is replaced only after you agree, and only once the new one is being written.
+
+### Linking fonts
+
+**Link to a folder** puts a link to each font file in the folder instead of a copy, so a show's font folder doesn't hold the same fonts twice. The links break if the fonts move or are deleted. **Start** reviews, and **Link fonts** writes them; with fonts missing, tick **Link it, labelled incomplete** first.
+
+- Fonts that have no file on this computer, such as the fonts in an MKV, are copied instead, and the log says how many.
+- On Linux, each link is a symbolic link to the font's file.
+- On Windows, HikariSub makes a symbolic link, which needs Developer Mode or an administrator, or else a hard link, which needs the folder to be on the font's drive. When neither works, that font isn't written, the log says "Couldn't link font", and the folder is labelled incomplete.

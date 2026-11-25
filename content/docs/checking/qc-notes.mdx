@@ -3,13 +3,13 @@ title: QC notes
 description: Keep a QC pass's notes in the subtitle file itself, see which lines they mark, step through them, tick them off, and import or export Note Browser and mpvQC notes.
 ---
 
-The **QC notes** panel holds the notes from a quality check, such as "0:03:24 - typo in the second line". Each note has a time, a section, its text and a **Done** box. HikariSub keeps the notes in the subtitle file, shows which line each one marks, and takes you from one note to the next.
+The **Problems** panel holds the notes from a quality check, such as "0:03:24 - typo in the second line". Each note has a time, a section, its text and a **Done** box. HikariSub keeps the notes in the subtitle file, shows which line each one marks, and takes you from one note to the next. The same panel lists the [problems](#problems) HikariSub and plugins find in your lines.
 
 It works like arch1t3cht's Note Browser, but the notes travel with the file: there is no separate notes file to keep next to it, and nothing to reload.
 
 ## Opening the panel
 
-Choose **Subtitles › QC notes**, or **View › Panels › QC notes**. The panel starts in the [tools side bar](/en/docs/customize/layouts#side-bars), on the right, and shows the side bar if it was hidden.
+Choose **Subtitles › QC notes**, or **View › Panels › Problems**. The panel starts in the [tools side bar](/en/docs/customize/layouts#side-bars), on the right, and shows the side bar if it was hidden.
 
 Its commands have no shortcut at first. Give them one in **File › Settings › Shortcuts**: **QC notes**, **Add QC note…**, **Next QC note** and **Previous QC note**.
 
@@ -58,6 +58,17 @@ A done note is dimmed and struck through. The bottom bar shows where you are, su
 The chips above the list show **All** and each section, with their note counts. Choose one to see only its notes; choose it again to see all. Tick **Hide done** in the bottom bar to hide the notes you've done; the chips then show what is left, such as *7 of 9*.
 
 **Previous**, **Next** and the Grid's flags follow the chosen section and **Hide done**.
+
+## Problems
+
+Besides the notes, the panel lists problems: lines that are past your reading limits, and what plugins find in your lines. They are grouped by line, in the file's order, and each row has the line, how serious it is (error, warning, info or hint), the message and where it comes from. The top of the panel counts the notes and the problems in the file.
+
+- **Reading** is HikariSub's own source. It lists each line past the [reading limits](/en/docs/basics/grid#reading-limits): an error past the CPS error level, such as *Reads at 40 CPS; the limit is 30.*, and a warning past the CPS warning level, the characters per line or the number of lines. Comment lines are skipped. Turn it off with **File › Settings › Grid › Counting › Show reading-limit problems**.
+- **Plugins** can report problems too. In the Line editor, a wavy line marks each one's place in the text, and pointing at it shows its message. The Grid marks a line with a plugin's problems, in the colour of the most serious, and pointing at the mark counts them.
+
+With problems listed, two rows of chips filter them: **All**, **Errors**, **Warnings**, **Info** and **Hints**, and **All sources** and each source, with their counts. Choose a chip again to see all.
+
+Click a problem to select its line and move the video to its start. Some problems have quick fixes: they're in the row's right-click menu, also on <kbd>Menu</kbd>, and **Quick fix** (<kbd>Alt</kbd>+<kbd>Enter</kbd>) runs them, on the chosen row or, in the Line editor, on the problem at the cursor. With more than one fix, a small menu asks which. A fix is one undo step, named after its source and the fix. Reading problems have no quick fixes.
 
 ## Kept in the file
 

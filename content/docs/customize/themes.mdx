@@ -1,11 +1,11 @@
 ---
 title: Themes
-description: Choose a light, dark or high-contrast theme, an accent colour, the interface font and the title bar.
+description: Choose a light, dark or high-contrast theme, an accent colour, a plugin's icons, the interface font and the title bar.
 ---
 
 import themes from './images/themes.webp';
 
-**File › Settings › Appearance** sets how HikariSub looks. Changes to the theme and colours show across the whole window as you make them; **OK** or **Apply** keeps them and **Cancel** puts back what you had.
+**File › Settings › Appearance** sets how HikariSub looks. Changes to the theme and colours apply across the whole window as you make them, and are kept at once.
 
 <figure>
   <ThemedImage
@@ -27,6 +27,8 @@ Themes change only HikariSub's window. Your subtitles, their styles and the vide
 
 **Follow system theme**, on at first, uses Light or Dark as your system's colour scheme does, and changes when it does. With a high-contrast theme chosen, it switches between High contrast white and High contrast black instead. Clicking a card turns it off and keeps that theme.
 
+A [plugin](/en/docs/plugins/using-plugins) can bring colour themes. While it's turned on, its themes follow the built-in cards. When it's turned off or uninstalled, a window showing one of its themes switches to the built-in theme of the same kind, such as Dark for a dark theme. To make a theme of your own, start from the one you see: **Save a copy as a theme plugin…** in the plugin manager saves it as a plugin you can edit. See [Data-only packages](/en/docs/plugins/write-your-first-plugin#data-only-packages).
+
 On Linux desktops that don't tell Qt their scheme, such as sway or Hyprland, HikariSub asks the desktop portal. If the scheme can't be found at all, the chosen theme shows, Dark at first.
 
 ## Accent colour
@@ -39,9 +41,15 @@ Light and Dark keep their own accent. To change the other theme's, show that the
 
 With a high-contrast theme shown, three colours replace the accent: **Accent colour**, **Text and icons**, and **Border colour**, which outlines every control. **Choose…** picks one, and <kbd>Esc</kbd> in the picker puts back the colour from before. Text on the accent turns black or white by itself to stay readable. **Reset to default** puts back that theme's three colours.
 
+## Icons
+
+A [plugin](/en/docs/plugins/using-plugins) can bring an icon theme. Once a plugin you've turned on has one, **Appearance** gets an **Icons** section, after the accent colours. Its **Icons** row offers **HikariSub**, the default, and each plugin icon theme, named after the theme and its plugin, such as *Round — Looks*. A change applies at once.
+
+An icon theme needn't cover every icon: the ones it leaves out show HikariSub's own. When the plugin is turned off or uninstalled, HikariSub's icons come back.
+
 ## Font
 
-**Program font** and its size set the font of the whole interface, 10-point Tahoma at first. A change applies to every window when you press **OK** or **Apply**, without restarting. It doesn't change your subtitles' fonts. Type in the box to search your fonts, as in the [Style manager's Family](/en/docs/basics/styles#editing-a-style).
+**Program font** and its size set the font of the whole interface, 10-point Tahoma at first. A change applies to every window at once, without restarting. It doesn't change your subtitles' fonts. Type in the box to search your fonts, as in the [Style manager's Family](/en/docs/basics/styles#editing-a-style).
 
 ## Title bar
 
@@ -51,6 +59,6 @@ HikariSub draws its own title bar, with the menus and the layout button in it, o
 
 ## Resetting
 
-**Reset page**, at the bottom of the Settings window on this page, puts back every appearance setting and the font. **Reset all settings…** leaves the appearance alone.
+**Reset page…**, in the right-click menu of **Appearance** in the Settings window's contents list, puts back every appearance setting and the font. **Reset all…** leaves the appearance alone.
 
 Themes from older versions of HikariSub are not imported.

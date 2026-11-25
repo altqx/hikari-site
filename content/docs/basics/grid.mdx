@@ -39,7 +39,22 @@ The Grid lists every line of the file, one row each, in file order. The line you
 | **Wraps** | How the text wraps |
 | **Text** | The text |
 
-**CPS** turns the warning colour above 15 characters per second, and **Wraps** above 43 characters on a line, or at three lines. Tags and drawings don't count. **File › Settings › Grid › Counting** chooses whether spaces and punctuation do.
+**CPS** shades towards the warning colour from the CPS warning level, and is fully shaded at the CPS error level, as in Aegisub. **Wraps** turns the warning colour when a line has more characters than the characters per line, or more lines than the limit. Tags and drawings don't count. See [Reading limits](#reading-limits).
+
+### Reading limits
+
+**File › Settings › Grid › Counting** sets the limits the Grid and the Line editor's counters check:
+
+| Row | At first |
+| --- | --- |
+| **CPS warning** | 15 |
+| **CPS error** | 30 |
+| **Characters per line** | 43 |
+| **Lines** | 2 |
+
+**Count spaces and punctuation for CPS** and **Count spaces and punctuation for wraps** choose whether spaces and punctuation count. A file can have limits of its own, in [Script properties › Reading limits](/en/docs/basics/files-and-formats#the-files-properties): the Grid then uses the file's.
+
+**Show reading-limit problems**, on at first, also lists each line past a limit in the [Problems panel](/en/docs/checking/qc-notes#problems): an error past the CPS error level, and a warning past the CPS warning level, the characters per line or the number of lines. Comment lines are skipped. The Grid's shading already shows these, so they get no other mark in the Grid.
 
 Columns that have nothing to show hide themselves: Layer when every layer is 0, Actor and Effect when they are all empty, and each margin when it is 0 everywhere. A column comes back as soon as a line uses it.
 
@@ -52,6 +67,10 @@ Right-click the row of column names for the list of columns: tick or untick one 
 - **Comment lines**, kept in the file but not shown on the video, have a tinted background.
 - A **dot** in the **#** column marks a line changed since the file opened, and a **ring** one changed and saved since.
 - A **triangle** marks the line you are editing in the Line editor but haven't applied yet. The row shows your edit as you type.
+
+### Lines on the current frame
+
+The Grid tints the lines that show on the video's current frame, and marks them on its scroll bar, as Aegisub's highlight of subtitles in frame does. They are the lines **Select lines visible on video** picks. Selected and comment lines keep their own colours. The marks follow seeks and steps at once, and playback at most ten times a second. **View › Mark lines on the current frame**, on at first, turns them off.
 
 ## Selecting
 
@@ -88,12 +107,12 @@ Right-click a line, or press <kbd>Menu</kbd> or <kbd>Shift</kbd>+<kbd>F10</kbd>,
 </figure>
 
 - **Insert ›** Before or After, also at the video's time or frame time. **Duplicate**, **Cut**, **Copy** and **Paste**. **Paste special ›** Copy columns, Paste columns, and [Paste translation from a file…](/en/docs/translation/line-matching#paste-a-translation-from-a-file).
-- **Join ›** Join, Keep first or Keep last. **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds). **Swap lines**, **Make times continuous ›** with the previous or the next line, and **Make line group**. [Convert Aegisub folds to line groups](#aegisub-folds) shows here only when the file has Aegisub folds.
+- **Join ›** Join, Keep first or Keep last. **Split ›** At video time, Into frames and its **Bake animations** switch, Into characters, Into words, By wraps, [At tag blocks](#joining-and-splitting) or [Every N frames or seconds…](#splitting-every-n-frames-or-seconds). **Swap lines**, **Move lines up**, **Move lines down**, **Make times continuous ›** with the previous or the next line, and **Make line group**. [Convert Aegisub folds to line groups](#aegisub-folds) shows here only when the file has Aegisub folds.
 - [Line breaks ›, Change case ›, Swap dialogue alternatives](#line-breaks-case-and-dialogue-alternatives) and [Remove tags…](#removing-tags).
 - **Typesetting ›** [Blur and glow layers…](/en/docs/typesetting/visual-tools#blur-and-glow-layers) and **Build layers with the last values**, [Typesetting graph…](/en/docs/karaoke/node-effects#typesetting-graphs), [Interpolate across lines…](#interpolating-across-lines), and [Position to margins and Margins to position](#position-and-alignment). Then [Change alignment, keep position › and Align and distribute ›](#position-and-alignment).
 - [AI actions ›](/en/docs/ai/inline-actions).
 - **Select lines visible on video**, **Show subtitles preview**, [Translation matching…](/en/docs/translation/line-matching#line-up-the-translation) and [Add QC note…](/en/docs/checking/qc-notes).
-- **Delete text**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
+- **Delete text**, **Delete text, keep tags**, and last, **Delete** with the number of selected lines, such as **Delete 3 lines**. **Duplicate** names the number too.
 
 On a line whose AI change is [waiting in Review](/en/docs/ai/review), the menu starts with **Keep AI change** and the other Review rows.
 
@@ -106,7 +125,8 @@ The sections below explain each of them.
 - **Insert › Insert before** and **Insert after** add an empty line beside the active one, with its style and fields, timed to fit the gap or 4 seconds long. **Insert before with video time** and the other video items start it at the video's time.
 - **Duplicate lines** (<kbd>Ctrl</kbd>+<kbd>D</kbd>) copies the selected lines, and selects the copies.
 - **Swap** swaps two selected lines.
-- **Delete lines** (<kbd>Shift</kbd>+<kbd>Del</kbd>) deletes the selected lines. **Delete text** (<kbd>Alt</kbd>+<kbd>Del</kbd>) empties their text and keeps their times.
+- **Move lines up** and **Move lines down** (<kbd>Alt</kbd>+<kbd>Up</kbd> and <kbd>Alt</kbd>+<kbd>Down</kbd>) move each run of selected lines one row, past the line next to it, as in Aegisub. A run already at the top or the bottom stays where it is. With the Grid filtered, the lines move past the lines it shows. A [line group](#line-groups) moves as a whole, and a line never leaves its group. Each move is one undo step, *Moving lines*, and the lines stay selected. The rows are greyed out when nothing can move.
+- **Delete lines** (<kbd>Shift</kbd>+<kbd>Del</kbd>) deletes the selected lines. **Delete text** (<kbd>Alt</kbd>+<kbd>Del</kbd>) empties their text and keeps their times. **Delete text, keep tags** empties only the words, and keeps the tags, comments and drawings, as one undo step.
 
 ## Joining and splitting
 
@@ -249,6 +269,13 @@ Each sort is one undo step. None of them has a key at first; give one in **File 
 
 Hidden lines are still in the file; the Grid just leaves them out, and most commands skip them.
 
+The **Filter** field on the Grid panel's header shows only the lines whose text, actor, effect or style holds what you type, ignoring case and tags. In Translation mode it matches the translation too. It only changes what the Grid shows: it makes no undo step and saves nothing.
+
+- It works on top of the filters below, and clearing it gives their view back.
+- <kbd>Esc</kbd> clears it, and a second <kbd>Esc</kbd> goes back to the Grid. <kbd>Enter</kbd> or <kbd>Down</kbd> goes to the first line shown.
+- With no match, the Grid says "No lines match the filter".
+- Commands such as Shift times and Select lines skip the lines it hides, as they skip the lines the filters below hide. Copy still copies every selected line.
+
 The filters are under **Filtering**, in the menu of the **⋯** button on the Grid panel's header:
 
 - **Hide selected lines (filter)** hides them.
@@ -256,7 +283,15 @@ The filters are under **Filtering**, in the menu of the **⋯** button on the Gr
 - The marks at the left edge show where hidden lines are. Click one to open or close that run.
 - **Ignore filtering in some actions**, in the same **⋯** menu, lets Replace all and Shift times reach hidden lines too.
 
-**View › Hide tags in the Grid** shows tags in the Text column as a single ☀, so the words are easier to read. **File › Settings › Grid › ASS tag replacement** sets the character.
+### Tags in the Grid
+
+**View › Tags in the Grid ›** chooses how the Text column shows tags:
+
+- **Show** shows them as they are.
+- **Replace with symbol** shows each tag block as a single ☀, so the words are easier to read. **File › Settings › Grid › ASS tag replacement** sets the symbol.
+- **Hide** leaves them out.
+
+**Cycle tags in the Grid**, a shortcut with no key at first, steps through the three, and the status bar names the one it chose. Spelling marks follow the text the Grid shows.
 
 ## Line groups
 

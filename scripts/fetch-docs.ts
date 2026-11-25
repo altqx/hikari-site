@@ -7,6 +7,8 @@
 //
 //   bun scripts/fetch-docs.ts            # fetch, or fail
 //   bun scripts/fetch-docs.ts --offline  # dev: no network; keep or copy the pinned export
+//   bun scripts/fetch-docs.ts --from <dir>  # an unzipped export, such as one from a main build,
+//                                            # to check the site against it before it is released
 import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -25,6 +27,8 @@ import { appRepo, type GitHubRelease } from '../src/lib/downloads';
 const output = 'src/generated/docs-export';
 const pinned = 'src/assets/docs-export';
 const offline = process.argv.includes('--offline');
+const fromIndex = process.argv.indexOf('--from');
+const from = fromIndex === -1 ? undefined : process.argv[fromIndex + 1];
 const apiPage = join('content/docs', apiReferencePath);
 
 async function readFiles(dir: string) {
@@ -48,6 +52,12 @@ async function write(dir: string, source: DocsSource, version?: string) {
     `fetch-docs: ${data.commands.commands.length} commands, ${data.settings.settings.length} settings, ` +
       `${data.guideLinks.links.length} guide links${api === undefined ? '' : ', the API reference'} from ${from}`,
   );
+}
+
+if (fromIndex !== -1) {
+  if (!from) throw new Error('--from needs the folder of an unzipped docs export');
+  await write(from, { kind: 'fixture' });
+  process.exit(0);
 }
 
 if (offline) {

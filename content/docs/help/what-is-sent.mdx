@@ -18,7 +18,7 @@ This page is about the HikariSub app. This website uses Cloudflare Web Analytics
 
 Any of these turns it off:
 
-- **File › Settings › Updates and privacy › Privacy › Send anonymous usage data**. The change applies on **OK** or **Apply**.
+- **File › Settings › Updates and privacy › Privacy › Send anonymous usage data**. The change applies at once.
 - **Send anonymous usage data** on the Updates and privacy step of the [Getting started window](/en/docs/get-started/getting-started-window#updates-and-privacy). It is saved when you press **Finish**.
 - The `DO_NOT_TRACK` environment variable, set to anything but `0`, turns it off for each run that has it. On Linux, start HikariSub with `DO_NOT_TRACK=1 hikarisub`, or export it in your shell profile. On Windows, add a user environment variable named `DO_NOT_TRACK` with the value `1`. The switch in Settings still shows your setting.
 
@@ -38,7 +38,7 @@ Both switches are the same setting, and both have a **What is sent** link that o
 
 Only release packages send. Every release package (setup, portable zip, AppImage, deb, rpm and tar.gz) carries the key that lets HikariSub send, so they all send while the switch is on. Builds from source don't carry it, and neither do forks' builds or test builds: they queue nothing and send nothing, though the switch still shows.
 
-**Reset page** on the Updates and privacy page, and **Reset all settings…**, turn it back on, since on is the default.
+**Reset page…** on the Updates and privacy page, and **Reset all…**, turn it back on, since on is the default.
 
 ### What turning it off does
 
@@ -71,7 +71,7 @@ Events go under a random ID (a UUID), made the first time HikariSub queues an ev
 
 It is kept in `state.json` in your [user folder](/en/docs/automation/user-folder#settings-files), as `usageDataId` under `privacy`.
 
-To get a new one, turn **Send anonymous usage data** off, press **Apply**, then turn it on again. **Reset all settings…** also clears it.
+To get a new one, turn **Send anonymous usage data** off, then on again. **Reset all…** also clears it.
 
 Each run of HikariSub also has a session ID, a new random UUID for every start. It is not kept in your settings.
 
@@ -242,21 +242,49 @@ When a new AI component fails to start, or crashes twice within 10 minutes, Hika
 
 ## Discord presence
 
-HikariSub can show what you are doing in your Discord status. It is **off by default**. Turn it on in **File › Settings › Updates and privacy › Privacy › Show what I am doing in Discord**.
+HikariSub can show what you are doing in your Discord status. It is **off by default**. Turn it on in **File › Settings › Updates and privacy › Discord › Show what I am doing in Discord**. A preview beside the rows shows roughly what the people who can see your status get, buttons included.
 
-It talks only to the Discord app on the same computer, never to a HikariSub server. Discord shows the status to the people who can see yours. Without Discord running, nothing happens; HikariSub looks for Discord again every 20 seconds.
+It talks only to the Discord app on the same computer, never to a HikariSub server. Discord shows the status to the people who can see yours. Without Discord running, nothing happens; HikariSub looks for Discord again every 20 seconds. It sends at most one update every 4 seconds.
 
-| Shown | Value |
+### What it shows
+
+| Shown | Value | Row |
+| --- | --- | --- |
+| First line | "Editing subtitles", or your own **Details** line | **Text** |
+| Second line | The mode, then the file name, then the Project's name, each if its row is on, joined with " · "; or your own **State** line | **What shows**, **Text** |
+| Time | Since HikariSub started, since the current tab's file opened, or none | **Time shown** |
+| Images | The HikariSub icon, and the mode's icon | **The mode's icon** |
+| Buttons | **Get HikariSub**, which opens [hikarisub.org](https://hikarisub.org), and one link of your own | **Buttons** |
+
+Under **What shows**, **The mode** and **The mode's icon** start on, and **The project's name** and **The file name** start off. Only a file's name is sent, never its folder. The texts are in HikariSub's interface language.
+
+**The mode** follows your workspace layout: Editing, Timing, Translation, Typesetting or Karaoke. A layout you saved shows the mode of the layout it came from. While one of these activities is going, it shows instead, the first in this order: Watching, Effects, Styling, Spell-checking, Reviewing, Exporting and With the AI agent. Untick an activity to keep the layout's mode; With the AI agent starts unticked. With no tab open, it shows "In HikariSub" and "Home".
+
+### Your own text
+
+**Text › My own** gives you a **Details (first line)** and a **State (second line)**, each up to 128 characters. Each can hold these placeholders:
+
+| Placeholder | Fills with |
 | --- | --- |
-| Activity | "Editing subtitles" |
-| Mode | Editing, Timing, Translation, Typesetting or Karaoke: the workspace layout you chose last |
-| Time | How long since presence was turned on in this run |
-| Images | The HikariSub icon, and the mode's icon |
-| Button | **Get HikariSub**, which opens [hikarisub.org](https://hikarisub.org) |
+| `{mode}` | The mode, while **The mode** is on |
+| `{file}` | The current tab's file name, while **The file name** is on |
+| `{project}` | The Project's folder name, while **The project's name** is on |
+| `{show}` | The Project's **Show name**, or else the file's Script Info title |
+| `{episode}` | An episode number in the file name, such as `- 03`, `E03` or `S01E03`, while **The file name** is on |
+| `{title}` | The file's Script Info title |
+| `{plugin}` | The text of the plugin picked under **Text from plugin** |
 
-The texts are in HikariSub's interface language. **Include the file name**, under the switch and also off by default, adds the current tab's file name after the mode, such as `Timing · episode01.ass`. Only the name is sent, never its folder.
+A line that comes out shorter than 2 characters isn't sent. A plugin can set a short text only if it has the permission to, which its install question shows, and it shows only where you put `{plugin}`, from the one plugin you picked.
 
-It never sends the video or audio name, folders or paths, subtitle text, line counts or progress.
+### Idle and away
+
+After 10 minutes without a key press or the pointer moving in HikariSub (**Minutes without input**, 1 to 120), **When idle** shows "Idle", clears the status, or keeps it. **Do the same while HikariSub is in the background**, off at first, counts the time while no HikariSub window is active too.
+
+### In a Project
+
+On the [Project tab](/en/docs/basics/files-and-formats#the-project-tab), **Updates and privacy › Discord › In this project** can hide your status while a tab of this Project is current, which applies at once, or use the Project's own **Show name**, Details and State lines, which wait until you trust the folder. The rows under **What shows** stay yours: a Project can't show the file or Project name.
+
+It never sends folders or paths, subtitle text, the video or audio name, line counts or progress.
 
 Turning it off clears your status at once, and so does quitting HikariSub.
 
@@ -277,9 +305,9 @@ The counts it needs stay in your [settings file](/en/docs/automation/user-folder
 
 ## AI
 
-HikariSub sends nothing to an AI provider until you add one in **File › Settings › AI**. AI features are on at first. **Turn off all AI features** on that page turns them off: with it ticked, HikariSub reads no keys, downloads nothing and starts nothing for AI.
+HikariSub sends nothing to an AI provider until you add one in **File › Settings › AI**. AI is off when you first install HikariSub; it stays on if an earlier HikariSub had a provider or the AI component. While **Turn off all AI features** on that page is ticked, HikariSub reads no keys, downloads nothing and starts nothing for AI. See [Turning AI on](/en/docs/ai/settings#turning-ai-on).
 
-- **The AI component.** The first time you test or add a provider, or turn on the MCP server, HikariSub downloads its AI component from HikariSub's releases on GitHub. The provider form, or the MCP section, says how big it is before it starts.
+- **The AI component.** When you turn AI on, HikariSub downloads its AI component from HikariSub's releases on GitHub, if it isn't on this computer yet. If that download failed, testing or adding a provider, turning on the MCP server, or **Install** or **Retry** in **File › Settings › AI › AI components** downloads it. The provider form and the MCP section say how big it is before it starts.
   - **Checking:** once it is there, and while AI features are on, HikariSub checks those releases for a newer version at start and once an hour. Each check fetches one small signed file, and sends only the user agent `HikariSub-AI` and a tag saying which copy of that file it already has. It sends nothing about you, your providers or your subtitles.
   - **Updating:** a newer version downloads in the background. HikariSub switches to it when AI has been unused for two minutes, and goes back to the version before if the new one fails to start, or crashes twice within 10 minutes.
   - **Signature:** every download is checked against HikariSub's release key, as app updates are (see [Checking a download](/en/docs/get-started/install#checking-a-download)).
@@ -330,7 +358,7 @@ The Marketplace's list comes from `https://marketplace.hikarisub.org`. HikariSub
 - **Install**, **Update to** a new version and **Move to the marketplace** download that one plugin's package from the same site, the same way, only when you press them.
 - **Icons and screenshots:** while the plugin manager shows the **Marketplace** view, HikariSub downloads the icons and screenshots of the plugins listed there, from the same site, the same way. It never requests an image from any other site, and the **Installed** view requests none. Each image is checked against the Marketplace's image rules, and kept in memory only, never saved to disk.
 - **Automatic updates:** after a check finds a newer version of a marketplace plugin, HikariSub downloads that plugin's package from the same site, the same way, while **Install updates automatically** is ticked for it. The download names only the plugin and version it fetches, as any download of that file would.
-- **Turning it off:** clear **Check for plugin updates**, under **Plugin updates** in the plugin manager. It is **on by default**. HikariSub then downloads the list only when you press **Check for updates**, or when you open the Marketplace and it has no list yet.
+- **Turning it off:** clear **Check for plugin updates**, under **Plugin updates** in the plugin manager or in **File › Settings › Updates and privacy › Plugins**. It is **on by default**. HikariSub then downloads the list only when you press **Check for updates**, or when you open the Marketplace and it has no list yet.
 
 Nothing else is fetched: links such as a plugin's repository open in your browser only when you click them.
 
@@ -348,6 +376,12 @@ Unless it has [full trust](#full-trust-plugins), a plugin can't connect on its o
 - **What it keeps:** nothing. Answers aren't cached, and a request is dropped after 30 seconds or when the plugin stops.
 
 Usage data has no event for plugins. It never records that a plugin connected, where, or what it sent. A plugin's own commands aren't in the list of commands it reports. Opening the plugin manager counts as one command, **Plugins**, like any other.
+
+### Programs that plugins download
+
+A plugin can name programs that HikariSub downloads for it. HikariSub fetches each one from the address in the plugin's signed package, only over HTTPS and without cookies, when the plugin starts and the program isn't there yet. It checks the size and SHA-256 before using the file. The install question shows each download's host and size. Nothing is downloaded while **Let plugins connect to the internet** is off.
+
+A program whose install question says *Connects to the internet* connects on its own from its sandbox, to any host. While **Let plugins connect to the internet** is off, it starts without the network. On Windows, a program whose install question says *Can read your files* doesn't start at all until you turn it back on.
 
 ### Full trust plugins
 

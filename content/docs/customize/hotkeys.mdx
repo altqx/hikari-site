@@ -12,7 +12,7 @@ Almost every command can have a key, and most have none at first. The [Shortcuts
 
 | Where | Takes effect |
 | --- | --- |
-| **File › Settings › Shortcuts** | When you press **OK** or **Apply** |
+| **File › Settings › Shortcuts** | At once |
 | <kbd>Shift</kbd>+click a menu item or button | At once |
 | The Automation panel, for macros | At once |
 
@@ -36,7 +36,11 @@ On an Audio button that has two keys, <kbd>Ctrl</kbd>+click sets the second one.
   <figcaption>File › Settings › Shortcuts.</figcaption>
 </figure>
 
-The list has every command, grouped by where its key works. The filter shows only one group, only the commands that have keys, or only macros. **Search shortcuts** finds commands by name, or by key: type keys as the list shows them, such as `ctrl-s`.
+The list has every command, grouped by where its key works. **Search shortcuts** finds commands by name, or by key: type keys as the list shows them, such as `ctrl-s`. The Settings window's own search finds commands too: see [Searching](/en/docs/customize/settings#searching). Three filters narrow the list:
+
+- The first shows one group only, such as **Grid shortcuts**, **Automation shortcuts** or **Plugin shortcuts**.
+- **Source** shows keys by where they come from: **Built-in**, **Yours** (a key you set or cleared), **Plugin** or **Macro**.
+- **Conflicts** keeps only keys that more than one command uses where they work at the same time.
 
 Select a command, then:
 
@@ -44,7 +48,7 @@ Select a command, then:
 - **Restore default** gives it back its default keys.
 - **Delete** leaves it without a key.
 
-Changed rows show in the warning colour until you press **OK** or **Apply**. **Cancel** drops every change. With the list focused, <kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Y</kbd> undo and redo your changes. **Reset page** gives every command its default keys.
+Each change applies at once. With the list focused, <kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Y</kbd> undo and redo your changes. **Reset page…**, in the right-click menu of **Shortcuts** in the window's contents list, gives every command its default keys. **Open settings file** on this page opens `hotkeys.toml`.
 
 ## Pressing the keys
 
@@ -104,4 +108,4 @@ The Shortcuts page lists macros too, under the **Automation shortcuts** filter.
 
 ## Keys from older versions
 
-**Settings › General › Import legacy settings…** brings in the keys of HikariSub 0.0.x, with the rest of its settings. **Import legacy shortcuts…**, in the same place, brings in only the macro keys of a legacy `Hotkeys.txt`, at once: macros that already have keys keep them, and keys another macro has are skipped. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).
+**Settings › General › Import settings…** brings in the keys of HikariSub 0.0.x, with the rest of its settings, and the keys of Aegisub 3.1 and later from its `hotkey.json`. The review lists any Aegisub command HikariSub doesn't have yet, and any key it couldn't bring over, with the reason. **Import legacy shortcuts…**, in the same place, brings in only the macro keys of a legacy `Hotkeys.txt`, at once: macros that already have keys keep them, and keys another macro has are skipped. See [Moving from legacy](/en/docs/get-started/moving-from-legacy).

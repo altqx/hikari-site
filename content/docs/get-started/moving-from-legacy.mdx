@@ -34,9 +34,9 @@ Legacy 0.0.1 and portable copies of legacy keep their settings beside the progra
 
 ## Importing your settings
 
-0.1 starts with its own defaults. At the first start, the [Getting started window](/en/docs/get-started/getting-started-window#import-from-legacy) offers to bring your legacy settings over when it finds legacy on this computer. At any time, use **Import legacy settings…** at the end of **File › Settings › General**, in its **Legacy** section. If HikariSub finds no legacy installation beside the program, a note there says so, and the button still lets you choose a folder. You can also give the command a key in **Settings › Shortcuts**, under Global. It opens a window in three steps:
+0.1 starts with its own defaults. At the first start, the [Getting started window](/en/docs/get-started/getting-started-window#import-from-legacy) offers to bring your legacy settings over when it finds legacy on this computer. At any time, use **Import settings…** at the end of **File › Settings › General**, in its **Legacy** section. If HikariSub finds no legacy installation beside the program, a note there says so, and the button still lets you choose a folder. You can also give the command a key in **Settings › Shortcuts**, under Global. It opens a window in three steps:
 
-1. **Installation:** HikariSub lists the legacy installations it finds and picks the first. If yours is not listed, for example a portable copy, choose **Choose folder…** and pick its folder. Files that are not UTF-8 can be read as Latin-1 or Windows-1252.
+1. **Source:** HikariSub lists the legacy installations and Aegisub settings folders it finds, and picks the first. If yours is not listed, for example a portable copy, choose **Choose folder…** and pick its folder. Files that are not UTF-8 can be read as Latin-1 or Windows-1252. From an Aegisub folder, only its keyboard shortcuts come over: see [Shortcuts from Aegisub](#shortcuts-from-aegisub).
 2. **Review:** every setting legacy sets differently from 0.1, with its legacy value and its value now. Where you have not changed a setting in 0.1 yet, the legacy value is ticked; where you have, yours is kept unless you tick the legacy one. **All** shows every setting read, and the search field finds one.
 3. **Import:** the chosen settings are staged, and take effect the next time HikariSub starts. A setting you change before then keeps your change.
 
@@ -51,12 +51,21 @@ The import never changes the legacy files. You can run it again at any time: set
 
 Paths that do not exist on this computer, and a subtitle renderer that is not installed here, are shown as unresolved and left as they are. HikariSub draws with libass instead.
 
-To bring over only the shortcuts of your automation macros, use **Import legacy shortcuts…** in the same Legacy section of **Settings › General**, and pick legacy's `Hotkeys.txt`. Press **Apply** or **Cancel** first: the import is added at once.
+To bring over only the shortcuts of your automation macros, use **Import legacy shortcuts…** in the same Legacy section of **Settings › General**, and pick legacy's `Hotkeys.txt`. The import is added at once.
+
+### Shortcuts from Aegisub
+
+**Import settings…** also reads the keyboard shortcuts of Aegisub 3.1 and later, from the `hotkey.json` in its settings folder: `%APPDATA%\Aegisub` on Windows, `~/.aegisub` on Linux. Pick another folder with **Choose folder…**.
+
+- A key of an Aegisub command that HikariSub has goes to that command, in the matching panel: Aegisub's Audio keys go to Audio, Video to Video, Subtitle Grid to the Grid, and Subtitle Edit Box to the Line editor.
+- HikariSub keeps one key per command in each panel. A second Aegisub key goes to the command's alternative where HikariSub has one, and further keys are listed.
+- A HikariSub default whose keys an Aegisub command takes is unbound, and the review proposes that with it.
+- The review lists, with the reason, each Aegisub command HikariSub doesn't have yet, each key it couldn't bring over, and the Translation Assistant and Styling Assistant keys, as HikariSub has no such windows.
 
 ### What does not
 
 - **Themes.** 0.1 has its own themes in **File › Settings › Appearance**; legacy themes and colours are not imported.
-- **Style catalogues, font catalogues, sessions and autosaves.** Open a legacy `.kls` session with **File › Last session › Load session from file…**, or from your file manager. Save it again to get a `.hksession`. **File › Open autosave…** lists legacy's autosaves, read only, from the `Subs` folder of the first legacy installation that **Import legacy settings** finds. A folder you pick there with **Choose folder…** is not searched.
+- **Style catalogues, font catalogues, sessions and autosaves.** Open a legacy `.kls` session with **File › Last session › Load session from file…**, or from your file manager. Save it again to get a `.hksession`. **File › Open autosave…** lists legacy's autosaves, read only, from the `Subs` folder of the first legacy installation that **Import settings…** finds. A folder you pick there with **Choose folder…** is not searched.
 - **Your automation scripts.** Copy them into 0.1's Automation folder.
 - **Install updates automatically.** 0.1 has its own setting, on by default.
 - **Misspell rules** (`Rules.txt`). The import lists them as Retired.
