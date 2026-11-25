@@ -506,6 +506,35 @@ A plugin whose `main` is `{"program": "<id>"}` is that program, declared with `"
 
 A program plugin is never Full trust. A package with no `main` starts no plugin, and runs only the programs it declares, such as an MCP server. See [Program plugins](https://github.com/altqx/hikari/blob/main/docs/plugins.md#program-plugins).
 
+### Language servers
+
+A plugin can bring a language server: a program that speaks the Language Server Protocol 3.17 on its stdin and stdout. Declare it in `contributes.programs`, bundled or downloaded for each platform, without `"api": true`, and name it in `contributes.languageServers`. The Typos plugin, for example, runs typos-lsp on the text and the translation:
+
+```json
+"languageServers": [
+  {
+    "id": "typos",
+    "title": "Typos",
+    "program": "typos-lsp",
+    "fields": ["text", "translation"],
+    "tags": "blank"
+  }
+]
+```
+
+Only `id`, `title` and `program` are needed. `fields` is `["text"]` at first, `tags` is `"blank"`, `scope` is `"document"`, and `languageId` is `"plaintext"`. `initializationOptions` goes to the server as written. HikariSub refuses a manifest whose server names a program that `contributes.programs` doesn't declare, or one with `"api": true`, or whose servers share an id.
+
+- **Where it runs.** In the plugin's sandbox, as the plugin's other programs do. HikariSub is its client.
+- **What it reads.** With `"scope": "document"`, each field in `fields` goes to the server as one text document for each open file. Line *n* of the document is the file's *n*-th line, and comment lines are empty, so the numbers still match. With `"scope": "line"`, the server gets only the line the Line editor shows, opened when the Line editor shows it and closed when it leaves. The text goes 250 ms after the last change, whole.
+- **Tags.** With `"tags": "blank"`, each override block, `\N`, `\n` and `\h` becomes as many spaces, so a position the server reports still points at the right characters, and a fix never touches a tag. `"keep"` sends the text as it is, for a server that checks tags.
+- **Problems.** The server's diagnostics show in the [Problems](/en/docs/checking/qc-notes#problems) panel, named after its `title`, and as wavy lines in the Line editor.
+- **Quick fixes.** The server's quick fixes show in the problem's menu and on **Quick fix** (<kbd>Alt</kbd>+<kbd>Enter</kbd>), up to 8 for each problem, its preferred ones first. HikariSub keeps a fix only when it stays inside one line, adds no line break and, with `"tags": "blank"`, touches no tag. With Typos, *teh* after `{\i1}` is a problem whose fix is *the*.
+- **Completions and hovers.** The server's completions join the Line editor's list, after the built-in ones and the plugins'. They're asked at its trigger characters and on <kbd>Ctrl</kbd>+<kbd>Space</kbd>, and each server has 1 second to answer. Its hover shows when no plugin has one.
+- **Settings and the Log.** The server's `workspace/configuration` requests get the plugin's settings. Its log and show-message notices, and what it writes to stderr, go to the Log panel under the plugin's name.
+- **Starting and stopping.** The server starts when its first text document opens, and stops when the plugin stops or is turned off. It starts afresh after an update, a settings change or a program download. If it crashes, it starts again, up to 3 times in 5 minutes. Then it stays stopped, and the plugin's details say *Typos stopped.* with the reason and **Start again**.
+
+See [Language features and problems](https://github.com/altqx/hikari/blob/main/docs/plugins.md#language-features-and-problems).
+
 ### MCP servers
 
 `contributes.mcpServers` entries, `{id, title, description, program}`, name a declared program without `"api": true`. Each shows in **File › Settings › AI › MCP › MCP servers** as `<title> (<plugin>)`, off until the user turns it on, and runs in the program's sandbox. Its environment comes from the plugin's settings, through `${setting:<id>}`, and its tools are untrusted until the user trusts them. A new server in an update asks the user again. See [AI tools and MCP servers](https://github.com/altqx/hikari/blob/main/docs/plugins.md#ai-tools-and-mcp-servers).

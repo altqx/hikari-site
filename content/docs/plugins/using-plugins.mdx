@@ -322,6 +322,12 @@ A program may be made only for some computers. One with no version for yours sho
 - **Never unconfined.** Where the sandbox can't apply, the program doesn't start, and the plugin's details say why.
 - **Stopping.** A program ends when its plugin stops, is turned off, updated or uninstalled. What it writes as errors goes to the [Log panel](/en/docs/help/troubleshooting#the-log-panel) under the plugin's name.
 
+### Language servers
+
+A program can be a language server, which checks the text as you edit. The Typos plugin, for example, marks common misspellings. A language server's problems show in the [Problems](/en/docs/checking/qc-notes#problems) panel, under its name, and as wavy lines in the Line editor. Its quick fixes are on **Quick fix** (<kbd>Alt</kbd>+<kbd>Enter</kbd>), and its completions join the Line editor's list.
+
+If a language server crashes, HikariSub starts it again, up to 3 times in 5 minutes, and then leaves it stopped. The plugin's details then say so, such as *Typos stopped.*, with the reason and **Start again**.
+
 ## MCP servers
 
 A plugin can bring [MCP servers](/en/docs/ai/agent#mcp-servers), which give the agent more tools. Its install question says *Offers MCP servers in Settings › AI, off until you turn them on*, with their names.
