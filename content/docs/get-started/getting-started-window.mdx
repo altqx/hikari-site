@@ -1,6 +1,6 @@
 ---
 title: The Getting started window
-description: The setup HikariSub shows at its first start, what each step sets, bringing legacy settings over, and opening it again.
+description: The setup HikariSub shows at its first start, what each step sets, bringing old settings over, and opening it again.
 ---
 
 import lookLight from './images/getting-started-look-light.webp';
@@ -10,13 +10,13 @@ import mediaDark from './images/getting-started-media-dark.webp';
 import updatesLight from './images/getting-started-updates-light.webp';
 import updatesDark from './images/getting-started-updates-dark.webp';
 
-The **Getting started** window walks through the settings most people change first: the language, the theme, the layout, video and audio, editing, updates and usage data. Each step is a page, and each page says at its foot where its choice lives later, so nothing here is set for good.
+The **Getting started** window walks through the settings most people change first: the language, how HikariSub looks, the layout, video and audio, editing, AI, and updates and privacy. Each step ends with a line that says where its settings live later, so nothing here is set for good.
 
 ## When it opens
 
-It opens by itself the first time HikariSub starts, when there are no settings yet. Once you answer it, with **Finish** or **Skip setup**, it doesn't open by itself again. If HikariSub is closed before you answer, it opens again at the next start.
+It opens by itself the first time HikariSub starts, when there are no settings yet, before the [Home page](/en/docs/get-started/tour#the-home-page). Once you answer it, with **Finish** or **Skip setup**, it doesn't open by itself again. If HikariSub is closed before you answer, it opens again at the next start.
 
-To open it later, choose **Help › Getting started**. It has no key at first; you can give it one in [Shortcuts](/en/docs/customize/hotkeys). Opened again, the pages show your settings as they are now.
+To open it later, choose **Help › Getting started**. It has no key at first; you can give it one in [Shortcuts](/en/docs/customize/hotkeys). Opened again, the steps show your settings as they are now.
 
 <kbd>F1</kbd>, or the **?** in its title bar, opens this page.
 
@@ -34,69 +34,72 @@ To open it later, choose **Help › Getting started**. It has no key at first; y
   <figcaption>The Look step.</figcaption>
 </figure>
 
-The dots at the top show the step you are on. There are seven steps, or eight when HikariSub finds HikariSub 0.0.x (*legacy*) on the computer.
+The steps are listed down the left side of the window: nine, or eight when HikariSub finds no old settings to bring over. The current step is highlighted, and a tick marks each step you have seen. Click a step to go to it, or press <kbd>Ctrl</kbd>+<kbd>PgDn</kbd> and <kbd>Ctrl</kbd>+<kbd>PgUp</kbd> for the next or the previous one.
 
-- **Next** goes to the next step. On the last step it becomes **Finish**.
-- **Back** goes to the step before.
-- **Skip setup** closes the window.
+- **Next**, or <kbd>Enter</kbd>, goes to the next step. On the last step it becomes **Finish**.
+- **Back**, or <kbd>Alt</kbd>+<kbd>←</kbd>, goes to the step before.
+- **Skip setup**, or <kbd>Esc</kbd>, closes the window and keeps HikariSub's defaults.
 
-Nothing is saved until **Finish**. The language and the theme change while you choose them, so you can see them, but they go back if you don't finish.
+On steps with cards, the arrow keys move between the cards and <kbd>Space</kbd> chooses one.
 
-**Finish** saves every step's choices and, if you picked a layout, shows your tab in it.
+Nothing is saved until **Finish**. The language and the look change while you choose them, so you can see them, but they go back if you don't finish. **Finish** saves every step's choices and opens your first tab in the layout you picked.
+
+Each step's **Later** line names where its settings are in **File › Settings**. Click it to close the window, keeping your choices as **Finish** would, and open Settings at that place.
 
 **Skip setup**, <kbd>Esc</kbd> and closing the window all do the same: nothing you chose is saved, and nothing is imported. When the window opened by itself at the first start, a notice says that the default settings are in use and that **Help › Getting started** opens the setup again.
 
 ## The steps
 
-### Language
+### Welcome
 
 The first step, **Welcome to HikariSub**, lists the interface languages. The window switches to the language you pick, so you can read the rest of it in that language.
 
 Later: **File › Settings › General › Language › Interface language**.
 
-### Import from legacy
+### Bring over [#import-from-legacy]
 
-This step shows only when HikariSub finds legacy on this computer. It reads its settings and changes nothing in them.
+This step shows only when HikariSub finds settings it can bring over on this computer: those of HikariSub 0.0.x, Aegisub or Kainote. It names where they're from, as in *Aegisub’s settings were found on this computer. Nothing in them is changed.*, or *Settings from Aegisub and Kainote…* when there are two. It reads them and changes nothing in them.
 
-- **Import my old settings**, chosen at first, shows the legacy settings that differ from HikariSub's, with their legacy value and their value now. The legacy values HikariSub proposes are ticked; tick or untick any. **All** shows every setting read, and the search field finds one.
+- **Import my old settings**, chosen at first, shows the old settings that differ from HikariSub's, with their old value and their value now. The values HikariSub proposes are ticked; tick or untick any. **All** shows every setting read, and the search field finds one.
 - **Set up from scratch** starts from HikariSub's defaults.
 
-If some legacy files are not UTF-8, choose how to read them under **Files that are not UTF-8 are read as**: Latin-1 or Windows-1252.
+If some files are not UTF-8, choose how to read them under **Files that are not UTF-8 are read as**: Latin-1 or Windows-1252.
 
-When you import, the next steps start from the imported values. A change you make on a later step wins over the imported value, even if you go back to this step.
+When you import, the next steps start from the imported values. A change you make on a later step wins over the imported value, even if you go back to this step. Leaving this step by any route, **Next** or a click in the step list, applies the import to the steps that follow.
 
-At **Finish**, the steps' own settings are saved at once. The rest of the import is staged and takes effect the next time HikariSub starts, as **Settings › General › Import legacy settings…** does. What can come over, and what can't, is in [Moving from legacy](/en/docs/get-started/moving-from-legacy#what-comes-over). Legacy themes are not imported.
+At **Finish**, the steps' own settings are saved at once. The rest of the import is staged and takes effect the next time HikariSub starts, as **File › Settings › General › Import settings…** does. What can come over, and what can't, is in [Moving from legacy](/en/docs/get-started/moving-from-legacy#what-comes-over). Legacy themes are not imported.
 
-If the import can't be staged, for example because the legacy files changed since they were read, **Finish** saves nothing and takes you back to this step with the reason. **Read again** reads the files again.
+If the import can't be staged, for example because the files changed since they were read, **Finish** saves nothing and takes you back to this step with the reason. **Read again** reads the files again.
 
-The window takes the first legacy installation it finds. To import from another, such as a portable copy, use **Settings › General › Import legacy settings…** later. **Roll back the last import…**, beside it, rolls an import back.
+The window takes the first legacy installation it finds. To import from another, such as a portable copy or Aegisub's shortcuts, use **File › Settings › General › Import settings…** later. **Roll back the last import…**, beside it, rolls an import back.
 
-Later: **Settings › General › Import legacy settings…**
+Later: **File › Settings › General › Import settings…**
 
 ### Look
 
-- **Follow system theme** uses Light or Dark as your system does.
-- The two samples, **Light** and **Dark**, pick a theme. Picking one turns off Follow system theme.
-- **Accent colour** picks one of seven accents for the theme shown. Light and Dark keep their own.
-- **Enable high contrast** switches to High contrast white, or High contrast black from Dark. Its colours are set in Settings.
-- **Title bar** chooses between **HikariSub's** title bar and **The system's**, with a note on which suits your desktop. It shows only where HikariSub can draw its own title bar.
-
 The whole window changes as you choose.
+
+- **Follow system theme** uses Light or Dark as your system does, and **High contrast** switches to a high-contrast theme.
+- **Built in** shows HikariSub's themes as cards, each with a sample of its colours. Click one to choose it.
+- **From plugins** shows the colour themes of the [plugins](/en/docs/plugins/using-plugins) you have installed, each with its plugin's name. The last card, **More themes…**, opens the plugin marketplace at its themes once the window closes, and keeps your choices so far.
+- **Accent colour** picks one of the theme's accents.
+- **Icons** chooses **HikariSub (built in)** or the icon theme of a plugin you have installed. The window shows the icons as you choose.
+- **Title bar** chooses between **HikariSub's** title bar and **System**, with a note on which suits your desktop, such as *The system’s suits this desktop.* It shows only where HikariSub can draw its own title bar.
 
 Later: **File › Settings › Appearance**. See [Themes](/en/docs/customize/themes).
 
-### What do you mostly do?
+### How you work
 
-This step picks the [layout](/en/docs/customize/layouts) your first tab opens with. Each card shows the layout's arrangement:
+**How do you mostly work?** picks the [layout](/en/docs/customize/layouts) your first tab opens with. Each card shows the layout's arrangement:
 
-| Card | Layout |
+| Card | What you get |
 | --- | --- |
-| **Time** | Timing |
-| **Translate** | Translation |
-| **Typeset** | Typesetting |
-| **Karaoke** | Karaoke, which also turns on the Audio panel's Karaoke mode |
-
-Click a card again to unpick it. With none picked, the tab keeps Editing, which has a bit of everything.
+| **Editing**, chosen at first | Video, audio, the Line editor and the Grid: a bit of everything |
+| **Translate** | The Translation layout, with the original above your translation and Translation mode on |
+| **Time** | The Timing layout, with the audio across the top |
+| **Typeset** | The Typesetting layout: a large video with the visual tools and the Styles panel |
+| **Karaoke** | The Karaoke layout, with the Template editor beside the video and the Audio panel in Karaoke mode |
+| **Full screen** | The Typesetting layout, with your first tab in [full-screen typesetting](/en/docs/basics/video#full-screen-typesetting) |
 
 Later: **View › Layout**, or the layout switcher in the title bar.
 
@@ -127,6 +130,15 @@ Later: **File › Settings › Video › Subtitles on video › Subtitle display
 
 Later: **File › Settings › General › Saving**, and **File › Settings › Spelling and grammar**. See [Spelling](/en/docs/checking/spelling).
 
+### AI
+
+HikariSub can help with translation, review and an agent that edits with you. AI stays off unless you turn it on here or later.
+
+- **Keep AI off**, chosen at first: no AI menus, panels or downloads, and nothing about your subtitles leaves this computer.
+- **Turn AI on**: after **Finish**, HikariSub downloads its AI component once. You then add a provider, or sign in to an agent, in **File › Settings › AI**.
+
+Later: **File › Settings › AI**. See [Turning AI on](/en/docs/ai/settings#turning-ai-on) and [What is sent](/en/docs/help/what-is-sent#ai).
+
 ### Updates and privacy
 
 <figure>
@@ -143,15 +155,22 @@ Later: **File › Settings › General › Saving**, and **File › Settings ›
 
 - **Stable versions only** offers tested releases only. On a stable release it is chosen at first and marked *Recommended*.
 - **Pre-releases too** offers beta versions as well. On a beta or release candidate it is chosen at first.
-- **Check for updates automatically** looks for a new version at most once a day, when HikariSub starts. It is off at first. The release notes on the Home page need it too.
-- **Send anonymous usage data** sends which features are used, errors and crashes, and how fast things open. It is on at first. Untick it to turn it off; **What is sent** opens the full list, [What is sent](/en/docs/help/what-is-sent), in your browser.
-
-Skipping setup leaves it as it is, which at the first start means on.
+- **Check for updates automatically** looks for a new version at most once a day, when HikariSub starts. It is off at first.
+- **Send anonymous usage data** sends which features are used, errors and crashes, and how fast things open. It is on at first. Untick it to turn it off; **What is sent** opens the full list, [What is sent](/en/docs/help/what-is-sent), in your browser. Skipping setup leaves it as it is, which at the first start means on.
+- **Show what I am doing in Discord**, off at first, shows the mode you're in as your Discord status: never your folders, your subtitles or the video. Its other choices are in Settings. See [Discord presence](/en/docs/help/what-is-sent#discord-presence).
 
 Later: **File › Settings › Updates and privacy**. See [Updates](/en/docs/get-started/install#updates).
 
-### Your files
+### Ready
 
-The last step shows your [user folder](/en/docs/automation/user-folder), which holds your settings, shortcuts, scripts, dictionaries and saved layouts. **Open folder** opens it in your file manager. Copy it to take your setup to another computer.
+The last step, **You're set**, sums up your choices: the language, the look (theme, accent and icons), the layout, AI, updates, and your files. Click a row to go back to its step.
+
+Under **Good to know**, two reminders: <kbd>Ctrl</kbd>+<kbd>P</kbd> opens anything or runs any command, as in [Quick Open](/en/docs/basics/command-palette), and **Automation › Plugins** brings formats, presets and themes from the marketplace.
+
+If **Finish** can't save, the window goes back to the Bring over step when there is one, with the reason. Without it, it stays on this step and shows the problem above the summary.
+
+#### Your files
+
+The **Your files** row shows your [user folder](/en/docs/automation/user-folder), which holds your settings, shortcuts, scripts, dictionaries and saved layouts. **Open folder** opens it in your file manager. Copy it to take your setup to another computer.
 
 Later: **File › Settings › General › Folders**, or **Help › Open user folder**.

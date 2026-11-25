@@ -200,7 +200,7 @@ A Project is a folder you open in a window, such as the folder of a whole show o
 
 A folder opens in the current window when that window has no Project and nothing open, or only one empty, unchanged tab. Otherwise it opens in a new window. A folder that is already open in a window brings that window to the front: one Project can't be open in two windows.
 
-Once you have opened a Project, the Home page lists **Recent projects** above **Recent files**, the last 20, and you can filter them by name. Right-click one for **Open**, **Show in folder**, **Copy path**, **Remove from list** and **Remove missing folders**.
+Once you have opened a Project, the Home page's **Recent** list has **Files** and **Projects**: **Projects** lists the last 20, and **Filter** finds one by its name or folder. Right-click one for **Open**, **Show in folder**, **Copy path**, **Remove from list** and **Remove missing folders**.
 
 ### A file in a Project folder
 
@@ -339,7 +339,7 @@ An `AGENTS.md` at the root of the Project's folder gives the AI agent instructio
 
 **File › Close project** closes the window's tabs, after asking about unsaved changes, and leaves the window on the Home page without a Project. It is greyed out in a window with no Project.
 
-HikariSub keeps the tabs a Project had when you closed it, or when you closed its window. The next time the Project is open in a window with no tabs, its card on the Home page lists them, with **Reopen last tabs (3)**.
+HikariSub keeps the tabs a Project had when you closed it, or when you closed its window. The next time the Project is open in a window with no tabs, the Home page's **Continue** card names the Project and lists them, with **Reopen last tabs (3)**.
 
 **Open folder…** and **Close project** have no shortcut at first. Give them one in **File › Settings › Shortcuts**.
 
@@ -357,7 +357,7 @@ A session is the set of open tabs, with their videos, audio and positions. **Fil
 
 - **Load last session**, the tabs open when you last quit.
 - **Load session from file…** or **Save session to file…**, as a `.hksession` file.
-- Choose what happens when HikariSub starts, under *At startup*: **Don't load the last session**, **Ask**, or **Load the last session** without asking.
+- Choose what happens when HikariSub starts, under *At startup*: **Don't load the last session**, **Ask**, or **Load the last session** without asking. With **Ask**, the Home page asks *Restore the last session?*, with **Restore it at every start**.
 
 Quitting from the Home page before you open or restore a file keeps the last session for the Home page's **Restore**, even after a crash whose offer to restore you turned down; closing your last tab empties it.
 
