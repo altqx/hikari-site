@@ -12,7 +12,7 @@ The Video panel shows the frame your subtitles are timed against, with the subti
 
 ## Opening a video
 
-Use **File › Open video…** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>), **Video › Recently opened videos**, or drop a video file on the window. The picker lists MKV, MP4, AVI, MOV, WebM, TS, M2TS and WMV files; choose **All files** to open another kind.
+Use **File › Open video…** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>), **Video › Recently opened videos**, or drop a video file on the window. The picker lists MKV, MP4, AVI, MOV, WebM, TS, M2TS, WMV, Y4M, M4V, FLV, OGM, ASF, RMVB, RM, 3GP, MPG and MPEG files; choose **All files** to open another kind.
 
 Every video is indexed first, so that each frame has an exact time, variable frame rates included. While it indexes, a strip over the picture shows the progress and **Cancel**; the rest of the window stays usable.
 
@@ -20,10 +20,11 @@ HikariSub may ask first:
 
 - **Subtitles with the same name** beside the video: **Open both** or **Video only**.
 - **A different resolution** from the subtitles: **Resample** scales the subtitles to the video, **Change resolution only** sets the new size without moving anything, and **Keep as is** leaves them. **Resample and stretch** appears when the aspect ratios differ. You can resample later with **Subtitles › Resample subtitles…**.
-- **No YCbCr matrix** in the subtitles, or **a different one** from the video's: whether to set it to the video's. Each answer is one undo step.
+- **No YCbCr matrix** in the subtitles: whether to set it to the video's. Each answer is one undo step.
+- **A different YCbCr matrix** from the video's: keep the subtitles' one, such as **Keep TV.601**, or set it to the video's, such as **Set to TV.709**, the default. When both name a matrix, a third answer, such as **Convert colours and set to TV.709**, also converts the colours, so they look the same on this video as on the one they were matched to. It converts the style colours and the `\c` and `\1c` to `\4c` tags, those inside `\t` included, in the text and the translation. Karaoke template and code lines are left as they are. Each answer is one undo step: *Setting the YCbCr Matrix*, or *Converting colours to the YCbCr Matrix*.
 - **No layout resolution** in the subtitles, or **a different one** from the video's: whether to set it.
 
-It also warns when the video has no colour matrix tag, or has HDR or wide-gamut colours. **File › Settings › Video › Script resolution** has a row for each question, from **Ask** to always or never changing the file, and a check box for each warning. **Don't ask again** in a question sets its row to the answer you gave. Reopening or reloading a video asks again.
+It also warns when the video has no colour matrix tag, or has HDR or wide-gamut colours. **File › Settings › Video › Script resolution** has a row for each question, from **Ask** to always or never changing the file, and a check box for each warning. **A different YCbCr matrix from the video's** can also be **Convert the colours and set it to the video's**, which converts without asking. **Don't ask again** in a question sets its row to the answer you gave. Reopening or reloading a video asks again.
 
 When you open subtitles that name a video, audio, keyframes or timecodes file, a bar over the picture offers to load them: **Load associated**, or **No**. Files that can't be found, a timecodes file among them, are listed under *Linked files not found:*, and when none of them can load, the bar has only **OK**.
 
@@ -35,11 +36,11 @@ When you open subtitles that name a video, audio, keyframes or timecodes file, a
 
 | Kind | What HikariSub reads |
 | --- | --- |
-| **Containers** | Matroska (`.mkv`, `.mka`), WebM (`.webm`), MP4 and QuickTime (`.mp4`, `.m4a`, `.mov`), AVI, MPEG-TS (`.ts`, `.m2ts`), Ogg (`.ogg`, `.opus`, `.ogm`) and ASF/WMV |
+| **Containers** | Matroska (`.mkv`, `.mka`), WebM (`.webm`), MP4 and QuickTime (`.mp4`, `.m4a`, `.mov`), AVI, MPEG-TS (`.ts`, `.m2ts`), Ogg (`.ogg`, `.opus`, `.ogm`), ASF/WMV and YUV4MPEG2 (`.y4m`) |
 | **Video** | H.264, HEVC, MPEG-1, MPEG-2, MPEG-4, VP8, VP9 and AV1 |
 | **Audio** | Vorbis, Opus, AAC, AC-3, MP3, FLAC and PCM |
 
-**Next file** and **Previous file**, and the lookup for a video with the same name as your subtitles, count `.webm` files as videos.
+**Next file** and **Previous file** stop at every video HikariSub can open, the kinds the picker lists. The lookup for a video with the same name as your subtitles, and the Explorer, count the same kinds as videos.
 
 **AV1** plays only with a hardware AV1 decoder: VAAPI or NVDEC on Linux, and D3D11VA, D3D12VA or DXVA2 on Windows. Without one, **Play** stops and a notice says *AV1 video can't be played on this computer. Its frames still show while paused, and seeking and stepping work.* Everything else works for AV1 on every computer: opening, the paused frames, seeking, stepping frame by frame, keyframes and the audio's waveform. VP8 and VP9 play everywhere.
 
@@ -47,9 +48,17 @@ A VP9 video with transparency shows its colours, and the transparency is ignored
 
 ## The panel
 
-Below the picture are the visual tools' bar, the seek bar, the times field and the transport buttons: **Previous file**, **Play**, **Play line**, **Stop**, **Next file**, the frame buttons and the volume.
+Below the picture are the visual tools' bar, the seek bar and one row of controls:
 
-The times field shows the frame's time and number. With an active line, it adds how many frames and milliseconds the frame is from the line's start and end. It turns the warning colour on a keyframe.
+- **Previous frame**, **Play** and **Next frame**, then **Play line** and **Stop**.
+- **The time** of the frame shown. On a keyframe it turns the warning colour, with a keyframe mark after it. Point at it to see how many frames and milliseconds the frame is from the active line's start and end. Click it to [jump to a time or frame](#jumping-to-a-time-or-frame).
+- The frame, as *frame 5146 / 15116*, and with the Position pointer on, the pointer's position.
+- **The zoom**, *Fit* or a percentage. Click it for the [zoom levels](#zoom-and-pan).
+- The volume.
+
+**Previous file** and **Next file** are in the Video menu and the picture's right-click menu, and on <kbd>,</kbd> and <kbd>.</kbd>.
+
+The seek bar takes the keyboard with <kbd>Tab</kbd>. Then <kbd>Left</kbd> and <kbd>Right</kbd> step a frame, <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go to the previous or next keyframe, and <kbd>Home</kbd> and <kbd>End</kbd> go to the start and the end.
 
 The panel's **⋯** menu sets how the video follows the Grid: **Move video to the selected line** (for example *Every line change*) and **After moving, play** (for example *Video and audio to the line end time*). **File › Settings › Video › Playback** has the same two rows.
 
@@ -67,6 +76,21 @@ The tools on the left of the picture are the [visual tools](/en/docs/typesetting
 | <kbd>,</kbd> <kbd>.</kbd> | Previous or next video in the folder, after asking |
 
 The keys without <kbd>Alt</kbd> work while the Video panel has the keyboard. The [Shortcuts reference](/en/docs/reference/hotkeys#video) lists them all, including the commands without a default key, such as **Go to next keyframe**.
+
+**Video › Previous subtitle boundary** and **Next subtitle boundary** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Left</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Right</kbd>) step the video to the active line's start, then its end, then the next line's start, as in Aegisub. In the Line editor, the same keys still select a word.
+
+### Jumping to a time or frame
+
+Click the time, or choose **Video › Jump to** (<kbd>Ctrl</kbd>+<kbd>G</kbd>), and type where to go:
+
+| Type | Goes to |
+| --- | --- |
+| `3:40`, `0:03:40.50` or `220.5` | That time |
+| `5200` | That frame |
+| `+5s`, `-1.5s` or `+1:00` | That far forward or back |
+| `+12f` or `-12f` | That many frames forward or back |
+
+A number alone is a frame, and a number with a point or a colon is a time. <kbd>Enter</kbd> goes there. <kbd>Esc</kbd>, or leaving the field, puts the time back without moving. A place past the end goes to the last frame. If HikariSub can't read what you typed, such as `3:99`, the field stays open, a line under the controls says why, and the video doesn't move.
 
 **Play line** plays the active line from its start to its end. The seek bar can be clicked or dragged, and the wheel below the picture sets the volume. **Video › Audio track** chooses the audio track, and **Video › Chapters** jumps to a chapter, with each chapter's time beside it. Each marks the current one.
 
@@ -119,6 +143,8 @@ The video zooms and pans as in Aegisub 3.5:
 
 The plain wheel does nothing on the video. In Aegisub 3.5 it resizes the video box, but HikariSub's video fills a docked panel whose size the layout sets. A [visual tool](/en/docs/typesetting/visual-tools) that uses the wheel or the middle button keeps it: Hydra keeps the wheel and <kbd>Shift</kbd>+wheel, Vector clipping and Vector drawing keep the wheel, and Text X / Y rotation and Text scaling keep the middle button.
 
+**The zoom** in the controls row shows *Fit* while the whole frame fits the panel, or the zoom as a percentage. Click it, or open **Video › Zoom level ›**, for **Fit to panel**, **Zoom 50 %**, **Zoom 100 %**, **Zoom 200 %**, **1:1 device pixels**, **Zoom in** (<kbd>Ctrl</kbd>+<kbd>Num +</kbd>) and **Zoom out** (<kbd>Ctrl</kbd>+<kbd>Num −</kbd>). Each level is a real scale of the picture.
+
 **Video › Zoom video** zooms in to the **Start zoom** (200% unless you set one), or shows the whole frame again when the video is zoomed or panned. **Video › Reset zoom and pan**, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> over the video, shows the whole frame again, unpanned. It can also take a shortcut in **File › Settings › Shortcuts**.
 
 ### Choosing how zoom works
@@ -150,18 +176,20 @@ With the Position pointer on, right-click the picture, or press <kbd>Menu</kbd> 
   <figcaption>The video's right-click menu.</figcaption>
 </figure>
 
-- **Copy video position**, **Play** or **Pause**, **Stop** and **Full screen**. With more than one monitor, **Full screen on ›** lists them all, from **Monitor 1**, the main one. In full screen it marks the monitor you're on.
+- **Copy video position**, **Play** or **Pause**, **Stop**, **Previous file**, **Next file**, **Jump to** and **Full screen**. With more than one monitor, **Full screen on ›** lists them all, from **Monitor 1**, the main one. In full screen it marks the monitor you're on.
 - **Export frame ›**: see [Saving a frame](#saving-a-frame).
 - **Audio track ›** and **Chapters ›**, with each chapter's time, when the video has them.
 - **Render cost**, as in the Video menu.
-- **Change aspect ratio…** and **Reset zoom and pan**.
+- **Change aspect ratio…**, **Reset zoom and pan** and **Zoom level ›**.
 - **Unload video**.
 
-In full screen the menu also has **Open editor**, **Open video…**, **Open subtitles…**, **Recently opened ›** with your subtitles and videos (hidden when there are none), **Progress bar** and **Full screen bar ›**.
+In full screen the menu also has **Open editor**, **Open video…**, **Open subtitles…**, **Recently opened ›** with your subtitles and videos (hidden when there are none), **Progress bar** and **Full screen bar ›**, with the strip's **Bar position ›**, **Show bar ›** and **Full-screen settings…**.
 
 ## Full screen
 
-Double-click the picture, or press <kbd>F</kbd> over it. <kbd>Esc</kbd>, <kbd>F</kbd> or a double-click leave full screen, and leaving pauses the video. With [more than one window](/en/docs/customize/layouts#what-each-window-has), each window's video goes full screen on its own.
+Double-click the picture, or press <kbd>F</kbd> over it, or choose **Video › Full screen**. <kbd>Esc</kbd>, <kbd>F</kbd> or a double-click leave full screen, and leaving pauses the video. With [more than one window](/en/docs/customize/layouts#what-each-window-has), each window's video goes full screen on its own.
+
+Full screen has two modes. **Simple** is for watching, and is the one full screen opens in at first. **Typesetting** puts the visual tools beside the picture: see [Full-screen typesetting](#full-screen-typesetting). **File › Settings › Video › Full screen › Opens in** chooses the mode full screen starts in.
 
 <figure>
   <ThemedImage
@@ -175,17 +203,78 @@ Double-click the picture, or press <kbd>F</kbd> over it. <kbd>Esc</kbd>, <kbd>F<
   <figcaption>Full screen with the player bar. Subtitles: Jibrill.</figcaption>
 </figure>
 
-The bar along the bottom has the transport buttons, the times, the current line, **Open editor**, the visual tools, mute and volume. Its mode button, or <kbd>Tab</kbd>, switches between:
+### The strip
 
-- **Show when the pointer moves:** the bar shows when you move the pointer, and hides after a moment of playback.
-- **Always show:** the bar stays, and the picture ends above it.
-- **Never show:** the picture only.
+In Simple mode, a black strip under the picture holds the controls, so nothing covers the frame:
 
-The right-click menu's **Full screen bar ›** sets the same mode.
+- **Along the top:** the time of the frame shown, the seek bar and the video's length. With keyframes loaded, the seek bar marks them with faint ticks.
+- **On the left:** the line at the video's time, with its number, or *No line at this time*.
+- **In the middle:** **Previous frame**, **Play**, **Next frame**, **Play the current line**, **Stop** and the time, which you can click to [jump](#jumping-to-a-time-or-frame), as in the window.
+- **On the right:** the zoom, **Typeset**, the speaker and the volume, and **Leave full screen**.
 
-**Open editor** leaves full screen, selects the line at the video's time and shows the Line editor. With more than one monitor, **Full screen on ›** in the right-click menu moves full screen to another monitor, **Monitor 1** included, and marks the one you're on. **Progress bar** shows or hides the progress bar in the corner.
+**Typeset** switches to Typesetting mode in place, and the frame keeps its place. Click the speaker to mute, turn the wheel over it for the volume, and right-click it for the output device. **Previous file** and **Next file** are not on the strip: they stay in the menus and on <kbd>,</kbd> and <kbd>.</kbd>.
 
-<kbd>Shift</kbd>+<kbd>Tab</kbd> moves to the bar's speaker button, and the bar stays up while it has the focus. <kbd>Menu</kbd> then opens its **Output device** menu.
+### Where the strip sits and when it shows
+
+Right-click the strip, or press <kbd>Menu</kbd> on it, for:
+
+- **Bar position ›:** **Below the picture (letterbox)**, the default, or **Over the picture**. Below, the picture fits the space above the strip, and keeps its size when the strip hides. Over, the picture fills the screen, and the strip lies over its bottom on a dark gradient.
+- **Show bar ›:** **Auto-hide**, the default, **Always** or **Never**. With **Auto-hide**, moving the pointer or pressing a key shows the strip, and it hides 2 seconds later while the video plays. While the video is paused, it stays. **Never** shows the picture only, over the whole screen.
+- **Full-screen settings…** opens **File › Settings › Video › Full screen**.
+
+The picture's right-click menu has the same choices under **Full screen bar ›**. With the keyboard on the picture, <kbd>Tab</kbd> switches between **Auto-hide**, **Always** and **Never**.
+
+**File › Settings › Video › Full screen**, the first section of the page, holds the same two rows and three more:
+
+- **Hide the pointer with the bar**, on at first: the pointer hides and comes back with the strip.
+- **Show the render time and position overlays**, on at first: the **Render cost** and the progress bar in the corner. Turn it off for the picture alone. The right-click menu's **Progress bar** shows or hides the progress bar on its own.
+- **Opens in**: **Simple** or **Typesetting**.
+
+### Keys
+
+- While the strip shows, <kbd>F6</kbd> moves the keyboard from the picture to the strip's groups, on the left, in the middle and on the right, and then back to the picture. <kbd>Shift</kbd>+<kbd>F6</kbd> goes the other way.
+- <kbd>Esc</kbd> on the strip takes the keyboard back to the picture. On the picture it leaves full screen.
+- <kbd>Space</kbd> plays and pauses without showing the strip. The Video panel's other keys work as usual.
+
+### When a frame is slow or can't be read
+
+A seek that takes longer than a moment dims the last frame and shows *Seeking…* with a spinner; the strip keeps working. A frame that can't be decoded leaves the screen black with a message, such as *Can't decode frame 5146 of sprite-fright.webm. Playback stopped.*, and under it *Seek to another time, or press Esc to leave full screen.* Full screen never closes on its own because of an error.
+
+### More from the menu
+
+**Open editor**, in the right-click menu, leaves full screen, selects the line at the video's time and shows the Line editor. With more than one monitor, **Full screen on ›** moves full screen to another monitor, **Monitor 1** included, and marks the one you're on.
+
+## Full-screen typesetting
+
+**View › Full screen typesetting**, the button at the right of the Video panel's header, or **Typeset** on the strip opens full screen with the [visual tools](/en/docs/typesetting/visual-tools) beside the picture. The command has no key at first; give it one in **File › Settings › Shortcuts**. The picture is always letterboxed, and nothing lies over it:
+
+- **The top bar:** **Simple** and **Typesetting**, to switch modes in place, the file's name, the zoom, and **Leave full screen**.
+- **The rail**, on the left: the tools by name. <kbd>Up</kbd> and <kbd>Down</kbd> move between them, and <kbd>Enter</kbd> or <kbd>Space</kbd> chooses one.
+- **The inspector**, on the right: the tool's name, a line on what dragging does, its fields one under another, **On the frame** with the name of each handle it draws, and **Apply to**: **This line** or **Picked lines (N)**, as **Pick selected lines** does in the window.
+- **The line box**, under the picture: the active line, which you can edit.
+- **The status row**, along the bottom: **Previous frame**, **Play**, **Next frame**, the time, which you can click to jump, the frame, *Line 46 of 412* and the video's size.
+
+<kbd>F6</kbd> and <kbd>Shift</kbd>+<kbd>F6</kbd> move the keyboard between the top bar, the rail, the picture, the inspector, the line box and the status row. <kbd>Esc</kbd> in one of them takes the keyboard back to the picture, and <kbd>Esc</kbd> on the picture leaves full screen.
+
+### The line box
+
+The line box shows the active line's text with its tags coloured as in the [Line editor](/en/docs/basics/line-editor). It wraps to two lines, then scrolls. Type in it, then press <kbd>Enter</kbd> to apply the edit. <kbd>Esc</kbd> puts back an edit you haven't applied; with none, it takes the keyboard back to the picture.
+
+Above the text are **Previous line** and **Next line** round the line's number, the line's times, the style button, and **Undo** and **Redo**. <kbd>Ctrl</kbd>+<kbd>Up</kbd> and <kbd>Ctrl</kbd>+<kbd>Down</kbd>, and <kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Y</kbd>, work in the text too. **Undo** and **Redo** are the subtitles' own, as in the window.
+
+### Choosing a style
+
+The style button, **Choose the line's style**, opens a list of the file's styles, each with its font and size. Type to filter it and use <kbd>Up</kbd> and <kbd>Down</kbd> to move. <kbd>Enter</kbd> or a click gives the line the style.
+
+**Step through lines**, at the end of the filter field, walks the lines through the styles one by one. With it on, <kbd>Enter</kbd> gives the active line the style and goes to the next line, with the list still open and the filter cleared. <kbd>Shift</kbd>+<kbd>Enter</kbd> goes back a line, and <kbd>Esc</kbd> closes the list. The line at its foot says what <kbd>Enter</kbd> will do, such as *Enter applies "Sign" to line 46 and goes to 47.* The style goes to the active line only: with several lines selected in the Grid, the selection narrows to the active line first. With lines picked for the visual tools, it steps through the picked lines in Grid order, and otherwise through every line the Grid shows. The [Styles panel](/en/docs/basics/styles#the-styles-panel) has the same **Step through lines**.
+
+### The tool's guide
+
+The **?** at the end of the inspector's header opens the tool's guide beside it: what the tool writes, how to drag, its keys, and **More in the guide**, which opens the tool's part of these pages. The Video panel's inspector bar has the same **?** in the window.
+
+### Edit shapes and Edit tags
+
+In full-screen typesetting, [Edit shapes and Edit tags](/en/docs/typesetting/shapes-and-tags-editors) open in the inspector's place instead of in a window, with their name as the header. Their parts stack into one column: the list, then the fields, then the preview, with **Undo** and **Redo** at the foot. **Close** (×) or <kbd>Esc</kbd> goes back to the tool. With both open, the inspector shows the one you opened last. Leaving full screen with one open moves it into its window.
 
 ## Dummy video
 
@@ -208,4 +297,4 @@ While paused, the right-click menu's **Export frame ›** has **Save as PNG…**
 
 ## Settings
 
-**File › Settings › Video** holds the rest: whether a click pauses, the seeking method, GPU colour conversion, the preferred audio language, the start zoom and the resolution warnings. The [Settings reference](/en/docs/reference/settings#video) lists them with their defaults.
+**File › Settings › Video** holds the rest: the full-screen strip, whether a click pauses, the seeking method, GPU colour conversion, the preferred audio language, the start zoom and the resolution warnings. The [Settings reference](/en/docs/reference/settings#video) lists them with their defaults.

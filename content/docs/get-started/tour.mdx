@@ -34,14 +34,14 @@ import textMenuDark from './images/text-field-menu-dark.webp';
 
 The Editing layout shows four panels:
 
-- **Video**, with the visual typesetting tools down its left side, their options below the picture, the seek bar, and playback buttons from Previous file to Next frame.
+- **Video**, with the visual typesetting tools down its left side, their options below the picture, the seek bar, and one row with the playback buttons, the time, the frame and the zoom.
 - **Audio**, the waveform of the audio (or of the video's audio), with its own play and timing buttons.
 - **Line editor**, the line you are working on: its tag buttons (bold, italic, font, colours and more), the text, and the line's Start, End, Duration, Style, Comment, Layer, Actor, Effect and Margins.
 - **Grid**, every line of the file. Right-click it to insert, split, filter or hide lines and columns.
 
 Ten more panels open from the menus: Original text (in translation mode), Reference, Shift times, Timing postprocessor, Find, Automation, Spellchecker, Styles, Template editor and Log. **View › Panels** shows, hides, floats or docks any of them. Shift times, the Timing postprocessor, Find and Styles start in the tools side bar, and Automation opens in a column to the right of the Grid; see [Where a panel opens](/en/docs/customize/layouts#where-a-panel-opens).
 
-On each edge of the window is a [side bar](/en/docs/customize/layouts#side-bars): the AI side bar on the left, with the Agent and Review panels, and the tools side bar on the right, with the Explorer, Find, Shift times, the Timing postprocessor, Styles and QC notes. Click an icon along a side bar's top to show that panel, and click it again to hide the side bar. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> shows or hides the left one.
+On each edge of the window is a [side bar](/en/docs/customize/layouts#side-bars): the AI side bar on the left, with the Agent and Review panels, and the tools side bar on the right, with the Explorer, Find, Shift times, the Timing postprocessor, Styles and Problems, which holds the QC notes. Click an icon along a side bar's top to show that panel, and click it again to hide the side bar. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd> shows or hides the left one. AI is off at first, and the Agent panel then shows only **Turn on AI**: see [Turning AI on](/en/docs/ai/settings#turning-ai-on).
 
 Every panel can be moved. Drag a panel by its header to dock it elsewhere or into another panel as a tab, or double-click the header to float it in a window of its own. The **⋯** button on the header has the same actions, plus **Move panel…** for the keyboard. F6 and Shift+F6 move the focus from panel to panel.
 
@@ -77,13 +77,13 @@ Move panels around as you like, then save the arrangement with **Save layout as�
 
 | Menu | What is there |
 | --- | --- |
-| File | Open, save and close subtitles; **Import subtitles from MKV…**; recent files; the last session and autosaves; **Settings** |
+| File | Open, save and close subtitles; **Import subtitles from MKV…**; recent files; **Quick Open…**; the last session and autosaves; **Settings** |
 | Edit | Undo, redo and history; sorting; find and replace; select lines |
 | Subtitles | Shift times, the Timing postprocessor, the Style manager, Script properties, the font collector, resampling, **Set FPS ›**, spelling and karaoke checks, the Kanji timer, translation mode |
 | Video | Open video, keyframes, timecodes or a dummy video; video details; set times from the video; align a line to the video; frame by frame and keyframe to keyframe; play; streams and chapters; zoom |
 | Audio | Open audio, or the audio of the loaded video; close audio; set the audio position or marker to the video time |
 | Automation | Load and reload scripts, run macros, the Automation panel |
-| View | Layouts and panels, **Move panel…**, the Log, and hiding tags in the Grid and the Line editor |
+| View | **Command palette…**, layouts and panels, **Full screen typesetting**, **Move panel…**, the Log, **Tags in the Grid**, **Mark lines on the current frame**, and hiding tags in the Line editor |
 | Help | [Getting started](/en/docs/get-started/getting-started-window), the user guide, reporting an issue, checking for updates, opening your [user folder](/en/docs/automation/user-folder), what's new, About, Credits |
 
 Shift+click a menu item to give its command a shortcut.
@@ -139,6 +139,10 @@ The Line editor's menu also has the spelling and grammar rows for the word under
 | Find, find and replace | Ctrl+F, Ctrl+H |
 | Style manager | Ctrl+M |
 | The user guide, at the page for the window you are in | F1 |
+| Run any command by its name | Ctrl+Shift+P |
+| Open a recent or project file, or go to a line, a time, a style or a panel | Ctrl+P |
+
+Ctrl+Shift+P opens the [command palette](/en/docs/basics/command-palette): type part of a command's name and press Enter to run it.
 
 There is no Apply button: edits in the Line editor are applied with Enter or Ctrl+Enter, and the editor marks a line whose changes are not applied yet. To open the audio of the loaded video, use **Audio › Open audio from video**.
 

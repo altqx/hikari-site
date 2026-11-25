@@ -111,7 +111,7 @@ The window draws each frame's distance from the colour, with where the fade in e
 
 ## Coming from Aegisub-Motion
 
-The Aegisub-Motion script and the other tracking scripts still come with HikariSub, unchanged. **Apply motion data…** gives the same lines as Aegisub-Motion, with these differences:
+The Aegisub-Motion script, version 1.1.2, and the other tracking scripts still come with HikariSub, unchanged. **Apply motion data…** gives the same lines as Aegisub-Motion, with these differences:
 
 - **Relative to frame** goes from 1 to the number of frames. There are no 0, negative or absolute frames.
 - Shake rotoshape data isn't read.
@@ -121,3 +121,4 @@ The Aegisub-Motion script and the other tracking scripts still come with HikariS
 - Apply and Revert select the lines they made or put back.
 - **One line with \move and \t** works with karaoke.
 - The two copy commands use the video's frame rate, not 23.976.
+- Each frame's line starts and ends at the frame's time cut to the centisecond, as every ASS time is. Aegisub-Motion rounds to the nearest centisecond, so some of its lines start and end 10 ms later, and the `\k`, `\t`, `\fade` and `\move` values that follow from those times differ with them.

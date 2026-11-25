@@ -1,0 +1,62 @@
+---
+title: Command palette and Quick Open
+description: Run any command by its name, open a recent or project file, and jump to a line, a time, a style or a panel, all from one box at the top of the window.
+---
+
+**Quick Open** and the **command palette** are one box that hangs from the top of the window: a field with a list under it. Type to narrow the list, then press <kbd>Enter</kbd> or click a row.
+
+## Opening it
+
+| Command | Key | Menu | Opens with |
+| --- | --- | --- | --- |
+| **Quick Open…** | <kbd>Ctrl</kbd>+<kbd>P</kbd> | **File › Quick Open…** | An empty field, for files |
+| **Command palette…** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> | **View › Command palette…** | `>` in the field, for commands |
+
+Both keys work from every panel, the Line editor's text included, and you can change them in **File › Settings › Shortcuts**. Pressing one while the box is open switches it to that kind and keeps what you typed. <kbd>Esc</kbd>, or a click outside the box, closes it without doing anything.
+
+## Matching
+
+The letters you type match in order, but need not be next to each other: `spfr` finds `sprite-fright.ass`. Matches at the start of words rank higher, and the matched letters are in bold.
+
+## Files
+
+With an empty field, Quick Open lists your **Recently opened** files, newest first, and, while a folder is open as a [Project](/en/docs/basics/projects), its **Project files**. Each row shows the file's folder, and *open* when the file is open in a tab of this window. Without a Project, the box says *Open a folder as a project to search its files.*
+
+Choosing a subtitle file opens it in a new tab, or goes to its tab. A video, audio, keyframes or timecodes file opens in the current tab.
+
+## Commands
+
+Type `>` at the start of the field, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, to search commands instead: HikariSub's own, those of your loaded automation macros, and those of your plugins. Each row shows the command's menu, such as **File**, and its key. Deleting the `>` goes back to files.
+
+- With nothing typed after `>`, the ten commands you ran last come first, under **Recently used**, then every other command, A to Z, under **All commands**. **Clear command history**, a command of its own, empties the first list.
+- A command that can't run now is greyed out, with the reason in place of its menu. The arrows still reach it, so you can read why, but <kbd>Enter</kbd> doesn't run it.
+- Macros get the same checks as in the [Automation menu](/en/docs/automation/running-scripts#macros-that-cant-run-here): one that can't run on the selected lines is greyed out with its reason, and one that reports itself as on has a ticked box. A bar runs under the field while the checks run.
+
+Running a command closes the box first.
+
+## Other searches
+
+Other prefixes at the start of the field search other things. A space after the prefix is ignored. <kbd>Backspace</kbd> on a field that holds only the prefix goes back to files.
+
+| Prefix | Searches | <kbd>Enter</kbd> |
+| --- | --- | --- |
+| `>` | Commands | Runs the command |
+| `:` | Lines by number, such as `:46` | Selects the line and makes it active |
+| `@` | A time or a frame | Goes there on the video |
+| `#` | The file's styles | Applies the style to the selected lines |
+| `view ` | Panels and layouts | Shows the panel, or switches to the layout |
+| `?` | These prefixes | Puts the prefix in the field |
+
+- **`:` Lines.** The box says how many lines the file has, such as *Type a line number, 1 to 412.* The row shows the line's start time and text.
+- **`@` Times and frames.** Type a time, such as `@3:40` or `@0:03:40.50`, a frame number, such as `@5200`, or a step from where you are, such as `@+5s` or `@-12f`. The row says where <kbd>Enter</kbd> goes. Without a video, a time selects the line showing then, or the next one after it, and a frame or a step says *Frames need a video.*
+- **`#` Styles.** Each row shows the style's font and size, and how many lines use it. With no lines selected, the rows are greyed out with *Needs a selection*. <kbd>Shift</kbd>+<kbd>Enter</kbd> selects every line with that style instead.
+- **`view ` Panels and layouts.** **Panels** lists every panel, your plugins' included, and **Layouts** the built-in layouts and the ones you saved.
+
+## The same box elsewhere
+
+A few other questions use the same box at the top of the window, so they filter as you type and close with <kbd>Esc</kbd>:
+
+- **Choose the audio track**, when an audio file has several tracks.
+- **Choose the subtitle track**, when an MKV file has several subtitle tracks.
+- **Rename thread** in the [Agent panel](/en/docs/ai/agent), with the name selected. An empty name says *Type a name.*, and the same name closes the box without a change.
+- **Rename…** in the [node effects](/en/docs/karaoke/node-effects) bar, which shows under the field why a name can't be used.

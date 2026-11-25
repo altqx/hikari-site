@@ -5,7 +5,7 @@ description: The Lua and MoonScript automation API as HikariSub implements it.
 
 HikariSub runs automation scripts written in Lua or MoonScript. Its API is Automation 4, the one Aegisub scripts use, so most existing scripts run unchanged. This page describes the API as HikariSub has it, and ends with the differences that matter when you port a script.
 
-Scripts run on **LuaJIT 2.1** (Lua 5.1 with LuaJIT's Lua 5.2 extensions, and the FFI) and **MoonScript 0.3.0**.
+Scripts run on **LuaJIT 2.1** (Lua 5.1 with LuaJIT's Lua 5.2 extensions, and the FFI) and **MoonScript 0.7.0**, the version Aegisub 3.5 ships.
 
 ## A first macro
 
@@ -77,15 +77,20 @@ HikariSub reads these globals after the script's top level has run:
 ## Registering macros
 
 ```lua
-aegisub.register_macro(name, description, process [, validate])
+aegisub.register_macro(name, description, process [, validate [, is_active]])
 ```
 
 - `name` is the macro's menu item. A `/` in it makes submenus, as in Aegisub: `"Typesetting/Move"` shows Move under **Automation › Typesetting**. Each part but the last names a submenu, and names sharing a start share its submenus. Unlike Aegisub, each level keeps the order the macros were registered in, not alphabetical order, and a macro and a submenu with the same name both show.
 - `description` is accepted but not shown.
 - `process(subs, selected, active)` does the work (see below).
-- `validate(subs, selected, active)`, if given, runs just before `process` each time the macro is run. Return `true` to let it run. If it returns false or fails, the macro does not run, nothing is changed, and the progress card says why. The menu does not grey out macros.
+- `validate(subs, selected, active)`, if given, says whether the macro can run on the selection. Return `true` to let it run, or `false` and a message saying why. It runs when the Automation menu or the command palette opens, which grey out the macro and show the message under it, and again just before `process` each time the macro is run. If it returns false or fails then, the macro does not run, nothing is changed, and the progress card says why. With `true`, a second value is help text, shown in the status bar while the pointer is over the macro.
+- `is_active(subs, selected, active)`, if given, runs when the menu opens. While it returns `true`, the macro has a check mark.
+
+When the menu opens, each `validate` and `is_active` gets 500 ms. One that runs longer is stopped, and its macro stays available. During these checks, dialogs raise an error, changes to `subs` are dropped, and requests to HikariSub answer as unavailable.
 
 A script can register several macros, each with its own name. Register them at the top level of the script.
+
+`aegisub.register_filter(name, description, priority, process, config)` registers an export filter, as in Aegisub. **Export as** can run it as a step before it writes: `process` gets a copy of the subtitles and a table of the step's settings, keyed by control name. `config`, if given, returns a dialog table, which **Export as** shows for the step. See [Export](/en/docs/basics/export).
 
 ## The macro's arguments and result
 
@@ -97,7 +102,11 @@ A script can register several macros, each with its own name. Register them at t
 
 Return a new selection to change it: `return selected_indices, active_index`. Return nothing to keep the selection as it was. If you return a selection but no active line, the first selected line becomes active.
 
-The macro works on a copy. HikariSub applies the result in one undo step when the macro ends, and only if it ends normally: a macro that fails or is cancelled changes nothing. While a macro runs, its file is read-only; other files can still be edited. One macro runs at a time.
+The macro works on a copy. HikariSub applies the result when the macro ends, and only if it ends normally: a macro that fails or is cancelled changes nothing. The result is one undo step, unless the macro calls `aegisub.set_undo_point(description)`: see [Undo points](#undo-points). While a macro runs, its file is read-only; other files can still be edited. One macro runs at a time.
+
+### Undo points
+
+`aegisub.set_undo_point(description)` ends an undo step, as in Aegisub. Each call that follows a change makes the changes since the last point one step, named *Automation: * and the description; a call with nothing changed since the last one adds nothing. The changes after the last point are one more step, named after the macro. So a macro that calls it once at its end gives one step named after the description. A run that fails or is cancelled applies none of its steps. Calling it while a macro's validation runs, or outside a macro, raises "Attempt to set an undo point in a context where it makes no sense to do so."
 
 ## The subtitles object
 
@@ -268,9 +277,7 @@ Each loaded script runs in a process of its own. This has a few consequences:
 
 Scripts get the Lua API of Aegisub 3.5.1, with the additions of arch1t3cht's Aegisub fork, and `aegisub.version` says 3.5.1. Most scripts written for Aegisub run as they are. These differences can matter:
 
-- `register_filter` does nothing: HikariSub has no export filters.
-- `aegisub.set_undo_point` does nothing: each run is one undo step.
-- Validation runs when the macro is run, not when the menu opens, and its help text is not shown. The fifth argument of `register_macro` (is active) is not used.
+- Undo steps keep the *Automation: * at the start of their names, which Aegisub doesn't add.
 - The macro description is not shown. In the submenus a `/` makes, each level keeps registration order, where Aegisub sorts it.
 - `dialog.open` and `dialog.save` take the folder before the file name.
 - The default OK button returns `""`, not `true`; `if pressed then` works either way.

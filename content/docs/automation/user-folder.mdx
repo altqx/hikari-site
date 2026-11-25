@@ -64,7 +64,7 @@ ReplaceBackup/          copies of files made before Replace in files changes the
 catalogs/               style catalogues (.sty) and fonts.toml, your font catalogues
 presets/                layouts.json, your saved layouts
 node-effects/           your node effects library: one file per graph, from Save to the library
-recovery/               autosaved copies of your files
+recovery/               autosaved copies of your files, and earlier saves in saves/
 automation-backup-<date>/  your old automation and config folders, from the automation folder reset
 config/  cache/         what scripts keep, DependencyControl's settings and feeds among them
 log/  temp/  autosave/  folders scripts write to
@@ -100,15 +100,19 @@ GLOBAL_SAVE_SUBS = "Ctrl+Shift+S"  # Save
 
 ### Editing them by hand
 
-Edit the files only while HikariSub is closed. A running HikariSub writes them from what it has in memory, over your changes, and comments you add are not kept. Keys it doesn't know are kept.
+HikariSub watches `settings.toml`. A change you save in it while HikariSub runs shows up within a moment, in the Settings window too, with no restart. **Open settings file** in **File › Settings** opens it; on the **Shortcuts** page it opens `hotkeys.toml` instead. When HikariSub next writes the file, comments you added are not kept. Keys it doesn't know are kept.
 
-If a file can't be read, because of a mistake in it or a `version` that is missing or newer than 1, HikariSub never writes over it. It renames the file `settings.toml.broken` (or `.broken-2` and on), uses the defaults for what was in it, and shows a notice: "settings.toml could not be read, so its settings are back at their defaults. The file is kept as settings.toml.broken: fix it while HikariSub is closed and give it its name back to use it again." The notice's details name the line and column. Close HikariSub, fix the file, and rename it back.
+If a change you save leaves a mistake in `settings.toml`, HikariSub keeps the last values it could read. The Settings window says "settings.toml has an error on line N." and holds the changes you make there until it can read the file again. Fix the line and save the file.
+
+Only `settings.toml` is watched. Edit `hotkeys.toml` and `state.json` only while HikariSub is closed: a running HikariSub writes them from what it has in memory, over your changes.
+
+If a file can't be read when HikariSub starts, because of a mistake in it or a `version` that is missing or newer than 1, HikariSub never writes over it. It renames the file `settings.toml.broken` (or `.broken-2` and on), uses the defaults for what was in it, and shows a notice: "settings.toml could not be read, so its settings are back at their defaults. The file is kept as settings.toml.broken: fix it while HikariSub is closed and give it its name back to use it again." The notice's details name the line and column. Close HikariSub, fix the file, and rename it back.
 
 ### From hikari.ini
 
 HikariSub versions before these files kept settings and shortcuts in `hikari.ini`. The first time a newer version starts without a `settings.toml`, it converts `hikari.ini` into the three files, once, and renames it `hikari.ini.old`. The Log says "Your settings moved from hikari.ini to settings.toml, hotkeys.toml and state.json. The old file is kept as hikari.ini.old." `hikari.ini.old` is never read or written again: delete it once you're happy with your settings.
 
-**Settings › General › Import legacy settings…** still brings in HikariSub 0.0.x settings, and writes them into these files.
+**File › Settings › General › Legacy › Import settings…** still brings in HikariSub 0.0.x settings, and writes them into these files. It reads Aegisub's keyboard shortcuts too: see [Shortcuts from Aegisub](/en/docs/get-started/moving-from-legacy#shortcuts-from-aegisub).
 
 ### List files
 
@@ -122,7 +126,7 @@ The lists you build up are TOML files too, each starting with `version = 1`:
 
 When one of these files is missing, HikariSub converts the old file at start, once, and renames it with `.old` added, as `ShapesSettings.txt.old`. It is never written again. The Log says, for example, "ShapesSettings.txt moved to shapes.toml. The old file is kept as ShapesSettings.txt.old." An old file that can't be read is left as it is: its list is at its defaults, nothing is written over it, and the next start tries again.
 
-Edit them only while HikariSub is closed, as the settings files. A list file that can't be read gets the same `.broken` name and the same kind of notice: "shapes.toml could not be read, so its list is back at its defaults." If the file goes bad while HikariSub is running, for example because you edited it, the next save keeps it as `.broken` and saves the list HikariSub has in its place, with a notice: "shapes.toml could not be read, so it is kept as shapes.toml.broken and a new one is saved."
+Edit them only while HikariSub is closed, as `hotkeys.toml`. A list file that can't be read gets the same `.broken` name and the same kind of notice: "shapes.toml could not be read, so its list is back at its defaults." If the file goes bad while HikariSub is running, for example because you edited it, the next save keeps it as `.broken` and saves the list HikariSub has in its place, with a notice: "shapes.toml could not be read, so it is kept as shapes.toml.broken and a new one is saved."
 
 ## Bundled scripts and dictionaries
 
@@ -154,7 +158,7 @@ The first time HikariSub starts with a user folder that has no settings (no `set
 - The old DependencyControl stays behind, because HikariSub brings a newer one. The notice says "The old DependencyControl stayed behind: HikariSub brings a newer one."
 - Empty folders are removed. What stays behind is not used any more: once you have checked it, delete it. On Windows the old data folder is inside the new user folder, so a `HikariSub` folder there can hold what stayed behind.
 
-A portable copy, or a start with `HIKARISUB_USER_DIR`, moves nothing. HikariSub 0.0.x's folders are never moved or changed: bring its settings over with **Settings › General › Import legacy settings…**, as [Moving from legacy](/en/docs/get-started/moving-from-legacy) explains.
+A portable copy, or a start with `HIKARISUB_USER_DIR`, moves nothing. HikariSub 0.0.x's folders are never moved or changed: bring its settings over with **File › Settings › General › Legacy › Import settings…**, as [Moving from legacy](/en/docs/get-started/moving-from-legacy) explains.
 
 ## The automation folder reset
 
