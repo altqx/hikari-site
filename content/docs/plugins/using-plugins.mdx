@@ -328,6 +328,14 @@ A program can be a language server, which checks the text as you edit. The Typos
 
 If a language server crashes, HikariSub starts it again, up to 3 times in 5 minutes, and then leaves it stopped. The plugin's details then say so, such as *Typos stopped.*, with the reason and **Start again**.
 
+## AI tools
+
+A plugin can offer some of its commands to the [AI agent](/en/docs/ai/agent) as tools. The agent sees each one with the plugin's name, and a tool runs as the plugin, with the plugin's permissions, never with more.
+
+- **Asking.** A plugin marks each tool as one that only reads or one that changes something, but HikariSub doesn't take its word at first: every tool of the plugin asks, or runs, by the thread's mode, as a change does. Turn on **Trust tool marks from …**, with the plugin's name, in the plugin's details, and its reading tools run without asking. It's off at first.
+- **A reading tool only reads.** While one runs, the plugin can't edit the subtitles, connect to the internet, write files or change settings.
+- **Sub-agents** and HikariSub's own MCP server get only the reading tools of plugins whose marks you trust.
+
 ## MCP servers
 
 A plugin can bring [MCP servers](/en/docs/ai/agent#mcp-servers), which give the agent more tools. Its install question says *Offers MCP servers in Settings › AI, off until you turn them on*, with their names.

@@ -1,11 +1,11 @@
 ---
 title: Write your first plugin
-description: Make a HikariSub plugin in three steps, a command, a panel and an edit, then learn the manifest, permissions and tiers, and how to sign and publish it.
+description: Make a HikariSub plugin in four steps, a command, a panel, an edit and AI tools, then learn the manifest, permissions and tiers, and how to sign and publish it.
 ---
 
-This guide makes a small plugin in three steps: a command, then a panel, then an edit to the subtitles. Then it explains the manifest, permissions and tiers, and how to sign and publish a plugin.
+This guide makes a small plugin in four steps: a command, then a panel, then an edit to the subtitles, then AI tools. Then it explains the manifest, permissions and tiers, and how to sign and publish a plugin.
 
-[Plugins](https://github.com/altqx/hikari/blob/main/docs/plugins.md) is the full contract, and the [Hikari API reference](/en/docs/plugins/api-reference) lists every operation and event. Each step below is a complete plugin in [`examples/first-plugin`](https://github.com/altqx/hikari/tree/main/docs/examples/first-plugin), and a test runs all three.
+[Plugins](https://github.com/altqx/hikari/blob/main/docs/plugins.md) is the full contract, and the [Hikari API reference](/en/docs/plugins/api-reference) lists every operation and event. Each step below is a complete plugin in [`examples/first-plugin`](https://github.com/altqx/hikari/tree/main/docs/examples/first-plugin), and a test runs all four.
 
 ## Before you start
 
@@ -172,6 +172,55 @@ end)
 ```
 
 Every widget that sends events needs an `id`. Each event says which widget sent it, in `event.widget`.
+
+## Step 4: AI tools
+
+The [AI agent](/en/docs/ai/agent) can run your commands as tools. Give each command it may run an entry in `contributes.aiTools`:
+
+```json title="step-4/hikari-plugin.json"
+    "aiTools": [
+      {
+        "command": "count",
+        "description": "Counts the lines of the open subtitle file.",
+        "parameters": {"type": "object", "properties": {}, "additionalProperties": false},
+        "result": {
+          "type": "object",
+          "properties": {"lineCount": {"type": "integer"}},
+          "required": ["lineCount"]
+        },
+        "mark": "read"
+      },
+      {
+        "command": "unbreak",
+        "description": "Joins the line breaks in the selected lines.",
+        "parameters": {"type": "object", "properties": {}, "additionalProperties": false},
+        "mark": "write"
+      }
+    ]
+```
+
+- **`command`** names a command from `contributes.commands`. The AI sees the tool as `p_`, 8 hex digits from your plugin's id and the command, and the command's name, such as `p_…_count`. Its description starts with your plugin's name, then `description`.
+- **`parameters`** is a JSON Schema for what the AI passes. Its root is an object with `additionalProperties: false`, and the handler gets it as `args`.
+- **`result`**, when given, is a JSON Schema for what the handler returns. HikariSub checks the answer against it before the AI sees it.
+- **`mark`** is `read` for a tool that only reads, and `write` for one that changes something.
+
+The handler's return value is the tool's answer. `context.via` is `"ai"` when the AI runs it, so the count skips its toast then:
+
+```lua title="step-4/main.lua"
+hikari.commands.register("count", function(args, context)
+    local info = hikari.call("documents.get", {})
+    if context.via ~= "ai" then
+        hikari.notify(info.title .. " has " .. info.lineCount .. " lines.")
+    end
+    return { lineCount = info.lineCount }
+end)
+```
+
+- **Asking.** Until the user turns on **Trust tool marks from First plugin** in the plugin's details, off at first, every tool counts as a change: it asks or runs by the thread's mode. After that, a `read` tool runs without asking.
+- **A read is held to it.** While a `read` tool runs, the plugin's edits, network requests, file writes and setting changes are refused, with the reason `read_tool`.
+- **Your grants.** The tool runs as your plugin, with its permissions, never with more.
+
+See [AI tools and MCP servers](https://github.com/altqx/hikari/blob/main/docs/plugins.md#ai-tools-and-mcp-servers).
 
 ## Work on it in place
 
