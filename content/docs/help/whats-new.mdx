@@ -73,6 +73,13 @@ Published 2026-MM-DD. [Release notes](https://github.com/altqx/hikari/releases/t
 - **Lines on the current frame:** the Grid tints the lines that show on the video's current frame and marks them on its scroll bar, as Aegisub does. **View › Mark lines on the current frame** turns it off. See [Lines on the current frame](/en/docs/basics/grid#lines-on-the-current-frame).
 - **Select lines:** **Intersect with selection** keeps the selected lines that match, and **Match** can be **Contains**, **Exact match** or **Regular expressions**. See [Selecting lines](/en/docs/basics/find-and-replace#selecting-lines).
 
+#### Video
+
+- **One row of video controls:** under the seek bar, the frame buttons, **Play line** and **Stop**, the time, *frame N / total* and the zoom share one row. The time shows a keyframe mark on a keyframe, and pointing at it shows how far the frame is from the active line. **Previous file** and **Next file** moved to the Video menu and the picture's right-click menu, and stay on <kbd>,</kbd> and <kbd>.</kbd>. See [The panel](/en/docs/basics/video#the-panel).
+- **Jump to:** click the time, or press <kbd>Ctrl</kbd>+<kbd>G</kbd>, and type a time, a frame, or a step such as `+5s` or `-12f`. See [Jumping to a time or frame](/en/docs/basics/video#jumping-to-a-time-or-frame).
+- **Zoom levels:** the zoom under the video, and **Video › Zoom level ›**, offer **Fit to panel**, 50 %, 100 %, 200 %, **1:1 device pixels**, and **Zoom in** and **Zoom out** (<kbd>Ctrl</kbd>+<kbd>Num +</kbd> and <kbd>Ctrl</kbd>+<kbd>Num −</kbd>). See [Zoom and pan](/en/docs/basics/video#zoom-and-pan).
+- **Subtitle boundaries:** <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Left</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Right</kbd> step the video through the active line's start and end, and on to the next line, as in Aegisub. The seek bar takes the keyboard with <kbd>Tab</kbd>. **Import settings…** brings Aegisub's keys for Jump to, the zoom levels and the boundaries over. See [Playing and moving](/en/docs/basics/video#playing-and-moving).
+
 #### Typesetting
 
 - **Freehand drawing:** Vector clipping and Vector drawing have a **Freehand** mode: hold the button and draw, and the stroke becomes smooth Bézier curves. **Smoothing** sets how closely they follow it. See [Freehand and segments](/en/docs/typesetting/visual-tools#freehand-and-segments).
@@ -96,6 +103,7 @@ Published 2026-MM-DD. [Release notes](https://github.com/altqx/hikari/releases/t
 
 #### Plugins
 
+- **Start a theme from one you like:** **Save a copy as a theme plugin…** in the plugin manager saves the colour theme shown as a new plugin and loads it as a dev plugin, to change as you like. See [Data-only packages](/en/docs/plugins/write-your-first-plugin#data-only-packages).
 - **Plugins can work longer and in the background:** a plugin command that runs past 10 seconds is no longer stopped. A card says the plugin is still working, with **Stop**. A plugin whose install question says *Works in the background while HikariSub is open* starts with HikariSub and can work on a timer, and the status bar counts the plugins at work, each with **Stop**. A plugin may use up to 2 GB of memory. See [Safety and limits](/en/docs/plugins/using-plugins#safety-and-limits).
 
 #### Automation

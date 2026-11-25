@@ -524,15 +524,15 @@
         },
         {
           "feature": "Next or previous subtitle boundary",
-          "status": "not-yet",
-          "text": "No command steps the video to the next line start or end.",
-          "where": ""
+          "status": "same",
+          "text": "On Ctrl+Shift+Left and Ctrl+Shift+Right, as Ctrl+Left and Ctrl+Right set the line's times from the video.",
+          "where": "Video › Previous subtitle boundary, Next subtitle boundary"
         },
         {
           "feature": "Jump to a frame or time",
-          "status": "not-yet",
-          "text": "There's no Jump to window or typed seek.",
-          "where": ""
+          "status": "better",
+          "text": "Type in the time under the video itself, and steps such as +5s or -12f work too.",
+          "where": "Video › Jump to (Ctrl+G); click the time"
         },
         {
           "feature": "Jump to the line's start or end",
@@ -549,8 +549,8 @@
         {
           "feature": "Toggle focus to the video slider",
           "status": "not-planned",
-          "text": "No command moves the keyboard to the seek bar; step with the frame and keyframe commands in the Video menu instead.",
-          "where": ""
+          "text": "No command moves the keyboard to the seek bar, but Tab reaches it, and then the arrow keys step frames.",
+          "where": "Seek bar (Tab)"
         },
         {
           "feature": "Zoom and pan as in 3.5 (wheel zoom, middle-drag and Shift+wheel pan, pinch, reset)",
@@ -561,9 +561,9 @@
         },
         {
           "feature": "Zoom to 50, 100 or 200%, zoom in and out by command",
-          "status": "not-yet",
-          "text": "Only Zoom video and Reset zoom and pan.",
-          "where": "Video › Zoom video"
+          "status": "better",
+          "text": "Also Fit to panel and 1:1 device pixels, and the zoom shows under the video.",
+          "where": "Video › Zoom level; the zoom under the video"
         },
         {
           "feature": "Aspect ratio: default, 4:3, 16:9, 2.35, custom",
@@ -984,8 +984,8 @@
         {
           "feature": "Interface colours for each element (audio, grid, syntax, visual tools)",
           "status": "not-planned",
-          "text": "Themes, accent colours and high-contrast colours only; theme plugins are planned to cover it.",
-          "where": "File › Settings › Appearance"
+          "text": "Themes, accent colours and high-contrast colours only. A colour theme plugin sets the theme's colours, and Save a copy as a theme plugin… starts one from the theme shown.",
+          "where": "File › Settings › Appearance; plugin manager › Save a copy as a theme plugin…"
         },
         {
           "feature": "Interface language",
